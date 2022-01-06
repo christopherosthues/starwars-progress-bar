@@ -2,10 +2,12 @@ package com.github.christopherosthues.starwarsprogressbar.ui.components
 
 import java.awt.*
 import javax.swing.*
+import javax.swing.border.EmptyBorder
 
 internal class JTitledPanel(title: String) : JPanel() {
     private val titleLabel: JLabel = JLabel(title)
-    private val contentPanel: JPanel = JPanel()
+
+    val contentPanel: JPanel = JPanel()
 
     var title: String
         get() = titleLabel.text
@@ -34,6 +36,8 @@ internal class JTitledPanel(title: String) : JPanel() {
         gridBagConstraints.insets = Insets(0, 10, 0, 0)
 
         titlePanel.add(JSeparator(SwingConstants.HORIZONTAL), gridBagConstraints)
+
+        contentPanel.border = EmptyBorder(0, 15, 25, 5)
 
         super.add(titlePanel, BorderLayout.NORTH)
         super.add(contentPanel, BorderLayout.CENTER)

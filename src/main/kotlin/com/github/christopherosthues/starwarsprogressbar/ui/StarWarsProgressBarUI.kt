@@ -1,5 +1,6 @@
 package com.github.christopherosthues.starwarsprogressbar.ui
 
+import com.github.christopherosthues.starwarsprogressbar.ui.configuration.StarWarsPersistentStateComponent
 import com.intellij.ui.JBColor
 import com.intellij.ui.scale.JBUIScale
 import com.intellij.util.ui.GraphicsUtil
@@ -10,13 +11,29 @@ import javax.swing.JComponent
 import javax.swing.SwingConstants
 import javax.swing.plaf.basic.BasicProgressBarUI
 
-internal class StarWarsProgressBarUI(private val starWarsVehicle: StarWarsVehicle, private val addToolTips: () -> Boolean) : BasicProgressBarUI() {
+internal class StarWarsProgressBarUI(
+    private val starWarsVehicle: StarWarsVehicle,
+    private val showVehicleName: () -> Boolean,
+    private val showToolTips: () -> Boolean,
+    private val sameVehicleVelocity: () -> Boolean,
+) : BasicProgressBarUI() {
+
     private val forwardIcon = StarWarsResourceLoader.getIcon(starWarsVehicle.fileName)
     private val backwardIcon = StarWarsResourceLoader.getReversedIcon(starWarsVehicle.fileName)
-    private var velocity = starWarsVehicle.velocity
+    private var velocity = getVelocity()
     private var position = 0
 
-    constructor(starWarsVehicle: StarWarsVehicle) : this(starWarsVehicle, { true })
+
+    constructor(starWarsVehicle: StarWarsVehicle) : this(
+        starWarsVehicle,
+        { StarWarsPersistentStateComponent.instance.state?.showVehicleNames ?: false },
+        { StarWarsPersistentStateComponent.instance.state?.showToolTips ?: true },
+        { StarWarsPersistentStateComponent.instance.state?.sameVehicleVelocity ?: false },
+    )
+
+    private fun getVelocity(): Float {
+        return if (sameVehicleVelocity()) 1f else starWarsVehicle.velocity
+    }
 
     override fun getBoxLength(availableLength: Int, otherDimension: Int): Int {
         return availableLength
@@ -41,7 +58,7 @@ internal class StarWarsProgressBarUI(private val starWarsVehicle: StarWarsVehicl
         val actualPosition: Int = position
         if (velocity < 0) {
             if (position <= 0) {
-                velocity = starWarsVehicle.velocity
+                velocity = getVelocity()
                 position = 0
             } else {
                 position = actualPosition + JBUIScale.scale(velocity).toInt()
@@ -49,7 +66,7 @@ internal class StarWarsProgressBarUI(private val starWarsVehicle: StarWarsVehicl
             }
         } else if (velocity > 0) {
             if (position >= progressBar.width) {
-                velocity = -starWarsVehicle.velocity
+                velocity = -getVelocity()
                 position = progressBar.width
             } else {
                 position = actualPosition + JBUIScale.scale(velocity).toInt()
@@ -59,12 +76,12 @@ internal class StarWarsProgressBarUI(private val starWarsVehicle: StarWarsVehicl
     }
 
     private fun resetPositionAndVelocity() {
-        velocity = starWarsVehicle.velocity
+        velocity = getVelocity()
         position = 0
     }
 
     private fun paintProgressBar(g: Graphics?, c: JComponent?, paintDeterminate: Boolean) {
-        if (g == null || c == null){
+        if (g == null || c == null) {
             return
         }
 
@@ -77,6 +94,7 @@ internal class StarWarsProgressBarUI(private val starWarsVehicle: StarWarsVehicl
             return
         }
 
+        setProgressBarText()
         setToolTipText()
 
         val config = GraphicsUtil.setupAAPainting(g)
@@ -114,11 +132,19 @@ internal class StarWarsProgressBarUI(private val starWarsVehicle: StarWarsVehicl
     }
 
     private fun setToolTipText() {
-        if (addToolTips() && progressBar.toolTipText != starWarsVehicle.vehicleName) {
+        if (showToolTips() && progressBar.toolTipText != starWarsVehicle.vehicleName) {
             progressBar.toolTipText = starWarsVehicle.vehicleName
-        }
-        else if (!addToolTips()) {
+        } else if (!showToolTips()) {
             progressBar.toolTipText = ""
+        }
+    }
+
+    private fun setProgressBarText() {
+        progressBar.isStringPainted = showVehicleName()
+        if (showVehicleName() && progressBar.string != starWarsVehicle.vehicleName) {
+            progressBar.string = starWarsVehicle.vehicleName
+        } else if (!showVehicleName()) {
+            progressBar.string = ""
         }
     }
 
@@ -134,24 +160,34 @@ internal class StarWarsProgressBarUI(private val starWarsVehicle: StarWarsVehicl
     private fun getRoundRectangle(width: Int, height: Int): RoundRectangle2D {
         val arcLength = JBUIScale.scale(9f)
         val offset = JBUIScale.scale(2f)
-        return RoundRectangle2D.Float(JBUIScale.scale(1f),
-                JBUIScale.scale(1f),
-                width - offset,
-                height - offset,
-                arcLength,
-                arcLength)
+        return RoundRectangle2D.Float(
+            JBUIScale.scale(1f),
+            JBUIScale.scale(1f),
+            width - offset,
+            height - offset,
+            arcLength,
+            arcLength
+        )
     }
 
-    private fun drawProgress(width: Int, height: Int, progress: Int, graphics2D: Graphics2D, rectangle2D: RoundRectangle2D) {
+    private fun drawProgress(
+        width: Int,
+        height: Int,
+        progress: Int,
+        graphics2D: Graphics2D,
+        rectangle2D: RoundRectangle2D
+    ) {
         val paint = graphics2D.paint
         val clip = graphics2D.clip
         val movingRight = velocity >= 0
         val fillPaint = getFillPaint()
         graphics2D.paint = fillPaint
-        graphics2D.clip = if (movingRight) Rectangle(progress, height) else Rectangle(progress, 0, progressBar.width, height)
+        graphics2D.clip =
+            if (movingRight) Rectangle(progress, height) else Rectangle(progress, 0, progressBar.width, height)
         graphics2D.fill(rectangle2D)
         graphics2D.paint = getTransparencyPaint(progressBar.background, progress, width, movingRight)
-        graphics2D.clip = if (movingRight) Rectangle(progress, height) else Rectangle(progress, 0, progressBar.width, height)
+        graphics2D.clip =
+            if (movingRight) Rectangle(progress, height) else Rectangle(progress, 0, progressBar.width, height)
         graphics2D.fill(rectangle2D)
         graphics2D.paint = paint
         graphics2D.clip = clip
@@ -161,11 +197,25 @@ internal class StarWarsProgressBarUI(private val starWarsVehicle: StarWarsVehicl
         val transparent = JBColor(Color(0, 0, 0, 0), Color(0, 0, 0, 0))
         if (movingRight) {
             return if (progress > 0) {
-                LinearGradientPaint(0f, JBUIScale.scale(2f), progress.toFloat(), JBUIScale.scale(2f), floatArrayOf(0f, 1f), arrayOf(backgroundColor, transparent))
+                LinearGradientPaint(
+                    0f,
+                    JBUIScale.scale(2f),
+                    progress.toFloat(),
+                    JBUIScale.scale(2f),
+                    floatArrayOf(0f, 1f),
+                    arrayOf(backgroundColor, transparent)
+                )
             } else transparent
         }
         return if (progress < width) {
-            LinearGradientPaint(progress.toFloat(), JBUIScale.scale(2f), width.toFloat(), JBUIScale.scale(2f), floatArrayOf(0f, 1f), arrayOf(transparent, backgroundColor))
+            LinearGradientPaint(
+                progress.toFloat(),
+                JBUIScale.scale(2f),
+                width.toFloat(),
+                JBUIScale.scale(2f),
+                floatArrayOf(0f, 1f),
+                arrayOf(transparent, backgroundColor)
+            )
         } else transparent
     }
 
@@ -178,7 +228,8 @@ internal class StarWarsProgressBarUI(private val starWarsVehicle: StarWarsVehicl
         graphics2D.clip = clip
         val isMovingRight = velocity >= 0
         val icon = if (isMovingRight) forwardIcon else backwardIcon
-        val x = amountFull + if (isMovingRight) JBUIScale.scale(starWarsVehicle.xShift) else JBUIScale.scale(-icon.iconWidth - starWarsVehicle.xShift)
+        val x =
+            amountFull + if (isMovingRight) JBUIScale.scale(starWarsVehicle.xShift) else JBUIScale.scale(-icon.iconWidth - starWarsVehicle.xShift)
         val y = starWarsVehicle.yShift
         icon.paintIcon(progressBar, graphics2D, x, y)
         graphics2D.clip = previousClip
@@ -194,7 +245,15 @@ internal class StarWarsProgressBarUI(private val starWarsVehicle: StarWarsVehicl
         graphics2D.stroke = stroke
     }
 
-    private fun paintStringIfNeeded(graphics2D: Graphics2D, component: Component, height: Int, border: Insets, barRectWidth: Int, barRectHeight: Int, amountFull: Int) {
+    private fun paintStringIfNeeded(
+        graphics2D: Graphics2D,
+        component: Component,
+        height: Int,
+        border: Insets,
+        barRectWidth: Int,
+        barRectHeight: Int,
+        amountFull: Int
+    ) {
         if (progressBar.isStringPainted) {
             graphics2D.translate(0, -(component.height - height) / 2)
             paintString(graphics2D, border.left, border.top, barRectWidth, barRectHeight, amountFull, border)

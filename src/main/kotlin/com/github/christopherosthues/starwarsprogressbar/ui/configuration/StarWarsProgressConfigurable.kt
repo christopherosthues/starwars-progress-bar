@@ -7,7 +7,7 @@ import com.intellij.openapi.options.ConfigurationException
 import javax.swing.JComponent
 
 internal class StarWarsProgressConfigurable : Configurable {
-    private var component : StarWarsProgressConfigurationComponent? = null
+    private var component: StarWarsProgressConfigurationComponent? = null
 
     override fun createComponent(): JComponent {
         component = StarWarsProgressConfigurationComponent()
@@ -23,14 +23,18 @@ internal class StarWarsProgressConfigurable : Configurable {
 
     private fun isStateModified(starWarsState: StarWarsState): Boolean {
         return starWarsState.vehiclesEnabled != component!!.enabledVehicles ||
-                starWarsState.addToolTips != component!!.addToolTips
+                starWarsState.showVehicleNames != component!!.showVehicleNames ||
+                starWarsState.showToolTips != component!!.showToolTips ||
+                starWarsState.sameVehicleVelocity != component!!.sameVehicleVelocity
     }
 
     override fun apply() {
         val starWarsState = getStarWarsState()
         if (starWarsState != null) {
             starWarsState.vehiclesEnabled = component!!.enabledVehicles
-            starWarsState.addToolTips = component!!.addToolTips
+            starWarsState.showVehicleNames = component!!.showVehicleNames
+            starWarsState.showToolTips = component!!.showToolTips
+            starWarsState.sameVehicleVelocity = component!!.sameVehicleVelocity
         } else {
             throw ConfigurationException("The configuration state cannot be null!")
         }

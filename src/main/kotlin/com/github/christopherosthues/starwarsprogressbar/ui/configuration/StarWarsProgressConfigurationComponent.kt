@@ -5,43 +5,50 @@ import com.github.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.github.christopherosthues.starwarsprogressbar.ui.*
 import com.github.christopherosthues.starwarsprogressbar.ui.components.JTitledPanel
 import com.intellij.openapi.ui.LabeledComponent
-import com.intellij.ui.components.*
+import com.intellij.ui.components.JBCheckBox
 import com.intellij.ui.roots.ScalableIconComponent
 import com.intellij.util.ui.FormBuilder
 import com.intellij.util.ui.JBUI
+import com.intellij.util.ui.ThreeStateCheckBox
 import com.jetbrains.rd.util.AtomicInteger
 import java.awt.*
-import java.awt.event.ActionEvent
 import java.awt.event.ItemEvent
 import java.util.stream.Collectors
 import javax.swing.*
+import javax.swing.border.EmptyBorder
 
 internal class StarWarsProgressConfigurationComponent {
-    private lateinit var mainPanel : JPanel
+    private lateinit var mainPanel: JPanel
 
-    private val addToolTipsCheckBox = JBCheckBox(StarWarsBundle.message(BundleConstants.ADD_TOOL_TIPS), true)
+    private val showVehicleNameCheckBox = JBCheckBox(StarWarsBundle.message(BundleConstants.SHOW_VEHICLE_NAME), false)
+    private val showToolTipsCheckBox = JBCheckBox(StarWarsBundle.message(BundleConstants.SHOW_TOOL_TIPS), true)
+    private val sameVehicleVelocityCheckBox = JBCheckBox(StarWarsBundle.message(BundleConstants.SAME_VEHICLE_VELOCITY), false)
 
-    private val selectAllButton = JButton(StarWarsBundle.message(BundleConstants.SELECT_ALL))
-    private val deselectAllButton = JButton(StarWarsBundle.message(BundleConstants.DESELECT_ALL))
+    private val selectedVehiclesCheckBox = ThreeStateCheckBox(ThreeStateCheckBox.State.SELECTED)
 
-    private val selectedLabel = JBLabel()
+    private val vehicleCheckboxes: MutableMap<String, JCheckBox> = HashMap()
 
-    private val vehicleCheckboxes : MutableMap<String, JCheckBox> = HashMap()
+    private val selectedVehiclesCount: AtomicInteger = AtomicInteger(0)
 
-    private val selectedVehiclesCount : AtomicInteger = AtomicInteger(0)
+    private var vehicleRowCount: Int = 0
+    private var factionRowCount: Int = 0
+    private var factionCount: Int = 0
 
-    private var vehicleRowCount : Int = 0
-    private var factionRowCount : Int = 0
-    private var factionCount : Int = 0
-
-    val panel : JPanel
+    val panel: JPanel
         get() = mainPanel
 
-    val enabledVehicles : Map<String, Boolean>
-        get() = vehicleCheckboxes.entries.stream().collect(Collectors.toMap({entry -> entry.key}, { entry -> entry.value.isSelected }))
+    val enabledVehicles: Map<String, Boolean>
+        get() = vehicleCheckboxes.entries.stream()
+            .collect(Collectors.toMap({ entry -> entry.key }, { entry -> entry.value.isSelected }))
 
-    val addToolTips : Boolean
-        get() = addToolTipsCheckBox.isSelected
+    val showVehicleNames: Boolean
+        get() = showVehicleNameCheckBox.isSelected
+
+    val showToolTips: Boolean
+        get() = showToolTipsCheckBox.isSelected
+
+    val sameVehicleVelocity: Boolean
+        get() = sameVehicleVelocityCheckBox.isSelected
 
     init {
         createUI()
@@ -49,7 +56,9 @@ internal class StarWarsProgressConfigurationComponent {
 
     fun updateUI(starWarsState: StarWarsState?) {
         if (starWarsState != null) {
-            addToolTipsCheckBox.isSelected = starWarsState.addToolTips
+            showVehicleNameCheckBox.isSelected = starWarsState.showVehicleNames
+            showToolTipsCheckBox.isSelected = starWarsState.showToolTips
+            sameVehicleVelocityCheckBox.isSelected = starWarsState.sameVehicleVelocity
 
             starWarsState.vehiclesEnabled.forEach { (vehicleName: String, isEnabled: Boolean) ->
                 vehicleCheckboxes.computeIfPresent(vehicleName) { _, checkbox: JCheckBox ->
@@ -66,9 +75,7 @@ internal class StarWarsProgressConfigurationComponent {
 
         createPreviewSection(formBuilder)
 
-        createToolTipSection(formBuilder)
-
-        createSelectionButtonsSection(formBuilder)
+        createUiOptionsSection(formBuilder)
 
         createVehicleSection(formBuilder)
 
@@ -78,56 +85,95 @@ internal class StarWarsProgressConfigurationComponent {
     }
 
     private fun createPreviewSection(formBuilder: FormBuilder) {
-        val panel = createTitledSection(StarWarsBundle.message(BundleConstants.PREVIEW))
-        panel.layout = GridLayout(1, 2, 10, 0)
+        val previewPanel = JTitledPanel(StarWarsBundle.message(BundleConstants.PREVIEW_TITLE))
+        previewPanel.layout = GridLayout(1, 2, 10, 0)
 
         val determinateProgressBar = JProgressBar(0, 2)
         determinateProgressBar.isIndeterminate = false
         determinateProgressBar.value = 1
-        determinateProgressBar.setUI(StarWarsProgressBarUI(VehiclePicker.get(), addToolTipsCheckBox::isSelected))
+        determinateProgressBar.setUI(
+            StarWarsProgressBarUI(
+                VehiclePicker.get(),
+                showVehicleNameCheckBox::isSelected,
+                showToolTipsCheckBox::isSelected,
+                sameVehicleVelocityCheckBox::isSelected
+            )
+        )
 
         val indeterminateProgressBar = JProgressBar()
         indeterminateProgressBar.isIndeterminate = true
-        indeterminateProgressBar.setUI(StarWarsProgressBarUI(VehiclePicker.get(), addToolTipsCheckBox::isSelected))
+        indeterminateProgressBar.setUI(
+            StarWarsProgressBarUI(
+                VehiclePicker.get(),
+                showVehicleNameCheckBox::isSelected,
+                showToolTipsCheckBox::isSelected,
+                sameVehicleVelocityCheckBox::isSelected
+            )
+        )
 
-        panel.add(LabeledComponent.create(determinateProgressBar, StarWarsBundle.message(BundleConstants.DETERMINATE), BorderLayout.NORTH))
-        panel.add(LabeledComponent.create(indeterminateProgressBar, StarWarsBundle.message(BundleConstants.INDETERMINATE), BorderLayout.NORTH))
+        previewPanel.add(
+            LabeledComponent.create(
+                determinateProgressBar,
+                StarWarsBundle.message(BundleConstants.DETERMINATE),
+                BorderLayout.NORTH
+            )
+        )
+        previewPanel.add(
+            LabeledComponent.create(
+                indeterminateProgressBar,
+                StarWarsBundle.message(BundleConstants.INDETERMINATE),
+                BorderLayout.NORTH
+            )
+        )
 
-        formBuilder.addComponent(panel)
+        formBuilder.addComponent(previewPanel)
     }
 
-    private fun createToolTipSection(formBuilder: FormBuilder) {
-        val toolTipPanel = JPanel()
-        panel.layout = BorderLayout()
+    private fun createUiOptionsSection(formBuilder: FormBuilder) {
+        val uiOptionsPanel = JTitledPanel(StarWarsBundle.message(BundleConstants.UI_OPTIONS))
+        uiOptionsPanel.layout = GridLayout(2, 2, 5, 5)
 
-        toolTipPanel.add(addToolTipsCheckBox, BorderLayout.WEST)
+        uiOptionsPanel.add(showVehicleNameCheckBox)
+        uiOptionsPanel.add(sameVehicleVelocityCheckBox)
+        uiOptionsPanel.add(showToolTipsCheckBox)
 
-        formBuilder.addComponent(toolTipPanel)
-        formBuilder.addSeparator()
-    }
-
-    private fun createSelectionButtonsSection(formBuilder: FormBuilder) {
-        val selectionButtonPanel = JPanel()
-        selectAllButton.addActionListener {
-            if (it.id == ActionEvent.ACTION_PERFORMED) {
-                vehicleCheckboxes.values.forEach { c: JCheckBox -> c.isSelected = true }
-            }
-        }
-        deselectAllButton.addActionListener {
-            if (it.id == ActionEvent.ACTION_PERFORMED) {
-                vehicleCheckboxes.values.forEach { c : JCheckBox -> c.isSelected = false }
-            }
-        }
-
-        selectionButtonPanel.layout = GridLayout(2, 2, 10, 0)
-        selectionButtonPanel.add(selectAllButton)
-        selectionButtonPanel.add(deselectAllButton)
-        selectionButtonPanel.add(selectedLabel)
-
-        formBuilder.addComponent(selectionButtonPanel)
+        formBuilder.addComponent(uiOptionsPanel)
     }
 
     private fun createVehicleSection(formBuilder: FormBuilder) {
+        val vehiclesPanel = JTitledPanel(StarWarsBundle.message(BundleConstants.VEHICLES_TITLE))
+        val vehiclesPanelLayout = BoxLayout(vehiclesPanel.contentPanel, BoxLayout.Y_AXIS)
+        vehiclesPanel.layout = vehiclesPanelLayout
+
+        val selectionPanel = createSelectionPanel()
+        val vehiclePanel = createVehiclePanel()
+
+        vehiclesPanel.add(selectionPanel)
+        vehiclesPanel.add(vehiclePanel)
+
+        formBuilder.addComponent(vehiclesPanel)
+    }
+
+    private fun createSelectionPanel(): JPanel {
+        val selectionPanel = JPanel(BorderLayout())
+        selectionPanel.border = EmptyBorder(0, 0, 10, 0)
+
+        selectedVehiclesCheckBox.isThirdStateEnabled = false
+        selectedVehiclesCheckBox.addItemListener {
+            val isSelected = selectedVehiclesCheckBox.state == ThreeStateCheckBox.State.SELECTED
+            selectVehicles(isSelected)
+        }
+
+        selectionPanel.add(selectedVehiclesCheckBox, BorderLayout.WEST)
+
+        return selectionPanel
+    }
+
+    private fun selectVehicles(isSelected: Boolean) {
+        vehicleCheckboxes.values.forEach { c: JCheckBox -> c.isSelected = isSelected }
+    }
+
+    private fun createVehiclePanel(): JPanel {
         val vehiclePanel = JPanel(GridBagLayout())
         factionCount = 0
         factionRowCount = 0
@@ -148,7 +194,7 @@ internal class StarWarsProgressConfigurationComponent {
             }
         }
 
-        formBuilder.addComponent(vehiclePanel)
+        return vehiclePanel
     }
 
     private fun addVehicleCheckBox(vehicle: StarWarsVehicle, factionPanel: JPanel) {
@@ -163,7 +209,11 @@ internal class StarWarsProgressConfigurationComponent {
             updateSelectionButtons()
         }
 
-        addLabeledComponent(factionPanel, ScalableIconComponent(StarWarsResourceLoader.getIcon(vehicle.fileName)), checkBox)
+        addLabeledComponent(
+            factionPanel,
+            ScalableIconComponent(StarWarsResourceLoader.getIcon(vehicle.fileName)),
+            checkBox
+        )
         vehicleCheckboxes[vehicle.fileName] = checkBox
         selectedVehiclesCount.incrementAndGet()
     }
@@ -176,25 +226,35 @@ internal class StarWarsProgressConfigurationComponent {
         gridBagConstraints.gridwidth = 1
         gridBagConstraints.gridx = if (isFactionCountEven) 0 else 1
         gridBagConstraints.gridy = factionRowCount
-        gridBagConstraints.weightx = 0.5
+        gridBagConstraints.weightx = 1.0
         gridBagConstraints.weighty = 0.0
         gridBagConstraints.fill = GridBagConstraints.HORIZONTAL
         gridBagConstraints.anchor = GridBagConstraints.NORTHWEST
-        gridBagConstraints.insets = JBUI.insets(0, 5, 0, 5)
+        gridBagConstraints.insets = JBUI.insets(0, 0, 0, 0)
 
         if (!isFactionCountEven) {
             factionRowCount++
         }
+
         vehiclePanel.add(factionPanel, gridBagConstraints)
     }
 
     private fun updateSelectionButtons() {
         val selected = selectedVehiclesCount.get()
         val numberOfVehicles = StarWarsVehicle.DEFAULT_VEHICLES.size
-        selectAllButton.isEnabled = numberOfVehicles > 0 && selected < numberOfVehicles
-        deselectAllButton.isEnabled = numberOfVehicles > 0 && selected > 0
 
-        selectedLabel.text = StarWarsBundle.message(BundleConstants.SELECTED, selected, numberOfVehicles)
+        if (selected == numberOfVehicles) {
+            selectedVehiclesCheckBox.state = ThreeStateCheckBox.State.SELECTED
+        } else if (selected > 0) {
+            selectedVehiclesCheckBox.state = ThreeStateCheckBox.State.DONT_CARE
+        } else {
+            selectedVehiclesCheckBox.state = ThreeStateCheckBox.State.NOT_SELECTED
+        }
+
+        val selectionText =
+            StarWarsBundle.message(if (selected == numberOfVehicles) BundleConstants.DESELECT_ALL else BundleConstants.SELECT_ALL)
+        selectedVehiclesCheckBox.text =
+            StarWarsBundle.message(BundleConstants.SELECTED, selected, numberOfVehicles, selectionText)
     }
 
     private fun addLabeledComponent(panel: JPanel, label: JComponent?, component: JComponent) {
@@ -233,9 +293,5 @@ internal class StarWarsProgressConfigurationComponent {
 
             panel.add(component, gridBagConstraints)
         }
-    }
-
-    private fun createTitledSection(title: String): JTitledPanel {
-        return JTitledPanel(title)
     }
 }
