@@ -9,20 +9,28 @@ import javax.swing.JComponent
 internal class StarWarsProgressConfigurable : Configurable {
     private var component : StarWarsProgressConfigurationComponent? = null
 
-    override fun createComponent(): JComponent? {
+    override fun createComponent(): JComponent {
         component = StarWarsProgressConfigurationComponent()
         return component!!.panel
     }
 
     override fun isModified(): Boolean {
         val starWarsState = getStarWarsState()
-        return component != null && starWarsState != null && starWarsState.vehiclesEnabled != component!!.enabledVehicles
+        return component != null &&
+                starWarsState != null &&
+                isStateModified(starWarsState)
+    }
+
+    private fun isStateModified(starWarsState: StarWarsState): Boolean {
+        return starWarsState.vehiclesEnabled != component!!.enabledVehicles ||
+                starWarsState.addToolTips != component!!.addToolTips
     }
 
     override fun apply() {
         val starWarsState = getStarWarsState()
         if (starWarsState != null) {
             starWarsState.vehiclesEnabled = component!!.enabledVehicles
+            starWarsState.addToolTips = component!!.addToolTips
         } else {
             throw ConfigurationException("The configuration state cannot be null!")
         }

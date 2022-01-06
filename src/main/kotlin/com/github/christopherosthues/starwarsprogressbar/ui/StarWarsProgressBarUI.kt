@@ -10,11 +10,13 @@ import javax.swing.JComponent
 import javax.swing.SwingConstants
 import javax.swing.plaf.basic.BasicProgressBarUI
 
-internal class StarWarsProgressBarUI(private val starWarsVehicle: StarWarsVehicle) : BasicProgressBarUI() {
+internal class StarWarsProgressBarUI(private val starWarsVehicle: StarWarsVehicle, private val addToolTips: () -> Boolean) : BasicProgressBarUI() {
     private val forwardIcon = StarWarsResourceLoader.getIcon(starWarsVehicle.fileName)
     private val backwardIcon = StarWarsResourceLoader.getReversedIcon(starWarsVehicle.fileName)
     private var velocity = starWarsVehicle.velocity
     private var position = 0
+
+    constructor(starWarsVehicle: StarWarsVehicle) : this(starWarsVehicle, { true })
 
     override fun getBoxLength(availableLength: Int, otherDimension: Int): Int {
         return availableLength
@@ -74,6 +76,9 @@ internal class StarWarsProgressBarUI(private val starWarsVehicle: StarWarsVehicl
             }
             return
         }
+
+        setToolTipText()
+
         val config = GraphicsUtil.setupAAPainting(g)
         val graphics2D = g as Graphics2D
         val border = progressBar.insets
@@ -88,17 +93,18 @@ internal class StarWarsProgressBarUI(private val starWarsVehicle: StarWarsVehicl
             return
         }
         val amountFull = if (paintDeterminate) getAmountFull(border, barRectWidth, barRectHeight) else position
-        val parent = c.parent
-        val background = if (parent != null) parent.background else UIUtil.getPanelBackground()
-        graphics2D.color = background
+
+        graphics2D.color = getBackgroundColor(c)
         if (c.isOpaque) {
             g.fillRect(0, 0, width, height)
         }
+
         val rectangle2D = getRoundRectangle(width, height)
         drawProgress(width, height, amountFull, graphics2D, rectangle2D)
         drawIcon(amountFull, graphics2D, rectangle2D)
         drawBorder(rectangle2D, graphics2D)
         paintStringIfNeeded(graphics2D, c, height, border, barRectWidth, barRectHeight, amountFull)
+
         config.restore()
     }
 
@@ -107,8 +113,22 @@ internal class StarWarsProgressBarUI(private val starWarsVehicle: StarWarsVehicl
                 !component.componentOrientation.isLeftToRight
     }
 
+    private fun setToolTipText() {
+        if (addToolTips() && progressBar.toolTipText != starWarsVehicle.vehicleName) {
+            progressBar.toolTipText = starWarsVehicle.vehicleName
+        }
+        else if (!addToolTips()) {
+            progressBar.toolTipText = ""
+        }
+    }
+
     private fun isOdd(value: Int): Boolean {
         return value % 2 == 1
+    }
+
+    private fun getBackgroundColor(component: JComponent): Color {
+        val parent = component.parent
+        return if (parent != null) parent.background else UIUtil.getPanelBackground()
     }
 
     private fun getRoundRectangle(width: Int, height: Int): RoundRectangle2D {

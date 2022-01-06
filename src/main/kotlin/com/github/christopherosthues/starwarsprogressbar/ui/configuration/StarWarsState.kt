@@ -6,4 +6,6 @@ import java.util.stream.Collectors
 internal class StarWarsState {
     @JvmField
     var vehiclesEnabled : Map<String, Boolean> = StarWarsVehicle.DEFAULT_VEHICLES.stream().collect(Collectors.toMap(StarWarsVehicle::fileName) { true })
+
+    var addToolTips : Boolean = true
 }

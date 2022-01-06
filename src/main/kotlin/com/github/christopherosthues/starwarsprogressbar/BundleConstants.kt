@@ -5,10 +5,12 @@ internal object BundleConstants {
 
     private const val CONFIGURATION = "configuration."
     const val PREVIEW = CONFIGURATION + "preview"
+    const val ADD_TOOL_TIPS = CONFIGURATION + "addToolTips"
     const val SELECT_ALL = CONFIGURATION + "selectAll"
     const val DESELECT_ALL = CONFIGURATION + "deselectAll"
     const val DETERMINATE = CONFIGURATION + "determinate"
     const val INDETERMINATE = CONFIGURATION + "indeterminate"
+    const val SELECTED = CONFIGURATION + "selected"
 
     private const val FACTION = "faction."
     const val GALACTIC_REPUBLIC = FACTION + "galactic_republic"

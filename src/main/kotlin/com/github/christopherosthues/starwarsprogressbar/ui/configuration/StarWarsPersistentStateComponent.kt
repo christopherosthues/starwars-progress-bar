@@ -1,7 +1,7 @@
 package com.github.christopherosthues.starwarsprogressbar.ui.configuration
 
+import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.PersistentStateComponent
-import com.intellij.openapi.components.ServiceManager
 import com.intellij.openapi.components.State
 import com.intellij.openapi.components.Storage
 import com.intellij.util.xmlb.XmlSerializerUtil
@@ -23,6 +23,6 @@ internal class StarWarsPersistentStateComponent : PersistentStateComponent<StarW
 
     companion object {
         val instance : StarWarsPersistentStateComponent
-            get() = ServiceManager.getService(StarWarsPersistentStateComponent::class.java)
+            get() = ApplicationManager.getApplication().getService(StarWarsPersistentStateComponent::class.java)
     }
 }
