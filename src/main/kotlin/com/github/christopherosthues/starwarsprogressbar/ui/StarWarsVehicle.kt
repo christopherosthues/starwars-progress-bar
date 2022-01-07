@@ -193,7 +193,8 @@ internal enum class StarWarsVehicle(
         Faction.CONFEDERACY_OF_INDEPENDENT_SYSTEMS,
         IonEngineColor.YellowEngine,
         0,
-        -6
+        -6,
+        0.5f
     ),
     MUNIFICENT_CLASS_STAR_FRIGATE(
         "munificent_class_star_frigate",
@@ -337,7 +338,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     X_WING("x_wing", message(BundleConstants.X_WING), Faction.REBEL_ALLIANCE, IonEngineColor.RedEngine, -4, -6, 4f),
-    Y_WING("y_wing", message(BundleConstants.Y_WING), Faction.REBEL_ALLIANCE, IonEngineColor.RedEngine, -2, -6, 1f, 2f),
+    Y_WING("y_wing", message(BundleConstants.Y_WING), Faction.REBEL_ALLIANCE, IonEngineColor.RedEngine, -2, -6, 2f),
 
     ECLIPSE("eclipse", message(BundleConstants.ECLIPSE), Faction.GALACTIC_EMPIRE, IonEngineColor.BlueEngine, -2, -6),
     EXECUTOR("executor", message(BundleConstants.EXECUTOR), Faction.GALACTIC_EMPIRE, IonEngineColor.BlueEngine, -8, -6),
@@ -349,6 +350,14 @@ internal enum class StarWarsVehicle(
         -12,
         -6,
         1f
+    ),
+    IMPERIAL_CLASS_STAR_DESTROYER(
+        "imperial_class_star_destroyer",
+        message(BundleConstants.IMPERIAL_CLASS_STAR_DESTROYER),
+        Faction.GALACTIC_EMPIRE,
+        IonEngineColor.BlueEngine,
+        -1,
+        -6
     ),
     INTERDICTOR_CLASS_STAR_DESTROYER(
         "interdictor_class_star_destroyer",
@@ -381,14 +390,6 @@ internal enum class StarWarsVehicle(
         Faction.GALACTIC_EMPIRE,
         IonEngineColor.BlueEngine,
         -8,
-        -6
-    ),
-    STAR_DESTROYER(
-        "star_destroyer",
-        message(BundleConstants.STAR_DESTROYER),
-        Faction.GALACTIC_EMPIRE,
-        IonEngineColor.BlueEngine,
-        -1,
         -6
     ),
     TARTAN_CLASS_PATROL_CRUISER(

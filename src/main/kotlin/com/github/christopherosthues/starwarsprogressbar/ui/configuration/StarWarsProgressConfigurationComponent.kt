@@ -13,9 +13,12 @@ import com.intellij.util.ui.ThreeStateCheckBox
 import com.jetbrains.rd.util.AtomicInteger
 import java.awt.*
 import java.awt.event.ItemEvent
+import java.util.*
 import java.util.stream.Collectors
 import javax.swing.*
 import javax.swing.border.EmptyBorder
+import kotlin.Comparator
+import kotlin.collections.HashMap
 
 internal class StarWarsProgressConfigurationComponent {
     private lateinit var mainPanel: JPanel
@@ -26,6 +29,7 @@ internal class StarWarsProgressConfigurationComponent {
 
     private val selectedVehiclesCheckBox = ThreeStateCheckBox(ThreeStateCheckBox.State.SELECTED)
 
+    private val factionCheckboxes: MutableMap<Faction, ThreeStateCheckBox> = EnumMap(Faction::class.java)
     private val vehicleCheckboxes: MutableMap<String, JCheckBox> = HashMap()
 
     private val selectedVehiclesCount: AtomicInteger = AtomicInteger(0)
@@ -184,6 +188,9 @@ internal class StarWarsProgressConfigurationComponent {
             val vehiclesAvailable = StarWarsVehicle.DEFAULT_VEHICLES.any { it.faction == faction }
             if (vehiclesAvailable) {
                 val factionPanel = JPanel(GridBagLayout())
+
+                addFactionCheckBox(faction, factionPanel)
+
                 StarWarsVehicle.DEFAULT_VEHICLES.stream().filter { vehicle ->
                     vehicle.faction == faction
                 }.sorted(Comparator.comparing(StarWarsVehicle::vehicleName)).forEach { vehicle ->
@@ -195,6 +202,26 @@ internal class StarWarsProgressConfigurationComponent {
         }
 
         return vehiclePanel
+    }
+
+    private fun addFactionCheckBox(faction: Faction, factionPanel: JPanel) {
+        val factionCheckbox = ThreeStateCheckBox()
+        factionCheckbox.isThirdStateEnabled = false
+        factionCheckbox.addItemListener {
+
+            // TODO select/deselect all vehicles of this faction
+        }
+        factionCheckboxes[faction] = factionCheckbox
+
+        val gridBagConstraints = GridBagConstraints()
+        gridBagConstraints.gridwidth = 2
+        gridBagConstraints.gridx = 0
+        gridBagConstraints.gridy = vehicleRowCount++
+        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL
+        gridBagConstraints.anchor = GridBagConstraints.WEST
+        gridBagConstraints.insets = JBUI.insets(10, 0, 0, 0)
+
+        factionPanel.add(factionCheckbox, gridBagConstraints)
     }
 
     private fun addVehicleCheckBox(vehicle: StarWarsVehicle, factionPanel: JPanel) {
@@ -223,6 +250,8 @@ internal class StarWarsProgressConfigurationComponent {
 
         val isFactionCountEven = factionCount++ % 2 == 0
         val gridBagConstraints = GridBagConstraints()
+        val leftPadding = if (isFactionCountEven) 0 else 5
+        val rightPadding = if (isFactionCountEven) 5 else 0
         gridBagConstraints.gridwidth = 1
         gridBagConstraints.gridx = if (isFactionCountEven) 0 else 1
         gridBagConstraints.gridy = factionRowCount
@@ -230,7 +259,7 @@ internal class StarWarsProgressConfigurationComponent {
         gridBagConstraints.weighty = 0.0
         gridBagConstraints.fill = GridBagConstraints.HORIZONTAL
         gridBagConstraints.anchor = GridBagConstraints.NORTHWEST
-        gridBagConstraints.insets = JBUI.insets(0, 0, 0, 0)
+        gridBagConstraints.insets = JBUI.insets(0, leftPadding, 5, rightPadding)
 
         if (!isFactionCountEven) {
             factionRowCount++
@@ -255,6 +284,27 @@ internal class StarWarsProgressConfigurationComponent {
             StarWarsBundle.message(if (selected == numberOfVehicles) BundleConstants.DESELECT_ALL else BundleConstants.SELECT_ALL)
         selectedVehiclesCheckBox.text =
             StarWarsBundle.message(BundleConstants.SELECTED, selected, numberOfVehicles, selectionText)
+
+        factionCheckboxes.forEach { (faction, factionCheckbox) ->
+            val numberOfVehiclesInFaction = StarWarsVehicle.DEFAULT_VEHICLES.count { vehicle -> vehicle.faction == faction }
+            val numberOfSelectedVehiclesInFaction = vehicleCheckboxes.count { (fileName, checkbox) ->
+                val vehicle = StarWarsVehicle.DEFAULT_VEHICLES.find { vehicle -> vehicle.fileName == fileName }
+                vehicle != null && vehicle.faction == faction && checkbox.isSelected
+            }
+
+            if (numberOfSelectedVehiclesInFaction == numberOfVehiclesInFaction) {
+                factionCheckbox.state = ThreeStateCheckBox.State.SELECTED
+            } else if (numberOfSelectedVehiclesInFaction > 0) {
+                factionCheckbox.state = ThreeStateCheckBox.State.DONT_CARE
+            } else {
+                factionCheckbox.state = ThreeStateCheckBox.State.NOT_SELECTED
+            }
+
+            val factionSelectionText =
+                StarWarsBundle.message(if (numberOfSelectedVehiclesInFaction == numberOfVehiclesInFaction) BundleConstants.DESELECT_ALL else BundleConstants.SELECT_ALL)
+            factionCheckbox.text =
+                StarWarsBundle.message(BundleConstants.SELECTED, numberOfSelectedVehiclesInFaction, numberOfVehiclesInFaction, factionSelectionText)
+        }
     }
 
     private fun addLabeledComponent(panel: JPanel, label: JComponent?, component: JComponent) {
@@ -286,7 +336,6 @@ internal class StarWarsProgressConfigurationComponent {
 
             gridBagConstraints.gridx = 1
             gridBagConstraints.weightx = 1.0
-            gridBagConstraints.weighty = 0.0
             gridBagConstraints.fill = GridBagConstraints.HORIZONTAL
             gridBagConstraints.anchor = GridBagConstraints.WEST
             gridBagConstraints.insets = JBUI.insets(10, 0, 0, 0)
