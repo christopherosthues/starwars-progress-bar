@@ -14,6 +14,9 @@ import javax.swing.*
 internal class StarWarsProgressConfigurationComponent {
     private lateinit var mainPanel: JPanel
 
+    private lateinit var determinateProgressBar: JProgressBar
+    private lateinit var indeterminateProgressBar: JProgressBar
+
     private val vehiclesPanel = VehiclesPanel()
 
     private val showVehicleNameCheckBox = JBCheckBox(StarWarsBundle.message(BundleConstants.SHOW_VEHICLE_NAME), false)
@@ -66,7 +69,7 @@ internal class StarWarsProgressConfigurationComponent {
         val previewPanel = JTitledPanel(StarWarsBundle.message(BundleConstants.PREVIEW_TITLE))
         previewPanel.layout = GridLayout(1, 2, 10, 0)
 
-        val determinateProgressBar = JProgressBar(0, 2)
+        determinateProgressBar = JProgressBar(0, 2)
         determinateProgressBar.isIndeterminate = false
         determinateProgressBar.value = 1
         determinateProgressBar.setUI(
@@ -78,7 +81,7 @@ internal class StarWarsProgressConfigurationComponent {
             )
         )
 
-        val indeterminateProgressBar = JProgressBar()
+        indeterminateProgressBar = JProgressBar()
         indeterminateProgressBar.isIndeterminate = true
         indeterminateProgressBar.setUI(
             StarWarsProgressBarUI(
@@ -111,11 +114,19 @@ internal class StarWarsProgressConfigurationComponent {
         val uiOptionsPanel = JTitledPanel(StarWarsBundle.message(BundleConstants.UI_OPTIONS))
         uiOptionsPanel.layout = GridLayout(2, 2, 5, 5)
 
+        showVehicleNameCheckBox.addItemListener { repaintProgressBar() }
+        showToolTipsCheckBox.addItemListener { repaintProgressBar() }
+        sameVehicleVelocityCheckBox.addItemListener { repaintProgressBar() }
+
         uiOptionsPanel.add(showVehicleNameCheckBox)
         uiOptionsPanel.add(sameVehicleVelocityCheckBox)
         uiOptionsPanel.add(showToolTipsCheckBox)
 
         formBuilder.addComponent(uiOptionsPanel)
+    }
+
+    private fun repaintProgressBar() {
+        determinateProgressBar.repaint()
     }
 
     private fun createVehicleSection(formBuilder: FormBuilder) {
