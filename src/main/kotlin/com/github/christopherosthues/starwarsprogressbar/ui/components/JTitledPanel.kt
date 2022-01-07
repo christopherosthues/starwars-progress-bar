@@ -4,7 +4,7 @@ import java.awt.*
 import javax.swing.*
 import javax.swing.border.EmptyBorder
 
-internal class JTitledPanel(title: String) : JPanel() {
+internal open class JTitledPanel(title: String) : JPanel() {
     private val titleLabel: JLabel = JLabel(title)
 
     val contentPanel: JPanel = JPanel()
