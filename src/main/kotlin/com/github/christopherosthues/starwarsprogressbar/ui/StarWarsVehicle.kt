@@ -345,6 +345,7 @@ internal enum class StarWarsVehicle(
         -9,
         -6
     ),
+    U_WING("u_wing", message(BundleConstants.U_WING), Faction.REBEL_ALLIANCE, IonEngineColor.BlueEngine, 0, -6, 4f),
     X_WING("x_wing", message(BundleConstants.X_WING), Faction.REBEL_ALLIANCE, IonEngineColor.RedEngine, -4, -6, 4f),
     Y_WING("y_wing", message(BundleConstants.Y_WING), Faction.REBEL_ALLIANCE, IonEngineColor.RedEngine, -2, -6, 2f),
 

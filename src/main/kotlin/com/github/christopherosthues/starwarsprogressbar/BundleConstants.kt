@@ -72,6 +72,7 @@ internal object BundleConstants {
     const val ROGUE_SHADOW = VEHICLES + "rogue_shadow"
     const val TANTIVE_IV = VEHICLES + "tantive_iv"
     const val T_47_SNOWSPEEDER = VEHICLES + "t_47_snowspeeder"
+    const val U_WING = VEHICLES + "u_wing"
     const val X_WING = VEHICLES + "x_wing"
     const val Y_WING = VEHICLES + "y_wing"
 
