@@ -95,6 +95,7 @@ internal object BundleConstants {
     const val JANGO_FETTS_SLAVE_ONE = VEHICLES + "jango_fetts_slave_one"
 
     const val CLOUD_CITY = VEHICLES + "cloud_city"
+    const val ERRANT_VENTURE = VEHICLES + "errant_venture"
 
     const val ANAKIN_SKYWALKERS_PODRACER = VEHICLES + "anakin_skywalkers_podracer"
     const val SEBULBAS_PODRACER = VEHICLES + "sebulbas_podracer"

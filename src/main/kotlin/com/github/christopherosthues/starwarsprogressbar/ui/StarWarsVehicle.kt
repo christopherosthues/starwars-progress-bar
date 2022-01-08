@@ -144,7 +144,7 @@ internal enum class StarWarsVehicle(
         message(BundleConstants.BLOODFIN),
         Faction.CONFEDERACY_OF_INDEPENDENT_SYSTEMS,
         IonEngineColor.GreenEngine,
-        -8,
+        -4,
         -6
     ),
     DIAMOND_CLASS_CRUISER(
@@ -480,6 +480,14 @@ internal enum class StarWarsVehicle(
         -16,
         -6,
         1f
+    ),
+    ERRANT_VENTURE(
+        "errant_venture",
+        message(BundleConstants.ERRANT_VENTURE),
+        Faction.SMUGGLERS,
+        IonEngineColor.BlueEngine,
+        -1,
+        -6
     ),
 
     ANAKIN_SKYWALKERS_PODRACER(
