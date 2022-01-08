@@ -139,6 +139,14 @@ internal enum class StarWarsVehicle(
         -6
     ),
 
+    BLODDFIN(
+        "bloodfin",
+        message(BundleConstants.BLOODFIN),
+        Faction.CONFEDERACY_OF_INDEPENDENT_SYSTEMS,
+        IonEngineColor.GreenEngine,
+        -8,
+        -6
+    ),
     DIAMOND_CLASS_CRUISER(
         "diamond_class_cruiser",
         message(BundleConstants.DIAMOND_CLASS_CRUISER),

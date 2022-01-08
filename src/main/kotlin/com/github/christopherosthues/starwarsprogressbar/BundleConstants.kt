@@ -43,6 +43,7 @@ internal object BundleConstants {
     const val V_19_TORRENT_STARFIGHTER = VEHICLES + "v_19_torrent_starfighter"
     const val Z_95_HEADHUNTER = VEHICLES + "z_95_headhunter"
 
+    const val BLOODFIN = VEHICLES + "bloodfin"
     const val DIAMOND_CLASS_CRUISER = VEHICLES + "diamond_class_cruiser"
     const val DROID_TRI_FIGHTER = VEHICLES + "droid_tri_fighter"
     const val FANBLADE = VEHICLES + "fanblade"
