@@ -1,6 +1,6 @@
 package com.github.christopherosthues.starwarsprogressbar.ui.components
 
-import com.github.christopherosthues.starwarsprogressbar.BundleConstants
+import com.github.christopherosthues.starwarsprogressbar.constants.BundleConstants
 import com.github.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.github.christopherosthues.starwarsprogressbar.ui.Faction
 import com.github.christopherosthues.starwarsprogressbar.ui.StarWarsResourceLoader

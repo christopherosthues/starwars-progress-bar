@@ -2,7 +2,8 @@ package com.github.christopherosthues.starwarsprogressbar.ui
 
 import com.github.christopherosthues.starwarsprogressbar.StarWarsBundle.message
 import java.awt.Color
-import com.github.christopherosthues.starwarsprogressbar.BundleConstants
+import com.github.christopherosthues.starwarsprogressbar.constants.BundleConstants
+import com.github.christopherosthues.starwarsprogressbar.constants.ImageResourceConstants
 import com.intellij.util.containers.stream
 import java.util.stream.Collectors
 
@@ -18,7 +19,7 @@ internal enum class StarWarsVehicle(
 ) {
     // TODO: set individual velocity of all vehicles
     ACCLAMATOR_CLASS_ASSAULT_SHIP(
-        "acclamator_class_assault_ship",
+        ImageResourceConstants.ACCLAMATOR_CLASS_ASSAULT_SHIP,
         message(BundleConstants.ACCLAMATOR_CLASS_ASSAULT_SHIP),
         Faction.GALACTIC_REPUBLIC,
         IonEngineColor.BlueEngine,
@@ -26,7 +27,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     ARC_170_STARFIGHTER(
-        "arc_170_starfighter",
+        ImageResourceConstants.ARC_170_STARFIGHTER,
         message(BundleConstants.ARC_170_STARFIGHTER),
         Faction.GALACTIC_REPUBLIC,
         IonEngineColor.RedEngine,
@@ -34,7 +35,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     AZURE_ANGEL(
-        "azure_angel",
+        ImageResourceConstants.AZURE_ANGEL,
         message(BundleConstants.AZURE_ANGEL),
         Faction.GALACTIC_REPUBLIC,
         IonEngineColor.RedEngine,
@@ -42,7 +43,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     BLADE_OF_DORIN(
-        "blade_of_dorin",
+        ImageResourceConstants.BLADE_OF_DORIN,
         message(BundleConstants.BLADE_OF_DORIN),
         Faction.GALACTIC_REPUBLIC,
         IonEngineColor.RedEngine,
@@ -50,7 +51,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     DC0052_SPEEDER(
-        "dc0052_speeder",
+        ImageResourceConstants.DC0052_SPEEDER,
         message(BundleConstants.DC0052_SPEEDER),
         Faction.GALACTIC_REPUBLIC,
         IonEngineColor.BlueEngine,
@@ -58,7 +59,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     DELTA_7_JEDI_STARFIGHTER(
-        "delta_7_jedi_starfighter",
+        ImageResourceConstants.DELTA_7_JEDI_STARFIGHTER,
         message(BundleConstants.DELTA_7_JEDI_STARFIGHTER),
         Faction.GALACTIC_REPUBLIC,
         IonEngineColor.BlueEngine,
@@ -66,7 +67,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     ETA_2_ACTIS_INTERCEPTOR(
-        "eta_2_actis",
+        ImageResourceConstants.ETA_2_ACTIS_INTERCEPTOR,
         message(BundleConstants.ETA_2_ACTIS_INTERCEPTOR),
         Faction.GALACTIC_REPUBLIC,
         IonEngineColor.BlueEngine,
@@ -74,7 +75,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     H_TYPE_NABOO_YACHT(
-        "h_type_naboo_yacht",
+        ImageResourceConstants.H_TYPE_NABOO_YACHT,
         message(BundleConstants.H_TYPE_NABOO_YACHT),
         Faction.GALACTIC_REPUBLIC,
         IonEngineColor.BlueEngine,
@@ -82,7 +83,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     J_TYPE_DIPLOMATIC_BARGE(
-        "j_type_diplomatic_barge",
+        ImageResourceConstants.J_TYPE_DIPLOMATIC_BARGE,
         message(BundleConstants.J_TYPE_DIPLOMATIC_BARGE),
         Faction.GALACTIC_REPUBLIC,
         IonEngineColor.BlueEngine,
@@ -90,7 +91,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     J_TYPE_NABOO_STAR_SKIFF(
-        "j_type_naboo_star_skiff",
+        ImageResourceConstants.J_TYPE_NABOO_STAR_SKIFF,
         message(BundleConstants.J_TYPE_NABOO_STAR_SKIFF),
         Faction.GALACTIC_REPUBLIC,
         IonEngineColor.BlueEngine,
@@ -98,7 +99,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     N_1_STARFIGHTER(
-        "n_1_starfighter",
+        ImageResourceConstants.N_1_STARFIGHTER,
         message(BundleConstants.N_1_STARFIGHTER),
         Faction.GALACTIC_REPUBLIC,
         IonEngineColor.BlueEngine,
@@ -106,16 +107,23 @@ internal enum class StarWarsVehicle(
         -6
     ),
     NABOO_ROYAL_STARSHIP(
-        "naboo_royal_starship",
+        ImageResourceConstants.NABOO_ROYAL_STARSHIP,
         message(BundleConstants.NABOO_ROYAL_STARSHIP),
         Faction.GALACTIC_REPUBLIC,
         IonEngineColor.BlueEngine,
         -6,
         -6
     ),
-    V_WING("v_wing", message(BundleConstants.V_WING), Faction.GALACTIC_REPUBLIC, IonEngineColor.YellowEngine, -4, -6),
+    V_WING(
+        ImageResourceConstants.V_WING,
+        message(BundleConstants.V_WING),
+        Faction.GALACTIC_REPUBLIC,
+        IonEngineColor.YellowEngine,
+        -4,
+        -6
+    ),
     VENATOR_CLASS_STAR_DESTROYER(
-        "venator_class_star_destroyer",
+        ImageResourceConstants.VENATOR_CLASS_STAR_DESTROYER,
         message(BundleConstants.VENATOR_CLASS_STAR_DESTROYER),
         Faction.GALACTIC_REPUBLIC,
         IonEngineColor.BlueEngine,
@@ -123,7 +131,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     V_19_TORRENT_STARFIGHTER(
-        "v_19_torrent_starfighter",
+        ImageResourceConstants.V_19_TORRENT_STARFIGHTER,
         message(BundleConstants.V_19_TORRENT_STARFIGHTER),
         Faction.GALACTIC_REPUBLIC,
         IonEngineColor.BlueEngine,
@@ -131,7 +139,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     Z_95_HEADHUNTER(
-        "z_95_headhunter",
+        ImageResourceConstants.Z_95_HEADHUNTER,
         message(BundleConstants.Z_95_HEADHUNTER),
         Faction.GALACTIC_REPUBLIC,
         IonEngineColor.RedEngine,
@@ -140,7 +148,7 @@ internal enum class StarWarsVehicle(
     ),
 
     BLODDFIN(
-        "bloodfin",
+        ImageResourceConstants.BLODDFIN,
         message(BundleConstants.BLOODFIN),
         Faction.CONFEDERACY_OF_INDEPENDENT_SYSTEMS,
         IonEngineColor.GreenEngine,
@@ -148,7 +156,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     DIAMOND_CLASS_CRUISER(
-        "diamond_class_cruiser",
+        ImageResourceConstants.DIAMOND_CLASS_CRUISER,
         message(BundleConstants.DIAMOND_CLASS_CRUISER),
         Faction.CONFEDERACY_OF_INDEPENDENT_SYSTEMS,
         IonEngineColor.YellowEngine,
@@ -156,7 +164,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     DROID_TRI_FIGHTER(
-        "droid_tri_fighter",
+        ImageResourceConstants.DROID_TRI_FIGHTER,
         message(BundleConstants.DROID_TRI_FIGHTER),
         Faction.CONFEDERACY_OF_INDEPENDENT_SYSTEMS,
         IonEngineColor.YellowEngine,
@@ -164,15 +172,23 @@ internal enum class StarWarsVehicle(
         -6
     ),
     FANBLADE(
-        "fanblade",
+        ImageResourceConstants.FANBLADE,
         message(BundleConstants.FANBLADE),
         Faction.CONFEDERACY_OF_INDEPENDENT_SYSTEMS,
         IonEngineColor.YellowEngine,
         -12,
         -6
     ),
+    IG_227_HAILFIRE_CLASS_DROID_TANK(
+        ImageResourceConstants.IG_227_HAILFIRE_CLASS_DROID_TANK,
+        message(BundleConstants.IG_227_HAILFIRE_CLASS_DROID_TANK),
+        Faction.CONFEDERACY_OF_INDEPENDENT_SYSTEMS,
+        IonEngineColor.BrownEngine,
+        -7,
+        -6
+    ),
     INVISIBLE_HAND(
-        "invisible_hand",
+        ImageResourceConstants.INVISIBLE_HAND,
         message(BundleConstants.INVISIBLE_HAND),
         Faction.CONFEDERACY_OF_INDEPENDENT_SYSTEMS,
         IonEngineColor.BlueEngine,
@@ -180,7 +196,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     LUCREHULK_CLASS_BATTLESHIP(
-        "droid_control_ship",
+        ImageResourceConstants.LUCREHULK_CLASS_BATTLESHIP,
         message(BundleConstants.LUCREHULK_CLASS_BATTLESHIP),
         Faction.CONFEDERACY_OF_INDEPENDENT_SYSTEMS,
         IonEngineColor.BlueEngine,
@@ -188,7 +204,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     MANKVIM_814_INTERCEPTOR(
-        "mankvim_814_interceptor",
+        ImageResourceConstants.MANKVIM_814_INTERCEPTOR,
         message(BundleConstants.MANKVIM_814_INTERCEPTOR),
         Faction.CONFEDERACY_OF_INDEPENDENT_SYSTEMS,
         IonEngineColor.BlueEngine,
@@ -196,7 +212,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     MTT(
-        "multi_troop_transport",
+        ImageResourceConstants.MTT,
         message(BundleConstants.MTT),
         Faction.CONFEDERACY_OF_INDEPENDENT_SYSTEMS,
         IonEngineColor.YellowEngine,
@@ -205,7 +221,7 @@ internal enum class StarWarsVehicle(
         0.5f
     ),
     MUNIFICENT_CLASS_STAR_FRIGATE(
-        "munificent_class_star_frigate",
+        ImageResourceConstants.MUNIFICENT_CLASS_STAR_FRIGATE,
         message(BundleConstants.MUNIFICENT_CLASS_STAR_FRIGATE),
         Faction.CONFEDERACY_OF_INDEPENDENT_SYSTEMS,
         IonEngineColor.YellowEngine,
@@ -213,7 +229,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     NANTEX_CLASS_STARFIGHTER(
-        "nantex_class_starfighter",
+        ImageResourceConstants.NANTEX_CLASS_STARFIGHTER,
         message(BundleConstants.NANTEX_CLASS_STARFIGHTER),
         Faction.CONFEDERACY_OF_INDEPENDENT_SYSTEMS,
         IonEngineColor.BlueEngine,
@@ -221,7 +237,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     PLATOON_ATTACK_CRAFT(
-        "platoon_attack_craft",
+        ImageResourceConstants.PLATOON_ATTACK_CRAFT,
         message(BundleConstants.PLATOON_ATTACK_CRAFT),
         Faction.CONFEDERACY_OF_INDEPENDENT_SYSTEMS,
         IonEngineColor.BlueEngine,
@@ -229,7 +245,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     PORAX_38_STARFIGHTER(
-        "porax_38_starfighter",
+        ImageResourceConstants.PORAX_38_STARFIGHTER,
         message(BundleConstants.PORAX_38_STARFIGHTER),
         Faction.CONFEDERACY_OF_INDEPENDENT_SYSTEMS,
         IonEngineColor.YellowEngine,
@@ -237,7 +253,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     RECUSANT_CLASS_DESTROYER(
-        "recusant_class_destroyer",
+        ImageResourceConstants.RECUSANT_CLASS_DESTROYER,
         message(BundleConstants.RECUSANT_CLASS_DESTROYER),
         Faction.CONFEDERACY_OF_INDEPENDENT_SYSTEMS,
         IonEngineColor.YellowEngine,
@@ -245,7 +261,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     SEPARATIST_SUPPLY_SHIP(
-        "separatist_supply_ship",
+        ImageResourceConstants.SEPARATIST_SUPPLY_SHIP,
         message(BundleConstants.SEPARATIST_SUPPLY_SHIP),
         Faction.CONFEDERACY_OF_INDEPENDENT_SYSTEMS,
         IonEngineColor.YellowEngine,
@@ -253,7 +269,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     SOULLESS_ONE(
-        "soulless_one",
+        ImageResourceConstants.SOULLESS_ONE,
         message(BundleConstants.SOULLESS_ONE),
         Faction.CONFEDERACY_OF_INDEPENDENT_SYSTEMS,
         IonEngineColor.YellowEngine,
@@ -261,7 +277,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     STAP(
-        "stap",
+        ImageResourceConstants.STAP,
         message(BundleConstants.STAP),
         Faction.CONFEDERACY_OF_INDEPENDENT_SYSTEMS,
         IonEngineColor.YellowEngine,
@@ -269,7 +285,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     TRADE_FEDERATION_LANDING_SHIP(
-        "trade_federation_landing_ship",
+        ImageResourceConstants.TRADE_FEDERATION_LANDING_SHIP,
         message(BundleConstants.TRADE_FEDERATION_LANDING_SHIP),
         Faction.CONFEDERACY_OF_INDEPENDENT_SYSTEMS,
         IonEngineColor.RedEngine,
@@ -277,7 +293,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     VULTURE_DROID(
-        "vulture_droid",
+        ImageResourceConstants.VULTURE_DROID,
         message(BundleConstants.VULTURE_DROID),
         Faction.CONFEDERACY_OF_INDEPENDENT_SYSTEMS,
         IonEngineColor.RedEngine,
@@ -285,19 +301,42 @@ internal enum class StarWarsVehicle(
         -6
     ),
 
-    A_WING("a_wing", message(BundleConstants.A_WING), Faction.REBEL_ALLIANCE, IonEngineColor.RedEngine, -4, -6, 5f),
-    B_WING("b_wing", message(BundleConstants.B_WING), Faction.REBEL_ALLIANCE, IonEngineColor.RedEngine, -13, -6, 2.5f),
+    A_WING(
+        ImageResourceConstants.A_WING,
+        message(BundleConstants.A_WING),
+        Faction.REBEL_ALLIANCE,
+        IonEngineColor.RedEngine,
+        -4,
+        -6,
+        5f
+    ),
+    B_WING(
+        ImageResourceConstants.B_WING,
+        message(BundleConstants.B_WING),
+        Faction.REBEL_ALLIANCE,
+        IonEngineColor.RedEngine,
+        -13,
+        -6,
+        2.5f
+    ),
     GR_75_TRANSPORT(
-        "gr_75_transport",
+        ImageResourceConstants.GR_75_TRANSPORT,
         message(BundleConstants.GR_75_TRANSPORT),
         Faction.REBEL_ALLIANCE,
         IonEngineColor.BlueEngine,
         0,
         -6
     ),
-    HOME_ONE("home_one", message(BundleConstants.HOME_ONE), Faction.REBEL_ALLIANCE, IonEngineColor.BlueEngine, -2, -6),
+    HOME_ONE(
+        ImageResourceConstants.HOME_ONE,
+        message(BundleConstants.HOME_ONE),
+        Faction.REBEL_ALLIANCE,
+        IonEngineColor.BlueEngine,
+        -2,
+        -6
+    ),
     MC80_LIBERTY_STAR_CRUISER(
-        "mc80_liberty_star_cruiser",
+        ImageResourceConstants.MC80_LIBERTY_STAR_CRUISER,
         message(BundleConstants.MC80_LIBERTY_STAR_CRUISER),
         Faction.REBEL_ALLIANCE,
         IonEngineColor.BlueEngine,
@@ -305,7 +344,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     MILLENNIUM_FALCON(
-        "millennium_falcon",
+        ImageResourceConstants.MILLENNIUM_FALCON,
         message(BundleConstants.MILLENNIUM_FALCON),
         Faction.REBEL_ALLIANCE,
         IonEngineColor.BlueEngine,
@@ -314,7 +353,7 @@ internal enum class StarWarsVehicle(
         5f
     ),
     NEBULON_B_FRIGATE(
-        "nebulon_b_frigate",
+        ImageResourceConstants.NEBULON_B_FRIGATE,
         message(BundleConstants.NEBULON_B_FRIGATE),
         Faction.REBEL_ALLIANCE,
         IonEngineColor.BlueEngine,
@@ -322,7 +361,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     ROGUE_SHADOW(
-        "rogue_shadow",
+        ImageResourceConstants.ROGUE_SHADOW,
         message(BundleConstants.ROGUE_SHADOW),
         Faction.REBEL_ALLIANCE,
         IonEngineColor.BlueEngine,
@@ -330,7 +369,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     TANTIVE_IV(
-        "tantive_iv",
+        ImageResourceConstants.TANTIVE_IV,
         message(BundleConstants.TANTIVE_IV),
         Faction.REBEL_ALLIANCE,
         IonEngineColor.RedEngine,
@@ -338,21 +377,59 @@ internal enum class StarWarsVehicle(
         -6
     ),
     T_47_SNOWSPEEDER(
-        "t_47_snowspeeder",
+        ImageResourceConstants.T_47_SNOWSPEEDER,
         message(BundleConstants.T_47_SNOWSPEEDER),
         Faction.REBEL_ALLIANCE,
         IonEngineColor.WhiteEngine,
         -9,
         -6
     ),
-    U_WING("u_wing", message(BundleConstants.U_WING), Faction.REBEL_ALLIANCE, IonEngineColor.BlueEngine, 0, -6, 4f),
-    X_WING("x_wing", message(BundleConstants.X_WING), Faction.REBEL_ALLIANCE, IonEngineColor.RedEngine, -4, -6, 4f),
-    Y_WING("y_wing", message(BundleConstants.Y_WING), Faction.REBEL_ALLIANCE, IonEngineColor.RedEngine, -2, -6, 2f),
+    U_WING(
+        ImageResourceConstants.U_WING,
+        message(BundleConstants.U_WING),
+        Faction.REBEL_ALLIANCE,
+        IonEngineColor.BlueEngine,
+        0,
+        -6,
+        4f
+    ),
+    X_WING(
+        ImageResourceConstants.X_WING,
+        message(BundleConstants.X_WING),
+        Faction.REBEL_ALLIANCE,
+        IonEngineColor.RedEngine,
+        -4,
+        -6,
+        4f
+    ),
+    Y_WING(
+        ImageResourceConstants.Y_WING,
+        message(BundleConstants.Y_WING),
+        Faction.REBEL_ALLIANCE,
+        IonEngineColor.RedEngine,
+        -2,
+        -6,
+        2f
+    ),
 
-    ECLIPSE("eclipse", message(BundleConstants.ECLIPSE), Faction.GALACTIC_EMPIRE, IonEngineColor.BlueEngine, -2, -6),
-    EXECUTOR("executor", message(BundleConstants.EXECUTOR), Faction.GALACTIC_EMPIRE, IonEngineColor.BlueEngine, -8, -6),
+    ECLIPSE(
+        ImageResourceConstants.ECLIPSE,
+        message(BundleConstants.ECLIPSE),
+        Faction.GALACTIC_EMPIRE,
+        IonEngineColor.BlueEngine,
+        -2,
+        -6
+    ),
+    EXECUTOR(
+        ImageResourceConstants.EXECUTOR,
+        message(BundleConstants.EXECUTOR),
+        Faction.GALACTIC_EMPIRE,
+        IonEngineColor.BlueEngine,
+        -8,
+        -6
+    ),
     FIRST_DEATH_STAR(
-        "1st_death_star",
+        ImageResourceConstants.FIRST_DEATH_STAR,
         message(BundleConstants.FIRST_DEATH_STAR),
         Faction.GALACTIC_EMPIRE,
         IonEngineColor.GreenEngine,
@@ -361,7 +438,7 @@ internal enum class StarWarsVehicle(
         1f
     ),
     IMPERIAL_CLASS_STAR_DESTROYER(
-        "imperial_class_star_destroyer",
+        ImageResourceConstants.IMPERIAL_CLASS_STAR_DESTROYER,
         message(BundleConstants.IMPERIAL_CLASS_STAR_DESTROYER),
         Faction.GALACTIC_EMPIRE,
         IonEngineColor.BlueEngine,
@@ -369,7 +446,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     INTERDICTOR_CLASS_STAR_DESTROYER(
-        "interdictor_class_star_destroyer",
+        ImageResourceConstants.INTERDICTOR_CLASS_STAR_DESTROYER,
         message(BundleConstants.INTERDICTOR_CLASS_STAR_DESTROYER),
         Faction.GALACTIC_EMPIRE,
         IonEngineColor.BlueEngine,
@@ -377,7 +454,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     LAMBDA_CLASS_SHUTTLE(
-        "lambda_class_shuttle",
+        ImageResourceConstants.LAMBDA_CLASS_SHUTTLE,
         message(BundleConstants.LAMBDA_CLASS_SHUTTLE),
         Faction.GALACTIC_EMPIRE,
         IonEngineColor.BlueEngine,
@@ -385,7 +462,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     SECOND_DEATH_STAR(
-        "2nd_death_star",
+        ImageResourceConstants.SECOND_DEATH_STAR,
         message(BundleConstants.SECOND_DEATH_STAR),
         Faction.GALACTIC_EMPIRE,
         IonEngineColor.GreenEngine,
@@ -394,7 +471,7 @@ internal enum class StarWarsVehicle(
         1f
     ),
     SENTINEL_CLASS_SHUTTLE(
-        "sentinel_class_shuttle",
+        ImageResourceConstants.SENTINEL_CLASS_SHUTTLE,
         message(BundleConstants.SENTINEL_CLASS_SHUTTLE),
         Faction.GALACTIC_EMPIRE,
         IonEngineColor.BlueEngine,
@@ -402,7 +479,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     TARTAN_CLASS_PATROL_CRUISER(
-        "tartan_class_patrol_cruiser",
+        ImageResourceConstants.TARTAN_CLASS_PATROL_CRUISER,
         message(BundleConstants.TARTAN_CLASS_PATROL_CRUISER),
         Faction.GALACTIC_EMPIRE,
         IonEngineColor.BlueEngine,
@@ -410,7 +487,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     THETA_CLASS_SHUTTLE(
-        "theta_class_shuttle",
+        ImageResourceConstants.THETA_CLASS_SHUTTLE,
         message(BundleConstants.THETA_CLASS_SHUTTLE),
         Faction.GALACTIC_EMPIRE,
         IonEngineColor.BlueEngine,
@@ -418,7 +495,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     TIE_BOMBER(
-        "tie_bomber",
+        ImageResourceConstants.TIE_BOMBER,
         message(BundleConstants.TIE_BOMBER),
         Faction.GALACTIC_EMPIRE,
         IonEngineColor.BlueEngine,
@@ -427,7 +504,7 @@ internal enum class StarWarsVehicle(
         2.5f
     ),
     TIE_CRAWLER(
-        "tie_crawler",
+        ImageResourceConstants.TIE_CRAWLER,
         message(BundleConstants.TIE_CRAWLER),
         Faction.GALACTIC_EMPIRE,
         IonEngineColor.BrownEngine,
@@ -435,7 +512,7 @@ internal enum class StarWarsVehicle(
         -6
     ),
     TIE_FIGHTER(
-        "tie_fighter",
+        ImageResourceConstants.TIE_FIGHTER,
         message(BundleConstants.TIE_FIGHTER),
         Faction.GALACTIC_EMPIRE,
         IonEngineColor.BlueEngine,
@@ -444,7 +521,7 @@ internal enum class StarWarsVehicle(
         4.5f
     ),
     TIE_INTERCEPTOR(
-        "tie_interceptor",
+        ImageResourceConstants.TIE_INTERCEPTOR,
         message(BundleConstants.TIE_INTERCEPTOR),
         Faction.GALACTIC_EMPIRE,
         IonEngineColor.BlueEngine,
@@ -454,7 +531,7 @@ internal enum class StarWarsVehicle(
     ),
 
     BOBA_FETTS_SLAVE_ONE(
-        "boba_fetts_slave_one",
+        ImageResourceConstants.BOBA_FETTS_SLAVE_ONE,
         message(BundleConstants.BOBA_FETTS_SLAVE_ONE),
         Faction.BOUNTY_HUNTERS,
         IonEngineColor.RedEngine,
@@ -462,9 +539,16 @@ internal enum class StarWarsVehicle(
         -6,
         4.75f
     ),
-    IG_2000("ig_2000", message(BundleConstants.IG_2000), Faction.BOUNTY_HUNTERS, IonEngineColor.BlueEngine, -8, -6),
+    IG_2000(
+        ImageResourceConstants.IG_2000,
+        message(BundleConstants.IG_2000),
+        Faction.BOUNTY_HUNTERS,
+        IonEngineColor.BlueEngine,
+        -8,
+        -6
+    ),
     JANGO_FETTS_SLAVE_ONE(
-        "jango_fetts_slave_one",
+        ImageResourceConstants.JANGO_FETTS_SLAVE_ONE,
         message(BundleConstants.JANGO_FETTS_SLAVE_ONE),
         Faction.BOUNTY_HUNTERS,
         IonEngineColor.RedEngine,
@@ -474,7 +558,7 @@ internal enum class StarWarsVehicle(
     ),
 
     CLOUD_CITY(
-        "cloud_city",
+        ImageResourceConstants.CLOUD_CITY,
         message(BundleConstants.CLOUD_CITY),
         Faction.SMUGGLERS,
         IonEngineColor.OrangeEngine,
@@ -483,7 +567,7 @@ internal enum class StarWarsVehicle(
         1f
     ),
     ERRANT_VENTURE(
-        "errant_venture",
+        ImageResourceConstants.ERRANT_VENTURE,
         message(BundleConstants.ERRANT_VENTURE),
         Faction.SMUGGLERS,
         IonEngineColor.BlueEngine,
@@ -492,7 +576,7 @@ internal enum class StarWarsVehicle(
     ),
 
     ANAKIN_SKYWALKERS_PODRACER(
-        "anakin_skywalkers_podracer",
+        ImageResourceConstants.ANAKIN_SKYWALKERS_PODRACER,
         message(BundleConstants.ANAKIN_SKYWALKERS_PODRACER),
         Faction.PODRACER,
         IonEngineColor.PurpleEngine,
@@ -501,7 +585,7 @@ internal enum class StarWarsVehicle(
         4.5f
     ),
     SEBULBAS_PODRACER(
-        "sebulbas_podracer",
+        ImageResourceConstants.SEBULBAS_PODRACER,
         message(BundleConstants.SEBULBAS_PODRACER),
         Faction.PODRACER,
         IonEngineColor.PurpleEngine,
@@ -510,7 +594,14 @@ internal enum class StarWarsVehicle(
         4f
     ),
 
-    MISSING("missing", message(BundleConstants.MISSING), Faction.NONE, IonEngineColor.GreenEngine, -4, -6);
+    MISSING(
+        ImageResourceConstants.MISSING,
+        message(BundleConstants.MISSING),
+        Faction.NONE,
+        IonEngineColor.GreenEngine,
+        -4,
+        -6
+    );
 
     companion object {
         @JvmField

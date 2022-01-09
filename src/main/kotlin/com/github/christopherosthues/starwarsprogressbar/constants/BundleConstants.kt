@@ -1,4 +1,4 @@
-package com.github.christopherosthues.starwarsprogressbar
+package com.github.christopherosthues.starwarsprogressbar.constants
 
 internal object BundleConstants {
     const val PLUGIN_NAME = "name"
@@ -47,6 +47,7 @@ internal object BundleConstants {
     const val DIAMOND_CLASS_CRUISER = VEHICLES + "diamond_class_cruiser"
     const val DROID_TRI_FIGHTER = VEHICLES + "droid_tri_fighter"
     const val FANBLADE = VEHICLES + "fanblade"
+    const val IG_227_HAILFIRE_CLASS_DROID_TANK = VEHICLES + "ig_227_hailfire_class_droid_tank"
     const val INVISIBLE_HAND = VEHICLES + "invisible_hand"
     const val LUCREHULK_CLASS_BATTLESHIP = VEHICLES + "lucrehulk_class_battleship"
     const val MANKVIM_814_INTERCEPTOR = VEHICLES + "mankvim_814_interceptor"

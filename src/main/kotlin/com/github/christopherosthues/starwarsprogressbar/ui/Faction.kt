@@ -1,6 +1,6 @@
 package com.github.christopherosthues.starwarsprogressbar.ui
 
-import com.github.christopherosthues.starwarsprogressbar.BundleConstants
+import com.github.christopherosthues.starwarsprogressbar.constants.BundleConstants
 import com.github.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.intellij.util.containers.stream
 import java.util.stream.Collectors

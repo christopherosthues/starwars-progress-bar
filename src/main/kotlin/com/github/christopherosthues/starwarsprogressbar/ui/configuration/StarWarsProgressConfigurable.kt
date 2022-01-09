@@ -1,6 +1,6 @@
 package com.github.christopherosthues.starwarsprogressbar.ui.configuration
 
-import com.github.christopherosthues.starwarsprogressbar.BundleConstants
+import com.github.christopherosthues.starwarsprogressbar.constants.BundleConstants
 import com.github.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.intellij.openapi.options.Configurable
 import com.intellij.openapi.options.ConfigurationException
