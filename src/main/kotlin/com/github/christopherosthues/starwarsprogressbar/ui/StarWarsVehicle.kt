@@ -184,7 +184,7 @@ internal enum class StarWarsVehicle(
         message(BundleConstants.IG_227_HAILFIRE_CLASS_DROID_TANK),
         Faction.CONFEDERACY_OF_INDEPENDENT_SYSTEMS,
         IonEngineColor.BrownEngine,
-        -7,
+        -8,
         -6
     ),
     INVISIBLE_HAND(
