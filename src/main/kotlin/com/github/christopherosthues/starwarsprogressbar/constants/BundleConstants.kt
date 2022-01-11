@@ -29,6 +29,7 @@ internal object BundleConstants {
     const val ACCLAMATOR_CLASS_ASSAULT_SHIP = VEHICLES + "acclamator_class_assault_ship"
     const val ARC_170_STARFIGHTER = VEHICLES + "arc_170_starfighter"
     const val AZURE_ANGEL = VEHICLES + "azure_angel"
+    const val BERENKO_CLASS_GONDOLA_SPEEDER = VEHICLES + "berenko_class_gondola_speeder"
     const val BLADE_OF_DORIN = VEHICLES + "blade_of_dorin"
     const val DC0052_SPEEDER = VEHICLES + "dc0052_speeder"
     const val DELTA_7_JEDI_STARFIGHTER = VEHICLES + "delta_7_jedi_starfighter"

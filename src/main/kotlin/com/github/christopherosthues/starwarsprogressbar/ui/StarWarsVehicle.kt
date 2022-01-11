@@ -42,6 +42,15 @@ internal enum class StarWarsVehicle(
         -10,
         -6
     ),
+    BERENKO_CLASS_GONDOLA_SPEEDER(
+        ImageResourceConstants.BERENKO_CLASS_GONDOLA_SPEEDER,
+        message(BundleConstants.BERENKO_CLASS_GONDOLA_SPEEDER),
+        Faction.GALACTIC_REPUBLIC,
+        IonEngineColor.BlueEngine,
+        -10,
+        -6,
+        0.75f
+    ),
     BLADE_OF_DORIN(
         ImageResourceConstants.BLADE_OF_DORIN,
         message(BundleConstants.BLADE_OF_DORIN),
