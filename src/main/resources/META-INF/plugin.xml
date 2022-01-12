@@ -8,9 +8,6 @@
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <search.optionContributor
-                implementation="com.christopherosthues.starwarsprogressbar.ui.configuration.StarWarsSearchableOptionContributor" />
-
         <applicationConfigurable parentId="appearance"
                                  instance="com.christopherosthues.starwarsprogressbar.ui.configuration.StarWarsProgressConfigurable"
                                  id="org.intellij.sdk.settings.AppSettingsConfigurable" />
