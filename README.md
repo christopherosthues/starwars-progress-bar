@@ -7,15 +7,23 @@
 
 [template]: https://github.com/JetBrains/intellij-platform-plugin-template
 
-## Template ToDo list
-- [x] Create a new [IntelliJ Platform Plugin Template][template] project.
-- [x] Get familiar with the [template documentation][template].
-- [x] Verify the [pluginGroup](/gradle.properties), [plugin ID](/src/main/resources/META-INF/plugin.xml) and [sources package](/src/main/kotlin).
-- [ ] Review the [Legal Agreements](https://plugins.jetbrains.com/docs/marketplace/legal-agreements.html).
-- [ ] [Publish a plugin manually](https://plugins.jetbrains.com/docs/intellij/publishing-plugin.html?from=IJPluginTemplate) for the first time.
-- [ ] Set the Plugin ID in the above README badges.
-- [ ] Set the [Deployment Token](https://plugins.jetbrains.com/docs/marketplace/plugin-upload.html).
-- [x] Click the <kbd>Watch</kbd> button on the top of the [IntelliJ Platform Plugin Template][template] to be notified about releases containing new features and fixes.
+[//]: # (## Template ToDo list`)
+
+[//]: # (- [x] Create a new [IntelliJ Platform Plugin Template][template] project.)
+
+[//]: # (- [x] Get familiar with the [template documentation][template].)
+
+[//]: # (- [x] Verify the [pluginGroup]&#40;/gradle.properties&#41;, [plugin ID]&#40;/src/main/resources/META-INF/plugin.xml&#41; and [sources package]&#40;/src/main/kotlin&#41;.)
+
+[//]: # (- [ ] Review the [Legal Agreements]&#40;https://plugins.jetbrains.com/docs/marketplace/legal-agreements.html&#41;.)
+
+[//]: # (- [ ] [Publish a plugin manually]&#40;https://plugins.jetbrains.com/docs/intellij/publishing-plugin.html?from=IJPluginTemplate&#41; for the first time.)
+
+[//]: # (- [ ] Set the Plugin ID in the above README badges.)
+
+[//]: # (- [ ] Set the [Deployment Token]&#40;https://plugins.jetbrains.com/docs/marketplace/plugin-upload.html&#41;.)
+
+[//]: # (- [x] Click the <kbd>Watch</kbd> button on the top of the [IntelliJ Platform Plugin Template][template] to be notified about rel`eases containing new features and fixes.)
 
 <!-- Plugin description -->
 This is the Star Wars Progress Bar for IJ based IDEs. It replaces the progress bar with random vehicles from Star Wars.
