@@ -44,8 +44,9 @@ This is the Star Wars Progress Bar for IJ based IDEs. It replaces the progress b
 
 ---
 
+<!-- Included vehicles -->
 ## Included vehicles
-
+<!-- Included vehicles end -->
 
 ## Acknowledgements
 
