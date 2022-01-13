@@ -28,7 +28,7 @@ import javax.swing.Icon
 import javax.swing.ImageIcon
 
 internal object StarWarsResourceLoader {
-    private const val iconResourcePath = "com/christopherosthues/starwarsprogressbar/"
+    private const val iconResourcePath = "icons/"
 
     private val cache: Cache<String, Icon> = CacheBuilder.newBuilder().maximumSize(100L).build()
 

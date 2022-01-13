@@ -1,0 +1,542 @@
+{
+  "factions": [
+    {
+      "name": "galactic_republic",
+      "vehicles": [
+        {
+          "vehicleNameKey": "acclamator_class_assault_ship",
+          "fileName": "acclamator_class_assault_ship",
+          "ionEngine": "blue",
+          "xShift": -7,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "arc_170_starfighter",
+          "ionEngine": "red",
+          "xShift": -12,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "azure_angel",
+          "ionEngine": "red",
+          "xShift": -10,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "berenko_class_gondola_speeder",
+          "ionEngine": "blue",
+          "xShift": -10,
+          "yShift": -6,
+          "velocity": 0.75
+        },
+        {
+          "vehicleNameKey": "blade_of_dorin",
+          "ionEngine": "red",
+          "xShift": -6,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "dc0052_speeder",
+          "ionEngine": "blue",
+          "xShift": -13,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "delta_7_jedi_starfighter",
+          "ionEngine": "blue",
+          "xShift": -4,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "eta_2_actis_interceptor",
+          "ionEngine": "blue",
+          "xShift": -6,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "h_type_naboo_yacht",
+          "ionEngine": "blue",
+          "xShift": -4,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "j_type_diplomatic_barge",
+          "ionEngine": "blue",
+          "xShift": -14,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "j_type_naboo_star_skiff",
+          "ionEngine": "blue",
+          "xShift": -14,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "n_1_starfighter",
+          "ionEngine": "blue",
+          "xShift": -16,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "naboo_royal_starship",
+          "ionEngine": "blue",
+          "xShift": -6,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "v_wing",
+          "ionEngine": "yellow",
+          "xShift": 0,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "venator_class_star_destroyer",
+          "ionEngine": "blue",
+          "xShift": 0,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "v_19_torrent_starfighter",
+          "ionEngine": "blue",
+          "xShift": -10,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "z_95_headhunter",
+          "ionEngine": "red",
+          "xShift": -9,
+          "yShift": -6,
+          "velocity": 2.5
+        }
+      ]
+    },
+    {
+      "name": "confederacy_of_independent_systems",
+      "vehicles": [
+        {
+          "vehicleNameKey": "bloodfin",
+          "ionEngine": "green",
+          "xShift": -4,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "diamond_class_cruiser",
+          "ionEngine": "yellow",
+          "xShift": -12,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "droid_tri_fighter",
+          "ionEngine": "yellow",
+          "xShift": -3,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "fanblade",
+          "ionEngine": "yellow",
+          "xShift": -12,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "ig_227_hailfire_class_droid_tank",
+          "ionEngine": "brown",
+          "xShift": -8,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "invisible_hand",
+          "ionEngine": "blue",
+          "xShift": 0,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "lucrehulk_class_battleship",
+          "ionEngine": "blue",
+          "xShift": -6,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "mankvim_814_interceptor",
+          "ionEngine": "blue",
+          "xShift": -6,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "mtt",
+          "ionEngine": "yellow",
+          "xShift": 0,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "munificent_class_star_frigate",
+          "ionEngine": "yellow",
+          "xShift": -3,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "nantex_class_starfighter",
+          "ionEngine": "blue",
+          "xShift": 0,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "platoon_attack_craft",
+          "ionEngine": "blue",
+          "xShift": 0,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "porax_38_starfighter",
+          "ionEngine": "yellow",
+          "xShift": -10,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "recusant_class_destroyer",
+          "ionEngine": "yellow",
+          "xShift": -2,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "separatist_supply_ship",
+          "ionEngine": "yellow",
+          "xShift": -10,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "soulless_one",
+          "ionEngine": "yellow",
+          "xShift": -12,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "stap",
+          "ionEngine": "yellow",
+          "xShift": -12,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "trade_federation_landing_ship",
+          "ionEngine": "red",
+          "xShift": -12,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "vulture_droid",
+          "ionEngine": "red",
+          "xShift": -12,
+          "yShift": -6,
+          "velocity": 2.5
+        }
+      ]
+    },
+    {
+      "name": "galactic_empire",
+      "vehicles": [
+        {
+          "vehicleNameKey": "eclipse",
+          "ionEngine": "blue",
+          "xShift": -2,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "executor",
+          "ionEngine": "blue",
+          "xShift": -8,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "first_death_star",
+          "ionEngine": "green",
+          "xShift": -12,
+          "yShift": -6,
+          "velocity": 1
+        },
+        {
+          "vehicleNameKey": "imperial_class_star_destroyer",
+          "ionEngine": "blue",
+          "xShift": -1,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "interdictor_class_star_destroyer",
+          "ionEngine": "blue",
+          "xShift": -5,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "lambda_class_shuttle",
+          "ionEngine": "blue",
+          "xShift": -13,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "second_death_star",
+          "ionEngine": "green",
+          "xShift": -12,
+          "yShift": -6,
+          "velocity": 1
+        },
+        {
+          "vehicleNameKey": "sentinel_class_shuttle",
+          "ionEngine": "blue",
+          "xShift": -8,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "tartan_class_patrol_cruiser",
+          "ionEngine": "blue",
+          "xShift": 0,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "theta_class_shuttle",
+          "ionEngine": "blue",
+          "xShift": -12,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "tie_bomber",
+          "ionEngine": "blue",
+          "xShift": -8,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "tie_crawler",
+          "ionEngine": "brown",
+          "xShift": -8,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "tie_fighter",
+          "ionEngine": "blue",
+          "xShift": -16,
+          "yShift": -6,
+          "velocity": 4.5
+        },
+        {
+          "vehicleNameKey": "tie_interceptor",
+          "ionEngine": "blue",
+          "xShift": -9,
+          "yShift": -6,
+          "velocity": 4.5
+        }
+      ]
+    },
+    {
+      "name": "rebel_alliance",
+      "vehicles": [
+        {
+          "vehicleNameKey": "a_wing",
+          "ionEngine": "red",
+          "xShift": -4,
+          "yShift": -6,
+          "velocity": 5
+        },
+        {
+          "vehicleNameKey": "b_wing",
+          "ionEngine": "red",
+          "xShift": -13,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "gr_75_transport",
+          "ionEngine": "blue",
+          "xShift": 0,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "home_one",
+          "ionEngine": "blue",
+          "xShift": -2,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "mc80_liberty_star_cruiser",
+          "ionEngine": "blue",
+          "xShift": -9,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "millennium_falcon",
+          "ionEngine": "blue",
+          "xShift": -16,
+          "yShift": -6,
+          "velocity": 5
+        },
+        {
+          "vehicleNameKey": "nebulon_b_frigate",
+          "ionEngine": "blue",
+          "xShift": -1,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "rogue_shadow",
+          "ionEngine": "",
+          "xShift": -7,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "tantive_iv",
+          "ionEngine": "red",
+          "xShift": 0,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "t_47_snowspeeder",
+          "ionEngine": "white",
+          "xShift": -9,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "u_wing",
+          "ionEngine": "blue",
+          "xShift": 0,
+          "yShift": -6,
+          "velocity": 4
+        },
+        {
+          "vehicleNameKey": "x_wing",
+          "ionEngine": "red",
+          "xShift": -4,
+          "yShift": -6,
+          "velocity": 4
+        },
+        {
+          "vehicleNameKey": "y_wing",
+          "ionEngine": "red",
+          "xShift": -2,
+          "yShift": -6,
+          "velocity": 2
+        }
+      ]
+    },
+    {
+      "name": "bounty_hunters",
+      "vehicles": [
+        {
+          "vehicleNameKey": "boba_fetts_slave_one",
+          "ionEngine": "red",
+          "xShift": -12,
+          "yShift": -6,
+          "velocity": 4.75
+        },
+        {
+          "vehicleNameKey": "ig_2000",
+          "ionEngine": "blue",
+          "xShift": -8,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "vehicleNameKey": "jango_fetts_slave_one",
+          "ionEngine": "red",
+          "xShift": -12,
+          "yShift": -6,
+          "velocity": 4.75
+        }
+      ]
+    },
+    {
+      "name": "smugglers",
+      "vehicles": [
+        {
+          "vehicleNameKey": "cloud_city",
+          "ionEngine": "orange",
+          "xShift": -16,
+          "yShift": -6,
+          "velocity": 1
+        },
+        {
+          "vehicleNameKey": "errant_venture",
+          "ionEngine": "blue",
+          "xShift": -1,
+          "yShift": -6,
+          "velocity": 2.5
+        }
+      ]
+    },
+    {
+      "name": "podracer",
+      "vehicles": [
+        {
+          "vehicleNameKey": "anakin_skywalkers_podracer",
+          "ionEngine": "purple",
+          "xShift": -14,
+          "yShift": -6,
+          "velocity": 4.5
+        },
+        {
+          "vehicleNameKey": "sebulbas_podracer",
+          "ionEngine": "purple",
+          "xShift": -14,
+          "yShift": -6,
+          "velocity": 4
+        }
+      ]
+    },
+    {
+      "name": "",
+      "vehicles": [
+        {
+          "vehicleNameKey": "missing",
+          "ionEngine": "green",
+          "xShift": -4,
+          "yShift": -6,
+          "velocity": 2.5
+        }
+      ]
+    }
+  ]
+}
