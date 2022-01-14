@@ -2,8 +2,8 @@ package com.christopherosthues.starwarsprogressbar.ui.components
 
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
-import com.christopherosthues.starwarsprogressbar.ui.Faction
-import com.christopherosthues.starwarsprogressbar.ui.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
+import com.christopherosthues.starwarsprogressbar.models.FactionHolder
 import com.christopherosthues.starwarsprogressbar.ui.configuration.StarWarsState
 import com.intellij.util.ui.JBUI
 import com.intellij.util.ui.ThreeStateCheckBox
@@ -70,10 +70,10 @@ internal class VehiclesPanel() : JTitledPanel(StarWarsBundle.message(BundleConst
         factionCount = 0
         factionRowCount = 0
 
-        Faction.DEFAULT_FACTIONS.forEach { faction ->
+        FactionHolder.defaultFactions.forEach { faction ->
             vehicleRowCount = 0
 
-            val vehiclesAvailable = StarWarsVehicle.DEFAULT_VEHICLES.any { it.faction == faction }
+            val vehiclesAvailable = faction.vehicles.any()
             if (vehiclesAvailable) {
                 val factionPanel = FactionPanel(faction)
                 factionPanel.addPropertyChangeListener(FactionPanel::selectedVehiclesCount.name) { updateSelectionButtons() }
@@ -85,8 +85,9 @@ internal class VehiclesPanel() : JTitledPanel(StarWarsBundle.message(BundleConst
         add(vehiclePanel)
     }
 
-    private fun addFactionPanel(factionPanel: FactionPanel, faction: Faction, vehiclePanel: JPanel) {
-        factionPanel.border = BorderFactory.createTitledBorder(faction.factionName)
+    private fun addFactionPanel(factionPanel: FactionPanel, faction: StarWarsFaction, vehiclePanel: JPanel) {
+        val localizedName = StarWarsBundle.message(faction.localizationKey)
+        factionPanel.border = BorderFactory.createTitledBorder(localizedName)
 
         val isFactionCountEven = factionCount++ % 2 == 0
         val gridBagConstraints = GridBagConstraints()
@@ -111,7 +112,7 @@ internal class VehiclesPanel() : JTitledPanel(StarWarsBundle.message(BundleConst
 
     private fun updateSelectionButtons() {
         val selected = selectedVehiclesCount
-        val numberOfVehicles = StarWarsVehicle.DEFAULT_VEHICLES.size
+        val numberOfVehicles = FactionHolder.defaultVehicles.size
 
         if (selected == numberOfVehicles) {
             selectedVehiclesCheckBox.state = ThreeStateCheckBox.State.SELECTED

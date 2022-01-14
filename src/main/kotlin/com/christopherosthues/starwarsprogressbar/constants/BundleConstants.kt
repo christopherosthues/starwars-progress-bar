@@ -16,7 +16,7 @@ internal object BundleConstants {
     const val DESELECT_ALL = CONFIGURATION + "deselectAll"
     const val SELECTED = CONFIGURATION + "selected"
 
-    private const val FACTION = "faction."
+    const val FACTION = "faction."
     const val GALACTIC_REPUBLIC = FACTION + "galactic_republic"
     const val CONFEDERACY_OF_INDEPENDENT_SYSTEMS = FACTION + "confederacy_of_independent_systems"
     const val GALACTIC_EMPIRE = FACTION + "galactic_empire"
@@ -25,7 +25,7 @@ internal object BundleConstants {
     const val SMUGGLERS = FACTION + "smugglers"
     const val PODRACER = FACTION + "podracer"
 
-    private const val VEHICLES = "vehicles."
+    const val VEHICLES = "vehicles."
     const val ACCLAMATOR_CLASS_ASSAULT_SHIP = VEHICLES + "acclamator_class_assault_ship"
     const val ARC_170_STARFIGHTER = VEHICLES + "arc_170_starfighter"
     const val AZURE_ANGEL = VEHICLES + "azure_angel"

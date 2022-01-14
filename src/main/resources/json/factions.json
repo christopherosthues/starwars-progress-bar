@@ -1,123 +1,122 @@
 {
   "factions": [
     {
-      "name": "galactic_republic",
+      "id": "galactic_republic",
       "vehicles": [
         {
-          "vehicleNameKey": "acclamator_class_assault_ship",
-          "fileName": "acclamator_class_assault_ship",
+          "id": "acclamator_class_assault_ship",
           "ionEngine": "blue",
           "xShift": -7,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "arc_170_starfighter",
+          "id": "arc_170_starfighter",
           "ionEngine": "red",
           "xShift": -12,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "azure_angel",
+          "id": "azure_angel",
           "ionEngine": "red",
           "xShift": -10,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "berenko_class_gondola_speeder",
+          "id": "berenko_class_gondola_speeder",
           "ionEngine": "blue",
           "xShift": -10,
           "yShift": -6,
           "velocity": 0.75
         },
         {
-          "vehicleNameKey": "blade_of_dorin",
+          "id": "blade_of_dorin",
           "ionEngine": "red",
           "xShift": -6,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "dc0052_speeder",
+          "id": "dc0052_speeder",
           "ionEngine": "blue",
           "xShift": -13,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "delta_7_jedi_starfighter",
+          "id": "delta_7_jedi_starfighter",
           "ionEngine": "blue",
           "xShift": -4,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "eta_2_actis_interceptor",
+          "id": "eta_2_actis_interceptor",
           "ionEngine": "blue",
           "xShift": -6,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "h_type_naboo_yacht",
+          "id": "h_type_naboo_yacht",
           "ionEngine": "blue",
           "xShift": -4,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "j_type_diplomatic_barge",
+          "id": "j_type_diplomatic_barge",
           "ionEngine": "blue",
           "xShift": -14,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "j_type_naboo_star_skiff",
+          "id": "j_type_naboo_star_skiff",
           "ionEngine": "blue",
           "xShift": -14,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "n_1_starfighter",
+          "id": "n_1_starfighter",
           "ionEngine": "blue",
           "xShift": -16,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "naboo_royal_starship",
+          "id": "naboo_royal_starship",
           "ionEngine": "blue",
           "xShift": -6,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "v_wing",
+          "id": "v_wing",
           "ionEngine": "yellow",
           "xShift": 0,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "venator_class_star_destroyer",
+          "id": "venator_class_star_destroyer",
           "ionEngine": "blue",
           "xShift": 0,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "v_19_torrent_starfighter",
+          "id": "v_19_torrent_starfighter",
           "ionEngine": "blue",
           "xShift": -10,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "z_95_headhunter",
+          "id": "z_95_headhunter",
           "ionEngine": "red",
           "xShift": -9,
           "yShift": -6,
@@ -126,136 +125,136 @@
       ]
     },
     {
-      "name": "confederacy_of_independent_systems",
+      "id": "confederacy_of_independent_systems",
       "vehicles": [
         {
-          "vehicleNameKey": "bloodfin",
+          "id": "bloodfin",
           "ionEngine": "green",
           "xShift": -4,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "diamond_class_cruiser",
+          "id": "diamond_class_cruiser",
           "ionEngine": "yellow",
           "xShift": -12,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "droid_tri_fighter",
+          "id": "droid_tri_fighter",
           "ionEngine": "yellow",
           "xShift": -3,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "fanblade",
+          "id": "fanblade",
           "ionEngine": "yellow",
           "xShift": -12,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "ig_227_hailfire_class_droid_tank",
+          "id": "ig_227_hailfire_class_droid_tank",
           "ionEngine": "brown",
           "xShift": -8,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "invisible_hand",
+          "id": "invisible_hand",
           "ionEngine": "blue",
           "xShift": 0,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "lucrehulk_class_battleship",
+          "id": "lucrehulk_class_battleship",
           "ionEngine": "blue",
           "xShift": -6,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "mankvim_814_interceptor",
+          "id": "mankvim_814_interceptor",
           "ionEngine": "blue",
           "xShift": -6,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "mtt",
+          "id": "multi_troop_transport",
           "ionEngine": "yellow",
           "xShift": 0,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "munificent_class_star_frigate",
+          "id": "munificent_class_star_frigate",
           "ionEngine": "yellow",
           "xShift": -3,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "nantex_class_starfighter",
+          "id": "nantex_class_starfighter",
           "ionEngine": "blue",
           "xShift": 0,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "platoon_attack_craft",
+          "id": "platoon_attack_craft",
           "ionEngine": "blue",
           "xShift": 0,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "porax_38_starfighter",
+          "id": "porax_38_starfighter",
           "ionEngine": "yellow",
           "xShift": -10,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "recusant_class_destroyer",
+          "id": "recusant_class_destroyer",
           "ionEngine": "yellow",
           "xShift": -2,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "separatist_supply_ship",
+          "id": "separatist_supply_ship",
           "ionEngine": "yellow",
           "xShift": -10,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "soulless_one",
+          "id": "soulless_one",
           "ionEngine": "yellow",
           "xShift": -12,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "stap",
+          "id": "stap",
           "ionEngine": "yellow",
           "xShift": -12,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "trade_federation_landing_ship",
+          "id": "trade_federation_landing_ship",
           "ionEngine": "red",
           "xShift": -12,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "vulture_droid",
+          "id": "vulture_droid",
           "ionEngine": "red",
           "xShift": -12,
           "yShift": -6,
@@ -264,101 +263,101 @@
       ]
     },
     {
-      "name": "galactic_empire",
+      "id": "galactic_empire",
       "vehicles": [
         {
-          "vehicleNameKey": "eclipse",
+          "id": "eclipse",
           "ionEngine": "blue",
           "xShift": -2,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "executor",
+          "id": "executor",
           "ionEngine": "blue",
           "xShift": -8,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "first_death_star",
+          "id": "first_death_star",
           "ionEngine": "green",
           "xShift": -12,
           "yShift": -6,
           "velocity": 1
         },
         {
-          "vehicleNameKey": "imperial_class_star_destroyer",
+          "id": "imperial_class_star_destroyer",
           "ionEngine": "blue",
           "xShift": -1,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "interdictor_class_star_destroyer",
+          "id": "interdictor_class_star_destroyer",
           "ionEngine": "blue",
           "xShift": -5,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "lambda_class_shuttle",
+          "id": "lambda_class_shuttle",
           "ionEngine": "blue",
           "xShift": -13,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "second_death_star",
+          "id": "second_death_star",
           "ionEngine": "green",
           "xShift": -12,
           "yShift": -6,
           "velocity": 1
         },
         {
-          "vehicleNameKey": "sentinel_class_shuttle",
+          "id": "sentinel_class_shuttle",
           "ionEngine": "blue",
           "xShift": -8,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "tartan_class_patrol_cruiser",
+          "id": "tartan_class_patrol_cruiser",
           "ionEngine": "blue",
           "xShift": 0,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "theta_class_shuttle",
+          "id": "theta_class_shuttle",
           "ionEngine": "blue",
           "xShift": -12,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "tie_bomber",
+          "id": "tie_bomber",
           "ionEngine": "blue",
           "xShift": -8,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "tie_crawler",
+          "id": "tie_crawler",
           "ionEngine": "brown",
           "xShift": -8,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "tie_fighter",
+          "id": "tie_fighter",
           "ionEngine": "blue",
           "xShift": -16,
           "yShift": -6,
           "velocity": 4.5
         },
         {
-          "vehicleNameKey": "tie_interceptor",
+          "id": "tie_interceptor",
           "ionEngine": "blue",
           "xShift": -9,
           "yShift": -6,
@@ -367,94 +366,94 @@
       ]
     },
     {
-      "name": "rebel_alliance",
+      "id": "rebel_alliance",
       "vehicles": [
         {
-          "vehicleNameKey": "a_wing",
+          "id": "a_wing",
           "ionEngine": "red",
           "xShift": -4,
           "yShift": -6,
           "velocity": 5
         },
         {
-          "vehicleNameKey": "b_wing",
+          "id": "b_wing",
           "ionEngine": "red",
           "xShift": -13,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "gr_75_transport",
+          "id": "gr_75_transport",
           "ionEngine": "blue",
           "xShift": 0,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "home_one",
+          "id": "home_one",
           "ionEngine": "blue",
           "xShift": -2,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "mc80_liberty_star_cruiser",
+          "id": "mc80_liberty_star_cruiser",
           "ionEngine": "blue",
           "xShift": -9,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "millennium_falcon",
+          "id": "millennium_falcon",
           "ionEngine": "blue",
           "xShift": -16,
           "yShift": -6,
           "velocity": 5
         },
         {
-          "vehicleNameKey": "nebulon_b_frigate",
+          "id": "nebulon_b_frigate",
           "ionEngine": "blue",
           "xShift": -1,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "rogue_shadow",
+          "id": "rogue_shadow",
           "ionEngine": "",
           "xShift": -7,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "tantive_iv",
+          "id": "tantive_iv",
           "ionEngine": "red",
           "xShift": 0,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "t_47_snowspeeder",
+          "id": "t_47_snowspeeder",
           "ionEngine": "white",
           "xShift": -9,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "u_wing",
+          "id": "u_wing",
           "ionEngine": "blue",
           "xShift": 0,
           "yShift": -6,
           "velocity": 4
         },
         {
-          "vehicleNameKey": "x_wing",
+          "id": "x_wing",
           "ionEngine": "red",
           "xShift": -4,
           "yShift": -6,
           "velocity": 4
         },
         {
-          "vehicleNameKey": "y_wing",
+          "id": "y_wing",
           "ionEngine": "red",
           "xShift": -2,
           "yShift": -6,
@@ -463,24 +462,24 @@
       ]
     },
     {
-      "name": "bounty_hunters",
+      "id": "bounty_hunters",
       "vehicles": [
         {
-          "vehicleNameKey": "boba_fetts_slave_one",
+          "id": "boba_fetts_slave_one",
           "ionEngine": "red",
           "xShift": -12,
           "yShift": -6,
           "velocity": 4.75
         },
         {
-          "vehicleNameKey": "ig_2000",
+          "id": "ig_2000",
           "ionEngine": "blue",
           "xShift": -8,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "vehicleNameKey": "jango_fetts_slave_one",
+          "id": "jango_fetts_slave_one",
           "ionEngine": "red",
           "xShift": -12,
           "yShift": -6,
@@ -489,17 +488,17 @@
       ]
     },
     {
-      "name": "smugglers",
+      "id": "smugglers",
       "vehicles": [
         {
-          "vehicleNameKey": "cloud_city",
+          "id": "cloud_city",
           "ionEngine": "orange",
           "xShift": -16,
           "yShift": -6,
           "velocity": 1
         },
         {
-          "vehicleNameKey": "errant_venture",
+          "id": "errant_venture",
           "ionEngine": "blue",
           "xShift": -1,
           "yShift": -6,
@@ -508,17 +507,17 @@
       ]
     },
     {
-      "name": "podracer",
+      "id": "podracer",
       "vehicles": [
         {
-          "vehicleNameKey": "anakin_skywalkers_podracer",
+          "id": "anakin_skywalkers_podracer",
           "ionEngine": "purple",
           "xShift": -14,
           "yShift": -6,
           "velocity": 4.5
         },
         {
-          "vehicleNameKey": "sebulbas_podracer",
+          "id": "sebulbas_podracer",
           "ionEngine": "purple",
           "xShift": -14,
           "yShift": -6,
@@ -527,10 +526,10 @@
       ]
     },
     {
-      "name": "",
+      "id": "",
       "vehicles": [
         {
-          "vehicleNameKey": "missing",
+          "id": "missing",
           "ionEngine": "green",
           "xShift": -4,
           "yShift": -6,

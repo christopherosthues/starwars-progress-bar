@@ -1,12 +1,13 @@
 package com.christopherosthues.starwarsprogressbar.ui.configuration
 
-import com.christopherosthues.starwarsprogressbar.ui.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.models.FactionHolder
+import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import java.util.stream.Collectors
 
 internal class StarWarsState {
     @JvmField
     var vehiclesEnabled: Map<String, Boolean> =
-        StarWarsVehicle.DEFAULT_VEHICLES.stream().collect(Collectors.toMap(StarWarsVehicle::fileName) { true })
+        FactionHolder.defaultVehicles.stream().collect(Collectors.toMap(StarWarsVehicle::id) { true })
 
     var showVehicleNames: Boolean = false
 

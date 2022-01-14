@@ -20,8 +20,11 @@
  */
 package com.christopherosthues.starwarsprogressbar.ui
 
+import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
+import com.christopherosthues.starwarsprogressbar.models.StarWarsFactions
 import com.google.common.cache.Cache
 import com.google.common.cache.CacheBuilder
+import com.google.gson.Gson
 import java.util.*
 import java.util.concurrent.ExecutionException
 import javax.swing.Icon
@@ -47,14 +50,35 @@ internal object StarWarsResourceLoader {
         return try {
             cache[resourceName, {
                 Optional.ofNullable(
-                        Optional.ofNullable(StarWarsResourceLoader.javaClass.classLoader.getResource(resourceName))
-                                .orElseGet{ StarWarsResourceLoader.javaClass.classLoader.getResource("/$resourceName") })
-                        .map { icon -> ImageIcon(icon) }
-                        .orElseGet { ImageIcon() }
+                    Optional.ofNullable(StarWarsResourceLoader.javaClass.classLoader.getResource(resourceName))
+                        .orElseGet { StarWarsResourceLoader.javaClass.classLoader.getResource("/$resourceName") })
+                    .map { icon -> ImageIcon(icon) }
+                    .orElseGet { ImageIcon() }
             }]
-        }
-        catch (ex: ExecutionException) {
+        } catch (ex: ExecutionException) {
             ImageIcon()
+        }
+    }
+
+    fun loadFactions(): StarWarsFactions {
+        val json = Optional.ofNullable(
+            Optional.ofNullable(StarWarsResourceLoader.javaClass.classLoader.getResource("json/factions.json"))
+                .orElseGet { StarWarsResourceLoader.javaClass.classLoader.getResource("/json/factions.json") })
+            .map { file -> file.readText() }
+            .orElseGet { "" }
+        val gson = Gson()
+        val factions = gson.fromJson(json, StarWarsFactions::class.java)
+
+        setFactionForVehicles(factions.factions)
+
+        return factions
+    }
+
+    private fun setFactionForVehicles(factions: List<StarWarsFaction>) {
+        factions.forEach { faction ->
+            faction.vehicles.forEach {
+                it.faction = faction
+            }
         }
     }
 }

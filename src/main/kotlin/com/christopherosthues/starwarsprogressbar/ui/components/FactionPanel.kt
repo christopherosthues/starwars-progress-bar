@@ -2,9 +2,9 @@ package com.christopherosthues.starwarsprogressbar.ui.components
 
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
-import com.christopherosthues.starwarsprogressbar.ui.Faction
+import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
+import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.ui.StarWarsResourceLoader
-import com.christopherosthues.starwarsprogressbar.ui.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.ui.configuration.StarWarsState
 import com.intellij.ui.roots.ScalableIconComponent
 import com.intellij.util.ui.JBUI
@@ -19,7 +19,7 @@ import javax.swing.JCheckBox
 import javax.swing.JComponent
 import javax.swing.JPanel
 
-internal class FactionPanel(private val faction: Faction) : JPanel(GridBagLayout()) {
+internal class FactionPanel(private val faction: StarWarsFaction) : JPanel(GridBagLayout()) {
     private val selectVehiclesCheckbox = ThreeStateCheckBox(ThreeStateCheckBox.State.SELECTED)
     private val vehiclesCheckboxes: MutableMap<String, JCheckBox> = HashMap()
     private var vehicleRowCount: Int = 0
@@ -32,13 +32,11 @@ internal class FactionPanel(private val faction: Faction) : JPanel(GridBagLayout
 
 
     init {
-        val vehiclesAvailable = StarWarsVehicle.DEFAULT_VEHICLES.any { it.faction == faction }
+        val vehiclesAvailable = faction.vehicles.any()
         if (vehiclesAvailable) {
             addFactionCheckBox()
 
-            StarWarsVehicle.DEFAULT_VEHICLES.stream().filter { vehicle ->
-                vehicle.faction == faction
-            }.sorted(Comparator.comparing(StarWarsVehicle::vehicleName)).forEach { vehicle ->
+            faction.vehicles.stream().sorted(Comparator.comparing(StarWarsVehicle::id)).forEach { vehicle ->
                 addVehicleCheckBox(vehicle)
             }
 
@@ -78,7 +76,8 @@ internal class FactionPanel(private val faction: Faction) : JPanel(GridBagLayout
     }
 
     private fun addVehicleCheckBox(vehicle: StarWarsVehicle) {
-        val checkBox = JCheckBox(vehicle.vehicleName, true)
+        val localizedName = StarWarsBundle.message(vehicle.localizationKey)
+        val checkBox = JCheckBox(localizedName, true)
         checkBox.addItemListener {
             val oldValue = selectedVehiclesCount.get()
             if (it.stateChange == ItemEvent.SELECTED) {
@@ -96,13 +95,13 @@ internal class FactionPanel(private val faction: Faction) : JPanel(GridBagLayout
             ScalableIconComponent(StarWarsResourceLoader.getIcon(vehicle.fileName)),
             checkBox
         )
-        vehiclesCheckboxes[vehicle.fileName] = checkBox
+        vehiclesCheckboxes[vehicle.id] = checkBox
         selectedVehiclesCount.incrementAndGet()
     }
 
     private fun updateSelectionButtons() {
         val selected = selectedVehiclesCount.get()
-        val numberOfVehicles = StarWarsVehicle.DEFAULT_VEHICLES.count { vehicle -> vehicle.faction == faction }
+        val numberOfVehicles = faction.vehicles.size
 
         if (selected == numberOfVehicles) {
             selectVehiclesCheckbox.state = ThreeStateCheckBox.State.SELECTED
