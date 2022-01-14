@@ -15,7 +15,7 @@ plugins {
     // Gradle Qodana Plugin
     id("org.jetbrains.qodana") version "0.1.13"
     // Project Readme Plugin
-    id("com.christopherosthues.build")
+    id("com.christopherosthues.readme")
 }
 
 group = properties("pluginGroup")
