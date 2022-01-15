@@ -510,6 +510,20 @@
           "xShift": -1,
           "yShift": -6,
           "velocity": 2.5
+        },
+        {
+          "id": "storm_iv_twin_pod_cloud_car",
+          "ionEngine": "blue",
+          "xShift": -8,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "id": "wild_karrde",
+          "ionEngine": "blue",
+          "xShift": 0,
+          "yShift": -6,
+          "velocity": 3.75
         }
       ]
     },
