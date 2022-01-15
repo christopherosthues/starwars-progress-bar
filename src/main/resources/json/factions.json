@@ -4,6 +4,13 @@
       "id": "galactic_republic",
       "vehicles": [
         {
+          "id": "aa_9_coruscant_freighter",
+          "ionEngine": "blue",
+          "xShift": -4,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
           "id": "acclamator_class_assault_ship",
           "ionEngine": "blue",
           "xShift": -7,
