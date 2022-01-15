@@ -343,11 +343,18 @@
           "velocity": 2.5
         },
         {
+          "id": "tie_advanced_x1",
+          "ionEngine": "blue",
+          "xShift": -10,
+          "yShift": -6,
+          "velocity": 3.5
+        },
+        {
           "id": "tie_bomber",
           "ionEngine": "blue",
           "xShift": -8,
           "yShift": -6,
-          "velocity": 2.5
+          "velocity": 4
         },
         {
           "id": "tie_crawler",
