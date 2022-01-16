@@ -498,6 +498,13 @@
           "xShift": -12,
           "yShift": -6,
           "velocity": 4.75
+        },
+        {
+          "id": "koro_2_all_environment_exodrive_airspeeder",
+          "ionEngine": "red",
+          "xShift": 0,
+          "yShift": -6,
+          "velocity": 3.5
         }
       ]
     },
