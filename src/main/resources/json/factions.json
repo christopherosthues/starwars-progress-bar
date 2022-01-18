@@ -357,6 +357,13 @@
           "velocity": 3.5
         },
         {
+          "id": "tie_avenger",
+          "ionEngine": "blue",
+          "xShift": -6,
+          "yShift": -6,
+          "velocity": 5
+        },
+        {
           "id": "tie_bomber",
           "ionEngine": "blue",
           "xShift": -8,
@@ -394,7 +401,7 @@
           "ionEngine": "red",
           "xShift": -4,
           "yShift": -6,
-          "velocity": 5
+          "velocity": 4.9
         },
         {
           "id": "b_wing",
