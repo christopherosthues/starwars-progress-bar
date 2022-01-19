@@ -123,6 +123,13 @@
           "velocity": 2.5
         },
         {
+          "id": "xj_6_airspeeder",
+          "ionEngine": "orange",
+          "xShift": -1,
+          "yShift": -6,
+          "velocity": 4
+        },
+        {
           "id": "z_95_headhunter",
           "ionEngine": "red",
           "xShift": -9,
