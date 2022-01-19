@@ -102,6 +102,13 @@
           "velocity": 2.5
         },
         {
+          "id": "syluire_31_hyperspace_docking_ring",
+          "ionEngine": "blue",
+          "xShift": -10,
+          "yShift": -6,
+          "velocity": 4.5
+        },
+        {
           "id": "v_wing",
           "ionEngine": "yellow",
           "xShift": 0,
