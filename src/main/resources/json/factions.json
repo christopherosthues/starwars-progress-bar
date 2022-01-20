@@ -554,6 +554,13 @@
           "velocity": 2.5
         },
         {
+          "id": "sandcrawler",
+          "ionEngine": "brown",
+          "xShift": -1,
+          "yShift": -6,
+          "velocity": 1
+        },
+        {
           "id": "storm_iv_twin_pod_cloud_car",
           "ionEngine": "blue",
           "xShift": -8,
