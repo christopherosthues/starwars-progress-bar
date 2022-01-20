@@ -49,6 +49,7 @@ This is the Star Wars Progress Bar for IJ based IDEs. It replaces the progress b
 
 ### Galactic Republic
 
+* ![AA-9 Coruscant Freighter](src/main/resources/icons/galactic_republic/aa_9_coruscant_freighter@2x.png) AA-9 Coruscant Freighter ![AA-9 Coruscant Freighter](src/main/resources/icons/galactic_republic/aa_9_coruscant_freighter_r@2x.png)
 * ![Acclamator-class Assault Ship](src/main/resources/icons/galactic_republic/acclamator_class_assault_ship@2x.png) Acclamator-class Assault Ship ![Acclamator-class Assault Ship](src/main/resources/icons/galactic_republic/acclamator_class_assault_ship_r@2x.png)
 * ![ARC-170 Starfighter](src/main/resources/icons/galactic_republic/arc_170_starfighter@2x.png) ARC-170 Starfighter ![ARC-170 Starfighter](src/main/resources/icons/galactic_republic/arc_170_starfighter_r@2x.png)
 * ![Azure Angel](src/main/resources/icons/galactic_republic/azure_angel@2x.png) Azure Angel ![Azure Angel](src/main/resources/icons/galactic_republic/azure_angel_r@2x.png)
@@ -62,13 +63,16 @@ This is the Star Wars Progress Bar for IJ based IDEs. It replaces the progress b
 * ![J-Type Naboo Star Skiff](src/main/resources/icons/galactic_republic/j_type_naboo_star_skiff@2x.png) J-Type Naboo Star Skiff ![J-Type Naboo Star Skiff](src/main/resources/icons/galactic_republic/j_type_naboo_star_skiff_r@2x.png)
 * ![N-1 Starfighter](src/main/resources/icons/galactic_republic/n_1_starfighter@2x.png) N-1 Starfighter ![N-1 Starfighter](src/main/resources/icons/galactic_republic/n_1_starfighter_r@2x.png)
 * ![Naboo Royal Starship](src/main/resources/icons/galactic_republic/naboo_royal_starship@2x.png) Naboo Royal Starship ![Naboo Royal Starship](src/main/resources/icons/galactic_republic/naboo_royal_starship_r@2x.png)
+* ![Syluire-31 hyperdrive docking ring](src/main/resources/icons/galactic_republic/syluire_31_hyperspace_docking_ring@2x.png) Syluire-31 hyperdrive docking ring ![Syluire-31 hyperdrive docking ring](src/main/resources/icons/galactic_republic/syluire_31_hyperspace_docking_ring_r@2x.png)
 * ![V-Wing](src/main/resources/icons/galactic_republic/v_wing@2x.png) V-Wing ![V-Wing](src/main/resources/icons/galactic_republic/v_wing_r@2x.png)
 * ![Venator-class Star Destroyer](src/main/resources/icons/galactic_republic/venator_class_star_destroyer@2x.png) Venator-class Star Destroyer ![Venator-class Star Destroyer](src/main/resources/icons/galactic_republic/venator_class_star_destroyer_r@2x.png)
 * ![V-19 Torrent Starfighter](src/main/resources/icons/galactic_republic/v_19_torrent_starfighter@2x.png) V-19 Torrent Starfighter ![V-19 Torrent Starfighter](src/main/resources/icons/galactic_republic/v_19_torrent_starfighter_r@2x.png)
+* ![XJ-6 Airspeeder](src/main/resources/icons/galactic_republic/xj_6_airspeeder@2x.png) XJ-6 Airspeeder ![XJ-6 Airspeeder](src/main/resources/icons/galactic_republic/xj_6_airspeeder_r@2x.png)
 * ![Z-95 Headhunter](src/main/resources/icons/galactic_republic/z_95_headhunter@2x.png) Z-95 Headhunter ![Z-95 Headhunter](src/main/resources/icons/galactic_republic/z_95_headhunter_r@2x.png)
 
 ### Confederacy of independent systems
 
+* ![Armored Assault Tank Mk I](src/main/resources/icons/confederacy_of_independent_systems/armored_assault_tank@2x.png) Armored Assault Tank Mk I ![Armored Assault Tank Mk I](src/main/resources/icons/confederacy_of_independent_systems/armored_assault_tank_r@2x.png)
 * ![Bloodfin](src/main/resources/icons/confederacy_of_independent_systems/bloodfin@2x.png) Bloodfin ![Bloodfin](src/main/resources/icons/confederacy_of_independent_systems/bloodfin_r@2x.png)
 * ![Diamond-class Cruiser](src/main/resources/icons/confederacy_of_independent_systems/diamond_class_cruiser@2x.png) Diamond-class Cruiser ![Diamond-class Cruiser](src/main/resources/icons/confederacy_of_independent_systems/diamond_class_cruiser_r@2x.png)
 * ![Droid Tri-Fighter](src/main/resources/icons/confederacy_of_independent_systems/droid_tri_fighter@2x.png) Droid Tri-Fighter ![Droid Tri-Fighter](src/main/resources/icons/confederacy_of_independent_systems/droid_tri_fighter_r@2x.png)
@@ -101,6 +105,8 @@ This is the Star Wars Progress Bar for IJ based IDEs. It replaces the progress b
 * ![Sentinel-class Shuttle](src/main/resources/icons/galactic_empire/sentinel_class_shuttle@2x.png) Sentinel-class Shuttle ![Sentinel-class Shuttle](src/main/resources/icons/galactic_empire/sentinel_class_shuttle_r@2x.png)
 * ![Tartan-class patrol cruiser](src/main/resources/icons/galactic_empire/tartan_class_patrol_cruiser@2x.png) Tartan-class patrol cruiser ![Tartan-class patrol cruiser](src/main/resources/icons/galactic_empire/tartan_class_patrol_cruiser_r@2x.png)
 * ![Theta-class Shuttle](src/main/resources/icons/galactic_empire/theta_class_shuttle@2x.png) Theta-class Shuttle ![Theta-class Shuttle](src/main/resources/icons/galactic_empire/theta_class_shuttle_r@2x.png)
+* ![TIE Advanced x1](src/main/resources/icons/galactic_empire/tie_advanced_x1@2x.png) TIE Advanced x1 ![TIE Advanced x1](src/main/resources/icons/galactic_empire/tie_advanced_x1_r@2x.png)
+* ![TIE Avenger](src/main/resources/icons/galactic_empire/tie_avenger@2x.png) TIE Avenger ![TIE Avenger](src/main/resources/icons/galactic_empire/tie_avenger_r@2x.png)
 * ![TIE Bomber](src/main/resources/icons/galactic_empire/tie_bomber@2x.png) TIE Bomber ![TIE Bomber](src/main/resources/icons/galactic_empire/tie_bomber_r@2x.png)
 * ![TIE Crawler](src/main/resources/icons/galactic_empire/tie_crawler@2x.png) TIE Crawler ![TIE Crawler](src/main/resources/icons/galactic_empire/tie_crawler_r@2x.png)
 * ![TIE Fighter](src/main/resources/icons/galactic_empire/tie_fighter@2x.png) TIE Fighter ![TIE Fighter](src/main/resources/icons/galactic_empire/tie_fighter_r@2x.png)
@@ -127,11 +133,14 @@ This is the Star Wars Progress Bar for IJ based IDEs. It replaces the progress b
 * ![Boba Fett's Slave One](src/main/resources/icons/bounty_hunters/boba_fetts_slave_one@2x.png) Boba Fett's Slave One ![Boba Fett's Slave One](src/main/resources/icons/bounty_hunters/boba_fetts_slave_one_r@2x.png)
 * ![IG-2000](src/main/resources/icons/bounty_hunters/ig_2000@2x.png) IG-2000 ![IG-2000](src/main/resources/icons/bounty_hunters/ig_2000_r@2x.png)
 * ![Jango Fett's Slave One](src/main/resources/icons/bounty_hunters/jango_fetts_slave_one@2x.png) Jango Fett's Slave One ![Jango Fett's Slave One](src/main/resources/icons/bounty_hunters/jango_fetts_slave_one_r@2x.png)
+* ![Koro-2 all-environment Exodrive airspeeder](src/main/resources/icons/bounty_hunters/koro_2_all_environment_exodrive_airspeeder@2x.png) Koro-2 all-environment Exodrive airspeeder ![Koro-2 all-environment Exodrive airspeeder](src/main/resources/icons/bounty_hunters/koro_2_all_environment_exodrive_airspeeder_r@2x.png)
 
 ### Smugglers
 
 * ![Cloud City](src/main/resources/icons/smugglers/cloud_city@2x.png) Cloud City ![Cloud City](src/main/resources/icons/smugglers/cloud_city_r@2x.png)
 * ![Errant Venture](src/main/resources/icons/smugglers/errant_venture@2x.png) Errant Venture ![Errant Venture](src/main/resources/icons/smugglers/errant_venture_r@2x.png)
+* ![Storm IV Twin-Pod cloud car](src/main/resources/icons/smugglers/storm_iv_twin_pod_cloud_car@2x.png) Storm IV Twin-Pod cloud car ![Storm IV Twin-Pod cloud car](src/main/resources/icons/smugglers/storm_iv_twin_pod_cloud_car_r@2x.png)
+* ![Wild Karrde](src/main/resources/icons/smugglers/wild_karrde@2x.png) Wild Karrde ![Wild Karrde](src/main/resources/icons/smugglers/wild_karrde_r@2x.png)
 
 ### Podracer
 

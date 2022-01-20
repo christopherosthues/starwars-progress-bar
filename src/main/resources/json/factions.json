@@ -131,7 +131,7 @@
         },
         {
           "id": "xj_6_airspeeder",
-          "ionEngine": "orange",
+          "ionEngine": "red",
           "xShift": -1,
           "yShift": -6,
           "velocity": 4
