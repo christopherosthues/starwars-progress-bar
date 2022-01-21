@@ -67,11 +67,18 @@
           "velocity": 2.5
         },
         {
+          "id": "havw_a6_juggernaut",
+          "ionEngine": "brown",
+          "xShift": 0,
+          "yShift": -6,
+          "velocity": 2
+        },
+        {
           "id": "h_type_naboo_yacht",
           "ionEngine": "blue",
           "xShift": -4,
           "yShift": -6,
-          "velocity": 2.5
+          "velocity": 1
         },
         {
           "id": "j_type_diplomatic_barge",
@@ -180,6 +187,13 @@
           "id": "fanblade",
           "ionEngine": "yellow",
           "xShift": -12,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "id": "heavy_missile_platform_droid_gunship",
+          "ionEngine": "orange",
+          "xShift": -7,
           "yShift": -6,
           "velocity": 2.5
         },
@@ -558,7 +572,7 @@
           "ionEngine": "brown",
           "xShift": -1,
           "yShift": -6,
-          "velocity": 1
+          "velocity": 0.5
         },
         {
           "id": "storm_iv_twin_pod_cloud_car",
