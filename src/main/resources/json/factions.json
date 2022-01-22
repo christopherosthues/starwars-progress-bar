@@ -475,7 +475,7 @@
         },
         {
           "id": "rogue_shadow",
-          "ionEngine": "",
+          "ionEngine": "blue",
           "xShift": -7,
           "yShift": -6,
           "velocity": 2.5
@@ -484,6 +484,20 @@
           "id": "tantive_iv",
           "ionEngine": "red",
           "xShift": 0,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "id": "taylander_shuttle",
+          "ionEngine": "yellow",
+          "xShift": 0,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "id": "t_16_skyhopper",
+          "ionEngine": "blue",
+          "xShift": -9,
           "yShift": -6,
           "velocity": 2.5
         },
