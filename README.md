@@ -58,6 +58,7 @@ This is the Star Wars Progress Bar for IJ based IDEs. It replaces the progress b
 * ![DC0052 Speeder](src/main/resources/icons/galactic_republic/dc0052_speeder@2x.png) DC0052 Speeder ![DC0052 Speeder](src/main/resources/icons/galactic_republic/dc0052_speeder_r@2x.png)
 * ![Delta-7-Aethersprite Jedi Starfighter](src/main/resources/icons/galactic_republic/delta_7_jedi_starfighter@2x.png) Delta-7-Aethersprite Jedi Starfighter ![Delta-7-Aethersprite Jedi Starfighter](src/main/resources/icons/galactic_republic/delta_7_jedi_starfighter_r@2x.png)
 * ![Eta-2 Actis Interceptor](src/main/resources/icons/galactic_republic/eta_2_actis_interceptor@2x.png) Eta-2 Actis Interceptor ![Eta-2 Actis Interceptor](src/main/resources/icons/galactic_republic/eta_2_actis_interceptor_r@2x.png)
+* ![Heavy Assault Vehicle/Wheeled A6 Juggernaut](src/main/resources/icons/galactic_republic/havw_a6_juggernaut@2x.png) Heavy Assault Vehicle/Wheeled A6 Juggernaut ![Heavy Assault Vehicle/Wheeled A6 Juggernaut](src/main/resources/icons/galactic_republic/havw_a6_juggernaut_r@2x.png)
 * ![H-Type Naboo Yacht](src/main/resources/icons/galactic_republic/h_type_naboo_yacht@2x.png) H-Type Naboo Yacht ![H-Type Naboo Yacht](src/main/resources/icons/galactic_republic/h_type_naboo_yacht_r@2x.png)
 * ![J-Type Diplomatic Barge](src/main/resources/icons/galactic_republic/j_type_diplomatic_barge@2x.png) J-Type Diplomatic Barge ![J-Type Diplomatic Barge](src/main/resources/icons/galactic_republic/j_type_diplomatic_barge_r@2x.png)
 * ![J-Type Naboo Star Skiff](src/main/resources/icons/galactic_republic/j_type_naboo_star_skiff@2x.png) J-Type Naboo Star Skiff ![J-Type Naboo Star Skiff](src/main/resources/icons/galactic_republic/j_type_naboo_star_skiff_r@2x.png)
@@ -77,6 +78,7 @@ This is the Star Wars Progress Bar for IJ based IDEs. It replaces the progress b
 * ![Diamond-class Cruiser](src/main/resources/icons/confederacy_of_independent_systems/diamond_class_cruiser@2x.png) Diamond-class Cruiser ![Diamond-class Cruiser](src/main/resources/icons/confederacy_of_independent_systems/diamond_class_cruiser_r@2x.png)
 * ![Droid Tri-Fighter](src/main/resources/icons/confederacy_of_independent_systems/droid_tri_fighter@2x.png) Droid Tri-Fighter ![Droid Tri-Fighter](src/main/resources/icons/confederacy_of_independent_systems/droid_tri_fighter_r@2x.png)
 * ![Asajj Ventresses Fanblade](src/main/resources/icons/confederacy_of_independent_systems/fanblade@2x.png) Asajj Ventresses Fanblade ![Asajj Ventresses Fanblade](src/main/resources/icons/confederacy_of_independent_systems/fanblade_r@2x.png)
+* ![Heavy Missile Platform droid gunship](src/main/resources/icons/confederacy_of_independent_systems/heavy_missile_platform_droid_gunship@2x.png) Heavy Missile Platform droid gunship ![Heavy Missile Platform droid gunship](src/main/resources/icons/confederacy_of_independent_systems/heavy_missile_platform_droid_gunship_r@2x.png)
 * ![IG-227 Hailfire class Droid tank](src/main/resources/icons/confederacy_of_independent_systems/ig_227_hailfire_class_droid_tank@2x.png) IG-227 Hailfire class Droid tank ![IG-227 Hailfire class Droid tank](src/main/resources/icons/confederacy_of_independent_systems/ig_227_hailfire_class_droid_tank_r@2x.png)
 * ![Invisible Hand](src/main/resources/icons/confederacy_of_independent_systems/invisible_hand@2x.png) Invisible Hand ![Invisible Hand](src/main/resources/icons/confederacy_of_independent_systems/invisible_hand_r@2x.png)
 * ![Lucrehulk-class Battleship](src/main/resources/icons/confederacy_of_independent_systems/lucrehulk_class_battleship@2x.png) Lucrehulk-class Battleship ![Lucrehulk-class Battleship](src/main/resources/icons/confederacy_of_independent_systems/lucrehulk_class_battleship_r@2x.png)
@@ -123,6 +125,8 @@ This is the Star Wars Progress Bar for IJ based IDEs. It replaces the progress b
 * ![Nebulon-B Frigate](src/main/resources/icons/rebel_alliance/nebulon_b_frigate@2x.png) Nebulon-B Frigate ![Nebulon-B Frigate](src/main/resources/icons/rebel_alliance/nebulon_b_frigate_r@2x.png)
 * ![Rogue Shadow](src/main/resources/icons/rebel_alliance/rogue_shadow@2x.png) Rogue Shadow ![Rogue Shadow](src/main/resources/icons/rebel_alliance/rogue_shadow_r@2x.png)
 * ![Tantive IV](src/main/resources/icons/rebel_alliance/tantive_iv@2x.png) Tantive IV ![Tantive IV](src/main/resources/icons/rebel_alliance/tantive_iv_r@2x.png)
+* ![Taylander Shuttle](src/main/resources/icons/rebel_alliance/taylander_shuttle@2x.png) Taylander Shuttle ![Taylander Shuttle](src/main/resources/icons/rebel_alliance/taylander_shuttle_r@2x.png)
+* ![T-16 Skyhopper](src/main/resources/icons/rebel_alliance/t_16_skyhopper@2x.png) T-16 Skyhopper ![T-16 Skyhopper](src/main/resources/icons/rebel_alliance/t_16_skyhopper_r@2x.png)
 * ![T-47 Snowspeeder](src/main/resources/icons/rebel_alliance/t_47_snowspeeder@2x.png) T-47 Snowspeeder ![T-47 Snowspeeder](src/main/resources/icons/rebel_alliance/t_47_snowspeeder_r@2x.png)
 * ![U-Wing](src/main/resources/icons/rebel_alliance/u_wing@2x.png) U-Wing ![U-Wing](src/main/resources/icons/rebel_alliance/u_wing_r@2x.png)
 * ![X-Wing](src/main/resources/icons/rebel_alliance/x_wing@2x.png) X-Wing ![X-Wing](src/main/resources/icons/rebel_alliance/x_wing_r@2x.png)
@@ -139,6 +143,7 @@ This is the Star Wars Progress Bar for IJ based IDEs. It replaces the progress b
 
 * ![Cloud City](src/main/resources/icons/smugglers/cloud_city@2x.png) Cloud City ![Cloud City](src/main/resources/icons/smugglers/cloud_city_r@2x.png)
 * ![Errant Venture](src/main/resources/icons/smugglers/errant_venture@2x.png) Errant Venture ![Errant Venture](src/main/resources/icons/smugglers/errant_venture_r@2x.png)
+* ![Sandcrawler](src/main/resources/icons/smugglers/sandcrawler@2x.png) Sandcrawler ![Sandcrawler](src/main/resources/icons/smugglers/sandcrawler_r@2x.png)
 * ![Storm IV Twin-Pod cloud car](src/main/resources/icons/smugglers/storm_iv_twin_pod_cloud_car@2x.png) Storm IV Twin-Pod cloud car ![Storm IV Twin-Pod cloud car](src/main/resources/icons/smugglers/storm_iv_twin_pod_cloud_car_r@2x.png)
 * ![Wild Karrde](src/main/resources/icons/smugglers/wild_karrde@2x.png) Wild Karrde ![Wild Karrde](src/main/resources/icons/smugglers/wild_karrde_r@2x.png)
 
