@@ -27,6 +27,8 @@
 
 <!-- Plugin description -->
 This is the Star Wars Progress Bar for IJ based IDEs. It replaces the progress bar with random vehicles from Star Wars.
+
+The plugin can be configured via the settings. There you can e.g. select which vehicles should be displayed.
 <!-- Plugin description end -->
 
 ## Installation
@@ -52,6 +54,7 @@ This is the Star Wars Progress Bar for IJ based IDEs. It replaces the progress b
 * ![AA-9 Coruscant Freighter](src/main/resources/icons/galactic_republic/aa_9_coruscant_freighter@2x.png) AA-9 Coruscant Freighter ![AA-9 Coruscant Freighter](src/main/resources/icons/galactic_republic/aa_9_coruscant_freighter_r@2x.png)
 * ![Acclamator-class Assault Ship](src/main/resources/icons/galactic_republic/acclamator_class_assault_ship@2x.png) Acclamator-class Assault Ship ![Acclamator-class Assault Ship](src/main/resources/icons/galactic_republic/acclamator_class_assault_ship_r@2x.png)
 * ![ARC-170 Starfighter](src/main/resources/icons/galactic_republic/arc_170_starfighter@2x.png) ARC-170 Starfighter ![ARC-170 Starfighter](src/main/resources/icons/galactic_republic/arc_170_starfighter_r@2x.png)
+* ![AT-AP](src/main/resources/icons/galactic_republic/at_ap@2x.png) AT-AP ![AT-AP](src/main/resources/icons/galactic_republic/at_ap_r@2x.png)
 * ![Azure Angel](src/main/resources/icons/galactic_republic/azure_angel@2x.png) Azure Angel ![Azure Angel](src/main/resources/icons/galactic_republic/azure_angel_r@2x.png)
 * ![Berenko-class gondola speeder](src/main/resources/icons/galactic_republic/berenko_class_gondola_speeder@2x.png) Berenko-class gondola speeder ![Berenko-class gondola speeder](src/main/resources/icons/galactic_republic/berenko_class_gondola_speeder_r@2x.png)
 * ![Blade of Dorin](src/main/resources/icons/galactic_republic/blade_of_dorin@2x.png) Blade of Dorin ![Blade of Dorin](src/main/resources/icons/galactic_republic/blade_of_dorin_r@2x.png)
@@ -160,6 +163,10 @@ This is the Star Wars Progress Bar for IJ based IDEs. It replaces the progress b
 
 * Plugin based on the [IntelliJ Platform Plugin Template][template].
 * The code is based on and adapted from the work of Dmitry Batkovich's [Nyan Progess Bar](https://github.com/batya239/NyanProgressBar) and Karl Goffin's [Pokemon Progress Bar](https://github.com/kagof/intellij-pokemon-progress).
+
+### Icons
+
+* All icons were created by me [Christopher Osthues](https://github.com/christopherosthues)
 
 ### Misc
 
