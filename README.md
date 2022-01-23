@@ -65,6 +65,7 @@ The plugin can be configured via the settings. There you can e.g. select which v
 * ![H-Type Naboo Yacht](src/main/resources/icons/galactic_republic/h_type_naboo_yacht@2x.png) H-Type Naboo Yacht ![H-Type Naboo Yacht](src/main/resources/icons/galactic_republic/h_type_naboo_yacht_r@2x.png)
 * ![J-Type Diplomatic Barge](src/main/resources/icons/galactic_republic/j_type_diplomatic_barge@2x.png) J-Type Diplomatic Barge ![J-Type Diplomatic Barge](src/main/resources/icons/galactic_republic/j_type_diplomatic_barge_r@2x.png)
 * ![J-Type Naboo Star Skiff](src/main/resources/icons/galactic_republic/j_type_naboo_star_skiff@2x.png) J-Type Naboo Star Skiff ![J-Type Naboo Star Skiff](src/main/resources/icons/galactic_republic/j_type_naboo_star_skiff_r@2x.png)
+* ![LAAT/i](src/main/resources/icons/galactic_republic/laat_i@2x.png) LAAT/i ![LAAT/i](src/main/resources/icons/galactic_republic/laat_i_r@2x.png)
 * ![N-1 Starfighter](src/main/resources/icons/galactic_republic/n_1_starfighter@2x.png) N-1 Starfighter ![N-1 Starfighter](src/main/resources/icons/galactic_republic/n_1_starfighter_r@2x.png)
 * ![Naboo Royal Starship](src/main/resources/icons/galactic_republic/naboo_royal_starship@2x.png) Naboo Royal Starship ![Naboo Royal Starship](src/main/resources/icons/galactic_republic/naboo_royal_starship_r@2x.png)
 * ![Syluire-31 hyperdrive docking ring](src/main/resources/icons/galactic_republic/syluire_31_hyperspace_docking_ring@2x.png) Syluire-31 hyperdrive docking ring ![Syluire-31 hyperdrive docking ring](src/main/resources/icons/galactic_republic/syluire_31_hyperspace_docking_ring_r@2x.png)
@@ -100,6 +101,7 @@ The plugin can be configured via the settings. There you can e.g. select which v
 
 ### Galactic Empire
 
+* ![AT-AT](src/main/resources/icons/galactic_empire/at_at@2x.png) AT-AT ![AT-AT](src/main/resources/icons/galactic_empire/at_at_r@2x.png)
 * ![Eclipse](src/main/resources/icons/galactic_empire/eclipse@2x.png) Eclipse ![Eclipse](src/main/resources/icons/galactic_empire/eclipse_r@2x.png)
 * ![Executor](src/main/resources/icons/galactic_empire/executor@2x.png) Executor ![Executor](src/main/resources/icons/galactic_empire/executor_r@2x.png)
 * ![First Death Star](src/main/resources/icons/galactic_empire/first_death_star@2x.png) First Death Star ![First Death Star](src/main/resources/icons/galactic_empire/first_death_star_r@2x.png)
