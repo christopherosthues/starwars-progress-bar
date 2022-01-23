@@ -315,6 +315,13 @@
       "id": "galactic_empire",
       "vehicles": [
         {
+          "id": "at_at",
+          "ionEngine": "brown",
+          "xShift": -5,
+          "yShift": -6,
+          "velocity": 1.5
+        },
+        {
           "id": "eclipse",
           "ionEngine": "blue",
           "xShift": -2,
