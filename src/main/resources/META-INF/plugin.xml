@@ -1,18 +1,25 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <id>com.github.christopherosthues.starwarsprogressbar</id>
-    <name>starwars-progress-bar</name>
-    <vendor>christopherosthues</vendor>
+    <id>com.christopherosthues.starwarsprogressbar</id>
+    <name>Star Wars Progress Bar</name>
+    <vendor email="christopher.osthues@gmail.com" url="https://github.com/christopherosthues">Christopher Osthues</vendor>
+    <version>1.0.0</version>
 
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.christopherosthues.starwarsprogressbar.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.christopherosthues.starwarsprogressbar.services.MyProjectService"/>
+        <applicationConfigurable parentId="appearance"
+                                 instance="com.christopherosthues.starwarsprogressbar.ui.configuration.StarWarsProgressConfigurable"
+                                 id="org.intellij.sdk.settings.AppSettingsConfigurable" />
+
+        <applicationService serviceImplementation="com.christopherosthues.starwarsprogressbar.ui.configuration.StarWarsPersistentStateComponent" />
     </extensions>
 
     <applicationListeners>
-        <listener class="com.github.christopherosthues.starwarsprogressbar.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
+        <listener class="com.christopherosthues.starwarsprogressbar.listeners.StarWarsProgressListener"
+                  topic="com.intellij.ide.ui.LafManagerListener" />
+
+        <listener class="com.christopherosthues.starwarsprogressbar.listeners.StarWarsProgressListener"
+                  topic="com.intellij.ide.plugins.DynamicPluginListener" />
     </applicationListeners>
 </idea-plugin>
