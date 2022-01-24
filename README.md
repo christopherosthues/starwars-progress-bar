@@ -1,9 +1,9 @@
 # starwars-progress-bar
 
 ![Build](https://github.com/christopherosthues/starwars-progress-bar/workflows/Build/badge.svg)
-[![Version](https://img.shields.io/jetbrains/plugin/v/PLUGIN_ID.svg)](https://plugins.jetbrains.com/plugin/PLUGIN_ID)
-[![Rating](https://img.shields.io/jetbrains/plugin/r/rating/PLUGIN_ID.svg)](https://plugins.jetbrains.com/plugin/PLUGIN_ID/reviews)
-[![Downloads](https://img.shields.io/jetbrains/plugin/d/PLUGIN_ID.svg)](https://plugins.jetbrains.com/plugin/PLUGIN_ID)
+[![Version](https://img.shields.io/jetbrains/plugin/v/18483-star-wars-progress-bar.svg)](https://plugins.jetbrains.com/plugin/18483-star-wars-progress-bar)
+[![Rating](https://img.shields.io/jetbrains/plugin/r/rating/18483-star-wars-progress-bar.svg)](https://plugins.jetbrains.com/plugin/18483-star-wars-progress-bar/reviews)
+[![Downloads](https://img.shields.io/jetbrains/plugin/d/18483-star-wars-progress-bar.svg)](https://plugins.jetbrains.com/plugin/18483-star-wars-progress-bar)
 
 [template]: https://github.com/JetBrains/intellij-platform-plugin-template
 
@@ -34,10 +34,10 @@ The plugin can be configured via the settings. There you can e.g. select which v
 ## Installation
 
 - Using IDE built-in plugin system:
-  
+
   <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "starwars-progress-bar"</kbd> >
   <kbd>Install Plugin</kbd>
-  
+
 - Manually:
 
   Download the [latest release](https://github.com/christopherosthues/starwars-progress-bar/releases/latest) and install it manually using
