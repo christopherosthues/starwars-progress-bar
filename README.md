@@ -159,6 +159,10 @@ The plugin can be configured via the settings. There you can e.g. select which v
 
 <!-- Included vehicles end -->
 
+## Build scripts
+
+The project provides a separate gradle task 'includeVehicles' which traverses the factions.json file in the src/main/resources/json directory. This file contains all vehicles with their properties. The gradle task reads this file in and generates a section for this README file that includes all vehicles provided by this plugin.
+
 ## Acknowledgements
 
 ### Code
