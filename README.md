@@ -159,9 +159,26 @@ The plugin can be configured via the settings. There you can e.g. select which v
 
 <!-- Included vehicles end -->
 
-## Build scripts
+## Code
+
+### Build scripts
 
 The project provides a separate gradle task 'includeVehicles' which traverses the factions.json file in the src/main/resources/json directory. This file contains all vehicles with their properties. The gradle task reads this file in and generates a section for this README file that includes all vehicles provided by this plugin.
+
+### Add new vehicles
+
+To add new vehicles to this plugin you need to add a new entry to the [factions.json](src/main/resources/json/factions.json) which specifies the file name of the icon, the color of the progress bar, the x shift, the y shift and the velocity. Furthermore you need to provide translations for the vehicle name. For this you have to add a new entry to each StarWarsBundle(_locale).properties file. The localization key has to be prefixed with 'vehicles.' and should end with the name of the icon file.
+
+For each vehicle you have to provide 4 icons two with a resolution size of 32x32 pixel and two with a resolution of 64x64 pixel. One icon of each resolution is used for the forward direction and one for the backward direction. Note that you can only use the middle vertical 32 pixel of the 64x64 respectivly the middle verticle 16 pixels of the 32x32 icons otherwise the progressbar will cut of everything beyond it. The plugin uses only the 32x32 resolution icons but the 64x64 are referenced by this README.
+
+The naming of the icons should as followed:
+
+* vehicle_name.png (for the forward 32x32 pixel icon)
+* vehicle_name_r.png (for the backward 32x32 pixel icon)
+* vehicle_name@2x.png.png (for the forward 64x64 pixel icon)
+* vehicle_name_r@2x.png.png (for the backward 64x64 pixel icon)
+
+The vehicle name should not contain any spaces or dashes. Please use underscores instead.
 
 ## Acknowledgements
 
