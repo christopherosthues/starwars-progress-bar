@@ -175,8 +175,8 @@ The naming of the icons should as followed:
 
 * vehicle_name.png (for the forward 32x32 pixel icon)
 * vehicle_name_r.png (for the backward 32x32 pixel icon)
-* vehicle_name@2x.png.png (for the forward 64x64 pixel icon)
-* vehicle_name_r@2x.png.png (for the backward 64x64 pixel icon)
+* vehicle_name@2x.png (for the forward 64x64 pixel icon)
+* vehicle_name_r@2x.png (for the backward 64x64 pixel icon)
 
 The vehicle name should not contain any spaces or dashes. Please use underscores instead.
 
