@@ -4,16 +4,13 @@
 
 ## [Unreleased]
 
-## [1.1.0]
 ### Changed
 - 
 
 ### Added
 -
 
-## [Released]
-
-## [1.0.0]
+## [1.0.0] - 2022-01-24
 ### Added
 - Initial release
 - Progress bar with vehicles from Star Wars

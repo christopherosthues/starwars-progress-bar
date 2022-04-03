@@ -51,6 +51,7 @@ internal object BundleConstants {
     const val IG_227_HAILFIRE_CLASS_DROID_TANK = VEHICLES + "ig_227_hailfire_class_droid_tank"
     const val INVISIBLE_HAND = VEHICLES + "invisible_hand"
     const val LUCREHULK_CLASS_BATTLESHIP = VEHICLES + "lucrehulk_class_battleship"
+//    const val MALEVOLENCE = VEHICLES + "malevolence"
     const val MANKVIM_814_INTERCEPTOR = VEHICLES + "mankvim_814_interceptor"
     const val MTT = VEHICLES + "mtt"
     const val MUNIFICENT_CLASS_STAR_FRIGATE = VEHICLES + "munificent_class_star_frigate"

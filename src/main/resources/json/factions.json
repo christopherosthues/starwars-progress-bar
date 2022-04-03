@@ -233,6 +233,13 @@
           "velocity": 2.5
         },
         {
+          "id": "malevolence",
+          "ionEngine": "yellow",
+          "xShift": 0,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
           "id": "mankvim_814_interceptor",
           "ionEngine": "blue",
           "xShift": -6,

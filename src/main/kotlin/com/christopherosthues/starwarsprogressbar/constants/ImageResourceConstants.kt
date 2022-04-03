@@ -28,6 +28,7 @@ internal object ImageResourceConstants {
     const val IG_227_HAILFIRE_CLASS_DROID_TANK = SEPARATISTS + "ig_227_hailfire_class_droid_tank"
     const val INVISIBLE_HAND = SEPARATISTS + "invisible_hand"
     const val LUCREHULK_CLASS_BATTLESHIP = SEPARATISTS + "droid_control_ship"
+//    const val MALEVOLENCE = SEPARATISTS + "malevolence"
     const val MANKVIM_814_INTERCEPTOR = SEPARATISTS + "mankvim_814_interceptor"
     const val MTT = SEPARATISTS + "multi_troop_transport"
     const val MUNIFICENT_CLASS_STAR_FRIGATE = SEPARATISTS + "munificent_class_star_frigate"
