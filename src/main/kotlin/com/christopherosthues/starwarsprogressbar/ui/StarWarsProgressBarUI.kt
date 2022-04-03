@@ -27,11 +27,24 @@ import com.intellij.ui.JBColor
 import com.intellij.ui.scale.JBUIScale
 import com.intellij.util.ui.GraphicsUtil
 import com.intellij.util.ui.UIUtil
-import java.awt.*
+import java.awt.BasicStroke
+import java.awt.Color
+import java.awt.Component
+import java.awt.Dimension
+import java.awt.Graphics
+import java.awt.Graphics2D
+import java.awt.Insets
+import java.awt.LinearGradientPaint
+import java.awt.Paint
+import java.awt.Rectangle
+import java.awt.Shape
 import java.awt.geom.RoundRectangle2D
 import javax.swing.JComponent
 import javax.swing.SwingConstants
 import javax.swing.plaf.basic.BasicProgressBarUI
+
+private const val PROGRESSBAR_HEIGHT = 20
+private const val PROGRESSBAR_CORNER_SIZE = 9f
 
 internal class StarWarsProgressBarUI(
     private val vehicle: StarWarsVehicle,
@@ -62,7 +75,7 @@ internal class StarWarsProgressBarUI(
     }
 
     override fun getPreferredSize(c: JComponent?): Dimension {
-        return Dimension(super.getPreferredSize(c).width, JBUIScale.scale(20))
+        return Dimension(super.getPreferredSize(c).width, JBUIScale.scale(PROGRESSBAR_HEIGHT))
     }
 
     override fun paintIndeterminate(g: Graphics?, c: JComponent?) {
@@ -182,7 +195,7 @@ internal class StarWarsProgressBarUI(
     }
 
     private fun getRoundRectangle(width: Int, height: Int): RoundRectangle2D {
-        val arcLength = JBUIScale.scale(9f)
+        val arcLength = JBUIScale.scale(PROGRESSBAR_CORNER_SIZE)
         val offset = JBUIScale.scale(2f)
         return RoundRectangle2D.Float(
             JBUIScale.scale(1f),
@@ -252,8 +265,9 @@ internal class StarWarsProgressBarUI(
         graphics2D.clip = clip
         val isMovingRight = velocity >= 0
         val icon = if (isMovingRight) forwardIcon else backwardIcon
-        val x =
-            amountFull + if (isMovingRight) JBUIScale.scale(vehicle.xShift) else JBUIScale.scale(-icon.iconWidth - vehicle.xShift)
+        val x = amountFull +
+                if (isMovingRight) JBUIScale.scale(vehicle.xShift)
+                else JBUIScale.scale(-icon.iconWidth - vehicle.xShift)
         val y = vehicle.yShift
         icon.paintIcon(progressBar, graphics2D, x, y)
         graphics2D.clip = previousClip

@@ -9,11 +9,13 @@ plugins {
     // Kotlin support
     kotlin("jvm")
     // Gradle IntelliJ Plugin
-    id("org.jetbrains.intellij") version "1.4.0"
+    id("org.jetbrains.intellij") version "1.5.2"
     // Gradle Changelog Plugin
     id("org.jetbrains.changelog") version "1.3.1"
     // Gradle Qodana Plugin
     id("org.jetbrains.qodana") version "0.1.13"
+    // Kotlin linter
+    id("io.gitlab.arturbosch.detekt").version("1.20.0-RC2")
     // Project Readme Plugin
     id("com.christopherosthues.build")
 }
@@ -26,8 +28,21 @@ repositories {
     mavenCentral()
 }
 
+// Set the JVM language level used to compile sources and generate files - Java 11 is required since 2020.3
+kotlin {
+    jvmToolchain {
+        (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(11))
+    }
+}
+
 dependencies {
     implementation("com.google.code.gson:gson:2.8.9")
+}
+
+detekt {
+    toolVersion = "1.20.0-RC2"
+    // config = files("config/detekt/detekt.yml")
+    buildUponDefaultConfig = true
 }
 
 // Configure Gradle IntelliJ Plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
@@ -54,18 +69,29 @@ qodana {
     showReport.set(System.getenv("QODANA_SHOW_REPORT")?.toBoolean() ?: false)
 }
 
-tasks {
-    // Set the JVM compatibility versions
-    properties("javaVersion").let {
-        withType<JavaCompile> {
-            sourceCompatibility = it
-            targetCompatibility = it
-        }
-        withType<KotlinCompile> {
-            kotlinOptions.jvmTarget = it
-        }
+// Kotlin DSL
+tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
+    reports {
+        xml.required.set(true)
+        xml.outputLocation.set(file("build/reports/mydetekt.xml"))
+        html.required.set(true)
+        html.outputLocation.set(file("build/reports/mydetekt.html"))
+        txt.required.set(true)
+        txt.outputLocation.set(file("build/reports/mydetekt.txt"))
+        sarif.required.set(true)
+        sarif.outputLocation.set(file("build/reports/mydetekt.sarif"))
     }
+}
 
+// Kotlin DSL
+tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
+    this.jvmTarget = "11"
+}
+tasks.withType<io.gitlab.arturbosch.detekt.DetektCreateBaselineTask>().configureEach {
+    this.jvmTarget = "11"
+}
+
+tasks {
     wrapper {
         gradleVersion = properties("gradleVersion")
     }

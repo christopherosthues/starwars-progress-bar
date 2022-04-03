@@ -10,10 +10,15 @@ import com.intellij.util.ui.ThreeStateCheckBox
 import java.awt.BorderLayout
 import java.awt.GridBagConstraints
 import java.awt.GridBagLayout
-import javax.swing.*
+import javax.swing.BorderFactory
+import javax.swing.BoxLayout
+import javax.swing.JPanel
 import javax.swing.border.EmptyBorder
 
-internal class VehiclesPanel() : JTitledPanel(StarWarsBundle.message(BundleConstants.VEHICLES_TITLE)) {
+private const val FACTION_PADDING = 5
+private const val SELECTION_PANEL_BOTTOM_PADDING = 10
+
+internal class VehiclesPanel : JTitledPanel(StarWarsBundle.message(BundleConstants.VEHICLES_TITLE)) {
     private val selectedVehiclesCheckBox = ThreeStateCheckBox(ThreeStateCheckBox.State.SELECTED)
     private val factionPanels: MutableList<FactionPanel> = mutableListOf()
 
@@ -48,7 +53,7 @@ internal class VehiclesPanel() : JTitledPanel(StarWarsBundle.message(BundleConst
 
     private fun createSelectionPanel() {
         val selectionPanel = JPanel(BorderLayout())
-        selectionPanel.border = EmptyBorder(0, 0, 10, 0)
+        selectionPanel.border = EmptyBorder(0, 0, SELECTION_PANEL_BOTTOM_PADDING, 0)
 
         selectedVehiclesCheckBox.isThirdStateEnabled = false
         selectedVehiclesCheckBox.addItemListener {
@@ -76,7 +81,9 @@ internal class VehiclesPanel() : JTitledPanel(StarWarsBundle.message(BundleConst
             val vehiclesAvailable = faction.vehicles.any()
             if (vehiclesAvailable) {
                 val factionPanel = FactionPanel(faction)
-                factionPanel.addPropertyChangeListener(FactionPanel::selectedVehiclesCount.name) { updateSelectionButtons() }
+                factionPanel.addPropertyChangeListener(FactionPanel::selectedVehiclesCount.name) {
+                    updateSelectionButtons()
+                }
 
                 addFactionPanel(factionPanel, faction, vehiclePanel)
             }
@@ -91,8 +98,8 @@ internal class VehiclesPanel() : JTitledPanel(StarWarsBundle.message(BundleConst
 
         val isFactionCountEven = factionCount++ % 2 == 0
         val gridBagConstraints = GridBagConstraints()
-        val leftPadding = if (isFactionCountEven) 0 else 5
-        val rightPadding = if (isFactionCountEven) 5 else 0
+        val leftPadding = if (isFactionCountEven) 0 else FACTION_PADDING
+        val rightPadding = if (isFactionCountEven) FACTION_PADDING else 0
         gridBagConstraints.gridwidth = 1
         gridBagConstraints.gridx = if (isFactionCountEven) 0 else 1
         gridBagConstraints.gridy = factionRowCount
@@ -100,7 +107,7 @@ internal class VehiclesPanel() : JTitledPanel(StarWarsBundle.message(BundleConst
         gridBagConstraints.weighty = 0.0
         gridBagConstraints.fill = GridBagConstraints.HORIZONTAL
         gridBagConstraints.anchor = GridBagConstraints.NORTHWEST
-        gridBagConstraints.insets = JBUI.insets(0, leftPadding, 5, rightPadding)
+        gridBagConstraints.insets = JBUI.insets(0, leftPadding, FACTION_PADDING, rightPadding)
 
         if (!isFactionCountEven) {
             factionRowCount++
@@ -122,9 +129,14 @@ internal class VehiclesPanel() : JTitledPanel(StarWarsBundle.message(BundleConst
             selectedVehiclesCheckBox.state = ThreeStateCheckBox.State.NOT_SELECTED
         }
 
-        val selectionText =
-            StarWarsBundle.message(if (selected == numberOfVehicles) BundleConstants.DESELECT_ALL else BundleConstants.SELECT_ALL)
-        selectedVehiclesCheckBox.text =
-            StarWarsBundle.message(BundleConstants.SELECTED, selected, numberOfVehicles, selectionText)
+        val selectionText = StarWarsBundle.message(
+            if (selected == numberOfVehicles) BundleConstants.DESELECT_ALL
+            else BundleConstants.SELECT_ALL
+        )
+        selectedVehiclesCheckBox.text = StarWarsBundle.message(
+            BundleConstants.SELECTED,
+            selected, numberOfVehicles,
+            selectionText
+        )
     }
 }

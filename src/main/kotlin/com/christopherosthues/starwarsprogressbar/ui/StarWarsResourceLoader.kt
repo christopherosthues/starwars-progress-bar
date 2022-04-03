@@ -32,8 +32,9 @@ import javax.swing.ImageIcon
 
 internal object StarWarsResourceLoader {
     private const val iconResourcePath = "icons/"
+    private const val maximumCacheSize = 100L
 
-    private val cache: Cache<String, Icon> = CacheBuilder.newBuilder().maximumSize(100L).build()
+    private val cache: Cache<String, Icon> = CacheBuilder.newBuilder().maximumSize(maximumCacheSize).build()
 
     @JvmStatic
     fun getIcon(name: String): Icon {

@@ -19,6 +19,8 @@ import javax.swing.JCheckBox
 import javax.swing.JComponent
 import javax.swing.JPanel
 
+private const val PADDING = 10
+
 internal class FactionPanel(private val faction: StarWarsFaction) : JPanel(GridBagLayout()) {
     private val selectVehiclesCheckbox = ThreeStateCheckBox(ThreeStateCheckBox.State.SELECTED)
     private val vehiclesCheckboxes: MutableMap<String, JCheckBox> = HashMap()
@@ -70,7 +72,7 @@ internal class FactionPanel(private val faction: StarWarsFaction) : JPanel(GridB
         gridBagConstraints.gridy = vehicleRowCount++
         gridBagConstraints.fill = GridBagConstraints.HORIZONTAL
         gridBagConstraints.anchor = GridBagConstraints.WEST
-        gridBagConstraints.insets = JBUI.insets(10, 0, 0, 0)
+        gridBagConstraints.insets = JBUI.insets(PADDING, 0, 0, 0)
 
         add(selectVehiclesCheckbox, gridBagConstraints)
     }
@@ -86,7 +88,15 @@ internal class FactionPanel(private val faction: StarWarsFaction) : JPanel(GridB
                 selectedVehiclesCount.decrementAndGet()
             }
 
-            propertyChangeListeners.forEach { l -> l.propertyChange(PropertyChangeEvent(this, FactionPanel::selectedVehiclesCount.name, oldValue, selectedVehiclesCount.get())) }
+            propertyChangeListeners.forEach { l ->
+                val propertyChangeEvent = PropertyChangeEvent(
+                    this,
+                    FactionPanel::selectedVehiclesCount.name,
+                    oldValue,
+                    selectedVehiclesCount.get()
+                )
+                l.propertyChange(propertyChangeEvent)
+            }
 
             updateSelectionButtons()
         }
@@ -111,8 +121,14 @@ internal class FactionPanel(private val faction: StarWarsFaction) : JPanel(GridB
             selectVehiclesCheckbox.state = ThreeStateCheckBox.State.NOT_SELECTED
         }
 
-        val selectionText = StarWarsBundle.message(if (selected == numberOfVehicles) BundleConstants.DESELECT_ALL else BundleConstants.SELECT_ALL)
-        selectVehiclesCheckbox.text = StarWarsBundle.message(BundleConstants.SELECTED, selected, numberOfVehicles, selectionText)
+        val selectionText = StarWarsBundle.message(
+            if (selected == numberOfVehicles) BundleConstants.DESELECT_ALL
+            else BundleConstants.SELECT_ALL
+        )
+        selectVehiclesCheckbox.text = StarWarsBundle.message(
+            BundleConstants.SELECTED,
+            selected, numberOfVehicles,
+            selectionText)
     }
 
     private fun addLabeledComponent(label: JComponent?, component: JComponent) {
@@ -125,7 +141,7 @@ internal class FactionPanel(private val faction: StarWarsFaction) : JPanel(GridB
             gridBagConstraints.weighty = 0.0
             gridBagConstraints.fill = GridBagConstraints.HORIZONTAL
             gridBagConstraints.anchor = GridBagConstraints.WEST
-            gridBagConstraints.insets = JBUI.insets(10, 0, 0, 0)
+            gridBagConstraints.insets = JBUI.insets(PADDING, 0, 0, 0)
 
             add(component, gridBagConstraints)
 
@@ -138,7 +154,7 @@ internal class FactionPanel(private val faction: StarWarsFaction) : JPanel(GridB
             gridBagConstraints.weighty = 0.0
             gridBagConstraints.fill = GridBagConstraints.NONE
             gridBagConstraints.anchor = GridBagConstraints.EAST
-            gridBagConstraints.insets = JBUI.insets(10, 0, 0, 10)
+            gridBagConstraints.insets = JBUI.insets(PADDING, 0, 0, PADDING)
 
             add(label, gridBagConstraints)
 
@@ -146,7 +162,7 @@ internal class FactionPanel(private val faction: StarWarsFaction) : JPanel(GridB
             gridBagConstraints.weightx = 1.0
             gridBagConstraints.fill = GridBagConstraints.HORIZONTAL
             gridBagConstraints.anchor = GridBagConstraints.WEST
-            gridBagConstraints.insets = JBUI.insets(10, 0, 0, 0)
+            gridBagConstraints.insets = JBUI.insets(PADDING, 0, 0, 0)
 
             add(component, gridBagConstraints)
         }

@@ -2,14 +2,20 @@ package com.christopherosthues.starwarsprogressbar.ui.configuration
 
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
-import com.christopherosthues.starwarsprogressbar.ui.*
+import com.christopherosthues.starwarsprogressbar.ui.StarWarsProgressBarUI
+import com.christopherosthues.starwarsprogressbar.ui.VehicleSelector
 import com.christopherosthues.starwarsprogressbar.ui.components.JTitledPanel
 import com.christopherosthues.starwarsprogressbar.ui.components.VehiclesPanel
 import com.intellij.openapi.ui.LabeledComponent
 import com.intellij.ui.components.JBCheckBox
 import com.intellij.util.ui.FormBuilder
-import java.awt.*
-import javax.swing.*
+import java.awt.BorderLayout
+import java.awt.GridLayout
+import javax.swing.JPanel
+import javax.swing.JProgressBar
+
+private const val GAP = 5
+private const val HORIZONTAL_GAP = 10
 
 internal class StarWarsProgressConfigurationComponent {
     private lateinit var mainPanel: JPanel
@@ -21,7 +27,10 @@ internal class StarWarsProgressConfigurationComponent {
 
     private val showVehicleNameCheckBox = JBCheckBox(StarWarsBundle.message(BundleConstants.SHOW_VEHICLE_NAME), false)
     private val showToolTipsCheckBox = JBCheckBox(StarWarsBundle.message(BundleConstants.SHOW_TOOL_TIPS), true)
-    private val sameVehicleVelocityCheckBox = JBCheckBox(StarWarsBundle.message(BundleConstants.SAME_VEHICLE_VELOCITY), false)
+    private val sameVehicleVelocityCheckBox = JBCheckBox(
+        StarWarsBundle.message(BundleConstants.SAME_VEHICLE_VELOCITY),
+        false
+    )
 
     val panel: JPanel
         get() = mainPanel
@@ -67,7 +76,7 @@ internal class StarWarsProgressConfigurationComponent {
 
     private fun createPreviewSection(formBuilder: FormBuilder) {
         val previewPanel = JTitledPanel(StarWarsBundle.message(BundleConstants.PREVIEW_TITLE))
-        previewPanel.layout = GridLayout(1, 2, 10, 0)
+        previewPanel.layout = GridLayout(1, 2, HORIZONTAL_GAP, 0)
 
         determinateProgressBar = JProgressBar(0, 2)
         determinateProgressBar.isIndeterminate = false
@@ -112,7 +121,7 @@ internal class StarWarsProgressConfigurationComponent {
 
     private fun createUiOptionsSection(formBuilder: FormBuilder) {
         val uiOptionsPanel = JTitledPanel(StarWarsBundle.message(BundleConstants.UI_OPTIONS))
-        uiOptionsPanel.layout = GridLayout(2, 2, 5, 5)
+        uiOptionsPanel.layout = GridLayout(2, 2, GAP, GAP)
 
         showVehicleNameCheckBox.addItemListener { repaintProgressBar() }
         showToolTipsCheckBox.addItemListener { repaintProgressBar() }
