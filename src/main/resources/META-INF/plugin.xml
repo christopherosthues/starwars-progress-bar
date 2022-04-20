@@ -3,7 +3,7 @@
     <id>com.christopherosthues.starwarsprogressbar</id>
     <name>Star Wars Progress Bar</name>
     <vendor email="christopher.osthues@gmail.com" url="https://github.com/christopherosthues">Christopher Osthues</vendor>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
 
     <depends>com.intellij.modules.platform</depends>
 

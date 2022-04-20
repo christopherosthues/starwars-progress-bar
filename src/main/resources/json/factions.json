@@ -560,6 +560,32 @@
       ]
     },
     {
+      "id": "first_order",
+      "vehicles": [
+        {
+          "id": "first_order_tie_fighter",
+          "ionEngine": "blue",
+          "xShift": -16,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "id": "tie_baron",
+          "ionEngine": "blue",
+          "xShift": -4,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "id": "tie_dagger",
+          "ionEngine": "blue",
+          "xShift": -7,
+          "yShift": -6,
+          "velocity": 2.5
+        }
+      ]
+    },
+    {
       "id": "bounty_hunters",
       "vehicles": [
         {
