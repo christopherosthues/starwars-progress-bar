@@ -35,7 +35,7 @@ internal class VehiclesPanel : JTitledPanel(StarWarsBundle.message(BundleConstan
         }
 
     private val selectedVehiclesCount: Int
-        get() = factionPanels.sumBy { it.selectedVehiclesCount.get() }
+        get() = factionPanels.sumOf { it.selectedVehiclesCount.get() }
 
     init {
         val vehiclesPanelLayout = BoxLayout(contentPanel, BoxLayout.Y_AXIS)

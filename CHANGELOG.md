@@ -6,7 +6,7 @@
 
 ### Changed
 - Update supported versions to 2021.1 - 2021.3
-- 
+- Sort vehicles alphabetically in settings
 
 ### Added
 - Malevolence to Confederacy of Independent Systems

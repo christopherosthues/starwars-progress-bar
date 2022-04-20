@@ -38,7 +38,9 @@ internal class FactionPanel(private val faction: StarWarsFaction) : JPanel(GridB
         if (vehiclesAvailable) {
             addFactionCheckBox()
 
-            faction.vehicles.stream().sorted(Comparator.comparing(StarWarsVehicle::id)).forEach { vehicle ->
+            val localizedNameComparator = compareBy<StarWarsVehicle> { StarWarsBundle.message(it.localizationKey) }
+
+            faction.vehicles.stream().sorted(localizedNameComparator).forEach { vehicle ->
                 addVehicleCheckBox(vehicle)
             }
 
