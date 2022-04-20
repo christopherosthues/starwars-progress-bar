@@ -140,7 +140,7 @@ The plugin can be configured via the settings. There you can e.g. select which v
 
 ### First Order
 
-* ![TIE-Fighter der Ersten Ordnung](src/main/resources/icons/first_order/first_order_tie_fighter@2x.png) TIE-Fighter der Ersten Ordnung ![TIE-Fighter der Ersten Ordnung](src/main/resources/icons/first_order/first_order_tie_fighter_r@2x.png)
+* ![First Order TIE Fighter](src/main/resources/icons/first_order/first_order_tie_fighter@2x.png) First Order TIE Fighter ![First Order TIE Fighter](src/main/resources/icons/first_order/first_order_tie_fighter_r@2x.png)
 * ![TIE Baron](src/main/resources/icons/first_order/tie_baron@2x.png) TIE Baron ![TIE Baron](src/main/resources/icons/first_order/tie_baron_r@2x.png)
 * ![TIE Dagger](src/main/resources/icons/first_order/tie_dagger@2x.png) TIE Dagger ![TIE Dagger](src/main/resources/icons/first_order/tie_dagger_r@2x.png)
 
