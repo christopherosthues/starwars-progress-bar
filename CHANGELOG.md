@@ -5,7 +5,7 @@
 ## [Unreleased]
 
 ### Changed
-- Update supported versions to 2021.1 - 2021.3
+- Update supported versions to 2021.1 - 2022.1
 - Sort vehicles alphabetically in settings
 
 ### Added
