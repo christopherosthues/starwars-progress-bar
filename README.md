@@ -86,6 +86,7 @@ The plugin can be configured via the settings. There you can e.g. select which v
 * ![IG-227 Hailfire class Droid tank](src/main/resources/icons/confederacy_of_independent_systems/ig_227_hailfire_class_droid_tank@2x.png) IG-227 Hailfire class Droid tank ![IG-227 Hailfire class Droid tank](src/main/resources/icons/confederacy_of_independent_systems/ig_227_hailfire_class_droid_tank_r@2x.png)
 * ![Invisible Hand](src/main/resources/icons/confederacy_of_independent_systems/invisible_hand@2x.png) Invisible Hand ![Invisible Hand](src/main/resources/icons/confederacy_of_independent_systems/invisible_hand_r@2x.png)
 * ![Lucrehulk-class Battleship](src/main/resources/icons/confederacy_of_independent_systems/lucrehulk_class_battleship@2x.png) Lucrehulk-class Battleship ![Lucrehulk-class Battleship](src/main/resources/icons/confederacy_of_independent_systems/lucrehulk_class_battleship_r@2x.png)
+* ![Malevolence](src/main/resources/icons/confederacy_of_independent_systems/malevolence@2x.png) Malevolence ![Malevolence](src/main/resources/icons/confederacy_of_independent_systems/malevolence_r@2x.png)
 * ![Mankvim-814 Interceptor](src/main/resources/icons/confederacy_of_independent_systems/mankvim_814_interceptor@2x.png) Mankvim-814 Interceptor ![Mankvim-814 Interceptor](src/main/resources/icons/confederacy_of_independent_systems/mankvim_814_interceptor_r@2x.png)
 * ![Multi-Troop Transport](src/main/resources/icons/confederacy_of_independent_systems/multi_troop_transport@2x.png) Multi-Troop Transport ![Multi-Troop Transport](src/main/resources/icons/confederacy_of_independent_systems/multi_troop_transport_r@2x.png)
 * ![Munificent-class Star Frigate](src/main/resources/icons/confederacy_of_independent_systems/munificent_class_star_frigate@2x.png) Munificent-class Star Frigate ![Munificent-class Star Frigate](src/main/resources/icons/confederacy_of_independent_systems/munificent_class_star_frigate_r@2x.png)
@@ -189,7 +190,7 @@ The vehicle name should not contain any spaces or dashes. Please use underscores
 
 ### Icons
 
-* All icons were created by me [Christopher Osthues](https://github.com/christopherosthues)
+* All icons were created by [me](https://github.com/christopherosthues).
 
 ### Misc
 
