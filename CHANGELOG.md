@@ -2,6 +2,9 @@
 
 # starwars-progress-bar Changelog
 
+[Unreleased]
+-
+
 ## [1.1.0] - 2022-04-21
 ### Changed
 - Update supported versions to 2021.1 - 2022.1
