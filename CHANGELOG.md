@@ -2,8 +2,7 @@
 
 # starwars-progress-bar Changelog
 
-[Unreleased]
--
+## [Unreleased]
 
 ## [1.1.0] - 2022-04-21
 ### Changed
