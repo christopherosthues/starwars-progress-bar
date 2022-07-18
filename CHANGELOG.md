@@ -2,7 +2,7 @@
 
 # starwars-progress-bar Changelog
 
-## [Unreleased]
+## [1.2.0]
 ### Changed
 - Updated CIS Lucrehulk-class battle ship
 - Updated color of progress bar for various vehicles
