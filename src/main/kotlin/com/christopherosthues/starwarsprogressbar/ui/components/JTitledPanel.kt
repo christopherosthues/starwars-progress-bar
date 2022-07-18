@@ -58,7 +58,7 @@ internal open class JTitledPanel(title: String) : JPanel() {
         super.add(contentPanel, BorderLayout.CENTER)
     }
 
-    override fun getLayout(): LayoutManager {
+    override fun getLayout(): LayoutManager? {
         return contentPanel?.layout
     }
 

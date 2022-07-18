@@ -13,13 +13,13 @@
 
 [//]: # (- [x] Get familiar with the [template documentation][template].)
 
-[//]: # (- [x] Verify the [pluginGroup]&#40;/gradle.properties&#41;, [plugin ID]&#40;/src/main/resources/META-INF/plugin.xml&#41; and [sources package]&#40;/src/main/kotlin&#41;.)
+[//]: # (- [x] Verify the [pluginGroup]&#40;./gradle.properties&#41;, [plugin ID]&#40;./src/main/resources/META-INF/plugin.xml&#41; and [sources package]&#40;./src/main/kotlin&#41;.)
 
-[//]: # (- [ ] Review the [Legal Agreements]&#40;https://plugins.jetbrains.com/docs/marketplace/legal-agreements.html&#41;.)
+[//]: # (- [x] Review the [Legal Agreements]&#40;https://plugins.jetbrains.com/docs/marketplace/legal-agreements.html&#41;.)
 
-[//]: # (- [ ] [Publish a plugin manually]&#40;https://plugins.jetbrains.com/docs/intellij/publishing-plugin.html?from=IJPluginTemplate&#41; for the first time.)
+[//]: # (- [x] [Publish a plugin manually]&#40;https://plugins.jetbrains.com/docs/intellij/publishing-plugin.html?from=IJPluginTemplate&#41; for the first time.)
 
-[//]: # (- [ ] Set the Plugin ID in the above README badges.)
+[//]: # (- [x] Set the Plugin ID in the above README badges.)
 
 [//]: # (- [ ] Set the [Deployment Token]&#40;https://plugins.jetbrains.com/docs/marketplace/plugin-upload.html&#41;.)
 
@@ -49,18 +49,32 @@ The plugin can be configured via the settings. There you can e.g. select which v
 <!-- Included vehicles -->
 ## Included vehicles
 
+### Trade Federation
+
+* ![Armored Assault Tank Mk I](src/main/resources/icons/trade_federation/armored_assault_tank@2x.png) Armored Assault Tank Mk I ![Armored Assault Tank Mk I](src/main/resources/icons/trade_federation/armored_assault_tank_r@2x.png)
+* ![Lucrehulk-class Droid control ship](src/main/resources/icons/trade_federation/lucrehulk_class_droid_control_ship@2x.png) Lucrehulk-class Droid control ship ![Lucrehulk-class Droid control ship](src/main/resources/icons/trade_federation/lucrehulk_class_droid_control_ship_r@2x.png)
+* ![Multi-Troop Transport](src/main/resources/icons/trade_federation/multi_troop_transport@2x.png) Multi-Troop Transport ![Multi-Troop Transport](src/main/resources/icons/trade_federation/multi_troop_transport_r@2x.png)
+* ![Platoon Attack Craft](src/main/resources/icons/trade_federation/platoon_attack_craft@2x.png) Platoon Attack Craft ![Platoon Attack Craft](src/main/resources/icons/trade_federation/platoon_attack_craft_r@2x.png)
+* ![Sheathipede-class tranport shuttle](src/main/resources/icons/trade_federation/sheathipede_class_shuttle@2x.png) Sheathipede-class tranport shuttle ![Sheathipede-class tranport shuttle](src/main/resources/icons/trade_federation/sheathipede_class_shuttle_r@2x.png)
+* ![STAP](src/main/resources/icons/trade_federation/stap@2x.png) STAP ![STAP](src/main/resources/icons/trade_federation/stap_r@2x.png)
+* ![Trade Federation Landing Ship](src/main/resources/icons/trade_federation/trade_federation_landing_ship@2x.png) Trade Federation Landing Ship ![Trade Federation Landing Ship](src/main/resources/icons/trade_federation/trade_federation_landing_ship_r@2x.png)
+* ![Vulture Droid](src/main/resources/icons/trade_federation/vulture_droid@2x.png) Vulture Droid ![Vulture Droid](src/main/resources/icons/trade_federation/vulture_droid_r@2x.png)
+
+### Jedi Order
+
+* ![Azure Angel](src/main/resources/icons/jedi/azure_angel@2x.png) Azure Angel ![Azure Angel](src/main/resources/icons/jedi/azure_angel_r@2x.png)
+* ![Blade of Dorin](src/main/resources/icons/jedi/blade_of_dorin@2x.png) Blade of Dorin ![Blade of Dorin](src/main/resources/icons/jedi/blade_of_dorin_r@2x.png)
+* ![DC0052 Speeder](src/main/resources/icons/jedi/dc0052_speeder@2x.png) DC0052 Speeder ![DC0052 Speeder](src/main/resources/icons/jedi/dc0052_speeder_r@2x.png)
+* ![Delta-7-Aethersprite Jedi Starfighter](src/main/resources/icons/jedi/delta_7_jedi_starfighter@2x.png) Delta-7-Aethersprite Jedi Starfighter ![Delta-7-Aethersprite Jedi Starfighter](src/main/resources/icons/jedi/delta_7_jedi_starfighter_r@2x.png)
+* ![Eta-2 Actis Interceptor](src/main/resources/icons/jedi/eta_2_actis_interceptor@2x.png) Eta-2 Actis Interceptor ![Eta-2 Actis Interceptor](src/main/resources/icons/jedi/eta_2_actis_interceptor_r@2x.png)
+
 ### Galactic Republic
 
 * ![AA-9 Coruscant Freighter](src/main/resources/icons/galactic_republic/aa_9_coruscant_freighter@2x.png) AA-9 Coruscant Freighter ![AA-9 Coruscant Freighter](src/main/resources/icons/galactic_republic/aa_9_coruscant_freighter_r@2x.png)
 * ![Acclamator-class Assault Ship](src/main/resources/icons/galactic_republic/acclamator_class_assault_ship@2x.png) Acclamator-class Assault Ship ![Acclamator-class Assault Ship](src/main/resources/icons/galactic_republic/acclamator_class_assault_ship_r@2x.png)
 * ![ARC-170 Starfighter](src/main/resources/icons/galactic_republic/arc_170_starfighter@2x.png) ARC-170 Starfighter ![ARC-170 Starfighter](src/main/resources/icons/galactic_republic/arc_170_starfighter_r@2x.png)
 * ![AT-AP](src/main/resources/icons/galactic_republic/at_ap@2x.png) AT-AP ![AT-AP](src/main/resources/icons/galactic_republic/at_ap_r@2x.png)
-* ![Azure Angel](src/main/resources/icons/galactic_republic/azure_angel@2x.png) Azure Angel ![Azure Angel](src/main/resources/icons/galactic_republic/azure_angel_r@2x.png)
 * ![Berenko-class gondola speeder](src/main/resources/icons/galactic_republic/berenko_class_gondola_speeder@2x.png) Berenko-class gondola speeder ![Berenko-class gondola speeder](src/main/resources/icons/galactic_republic/berenko_class_gondola_speeder_r@2x.png)
-* ![Blade of Dorin](src/main/resources/icons/galactic_republic/blade_of_dorin@2x.png) Blade of Dorin ![Blade of Dorin](src/main/resources/icons/galactic_republic/blade_of_dorin_r@2x.png)
-* ![DC0052 Speeder](src/main/resources/icons/galactic_republic/dc0052_speeder@2x.png) DC0052 Speeder ![DC0052 Speeder](src/main/resources/icons/galactic_republic/dc0052_speeder_r@2x.png)
-* ![Delta-7-Aethersprite Jedi Starfighter](src/main/resources/icons/galactic_republic/delta_7_jedi_starfighter@2x.png) Delta-7-Aethersprite Jedi Starfighter ![Delta-7-Aethersprite Jedi Starfighter](src/main/resources/icons/galactic_republic/delta_7_jedi_starfighter_r@2x.png)
-* ![Eta-2 Actis Interceptor](src/main/resources/icons/galactic_republic/eta_2_actis_interceptor@2x.png) Eta-2 Actis Interceptor ![Eta-2 Actis Interceptor](src/main/resources/icons/galactic_republic/eta_2_actis_interceptor_r@2x.png)
 * ![Heavy Assault Vehicle/Wheeled A6 Juggernaut](src/main/resources/icons/galactic_republic/havw_a6_juggernaut@2x.png) Heavy Assault Vehicle/Wheeled A6 Juggernaut ![Heavy Assault Vehicle/Wheeled A6 Juggernaut](src/main/resources/icons/galactic_republic/havw_a6_juggernaut_r@2x.png)
 * ![H-Type Naboo Yacht](src/main/resources/icons/galactic_republic/h_type_naboo_yacht@2x.png) H-Type Naboo Yacht ![H-Type Naboo Yacht](src/main/resources/icons/galactic_republic/h_type_naboo_yacht_r@2x.png)
 * ![J-Type Diplomatic Barge](src/main/resources/icons/galactic_republic/j_type_diplomatic_barge@2x.png) J-Type Diplomatic Barge ![J-Type Diplomatic Barge](src/main/resources/icons/galactic_republic/j_type_diplomatic_barge_r@2x.png)
@@ -68,6 +82,7 @@ The plugin can be configured via the settings. There you can e.g. select which v
 * ![LAAT/i](src/main/resources/icons/galactic_republic/laat_i@2x.png) LAAT/i ![LAAT/i](src/main/resources/icons/galactic_republic/laat_i_r@2x.png)
 * ![N-1 Starfighter](src/main/resources/icons/galactic_republic/n_1_starfighter@2x.png) N-1 Starfighter ![N-1 Starfighter](src/main/resources/icons/galactic_republic/n_1_starfighter_r@2x.png)
 * ![Naboo Royal Starship](src/main/resources/icons/galactic_republic/naboo_royal_starship@2x.png) Naboo Royal Starship ![Naboo Royal Starship](src/main/resources/icons/galactic_republic/naboo_royal_starship_r@2x.png)
+* ![Seraph-class Flash speeder](src/main/resources/icons/galactic_republic/seraph_class_speeder@2x.png) Seraph-class Flash speeder ![Seraph-class Flash speeder](src/main/resources/icons/galactic_republic/seraph_class_speeder_r@2x.png)
 * ![Syluire-31 hyperdrive docking ring](src/main/resources/icons/galactic_republic/syluire_31_hyperspace_docking_ring@2x.png) Syluire-31 hyperdrive docking ring ![Syluire-31 hyperdrive docking ring](src/main/resources/icons/galactic_republic/syluire_31_hyperspace_docking_ring_r@2x.png)
 * ![V-Wing](src/main/resources/icons/galactic_republic/v_wing@2x.png) V-Wing ![V-Wing](src/main/resources/icons/galactic_republic/v_wing_r@2x.png)
 * ![Venator-class Star Destroyer](src/main/resources/icons/galactic_republic/venator_class_star_destroyer@2x.png) Venator-class Star Destroyer ![Venator-class Star Destroyer](src/main/resources/icons/galactic_republic/venator_class_star_destroyer_r@2x.png)
@@ -77,28 +92,27 @@ The plugin can be configured via the settings. There you can e.g. select which v
 
 ### Confederacy of independent systems
 
-* ![Armored Assault Tank Mk I](src/main/resources/icons/confederacy_of_independent_systems/armored_assault_tank@2x.png) Armored Assault Tank Mk I ![Armored Assault Tank Mk I](src/main/resources/icons/confederacy_of_independent_systems/armored_assault_tank_r@2x.png)
+* ![Armored Assault Tank Mk I](src/main/resources/icons/confederacy_of_independent_systems/armored_assault_tank_cis@2x.png) Armored Assault Tank Mk I ![Armored Assault Tank Mk I](src/main/resources/icons/confederacy_of_independent_systems/armored_assault_tank_cis_r@2x.png)
 * ![Bloodfin](src/main/resources/icons/confederacy_of_independent_systems/bloodfin@2x.png) Bloodfin ![Bloodfin](src/main/resources/icons/confederacy_of_independent_systems/bloodfin_r@2x.png)
 * ![Diamond-class Cruiser](src/main/resources/icons/confederacy_of_independent_systems/diamond_class_cruiser@2x.png) Diamond-class Cruiser ![Diamond-class Cruiser](src/main/resources/icons/confederacy_of_independent_systems/diamond_class_cruiser_r@2x.png)
 * ![Droid Tri-Fighter](src/main/resources/icons/confederacy_of_independent_systems/droid_tri_fighter@2x.png) Droid Tri-Fighter ![Droid Tri-Fighter](src/main/resources/icons/confederacy_of_independent_systems/droid_tri_fighter_r@2x.png)
-* ![Asajj Ventresses Fanblade](src/main/resources/icons/confederacy_of_independent_systems/fanblade@2x.png) Asajj Ventresses Fanblade ![Asajj Ventresses Fanblade](src/main/resources/icons/confederacy_of_independent_systems/fanblade_r@2x.png)
+* ![Fanblade](src/main/resources/icons/confederacy_of_independent_systems/fanblade@2x.png) Fanblade ![Fanblade](src/main/resources/icons/confederacy_of_independent_systems/fanblade_r@2x.png)
 * ![Heavy Missile Platform droid gunship](src/main/resources/icons/confederacy_of_independent_systems/heavy_missile_platform_droid_gunship@2x.png) Heavy Missile Platform droid gunship ![Heavy Missile Platform droid gunship](src/main/resources/icons/confederacy_of_independent_systems/heavy_missile_platform_droid_gunship_r@2x.png)
 * ![IG-227 Hailfire class Droid tank](src/main/resources/icons/confederacy_of_independent_systems/ig_227_hailfire_class_droid_tank@2x.png) IG-227 Hailfire class Droid tank ![IG-227 Hailfire class Droid tank](src/main/resources/icons/confederacy_of_independent_systems/ig_227_hailfire_class_droid_tank_r@2x.png)
 * ![Invisible Hand](src/main/resources/icons/confederacy_of_independent_systems/invisible_hand@2x.png) Invisible Hand ![Invisible Hand](src/main/resources/icons/confederacy_of_independent_systems/invisible_hand_r@2x.png)
+* ![Landing Craft](src/main/resources/icons/confederacy_of_independent_systems/landing_craft@2x.png) Landing Craft ![Landing Craft](src/main/resources/icons/confederacy_of_independent_systems/landing_craft_r@2x.png)
 * ![Lucrehulk-class Battleship](src/main/resources/icons/confederacy_of_independent_systems/lucrehulk_class_battleship@2x.png) Lucrehulk-class Battleship ![Lucrehulk-class Battleship](src/main/resources/icons/confederacy_of_independent_systems/lucrehulk_class_battleship_r@2x.png)
 * ![Malevolence](src/main/resources/icons/confederacy_of_independent_systems/malevolence@2x.png) Malevolence ![Malevolence](src/main/resources/icons/confederacy_of_independent_systems/malevolence_r@2x.png)
 * ![Mankvim-814 Interceptor](src/main/resources/icons/confederacy_of_independent_systems/mankvim_814_interceptor@2x.png) Mankvim-814 Interceptor ![Mankvim-814 Interceptor](src/main/resources/icons/confederacy_of_independent_systems/mankvim_814_interceptor_r@2x.png)
-* ![Multi-Troop Transport](src/main/resources/icons/confederacy_of_independent_systems/multi_troop_transport@2x.png) Multi-Troop Transport ![Multi-Troop Transport](src/main/resources/icons/confederacy_of_independent_systems/multi_troop_transport_r@2x.png)
+* ![Multi-Troop Transport](src/main/resources/icons/confederacy_of_independent_systems/multi_troop_transport_cis@2x.png) Multi-Troop Transport ![Multi-Troop Transport](src/main/resources/icons/confederacy_of_independent_systems/multi_troop_transport_cis_r@2x.png)
 * ![Munificent-class Star Frigate](src/main/resources/icons/confederacy_of_independent_systems/munificent_class_star_frigate@2x.png) Munificent-class Star Frigate ![Munificent-class Star Frigate](src/main/resources/icons/confederacy_of_independent_systems/munificent_class_star_frigate_r@2x.png)
 * ![Nantex-class Starfighter](src/main/resources/icons/confederacy_of_independent_systems/nantex_class_starfighter@2x.png) Nantex-class Starfighter ![Nantex-class Starfighter](src/main/resources/icons/confederacy_of_independent_systems/nantex_class_starfighter_r@2x.png)
-* ![Platoon Attack Craft](src/main/resources/icons/confederacy_of_independent_systems/platoon_attack_craft@2x.png) Platoon Attack Craft ![Platoon Attack Craft](src/main/resources/icons/confederacy_of_independent_systems/platoon_attack_craft_r@2x.png)
 * ![Porax-38 Starfighter](src/main/resources/icons/confederacy_of_independent_systems/porax_38_starfighter@2x.png) Porax-38 Starfighter ![Porax-38 Starfighter](src/main/resources/icons/confederacy_of_independent_systems/porax_38_starfighter_r@2x.png)
 * ![Recusant-class Destroyer](src/main/resources/icons/confederacy_of_independent_systems/recusant_class_destroyer@2x.png) Recusant-class Destroyer ![Recusant-class Destroyer](src/main/resources/icons/confederacy_of_independent_systems/recusant_class_destroyer_r@2x.png)
 * ![Separatist Supply Ship](src/main/resources/icons/confederacy_of_independent_systems/separatist_supply_ship@2x.png) Separatist Supply Ship ![Separatist Supply Ship](src/main/resources/icons/confederacy_of_independent_systems/separatist_supply_ship_r@2x.png)
 * ![Soulless One](src/main/resources/icons/confederacy_of_independent_systems/soulless_one@2x.png) Soulless One ![Soulless One](src/main/resources/icons/confederacy_of_independent_systems/soulless_one_r@2x.png)
-* ![STAP](src/main/resources/icons/confederacy_of_independent_systems/stap@2x.png) STAP ![STAP](src/main/resources/icons/confederacy_of_independent_systems/stap_r@2x.png)
-* ![Trade Federation Landing Ship](src/main/resources/icons/confederacy_of_independent_systems/trade_federation_landing_ship@2x.png) Trade Federation Landing Ship ![Trade Federation Landing Ship](src/main/resources/icons/confederacy_of_independent_systems/trade_federation_landing_ship_r@2x.png)
-* ![Vulture Droid](src/main/resources/icons/confederacy_of_independent_systems/vulture_droid@2x.png) Vulture Droid ![Vulture Droid](src/main/resources/icons/confederacy_of_independent_systems/vulture_droid_r@2x.png)
+* ![STAP](src/main/resources/icons/confederacy_of_independent_systems/stap_cis@2x.png) STAP ![STAP](src/main/resources/icons/confederacy_of_independent_systems/stap_cis_r@2x.png)
+* ![Vulture Droid](src/main/resources/icons/confederacy_of_independent_systems/vulture_droid_cis@2x.png) Vulture Droid ![Vulture Droid](src/main/resources/icons/confederacy_of_independent_systems/vulture_droid_cis_r@2x.png)
 
 ### Galactic Empire
 

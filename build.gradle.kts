@@ -1,4 +1,5 @@
 import org.jetbrains.changelog.markdownToHTML
+import org.jetbrains.intellij.tasks.RunPluginVerifierTask.FailureLevel
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 fun properties(key: String) = project.findProperty(key).toString()
@@ -9,13 +10,13 @@ plugins {
     // Kotlin support
     kotlin("jvm")
     // Gradle IntelliJ Plugin
-    id("org.jetbrains.intellij") version "1.5.2"
+    id("org.jetbrains.intellij") version "1.7.0"
     // Gradle Changelog Plugin
     id("org.jetbrains.changelog") version "1.3.1"
     // Gradle Qodana Plugin
     id("org.jetbrains.qodana") version "0.1.13"
     // Kotlin linter
-    id("io.gitlab.arturbosch.detekt").version("1.20.0-RC2")
+    id("io.gitlab.arturbosch.detekt").version("1.21.0-RC2")
     // Project Readme Plugin
     id("com.christopherosthues.build")
 }
@@ -40,12 +41,12 @@ dependencies {
 }
 
 detekt {
-    toolVersion = "1.20.0-RC2"
+    toolVersion = "1.21.0-RC2"
     // config = files("config/detekt/detekt.yml")
     buildUponDefaultConfig = true
 }
 
-// Configure Gradle IntelliJ Plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
+// Configure Gradle IntelliJ Plugin - read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
 intellij {
     pluginName.set(properties("pluginName"))
     version.set(properties("platformVersion"))
@@ -99,7 +100,8 @@ tasks {
     patchPluginXml {
         version.set(properties("pluginVersion"))
         sinceBuild.set(properties("pluginSinceBuild"))
-        untilBuild.set(properties("pluginUntilBuild"))
+        //untilBuild.set(properties("pluginUntilBuild"))
+        untilBuild.set(null as String?)
 
         // Extract the <!-- Plugin description --> section from README.md and provide for the plugin's manifest
         pluginDescription.set(
@@ -120,6 +122,10 @@ tasks {
                 getOrNull(properties("pluginVersion")) ?: getLatest()
             }.toHTML()
         })
+    }
+
+    runPluginVerifier {
+        failureLevel.set(listOf(FailureLevel.COMPATIBILITY_PROBLEMS, FailureLevel.NOT_DYNAMIC))
     }
 
     // Configure UI tests plugin

@@ -14,4 +14,6 @@ internal class StarWarsState {
     var showToolTips: Boolean = true
 
     var sameVehicleVelocity: Boolean = false
+
+    var version: String = ""
 }

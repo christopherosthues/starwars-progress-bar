@@ -16,14 +16,19 @@ internal object VehicleSelector {
         val starWarsState = persistentStateComponent.state ?: return FactionHolder.missingVehicle
 
         val enabledVehicles = starWarsState.vehiclesEnabled
+        return selectRandomVehicle(enabledVehicles)
+    }
+
+    fun selectRandomVehicle(enabledVehicles: Map<String, Boolean>): StarWarsVehicle {
         val vehicles = FactionHolder.defaultVehicles.filter {
                 vehicle -> enabledVehicles.getOrDefault(vehicle.id, true)
         }
 
-        if (vehicles.isEmpty()) {
-            return FactionHolder.missingVehicle
+        var vehicle = FactionHolder.missingVehicle
+        if (vehicles.isNotEmpty()) {
+            vehicle = vehicles[Random.nextInt(vehicles.size)]
         }
 
-        return vehicles[Random.nextInt(vehicles.size)]
+        return vehicle
     }
 }
