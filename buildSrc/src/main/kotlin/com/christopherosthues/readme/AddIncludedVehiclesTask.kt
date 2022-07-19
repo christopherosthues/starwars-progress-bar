@@ -47,15 +47,16 @@ open class AddIncludedVehiclesTask @Inject constructor(
             .forEach {
                 readme.addNewFaction(messages.getProperty(it.localizationKey))
 
-                it.vehicles.forEach { vehicle ->
-                    vehicle.faction = it
-                    val imagePath = "${ReadmePluginConstants.IMAGE_RESOURCE_PATH}${vehicle.fileName}"
-                    readme.addVehicle(
-                        messages.getProperty(vehicle.localizationKey),
-                        "${imagePath}@2x.png",
-                        "${imagePath}_r@2x.png"
-                    )
-                }
+                it.vehicles.sortedBy { vehicle -> messages.getProperty(vehicle.localizationKey) }
+                    .forEach { vehicle ->
+                        vehicle.faction = it
+                        val imagePath = "${ReadmePluginConstants.IMAGE_RESOURCE_PATH}${vehicle.fileName}"
+                        readme.addVehicle(
+                            messages.getProperty(vehicle.localizationKey),
+                            "${imagePath}@2x.png",
+                            "${imagePath}_r@2x.png"
+                        )
+                    }
             }
 
         outputFile.get().asFile.writeText(readme.getAll())

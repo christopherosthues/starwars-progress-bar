@@ -55,28 +55,29 @@ The plugin can be configured via the settings. There you can e.g. select which v
 * ![Lucrehulk-class Droid control ship](src/main/resources/icons/trade_federation/lucrehulk_class_droid_control_ship@2x.png) Lucrehulk-class Droid control ship ![Lucrehulk-class Droid control ship](src/main/resources/icons/trade_federation/lucrehulk_class_droid_control_ship_r@2x.png)
 * ![Multi-Troop Transport](src/main/resources/icons/trade_federation/multi_troop_transport@2x.png) Multi-Troop Transport ![Multi-Troop Transport](src/main/resources/icons/trade_federation/multi_troop_transport_r@2x.png)
 * ![Platoon Attack Craft](src/main/resources/icons/trade_federation/platoon_attack_craft@2x.png) Platoon Attack Craft ![Platoon Attack Craft](src/main/resources/icons/trade_federation/platoon_attack_craft_r@2x.png)
-* ![Sheathipede-class tranport shuttle](src/main/resources/icons/trade_federation/sheathipede_class_shuttle@2x.png) Sheathipede-class tranport shuttle ![Sheathipede-class tranport shuttle](src/main/resources/icons/trade_federation/sheathipede_class_shuttle_r@2x.png)
 * ![STAP](src/main/resources/icons/trade_federation/stap@2x.png) STAP ![STAP](src/main/resources/icons/trade_federation/stap_r@2x.png)
+* ![Sheathipede-class tranport shuttle](src/main/resources/icons/trade_federation/sheathipede_class_shuttle@2x.png) Sheathipede-class tranport shuttle ![Sheathipede-class tranport shuttle](src/main/resources/icons/trade_federation/sheathipede_class_shuttle_r@2x.png)
 * ![Trade Federation Landing Ship](src/main/resources/icons/trade_federation/trade_federation_landing_ship@2x.png) Trade Federation Landing Ship ![Trade Federation Landing Ship](src/main/resources/icons/trade_federation/trade_federation_landing_ship_r@2x.png)
 * ![Vulture Droid](src/main/resources/icons/trade_federation/vulture_droid@2x.png) Vulture Droid ![Vulture Droid](src/main/resources/icons/trade_federation/vulture_droid_r@2x.png)
 
 ### Jedi Order
 
+* ![Ahsoka Tano's Delta-7-Aethersprite Starfighter](src/main/resources/icons/jedi/ahsoka_tanos_delta_7_jedi_starfighter@2x.png) Ahsoka Tano's Delta-7-Aethersprite Starfighter ![Ahsoka Tano's Delta-7-Aethersprite Starfighter](src/main/resources/icons/jedi/ahsoka_tanos_delta_7_jedi_starfighter_r@2x.png)
+* ![Anakin Skywalker's Eta-2 Actis Interceptor](src/main/resources/icons/jedi/anakin_skywalkers_eta_2_actis_interceptor@2x.png) Anakin Skywalker's Eta-2 Actis Interceptor ![Anakin Skywalker's Eta-2 Actis Interceptor](src/main/resources/icons/jedi/anakin_skywalkers_eta_2_actis_interceptor_r@2x.png)
 * ![Azure Angel](src/main/resources/icons/jedi/azure_angel@2x.png) Azure Angel ![Azure Angel](src/main/resources/icons/jedi/azure_angel_r@2x.png)
 * ![Blade of Dorin](src/main/resources/icons/jedi/blade_of_dorin@2x.png) Blade of Dorin ![Blade of Dorin](src/main/resources/icons/jedi/blade_of_dorin_r@2x.png)
 * ![DC0052 Speeder](src/main/resources/icons/jedi/dc0052_speeder@2x.png) DC0052 Speeder ![DC0052 Speeder](src/main/resources/icons/jedi/dc0052_speeder_r@2x.png)
-* ![Delta-7-Aethersprite Jedi Starfighter](src/main/resources/icons/jedi/delta_7_jedi_starfighter@2x.png) Delta-7-Aethersprite Jedi Starfighter ![Delta-7-Aethersprite Jedi Starfighter](src/main/resources/icons/jedi/delta_7_jedi_starfighter_r@2x.png)
-* ![Eta-2 Actis Interceptor](src/main/resources/icons/jedi/eta_2_actis_interceptor@2x.png) Eta-2 Actis Interceptor ![Eta-2 Actis Interceptor](src/main/resources/icons/jedi/eta_2_actis_interceptor_r@2x.png)
+* ![Obi-Wan Kenobi's Delta-7-Aethersprite Starfighter](src/main/resources/icons/jedi/obi_wan_kenobis_delta_7_jedi_starfighter@2x.png) Obi-Wan Kenobi's Delta-7-Aethersprite Starfighter ![Obi-Wan Kenobi's Delta-7-Aethersprite Starfighter](src/main/resources/icons/jedi/obi_wan_kenobis_delta_7_jedi_starfighter_r@2x.png)
 
 ### Galactic Republic
 
 * ![AA-9 Coruscant Freighter](src/main/resources/icons/galactic_republic/aa_9_coruscant_freighter@2x.png) AA-9 Coruscant Freighter ![AA-9 Coruscant Freighter](src/main/resources/icons/galactic_republic/aa_9_coruscant_freighter_r@2x.png)
-* ![Acclamator-class Assault Ship](src/main/resources/icons/galactic_republic/acclamator_class_assault_ship@2x.png) Acclamator-class Assault Ship ![Acclamator-class Assault Ship](src/main/resources/icons/galactic_republic/acclamator_class_assault_ship_r@2x.png)
 * ![ARC-170 Starfighter](src/main/resources/icons/galactic_republic/arc_170_starfighter@2x.png) ARC-170 Starfighter ![ARC-170 Starfighter](src/main/resources/icons/galactic_republic/arc_170_starfighter_r@2x.png)
 * ![AT-AP](src/main/resources/icons/galactic_republic/at_ap@2x.png) AT-AP ![AT-AP](src/main/resources/icons/galactic_republic/at_ap_r@2x.png)
+* ![Acclamator-class Assault Ship](src/main/resources/icons/galactic_republic/acclamator_class_assault_ship@2x.png) Acclamator-class Assault Ship ![Acclamator-class Assault Ship](src/main/resources/icons/galactic_republic/acclamator_class_assault_ship_r@2x.png)
 * ![Berenko-class gondola speeder](src/main/resources/icons/galactic_republic/berenko_class_gondola_speeder@2x.png) Berenko-class gondola speeder ![Berenko-class gondola speeder](src/main/resources/icons/galactic_republic/berenko_class_gondola_speeder_r@2x.png)
-* ![Heavy Assault Vehicle/Wheeled A6 Juggernaut](src/main/resources/icons/galactic_republic/havw_a6_juggernaut@2x.png) Heavy Assault Vehicle/Wheeled A6 Juggernaut ![Heavy Assault Vehicle/Wheeled A6 Juggernaut](src/main/resources/icons/galactic_republic/havw_a6_juggernaut_r@2x.png)
 * ![H-Type Naboo Yacht](src/main/resources/icons/galactic_republic/h_type_naboo_yacht@2x.png) H-Type Naboo Yacht ![H-Type Naboo Yacht](src/main/resources/icons/galactic_republic/h_type_naboo_yacht_r@2x.png)
+* ![Heavy Assault Vehicle/Wheeled A6 Juggernaut](src/main/resources/icons/galactic_republic/havw_a6_juggernaut@2x.png) Heavy Assault Vehicle/Wheeled A6 Juggernaut ![Heavy Assault Vehicle/Wheeled A6 Juggernaut](src/main/resources/icons/galactic_republic/havw_a6_juggernaut_r@2x.png)
 * ![J-Type Diplomatic Barge](src/main/resources/icons/galactic_republic/j_type_diplomatic_barge@2x.png) J-Type Diplomatic Barge ![J-Type Diplomatic Barge](src/main/resources/icons/galactic_republic/j_type_diplomatic_barge_r@2x.png)
 * ![J-Type Naboo Star Skiff](src/main/resources/icons/galactic_republic/j_type_naboo_star_skiff@2x.png) J-Type Naboo Star Skiff ![J-Type Naboo Star Skiff](src/main/resources/icons/galactic_republic/j_type_naboo_star_skiff_r@2x.png)
 * ![LAAT/i](src/main/resources/icons/galactic_republic/laat_i@2x.png) LAAT/i ![LAAT/i](src/main/resources/icons/galactic_republic/laat_i_r@2x.png)
@@ -84,9 +85,9 @@ The plugin can be configured via the settings. There you can e.g. select which v
 * ![Naboo Royal Starship](src/main/resources/icons/galactic_republic/naboo_royal_starship@2x.png) Naboo Royal Starship ![Naboo Royal Starship](src/main/resources/icons/galactic_republic/naboo_royal_starship_r@2x.png)
 * ![Seraph-class Flash speeder](src/main/resources/icons/galactic_republic/seraph_class_speeder@2x.png) Seraph-class Flash speeder ![Seraph-class Flash speeder](src/main/resources/icons/galactic_republic/seraph_class_speeder_r@2x.png)
 * ![Syluire-31 hyperdrive docking ring](src/main/resources/icons/galactic_republic/syluire_31_hyperspace_docking_ring@2x.png) Syluire-31 hyperdrive docking ring ![Syluire-31 hyperdrive docking ring](src/main/resources/icons/galactic_republic/syluire_31_hyperspace_docking_ring_r@2x.png)
+* ![V-19 Torrent Starfighter](src/main/resources/icons/galactic_republic/v_19_torrent_starfighter@2x.png) V-19 Torrent Starfighter ![V-19 Torrent Starfighter](src/main/resources/icons/galactic_republic/v_19_torrent_starfighter_r@2x.png)
 * ![V-Wing](src/main/resources/icons/galactic_republic/v_wing@2x.png) V-Wing ![V-Wing](src/main/resources/icons/galactic_republic/v_wing_r@2x.png)
 * ![Venator-class Star Destroyer](src/main/resources/icons/galactic_republic/venator_class_star_destroyer@2x.png) Venator-class Star Destroyer ![Venator-class Star Destroyer](src/main/resources/icons/galactic_republic/venator_class_star_destroyer_r@2x.png)
-* ![V-19 Torrent Starfighter](src/main/resources/icons/galactic_republic/v_19_torrent_starfighter@2x.png) V-19 Torrent Starfighter ![V-19 Torrent Starfighter](src/main/resources/icons/galactic_republic/v_19_torrent_starfighter_r@2x.png)
 * ![XJ-6 Airspeeder](src/main/resources/icons/galactic_republic/xj_6_airspeeder@2x.png) XJ-6 Airspeeder ![XJ-6 Airspeeder](src/main/resources/icons/galactic_republic/xj_6_airspeeder_r@2x.png)
 * ![Z-95 Headhunter](src/main/resources/icons/galactic_republic/z_95_headhunter@2x.png) Z-95 Headhunter ![Z-95 Headhunter](src/main/resources/icons/galactic_republic/z_95_headhunter_r@2x.png)
 
@@ -109,9 +110,9 @@ The plugin can be configured via the settings. There you can e.g. select which v
 * ![Nantex-class Starfighter](src/main/resources/icons/confederacy_of_independent_systems/nantex_class_starfighter@2x.png) Nantex-class Starfighter ![Nantex-class Starfighter](src/main/resources/icons/confederacy_of_independent_systems/nantex_class_starfighter_r@2x.png)
 * ![Porax-38 Starfighter](src/main/resources/icons/confederacy_of_independent_systems/porax_38_starfighter@2x.png) Porax-38 Starfighter ![Porax-38 Starfighter](src/main/resources/icons/confederacy_of_independent_systems/porax_38_starfighter_r@2x.png)
 * ![Recusant-class Destroyer](src/main/resources/icons/confederacy_of_independent_systems/recusant_class_destroyer@2x.png) Recusant-class Destroyer ![Recusant-class Destroyer](src/main/resources/icons/confederacy_of_independent_systems/recusant_class_destroyer_r@2x.png)
+* ![STAP](src/main/resources/icons/confederacy_of_independent_systems/stap_cis@2x.png) STAP ![STAP](src/main/resources/icons/confederacy_of_independent_systems/stap_cis_r@2x.png)
 * ![Separatist Supply Ship](src/main/resources/icons/confederacy_of_independent_systems/separatist_supply_ship@2x.png) Separatist Supply Ship ![Separatist Supply Ship](src/main/resources/icons/confederacy_of_independent_systems/separatist_supply_ship_r@2x.png)
 * ![Soulless One](src/main/resources/icons/confederacy_of_independent_systems/soulless_one@2x.png) Soulless One ![Soulless One](src/main/resources/icons/confederacy_of_independent_systems/soulless_one_r@2x.png)
-* ![STAP](src/main/resources/icons/confederacy_of_independent_systems/stap_cis@2x.png) STAP ![STAP](src/main/resources/icons/confederacy_of_independent_systems/stap_cis_r@2x.png)
 * ![Vulture Droid](src/main/resources/icons/confederacy_of_independent_systems/vulture_droid_cis@2x.png) Vulture Droid ![Vulture Droid](src/main/resources/icons/confederacy_of_independent_systems/vulture_droid_cis_r@2x.png)
 
 ### Galactic Empire
@@ -125,14 +126,14 @@ The plugin can be configured via the settings. There you can e.g. select which v
 * ![Lambda-class Shuttle](src/main/resources/icons/galactic_empire/lambda_class_shuttle@2x.png) Lambda-class Shuttle ![Lambda-class Shuttle](src/main/resources/icons/galactic_empire/lambda_class_shuttle_r@2x.png)
 * ![Second Death Star](src/main/resources/icons/galactic_empire/second_death_star@2x.png) Second Death Star ![Second Death Star](src/main/resources/icons/galactic_empire/second_death_star_r@2x.png)
 * ![Sentinel-class Shuttle](src/main/resources/icons/galactic_empire/sentinel_class_shuttle@2x.png) Sentinel-class Shuttle ![Sentinel-class Shuttle](src/main/resources/icons/galactic_empire/sentinel_class_shuttle_r@2x.png)
-* ![Tartan-class patrol cruiser](src/main/resources/icons/galactic_empire/tartan_class_patrol_cruiser@2x.png) Tartan-class patrol cruiser ![Tartan-class patrol cruiser](src/main/resources/icons/galactic_empire/tartan_class_patrol_cruiser_r@2x.png)
-* ![Theta-class Shuttle](src/main/resources/icons/galactic_empire/theta_class_shuttle@2x.png) Theta-class Shuttle ![Theta-class Shuttle](src/main/resources/icons/galactic_empire/theta_class_shuttle_r@2x.png)
 * ![TIE Advanced x1](src/main/resources/icons/galactic_empire/tie_advanced_x1@2x.png) TIE Advanced x1 ![TIE Advanced x1](src/main/resources/icons/galactic_empire/tie_advanced_x1_r@2x.png)
 * ![TIE Avenger](src/main/resources/icons/galactic_empire/tie_avenger@2x.png) TIE Avenger ![TIE Avenger](src/main/resources/icons/galactic_empire/tie_avenger_r@2x.png)
 * ![TIE Bomber](src/main/resources/icons/galactic_empire/tie_bomber@2x.png) TIE Bomber ![TIE Bomber](src/main/resources/icons/galactic_empire/tie_bomber_r@2x.png)
 * ![TIE Crawler](src/main/resources/icons/galactic_empire/tie_crawler@2x.png) TIE Crawler ![TIE Crawler](src/main/resources/icons/galactic_empire/tie_crawler_r@2x.png)
 * ![TIE Fighter](src/main/resources/icons/galactic_empire/tie_fighter@2x.png) TIE Fighter ![TIE Fighter](src/main/resources/icons/galactic_empire/tie_fighter_r@2x.png)
 * ![TIE Interceptor](src/main/resources/icons/galactic_empire/tie_interceptor@2x.png) TIE Interceptor ![TIE Interceptor](src/main/resources/icons/galactic_empire/tie_interceptor_r@2x.png)
+* ![Tartan-class patrol cruiser](src/main/resources/icons/galactic_empire/tartan_class_patrol_cruiser@2x.png) Tartan-class patrol cruiser ![Tartan-class patrol cruiser](src/main/resources/icons/galactic_empire/tartan_class_patrol_cruiser_r@2x.png)
+* ![Theta-class Shuttle](src/main/resources/icons/galactic_empire/theta_class_shuttle@2x.png) Theta-class Shuttle ![Theta-class Shuttle](src/main/resources/icons/galactic_empire/theta_class_shuttle_r@2x.png)
 
 ### Alliance to Restore the Republic
 
@@ -144,10 +145,10 @@ The plugin can be configured via the settings. There you can e.g. select which v
 * ![Millennium Falcon](src/main/resources/icons/rebel_alliance/millennium_falcon@2x.png) Millennium Falcon ![Millennium Falcon](src/main/resources/icons/rebel_alliance/millennium_falcon_r@2x.png)
 * ![Nebulon-B Frigate](src/main/resources/icons/rebel_alliance/nebulon_b_frigate@2x.png) Nebulon-B Frigate ![Nebulon-B Frigate](src/main/resources/icons/rebel_alliance/nebulon_b_frigate_r@2x.png)
 * ![Rogue Shadow](src/main/resources/icons/rebel_alliance/rogue_shadow@2x.png) Rogue Shadow ![Rogue Shadow](src/main/resources/icons/rebel_alliance/rogue_shadow_r@2x.png)
-* ![Tantive IV](src/main/resources/icons/rebel_alliance/tantive_iv@2x.png) Tantive IV ![Tantive IV](src/main/resources/icons/rebel_alliance/tantive_iv_r@2x.png)
-* ![Taylander Shuttle](src/main/resources/icons/rebel_alliance/taylander_shuttle@2x.png) Taylander Shuttle ![Taylander Shuttle](src/main/resources/icons/rebel_alliance/taylander_shuttle_r@2x.png)
 * ![T-16 Skyhopper](src/main/resources/icons/rebel_alliance/t_16_skyhopper@2x.png) T-16 Skyhopper ![T-16 Skyhopper](src/main/resources/icons/rebel_alliance/t_16_skyhopper_r@2x.png)
 * ![T-47 Snowspeeder](src/main/resources/icons/rebel_alliance/t_47_snowspeeder@2x.png) T-47 Snowspeeder ![T-47 Snowspeeder](src/main/resources/icons/rebel_alliance/t_47_snowspeeder_r@2x.png)
+* ![Tantive IV](src/main/resources/icons/rebel_alliance/tantive_iv@2x.png) Tantive IV ![Tantive IV](src/main/resources/icons/rebel_alliance/tantive_iv_r@2x.png)
+* ![Taylander Shuttle](src/main/resources/icons/rebel_alliance/taylander_shuttle@2x.png) Taylander Shuttle ![Taylander Shuttle](src/main/resources/icons/rebel_alliance/taylander_shuttle_r@2x.png)
 * ![U-Wing](src/main/resources/icons/rebel_alliance/u_wing@2x.png) U-Wing ![U-Wing](src/main/resources/icons/rebel_alliance/u_wing_r@2x.png)
 * ![X-Wing](src/main/resources/icons/rebel_alliance/x_wing@2x.png) X-Wing ![X-Wing](src/main/resources/icons/rebel_alliance/x_wing_r@2x.png)
 * ![Y-Wing](src/main/resources/icons/rebel_alliance/y_wing@2x.png) Y-Wing ![Y-Wing](src/main/resources/icons/rebel_alliance/y_wing_r@2x.png)

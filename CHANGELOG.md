@@ -3,6 +3,12 @@
 # starwars-progress-bar Changelog
 
 ## [Unreleased]
+### Changed
+- Renamed Anakin Skywalker's Eta-2 Actis
+- Renamed Obi-Wan Kenobi's Delta-7
+
+### Added
+- Ahsoka Tano's Delta-7 to Jedi Order faction
 
 ## [1.2.0] - 2022-07-18
 ### Changed
