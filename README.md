@@ -62,12 +62,14 @@ The plugin can be configured via the settings. There you can e.g. select which v
 
 ### Jedi Order
 
-* ![Ahsoka Tano's Delta-7-Aethersprite Starfighter](src/main/resources/icons/jedi/ahsoka_tanos_delta_7_jedi_starfighter@2x.png) Ahsoka Tano's Delta-7-Aethersprite Starfighter ![Ahsoka Tano's Delta-7-Aethersprite Starfighter](src/main/resources/icons/jedi/ahsoka_tanos_delta_7_jedi_starfighter_r@2x.png)
+* ![Ahsoka Tano's Delta-7b-Aethersprite Starfighter](src/main/resources/icons/jedi/ahsoka_tanos_delta_7b_jedi_starfighter@2x.png) Ahsoka Tano's Delta-7b-Aethersprite Starfighter ![Ahsoka Tano's Delta-7b-Aethersprite Starfighter](src/main/resources/icons/jedi/ahsoka_tanos_delta_7b_jedi_starfighter_r@2x.png)
+* ![Anakin Skywalker's Delta-7b-Aethersprite Starfighter](src/main/resources/icons/jedi/anakin_skywalkers_delta_7b_jedi_starfighter@2x.png) Anakin Skywalker's Delta-7b-Aethersprite Starfighter ![Anakin Skywalker's Delta-7b-Aethersprite Starfighter](src/main/resources/icons/jedi/anakin_skywalkers_delta_7b_jedi_starfighter_r@2x.png)
 * ![Anakin Skywalker's Eta-2 Actis Interceptor](src/main/resources/icons/jedi/anakin_skywalkers_eta_2_actis_interceptor@2x.png) Anakin Skywalker's Eta-2 Actis Interceptor ![Anakin Skywalker's Eta-2 Actis Interceptor](src/main/resources/icons/jedi/anakin_skywalkers_eta_2_actis_interceptor_r@2x.png)
 * ![Azure Angel](src/main/resources/icons/jedi/azure_angel@2x.png) Azure Angel ![Azure Angel](src/main/resources/icons/jedi/azure_angel_r@2x.png)
 * ![Blade of Dorin](src/main/resources/icons/jedi/blade_of_dorin@2x.png) Blade of Dorin ![Blade of Dorin](src/main/resources/icons/jedi/blade_of_dorin_r@2x.png)
 * ![DC0052 Speeder](src/main/resources/icons/jedi/dc0052_speeder@2x.png) DC0052 Speeder ![DC0052 Speeder](src/main/resources/icons/jedi/dc0052_speeder_r@2x.png)
 * ![Obi-Wan Kenobi's Delta-7-Aethersprite Starfighter](src/main/resources/icons/jedi/obi_wan_kenobis_delta_7_jedi_starfighter@2x.png) Obi-Wan Kenobi's Delta-7-Aethersprite Starfighter ![Obi-Wan Kenobi's Delta-7-Aethersprite Starfighter](src/main/resources/icons/jedi/obi_wan_kenobis_delta_7_jedi_starfighter_r@2x.png)
+* ![Obi-Wan Kenobi's Eta-2 Actis Interceptor](src/main/resources/icons/jedi/obi_wan_kenobis_eta_2_actis_interceptor@2x.png) Obi-Wan Kenobi's Eta-2 Actis Interceptor ![Obi-Wan Kenobi's Eta-2 Actis Interceptor](src/main/resources/icons/jedi/obi_wan_kenobis_eta_2_actis_interceptor_r@2x.png)
 
 ### Galactic Republic
 

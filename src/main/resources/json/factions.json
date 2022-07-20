@@ -65,9 +65,16 @@
       "id": "jedi",
       "vehicles": [
         {
-          "id": "ahsoka_tanos_delta_7_jedi_starfighter",
+          "id": "ahsoka_tanos_delta_7b_jedi_starfighter",
           "ionEngine": "blue",
-          "xShift": -4,
+          "xShift": -6,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "id": "anakin_skywalkers_delta_7b_jedi_starfighter",
+          "ionEngine": "blue",
+          "xShift": -6,
           "yShift": -6,
           "velocity": 2.5
         },
@@ -101,6 +108,13 @@
         },
         {
           "id": "anakin_skywalkers_eta_2_actis_interceptor",
+          "ionEngine": "blue",
+          "xShift": -6,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "id": "obi_wan_kenobis_eta_2_actis_interceptor",
           "ionEngine": "blue",
           "xShift": -6,
           "yShift": -6,

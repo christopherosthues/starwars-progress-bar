@@ -1,3 +1,4 @@
+import org.jetbrains.changelog.date
 import org.jetbrains.changelog.markdownToHTML
 import org.jetbrains.intellij.tasks.RunPluginVerifierTask.FailureLevel
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
@@ -17,6 +18,8 @@ plugins {
     id("org.jetbrains.qodana") version "0.1.13"
     // Kotlin linter
     id("io.gitlab.arturbosch.detekt").version("1.21.0-RC2")
+    // Readme Plugin
+    id("com.christopherosthues.build")
 }
 
 group = properties("pluginGroup")
@@ -149,4 +152,8 @@ tasks {
         // https://plugins.jetbrains.com/docs/intellij/deployment.html#specifying-a-release-channel
         channels.set(listOf(properties("pluginVersion").split('-').getOrElse(1) { "default" }.split('.').first()))
     }
+}
+
+changelog {
+    header.set(provider { "[${version.get()}] - ${date()}" })
 }
