@@ -1,3 +1,4 @@
+import kotlin.collections.listOf
 import org.jetbrains.changelog.date
 import org.jetbrains.changelog.markdownToHTML
 import org.jetbrains.intellij.tasks.RunPluginVerifierTask.FailureLevel
@@ -60,7 +61,8 @@ intellij {
 // Configure Gradle Changelog Plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
 changelog {
     version.set(properties("pluginVersion"))
-    groups.set(emptyList())
+    groups.set(listOf("Added", "Changed", "Removed", "Fixed"))
+    header.set(provider { "[${version.get()}] - ${date()}" })
 }
 
 // Configure Gradle Qodana Plugin - read more: https://github.com/JetBrains/gradle-qodana-plugin
@@ -152,8 +154,4 @@ tasks {
         // https://plugins.jetbrains.com/docs/intellij/deployment.html#specifying-a-release-channel
         channels.set(listOf(properties("pluginVersion").split('-').getOrElse(1) { "default" }.split('.').first()))
     }
-}
-
-changelog {
-    header.set(provider { "[${version.get()}] - ${date()}" })
 }
