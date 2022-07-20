@@ -6,6 +6,7 @@ import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.ui.StarWarsResourceLoader
 import com.christopherosthues.starwarsprogressbar.ui.configuration.StarWarsState
+import com.christopherosthues.starwarsprogressbar.ui.events.VehicleClickListener
 import com.intellij.ui.roots.ScalableIconComponent
 import com.intellij.util.ui.JBUI
 import com.intellij.util.ui.ThreeStateCheckBox
@@ -13,6 +14,8 @@ import com.jetbrains.rd.util.AtomicInteger
 import java.awt.GridBagConstraints
 import java.awt.GridBagLayout
 import java.awt.event.ItemEvent
+import java.awt.event.MouseAdapter
+import java.awt.event.MouseEvent
 import java.beans.PropertyChangeEvent
 import java.util.stream.Collectors
 import javax.swing.JCheckBox
@@ -25,6 +28,7 @@ internal class FactionPanel(private val faction: StarWarsFaction) : JPanel(GridB
     private val selectVehiclesCheckbox = ThreeStateCheckBox(ThreeStateCheckBox.State.SELECTED)
     private val vehiclesCheckboxes: MutableMap<String, JCheckBox> = HashMap()
     private var vehicleRowCount: Int = 0
+    private var vehicleClickListener: VehicleClickListener? = null
 
     val selectedVehiclesCount: AtomicInteger = AtomicInteger(0)
 
@@ -59,6 +63,10 @@ internal class FactionPanel(private val faction: StarWarsFaction) : JPanel(GridB
 
     fun selectVehicles(isSelected: Boolean) {
         vehiclesCheckboxes.values.forEach { c: JCheckBox -> c.isSelected = isSelected }
+    }
+
+    fun addVehicleListener(listener: VehicleClickListener) {
+        vehicleClickListener = listener
     }
 
     private fun addFactionCheckBox() {
@@ -103,8 +111,14 @@ internal class FactionPanel(private val faction: StarWarsFaction) : JPanel(GridB
             updateSelectionButtons()
         }
 
+        val iconComponent = ScalableIconComponent(StarWarsResourceLoader.getIcon(vehicle.fileName))
+        iconComponent.addMouseListener(object : MouseAdapter() {
+            override fun mouseClicked(e: MouseEvent?) {
+                vehicleClickListener?.vehicleClicked(vehicle)
+            }
+        })
         addLabeledComponent(
-            ScalableIconComponent(StarWarsResourceLoader.getIcon(vehicle.fileName)),
+            iconComponent,
             checkBox
         )
         vehiclesCheckboxes[vehicle.id] = checkBox
@@ -130,7 +144,8 @@ internal class FactionPanel(private val faction: StarWarsFaction) : JPanel(GridB
         selectVehiclesCheckbox.text = StarWarsBundle.message(
             BundleConstants.SELECTED,
             selected, numberOfVehicles,
-            selectionText)
+            selectionText
+        )
     }
 
     private fun addLabeledComponent(label: JComponent?, component: JComponent) {

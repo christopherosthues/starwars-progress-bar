@@ -5,6 +5,7 @@ import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
 import com.christopherosthues.starwarsprogressbar.models.FactionHolder
 import com.christopherosthues.starwarsprogressbar.ui.configuration.StarWarsState
+import com.christopherosthues.starwarsprogressbar.ui.events.VehicleClickListener
 import com.intellij.util.ui.JBUI
 import com.intellij.util.ui.ThreeStateCheckBox
 import java.awt.BorderLayout
@@ -49,6 +50,10 @@ internal class VehiclesPanel : JTitledPanel(StarWarsBundle.message(BundleConstan
 
     fun updateUI(starWarsState: StarWarsState) {
         factionPanels.forEach { it.updateUI(starWarsState) }
+    }
+
+    fun addVehicleListener(listener: VehicleClickListener) {
+        factionPanels.forEach { it.addVehicleListener(listener) }
     }
 
     private fun createSelectionPanel() {

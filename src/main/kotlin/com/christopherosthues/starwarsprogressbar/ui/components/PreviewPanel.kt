@@ -73,9 +73,13 @@ internal class PreviewPanel(
     }
 
     private fun setProgressBarUI(enabledVehicles: Map<String, Boolean>?) {
+        setProgressBarUI(selectRandomVehicle(enabledVehicles), selectRandomVehicle(enabledVehicles))
+    }
+
+    private fun setProgressBarUI(determinateVehicle: StarWarsVehicle, indeterminateVehicle: StarWarsVehicle) {
         determinateProgressBar.setUI(
             StarWarsProgressBarUI(
-                selectRandomVehicle(enabledVehicles),
+                determinateVehicle,
                 showVehicleNames,
                 showToolTips,
                 sameVehicleVelocity
@@ -84,7 +88,7 @@ internal class PreviewPanel(
 
         indeterminateProgressBar.setUI(
             StarWarsProgressBarUI(
-                selectRandomVehicle(enabledVehicles),
+                indeterminateVehicle,
                 showVehicleNames,
                 showToolTips,
                 sameVehicleVelocity
@@ -98,6 +102,10 @@ internal class PreviewPanel(
         } else {
             VehicleSelector.selectRandomVehicle()
         }
+    }
+
+    fun selectVehicle(vehicle: StarWarsVehicle) {
+        setProgressBarUI(vehicle, vehicle)
     }
 
     fun repaintProgressBar() {

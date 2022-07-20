@@ -17,8 +17,6 @@ plugins {
     id("org.jetbrains.qodana") version "0.1.13"
     // Kotlin linter
     id("io.gitlab.arturbosch.detekt").version("1.21.0-RC2")
-    // Project Readme Plugin
-    id("com.christopherosthues.build")
 }
 
 group = properties("pluginGroup")

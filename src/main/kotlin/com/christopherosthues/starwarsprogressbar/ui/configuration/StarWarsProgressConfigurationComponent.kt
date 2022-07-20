@@ -1,8 +1,10 @@
 package com.christopherosthues.starwarsprogressbar.ui.configuration
 
+import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.ui.components.PreviewPanel
 import com.christopherosthues.starwarsprogressbar.ui.components.UiOptionsPanel
 import com.christopherosthues.starwarsprogressbar.ui.components.VehiclesPanel
+import com.christopherosthues.starwarsprogressbar.ui.events.VehicleClickListener
 import com.intellij.util.ui.FormBuilder
 import java.awt.BorderLayout
 import javax.swing.JPanel
@@ -80,6 +82,11 @@ internal class StarWarsProgressConfigurationComponent {
     }
 
     private fun createVehicleSection(formBuilder: FormBuilder) {
+        vehiclesPanel.addVehicleListener(object: VehicleClickListener {
+            override fun vehicleClicked(vehicle: StarWarsVehicle) {
+                previewPanel.selectVehicle(vehicle)
+            }
+        })
         formBuilder.addComponent(vehiclesPanel)
     }
 }

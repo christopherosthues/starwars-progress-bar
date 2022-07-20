@@ -9,6 +9,7 @@
 
 ### Added
 - Ahsoka Tano's Delta-7 to Jedi Order faction
+- Update preview when the icon of a vehicle was clicked
 
 ## [1.2.0] - 2022-07-18
 ### Changed
