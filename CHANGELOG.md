@@ -9,7 +9,7 @@
 
 ### Added
 - Ahsoka Tano's and Anakin Skywalker's Delta-7b to Jedi Order faction
-- Obi-Wan Kenobi's Eta-2 Actis to Jedi Order faction
+- Ahsoka Tano's and Obi-Wan Kenobi's Eta-2 Actis to Jedi Order faction
 - Update preview when the icon of a vehicle was clicked
 
 ## [1.2.0] - 2022-07-18

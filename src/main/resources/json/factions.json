@@ -119,6 +119,13 @@
           "xShift": -6,
           "yShift": -6,
           "velocity": 2.5
+        },
+        {
+          "id": "ahsoka_tanos_eta_2_actis_interceptor",
+          "ionEngine": "blue",
+          "xShift": -6,
+          "yShift": -6,
+          "velocity": 2.5
         }
       ]
     },
