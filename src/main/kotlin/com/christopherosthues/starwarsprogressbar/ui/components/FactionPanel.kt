@@ -2,11 +2,15 @@ package com.christopherosthues.starwarsprogressbar.ui.components
 
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
+import com.christopherosthues.starwarsprogressbar.constants.PluginConstants
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.notification.GotIt
+import com.christopherosthues.starwarsprogressbar.notification.GotItService
 import com.christopherosthues.starwarsprogressbar.ui.StarWarsResourceLoader
 import com.christopherosthues.starwarsprogressbar.ui.configuration.StarWarsState
 import com.christopherosthues.starwarsprogressbar.ui.events.VehicleClickListener
+import com.intellij.ui.GotItTooltip
 import com.intellij.ui.roots.ScalableIconComponent
 import com.intellij.util.ui.JBUI
 import com.intellij.util.ui.ThreeStateCheckBox
@@ -49,6 +53,19 @@ internal class FactionPanel(private val faction: StarWarsFaction) : JPanel(GridB
             }
 
             updateSelectionButtons()
+
+            // TODO: no hard reference to const string trade_federation. Order could change in the future
+            if (faction.id == "trade_federation") {
+                createGotItTooltip()
+            }
+        }
+    }
+
+    private fun createGotItTooltip() {
+        if (components.size > 1 && components[1] is ScalableIconComponent) {
+            val icon = components[1] as ScalableIconComponent
+            val tooltip = GotItTooltip(PluginConstants.GotItIconSelectionId, StarWarsBundle.message(BundleConstants.GOT_IT_ICON_SELECTION), null)
+            GotItService.addGotItMessage(GotIt(tooltip, icon, GotItTooltip.BOTTOM_MIDDLE))
         }
     }
 
@@ -113,7 +130,7 @@ internal class FactionPanel(private val faction: StarWarsFaction) : JPanel(GridB
 
         val iconComponent = ScalableIconComponent(StarWarsResourceLoader.getIcon(vehicle.fileName))
         iconComponent.addMouseListener(object : MouseAdapter() {
-            override fun mouseClicked(e: MouseEvent?) {
+            override fun mousePressed(e: MouseEvent?) {
                 vehicleClickListener?.vehicleClicked(vehicle)
             }
         })

@@ -8,7 +8,7 @@ import java.awt.GridLayout
 
 private const val GAP = 5
 
-internal class UiOptionsPanel() : JTitledPanel(StarWarsBundle.message(BundleConstants.UI_OPTIONS)) {
+internal class UiOptionsPanel : JTitledPanel(StarWarsBundle.message(BundleConstants.UI_OPTIONS)) {
     private val showVehicleNameCheckBox = JBCheckBox(StarWarsBundle.message(BundleConstants.SHOW_VEHICLE_NAME), false)
     private val showToolTipsCheckBox = JBCheckBox(StarWarsBundle.message(BundleConstants.SHOW_TOOL_TIPS), true)
     private val sameVehicleVelocityCheckBox = JBCheckBox(

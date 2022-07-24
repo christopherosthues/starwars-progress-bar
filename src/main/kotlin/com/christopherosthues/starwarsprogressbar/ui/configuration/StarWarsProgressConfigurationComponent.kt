@@ -1,6 +1,7 @@
 package com.christopherosthues.starwarsprogressbar.ui.configuration
 
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.notification.GotItService
 import com.christopherosthues.starwarsprogressbar.ui.components.PreviewPanel
 import com.christopherosthues.starwarsprogressbar.ui.components.UiOptionsPanel
 import com.christopherosthues.starwarsprogressbar.ui.components.VehiclesPanel
@@ -35,6 +36,8 @@ internal class StarWarsProgressConfigurationComponent {
 
     init {
         createUI()
+
+        GotItService.showGotItTooltips()
     }
 
     fun updateUI(starWarsState: StarWarsState?) {

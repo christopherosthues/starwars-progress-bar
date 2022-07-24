@@ -76,14 +76,8 @@ qodana {
 // Kotlin DSL
 tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
     reports {
-        xml.required.set(true)
-        xml.outputLocation.set(file("build/reports/mydetekt.xml"))
         html.required.set(true)
         html.outputLocation.set(file("build/reports/mydetekt.html"))
-        txt.required.set(true)
-        txt.outputLocation.set(file("build/reports/mydetekt.txt"))
-        sarif.required.set(true)
-        sarif.outputLocation.set(file("build/reports/mydetekt.sarif"))
     }
 }
 
