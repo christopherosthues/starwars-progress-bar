@@ -3,11 +3,13 @@ package com.christopherosthues.starwarsprogressbar.ui.components
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.constants.PluginConstants
+import com.christopherosthues.starwarsprogressbar.models.FactionHolder
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.notification.GotIt
 import com.christopherosthues.starwarsprogressbar.notification.GotItService
 import com.christopherosthues.starwarsprogressbar.ui.StarWarsResourceLoader
+import com.christopherosthues.starwarsprogressbar.ui.configuration.StarWarsPersistentStateComponent
 import com.christopherosthues.starwarsprogressbar.ui.configuration.StarWarsState
 import com.christopherosthues.starwarsprogressbar.ui.events.VehicleClickListener
 import com.intellij.ui.GotItTooltip
@@ -54,8 +56,7 @@ internal class FactionPanel(private val faction: StarWarsFaction) : JPanel(GridB
 
             updateSelectionButtons()
 
-            // TODO: no hard reference to const string trade_federation. Order could change in the future
-            if (faction.id == "trade_federation") {
+            if (faction.id == FactionHolder.defaultFactions.first().id) {
                 createGotItTooltip()
             }
         }

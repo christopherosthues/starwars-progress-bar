@@ -3,6 +3,15 @@
 # starwars-progress-bar Changelog
 
 ## [Unreleased]
+### Added
+
+### Changed
+
+### Removed
+
+### Fixed
+
+## [1.3.0] - 2022-07-27
 ### Changed
 - Renamed Anakin Skywalker's Eta-2 Actis
 - Renamed Obi-Wan Kenobi's Delta-7

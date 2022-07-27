@@ -53,6 +53,7 @@ intellij {
     pluginName.set(properties("pluginName"))
     version.set(properties("platformVersion"))
     type.set(properties("platformType"))
+    updateSinceUntilBuild.set(false)
 
     // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file.
     plugins.set(properties("platformPlugins").split(',').map(String::trim).filter(String::isNotEmpty))
@@ -78,6 +79,10 @@ tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
     reports {
         html.required.set(true)
         html.outputLocation.set(file("build/reports/mydetekt.html"))
+        md.required.set(false)
+        sarif.required.set(false)
+        txt.required.set(false)
+        xml.required.set(false)
     }
 }
 
@@ -96,9 +101,8 @@ tasks {
 
     patchPluginXml {
         version.set(properties("pluginVersion"))
-        sinceBuild.set(properties("pluginSinceBuild"))
-        //untilBuild.set(properties("pluginUntilBuild"))
         untilBuild.set(null as String?)
+        sinceBuild.set(properties("pluginSinceBuild"))
 
         // Extract the <!-- Plugin description --> section from README.md and provide for the plugin's manifest
         pluginDescription.set(
