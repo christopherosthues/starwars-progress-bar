@@ -39,7 +39,7 @@ kotlin {
 }
 
 dependencies {
-    implementation("com.google.code.gson:gson:2.8.9")
+    implementation("com.google.code.gson:gson:2.9.0")
 }
 
 detekt {
@@ -145,6 +145,7 @@ tasks {
     }
 
     publishPlugin {
+        dependsOn("includeVehicles")
         dependsOn("patchChangelog")
         token.set(System.getenv("PUBLISH_TOKEN"))
         // pluginVersion is based on the SemVer (https://semver.org) and supports pre-release labels, like 2.1.7-alpha.3
