@@ -21,8 +21,10 @@
 package com.christopherosthues.starwarsprogressbar.ui
 
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
+import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
-import com.christopherosthues.starwarsprogressbar.ui.configuration.StarWarsPersistentStateComponent
+import com.christopherosthues.starwarsprogressbar.ui.components.ColoredImageComponent
+import com.christopherosthues.starwarsprogressbar.util.StarWarsResourceLoader
 import com.intellij.ui.JBColor
 import com.intellij.ui.scale.JBUIScale
 import com.intellij.util.ui.GraphicsUtil
@@ -50,20 +52,23 @@ internal class StarWarsProgressBarUI(
     private val vehicle: StarWarsVehicle,
     private val showVehicleName: () -> Boolean,
     private val showToolTips: () -> Boolean,
-    private val sameVehicleVelocity: () -> Boolean,
+    private val showFactionCrests: () -> Boolean,
+    private val sameVehicleVelocity: () -> Boolean
 ) : BasicProgressBarUI() {
 
     private val forwardIcon = StarWarsResourceLoader.getIcon(vehicle.fileName)
     private val backwardIcon = StarWarsResourceLoader.getReversedIcon(vehicle.fileName)
+    private val factionCrestIcon = ColoredImageComponent(StarWarsResourceLoader.getFactionLogo(vehicle.factionId, false))
     private var velocity = getVelocity()
     private var position = 0
 
-
     constructor(vehicle: StarWarsVehicle) : this(
         vehicle,
+        // TODO: extract default values into own class (progress bar UI + StarWarsState + configuration panels
         { StarWarsPersistentStateComponent.instance.state?.showVehicleNames ?: false },
         { StarWarsPersistentStateComponent.instance.state?.showToolTips ?: true },
-        { StarWarsPersistentStateComponent.instance.state?.sameVehicleVelocity ?: false },
+        { StarWarsPersistentStateComponent.instance.state?.showFactionCrests ?: false },
+        { StarWarsPersistentStateComponent.instance.state?.sameVehicleVelocity ?: false }
     )
 
     private fun getVelocity(): Float {
@@ -126,44 +131,45 @@ internal class StarWarsProgressBarUI(
             } else {
                 super.paintIndeterminate(g, c)
             }
-            return
+        } else {
+            setProgressBarText()
+            setToolTipText()
+
+            val config = GraphicsUtil.setupAAPainting(g)
+            val graphics2D = g as Graphics2D
+            val border = progressBar.insets
+            val width = progressBar.width
+            var height = progressBar.preferredSize.height
+            if (isOdd(c.height - height)) {
+                height++
+            }
+            val barRectWidth = width - (border.right + border.left)
+            val barRectHeight = height - (border.top + border.bottom)
+            if (barRectWidth <= 0 || barRectHeight <= 0) {
+                return
+            }
+            val amountFull = if (paintDeterminate) getAmountFull(border, barRectWidth, barRectHeight) else position
+
+            graphics2D.color = getBackgroundColor(c)
+            if (c.isOpaque) {
+                g.fillRect(0, 0, width, height)
+            }
+
+            // TODO: investigate why progressbar text is not painted after changing theme/look and feel
+            val rectangle2D = getRoundRectangle(width, height)
+            drawProgress(width, height, amountFull, graphics2D, rectangle2D)
+            drawFactionCrest(width, height, graphics2D, rectangle2D, c)
+            drawIcon(amountFull, graphics2D, rectangle2D)
+            drawBorder(rectangle2D, graphics2D)
+            paintStringIfNeeded(graphics2D, c, height, border, barRectWidth, barRectHeight, amountFull)
+
+            config.restore()
         }
-
-        setProgressBarText()
-        setToolTipText()
-
-        val config = GraphicsUtil.setupAAPainting(g)
-        val graphics2D = g as Graphics2D
-        val border = progressBar.insets
-        val width = progressBar.width
-        var height = progressBar.preferredSize.height
-        if (isOdd(c.height - height)) {
-            height++
-        }
-        val barRectWidth = width - (border.right + border.left)
-        val barRectHeight = height - (border.top + border.bottom)
-        if (barRectWidth <= 0 || barRectHeight <= 0) {
-            return
-        }
-        val amountFull = if (paintDeterminate) getAmountFull(border, barRectWidth, barRectHeight) else position
-
-        graphics2D.color = getBackgroundColor(c)
-        if (c.isOpaque) {
-            g.fillRect(0, 0, width, height)
-        }
-
-        val rectangle2D = getRoundRectangle(width, height)
-        drawProgress(width, height, amountFull, graphics2D, rectangle2D)
-        drawIcon(amountFull, graphics2D, rectangle2D)
-        drawBorder(rectangle2D, graphics2D)
-        paintStringIfNeeded(graphics2D, c, height, border, barRectWidth, barRectHeight, amountFull)
-
-        config.restore()
     }
 
     private fun isUnsupported(graphics: Graphics, component: JComponent): Boolean {
         return graphics !is Graphics2D || progressBar.orientation != SwingConstants.HORIZONTAL ||
-                !component.componentOrientation.isLeftToRight
+            !component.componentOrientation.isLeftToRight
     }
 
     private fun setToolTipText() {
@@ -207,6 +213,39 @@ internal class StarWarsProgressBarUI(
         )
     }
 
+    private fun drawFactionCrest(width: Int, height: Int, graphics2D: Graphics2D, clip: Shape, component: JComponent) {
+        if (showFactionCrests()) {
+            val previousClip = graphics2D.clip
+            val previousColor = graphics2D.color
+            graphics2D.clip = clip
+            graphics2D.color = component.foreground
+
+            var x = 4.0
+            val y = (height.toDouble() + JBUIScale.scale(-factionCrestIcon.preferredSize.height)) / 2
+
+            factionCrestIcon.foreground = component.foreground
+            // left crest
+            graphics2D.translate(x, y)
+            factionCrestIcon.paint(graphics2D)
+            graphics2D.translate(-x, 0.0)
+
+            // middle crest
+            x = width.toDouble() / 2 + JBUIScale.scale(-factionCrestIcon.preferredSize.width / 2)
+            graphics2D.translate(x, 0.0)
+            factionCrestIcon.paint(graphics2D)
+            graphics2D.translate(-x, 0.0)
+
+            // right crest
+            x = width.toDouble() + JBUIScale.scale(-factionCrestIcon.preferredSize.width) - 2
+            graphics2D.translate(x, 0.0)
+            factionCrestIcon.paint(graphics2D)
+            graphics2D.translate(-x, -y)
+
+            graphics2D.clip = previousClip
+            graphics2D.color = previousColor
+        }
+    }
+
     private fun drawProgress(
         width: Int,
         height: Int,
@@ -217,8 +256,7 @@ internal class StarWarsProgressBarUI(
         val paint = graphics2D.paint
         val clip = graphics2D.clip
         val movingRight = velocity >= 0
-        val fillPaint = getFillPaint()
-        graphics2D.paint = fillPaint
+        graphics2D.paint = getFillPaint()
         graphics2D.clip =
             if (movingRight) Rectangle(progress, height) else Rectangle(progress, 0, progressBar.width, height)
         graphics2D.fill(rectangle2D)
@@ -266,8 +304,8 @@ internal class StarWarsProgressBarUI(
         val isMovingRight = velocity >= 0
         val icon = if (isMovingRight) forwardIcon else backwardIcon
         val x = amountFull +
-                if (isMovingRight) JBUIScale.scale(vehicle.xShift)
-                else JBUIScale.scale(-icon.iconWidth - vehicle.xShift)
+            if (isMovingRight) JBUIScale.scale(vehicle.xShift)
+            else JBUIScale.scale(-icon.iconWidth - vehicle.xShift)
         val y = vehicle.yShift
         icon.paintIcon(progressBar, graphics2D, x, y)
         graphics2D.clip = previousClip

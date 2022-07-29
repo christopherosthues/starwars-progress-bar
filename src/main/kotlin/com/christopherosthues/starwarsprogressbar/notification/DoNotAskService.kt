@@ -6,7 +6,6 @@ import com.intellij.notification.NotificationGroup
 
 object DoNotAskService {
     fun canShowNotification(): Boolean {
-
         val id = "Notification.DoNotAsk-${PluginConstants.NotificationGroupId}"
         val doNotAsk = PropertiesComponent.getInstance().getBoolean(id, false)
 

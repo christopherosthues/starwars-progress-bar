@@ -1,17 +1,30 @@
 package com.christopherosthues.starwarsprogressbar.models
 
 internal object FactionHolder {
-    var factions: List<StarWarsFaction> = listOf()
+    lateinit var factions: List<StarWarsFaction>
+        private set
 
-    val defaultFactions: List<StarWarsFaction>
-        get() = factions.filter { it.id.isNotEmpty() }
+    lateinit var defaultFactions: List<StarWarsFaction>
+        private set
 
-    val missingVehicle: StarWarsVehicle
-        get() = factions.first { it.id.isEmpty() }.vehicles.first()
+    lateinit var missingVehicle: StarWarsVehicle
+        private set
 
-    val defaultVehicles: List<StarWarsVehicle>
-        get() = factions.filter { it.id.isNotEmpty() }.fold(mutableListOf()) { acc, starWarsFaction ->
+    lateinit var defaultVehicles: List<StarWarsVehicle>
+        private set
+
+    init {
+        updateFactions(listOf())
+    }
+
+    fun updateFactions(factions: List<StarWarsFaction>) {
+        this.factions = factions
+        defaultFactions = factions.filter { it.id.isNotEmpty() }
+        missingVehicle =
+            factions.firstOrNull { it.id.isEmpty() }?.vehicles?.firstOrNull() ?: StarWarsVehicle.missingVehicle
+        defaultVehicles = factions.filter { it.id.isNotEmpty() }.fold(mutableListOf()) { acc, starWarsFaction ->
             acc.addAll(starWarsFaction.vehicles)
             acc
         }
+    }
 }

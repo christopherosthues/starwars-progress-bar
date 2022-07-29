@@ -1,0 +1,153 @@
+package com.christopherosthues.starwarsprogressbar.configuration
+
+import com.christopherosthues.starwarsprogressbar.models.FactionHolder
+import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
+import com.intellij.idea.TestFor
+import io.mockk.every
+import io.mockk.mockkObject
+import io.mockk.unmockkAll
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertFalse
+import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertAll
+
+@TestFor(classes = [StarWarsState::class])
+class StarWarsStateTests {
+
+    //region Test lifecycle
+
+    @BeforeEach
+    fun setup() {
+        mockkObject(FactionHolder)
+
+        every { FactionHolder.defaultVehicles } returns listOf()
+    }
+
+    @AfterEach
+    fun tearDown() {
+        unmockkAll()
+    }
+
+    //endregion
+
+    //region Tests
+
+    @Test
+    fun `default values should be set correctly`() {
+        // Arrange
+        val sut = StarWarsState()
+
+        // Act and Assert
+        assertDefaultValues(sut)
+    }
+
+    @Test
+    fun `vehiclesEnabled should return map with all vehicle ids mapped to true`() {
+        // Arrange
+        setupDefaultVehicles()
+        val sut = StarWarsState()
+
+        // Act
+        val result = sut.vehiclesEnabled
+
+        // Assert
+        assertVehiclesEnabled(result)
+    }
+
+    @Test
+    fun `values should be updated on set`() {
+        // Arrange
+        val sut = StarWarsState()
+        val showVehicleNames = true
+        val showToolTips = false
+        val showFactionCrests = true
+        val sameVehicleVelocity = true
+        val enableNewVehicles = false
+        val version = "1.0.0"
+
+        assertDefaultValues(sut)
+
+        // Act
+        sut.vehiclesEnabled = mapOf("1" to false, "2" to true)
+        sut.showVehicleNames = showVehicleNames
+        sut.showToolTips = showToolTips
+        sut.showFactionCrests = showFactionCrests
+        sut.sameVehicleVelocity = sameVehicleVelocity
+        sut.enableNewVehicles = enableNewVehicles
+        sut.version = version
+
+        // Assert
+        assertAll(
+            { assertEquals(showVehicleNames, sut.showVehicleNames) },
+            { assertEquals(showToolTips, sut.showToolTips) },
+            { assertEquals(showFactionCrests, sut.showFactionCrests) },
+            { assertEquals(sameVehicleVelocity, sut.sameVehicleVelocity) },
+            { assertEquals(enableNewVehicles, sut.enableNewVehicles) },
+            { assertEquals(version, sut.version) },
+            { assertTrue(sut.vehiclesEnabled.isNotEmpty()) },
+            { assertEquals(2, sut.vehiclesEnabled.size) },
+            { assertFalse(sut.vehiclesEnabled["1"]!!) },
+            { assertTrue(sut.vehiclesEnabled["2"]!!) }
+        )
+    }
+
+    @Test
+    fun `vehiclesEnabled should be updated on set`() {
+        // Arrange
+        setupDefaultVehicles()
+        val sut = StarWarsState()
+
+        assertVehiclesEnabled(sut.vehiclesEnabled)
+
+        // Act
+        sut.vehiclesEnabled = mapOf("1" to false, "2" to true)
+
+        // Assert
+        assertAll(
+            { assertTrue(sut.vehiclesEnabled.isNotEmpty()) },
+            { assertEquals(2, sut.vehiclesEnabled.size) },
+            { assertFalse(sut.vehiclesEnabled["1"]!!) },
+            { assertTrue(sut.vehiclesEnabled["2"]!!) }
+        )
+    }
+
+    //endregion
+
+    //region Helper methods
+
+    private fun assertDefaultValues(sut: StarWarsState) {
+        assertAll(
+            { assertFalse(sut.showVehicleNames) },
+            { assertTrue(sut.showToolTips) },
+            { assertFalse(sut.showFactionCrests) },
+            { assertFalse(sut.sameVehicleVelocity) },
+            { assertTrue(sut.enableNewVehicles) },
+            { assertEquals("", sut.version) },
+            { assertTrue(sut.vehiclesEnabled.isEmpty()) }
+        )
+    }
+
+    private fun assertVehiclesEnabled(vehiclesEnabled: Map<String, Boolean>) {
+        assertAll(
+            { assertEquals(6, vehiclesEnabled.size) },
+            { assertTrue(vehiclesEnabled.keys.containsAll(listOf("1", "2", "3", "4", "5", "6"))) },
+            { assertTrue(vehiclesEnabled.values.all { v -> v }) }
+        )
+    }
+
+    private fun setupDefaultVehicles() {
+        every { FactionHolder.defaultVehicles } returns listOf(
+            StarWarsVehicle("1", "a", 2, 3, 4f),
+            StarWarsVehicle("2", "b", 3, 4, 5f),
+            StarWarsVehicle("3", "c", 4, 5, 6f),
+            StarWarsVehicle("4", "d", 5, 6, 7f),
+            StarWarsVehicle("5", "e", 6, 7, 8f),
+            StarWarsVehicle("6", "f", 7, 8, 9f)
+        )
+    }
+
+    //endregion
+}

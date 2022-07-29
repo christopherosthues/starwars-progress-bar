@@ -11,14 +11,18 @@ internal data class StarWarsVehicle(
     val yShift: Int,
     val velocity: Float
 ) {
-    var faction: StarWarsFaction? = null
+    var factionId: String = ""
 
     val fileName: String
-        get() = "${faction!!.id}/${id}"
+        get() = "$factionId/$id"
 
     val localizationKey: String
-        get() = "${BundleConstants.VEHICLES}${id}"
+        get() = "${BundleConstants.VEHICLES}$id"
 
     val color: JBColor
         get() = IonEngineColor.colors[ionEngine] ?: IonEngineColor.BlueEngine
+
+    companion object {
+        val missingVehicle = StarWarsVehicle("missing", "green", -4, -6, 2.5f)
+    }
 }

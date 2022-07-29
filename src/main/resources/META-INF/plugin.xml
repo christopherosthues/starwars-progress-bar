@@ -2,26 +2,29 @@
 <idea-plugin>
     <id>com.christopherosthues.starwarsprogressbar</id>
     <name>Star Wars Progress Bar</name>
-    <vendor email="christopher.osthues@gmail.com" url="https://github.com/christopherosthues">Christopher Osthues</vendor>
+    <vendor email="christopher.osthues@gmail.com" url="https://github.com/christopherosthues">Christopher Osthues
+    </vendor>
 
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationConfigurable parentId="appearance"
-                                 instance="com.christopherosthues.starwarsprogressbar.ui.configuration.StarWarsProgressConfigurable"
+                                 instance="com.christopherosthues.starwarsprogressbar.configuration.StarWarsProgressConfigurable"
                                  id="org.intellij.sdk.settings.AppSettingsConfigurable"
-                                 dynamic="true" />
+                                 dynamic="true"/>
 
-        <applicationService serviceImplementation="com.christopherosthues.starwarsprogressbar.ui.configuration.StarWarsPersistentStateComponent" />
-        <postStartupActivity implementation="com.christopherosthues.starwarsprogressbar.activities.PluginUpdatedActivity" />
-        <notificationGroup displayType="STICKY_BALLOON" id="Star Wars Progress Bar updated" />
+        <applicationService
+                serviceImplementation="com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent"/>
+        <postStartupActivity
+                implementation="com.christopherosthues.starwarsprogressbar.notification.activities.PluginUpdatedActivity"/>
+        <notificationGroup displayType="STICKY_BALLOON" id="Star Wars Progress Bar updated"/>
     </extensions>
 
     <applicationListeners>
         <listener class="com.christopherosthues.starwarsprogressbar.listeners.StarWarsProgressListener"
-                  topic="com.intellij.ide.ui.LafManagerListener" />
+                  topic="com.intellij.ide.ui.LafManagerListener"/>
 
         <listener class="com.christopherosthues.starwarsprogressbar.listeners.StarWarsProgressListener"
-                  topic="com.intellij.ide.plugins.DynamicPluginListener" />
+                  topic="com.intellij.ide.plugins.DynamicPluginListener"/>
     </applicationListeners>
 </idea-plugin>

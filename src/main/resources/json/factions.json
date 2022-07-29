@@ -278,6 +278,13 @@
           "velocity": 2.5
         },
         {
+          "id": "scimitar",
+          "ionEngine": "green",
+          "xShift": -2,
+          "yShift": -6,
+          "velocity": 5
+        },
+        {
           "id": "bloodfin",
           "ionEngine": "green",
           "xShift": -4,

@@ -4,8 +4,13 @@
 
 ## [Unreleased]
 ### Added
+- Darth Maul's Scimitar to CIS faction
+- Possibility of choosing the initial selection of a new vehicle
+- Faction crests to factions in settings
+- Faction crests to progress bar (can be enabled in settings)
 
 ### Changed
+- UI adjustments in settings
 
 ### Removed
 

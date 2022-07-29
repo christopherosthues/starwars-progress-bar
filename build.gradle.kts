@@ -1,8 +1,7 @@
-import kotlin.collections.listOf
 import org.jetbrains.changelog.date
 import org.jetbrains.changelog.markdownToHTML
 import org.jetbrains.intellij.tasks.RunPluginVerifierTask.FailureLevel
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import kotlin.collections.listOf
 
 fun properties(key: String) = project.findProperty(key).toString()
 
@@ -12,14 +11,14 @@ plugins {
     // Kotlin support
     kotlin("jvm")
     // Gradle IntelliJ Plugin
-    id("org.jetbrains.intellij") version "1.7.0"
+    id("org.jetbrains.intellij") version "1.8.0"
     // Gradle Changelog Plugin
     id("org.jetbrains.changelog") version "1.3.1"
     // Gradle Qodana Plugin
     id("org.jetbrains.qodana") version "0.1.13"
     // Kotlin linter
     id("io.gitlab.arturbosch.detekt").version("1.21.0-RC2")
-    // Readme Plugin
+    // Build Plugins
     id("com.christopherosthues.build")
 }
 
@@ -31,20 +30,41 @@ repositories {
     mavenCentral()
 }
 
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(11))
+    }
+}
+
 // Set the JVM language level used to compile sources and generate files - Java 11 is required since 2020.3
 kotlin {
     jvmToolchain {
-        (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(11))
+        languageVersion.set(JavaLanguageVersion.of(11))
     }
 }
 
 dependencies {
     implementation("com.google.code.gson:gson:2.9.0")
+
+    testImplementation(platform("org.junit:junit-bom:5.9.0"))
+    testImplementation("org.junit.jupiter:junit-jupiter:5.9.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:5.9.0")
+    testImplementation("org.junit.platform:junit-platform-launcher:1.9.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.0")
+    testImplementation("org.junit.platform:junit-platform-suite-engine:1.9.0")
+    testImplementation("io.mockk:mockk:1.12.5")
+}
+
+tasks.test {
+    useJUnitPlatform()
+    testLogging {
+        events("passed", "skipped", "failed")
+    }
 }
 
 detekt {
     toolVersion = "1.21.0-RC2"
-    // config = files("config/detekt/detekt.yml")
+    config = files("config/detekt/detekt.yml")
     buildUponDefaultConfig = true
 }
 
@@ -118,15 +138,24 @@ tasks {
         )
 
         // Get the latest available change notes from the changelog file
-        changeNotes.set(provider {
-            changelog.run {
-                getOrNull(properties("pluginVersion")) ?: getLatest()
-            }.toHTML()
-        })
+        changeNotes.set(
+            provider {
+                changelog.run {
+                    getOrNull(properties("pluginVersion")) ?: getLatest()
+                }.toHTML()
+            }
+        )
     }
 
     runPluginVerifier {
-        failureLevel.set(listOf(FailureLevel.COMPATIBILITY_PROBLEMS, FailureLevel.NOT_DYNAMIC))
+        failureLevel.set(
+            listOf(
+                FailureLevel.COMPATIBILITY_PROBLEMS,
+                FailureLevel.NOT_DYNAMIC,
+                FailureLevel.DEPRECATED_API_USAGES,
+                FailureLevel.INTERNAL_API_USAGES
+            )
+        )
     }
 
     // Configure UI tests plugin

@@ -7,6 +7,10 @@ object GotItService {
         gotItTooltips.add(tooltip)
     }
 
+    fun reset() {
+        gotItTooltips.clear()
+    }
+
     fun showGotItTooltips() {
         gotItTooltips.forEach { it.show() }
     }

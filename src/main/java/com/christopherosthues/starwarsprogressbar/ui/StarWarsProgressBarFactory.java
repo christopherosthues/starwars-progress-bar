@@ -1,5 +1,6 @@
 package com.christopherosthues.starwarsprogressbar.ui;
 
+import com.christopherosthues.starwarsprogressbar.util.VehicleSelector;
 import com.intellij.util.ui.JBUI;
 
 import javax.swing.*;
