@@ -29,6 +29,7 @@ class CreateStarWarsProgressConfigurationComponentTests {
         every { starWarsPersistentStateComponentMock.state } returns null
         every { FactionHolder.missingVehicle } returns StarWarsVehicle("missing", "green", 0, 0, 0f)
         justRun { GotItService.showGotItTooltips() }
+        justRun { GotItService.addGotItMessage(any()) }
     }
 
     @AfterEach

@@ -4,7 +4,6 @@ import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersiste
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
 import com.christopherosthues.starwarsprogressbar.models.FactionHolder
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
-import com.christopherosthues.starwarsprogressbar.models.StarWarsFactions
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.intellij.idea.TestFor
 import io.mockk.every
@@ -32,7 +31,6 @@ class VehicleSelectorTests {
     @BeforeEach
     fun setup() {
         mockkObject(FactionHolder)
-        mockkObject(StarWarsResourceLoader)
         mockkObject(StarWarsPersistentStateComponent)
 
         setupStarWarsState(null)
@@ -244,51 +242,9 @@ class VehicleSelectorTests {
     //region selectRandomVehicles tests
 
     @Test
-    fun `selectRandomVehicles should load factions if factions of faction holder are empty`() {
-        // Arrange
-        every { FactionHolder.factions } returns listOf()
-        every { StarWarsResourceLoader.loadFactions() } returns mockk(relaxed = true)
-
-        // Act
-        VehicleSelector.selectRandomVehicle()
-
-        // Assert
-        verify(exactly = 1) { StarWarsResourceLoader.loadFactions() }
-    }
-
-    @Test
-    fun `selectRandomVehicles should update factions of faction holder if factions of faction holder are empty`() {
-        // Arrange
-        val factionList = listOf(StarWarsFaction("1", listOf()))
-        val factions = StarWarsFactions(factionList)
-        every { FactionHolder.factions } returns listOf()
-        every { StarWarsResourceLoader.loadFactions() } returns factions
-
-        // Act
-        VehicleSelector.selectRandomVehicle()
-
-        // Assert
-        verify(exactly = 1) { FactionHolder.updateFactions(factionList) }
-    }
-
-    @Test
-    fun `selectRandomVehicles should not load factions if factions of faction holder are not empty`() {
-        // Arrange
-        every { FactionHolder.factions } returns listOf(StarWarsFaction("1", listOf()))
-        every { StarWarsResourceLoader.loadFactions() } returns mockk(relaxed = true)
-
-        // Act
-        VehicleSelector.selectRandomVehicle()
-
-        // Assert
-        verify(exactly = 0) { StarWarsResourceLoader.loadFactions() }
-    }
-
-    @Test
     fun `selectRandomVehicles should not update factions of faction holder if factions of faction holder are not empty`() {
         // Arrange
         every { FactionHolder.factions } returns listOf(StarWarsFaction("1", listOf()))
-        every { StarWarsResourceLoader.loadFactions() } returns mockk(relaxed = true)
 
         // Act
         VehicleSelector.selectRandomVehicle()
@@ -301,7 +257,6 @@ class VehicleSelectorTests {
     fun `selectRandomVehicles should return missing vehicle if state is null`() {
         // Arrange
         every { FactionHolder.factions } returns listOf(StarWarsFaction("1", listOf()))
-        every { StarWarsResourceLoader.loadFactions() } returns mockk(relaxed = true)
         setupStarWarsState(null)
 
         // Act

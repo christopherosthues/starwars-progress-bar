@@ -1,5 +1,7 @@
 package com.christopherosthues.starwarsprogressbar.models
 
+import com.christopherosthues.starwarsprogressbar.util.StarWarsResourceLoader.loadFactions
+
 internal object FactionHolder {
     lateinit var factions: List<StarWarsFaction>
         private set
@@ -14,7 +16,7 @@ internal object FactionHolder {
         private set
 
     init {
-        updateFactions(listOf())
+        updateFactions(loadFactions().factions)
     }
 
     fun updateFactions(factions: List<StarWarsFaction>) {

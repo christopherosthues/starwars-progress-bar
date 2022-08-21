@@ -1,6 +1,7 @@
 package com.christopherosthues.starwarsprogressbar.notification
 
 import com.intellij.idea.TestFor
+import io.mockk.justRun
 import io.mockk.mockk
 import io.mockk.verify
 import org.junit.jupiter.api.AfterEach
@@ -22,7 +23,8 @@ class GotItServiceTests {
     @Test
     fun `showGotItTooltips should show all added tooltips`() {
         // Arrange
-        val gotIt1Mock = mockk<GotIt>(relaxed = true)
+        val gotIt1Mock = mockk<GotIt>()
+        justRun { gotIt1Mock.show() }
         GotItService.addGotItMessage(gotIt1Mock)
 
         // Act
@@ -32,8 +34,10 @@ class GotItServiceTests {
         verify(exactly = 1) { gotIt1Mock.show() }
 
         // Arrange
-        val gotIt2Mock = mockk<GotIt>(relaxed = true)
-        val gotIt3Mock = mockk<GotIt>(relaxed = true)
+        val gotIt2Mock = mockk<GotIt>()
+        val gotIt3Mock = mockk<GotIt>()
+        justRun { gotIt2Mock.show() }
+        justRun { gotIt3Mock.show() }
         GotItService.addGotItMessage(gotIt2Mock)
         GotItService.addGotItMessage(gotIt3Mock)
 
@@ -49,7 +53,8 @@ class GotItServiceTests {
     @Test
     fun `reset should remove all tooltips`() {
         // Arrange
-        val gotIt1Mock = mockk<GotIt>(relaxed = true)
+        val gotIt1Mock = mockk<GotIt>()
+        justRun { gotIt1Mock.show() }
         GotItService.addGotItMessage(gotIt1Mock)
         GotItService.showGotItTooltips()
 
