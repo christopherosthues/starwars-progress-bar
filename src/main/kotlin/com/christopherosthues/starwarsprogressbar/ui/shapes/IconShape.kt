@@ -1,6 +1,6 @@
 package com.christopherosthues.starwarsprogressbar.ui.shapes
 
-import com.christopherosthues.starwarsprogressbar.configuration.borders.BASE_MARGIN
+import com.christopherosthues.starwarsprogressbar.constants.BASE_MARGIN
 import java.awt.Dimension
 import java.awt.Insets
 

@@ -1,6 +1,6 @@
 package com.christopherosthues.starwarsprogressbar.ui.shapes
 
-import com.christopherosthues.starwarsprogressbar.configuration.borders.ICON_TEXT_SPACING
+import com.christopherosthues.starwarsprogressbar.constants.ICON_TEXT_SPACING
 import java.awt.Dimension
 import java.awt.Insets
 import kotlin.math.max

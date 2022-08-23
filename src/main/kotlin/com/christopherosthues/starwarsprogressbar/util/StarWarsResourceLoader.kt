@@ -26,7 +26,6 @@ import com.google.common.cache.Cache
 import com.google.common.cache.CacheBuilder
 import com.google.gson.Gson
 import com.intellij.ui.IconManager
-import com.intellij.util.ui.UIUtil
 import java.awt.Image
 import java.awt.image.BufferedImage
 import java.util.*
@@ -35,7 +34,6 @@ import javax.swing.Icon
 import javax.swing.ImageIcon
 
 internal object StarWarsResourceLoader {
-    // TODO: unit test me
     private const val ICON_RESOURCE_PATH = "icons/"
     private const val MAXIMUM_CACHE_SIZE = 100L
     private const val SCALED_ICON_SIZE = 16
@@ -53,16 +51,16 @@ internal object StarWarsResourceLoader {
         val w = icon.iconWidth
         val h = icon.iconHeight
         if (w <= 0 || h <= 0) {
-            return ImageIcon(BufferedImage(SCALED_ICON_SIZE, SCALED_ICON_SIZE, BufferedImage.TYPE_INT_ARGB))
+            return createScaledEmptyImageIcon(SCALED_ICON_SIZE)
         }
-        val bufferedImage = UIUtil.createImage(null, w, h, BufferedImage.TRANSLUCENT)
+        val bufferedImage = createEmptyTranslucentBufferedImage(w, h)
         val g = bufferedImage.createGraphics()
         icon.paintIcon(null, g, 0, 0)
         g.dispose()
 
         val image = bufferedImage.getScaledInstance(SCALED_ICON_SIZE, SCALED_ICON_SIZE, Image.SCALE_SMOOTH)
 
-        return ImageIcon(image)
+        return createImageIconFromImage(image)
     }
 
     @JvmStatic
@@ -73,7 +71,7 @@ internal object StarWarsResourceLoader {
         val iconWidth = icon.iconWidth
         val iconHeight = icon.iconHeight
 
-        val image = BufferedImage(iconWidth, iconHeight, BufferedImage.TYPE_INT_ARGB)
+        val image = createEmptyBufferedImage(iconWidth, iconHeight)
         val graphics = image.createGraphics()
         icon.paintIcon(null, graphics, 0, 0)
         graphics.dispose()
@@ -97,22 +95,23 @@ internal object StarWarsResourceLoader {
             cache[
                 resourceName, {
                     Optional.ofNullable(
-                        Optional.ofNullable(StarWarsResourceLoader.javaClass.classLoader.getResource(resourceName))
-                            .orElseGet { StarWarsResourceLoader.javaClass.classLoader.getResource("/$resourceName") }
+                        Optional.ofNullable(createClassLoader().getResource(resourceName))
+                            .orElseGet { createClassLoader().getResource("/$resourceName") }
                     )
-                        .map { icon -> ImageIcon(icon) }
-                        .orElseGet { ImageIcon(BufferedImage(ICON_SIZE, ICON_SIZE, BufferedImage.TRANSLUCENT)) }
+                        .map { icon -> createImageIconFromURL(icon) }
+                        .orElseGet { createEmptyImageIconFromBufferedImage(ICON_SIZE) }
                 }
             ]
         } catch (ex: ExecutionException) {
-            ImageIcon()
+            createEmptyImageIcon()
         }
     }
 
     fun loadFactions(): StarWarsFactions {
+        // TODO: unit test me
         val json = Optional.ofNullable(
-            Optional.ofNullable(StarWarsResourceLoader.javaClass.classLoader.getResource("json/factions.json"))
-                .orElseGet { StarWarsResourceLoader.javaClass.classLoader.getResource("/json/factions.json") }
+            Optional.ofNullable(createClassLoader().getResource("json/factions.json"))
+                .orElseGet { createClassLoader().getResource("/json/factions.json") }
         )
             .map { file -> file.readText() }
             .orElseGet { "" }

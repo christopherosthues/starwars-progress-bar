@@ -1,4 +1,4 @@
-package com.christopherosthues.starwarsprogressbar.configuration.borders
+package com.christopherosthues.starwarsprogressbar.constants
 
 internal const val BASE_MARGIN = 2
 internal const val ICON_TEXT_SPACING = 5

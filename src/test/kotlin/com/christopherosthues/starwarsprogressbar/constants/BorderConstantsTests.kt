@@ -1,10 +1,5 @@
 package com.christopherosthues.starwarsprogressbar.constants
 
-import com.christopherosthues.starwarsprogressbar.configuration.borders.BASE_MARGIN
-import com.christopherosthues.starwarsprogressbar.configuration.borders.BORDER_LINE_MARGIN
-import com.christopherosthues.starwarsprogressbar.configuration.borders.BORDER_MARGIN
-import com.christopherosthues.starwarsprogressbar.configuration.borders.ICON_TEXT_SPACING
-import com.christopherosthues.starwarsprogressbar.configuration.borders.LEFT_RIGHT_BORDER_MARGIN
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertAll

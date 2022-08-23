@@ -1,5 +1,10 @@
 package com.christopherosthues.starwarsprogressbar.configuration.borders
 
+import com.christopherosthues.starwarsprogressbar.constants.BASE_MARGIN
+import com.christopherosthues.starwarsprogressbar.constants.BORDER_LINE_MARGIN
+import com.christopherosthues.starwarsprogressbar.constants.BORDER_MARGIN
+import com.christopherosthues.starwarsprogressbar.constants.ICON_TEXT_SPACING
+import com.christopherosthues.starwarsprogressbar.constants.LEFT_RIGHT_BORDER_MARGIN
 import com.christopherosthues.starwarsprogressbar.ui.components.ColoredImageComponent
 import com.christopherosthues.starwarsprogressbar.ui.shapes.BorderShape
 import com.christopherosthues.starwarsprogressbar.ui.shapes.IconShape
