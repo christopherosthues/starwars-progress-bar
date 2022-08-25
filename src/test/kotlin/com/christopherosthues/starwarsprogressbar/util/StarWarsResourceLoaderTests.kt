@@ -1,5 +1,8 @@
 package com.christopherosthues.starwarsprogressbar.util
 
+import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
+import com.christopherosthues.starwarsprogressbar.models.StarWarsFactions
+import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.intellij.idea.TestFor
 import com.intellij.ui.IconManager
 import io.mockk.every
@@ -17,25 +20,35 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertAll
 import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.Arguments
+import org.junit.jupiter.params.provider.MethodSource
 import org.junit.jupiter.params.provider.ValueSource
 import java.awt.Graphics2D
 import java.awt.Image
 import java.awt.image.BufferedImage
 import java.net.URL
 import java.util.concurrent.ExecutionException
+import java.util.stream.Stream
 import javax.swing.Icon
 import javax.swing.ImageIcon
 
 @TestFor(classes = [StarWarsResourceLoader::class])
-class StarWarsResourceLoaderTests {
+internal class StarWarsResourceLoaderTests {
     //region Test lifecycle
 
     @BeforeEach
     fun setup() {
         mockkStatic(IconManager::class)
         mockkStatic(::createClassLoader)
+        mockkStatic(::readTextFromUrl)
+        mockkStatic(::parseFactionsFromJson)
         mockkStatic(::createScaledEmptyImageIcon)
+        mockkStatic(::createEmptyImageIconFromBufferedImage)
+        mockkStatic(::createImageIconFromImage)
+        mockkStatic(::createImageIconFromURL)
+        mockkStatic(::createEmptyImageIcon)
         mockkStatic(::createEmptyTranslucentBufferedImage)
+        mockkStatic(::createEmptyBufferedImage)
     }
 
     @AfterEach
@@ -187,7 +200,7 @@ class StarWarsResourceLoaderTests {
         val imageIconMock = setupIconImage()
         val factionName = "faction"
         val resourceName = setupFactionResourceName(isLargeIcon, factionName)
-        val url = setupResourceUrl(resourceName)
+        val url = setupResourceUrl()
         val classLoaderMock = setupClassLoader(resourceName, url, "/$resourceName", null)
         val (bufferedImageMock, graphicsMock) = setupImageScaling()
         every { createImageIconFromURL(url) } returns imageIconMock
@@ -215,7 +228,7 @@ class StarWarsResourceLoaderTests {
         val imageIconMock = setupIconImage()
         val factionName = "faction_cached"
         val resourceName = setupFactionResourceName(isLargeIcon, factionName)
-        val url = setupResourceUrl(resourceName)
+        val url = setupResourceUrl()
         val classLoaderMock = setupClassLoader(resourceName, url, "/$resourceName", null)
         val (bufferedImageMock, graphicsMock) = setupImageScaling()
         every { createImageIconFromURL(url) } returns imageIconMock
@@ -259,7 +272,7 @@ class StarWarsResourceLoaderTests {
         val imageIconMock = setupIconImage()
         val factionName = "faction2"
         val resourceName = setupFactionResourceName(isLargeIcon, factionName)
-        val url = setupResourceUrl(resourceName)
+        val url = setupResourceUrl()
         val classLoaderMock = setupClassLoader(resourceName, null, "/$resourceName", url)
         val (bufferedImageMock, graphicsMock) = setupImageScaling()
         every { createImageIconFromURL(url) } returns imageIconMock
@@ -288,7 +301,7 @@ class StarWarsResourceLoaderTests {
         val imageIconMock = setupIconImage()
         val factionName = "faction3"
         val resourceName = setupFactionResourceName(isLargeIcon, factionName)
-        val url = setupResourceUrl(resourceName)
+        val url = setupResourceUrl()
         val classLoaderMock = setupClassLoader(resourceName, null, "/$resourceName", null)
         val (bufferedImageMock, graphicsMock) = setupImageScaling()
         every { createEmptyImageIconFromBufferedImage(32) } returns imageIconMock
@@ -317,7 +330,7 @@ class StarWarsResourceLoaderTests {
         val imageIconMock = setupIconImage()
         val factionName = "faction4"
         val resourceName = setupFactionResourceName(isLargeIcon, factionName)
-        val url = setupResourceUrl(resourceName)
+        val url = setupResourceUrl()
         val classLoaderMock = setupClassLoader(resourceName, null, "/$resourceName", null, true)
         val (bufferedImageMock, graphicsMock) = setupImageScaling()
         every { createEmptyImageIcon() } returns imageIconMock
@@ -348,7 +361,7 @@ class StarWarsResourceLoaderTests {
         val imageIconMock = setupIconImage()
         val vehicleName = "vehicle"
         val resourceName = setupIconResourceName(vehicleName)
-        val url = setupResourceUrl(resourceName)
+        val url = setupResourceUrl()
         val classLoaderMock = setupClassLoader(resourceName, url, "/$resourceName", null)
         every { createImageIconFromURL(url) } returns imageIconMock
 
@@ -365,7 +378,7 @@ class StarWarsResourceLoaderTests {
         val imageIconMock = setupIconImage()
         val vehicleName = "vehicle_cached"
         val resourceName = setupIconResourceName(vehicleName)
-        val url = setupResourceUrl(resourceName)
+        val url = setupResourceUrl()
         val classLoaderMock = setupClassLoader(resourceName, url, "/$resourceName", null)
         every { createImageIconFromURL(url) } returns imageIconMock
 
@@ -386,7 +399,7 @@ class StarWarsResourceLoaderTests {
         val imageIconMock = setupIconImage()
         val vehicleName = "vehicle2"
         val resourceName = setupIconResourceName(vehicleName)
-        val url = setupResourceUrl(resourceName)
+        val url = setupResourceUrl()
         val classLoaderMock = setupClassLoader(resourceName, null, "/$resourceName", url)
         every { createImageIconFromURL(url) } returns imageIconMock
 
@@ -403,7 +416,7 @@ class StarWarsResourceLoaderTests {
         val imageIconMock = setupIconImage()
         val vehicleName = "vehicle3"
         val resourceName = setupIconResourceName(vehicleName)
-        val url = setupResourceUrl(resourceName)
+        val url = setupResourceUrl()
         val classLoaderMock = setupClassLoader(resourceName, null, "/$resourceName", null)
         every { createEmptyImageIconFromBufferedImage(32) } returns imageIconMock
 
@@ -420,7 +433,7 @@ class StarWarsResourceLoaderTests {
         val imageIconMock = setupIconImage()
         val vehicleName = "vehicle4"
         val resourceName = setupIconResourceName(vehicleName)
-        val url = setupResourceUrl(resourceName)
+        val url = setupResourceUrl()
         val classLoaderMock = setupClassLoader(resourceName, null, "/$resourceName", null, true)
         every { createEmptyImageIcon() } returns imageIconMock
 
@@ -441,7 +454,7 @@ class StarWarsResourceLoaderTests {
         val imageIconMock = setupIconImage()
         val vehicleName = "vehicle"
         val resourceName = setupReversedIconResourceName(vehicleName)
-        val url = setupResourceUrl(resourceName)
+        val url = setupResourceUrl()
         val classLoaderMock = setupClassLoader(resourceName, url, "/$resourceName", null)
         every { createImageIconFromURL(url) } returns imageIconMock
 
@@ -458,7 +471,7 @@ class StarWarsResourceLoaderTests {
         val imageIconMock = setupIconImage()
         val vehicleName = "vehicle_cached"
         val resourceName = setupReversedIconResourceName(vehicleName)
-        val url = setupResourceUrl(resourceName)
+        val url = setupResourceUrl()
         val classLoaderMock = setupClassLoader(resourceName, url, "/$resourceName", null)
         every { createImageIconFromURL(url) } returns imageIconMock
 
@@ -479,7 +492,7 @@ class StarWarsResourceLoaderTests {
         val imageIconMock = setupIconImage()
         val vehicleName = "vehicle2"
         val resourceName = setupReversedIconResourceName(vehicleName)
-        val url = setupResourceUrl(resourceName)
+        val url = setupResourceUrl()
         val classLoaderMock = setupClassLoader(resourceName, null, "/$resourceName", url)
         every { createImageIconFromURL(url) } returns imageIconMock
 
@@ -496,7 +509,7 @@ class StarWarsResourceLoaderTests {
         val imageIconMock = setupIconImage()
         val vehicleName = "vehicle3"
         val resourceName = setupReversedIconResourceName(vehicleName)
-        val url = setupResourceUrl(resourceName)
+        val url = setupResourceUrl()
         val classLoaderMock = setupClassLoader(resourceName, null, "/$resourceName", null)
         every { createEmptyImageIconFromBufferedImage(32) } returns imageIconMock
 
@@ -513,7 +526,7 @@ class StarWarsResourceLoaderTests {
         val imageIconMock = setupIconImage()
         val vehicleName = "vehicle4"
         val resourceName = setupReversedIconResourceName(vehicleName)
-        val url = setupResourceUrl(resourceName)
+        val url = setupResourceUrl()
         val classLoaderMock = setupClassLoader(resourceName, null, "/$resourceName", null, true)
         every { createEmptyImageIcon() } returns imageIconMock
 
@@ -528,7 +541,53 @@ class StarWarsResourceLoaderTests {
 
     //region loadFactions tests
 
-    // TODO: unit test loadFactions
+    @ParameterizedTest
+    @MethodSource("factionValues")
+    fun `loadFactions should return loaded factions`(starWarsFactions: StarWarsFactions) {
+        // Arrange
+        val factionJson = ""
+        val url = setupUrlWithText(factionJson)
+        val classLoaderMock = setupClassLoader(factionFileName, url, "/$factionFileName", null)
+        every { parseFactionsFromJson(factionJson) } returns starWarsFactions
+
+        // Act
+        val result = StarWarsResourceLoader.loadFactions()
+
+        // Assert
+        verifyLoadedFactions(classLoaderMock, url, factionJson, starWarsFactions, result)
+    }
+
+    @ParameterizedTest
+    @MethodSource("factionValues")
+    fun `loadFactions should return loaded factions if resource path starts with a slash`(starWarsFactions: StarWarsFactions) {
+        // Arrange
+        val factionJson = ""
+        val url = setupUrlWithText(factionJson)
+        val classLoaderMock = setupClassLoader(factionFileName, null, "/$factionFileName", url)
+        every { parseFactionsFromJson(factionJson) } returns starWarsFactions
+
+        // Act
+        val result = StarWarsResourceLoader.loadFactions()
+
+        // Assert
+        verifyLoadedFactionsPathWithSlash(classLoaderMock, url, factionJson, starWarsFactions, result)
+    }
+
+    @ParameterizedTest
+    @MethodSource("factionValues")
+    fun `loadFactions should return loaded factions if resource does not exists`(starWarsFactions: StarWarsFactions) {
+        // Arrange
+        val factionJson = ""
+        val url = setupUrlWithText(factionJson)
+        val classLoaderMock = setupClassLoader(factionFileName, null, "/$factionFileName", null)
+        every { parseFactionsFromJson(emptyFactionsJson) } returns starWarsFactions
+
+        // Act
+        val result = StarWarsResourceLoader.loadFactions()
+
+        // Assert
+        verifyLoadedFactionsForMissingResource(classLoaderMock, url, starWarsFactions, result)
+    }
 
     //endregion
 
@@ -568,8 +627,8 @@ class StarWarsResourceLoaderTests {
         return "icons/${vehicleName}_r.png"
     }
 
-    private fun setupResourceUrl(resourceName: String): URL {
-        return URL("https://$resourceName")
+    private fun setupResourceUrl(): URL {
+        return mockk(relaxed = true)
     }
 
     private fun setupImageScaling(): Pair<BufferedImage, Graphics2D> {
@@ -597,6 +656,13 @@ class StarWarsResourceLoaderTests {
         every { createClassLoader() } returns classLoaderMock
 
         return classLoaderMock
+    }
+
+    private fun setupUrlWithText(factionJson: String): URL {
+        val url = setupResourceUrl()
+        every { readTextFromUrl(url) } returns factionJson
+
+        return url
     }
 
     private fun verifyBufferedImagePainted(
@@ -711,14 +777,176 @@ class StarWarsResourceLoaderTests {
         )
     }
 
+    private fun verifyLoadedFactions(
+        classLoaderMock: ClassLoader,
+        url: URL,
+        factionJson: String,
+        loadedFactions: StarWarsFactions,
+        result: StarWarsFactions
+    ) {
+        verifyOrder {
+            classLoaderMock.getResource(factionFileName)
+            readTextFromUrl(url)
+            parseFactionsFromJson(factionJson)
+        }
+        verify(exactly = 1) { classLoaderMock.getResource(factionFileName) }
+        verify(exactly = 0) { classLoaderMock.getResource("/$factionFileName") }
+        verify(exactly = 1) { readTextFromUrl(url) }
+        verify(exactly = 1) { parseFactionsFromJson(factionJson) }
+        assertAll(
+            { assertEquals(loadedFactions, result) },
+            {
+                result.factions.forEach { faction ->
+                    faction.vehicles.forEach {
+                        assertEquals(faction.id, it.factionId)
+                    }
+                }
+            }
+        )
+    }
+
+    private fun verifyLoadedFactionsPathWithSlash(
+        classLoaderMock: ClassLoader,
+        url: URL,
+        factionJson: String,
+        loadedFactions: StarWarsFactions,
+        result: StarWarsFactions
+    ) {
+        verifyOrder {
+            classLoaderMock.getResource("/$factionFileName")
+            readTextFromUrl(url)
+            parseFactionsFromJson(factionJson)
+        }
+        verify(exactly = 1) { classLoaderMock.getResource(factionFileName) }
+        verify(exactly = 1) { classLoaderMock.getResource("/$factionFileName") }
+        verify(exactly = 1) { readTextFromUrl(url) }
+        verify(exactly = 1) { parseFactionsFromJson(factionJson) }
+        assertAll(
+            { assertEquals(loadedFactions, result) },
+            {
+                result.factions.forEach { faction ->
+                    faction.vehicles.forEach {
+                        assertEquals(faction.id, it.factionId)
+                    }
+                }
+            }
+        )
+    }
+
+    private fun verifyLoadedFactionsForMissingResource(
+        classLoaderMock: ClassLoader,
+        url: URL,
+        loadedFactions: StarWarsFactions,
+        result: StarWarsFactions
+    ) {
+        verifyOrder {
+            classLoaderMock.getResource("/$factionFileName")
+            parseFactionsFromJson(emptyFactionsJson)
+        }
+        verify(exactly = 1) { classLoaderMock.getResource(factionFileName) }
+        verify(exactly = 1) { classLoaderMock.getResource("/$factionFileName") }
+        verify(exactly = 0) { readTextFromUrl(url) }
+        verify(exactly = 1) { parseFactionsFromJson(emptyFactionsJson) }
+        assertAll(
+            { assertEquals(loadedFactions, result) },
+            {
+                result.factions.forEach { faction ->
+                    faction.vehicles.forEach {
+                        assertEquals(faction.id, it.factionId)
+                    }
+                }
+            }
+        )
+    }
+
     //endregion
 
     //region Test data
 
     private val pluginIconPath = "/META-INF/pluginIcon.svg"
+    private val factionFileName = "json/factions.json"
+    private val emptyFactionsJson = "{\"factions\": []}"
     private val scaledIconSize = 16
     private val width = 10
     private val height = 10
+
+    //endregion
+
+    //region Test case data
+
+    companion object {
+        @JvmStatic
+        fun factionValues(): Stream<Arguments> {
+            return Stream.of(
+                Arguments.of(setupEmptyStarWarsFactions()),
+                Arguments.of(setupStarWarsFactionsWithOneFactionWithoutVehicles()),
+                Arguments.of(setupStarWarsFactionsWithOneFactionWithVehicles()),
+                Arguments.of(setupStarWarsFactions())
+            )
+        }
+
+        private fun setupEmptyStarWarsFactions(): StarWarsFactions {
+            val loadedFactions = mockk<StarWarsFactions>(relaxed = true)
+            every { loadedFactions.factions } returns listOf()
+
+            return loadedFactions
+        }
+
+        private fun setupStarWarsFactionsWithOneFactionWithoutVehicles(): StarWarsFactions {
+            val loadedFactions = mockk<StarWarsFactions>(relaxed = true)
+            every { loadedFactions.factions } returns listOf(StarWarsFaction("1", listOf()))
+
+            return loadedFactions
+        }
+
+        private fun setupStarWarsFactionsWithOneFactionWithVehicles(): StarWarsFactions {
+            val loadedFactions = mockk<StarWarsFactions>(relaxed = true)
+            every { loadedFactions.factions } returns listOf(
+                StarWarsFaction(
+                    "1",
+                    listOf(
+                        StarWarsVehicle("1", "a", 1, 1, 1f),
+                        StarWarsVehicle("2", "b", 2, 2, 2f),
+                        StarWarsVehicle("3", "c", 3, 3, 3f)
+                    )
+                )
+            )
+
+            return loadedFactions
+        }
+
+        private fun setupStarWarsFactions(): StarWarsFactions {
+            val loadedFactions = mockk<StarWarsFactions>(relaxed = true)
+            every { loadedFactions.factions } returns listOf(
+                StarWarsFaction(
+                    "1",
+                    listOf(
+                        StarWarsVehicle("1", "a", 1, 1, 1f),
+                        StarWarsVehicle("2", "b", 2, 2, 2f),
+                        StarWarsVehicle("3", "c", 3, 3, 3f)
+                    )
+                ),
+                StarWarsFaction(
+                    "2",
+                    listOf(
+                        StarWarsVehicle("1", "a", 1, 1, 1f),
+                        StarWarsVehicle("2", "b", 2, 2, 2f),
+                        StarWarsVehicle("3", "c", 3, 3, 3f)
+                    )
+                ),
+                StarWarsFaction(
+                    "3",
+                    listOf(
+                        StarWarsVehicle("1", "a", 1, 1, 1f),
+                        StarWarsVehicle("2", "b", 2, 2, 2f),
+                        StarWarsVehicle("3", "c", 3, 3, 3f)
+                    )
+                )
+            )
+
+            return loadedFactions
+        }
+    }
 
     //endregion
 }

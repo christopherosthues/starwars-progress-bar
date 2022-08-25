@@ -24,11 +24,10 @@ import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactions
 import com.google.common.cache.Cache
 import com.google.common.cache.CacheBuilder
-import com.google.gson.Gson
 import com.intellij.ui.IconManager
 import java.awt.Image
 import java.awt.image.BufferedImage
-import java.util.*
+import java.util.Optional
 import java.util.concurrent.ExecutionException
 import javax.swing.Icon
 import javax.swing.ImageIcon
@@ -38,6 +37,7 @@ internal object StarWarsResourceLoader {
     private const val MAXIMUM_CACHE_SIZE = 100L
     private const val SCALED_ICON_SIZE = 16
     private const val ICON_SIZE = 32
+    private const val EMPTY_FACTIONS_JSON_DATA = "{\"factions\": []}"
 
     private val cache: Cache<String, Icon> = CacheBuilder.newBuilder().maximumSize(MAXIMUM_CACHE_SIZE).build()
 
@@ -108,15 +108,14 @@ internal object StarWarsResourceLoader {
     }
 
     fun loadFactions(): StarWarsFactions {
-        // TODO: unit test me
+        val factionsFileName = "json/factions.json"
         val json = Optional.ofNullable(
-            Optional.ofNullable(createClassLoader().getResource("json/factions.json"))
-                .orElseGet { createClassLoader().getResource("/json/factions.json") }
+            Optional.ofNullable(createClassLoader().getResource(factionsFileName))
+                .orElseGet { createClassLoader().getResource("/$factionsFileName") }
         )
-            .map { file -> file.readText() }
-            .orElseGet { "" }
-        val gson = Gson()
-        val factions = gson.fromJson(json, StarWarsFactions::class.java)
+            .map { file -> readTextFromUrl(file) }
+            .orElseGet { EMPTY_FACTIONS_JSON_DATA }
+        val factions = parseFactionsFromJson(json)
 
         setFactionForVehicles(factions.factions)
 
