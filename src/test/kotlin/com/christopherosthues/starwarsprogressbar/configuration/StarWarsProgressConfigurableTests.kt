@@ -34,6 +34,7 @@ class StarWarsProgressConfigurableTests {
     private lateinit var starWarsProgressConfigurationComponentMock: StarWarsProgressConfigurationComponent
 
     //endregion
+
     //region Test lifecycle
 
     @BeforeEach
