@@ -1,12 +1,18 @@
 package messages
 
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
+import com.christopherosthues.starwarsprogressbar.models.FactionHolder
+import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.DisplayName
+import org.junit.jupiter.api.assertAll
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.MethodSource
 import java.io.File
-import java.util.Properties
+import java.util.*
+import java.util.stream.Stream
+import kotlin.reflect.KVisibility
+import kotlin.reflect.full.memberProperties
 
 internal const val bundleIdentifier = "StarWarsBundle"
 internal const val bundleExtension = ".properties"
@@ -24,7 +30,14 @@ class StarWarsResourceBundleTests {
         val propertyNames = bundle.stringPropertyNames()
 
         // Act and Assert
-        assertTrue(bundle.values.all { it != null && it.toString().trim().isNotEmpty() }, "Found empty translations for keys: ${propertyNames.filter { bundle[it] == null || bundle[it].toString().trim().isEmpty() }}")
+        assertTrue(
+            bundle.values.all { it != null && it.toString().trim().isNotEmpty() },
+            "Found empty translations for keys: ${
+            propertyNames.filter {
+                bundle[it] == null || bundle[it].toString().trim().isEmpty()
+            }
+            }"
+        )
     }
 
     @ParameterizedTest
@@ -40,7 +53,14 @@ class StarWarsResourceBundleTests {
         fallbackBundle.load(getFallbackBundleFile().inputStream())
 
         // Assert
-        assertTrue(fallbackBundle.keys.containsAll(bundle.keys), "Found missing translations in fallback bundle which are contained in language specific bundle ${bundleFile.name}: ${bundle.keys.filter { !fallbackBundle.containsKey(it) }}")
+        assertTrue(
+            fallbackBundle.keys.containsAll(bundle.keys),
+            "Found missing translations in fallback bundle which are contained in language specific bundle ${bundleFile.name}: ${
+            bundle.keys.filter {
+                !fallbackBundle.containsKey(it)
+            }
+            }"
+        )
     }
 
     @ParameterizedTest
@@ -57,7 +77,14 @@ class StarWarsResourceBundleTests {
 
         // Assert
         val fallbackBundleKeys = fallbackBundle.keys.filter { !whitelistedKeys.contains(it) }
-        assertTrue(bundle.keys.containsAll(fallbackBundleKeys), "Found missing translations in language specific bundle which are contained in fallback bundle ${bundleFile.name}: ${fallbackBundleKeys.filter { !bundle.containsKey(it) }}")
+        assertTrue(
+            bundle.keys.containsAll(fallbackBundleKeys),
+            "Found missing translations in language specific bundle which are contained in fallback bundle ${bundleFile.name}: ${
+            fallbackBundleKeys.filter {
+                !bundle.containsKey(it)
+            }
+            }"
+        )
     }
 
     @ParameterizedTest
@@ -65,23 +92,76 @@ class StarWarsResourceBundleTests {
     @DisplayName("Check if all used bundle keys have a translation")
     fun `bundles should contain all bundle keys`(bundleFile: File) {
         // Arrange
-        // TODO: unit test to be written
+        val bundle = Properties()
+        bundle.load(bundleFile.inputStream())
+        var bundleConstantMembers = BundleConstants::class.memberProperties.filter {
+            it.visibility != KVisibility.PRIVATE && !bundleConstantMembersToIgnore.contains(it.name)
+        }
+        if (!bundleFile.nameWithoutExtension.endsWith(bundleIdentifier)) {
+            bundleConstantMembers = bundleConstantMembers.filter { it.name != "PLUGIN_NAME" }
+        }
 
         // Act
+        val bundleConstantsLocalized = bundleConstantMembers.map {
+            {
+                assertNotNull(
+                    bundle[it.getter.call()],
+                    "Bundle constant ${it.name} has no translation"
+                )
+            }
+        }.stream()
 
         // Assert
+        assertAll(bundleConstantsLocalized)
     }
 
     @ParameterizedTest
     @MethodSource("bundleFileValues")
-    @DisplayName("Check if all vehicles and factions have a translation")
-    fun `bundles should contain translations for all vehicles and factions`(bundleFile: File) {
+    @DisplayName("Check if all factions have a translation")
+    fun `bundles should contain translations for all factions`(bundleFile: File) {
         // Arrange
-        // TODO: unit test to be written
+        val starWarsFactions = FactionHolder.factions
+        val bundle = Properties()
+        bundle.load(bundleFile.inputStream())
 
         // Act
+        val factionsLocalized = starWarsFactions.filter { it.id.isNotEmpty() }.map {
+            {
+                assertNotNull(
+                    bundle[it.localizationKey],
+                    "Faction ${it.id} with localization key ${it.localizationKey} has no translation"
+                )
+            }
+        }
 
         // Assert
+        assertAll(factionsLocalized)
+    }
+
+    @ParameterizedTest
+    @MethodSource("bundleFileValues")
+    @DisplayName("Check if all vehicles have a translation")
+    fun `bundles should contain translations for all vehicles`(bundleFile: File) {
+        // Arrange
+        val starWarsFactions = FactionHolder.factions
+        val bundle = Properties()
+        bundle.load(bundleFile.inputStream())
+
+        // Act
+        val vehiclesLocalized: Stream<() -> Unit> = starWarsFactions.parallelStream().map {
+            it.vehicles.map { vehicle ->
+                {
+                    assertNotNull(
+                        bundle[vehicle.localizationKey],
+                        "Vehicle ${vehicle.id} with localization key ${vehicle.localizationKey} has no translation"
+                    )
+                }
+            }
+        }
+            .flatMap { it.stream() }
+
+        // Assert
+        assertAll(vehiclesLocalized)
     }
 
     //endregion
@@ -91,7 +171,9 @@ class StarWarsResourceBundleTests {
     private fun getFallbackBundleFile(): File {
         return File(".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources${File.separatorChar}messages${File.separatorChar}").list { _, name ->
             name != null && name.equals(bundleIdentifier + bundleExtension)
-        }.map { fileName -> File(".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources${File.separatorChar}messages${File.separatorChar}$fileName") }.first()
+        }
+            .map { fileName -> File(".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources${File.separatorChar}messages${File.separatorChar}$fileName") }
+            .first()
     }
 
     //endregion
@@ -99,6 +181,7 @@ class StarWarsResourceBundleTests {
     //region Test data
 
     private val whitelistedKeys = listOf(BundleConstants.PLUGIN_NAME)
+    private val bundleConstantMembersToIgnore = listOf("FACTION", "VEHICLES")
 
     //endregion
 
@@ -109,7 +192,8 @@ class StarWarsResourceBundleTests {
         fun bundleFileValues(): List<File> {
             return File(".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources${File.separatorChar}messages${File.separatorChar}").list { _, name ->
                 name != null && name.startsWith(bundleIdentifier) && name.endsWith(bundleExtension)
-            }.map { fileName -> File(".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources${File.separatorChar}messages${File.separatorChar}$fileName") }
+            }
+                .map { fileName -> File(".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources${File.separatorChar}messages${File.separatorChar}$fileName") }
         }
 
         @JvmStatic
@@ -118,7 +202,8 @@ class StarWarsResourceBundleTests {
                 name != null && name.startsWith(bundleIdentifier) && name.endsWith(bundleExtension) && !name.equals(
                     bundleIdentifier + bundleExtension
                 )
-            }.map { fileName -> File(".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources${File.separatorChar}messages${File.separatorChar}$fileName") }
+            }
+                .map { fileName -> File(".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources${File.separatorChar}messages${File.separatorChar}$fileName") }
         }
     }
 
