@@ -33,18 +33,18 @@ This is the Star Wars Progress Bar for IJ based IDEs. It replaces the progress b
   <li>Support of over 100 vehicles from the Star Wars movies, TV series, books and comics from the canon and legends</li>
   <li>Configurable via the settings (<kbd>Settings/Preferences</kbd> > <kbd>Appearance &amp; Behavior</kbd> > <kbd>Star Wars Progress Bar</kbd>)</li>
   <ul>
-    <li>Selection/deselection of specific vehicles</li>
-    <li>Selection/deselection of entire factions </li>
-    <li>Display/hide vehicle name in progressbar tooltip</li>
-    <li>Display/hide vehicle name in progressbar</li>
-    <li>Display/hide faction crest in progressbar</li>
-    <li>Different or same velocity for different vehicles</li>
+    <li>Selection of specific vehicles</li>
+    <li>Selection of entire factions </li>
+    <li>Display vehicle name in progressbar tooltip</li>
+    <li>Display vehicle name in progressbar</li>
+    <li>Display faction crest in progressbar</li>
+    <li>Different velocities for different vehicles</li>
     <li>Preview vehicles by clicking on their icon</li>
   </ul>
 </ul>
 
 <h3>Additional information</h3>
-I do not own the Star Wars trademark nor do I intend any copyright infringement regarding the Star Wars trademark. This plugin was created for fun and is meant to be a homage to Star Wars and its creators.
+I do not own the Star Wars trademark nor do I intend any copyright infringement regarding the Star Wars trademark. This plugin was created for fun and is meant to be a homage to Star Wars and its creators, contributors and awesome fans.
 
 <!-- Plugin description end -->
 
