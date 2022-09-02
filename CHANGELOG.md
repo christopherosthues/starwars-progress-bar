@@ -11,6 +11,7 @@
 
 ### Changed
 - UI adjustments in settings
+- Updated minimum supported version to 2021.3.3
 
 ### Removed
 
