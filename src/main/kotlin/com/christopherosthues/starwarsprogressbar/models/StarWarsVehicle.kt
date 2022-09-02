@@ -14,7 +14,7 @@ internal data class StarWarsVehicle(
     var factionId: String = ""
 
     val fileName: String
-        get() = "$factionId/$id"
+        get() = if (factionId.isEmpty()) id else "$factionId/$id"
 
     val localizationKey: String
         get() = "${BundleConstants.VEHICLES}$id"
