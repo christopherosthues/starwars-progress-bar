@@ -33,7 +33,7 @@
         },
         {
           "id": "sheathipede_class_shuttle",
-          "ionEngine": "orange",
+          "ionEngine": "yellow",
           "xShift": -5,
           "yShift": -6,
           "velocity": 2.5
@@ -365,6 +365,13 @@
           "id": "mankvim_814_interceptor",
           "ionEngine": "blue",
           "xShift": -6,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "id": "maxillipede_shuttle",
+          "ionEngine": "yellow",
+          "xShift": -5,
           "yShift": -6,
           "velocity": 2.5
         },
