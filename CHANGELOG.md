@@ -5,6 +5,7 @@
 ## [Unreleased]
 ### Added
 - Darth Maul's Scimitar to CIS faction
+- Acclamator-II-class assault ship to Galactic Republic faction
 - Possibility of choosing the initial selection of a new vehicle
 - Faction crests to factions in settings
 - Faction crests to progress bar (can be enabled in settings)

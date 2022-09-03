@@ -80,9 +80,10 @@ class IconResourceTests {
     fun `all icon resources should be used`() {
         // Arrange
         val starWarsFactions = FactionHolder.factions
+        val iconBasePath = "${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources${File.separatorChar}icons"
 
         val matcher = FileSystems.getDefault().getPathMatcher("glob:**/*\\.png")
-        val path = File("./src/main/resources/icons").toPath()
+        val path = File(".$iconBasePath").toPath()
         val imageFiles = Files.walk(path)
             .filter {
                 matcher.matches(it)
@@ -90,14 +91,14 @@ class IconResourceTests {
             .collect(toList())
             .map {
                 val imagePath = it.toAbsolutePath().absolutePathString()
-                imagePath.drop(imagePath.indexOf("/src/main/resources/icons/") + "/src/main/resources/icons/".length)
+                imagePath.drop(imagePath.indexOf("$iconBasePath${File.separatorChar}") + "$iconBasePath${File.separatorChar}".length)
             }
 
         // Act
         val iconPaths = starWarsFactions.map {
             it.vehicles.map { vehicle ->
-                val iconBasePath = vehicle.fileName
-                listOf("$iconBasePath.png", "${iconBasePath}_r.png", "$iconBasePath@2x.png", "${iconBasePath}_r@2x.png")
+                val iconFilePath = vehicle.fileName.replace('/', File.separatorChar)
+                listOf("$iconFilePath.png", "${iconFilePath}_r.png", "$iconFilePath@2x.png", "${iconFilePath}_r@2x.png")
             }.stream().flatMap { e -> e.stream() }.collect(toList())
         }.stream().flatMap { it.stream() }.collect(toList())
 
