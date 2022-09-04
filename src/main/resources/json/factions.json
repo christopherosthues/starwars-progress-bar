@@ -65,6 +65,13 @@
       "id": "jedi",
       "vehicles": [
         {
+          "id": "adi_gallias_delta_7b_jedi_starfighter",
+          "ionEngine": "blue",
+          "xShift": -6,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
           "id": "ahsoka_tanos_delta_7b_jedi_starfighter",
           "ionEngine": "blue",
           "xShift": -6,
