@@ -58,7 +58,8 @@ internal class StarWarsProgressBarUI(
 
     private val forwardIcon = StarWarsResourceLoader.getIcon(vehicle.fileName)
     private val backwardIcon = StarWarsResourceLoader.getReversedIcon(vehicle.fileName)
-    private val factionCrestIcon = ColoredImageComponent(StarWarsResourceLoader.getFactionLogo(vehicle.factionId, false))
+    private val factionCrestIcon =
+        ColoredImageComponent(StarWarsResourceLoader.getFactionLogo(vehicle.factionId, false))
     private var velocity = getVelocity()
     private var position = 0
 
@@ -280,7 +281,9 @@ internal class StarWarsProgressBarUI(
                     floatArrayOf(0f, 1f),
                     arrayOf(backgroundColor, transparent)
                 )
-            } else transparent
+            } else {
+                transparent
+            }
         }
         return if (progress < width) {
             LinearGradientPaint(
@@ -291,7 +294,9 @@ internal class StarWarsProgressBarUI(
                 floatArrayOf(0f, 1f),
                 arrayOf(transparent, backgroundColor)
             )
-        } else transparent
+        } else {
+            transparent
+        }
     }
 
     private fun getFillPaint(): Paint {
@@ -304,8 +309,11 @@ internal class StarWarsProgressBarUI(
         val isMovingRight = velocity >= 0
         val icon = if (isMovingRight) forwardIcon else backwardIcon
         val x = amountFull +
-            if (isMovingRight) JBUIScale.scale(vehicle.xShift)
-            else JBUIScale.scale(-icon.iconWidth - vehicle.xShift)
+            if (isMovingRight) {
+                JBUIScale.scale(vehicle.xShift)
+            } else {
+                JBUIScale.scale(-icon.iconWidth - vehicle.xShift)
+            }
         val y = vehicle.yShift
         icon.paintIcon(progressBar, graphics2D, x, y)
         graphics2D.clip = previousClip

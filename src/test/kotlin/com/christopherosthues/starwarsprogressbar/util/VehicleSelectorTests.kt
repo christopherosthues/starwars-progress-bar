@@ -107,7 +107,9 @@ class VehicleSelectorTests {
 
     @ParameterizedTest
     @ValueSource(ints = [0, 1, 2])
-    fun `selectRandomVehicle with parameters should return correct vehicle if provided enabled vehicles are empty and default vehicles are not empty and default enabled is true`(index: Int) {
+    fun `selectRandomVehicle with parameters should return correct vehicle if provided enabled vehicles are empty and default vehicles are not empty and default enabled is true`(
+        index: Int
+    ) {
         // Arrange
         mockkStatic(::randomInt)
         val vehicles = createStarWarsVehicles()
@@ -127,12 +129,15 @@ class VehicleSelectorTests {
 
     @ParameterizedTest
     @MethodSource("defaultEnabledValues")
-    fun `selectRandomVehicle with parameters should return missing vehicle if provided enabled vehicles are all false and default vehicles are not empty`(defaultEnabled: Boolean) {
+    fun `selectRandomVehicle with parameters should return missing vehicle if provided enabled vehicles are all false and default vehicles are not empty`(
+        defaultEnabled: Boolean
+    ) {
         // Arrange
         every { FactionHolder.defaultVehicles } returns createStarWarsVehicles()
 
         // Act
-        val result = VehicleSelector.selectRandomVehicle(mapOf("1" to false, "2" to false, "3" to false), defaultEnabled)
+        val result =
+            VehicleSelector.selectRandomVehicle(mapOf("1" to false, "2" to false, "3" to false), defaultEnabled)
 
         // Assert
         assertEquals(missingVehicle, result)
@@ -140,7 +145,10 @@ class VehicleSelectorTests {
 
     @ParameterizedTest
     @MethodSource("indexAndDefaultEnabledValues")
-    fun `selectRandomVehicle with parameters should return correct vehicle if provided enabled vehicles are all true and default vehicles are not empty`(index: Int, defaultEnabled: Boolean) {
+    fun `selectRandomVehicle with parameters should return correct vehicle if provided enabled vehicles are all true and default vehicles are not empty`(
+        index: Int,
+        defaultEnabled: Boolean
+    ) {
         // Arrange
         mockkStatic(::randomInt)
         val vehicles = createStarWarsVehicles()
@@ -160,7 +168,9 @@ class VehicleSelectorTests {
 
     @ParameterizedTest
     @ValueSource(ints = [0, 1])
-    fun `selectRandomVehicle with parameters should return correct vehicle if provided enabled vehicles do not contain all default vehicles and default enabled is false`(index: Int) {
+    fun `selectRandomVehicle with parameters should return correct vehicle if provided enabled vehicles do not contain all default vehicles and default enabled is false`(
+        index: Int
+    ) {
         // Arrange
         mockkStatic(::randomInt)
         val vehicles = createStarWarsVehicles()
@@ -180,7 +190,9 @@ class VehicleSelectorTests {
 
     @ParameterizedTest
     @ValueSource(ints = [0, 1, 2])
-    fun `selectRandomVehicle with parameters should return correct vehicle if provided enabled vehicles do not contain all default vehicles and default enabled is true`(index: Int) {
+    fun `selectRandomVehicle with parameters should return correct vehicle if provided enabled vehicles do not contain all default vehicles and default enabled is true`(
+        index: Int
+    ) {
         // Arrange
         mockkStatic(::randomInt)
         val vehicles = createStarWarsVehicles()
@@ -200,7 +212,9 @@ class VehicleSelectorTests {
 
     @ParameterizedTest
     @ValueSource(ints = [0, 1, 2])
-    fun `selectRandomVehicle with parameters should return correct vehicle if provided enabled vehicles and default vehicles have different additional entries`(index: Int) {
+    fun `selectRandomVehicle with parameters should return correct vehicle if provided enabled vehicles and default vehicles have different additional entries`(
+        index: Int
+    ) {
         // Arrange
         mockkStatic(::randomInt)
         val vehicles = createStarWarsVehicles()
@@ -345,7 +359,9 @@ class VehicleSelectorTests {
 
     @ParameterizedTest
     @ValueSource(ints = [0, 1, 2])
-    fun `selectRandomVehicle should return correct vehicle if provided enabled vehicles are empty and default vehicles are not empty and default enabled is true`(index: Int) {
+    fun `selectRandomVehicle should return correct vehicle if provided enabled vehicles are empty and default vehicles are not empty and default enabled is true`(
+        index: Int
+    ) {
         // Arrange
         mockkStatic(::randomInt)
         val vehicles = createStarWarsVehicles()
@@ -370,7 +386,9 @@ class VehicleSelectorTests {
 
     @ParameterizedTest
     @MethodSource("defaultEnabledValues")
-    fun `selectRandomVehicle should return missing vehicle if provided enabled vehicles are all false and default vehicles are not empty`(defaultEnabled: Boolean) {
+    fun `selectRandomVehicle should return missing vehicle if provided enabled vehicles are all false and default vehicles are not empty`(
+        defaultEnabled: Boolean
+    ) {
         // Arrange
         every { FactionHolder.defaultVehicles } returns createStarWarsVehicles()
         val starWarsState = StarWarsState().apply {
@@ -388,7 +406,10 @@ class VehicleSelectorTests {
 
     @ParameterizedTest
     @MethodSource("indexAndDefaultEnabledValues")
-    fun `selectRandomVehicle should return correct vehicle if provided enabled vehicles are all true and default vehicles are not empty`(index: Int, defaultEnabled: Boolean) {
+    fun `selectRandomVehicle should return correct vehicle if provided enabled vehicles are all true and default vehicles are not empty`(
+        index: Int,
+        defaultEnabled: Boolean
+    ) {
         // Arrange
         mockkStatic(::randomInt)
         val vehicles = createStarWarsVehicles()
@@ -413,7 +434,9 @@ class VehicleSelectorTests {
 
     @ParameterizedTest
     @ValueSource(ints = [0, 1])
-    fun `selectRandomVehicle should return correct vehicle if provided enabled vehicles do not contain all default vehicles and default enabled is false`(index: Int) {
+    fun `selectRandomVehicle should return correct vehicle if provided enabled vehicles do not contain all default vehicles and default enabled is false`(
+        index: Int
+    ) {
         // Arrange
         mockkStatic(::randomInt)
         val vehicles = createStarWarsVehicles()
@@ -438,7 +461,9 @@ class VehicleSelectorTests {
 
     @ParameterizedTest
     @ValueSource(ints = [0, 1, 2])
-    fun `selectRandomVehicle should return correct vehicle if provided enabled vehicles do not contain all default vehicles and default enabled is true`(index: Int) {
+    fun `selectRandomVehicle should return correct vehicle if provided enabled vehicles do not contain all default vehicles and default enabled is true`(
+        index: Int
+    ) {
         // Arrange
         mockkStatic(::randomInt)
         val vehicles = createStarWarsVehicles()
@@ -463,7 +488,9 @@ class VehicleSelectorTests {
 
     @ParameterizedTest
     @ValueSource(ints = [0, 1, 2])
-    fun `selectRandomVehicle should return correct vehicle if provided enabled vehicles and default vehicles have different additional entries`(index: Int) {
+    fun `selectRandomVehicle should return correct vehicle if provided enabled vehicles and default vehicles have different additional entries`(
+        index: Int
+    ) {
         // Arrange
         mockkStatic(::randomInt)
         val vehicles = createStarWarsVehicles()

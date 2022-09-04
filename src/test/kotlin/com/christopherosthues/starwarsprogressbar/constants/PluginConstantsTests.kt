@@ -26,7 +26,8 @@ class PluginConstantsTests {
     @Test
     fun `all public constants should be tested`() {
         // Arrange
-        val pluginConstantMembers = PluginConstants::class.memberProperties.filter { it.visibility != KVisibility.PRIVATE }
+        val pluginConstantMembers =
+            PluginConstants::class.memberProperties.filter { it.visibility != KVisibility.PRIVATE }
 
         // Act and Assert
         assertEquals(pluginConstantMembers.size, pluginConstants().count().toInt())
@@ -41,8 +42,14 @@ class PluginConstantsTests {
         fun pluginConstants(): Stream<Arguments> {
             return Stream.of(
                 Arguments.of("com.christopherosthues.starwarsprogressbar", PluginConstants.PluginId),
-                Arguments.of("com.christopherosthues.starwarsprogressbar.gotit.iconselection", PluginConstants.GotItIconSelectionId),
-                Arguments.of("com.christopherosthues.starwarsprogressbar.ui.configuration", PluginConstants.PluginSearchId),
+                Arguments.of(
+                    "com.christopherosthues.starwarsprogressbar.gotit.iconselection",
+                    PluginConstants.GotItIconSelectionId
+                ),
+                Arguments.of(
+                    "com.christopherosthues.starwarsprogressbar.ui.configuration",
+                    PluginConstants.PluginSearchId
+                ),
                 Arguments.of("Star Wars Progress Bar updated", PluginConstants.NotificationGroupId)
             )
         }

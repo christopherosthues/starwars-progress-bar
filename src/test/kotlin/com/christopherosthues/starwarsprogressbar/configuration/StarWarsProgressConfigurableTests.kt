@@ -82,10 +82,7 @@ class StarWarsProgressConfigurableTests {
         val result = sut.createComponent()
 
         // Assert
-        assertAll(
-            { assertEquals(panelMock, result) },
-            { assertSame(panelMock, result) }
-        )
+        assertAll({ assertEquals(panelMock, result) }, { assertSame(panelMock, result) })
     }
 
     //endregion
@@ -384,11 +381,15 @@ class StarWarsProgressConfigurableTests {
 
     //region Helper methods
 
-    private fun setupStarWarsPersistentStateComponentMock(initializeStarWarsState: Boolean = true): StarWarsPersistentStateComponent {
+    private fun setupStarWarsPersistentStateComponentMock(
+        initializeStarWarsState: Boolean = true
+    ): StarWarsPersistentStateComponent {
         val starWarsStateMock = mockk<StarWarsState>(relaxed = true)
         val starWarsPersistentStateComponentMock = mockk<StarWarsPersistentStateComponent>(relaxed = true)
         every { StarWarsPersistentStateComponent.instance } returns starWarsPersistentStateComponentMock
-        every { starWarsPersistentStateComponentMock.state } returns if (initializeStarWarsState) starWarsStateMock else null
+        every {
+            starWarsPersistentStateComponentMock.state
+        } returns if (initializeStarWarsState) starWarsStateMock else null
 
         return starWarsPersistentStateComponentMock
     }
@@ -519,18 +520,54 @@ class StarWarsProgressConfigurableTests {
         @JvmStatic
         fun isModifiedValues(): Stream<Arguments> {
             return Stream.of(
-                Arguments.of(IsModifiedData(mapOf(), false, false, false, false, false), IsModifiedData(mapOf("1" to true, "2" to false), false, false, false, false, false)),
-                Arguments.of(IsModifiedData(mapOf("1" to true, "2" to false), false, false, false, false, false), IsModifiedData(mapOf(), false, false, false, false, false)),
-                Arguments.of(IsModifiedData(mapOf(), false, false, false, false, false), IsModifiedData(mapOf(), true, false, false, false, false)),
-                Arguments.of(IsModifiedData(mapOf(), true, false, false, false, false), IsModifiedData(mapOf(), false, false, false, false, false)),
-                Arguments.of(IsModifiedData(mapOf(), false, false, false, false, false), IsModifiedData(mapOf(), false, true, false, false, false)),
-                Arguments.of(IsModifiedData(mapOf(), false, true, false, false, false), IsModifiedData(mapOf(), false, false, false, false, false)),
-                Arguments.of(IsModifiedData(mapOf(), false, false, false, false, false), IsModifiedData(mapOf(), false, false, true, false, false)),
-                Arguments.of(IsModifiedData(mapOf(), false, false, true, false, false), IsModifiedData(mapOf(), false, false, false, false, false)),
-                Arguments.of(IsModifiedData(mapOf(), false, false, false, false, false), IsModifiedData(mapOf(), false, false, false, true, false)),
-                Arguments.of(IsModifiedData(mapOf(), false, false, false, true, false), IsModifiedData(mapOf(), false, false, false, false, false)),
-                Arguments.of(IsModifiedData(mapOf(), false, false, false, false, false), IsModifiedData(mapOf(), false, false, false, false, true)),
-                Arguments.of(IsModifiedData(mapOf(), false, false, false, false, true), IsModifiedData(mapOf(), false, false, false, false, false))
+                Arguments.of(
+                    IsModifiedData(mapOf(), false, false, false, false, false),
+                    IsModifiedData(mapOf("1" to true, "2" to false), false, false, false, false, false)
+                ),
+                Arguments.of(
+                    IsModifiedData(mapOf("1" to true, "2" to false), false, false, false, false, false),
+                    IsModifiedData(mapOf(), false, false, false, false, false)
+                ),
+                Arguments.of(
+                    IsModifiedData(mapOf(), false, false, false, false, false),
+                    IsModifiedData(mapOf(), true, false, false, false, false)
+                ),
+                Arguments.of(
+                    IsModifiedData(mapOf(), true, false, false, false, false),
+                    IsModifiedData(mapOf(), false, false, false, false, false)
+                ),
+                Arguments.of(
+                    IsModifiedData(mapOf(), false, false, false, false, false),
+                    IsModifiedData(mapOf(), false, true, false, false, false)
+                ),
+                Arguments.of(
+                    IsModifiedData(mapOf(), false, true, false, false, false),
+                    IsModifiedData(mapOf(), false, false, false, false, false)
+                ),
+                Arguments.of(
+                    IsModifiedData(mapOf(), false, false, false, false, false),
+                    IsModifiedData(mapOf(), false, false, true, false, false)
+                ),
+                Arguments.of(
+                    IsModifiedData(mapOf(), false, false, true, false, false),
+                    IsModifiedData(mapOf(), false, false, false, false, false)
+                ),
+                Arguments.of(
+                    IsModifiedData(mapOf(), false, false, false, false, false),
+                    IsModifiedData(mapOf(), false, false, false, true, false)
+                ),
+                Arguments.of(
+                    IsModifiedData(mapOf(), false, false, false, true, false),
+                    IsModifiedData(mapOf(), false, false, false, false, false)
+                ),
+                Arguments.of(
+                    IsModifiedData(mapOf(), false, false, false, false, false),
+                    IsModifiedData(mapOf(), false, false, false, false, true)
+                ),
+                Arguments.of(
+                    IsModifiedData(mapOf(), false, false, false, false, true),
+                    IsModifiedData(mapOf(), false, false, false, false, false)
+                )
             )
         }
     }

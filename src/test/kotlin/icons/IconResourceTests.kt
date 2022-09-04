@@ -33,7 +33,8 @@ class IconResourceTests {
         val iconPaths = starWarsFactions.map {
             it.vehicles.map { vehicle ->
                 val iconBasePath =
-                    ".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources${File.separatorChar}icons/${vehicle.fileName}"
+                    ".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}" +
+                        "resources${File.separatorChar}icons/${vehicle.fileName}"
                 listOf(
                     { assertTrue(File("$iconBasePath.png").exists(), "Icon $iconBasePath.png does not exist.") },
                     {
@@ -65,7 +66,8 @@ class IconResourceTests {
         // Act
         val iconPaths = starWarsFactions.map {
             val iconBasePath =
-                ".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources${File.separatorChar}icons${File.separatorChar}${it.id}${File.separatorChar}logo"
+                ".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources" +
+                    "${File.separatorChar}icons${File.separatorChar}${it.id}${File.separatorChar}logo"
             listOf(
                 { assertTrue(File("$iconBasePath.png").exists(), "Icon $iconBasePath.png does not exist.") },
                 { assertTrue(File("$iconBasePath@2x.png").exists(), "Icon $iconBasePath@2x.png does not exist.") }
@@ -80,10 +82,12 @@ class IconResourceTests {
     fun `all icon resources should be used`() {
         // Arrange
         val starWarsFactions = FactionHolder.factions
-        val iconBasePath = "${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources${File.separatorChar}icons"
+        val iconBasePath =
+            "${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources${File.separatorChar}icons"
 
         val matcher = FileSystems.getDefault().getPathMatcher("glob:**/*\\.png")
         val path = File(".$iconBasePath").toPath()
+        val basePath = "$iconBasePath${File.separatorChar}"
         val imageFiles = Files.walk(path)
             .filter {
                 matcher.matches(it)
@@ -91,7 +95,7 @@ class IconResourceTests {
             .collect(toList())
             .map {
                 val imagePath = it.toAbsolutePath().absolutePathString()
-                imagePath.drop(imagePath.indexOf("$iconBasePath${File.separatorChar}") + "$iconBasePath${File.separatorChar}".length)
+                imagePath.drop(imagePath.indexOf(basePath) + basePath.length)
             }
 
         // Act
@@ -104,7 +108,8 @@ class IconResourceTests {
 
         // Assert
         val imagesNotReferences = imageFiles.filter {
-            !iconPaths.contains(it) && !iconWhitelist.contains(it) && !it.endsWith("logo.png") && !it.endsWith("logo@2x.png")
+            !iconPaths.contains(it) && !iconWhitelist.contains(it) && !it.endsWith("logo.png") &&
+                !it.endsWith("logo@2x.png")
         }
         assertTrue(
             imagesNotReferences.isEmpty(),

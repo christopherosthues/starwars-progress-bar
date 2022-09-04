@@ -171,7 +171,12 @@ class StarWarsPersistentStateComponentTests {
             { assertEquals(1, annotations.size) },
             { assertEquals(State::class, annotations.first().annotationClass) },
             { assertEquals("StarWarsProgress.xml", (annotations.first() as State).storages.first().value) },
-            { assertEquals("com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent", (annotations.first() as State).name) }
+            {
+                assertEquals(
+                    "com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent",
+                    (annotations.first() as State).name
+                )
+            }
         )
     }
 

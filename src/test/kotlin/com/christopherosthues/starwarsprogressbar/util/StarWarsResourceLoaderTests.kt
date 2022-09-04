@@ -267,7 +267,9 @@ internal class StarWarsResourceLoaderTests {
 
     @ParameterizedTest
     @ValueSource(booleans = [true, false])
-    fun `getFactionLogo should return icon converted to buffered image if resource path starts with a slash`(isLargeIcon: Boolean) {
+    fun `getFactionLogo should return icon converted to buffered image if resource path starts with a slash`(
+        isLargeIcon: Boolean
+    ) {
         // Arrange
         val imageIconMock = setupIconImage()
         val factionName = "faction2"
@@ -559,7 +561,9 @@ internal class StarWarsResourceLoaderTests {
 
     @ParameterizedTest
     @MethodSource("factionValues")
-    fun `loadFactions should return loaded factions if resource path starts with a slash`(starWarsFactions: StarWarsFactions) {
+    fun `loadFactions should return loaded factions if resource path starts with a slash`(
+        starWarsFactions: StarWarsFactions
+    ) {
         // Arrange
         val factionJson = ""
         val url = setupUrlWithText(factionJson)

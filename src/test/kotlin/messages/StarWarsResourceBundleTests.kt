@@ -14,8 +14,8 @@ import java.util.stream.Stream
 import kotlin.reflect.KVisibility
 import kotlin.reflect.full.memberProperties
 
-internal const val bundleIdentifier = "StarWarsBundle"
-internal const val bundleExtension = ".properties"
+internal const val BUNDLE_IDENTIFIER = "StarWarsBundle"
+internal const val BUNDLE_EXTENSION = ".properties"
 
 class StarWarsResourceBundleTests {
     //region Tests
@@ -97,7 +97,7 @@ class StarWarsResourceBundleTests {
         var bundleConstantMembers = BundleConstants::class.memberProperties.filter {
             it.visibility != KVisibility.PRIVATE && !bundleConstantMembersToIgnore.contains(it.name)
         }
-        if (!bundleFile.nameWithoutExtension.endsWith(bundleIdentifier)) {
+        if (!bundleFile.nameWithoutExtension.endsWith(BUNDLE_IDENTIFIER)) {
             bundleConstantMembers = bundleConstantMembers.filter { it.name != "PLUGIN_NAME" }
         }
 
@@ -170,7 +170,7 @@ class StarWarsResourceBundleTests {
 
     private fun getFallbackBundleFile(): File {
         return File(".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources${File.separatorChar}messages${File.separatorChar}").list { _, name ->
-            name != null && name.equals(bundleIdentifier + bundleExtension)
+            name != null && name.equals(BUNDLE_IDENTIFIER + BUNDLE_EXTENSION)
         }
             .map { fileName -> File(".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources${File.separatorChar}messages${File.separatorChar}$fileName") }
             .first()
@@ -191,7 +191,7 @@ class StarWarsResourceBundleTests {
         @JvmStatic
         fun bundleFileValues(): List<File> {
             return File(".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources${File.separatorChar}messages${File.separatorChar}").list { _, name ->
-                name != null && name.startsWith(bundleIdentifier) && name.endsWith(bundleExtension)
+                name != null && name.startsWith(BUNDLE_IDENTIFIER) && name.endsWith(BUNDLE_EXTENSION)
             }
                 .map { fileName -> File(".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources${File.separatorChar}messages${File.separatorChar}$fileName") }
         }
@@ -199,8 +199,8 @@ class StarWarsResourceBundleTests {
         @JvmStatic
         fun languageSpecificBundleFileValues(): List<File> {
             return File(".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources${File.separatorChar}messages${File.separatorChar}").list { _, name ->
-                name != null && name.startsWith(bundleIdentifier) && name.endsWith(bundleExtension) && !name.equals(
-                    bundleIdentifier + bundleExtension
+                name != null && name.startsWith(BUNDLE_IDENTIFIER) && name.endsWith(BUNDLE_EXTENSION) && !name.equals(
+                    BUNDLE_IDENTIFIER + BUNDLE_EXTENSION
                 )
             }
                 .map { fileName -> File(".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources${File.separatorChar}messages${File.separatorChar}$fileName") }

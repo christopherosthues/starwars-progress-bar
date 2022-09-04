@@ -26,7 +26,8 @@ class BundleConstantsTests {
     @Test
     fun `all public constants should be tested`() {
         // Arrange
-        val bundleConstantMembers = BundleConstants::class.memberProperties.filter { it.visibility != KVisibility.PRIVATE }
+        val bundleConstantMembers =
+            BundleConstants::class.memberProperties.filter { it.visibility != KVisibility.PRIVATE }
 
         // Act and Assert
         assertEquals(bundleConstantMembers.size, bundleConstants().count().toInt())

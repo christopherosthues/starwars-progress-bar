@@ -107,7 +107,12 @@ class DoNotAskServiceTests {
         DoNotAskService.setDoNotAskFor(doNotAsk)
 
         // Assert
-        verify(exactly = 1) { propertiesComponentMock.setValue("Notification.DoNotAsk-${PluginConstants.NotificationGroupId}", doNotAsk) }
+        verify(exactly = 1) {
+            propertiesComponentMock.setValue(
+                "Notification.DoNotAsk-${PluginConstants.NotificationGroupId}",
+                doNotAsk
+            )
+        }
     }
 
     @Test
@@ -139,11 +144,16 @@ class DoNotAskServiceTests {
         "Notification.DisplayName-DoNotAsk-${PluginConstants.NotificationGroupId}"
 
         // Assert
-        verify(exactly = 1) { propertiesComponentMock.setValue("Notification.DisplayName-DoNotAsk-${PluginConstants.NotificationGroupId}", displayName) }
+        verify(exactly = 1) {
+            propertiesComponentMock.setValue(
+                "Notification.DisplayName-DoNotAsk-${PluginConstants.NotificationGroupId}",
+                displayName
+            )
+        }
     }
 
     @Test
-    fun `setDoNotAskFor should store notification group id as display name for notification group if notification group title is null`() {
+    fun `setDoNotAskFor should store notification group id as display name if notification group title is null`() {
         // Arrange
         mockkObject(NotificationGroup)
         every { NotificationGroup.getGroupTitle(PluginConstants.NotificationGroupId) } returns null
@@ -156,7 +166,12 @@ class DoNotAskServiceTests {
         "Notification.DisplayName-DoNotAsk-${PluginConstants.NotificationGroupId}"
 
         // Assert
-        verify(exactly = 1) { propertiesComponentMock.setValue("Notification.DisplayName-DoNotAsk-${PluginConstants.NotificationGroupId}", PluginConstants.NotificationGroupId) }
+        verify(exactly = 1) {
+            propertiesComponentMock.setValue(
+                "Notification.DisplayName-DoNotAsk-${PluginConstants.NotificationGroupId}",
+                PluginConstants.NotificationGroupId
+            )
+        }
     }
 
     //endregion

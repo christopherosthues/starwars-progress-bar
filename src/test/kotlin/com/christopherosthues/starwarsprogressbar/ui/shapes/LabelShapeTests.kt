@@ -30,7 +30,7 @@ class LabelShapeTests {
 
     @ParameterizedTest
     @MethodSource("widthValues")
-    fun `constructor should set width to maximum of the width of the dimension and width of dimension minus left padding minus right padding`(
+    fun `constructor should set width to maximum of width and width minus left padding and right padding`(
         width: Int,
         leftInset: Int,
         rightInset: Int,
@@ -107,7 +107,7 @@ class LabelShapeTests {
 
     @ParameterizedTest()
     @MethodSource("yValues")
-    fun `constructor should set y to y of icon shape plus half height of icon shape minus half height of dimension height`(
+    fun `constructor should set y to y of icon shape plus half icon shape height minus half dimension height`(
         iconShapeY: Int,
         iconShapeHeight: Int,
         dimensionHeight: Int,

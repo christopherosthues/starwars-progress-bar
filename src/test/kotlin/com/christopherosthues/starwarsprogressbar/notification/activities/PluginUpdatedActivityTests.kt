@@ -60,9 +60,16 @@ class PluginUpdatedActivityTests {
 
         every { StarWarsBundle.message(any()) } returns ""
         every { StarWarsBundle.message(BundleConstants.PLUGIN_NAME) } returns pluginName
-        every { StarWarsBundle.message(BundleConstants.NOTIFICATION_PLUGIN_UPDATED, installedVersion) } returns pluginUpdatedMessage
+        every {
+            StarWarsBundle.message(
+                BundleConstants.NOTIFICATION_PLUGIN_UPDATED,
+                installedVersion
+            )
+        } returns pluginUpdatedMessage
         every { StarWarsBundle.message(BundleConstants.NOTIFICATION_CONFIGURE) } returns configureNotificationText
-        every { StarWarsBundle.message(BundleConstants.NOTIFICATION_DONT_SHOW_AGAIN) } returns doNotShowAgainNotificationText
+        every {
+            StarWarsBundle.message(BundleConstants.NOTIFICATION_DONT_SHOW_AGAIN)
+        } returns doNotShowAgainNotificationText
     }
 
     @AfterEach
@@ -203,7 +210,13 @@ class PluginUpdatedActivityTests {
         sut.runActivity(mockk())
 
         // Assert
-        verify(exactly = 1) { notificationGroupMock.createNotification(pluginName, pluginUpdatedMessage, NotificationType.INFORMATION) }
+        verify(exactly = 1) {
+            notificationGroupMock.createNotification(
+                pluginName,
+                pluginUpdatedMessage,
+                NotificationType.INFORMATION
+            )
+        }
     }
 
     @Test
@@ -287,11 +300,16 @@ class PluginUpdatedActivityTests {
         actions.first().actionPerformed(actionEventMock)
 
         // Assert
-        verify(exactly = 1) { showSettingsUtilMock.showSettingsDialog(projectMock, StarWarsProgressConfigurable::class.java) }
+        verify(exactly = 1) {
+            showSettingsUtilMock.showSettingsDialog(
+                projectMock,
+                StarWarsProgressConfigurable::class.java
+            )
+        }
     }
 
     @Test
-    fun `runActivity should create correct notification actions and second action should store do not ask and hide balloon`() {
+    fun `runActivity should create notification actions and second action should store do not ask and hide balloon`() {
         // Arrange
         setupPluginDescriptorAndStarWarsState()
         val (_, _, notificationMock) = setupNotification()
@@ -325,7 +343,9 @@ class PluginUpdatedActivityTests {
 
     //region Helper methods
 
-    private fun setupPluginDescriptorAndStarWarsState(storedVersion: String = storedDifferentVersion): Pair<IdeaPluginDescriptor, StarWarsState> {
+    private fun setupPluginDescriptorAndStarWarsState(
+        storedVersion: String = storedDifferentVersion
+    ): Pair<IdeaPluginDescriptor, StarWarsState> {
         val pluginIdMock = mockk<PluginId>(relaxed = true)
         val pluginDescriptorMock = mockk<IdeaPluginDescriptor>(relaxed = true)
         val starWarsStateMock = mockk<StarWarsState>(relaxed = true)
@@ -344,7 +364,9 @@ class PluginUpdatedActivityTests {
         val notificationMock = mockk<Notification>(relaxed = true)
         every { DoNotAskService.canShowNotification() } returns true
         every { NotificationGroupManager.getInstance() } returns notificationManagerMock
-        every { notificationManagerMock.getNotificationGroup(PluginConstants.NotificationGroupId) } returns notificationGroupMock
+        every {
+            notificationManagerMock.getNotificationGroup(PluginConstants.NotificationGroupId)
+        } returns notificationGroupMock
         every {
             notificationGroupMock.createNotification(
                 pluginName,

@@ -15,7 +15,11 @@ import kotlin.random.Random
 class IconShapeTests {
     @ParameterizedTest
     @MethodSource("xValues")
-    fun `constructor should set x to x plus default left padding + left padding`(x: Int, leftInset: Int, expectedX: Int) {
+    fun `constructor should set x to x plus default left padding + left padding`(
+        x: Int,
+        leftInset: Int,
+        expectedX: Int
+    ) {
         // Arrange
         val y = Random.nextInt()
         val width = Random.nextInt()
@@ -51,7 +55,11 @@ class IconShapeTests {
 
     @ParameterizedTest
     @MethodSource("yForTopPaddingGreaterThanOrEqualToBaseMarginValues")
-    fun `constructor should set y to y plus top padding if top padding is greater than or equal to base margin`(y: Int, topInset: Int, expectedY: Int) {
+    fun `constructor should set y to y plus top padding if top padding is greater than or equal to base margin`(
+        y: Int,
+        topInset: Int,
+        expectedY: Int
+    ) {
         // Arrange
         val x = Random.nextInt()
         val width = Random.nextInt()

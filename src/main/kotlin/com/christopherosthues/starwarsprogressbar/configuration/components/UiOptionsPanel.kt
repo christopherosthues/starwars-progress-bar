@@ -8,6 +8,8 @@ import java.awt.GridLayout
 
 private const val GAP = 5
 
+private const val NUMBER_OF_ROWS = 3
+
 internal class UiOptionsPanel : JTitledPanel(StarWarsBundle.message(BundleConstants.UI_OPTIONS)) {
     private val showVehicleNameCheckBox = JBCheckBox(StarWarsBundle.message(BundleConstants.SHOW_VEHICLE_NAME), false)
     private val showToolTipsCheckBox = JBCheckBox(StarWarsBundle.message(BundleConstants.SHOW_TOOL_TIPS), true)
@@ -38,7 +40,7 @@ internal class UiOptionsPanel : JTitledPanel(StarWarsBundle.message(BundleConsta
         get() = enableNewVehiclesCheckBox.isSelected
 
     init {
-        layout = GridLayout(3, 2, GAP, GAP)
+        layout = GridLayout(NUMBER_OF_ROWS, 2, GAP, GAP)
 
         showVehicleNameCheckBox.addItemListener {
             firePropertyChange(
