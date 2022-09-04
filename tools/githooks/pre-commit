@@ -2,5 +2,10 @@
 # https://github.com/pinterest/ktlint pre-commit hook
 # On Linux xargs must be told to do nothing on no input. On MacOS (linux distribution "Darwin") this is default behavior and the xargs flag "--no-run-if-empty" flag does not exists
 [ "$(uname -s)" != "Darwin" ] && no_run_if_empty=--no-run-if-empty
-git --no-pager diff --name-only --cached --relative | grep '\.kt[s"]\?$' | xargs $no_run_if_empty ktlint -F --relative
+if [[ $(uname -s) == MINGW* ]];
+then
+  git --no-pager diff --name-only --cached --relative | grep '\.kt[s"]\?$' | xargs $no_run_if_empty java -jar ktlint.jar -F --relative
+else
+  git --no-pager diff --name-only --cached --relative | grep '\.kt[s"]\?$' | xargs $no_run_if_empty ktlint -F --relative
+fi
 if [ $? -ne 0 ]; then exit 1; fi && git add . && rm -rf build/test-results/test && ./gradlew test
