@@ -4,7 +4,7 @@
 
 ## [Unreleased]
 ### Added
-- Darth Maul's Scimitar and Maxillipede-class shuttle to CIS faction
+- Darth Maul's Scimitar, Sheathipede-class, Sheathipede-class type B and Maxillipede-class shuttles to CIS faction
 - Acclamator-II-class assault ship to Galactic Republic faction
 - Adi Gallia's Delta-7b to Jedi Order faction
 - Possibility of choosing the initial selection of a new vehicle
@@ -14,10 +14,12 @@
 ### Changed
 - UI adjustments in settings
 - Updated minimum supported version to 2021.3.3
+- Renamed Separatist Supply Ship to DH-Omni Support Vessel
 
 ### Removed
 
 ### Fixed
+- Progress bar color of DH-Omni Support Vessel
 
 ## [1.3.0] - 2022-07-27
 ### Changed

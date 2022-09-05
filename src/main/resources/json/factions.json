@@ -419,8 +419,22 @@
         },
         {
           "id": "separatist_supply_ship",
-          "ionEngine": "yellow",
+          "ionEngine": "blue",
           "xShift": -10,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "id": "sheathipede_class_shuttle_cis",
+          "ionEngine": "yellow",
+          "xShift": -6,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "id": "sheathipede_class_type_b_shuttle",
+          "ionEngine": "yellow",
+          "xShift": -1,
           "yShift": -6,
           "velocity": 2.5
         },
