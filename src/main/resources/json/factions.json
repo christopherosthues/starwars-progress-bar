@@ -196,6 +196,13 @@
           "velocity": 1
         },
         {
+          "id": "infantry_support_platform",
+          "ionEngine": "brown",
+          "xShift": -9,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
           "id": "j_type_diplomatic_barge",
           "ionEngine": "blue",
           "xShift": -14,
