@@ -133,6 +133,13 @@
           "xShift": -6,
           "yShift": -6,
           "velocity": 2.5
+        },
+        {
+          "id": "praxis_mk_i_turbo_speeder",
+          "ionEngine": "blue",
+          "xShift": -22,
+          "yShift": -6,
+          "velocity": 2.5
         }
       ]
     },

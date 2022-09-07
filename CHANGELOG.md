@@ -6,7 +6,7 @@
 ### Added
 - Darth Maul's Scimitar, Sheathipede-class, Sheathipede-class type B and Maxillipede-class shuttles to CIS faction
 - Acclamator-II-class assault ship and Infantry Support Platform to Galactic Republic faction
-- Adi Gallia's Delta-7b to Jedi Order faction
+- Adi Gallia's Delta-7b and Praxis Mk I turbo speeder to Jedi Order faction
 - Possibility of choosing the initial selection of a new vehicle
 - Faction crests to factions in settings
 - Faction crests to progress bar (can be enabled in settings)
