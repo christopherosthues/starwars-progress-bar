@@ -22,7 +22,7 @@ internal class StarWarsPersistentStateComponent : PersistentStateComponent<StarW
     }
 
     companion object {
-        val instance: StarWarsPersistentStateComponent
+        val instance: StarWarsPersistentStateComponent?
             get() = ApplicationManager.getApplication().getService(StarWarsPersistentStateComponent::class.java)
     }
 }

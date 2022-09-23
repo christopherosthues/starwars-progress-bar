@@ -20,6 +20,7 @@
 
 ### Fixed
 - Progress bar color of DH-Omni Support Vessel
+- Prevent NullPointerException when uninstalling the plugin
 
 ## [1.3.0] - 2022-07-27
 ### Changed

@@ -66,10 +66,10 @@ internal class StarWarsProgressBarUI(
     constructor(vehicle: StarWarsVehicle) : this(
         vehicle,
         // TODO: extract default values into own class (progress bar UI + StarWarsState + configuration panels
-        { StarWarsPersistentStateComponent.instance.state?.showVehicleNames ?: false },
-        { StarWarsPersistentStateComponent.instance.state?.showToolTips ?: true },
-        { StarWarsPersistentStateComponent.instance.state?.showFactionCrests ?: false },
-        { StarWarsPersistentStateComponent.instance.state?.sameVehicleVelocity ?: false }
+        { StarWarsPersistentStateComponent.instance?.state?.showVehicleNames ?: false },
+        { StarWarsPersistentStateComponent.instance?.state?.showToolTips ?: true },
+        { StarWarsPersistentStateComponent.instance?.state?.showFactionCrests ?: false },
+        { StarWarsPersistentStateComponent.instance?.state?.sameVehicleVelocity ?: false }
     )
 
     private fun getVelocity(): Float {

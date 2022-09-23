@@ -7,7 +7,7 @@ import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 internal object VehicleSelector {
     fun selectRandomVehicle(): StarWarsVehicle {
         val persistentStateComponent = StarWarsPersistentStateComponent.instance
-        val starWarsState = persistentStateComponent.state ?: return FactionHolder.missingVehicle
+        val starWarsState = persistentStateComponent?.state ?: return FactionHolder.missingVehicle
 
         val enabledVehicles = starWarsState.vehiclesEnabled
         return selectRandomVehicle(enabledVehicles, starWarsState.enableNewVehicles)

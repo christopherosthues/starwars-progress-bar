@@ -13,5 +13,6 @@ class GotIt(
 ) {
     fun show() {
         tooltip.show(component, pointProvider)
+        tooltip.dispose()
     }
 }

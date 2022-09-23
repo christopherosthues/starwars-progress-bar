@@ -21,7 +21,7 @@ import com.intellij.openapi.startup.StartupActivity.DumbAware
 class PluginUpdatedActivity : DumbAware {
     override fun runActivity(project: Project) {
         val pluginDescriptor = PluginManagerCore.getPlugin(PluginId.getId(PluginConstants.PluginId))
-        val starWarsState = StarWarsPersistentStateComponent.instance.state
+        val starWarsState = StarWarsPersistentStateComponent.instance?.state
         if (pluginDescriptor != null && starWarsState != null) {
             val installedVersion = pluginDescriptor.version
             val storedVersion = starWarsState.version
