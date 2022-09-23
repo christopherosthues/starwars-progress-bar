@@ -32,14 +32,14 @@ repositories {
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(11))
+        languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
 
 // Set the JVM language level used to compile sources and generate files - Java 17 is required since 2022.2
 kotlin {
     jvmToolchain {
-        languageVersion.set(JavaLanguageVersion.of(11))
+        languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
 
@@ -108,10 +108,10 @@ tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
 
 // Kotlin DSL
 tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
-    this.jvmTarget = "11"
+    this.jvmTarget = "17"
 }
 tasks.withType<io.gitlab.arturbosch.detekt.DetektCreateBaselineTask>().configureEach {
-    this.jvmTarget = "11"
+    this.jvmTarget = "17"
 }
 
 tasks {
