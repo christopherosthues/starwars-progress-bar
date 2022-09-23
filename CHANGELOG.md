@@ -16,8 +16,6 @@
 - Updated minimum supported version to 2021.3.3
 - Renamed Separatist Supply Ship to DH-Omni Support Vessel
 
-### Removed
-
 ### Fixed
 - Progress bar color of DH-Omni Support Vessel
 - Prevent NullPointerException when uninstalling the plugin
