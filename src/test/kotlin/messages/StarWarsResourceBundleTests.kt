@@ -17,6 +17,7 @@ import kotlin.reflect.full.memberProperties
 internal const val BUNDLE_IDENTIFIER = "StarWarsBundle"
 internal const val BUNDLE_EXTENSION = ".properties"
 
+// TODO add unit test to detekt superfluous translations
 class StarWarsResourceBundleTests {
     //region Tests
 

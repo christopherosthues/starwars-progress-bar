@@ -4,15 +4,10 @@ import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
 import com.christopherosthues.starwarsprogressbar.configuration.borders.TitledIconBorder
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
-import com.christopherosthues.starwarsprogressbar.constants.PluginConstants
-import com.christopherosthues.starwarsprogressbar.models.FactionHolder
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
-import com.christopherosthues.starwarsprogressbar.notification.GotIt
-import com.christopherosthues.starwarsprogressbar.notification.GotItService
 import com.christopherosthues.starwarsprogressbar.ui.events.VehicleClickListener
 import com.christopherosthues.starwarsprogressbar.util.StarWarsResourceLoader
-import com.intellij.ui.GotItTooltip
 import com.intellij.ui.roots.ScalableIconComponent
 import com.intellij.util.ui.JBUI
 import com.intellij.util.ui.ThreeStateCheckBox
@@ -58,22 +53,6 @@ internal class FactionPanel(private val faction: StarWarsFaction) :
             }
 
             updateSelectionButtons()
-
-            if (faction.id == FactionHolder.defaultFactions.first().id) {
-                createGotItTooltip()
-            }
-        }
-    }
-
-    private fun createGotItTooltip() {
-        if (components.size > 1 && components[1] is ScalableIconComponent) {
-            val icon = components[1] as ScalableIconComponent
-            val tooltip = GotItTooltip(
-                PluginConstants.GotItIconSelectionId,
-                StarWarsBundle.message(BundleConstants.GOT_IT_ICON_SELECTION),
-                null
-            )
-            GotItService.addGotItMessage(GotIt(tooltip, icon, GotItTooltip.BOTTOM_MIDDLE))
         }
     }
 
@@ -168,8 +147,11 @@ internal class FactionPanel(private val faction: StarWarsFaction) :
         }
 
         val selectionText = StarWarsBundle.message(
-            if (selected == numberOfVehicles) BundleConstants.DESELECT_ALL
-            else BundleConstants.SELECT_ALL
+            if (selected == numberOfVehicles) {
+                BundleConstants.DESELECT_ALL
+            } else {
+                BundleConstants.SELECT_ALL
+            }
         )
         selectVehiclesCheckbox.text = StarWarsBundle.message(
             BundleConstants.SELECTED,

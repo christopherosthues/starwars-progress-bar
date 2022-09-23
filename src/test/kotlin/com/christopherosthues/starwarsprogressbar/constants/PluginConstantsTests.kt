@@ -43,10 +43,6 @@ class PluginConstantsTests {
             return Stream.of(
                 Arguments.of("com.christopherosthues.starwarsprogressbar", PluginConstants.PluginId),
                 Arguments.of(
-                    "com.christopherosthues.starwarsprogressbar.gotit.iconselection",
-                    PluginConstants.GotItIconSelectionId
-                ),
-                Arguments.of(
                     "com.christopherosthues.starwarsprogressbar.ui.configuration",
                     PluginConstants.PluginSearchId
                 ),

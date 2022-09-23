@@ -268,6 +268,19 @@ class VehicleSelectorTests {
     }
 
     @Test
+    fun `selectRandomVehicles should return missing vehicle if persistent state component is null`() {
+        // Arrange
+        every { FactionHolder.factions } returns listOf(StarWarsFaction("1", listOf()))
+        setupStarWarsState(null)
+
+        // Act
+        val result = VehicleSelector.selectRandomVehicle()
+
+        // Assert
+        assertEquals(missingVehicle, result)
+    }
+
+    @Test
     fun `selectRandomVehicles should return missing vehicle if state is null`() {
         // Arrange
         every { FactionHolder.factions } returns listOf(StarWarsFaction("1", listOf()))

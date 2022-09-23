@@ -20,6 +20,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertNotSame
+import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Assertions.assertSame
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
@@ -154,6 +155,26 @@ class StarWarsPersistentStateComponentTests {
             { assertEquals(expectedResult, result) },
             { assertSame(expectedResult, result) }
         )
+
+        verify(exactly = 1) { ApplicationManager.getApplication() }
+        verify(exactly = 1) { applicationMock.getService(StarWarsPersistentStateComponent::class.java) }
+    }
+
+    @Test
+    fun `instance should return null if application manager returns null`() {
+        // Arrange
+        mockkStatic(ApplicationManager::class)
+
+        val applicationMock = mockk<Application>()
+
+        every { ApplicationManager.getApplication() } returns applicationMock
+        every { applicationMock.getService(StarWarsPersistentStateComponent::class.java) } returns null
+
+        // Act
+        val result = StarWarsPersistentStateComponent.instance
+
+        // Assert
+        assertNull(result)
 
         verify(exactly = 1) { ApplicationManager.getApplication() }
         verify(exactly = 1) { applicationMock.getService(StarWarsPersistentStateComponent::class.java) }

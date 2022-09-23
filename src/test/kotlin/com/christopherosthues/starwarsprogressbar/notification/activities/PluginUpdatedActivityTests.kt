@@ -117,6 +117,25 @@ class PluginUpdatedActivityTests {
     }
 
     @Test
+    fun `runActivity should not display notification if star wars persistent state component is null`() {
+        // Arrange
+        val pluginIdMock = mockk<PluginId>(relaxed = true)
+        val pluginDescriptorMock = mockk<IdeaPluginDescriptor>(relaxed = true)
+        every { PluginId.getId(PluginConstants.PluginId) } returns pluginIdMock
+        every { PluginManagerCore.getPlugin(pluginIdMock) } returns pluginDescriptorMock
+        every { StarWarsPersistentStateComponent.instance } returns null
+        val sut = PluginUpdatedActivity()
+
+        // Act
+        sut.runActivity(mockk())
+
+        // Assert
+        verify(exactly = 0) { pluginDescriptorMock.version }
+        verify(exactly = 0) { DoNotAskService.canShowNotification() }
+        verify(exactly = 0) { NotificationGroupManager.getInstance() }
+    }
+
+    @Test
     fun `runActivity should not display notification if star wars state is null`() {
         // Arrange
         val pluginIdMock = mockk<PluginId>(relaxed = true)

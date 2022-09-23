@@ -2,9 +2,7 @@ package com.christopherosthues.starwarsprogressbar.configuration
 
 import com.christopherosthues.starwarsprogressbar.models.FactionHolder
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
-import com.christopherosthues.starwarsprogressbar.notification.GotItService
 import io.mockk.every
-import io.mockk.justRun
 import io.mockk.mockk
 import io.mockk.mockkObject
 import io.mockk.unmockkAll
@@ -22,14 +20,11 @@ class CreateStarWarsProgressConfigurationComponentTests {
     fun setup() {
         mockkObject(StarWarsPersistentStateComponent)
         mockkObject(FactionHolder)
-        mockkObject(GotItService)
 
         val starWarsPersistentStateComponentMock = mockk<StarWarsPersistentStateComponent>(relaxed = true)
         every { StarWarsPersistentStateComponent.instance } returns starWarsPersistentStateComponentMock
         every { starWarsPersistentStateComponentMock.state } returns null
         every { FactionHolder.missingVehicle } returns StarWarsVehicle("missing", "green", 0, 0, 0f)
-        justRun { GotItService.showGotItTooltips() }
-        justRun { GotItService.addGotItMessage(any()) }
     }
 
     @AfterEach

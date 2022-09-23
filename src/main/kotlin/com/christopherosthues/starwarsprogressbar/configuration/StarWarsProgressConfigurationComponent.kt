@@ -4,7 +4,6 @@ import com.christopherosthues.starwarsprogressbar.configuration.components.Previ
 import com.christopherosthues.starwarsprogressbar.configuration.components.UiOptionsPanel
 import com.christopherosthues.starwarsprogressbar.configuration.components.VehiclesPanel
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
-import com.christopherosthues.starwarsprogressbar.notification.GotItService
 import com.christopherosthues.starwarsprogressbar.ui.events.VehicleClickListener
 import com.intellij.util.ui.FormBuilder
 import java.awt.BorderLayout
@@ -42,8 +41,6 @@ internal class StarWarsProgressConfigurationComponent {
 
     init {
         createUI()
-
-        GotItService.showGotItTooltips()
     }
 
     fun updateUI(starWarsState: StarWarsState?) {
