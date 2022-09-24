@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Assertions.assertInstanceOf
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Assertions.assertSame
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertAll
 import java.awt.GraphicsConfiguration
@@ -238,6 +239,7 @@ class ResourceFactoryTests {
     //region createImageIconFromURL tests
 
     @Test
+    @Disabled
     fun `createImageIconFromURL should return image icon created from provided url`() {
         // Arrange
         val size = 32
