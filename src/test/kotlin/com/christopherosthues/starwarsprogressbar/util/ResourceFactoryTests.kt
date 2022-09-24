@@ -17,6 +17,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertAll
 import java.awt.GraphicsConfiguration
 import java.awt.image.BufferedImage
+import java.util.*
 import javax.swing.ImageIcon
 
 class ResourceFactoryTests {
@@ -240,7 +241,10 @@ class ResourceFactoryTests {
     fun `createImageIconFromURL should return image icon created from provided url`() {
         // Arrange
         val size = 32
-        val url = createClassLoader().getResource("icons/missing.png")
+        val imageResource = "icons/missing.png"
+
+        val url = Optional.ofNullable(createClassLoader().getResource(imageResource))
+            .orElseGet { createClassLoader().getResource("/$imageResource") }
 
         assertNotNull(url)
         if (url == null) {
