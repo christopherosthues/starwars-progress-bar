@@ -239,7 +239,7 @@ class ResourceFactoryTests {
     //region createImageIconFromURL tests
 
     @Test
-    @Disabled
+    @Disabled("Should only be executed locally")
     fun `createImageIconFromURL should return image icon created from provided url`() {
         // Arrange
         val size = 32
