@@ -46,13 +46,13 @@ kotlin {
 dependencies {
     implementation("com.google.code.gson:gson:2.9.0")
 
-    testImplementation(platform("org.junit:junit-bom:5.9.0"))
+    testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.0")
     testImplementation("org.junit.jupiter:junit-jupiter-params:5.9.0")
-    testImplementation("org.junit.platform:junit-platform-launcher:1.9.0")
-    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.0")
-    testImplementation("org.junit.platform:junit-platform-suite-engine:1.9.0")
-    testImplementation("io.mockk:mockk:1.12.8")
+    testImplementation("org.junit.platform:junit-platform-launcher:1.9.1")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.1")
+    testImplementation("org.junit.platform:junit-platform-suite-engine:1.9.1")
+    testImplementation("io.mockk:mockk:1.13.1")
 }
 
 tasks.test {
@@ -73,7 +73,7 @@ intellij {
     pluginName.set(properties("pluginName"))
     version.set(properties("platformVersion"))
     type.set(properties("platformType"))
-    updateSinceUntilBuild.set(false)
+    // updateSinceUntilBuild.set(false)
 
     // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file.
     plugins.set(properties("platformPlugins").split(',').map(String::trim).filter(String::isNotEmpty))
@@ -121,7 +121,8 @@ tasks {
 
     patchPluginXml {
         version.set(properties("pluginVersion"))
-        untilBuild.set(null as String?)
+        // untilBuild.set(null as String?)
+        untilBuild.set(properties("pluginUntilBuild"))
         sinceBuild.set(properties("pluginSinceBuild"))
 
         // Extract the <!-- Plugin description --> section from README.md and provide for the plugin's manifest

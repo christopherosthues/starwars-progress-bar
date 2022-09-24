@@ -14,10 +14,11 @@
 ### Changed
 - UI adjustments in settings
 - Updated minimum supported version to 2021.3.3
+- Updated maximum supported version to 2022.2.*
 - Renamed Separatist Supply Ship to DH-Omni Support Vessel
 
 ### Fixed
-- Progress bar color of DH-Omni Support Vessel
+- Progress bar color of DH-Omni Support Vessel (former Separatist Supply Ship)
 - Prevent NullPointerException when uninstalling the plugin
 
 ## [1.3.0] - 2022-07-27
