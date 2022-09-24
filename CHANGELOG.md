@@ -4,6 +4,15 @@
 
 ## [Unreleased]
 ### Added
+
+### Changed
+
+### Removed
+
+### Fixed
+
+## [1.4.0] - 2022-09-24
+### Added
 - Darth Maul's Scimitar, Sheathipede-class, Sheathipede-class type B and Maxillipede-class shuttles to CIS faction
 - Acclamator-II-class assault ship and Infantry Support Platform to Galactic Republic faction
 - Adi Gallia's Delta-7b and Praxis Mk I turbo speeder to Jedi Order faction
