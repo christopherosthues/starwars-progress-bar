@@ -63,7 +63,7 @@ tasks.test {
 }
 
 detekt {
-    toolVersion = "1.21.0-RC2"
+    toolVersion = "1.21.0"
     config = files("config/detekt/detekt.yml")
     buildUponDefaultConfig = true
 }
@@ -73,7 +73,7 @@ intellij {
     pluginName.set(properties("pluginName"))
     version.set(properties("platformVersion"))
     type.set(properties("platformType"))
-    // updateSinceUntilBuild.set(false)
+    updateSinceUntilBuild.set(false)
 
     // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file.
     plugins.set(properties("platformPlugins").split(',').map(String::trim).filter(String::isNotEmpty))
@@ -121,8 +121,7 @@ tasks {
 
     patchPluginXml {
         version.set(properties("pluginVersion"))
-        // untilBuild.set(null as String?)
-        untilBuild.set(properties("pluginUntilBuild"))
+        untilBuild.set(null as String?)
         sinceBuild.set(properties("pluginSinceBuild"))
 
         // Extract the <!-- Plugin description --> section from README.md and provide for the plugin's manifest
@@ -150,14 +149,7 @@ tasks {
 
     runPluginVerifier {
         ideVersions.set(properties("pluginVerifierIdeVersions").split(",").map { it.trim() }.toList())
-        failureLevel.set(
-            listOf(
-                FailureLevel.COMPATIBILITY_PROBLEMS,
-                FailureLevel.NOT_DYNAMIC,
-                FailureLevel.DEPRECATED_API_USAGES,
-                FailureLevel.INTERNAL_API_USAGES
-            )
-        )
+        failureLevel.set(FailureLevel.ALL)
     }
 
     // Configure UI tests plugin
