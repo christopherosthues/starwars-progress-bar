@@ -189,7 +189,14 @@
           "velocity": 1
         },
         {
-          "id": "blt_b_y_wing",
+          "id": "btl_b_y_wing",
+          "ionEngine": "red",
+          "xShift": -2,
+          "yShift": -6,
+          "velocity": 2
+        },
+        {
+          "id": "captain_rex_y_wing",
           "ionEngine": "red",
           "xShift": -2,
           "yShift": -6,
