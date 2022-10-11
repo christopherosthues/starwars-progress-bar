@@ -189,6 +189,13 @@
           "velocity": 1
         },
         {
+          "id": "blt_b_y_wing",
+          "ionEngine": "red",
+          "xShift": -2,
+          "yShift": -6,
+          "velocity": 2
+        },
+        {
           "id": "havw_a6_juggernaut",
           "ionEngine": "brown",
           "xShift": -1,
