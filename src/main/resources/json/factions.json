@@ -859,6 +859,13 @@
           "xShift": -14,
           "yShift": -6,
           "velocity": 4.5
+        },
+        {
+          "id": "gasganos_podracer",
+          "ionEngine": "orange",
+          "xShift": -13,
+          "yShift": -6,
+          "velocity": 4.5
         }
       ]
     },
