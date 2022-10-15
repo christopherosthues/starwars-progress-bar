@@ -154,6 +154,7 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 * ![Imperial II-class Star Destroyer](src/main/resources/icons/galactic_empire/imperial_class_star_destroyer@2x.png) Imperial II-class Star Destroyer ![Imperial II-class Star Destroyer](src/main/resources/icons/galactic_empire/imperial_class_star_destroyer_r@2x.png)
 * ![Interdictor-class Star Destroyer](src/main/resources/icons/galactic_empire/interdictor_class_star_destroyer@2x.png) Interdictor-class Star Destroyer ![Interdictor-class Star Destroyer](src/main/resources/icons/galactic_empire/interdictor_class_star_destroyer_r@2x.png)
 * ![Lambda-class Shuttle](src/main/resources/icons/galactic_empire/lambda_class_shuttle@2x.png) Lambda-class Shuttle ![Lambda-class Shuttle](src/main/resources/icons/galactic_empire/lambda_class_shuttle_r@2x.png)
+* ![Mining Guild TIE Fighter](src/main/resources/icons/galactic_empire/mining_guild_tie_fighter@2x.png) Mining Guild TIE Fighter ![Mining Guild TIE Fighter](src/main/resources/icons/galactic_empire/mining_guild_tie_fighter_r@2x.png)
 * ![Second Death Star](src/main/resources/icons/galactic_empire/second_death_star@2x.png) Second Death Star ![Second Death Star](src/main/resources/icons/galactic_empire/second_death_star_r@2x.png)
 * ![Sentinel-class Shuttle](src/main/resources/icons/galactic_empire/sentinel_class_shuttle@2x.png) Sentinel-class Shuttle ![Sentinel-class Shuttle](src/main/resources/icons/galactic_empire/sentinel_class_shuttle_r@2x.png)
 * ![TIE Advanced x1](src/main/resources/icons/galactic_empire/tie_advanced_x1@2x.png) TIE Advanced x1 ![TIE Advanced x1](src/main/resources/icons/galactic_empire/tie_advanced_x1_r@2x.png)
@@ -207,6 +208,8 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 ### Podracer
 
 * ![Anakin Skywalker's Podracer](src/main/resources/icons/podracer/anakin_skywalkers_podracer@2x.png) Anakin Skywalker's Podracer ![Anakin Skywalker's Podracer](src/main/resources/icons/podracer/anakin_skywalkers_podracer_r@2x.png)
+* ![Ben Quadinaros' Podracer](src/main/resources/icons/podracer/ben_quadinaros_podracer@2x.png) Ben Quadinaros' Podracer ![Ben Quadinaros' Podracer](src/main/resources/icons/podracer/ben_quadinaros_podracer_r@2x.png)
+* ![Elan Mak's Podracer](src/main/resources/icons/podracer/elan_maks_podracer@2x.png) Elan Mak's Podracer ![Elan Mak's Podracer](src/main/resources/icons/podracer/elan_maks_podracer_r@2x.png)
 * ![Sebulba's Podracer](src/main/resources/icons/podracer/sebulbas_podracer@2x.png) Sebulba's Podracer ![Sebulba's Podracer](src/main/resources/icons/podracer/sebulbas_podracer_r@2x.png)
 
 <!-- Included vehicles end -->

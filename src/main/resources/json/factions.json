@@ -837,6 +837,13 @@
           "ionEngine": "orange",
           "xShift": -14,
           "yShift": -6,
+          "velocity": 5
+        },
+        {
+          "id": "ben_quadinaros_podracer",
+          "ionEngine": "orange",
+          "xShift": -15,
+          "yShift": -6,
           "velocity": 4.5
         },
         {
@@ -844,14 +851,14 @@
           "ionEngine": "orange",
           "xShift": -14,
           "yShift": -6,
-          "velocity": 4
+          "velocity": 4.5
         },
         {
           "id": "elan_maks_podracer",
           "ionEngine": "orange",
           "xShift": -14,
           "yShift": -6,
-          "velocity": 3.5
+          "velocity": 4.5
         }
       ]
     },
