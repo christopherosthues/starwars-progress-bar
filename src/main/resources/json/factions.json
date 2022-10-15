@@ -838,6 +838,13 @@
           "xShift": -14,
           "yShift": -6,
           "velocity": 4
+        },
+        {
+          "id": "elan_maks_podracer",
+          "ionEngine": "orange",
+          "xShift": -14,
+          "yShift": -6,
+          "velocity": 3.5
         }
       ]
     },

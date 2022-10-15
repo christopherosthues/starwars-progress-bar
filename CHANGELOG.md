@@ -4,8 +4,11 @@
 
 ## [Unreleased]
 ### Added
+- BTL-B Y-Wing and Captain Rex's BTL-B Y-Wing to Galactic Republic faction
+- Elan Mak's podracer to podracer faction
 
 ### Changed
+- Update to Java 17
 
 ### Removed
 
