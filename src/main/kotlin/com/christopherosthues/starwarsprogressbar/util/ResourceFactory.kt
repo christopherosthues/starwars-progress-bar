@@ -22,17 +22,16 @@ internal fun parseFactionsFromJson(json: String): StarWarsFactions {
     var loadedFactions = StarWarsFactions(listOf())
     try {
         loadedFactions = gson.fromJson(json, StarWarsFactions::class.java)
-    } catch (npe: NullPointerException) {
-        return loadedFactions
-    } catch (jse: JsonSyntaxException) {
-        return loadedFactions
+    } catch (exception: Exception) {
+        when (exception){
+            is NullPointerException, is JsonSyntaxException -> {
+                return loadedFactions
+            }
+            else -> throw exception
+        }
     }
 
-    if (loadedFactions.factions == null) {
-        return StarWarsFactions(listOf())
-    }
-
-    return loadedFactions
+    return if (loadedFactions.factions != null) loadedFactions else StarWarsFactions(listOf())
 }
 
 internal fun createScaledEmptyImageIcon(size: Int): ImageIcon {

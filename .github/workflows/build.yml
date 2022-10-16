@@ -36,6 +36,8 @@ jobs:
       # Check out current repository
       - name: Fetch Sources
         uses: actions/checkout@v3
+        with:
+          lfs: true
 
       # Validate wrapper
       - name: Gradle Wrapper Validation
@@ -135,6 +137,8 @@ jobs:
       # Check out current repository
       - name: Fetch Sources
         uses: actions/checkout@v3
+        with:
+          lfs: true
 
       # Remove old release drafts by using the curl request for the available releases with draft flag
       - name: Remove Old Release Drafts

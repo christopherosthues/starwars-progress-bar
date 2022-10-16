@@ -17,7 +17,7 @@ import javax.swing.JLabel
 import javax.swing.border.AbstractBorder
 
 internal class TitledIconBorder(title: String, iconName: String) : AbstractBorder() {
-    private var label: JLabel = JLabel(title)
+    private val label: JLabel = JLabel(title)
     private val factionIcon = StarWarsResourceLoader.getFactionLogo(iconName, true)
     private val icon = ColoredImageComponent(factionIcon)
 

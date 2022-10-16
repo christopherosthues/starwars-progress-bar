@@ -4,13 +4,24 @@
 
 ## [Unreleased]
 ### Added
+
+### Changed
+
+### Removed
+
+### Fixed
+
+## [1.5.0] - 2022-10-16
+### Added
 - BTL-B Y-Wing and Captain Rex's BTL-B Y-Wing to Galactic Republic faction
 - Ben Quadinaros', Boles Roor's, Elan Mak's and Gasgano's podracer to podracer faction
 - Mining Guild TIE fighter to Galactic Empire faction
 
+
 ### Changed
 - Updated to Java 17
 - Updated AT-AT
+
 
 ### Removed
 
@@ -25,11 +36,13 @@
 - Faction crests to factions in settings
 - Faction crests to progress bar (can be enabled in settings)
 
+
 ### Changed
 - UI adjustments in settings
 - Updated minimum supported version to 2021.3.3
 - Updated maximum supported version to 2022.2.*
 - Renamed Separatist Supply Ship to DH-Omni Support Vessel
+
 
 ### Fixed
 - Progress bar color of DH-Omni Support Vessel (former Separatist Supply Ship)
@@ -39,6 +52,7 @@
 ### Changed
 - Renamed Anakin Skywalker's Eta-2 Actis
 - Renamed Obi-Wan Kenobi's Delta-7
+
 
 ### Added
 - Ahsoka Tano's and Anakin Skywalker's Delta-7b to Jedi Order faction
@@ -53,6 +67,7 @@
 - Updated Vulture droid and MTT
 - Updated supported versions to 2021.2 - 2022.*
 
+
 ### Added
 - Trade Federation faction
 - Jedi Order faction
@@ -66,6 +81,7 @@
 ### Changed
 - Update supported versions to 2021.1 - 2022.1
 - Sort vehicles alphabetically in settings
+
 
 ### Added
 - Malevolence to Confederacy of Independent Systems
