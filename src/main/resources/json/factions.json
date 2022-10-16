@@ -847,6 +847,13 @@
           "velocity": 4.5
         },
         {
+          "id": "boles_roors_podracer",
+          "ionEngine": "orange",
+          "xShift": -20,
+          "yShift": -6,
+          "velocity": 4.5
+        },
+        {
           "id": "sebulbas_podracer",
           "ionEngine": "orange",
           "xShift": -14,

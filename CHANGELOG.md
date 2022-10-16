@@ -5,7 +5,7 @@
 ## [Unreleased]
 ### Added
 - BTL-B Y-Wing and Captain Rex's BTL-B Y-Wing to Galactic Republic faction
-- Elan Mak's and Gasgano's podracer to podracer faction
+- Ben Quadinaros', Boles Roor's, Elan Mak's and Gasgano's podracer to podracer faction
 - Mining Guild TIE fighter to Galactic Empire faction
 
 ### Changed
