@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 echo Installing pre-commit hook
 if [[ $(uname -s) == MINGW* ]];
 then
