@@ -873,6 +873,13 @@
           "xShift": -13,
           "yShift": -6,
           "velocity": 4.5
+        },
+        {
+          "id": "teemto_pagalies_podracer",
+          "ionEngine": "orange",
+          "xShift": -21,
+          "yShift": -6,
+          "velocity": 4.5
         }
       ]
     },
