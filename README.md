@@ -212,6 +212,7 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 * ![Boles Roor's Podracer](src/main/resources/icons/podracer/boles_roors_podracer@2x.png) Boles Roor's Podracer ![Boles Roor's Podracer](src/main/resources/icons/podracer/boles_roors_podracer_r@2x.png)
 * ![Elan Mak's Podracer](src/main/resources/icons/podracer/elan_maks_podracer@2x.png) Elan Mak's Podracer ![Elan Mak's Podracer](src/main/resources/icons/podracer/elan_maks_podracer_r@2x.png)
 * ![Gasgano's Podracer](src/main/resources/icons/podracer/gasganos_podracer@2x.png) Gasgano's Podracer ![Gasgano's Podracer](src/main/resources/icons/podracer/gasganos_podracer_r@2x.png)
+* ![Mars Guo's Podracer](src/main/resources/icons/podracer/mars_guos_podracer@2x.png) Mars Guo's Podracer ![Mars Guo's Podracer](src/main/resources/icons/podracer/mars_guos_podracer_r@2x.png)
 * ![Sebulba's Podracer](src/main/resources/icons/podracer/sebulbas_podracer@2x.png) Sebulba's Podracer ![Sebulba's Podracer](src/main/resources/icons/podracer/sebulbas_podracer_r@2x.png)
 * ![Teemto Pagalies' Podracer](src/main/resources/icons/podracer/teemto_pagalies_podracer@2x.png) Teemto Pagalies' Podracer ![Teemto Pagalies' Podracer](src/main/resources/icons/podracer/teemto_pagalies_podracer_r@2x.png)
 
