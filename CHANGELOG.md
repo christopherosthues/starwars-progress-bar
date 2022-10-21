@@ -12,6 +12,7 @@
 ### Changed
 - Updated to Java 17
 - Updated AT-AT
+- Renames Smugglers faction to Scoundrels
 
 
 ### Removed

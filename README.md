@@ -197,13 +197,13 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 * ![Jango Fett's Slave One](src/main/resources/icons/bounty_hunters/jango_fetts_slave_one@2x.png) Jango Fett's Slave One ![Jango Fett's Slave One](src/main/resources/icons/bounty_hunters/jango_fetts_slave_one_r@2x.png)
 * ![Koro-2 all-environment Exodrive airspeeder](src/main/resources/icons/bounty_hunters/koro_2_all_environment_exodrive_airspeeder@2x.png) Koro-2 all-environment Exodrive airspeeder ![Koro-2 all-environment Exodrive airspeeder](src/main/resources/icons/bounty_hunters/koro_2_all_environment_exodrive_airspeeder_r@2x.png)
 
-### Smugglers
+### Scoundrels
 
-* ![Cloud City](src/main/resources/icons/smugglers/cloud_city@2x.png) Cloud City ![Cloud City](src/main/resources/icons/smugglers/cloud_city_r@2x.png)
-* ![Errant Venture](src/main/resources/icons/smugglers/errant_venture@2x.png) Errant Venture ![Errant Venture](src/main/resources/icons/smugglers/errant_venture_r@2x.png)
-* ![Sandcrawler](src/main/resources/icons/smugglers/sandcrawler@2x.png) Sandcrawler ![Sandcrawler](src/main/resources/icons/smugglers/sandcrawler_r@2x.png)
-* ![Storm IV Twin-Pod cloud car](src/main/resources/icons/smugglers/storm_iv_twin_pod_cloud_car@2x.png) Storm IV Twin-Pod cloud car ![Storm IV Twin-Pod cloud car](src/main/resources/icons/smugglers/storm_iv_twin_pod_cloud_car_r@2x.png)
-* ![Wild Karrde](src/main/resources/icons/smugglers/wild_karrde@2x.png) Wild Karrde ![Wild Karrde](src/main/resources/icons/smugglers/wild_karrde_r@2x.png)
+* ![Cloud City](src/main/resources/icons/scoundrels/cloud_city@2x.png) Cloud City ![Cloud City](src/main/resources/icons/scoundrels/cloud_city_r@2x.png)
+* ![Errant Venture](src/main/resources/icons/scoundrels/errant_venture@2x.png) Errant Venture ![Errant Venture](src/main/resources/icons/scoundrels/errant_venture_r@2x.png)
+* ![Sandcrawler](src/main/resources/icons/scoundrels/sandcrawler@2x.png) Sandcrawler ![Sandcrawler](src/main/resources/icons/scoundrels/sandcrawler_r@2x.png)
+* ![Storm IV Twin-Pod cloud car](src/main/resources/icons/scoundrels/storm_iv_twin_pod_cloud_car@2x.png) Storm IV Twin-Pod cloud car ![Storm IV Twin-Pod cloud car](src/main/resources/icons/scoundrels/storm_iv_twin_pod_cloud_car_r@2x.png)
+* ![Wild Karrde](src/main/resources/icons/scoundrels/wild_karrde@2x.png) Wild Karrde ![Wild Karrde](src/main/resources/icons/scoundrels/wild_karrde_r@2x.png)
 
 ### Podracer
 

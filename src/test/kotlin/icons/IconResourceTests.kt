@@ -122,12 +122,12 @@ class IconResourceTests {
     //region Helper methods
 
     private val iconWhitelist = listOf(
-        "lady_luck@2x.png",
-        "smugglers${File.separatorChar}outrider@2x.png",
-        "smugglers${File.separatorChar}outrider_r@2x.png",
+        "scoundrels${File.separatorChar}lady_luck@2x.png",
+        "scoundrels${File.separatorChar}outrider@2x.png",
+        "scoundrels${File.separatorChar}outrider_r@2x.png",
         "confederacy_of_independent_systems${File.separatorChar}count_dookus_flitknot_speeder@2x.png",
         "rebel_alliance${File.separatorChar}ghost@2x.png",
-        "podracer${File.separatorChar}mars_guos_podracer@2x.png"
+        "podracer${File.separatorChar}wan_sandages_podracer@2x.png"
     )
 
     private fun getFormattedImagesNotReferencedErrorMessage(imagesNotReferenced: List<String>): String {
