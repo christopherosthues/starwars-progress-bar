@@ -4,6 +4,15 @@
 
 ## [Unreleased]
 ### Added
+
+### Changed
+
+### Removed
+
+### Fixed
+
+## [1.5.0] - 2022-10-22
+### Added
 - BTL-B Y-Wing and Captain Rex's BTL-B Y-Wing to Galactic Republic faction
 - Mining Guild TIE fighter to Galactic Empire faction
 - Podracers of:
