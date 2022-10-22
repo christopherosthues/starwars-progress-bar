@@ -215,6 +215,7 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 * ![Mars Guo's Podracer](src/main/resources/icons/podracer/mars_guos_podracer@2x.png) Mars Guo's Podracer ![Mars Guo's Podracer](src/main/resources/icons/podracer/mars_guos_podracer_r@2x.png)
 * ![Sebulba's Podracer](src/main/resources/icons/podracer/sebulbas_podracer@2x.png) Sebulba's Podracer ![Sebulba's Podracer](src/main/resources/icons/podracer/sebulbas_podracer_r@2x.png)
 * ![Teemto Pagalies' Podracer](src/main/resources/icons/podracer/teemto_pagalies_podracer@2x.png) Teemto Pagalies' Podracer ![Teemto Pagalies' Podracer](src/main/resources/icons/podracer/teemto_pagalies_podracer_r@2x.png)
+* ![Wan Sandage's Podracer](src/main/resources/icons/podracer/wan_sandages_podracer@2x.png) Wan Sandage's Podracer ![Wan Sandage's Podracer](src/main/resources/icons/podracer/wan_sandages_podracer_r@2x.png)
 
 <!-- Included vehicles end -->
 
