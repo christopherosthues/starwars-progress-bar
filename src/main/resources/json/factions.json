@@ -79,7 +79,21 @@
           "velocity": 2.5
         },
         {
+          "id": "ahsoka_tanos_eta_2_actis_interceptor",
+          "ionEngine": "blue",
+          "xShift": -6,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
           "id": "anakin_skywalkers_delta_7b_jedi_starfighter",
+          "ionEngine": "blue",
+          "xShift": -6,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
+          "id": "anakin_skywalkers_eta_2_actis_interceptor",
           "ionEngine": "blue",
           "xShift": -6,
           "yShift": -6,
@@ -108,27 +122,13 @@
         },
         {
           "id": "obi_wan_kenobis_delta_7_jedi_starfighter",
-          "ionEngine": "blue",
+          "ionEngine": "orange",
           "xShift": -4,
           "yShift": -6,
           "velocity": 2.5
         },
         {
-          "id": "anakin_skywalkers_eta_2_actis_interceptor",
-          "ionEngine": "blue",
-          "xShift": -6,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
           "id": "obi_wan_kenobis_eta_2_actis_interceptor",
-          "ionEngine": "blue",
-          "xShift": -6,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "ahsoka_tanos_eta_2_actis_interceptor",
           "ionEngine": "blue",
           "xShift": -6,
           "yShift": -6,
@@ -320,13 +320,6 @@
           "velocity": 2.5
         },
         {
-          "id": "scimitar",
-          "ionEngine": "green",
-          "xShift": -2,
-          "yShift": -6,
-          "velocity": 5
-        },
-        {
           "id": "bloodfin",
           "ionEngine": "green",
           "xShift": -4,
@@ -444,6 +437,13 @@
           "xShift": -2,
           "yShift": -6,
           "velocity": 2.5
+        },
+        {
+          "id": "scimitar",
+          "ionEngine": "green",
+          "xShift": -2,
+          "yShift": -6,
+          "velocity": 5
         },
         {
           "id": "separatist_supply_ship",
@@ -775,7 +775,7 @@
         },
         {
           "id": "jango_fetts_slave_one",
-          "ionEngine": "red",
+          "ionEngine": "orange",
           "xShift": -12,
           "yShift": -6,
           "velocity": 4.75
@@ -878,6 +878,13 @@
           "id": "mars_guos_podracer",
           "ionEngine": "orange",
           "xShift": -18,
+          "yShift": -6,
+          "velocity": 4.5
+        },
+        {
+          "id": "ratts_tyerells_podracer",
+          "ionEngine": "orange",
+          "xShift": -13,
           "yShift": -6,
           "velocity": 4.5
         },

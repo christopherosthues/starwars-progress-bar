@@ -6,10 +6,14 @@
 ### Added
 
 ### Changed
+- Corrected progressbar color for:
+  - Obi-Wan Kenobi's Delta-7 Aethersprite
+  - Jango Fett's Slave One
 
 ### Removed
 
 ### Fixed
+- Vertical position of Mars Guo's and Wan Sandage's podracers
 
 ## [1.5.0] - 2022-10-22
 ### Added

@@ -72,8 +72,8 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 * ![Lucrehulk-class Droid control ship](src/main/resources/icons/trade_federation/lucrehulk_class_droid_control_ship@2x.png) Lucrehulk-class Droid control ship ![Lucrehulk-class Droid control ship](src/main/resources/icons/trade_federation/lucrehulk_class_droid_control_ship_r@2x.png)
 * ![Multi-Troop Transport](src/main/resources/icons/trade_federation/multi_troop_transport@2x.png) Multi-Troop Transport ![Multi-Troop Transport](src/main/resources/icons/trade_federation/multi_troop_transport_r@2x.png)
 * ![Platoon Attack Craft](src/main/resources/icons/trade_federation/platoon_attack_craft@2x.png) Platoon Attack Craft ![Platoon Attack Craft](src/main/resources/icons/trade_federation/platoon_attack_craft_r@2x.png)
-* ![STAP](src/main/resources/icons/trade_federation/stap@2x.png) STAP ![STAP](src/main/resources/icons/trade_federation/stap_r@2x.png)
 * ![Sheathipede-class tranport shuttle](src/main/resources/icons/trade_federation/sheathipede_class_shuttle@2x.png) Sheathipede-class tranport shuttle ![Sheathipede-class tranport shuttle](src/main/resources/icons/trade_federation/sheathipede_class_shuttle_r@2x.png)
+* ![STAP](src/main/resources/icons/trade_federation/stap@2x.png) STAP ![STAP](src/main/resources/icons/trade_federation/stap_r@2x.png)
 * ![Trade Federation Landing Ship](src/main/resources/icons/trade_federation/trade_federation_landing_ship@2x.png) Trade Federation Landing Ship ![Trade Federation Landing Ship](src/main/resources/icons/trade_federation/trade_federation_landing_ship_r@2x.png)
 * ![Vulture Droid](src/main/resources/icons/trade_federation/vulture_droid@2x.png) Vulture Droid ![Vulture Droid](src/main/resources/icons/trade_federation/vulture_droid_r@2x.png)
 
@@ -94,12 +94,12 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 ### Galactic Republic
 
 * ![AA-9 Coruscant Freighter](src/main/resources/icons/galactic_republic/aa_9_coruscant_freighter@2x.png) AA-9 Coruscant Freighter ![AA-9 Coruscant Freighter](src/main/resources/icons/galactic_republic/aa_9_coruscant_freighter_r@2x.png)
+* ![Acclamator-class Assault Ship](src/main/resources/icons/galactic_republic/acclamator_class_assault_ship@2x.png) Acclamator-class Assault Ship ![Acclamator-class Assault Ship](src/main/resources/icons/galactic_republic/acclamator_class_assault_ship_r@2x.png)
+* ![Acclamator-II-class Assault Ship](src/main/resources/icons/galactic_republic/acclamator_ii_class_assault_ship@2x.png) Acclamator-II-class Assault Ship ![Acclamator-II-class Assault Ship](src/main/resources/icons/galactic_republic/acclamator_ii_class_assault_ship_r@2x.png)
 * ![ARC-170 Starfighter](src/main/resources/icons/galactic_republic/arc_170_starfighter@2x.png) ARC-170 Starfighter ![ARC-170 Starfighter](src/main/resources/icons/galactic_republic/arc_170_starfighter_r@2x.png)
 * ![AT-AP](src/main/resources/icons/galactic_republic/at_ap@2x.png) AT-AP ![AT-AP](src/main/resources/icons/galactic_republic/at_ap_r@2x.png)
-* ![Acclamator-II-class Assault Ship](src/main/resources/icons/galactic_republic/acclamator_ii_class_assault_ship@2x.png) Acclamator-II-class Assault Ship ![Acclamator-II-class Assault Ship](src/main/resources/icons/galactic_republic/acclamator_ii_class_assault_ship_r@2x.png)
-* ![Acclamator-class Assault Ship](src/main/resources/icons/galactic_republic/acclamator_class_assault_ship@2x.png) Acclamator-class Assault Ship ![Acclamator-class Assault Ship](src/main/resources/icons/galactic_republic/acclamator_class_assault_ship_r@2x.png)
-* ![BTL-B Y-Wing](src/main/resources/icons/galactic_republic/btl_b_y_wing@2x.png) BTL-B Y-Wing ![BTL-B Y-Wing](src/main/resources/icons/galactic_republic/btl_b_y_wing_r@2x.png)
 * ![Berenko-class gondola speeder](src/main/resources/icons/galactic_republic/berenko_class_gondola_speeder@2x.png) Berenko-class gondola speeder ![Berenko-class gondola speeder](src/main/resources/icons/galactic_republic/berenko_class_gondola_speeder_r@2x.png)
+* ![BTL-B Y-Wing](src/main/resources/icons/galactic_republic/btl_b_y_wing@2x.png) BTL-B Y-Wing ![BTL-B Y-Wing](src/main/resources/icons/galactic_republic/btl_b_y_wing_r@2x.png)
 * ![Captain Rex's BTL-B Y-Wing](src/main/resources/icons/galactic_republic/captain_rex_y_wing@2x.png) Captain Rex's BTL-B Y-Wing ![Captain Rex's BTL-B Y-Wing](src/main/resources/icons/galactic_republic/captain_rex_y_wing_r@2x.png)
 * ![H-Type Naboo Yacht](src/main/resources/icons/galactic_republic/h_type_naboo_yacht@2x.png) H-Type Naboo Yacht ![H-Type Naboo Yacht](src/main/resources/icons/galactic_republic/h_type_naboo_yacht_r@2x.png)
 * ![Heavy Assault Vehicle/Wheeled A6 Juggernaut](src/main/resources/icons/galactic_republic/havw_a6_juggernaut@2x.png) Heavy Assault Vehicle/Wheeled A6 Juggernaut ![Heavy Assault Vehicle/Wheeled A6 Juggernaut](src/main/resources/icons/galactic_republic/havw_a6_juggernaut_r@2x.png)
@@ -138,11 +138,11 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 * ![Nantex-class Starfighter](src/main/resources/icons/confederacy_of_independent_systems/nantex_class_starfighter@2x.png) Nantex-class Starfighter ![Nantex-class Starfighter](src/main/resources/icons/confederacy_of_independent_systems/nantex_class_starfighter_r@2x.png)
 * ![Porax-38 Starfighter](src/main/resources/icons/confederacy_of_independent_systems/porax_38_starfighter@2x.png) Porax-38 Starfighter ![Porax-38 Starfighter](src/main/resources/icons/confederacy_of_independent_systems/porax_38_starfighter_r@2x.png)
 * ![Recusant-class Destroyer](src/main/resources/icons/confederacy_of_independent_systems/recusant_class_destroyer@2x.png) Recusant-class Destroyer ![Recusant-class Destroyer](src/main/resources/icons/confederacy_of_independent_systems/recusant_class_destroyer_r@2x.png)
-* ![STAP](src/main/resources/icons/confederacy_of_independent_systems/stap_cis@2x.png) STAP ![STAP](src/main/resources/icons/confederacy_of_independent_systems/stap_cis_r@2x.png)
 * ![Scimitar](src/main/resources/icons/confederacy_of_independent_systems/scimitar@2x.png) Scimitar ![Scimitar](src/main/resources/icons/confederacy_of_independent_systems/scimitar_r@2x.png)
-* ![Sheathipede-class Type B shuttle](src/main/resources/icons/confederacy_of_independent_systems/sheathipede_class_type_b_shuttle@2x.png) Sheathipede-class Type B shuttle ![Sheathipede-class Type B shuttle](src/main/resources/icons/confederacy_of_independent_systems/sheathipede_class_type_b_shuttle_r@2x.png)
 * ![Sheathipede-class tranport shuttle](src/main/resources/icons/confederacy_of_independent_systems/sheathipede_class_shuttle_cis@2x.png) Sheathipede-class tranport shuttle ![Sheathipede-class tranport shuttle](src/main/resources/icons/confederacy_of_independent_systems/sheathipede_class_shuttle_cis_r@2x.png)
+* ![Sheathipede-class Type B shuttle](src/main/resources/icons/confederacy_of_independent_systems/sheathipede_class_type_b_shuttle@2x.png) Sheathipede-class Type B shuttle ![Sheathipede-class Type B shuttle](src/main/resources/icons/confederacy_of_independent_systems/sheathipede_class_type_b_shuttle_r@2x.png)
 * ![Soulless One](src/main/resources/icons/confederacy_of_independent_systems/soulless_one@2x.png) Soulless One ![Soulless One](src/main/resources/icons/confederacy_of_independent_systems/soulless_one_r@2x.png)
+* ![STAP](src/main/resources/icons/confederacy_of_independent_systems/stap_cis@2x.png) STAP ![STAP](src/main/resources/icons/confederacy_of_independent_systems/stap_cis_r@2x.png)
 * ![Vulture Droid](src/main/resources/icons/confederacy_of_independent_systems/vulture_droid_cis@2x.png) Vulture Droid ![Vulture Droid](src/main/resources/icons/confederacy_of_independent_systems/vulture_droid_cis_r@2x.png)
 
 ### Galactic Empire
@@ -157,14 +157,14 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 * ![Mining Guild TIE Fighter](src/main/resources/icons/galactic_empire/mining_guild_tie_fighter@2x.png) Mining Guild TIE Fighter ![Mining Guild TIE Fighter](src/main/resources/icons/galactic_empire/mining_guild_tie_fighter_r@2x.png)
 * ![Second Death Star](src/main/resources/icons/galactic_empire/second_death_star@2x.png) Second Death Star ![Second Death Star](src/main/resources/icons/galactic_empire/second_death_star_r@2x.png)
 * ![Sentinel-class Shuttle](src/main/resources/icons/galactic_empire/sentinel_class_shuttle@2x.png) Sentinel-class Shuttle ![Sentinel-class Shuttle](src/main/resources/icons/galactic_empire/sentinel_class_shuttle_r@2x.png)
+* ![Tartan-class patrol cruiser](src/main/resources/icons/galactic_empire/tartan_class_patrol_cruiser@2x.png) Tartan-class patrol cruiser ![Tartan-class patrol cruiser](src/main/resources/icons/galactic_empire/tartan_class_patrol_cruiser_r@2x.png)
+* ![Theta-class Shuttle](src/main/resources/icons/galactic_empire/theta_class_shuttle@2x.png) Theta-class Shuttle ![Theta-class Shuttle](src/main/resources/icons/galactic_empire/theta_class_shuttle_r@2x.png)
 * ![TIE Advanced x1](src/main/resources/icons/galactic_empire/tie_advanced_x1@2x.png) TIE Advanced x1 ![TIE Advanced x1](src/main/resources/icons/galactic_empire/tie_advanced_x1_r@2x.png)
 * ![TIE Avenger](src/main/resources/icons/galactic_empire/tie_avenger@2x.png) TIE Avenger ![TIE Avenger](src/main/resources/icons/galactic_empire/tie_avenger_r@2x.png)
 * ![TIE Bomber](src/main/resources/icons/galactic_empire/tie_bomber@2x.png) TIE Bomber ![TIE Bomber](src/main/resources/icons/galactic_empire/tie_bomber_r@2x.png)
 * ![TIE Crawler](src/main/resources/icons/galactic_empire/tie_crawler@2x.png) TIE Crawler ![TIE Crawler](src/main/resources/icons/galactic_empire/tie_crawler_r@2x.png)
 * ![TIE Fighter](src/main/resources/icons/galactic_empire/tie_fighter@2x.png) TIE Fighter ![TIE Fighter](src/main/resources/icons/galactic_empire/tie_fighter_r@2x.png)
 * ![TIE Interceptor](src/main/resources/icons/galactic_empire/tie_interceptor@2x.png) TIE Interceptor ![TIE Interceptor](src/main/resources/icons/galactic_empire/tie_interceptor_r@2x.png)
-* ![Tartan-class patrol cruiser](src/main/resources/icons/galactic_empire/tartan_class_patrol_cruiser@2x.png) Tartan-class patrol cruiser ![Tartan-class patrol cruiser](src/main/resources/icons/galactic_empire/tartan_class_patrol_cruiser_r@2x.png)
-* ![Theta-class Shuttle](src/main/resources/icons/galactic_empire/theta_class_shuttle@2x.png) Theta-class Shuttle ![Theta-class Shuttle](src/main/resources/icons/galactic_empire/theta_class_shuttle_r@2x.png)
 
 ### Alliance to Restore the Republic
 
@@ -213,6 +213,7 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 * ![Elan Mak's Podracer](src/main/resources/icons/podracer/elan_maks_podracer@2x.png) Elan Mak's Podracer ![Elan Mak's Podracer](src/main/resources/icons/podracer/elan_maks_podracer_r@2x.png)
 * ![Gasgano's Podracer](src/main/resources/icons/podracer/gasganos_podracer@2x.png) Gasgano's Podracer ![Gasgano's Podracer](src/main/resources/icons/podracer/gasganos_podracer_r@2x.png)
 * ![Mars Guo's Podracer](src/main/resources/icons/podracer/mars_guos_podracer@2x.png) Mars Guo's Podracer ![Mars Guo's Podracer](src/main/resources/icons/podracer/mars_guos_podracer_r@2x.png)
+* ![Ratts Tyerell's Podracer](src/main/resources/icons/podracer/ratts_tyerells_podracer@2x.png) Ratts Tyerell's Podracer ![Ratts Tyerell's Podracer](src/main/resources/icons/podracer/ratts_tyerells_podracer_r@2x.png)
 * ![Sebulba's Podracer](src/main/resources/icons/podracer/sebulbas_podracer@2x.png) Sebulba's Podracer ![Sebulba's Podracer](src/main/resources/icons/podracer/sebulbas_podracer_r@2x.png)
 * ![Teemto Pagalies' Podracer](src/main/resources/icons/podracer/teemto_pagalies_podracer@2x.png) Teemto Pagalies' Podracer ![Teemto Pagalies' Podracer](src/main/resources/icons/podracer/teemto_pagalies_podracer_r@2x.png)
 * ![Wan Sandage's Podracer](src/main/resources/icons/podracer/wan_sandages_podracer@2x.png) Wan Sandage's Podracer ![Wan Sandage's Podracer](src/main/resources/icons/podracer/wan_sandages_podracer_r@2x.png)
