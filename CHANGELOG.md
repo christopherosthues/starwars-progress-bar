@@ -4,11 +4,14 @@
 
 ## [Unreleased]
 ### Added
+- Ratts Tyerell's podracer
 
 ### Changed
 - Corrected progressbar color for:
   - Obi-Wan Kenobi's Delta-7 Aethersprite
   - Jango Fett's Slave One
+  - Soulless One
+  - TIE Advanced x1
 
 ### Removed
 

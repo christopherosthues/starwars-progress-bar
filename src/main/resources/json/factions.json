@@ -468,7 +468,7 @@
         },
         {
           "id": "soulless_one",
-          "ionEngine": "blue",
+          "ionEngine": "orange",
           "xShift": -12,
           "yShift": -6,
           "velocity": 2.5
@@ -578,7 +578,7 @@
         },
         {
           "id": "tie_advanced_x1",
-          "ionEngine": "blue",
+          "ionEngine": "red",
           "xShift": -10,
           "yShift": -6,
           "velocity": 3.5
