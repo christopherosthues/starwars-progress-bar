@@ -4,7 +4,8 @@
 
 ## [Unreleased]
 ### Added
-- Ratts Tyerell's podracer
+- Aldar Beedo's and Ratts Tyerell's podracer
+- Prototype B6 to Rebel Alliance faction
 
 ### Changed
 - Corrected progressbar color for:

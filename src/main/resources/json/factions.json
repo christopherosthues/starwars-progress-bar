@@ -673,6 +673,13 @@
           "velocity": 2.5
         },
         {
+          "id": "prototype_b6",
+          "ionEngine": "red",
+          "xShift": -13,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
           "id": "rogue_shadow",
           "ionEngine": "blue",
           "xShift": -5,
@@ -832,6 +839,13 @@
     {
       "id": "podracer",
       "vehicles": [
+        {
+          "id": "aldar_beedos_podracer",
+          "ionEngine": "orange",
+          "xShift": -16,
+          "yShift": -6,
+          "velocity": 5
+        },
         {
           "id": "anakin_skywalkers_podracer",
           "ionEngine": "orange",
