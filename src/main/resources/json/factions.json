@@ -868,6 +868,13 @@
           "velocity": 4.5
         },
         {
+          "id": "clegg_holdfasts_podracer",
+          "ionEngine": "orange",
+          "xShift": -16,
+          "yShift": -6,
+          "velocity": 4.5
+        },
+        {
           "id": "sebulbas_podracer",
           "ionEngine": "orange",
           "xShift": -14,
