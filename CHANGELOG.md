@@ -4,8 +4,9 @@
 
 ## [Unreleased]
 ### Added
-- Aldar Beedo's and Ratts Tyerell's podracer
+- Aldar Beedo's, Clegg Holdfast's and Ratts Tyerell's podracer
 - Prototype B6 to Rebel Alliance faction
+- Platoon Attack Craft to CIS
 
 ### Changed
 - Corrected progressbar color for:

@@ -175,6 +175,7 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 * ![MC80-Liberty Star Cruiser](src/main/resources/icons/rebel_alliance/mc80_liberty_star_cruiser@2x.png) MC80-Liberty Star Cruiser ![MC80-Liberty Star Cruiser](src/main/resources/icons/rebel_alliance/mc80_liberty_star_cruiser_r@2x.png)
 * ![Millennium Falcon](src/main/resources/icons/rebel_alliance/millennium_falcon@2x.png) Millennium Falcon ![Millennium Falcon](src/main/resources/icons/rebel_alliance/millennium_falcon_r@2x.png)
 * ![Nebulon-B Frigate](src/main/resources/icons/rebel_alliance/nebulon_b_frigate@2x.png) Nebulon-B Frigate ![Nebulon-B Frigate](src/main/resources/icons/rebel_alliance/nebulon_b_frigate_r@2x.png)
+* ![Prototype B6](src/main/resources/icons/rebel_alliance/prototype_b6@2x.png) Prototype B6 ![Prototype B6](src/main/resources/icons/rebel_alliance/prototype_b6_r@2x.png)
 * ![Rogue Shadow](src/main/resources/icons/rebel_alliance/rogue_shadow@2x.png) Rogue Shadow ![Rogue Shadow](src/main/resources/icons/rebel_alliance/rogue_shadow_r@2x.png)
 * ![T-16 Skyhopper](src/main/resources/icons/rebel_alliance/t_16_skyhopper@2x.png) T-16 Skyhopper ![T-16 Skyhopper](src/main/resources/icons/rebel_alliance/t_16_skyhopper_r@2x.png)
 * ![T-47 Snowspeeder](src/main/resources/icons/rebel_alliance/t_47_snowspeeder@2x.png) T-47 Snowspeeder ![T-47 Snowspeeder](src/main/resources/icons/rebel_alliance/t_47_snowspeeder_r@2x.png)
@@ -207,9 +208,11 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 
 ### Podracer
 
+* ![Aldar Beedo's Podracer](src/main/resources/icons/podracer/aldar_beedos_podracer@2x.png) Aldar Beedo's Podracer ![Aldar Beedo's Podracer](src/main/resources/icons/podracer/aldar_beedos_podracer_r@2x.png)
 * ![Anakin Skywalker's Podracer](src/main/resources/icons/podracer/anakin_skywalkers_podracer@2x.png) Anakin Skywalker's Podracer ![Anakin Skywalker's Podracer](src/main/resources/icons/podracer/anakin_skywalkers_podracer_r@2x.png)
 * ![Ben Quadinaros' Podracer](src/main/resources/icons/podracer/ben_quadinaros_podracer@2x.png) Ben Quadinaros' Podracer ![Ben Quadinaros' Podracer](src/main/resources/icons/podracer/ben_quadinaros_podracer_r@2x.png)
 * ![Boles Roor's Podracer](src/main/resources/icons/podracer/boles_roors_podracer@2x.png) Boles Roor's Podracer ![Boles Roor's Podracer](src/main/resources/icons/podracer/boles_roors_podracer_r@2x.png)
+* ![Clegg Holdfast's Podracer](src/main/resources/icons/podracer/clegg_holdfasts_podracer@2x.png) Clegg Holdfast's Podracer ![Clegg Holdfast's Podracer](src/main/resources/icons/podracer/clegg_holdfasts_podracer_r@2x.png)
 * ![Elan Mak's Podracer](src/main/resources/icons/podracer/elan_maks_podracer@2x.png) Elan Mak's Podracer ![Elan Mak's Podracer](src/main/resources/icons/podracer/elan_maks_podracer_r@2x.png)
 * ![Gasgano's Podracer](src/main/resources/icons/podracer/gasganos_podracer@2x.png) Gasgano's Podracer ![Gasgano's Podracer](src/main/resources/icons/podracer/gasganos_podracer_r@2x.png)
 * ![Mars Guo's Podracer](src/main/resources/icons/podracer/mars_guos_podracer@2x.png) Mars Guo's Podracer ![Mars Guo's Podracer](src/main/resources/icons/podracer/mars_guos_podracer_r@2x.png)
