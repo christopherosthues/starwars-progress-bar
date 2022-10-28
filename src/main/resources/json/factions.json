@@ -556,6 +556,13 @@
           "velocity": 4.5
         },
         {
+          "id": "onager_class_star_destroyer",
+          "ionEngine": "blue",
+          "xShift": -6,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
           "id": "second_death_star",
           "ionEngine": "green",
           "xShift": -12,
