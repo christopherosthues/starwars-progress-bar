@@ -613,17 +613,24 @@
         },
         {
           "id": "tie_fighter",
-          "ionEngine": "blue",
+          "ionEngine": "red",
           "xShift": -16,
           "yShift": -6,
           "velocity": 4.5
         },
         {
           "id": "tie_interceptor",
-          "ionEngine": "blue",
+          "ionEngine": "red",
           "xShift": -9,
           "yShift": -6,
           "velocity": 4.5
+        },
+        {
+          "id": "victory_i_class_star_destroyer",
+          "ionEngine": "blue",
+          "xShift": -6,
+          "yShift": -6,
+          "velocity": 3
         }
       ]
     },
@@ -632,7 +639,7 @@
       "vehicles": [
         {
           "id": "a_wing",
-          "ionEngine": "red",
+          "ionEngine": "yellow",
           "xShift": -4,
           "yShift": -6,
           "velocity": 4.9
@@ -674,7 +681,7 @@
         },
         {
           "id": "nebulon_b_frigate",
-          "ionEngine": "blue",
+          "ionEngine": "yellow",
           "xShift": -1,
           "yShift": -6,
           "velocity": 2.5
@@ -775,7 +782,7 @@
       "vehicles": [
         {
           "id": "boba_fetts_slave_one",
-          "ionEngine": "red",
+          "ionEngine": "orange",
           "xShift": -12,
           "yShift": -6,
           "velocity": 4.75

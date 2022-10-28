@@ -136,6 +136,7 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 * ![Multi-Troop Transport](src/main/resources/icons/confederacy_of_independent_systems/multi_troop_transport_cis@2x.png) Multi-Troop Transport ![Multi-Troop Transport](src/main/resources/icons/confederacy_of_independent_systems/multi_troop_transport_cis_r@2x.png)
 * ![Munificent-class Star Frigate](src/main/resources/icons/confederacy_of_independent_systems/munificent_class_star_frigate@2x.png) Munificent-class Star Frigate ![Munificent-class Star Frigate](src/main/resources/icons/confederacy_of_independent_systems/munificent_class_star_frigate_r@2x.png)
 * ![Nantex-class Starfighter](src/main/resources/icons/confederacy_of_independent_systems/nantex_class_starfighter@2x.png) Nantex-class Starfighter ![Nantex-class Starfighter](src/main/resources/icons/confederacy_of_independent_systems/nantex_class_starfighter_r@2x.png)
+* ![Platoon Attack Craft](src/main/resources/icons/confederacy_of_independent_systems/platoon_attack_craft_cis@2x.png) Platoon Attack Craft ![Platoon Attack Craft](src/main/resources/icons/confederacy_of_independent_systems/platoon_attack_craft_cis_r@2x.png)
 * ![Porax-38 Starfighter](src/main/resources/icons/confederacy_of_independent_systems/porax_38_starfighter@2x.png) Porax-38 Starfighter ![Porax-38 Starfighter](src/main/resources/icons/confederacy_of_independent_systems/porax_38_starfighter_r@2x.png)
 * ![Recusant-class Destroyer](src/main/resources/icons/confederacy_of_independent_systems/recusant_class_destroyer@2x.png) Recusant-class Destroyer ![Recusant-class Destroyer](src/main/resources/icons/confederacy_of_independent_systems/recusant_class_destroyer_r@2x.png)
 * ![Scimitar](src/main/resources/icons/confederacy_of_independent_systems/scimitar@2x.png) Scimitar ![Scimitar](src/main/resources/icons/confederacy_of_independent_systems/scimitar_r@2x.png)
@@ -165,6 +166,7 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 * ![TIE Crawler](src/main/resources/icons/galactic_empire/tie_crawler@2x.png) TIE Crawler ![TIE Crawler](src/main/resources/icons/galactic_empire/tie_crawler_r@2x.png)
 * ![TIE Fighter](src/main/resources/icons/galactic_empire/tie_fighter@2x.png) TIE Fighter ![TIE Fighter](src/main/resources/icons/galactic_empire/tie_fighter_r@2x.png)
 * ![TIE Interceptor](src/main/resources/icons/galactic_empire/tie_interceptor@2x.png) TIE Interceptor ![TIE Interceptor](src/main/resources/icons/galactic_empire/tie_interceptor_r@2x.png)
+* ![Victory I-class Star Destroyer](src/main/resources/icons/galactic_empire/victory_i_class_star_destroyer@2x.png) Victory I-class Star Destroyer ![Victory I-class Star Destroyer](src/main/resources/icons/galactic_empire/victory_i_class_star_destroyer_r@2x.png)
 
 ### Alliance to Restore the Republic
 

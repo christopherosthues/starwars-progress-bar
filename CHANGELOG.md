@@ -6,12 +6,16 @@
 ### Added
 - Aldar Beedo's, Clegg Holdfast's and Ratts Tyerell's podracer
 - Prototype B6 to Rebel Alliance faction
-- Platoon Attack Craft to CIS
+- Platoon Attack Craft to CIS faction
+- Victory I-class Star Destroyer to Galactic Empire faction
 
 ### Changed
 - Corrected progressbar color for:
-  - Obi-Wan Kenobi's Delta-7 Aethersprite
+  - A-Wing
+  - Boba Fett's Slave One
   - Jango Fett's Slave One
+  - Nebulon-B Frigate
+  - Obi-Wan Kenobi's Delta-7 Aethersprite
   - Soulless One
   - TIE Advanced x1
 
