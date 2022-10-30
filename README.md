@@ -167,6 +167,7 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 * ![TIE Crawler](src/main/resources/icons/galactic_empire/tie_crawler@2x.png) TIE Crawler ![TIE Crawler](src/main/resources/icons/galactic_empire/tie_crawler_r@2x.png)
 * ![TIE Fighter](src/main/resources/icons/galactic_empire/tie_fighter@2x.png) TIE Fighter ![TIE Fighter](src/main/resources/icons/galactic_empire/tie_fighter_r@2x.png)
 * ![TIE Interceptor](src/main/resources/icons/galactic_empire/tie_interceptor@2x.png) TIE Interceptor ![TIE Interceptor](src/main/resources/icons/galactic_empire/tie_interceptor_r@2x.png)
+* ![TIE Striker](src/main/resources/icons/galactic_empire/tie_striker@2x.png) TIE Striker ![TIE Striker](src/main/resources/icons/galactic_empire/tie_striker_r@2x.png)
 * ![Victory I-class Star Destroyer](src/main/resources/icons/galactic_empire/victory_i_class_star_destroyer@2x.png) Victory I-class Star Destroyer ![Victory I-class Star Destroyer](src/main/resources/icons/galactic_empire/victory_i_class_star_destroyer_r@2x.png)
 
 ### Alliance to Restore the Republic

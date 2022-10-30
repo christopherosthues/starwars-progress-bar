@@ -633,6 +633,13 @@
           "velocity": 4.5
         },
         {
+          "id": "tie_striker",
+          "ionEngine": "red",
+          "xShift": -7,
+          "yShift": -6,
+          "velocity": 4.5
+        },
+        {
           "id": "victory_i_class_star_destroyer",
           "ionEngine": "blue",
           "xShift": -6,

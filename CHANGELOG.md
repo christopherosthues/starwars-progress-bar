@@ -7,7 +7,7 @@
 - Aldar Beedo's, Clegg Holdfast's and Ratts Tyerell's podracer
 - Prototype B6 to Rebel Alliance faction
 - Platoon Attack Craft to CIS faction
-- Victory I-class Star Destroyer and Onager-class Star Destroyer to Galactic Empire faction
+- Victory I-class Star Destroyer, Onager-class Star Destroyer and TIE Striker to Galactic Empire faction
 
 ### Changed
 - Corrected progressbar color for:
