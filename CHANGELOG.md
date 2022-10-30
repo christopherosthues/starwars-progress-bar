@@ -18,6 +18,7 @@
   - Obi-Wan Kenobi's Delta-7 Aethersprite
   - Soulless One
   - TIE Advanced x1
+- Reworked Darth Vader's TIE Advanced X1
 
 ### Removed
 
