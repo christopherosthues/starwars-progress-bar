@@ -666,6 +666,13 @@
           "velocity": 2.5
         },
         {
+          "id": "ghost",
+          "ionEngine": "orange",
+          "xShift": -5,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
           "id": "gr_75_transport",
           "ionEngine": "blue",
           "xShift": 0,

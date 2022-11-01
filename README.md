@@ -174,6 +174,7 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 
 * ![A-Wing](src/main/resources/icons/rebel_alliance/a_wing@2x.png) A-Wing ![A-Wing](src/main/resources/icons/rebel_alliance/a_wing_r@2x.png)
 * ![B-Wing](src/main/resources/icons/rebel_alliance/b_wing@2x.png) B-Wing ![B-Wing](src/main/resources/icons/rebel_alliance/b_wing_r@2x.png)
+* ![Ghost](src/main/resources/icons/rebel_alliance/ghost@2x.png) Ghost ![Ghost](src/main/resources/icons/rebel_alliance/ghost_r@2x.png)
 * ![GR-75 Medium Transport](src/main/resources/icons/rebel_alliance/gr_75_transport@2x.png) GR-75 Medium Transport ![GR-75 Medium Transport](src/main/resources/icons/rebel_alliance/gr_75_transport_r@2x.png)
 * ![Home One](src/main/resources/icons/rebel_alliance/home_one@2x.png) Home One ![Home One](src/main/resources/icons/rebel_alliance/home_one_r@2x.png)
 * ![MC80-Liberty Star Cruiser](src/main/resources/icons/rebel_alliance/mc80_liberty_star_cruiser@2x.png) MC80-Liberty Star Cruiser ![MC80-Liberty Star Cruiser](src/main/resources/icons/rebel_alliance/mc80_liberty_star_cruiser_r@2x.png)
