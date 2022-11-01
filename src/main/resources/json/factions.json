@@ -599,14 +599,14 @@
         },
         {
           "id": "tie_avenger",
-          "ionEngine": "blue",
+          "ionEngine": "red",
           "xShift": -6,
           "yShift": -6,
           "velocity": 5
         },
         {
           "id": "tie_bomber",
-          "ionEngine": "blue",
+          "ionEngine": "red",
           "xShift": -8,
           "yShift": -6,
           "velocity": 4
