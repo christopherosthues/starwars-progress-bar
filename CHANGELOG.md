@@ -5,7 +5,7 @@
 ## [Unreleased]
 ### Added
 - Ghost and Prototype B6 to Rebel Alliance faction
-- Aldar Beedo's, Clegg Holdfast's and Ratts Tyerell's podracer
+- Aldar Beedo's, Clegg Holdfast's, Neva Kee's and Ratts Tyerell's podracer
 - Platoon Attack Craft to CIS faction
 - Victory I-class Star Destroyer, Onager-class Star Destroyer and TIE Striker to Galactic Empire faction
 
