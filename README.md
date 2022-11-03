@@ -87,6 +87,7 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 * ![Azure Angel](src/main/resources/icons/jedi/azure_angel@2x.png) Azure Angel ![Azure Angel](src/main/resources/icons/jedi/azure_angel_r@2x.png)
 * ![Blade of Dorin](src/main/resources/icons/jedi/blade_of_dorin@2x.png) Blade of Dorin ![Blade of Dorin](src/main/resources/icons/jedi/blade_of_dorin_r@2x.png)
 * ![DC0052 Speeder](src/main/resources/icons/jedi/dc0052_speeder@2x.png) DC0052 Speeder ![DC0052 Speeder](src/main/resources/icons/jedi/dc0052_speeder_r@2x.png)
+* ![Kit Fisto's Delta-7b-Aethersprite Starfighter](src/main/resources/icons/jedi/kit_fistos_delta_7b_jedi_starfighter@2x.png) Kit Fisto's Delta-7b-Aethersprite Starfighter ![Kit Fisto's Delta-7b-Aethersprite Starfighter](src/main/resources/icons/jedi/kit_fistos_delta_7b_jedi_starfighter_r@2x.png)
 * ![Obi-Wan Kenobi's Delta-7-Aethersprite Starfighter](src/main/resources/icons/jedi/obi_wan_kenobis_delta_7_jedi_starfighter@2x.png) Obi-Wan Kenobi's Delta-7-Aethersprite Starfighter ![Obi-Wan Kenobi's Delta-7-Aethersprite Starfighter](src/main/resources/icons/jedi/obi_wan_kenobis_delta_7_jedi_starfighter_r@2x.png)
 * ![Obi-Wan Kenobi's Eta-2 Actis Interceptor](src/main/resources/icons/jedi/obi_wan_kenobis_eta_2_actis_interceptor@2x.png) Obi-Wan Kenobi's Eta-2 Actis Interceptor ![Obi-Wan Kenobi's Eta-2 Actis Interceptor](src/main/resources/icons/jedi/obi_wan_kenobis_eta_2_actis_interceptor_r@2x.png)
 * ![Praxis Mk I turbo speeder](src/main/resources/icons/jedi/praxis_mk_i_turbo_speeder@2x.png) Praxis Mk I turbo speeder ![Praxis Mk I turbo speeder](src/main/resources/icons/jedi/praxis_mk_i_turbo_speeder_r@2x.png)
@@ -148,6 +149,7 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 
 ### Galactic Empire
 
+* ![AT-ACT](src/main/resources/icons/galactic_empire/at_act@2x.png) AT-ACT ![AT-ACT](src/main/resources/icons/galactic_empire/at_act_r@2x.png)
 * ![AT-AT](src/main/resources/icons/galactic_empire/at_at@2x.png) AT-AT ![AT-AT](src/main/resources/icons/galactic_empire/at_at_r@2x.png)
 * ![Eclipse](src/main/resources/icons/galactic_empire/eclipse@2x.png) Eclipse ![Eclipse](src/main/resources/icons/galactic_empire/eclipse_r@2x.png)
 * ![Executor](src/main/resources/icons/galactic_empire/executor@2x.png) Executor ![Executor](src/main/resources/icons/galactic_empire/executor_r@2x.png)
