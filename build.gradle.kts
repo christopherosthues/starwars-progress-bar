@@ -13,7 +13,7 @@ plugins {
     // Gradle IntelliJ Plugin
     id("org.jetbrains.intellij") version "1.9.0"
     // Gradle Changelog Plugin
-    id("org.jetbrains.changelog") version "1.3.1"
+    id("org.jetbrains.changelog") version "2.0.0"
     // Gradle Qodana Plugin
     id("org.jetbrains.qodana") version "0.1.13"
     // Kotlin linter
@@ -44,7 +44,7 @@ kotlin {
 }
 
 dependencies {
-    implementation("com.google.code.gson:gson:2.9.1")
+    implementation("com.google.code.gson:gson:2.10")
 
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.1")

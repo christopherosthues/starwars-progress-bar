@@ -3,6 +3,7 @@
 # starwars-progress-bar Changelog
 
 ## [Unreleased]
+
 ### Added
 - Ghost and Prototype B6 to Rebel Alliance faction
 - Aldar Beedo's, Clegg Holdfast's, Neva Kee's and Ratts Tyerell's podracer
@@ -24,12 +25,11 @@
   - TIE Interceptor
 - Reworked Darth Vader's TIE Advanced X1
 
-### Removed
-
 ### Fixed
 - Vertical position of Mars Guo's and Wan Sandage's podracers
 
 ## [1.5.0] - 2022-10-22
+
 ### Added
 - BTL-B Y-Wing and Captain Rex's BTL-B Y-Wing to Galactic Republic faction
 - Mining Guild TIE fighter to Galactic Empire faction
@@ -46,9 +46,10 @@
 - Updated to Java 17
 - Updated AT-AT
 - Renamed Smugglers faction to Scoundrels
-- Update supported IDEA versions to 2022.2+
+- Updated supported IDEA versions to 2022.2+
 
 ## [1.4.0] - 2022-09-24
+
 ### Added
 - Darth Maul's Scimitar, Sheathipede-class, Sheathipede-class type B and Maxillipede-class shuttles to CIS faction
 - Acclamator-II-class assault ship and Infantry Support Platform to Galactic Republic faction
@@ -68,6 +69,7 @@
 - Prevent NullPointerException when uninstalling the plugin
 
 ## [1.3.0] - 2022-07-27
+
 ### Changed
 - Renamed Anakin Skywalker's Eta-2 Actis
 - Renamed Obi-Wan Kenobi's Delta-7
@@ -79,6 +81,7 @@
 - Got it tooltip to settings for new features
 
 ## [1.2.0] - 2022-07-18
+
 ### Changed
 - Updated CIS Lucrehulk-class battle ship
 - Updated color of progress bar for various vehicles
@@ -95,6 +98,7 @@
 - Notification after plugin update
 
 ## [1.1.0] - 2022-04-21
+
 ### Changed
 - Update supported versions to 2021.1 - 2022.1
 - Sort vehicles alphabetically in settings
@@ -104,6 +108,7 @@
 - First Order TIE fighters
 
 ## [1.0.0] - 2022-01-24
+
 ### Added
 - Initial release
 - Progress bar with vehicles from Star Wars
