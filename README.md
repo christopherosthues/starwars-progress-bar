@@ -208,6 +208,7 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 
 ### Scoundrels
 
+* ![Acushnet](src/main/resources/icons/scoundrels/acushnet@2x.png) Acushnet ![Acushnet](src/main/resources/icons/scoundrels/acushnet_r@2x.png)
 * ![Cloud City](src/main/resources/icons/scoundrels/cloud_city@2x.png) Cloud City ![Cloud City](src/main/resources/icons/scoundrels/cloud_city_r@2x.png)
 * ![Errant Venture](src/main/resources/icons/scoundrels/errant_venture@2x.png) Errant Venture ![Errant Venture](src/main/resources/icons/scoundrels/errant_venture_r@2x.png)
 * ![Sandcrawler](src/main/resources/icons/scoundrels/sandcrawler@2x.png) Sandcrawler ![Sandcrawler](src/main/resources/icons/scoundrels/sandcrawler_r@2x.png)

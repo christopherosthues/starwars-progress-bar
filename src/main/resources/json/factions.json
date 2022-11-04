@@ -856,6 +856,13 @@
       "id": "scoundrels",
       "vehicles": [
         {
+          "id": "acushnet",
+          "ionEngine": "white",
+          "xShift": -16,
+          "yShift": -6,
+          "velocity": 3.5
+        },
+        {
           "id": "cloud_city",
           "ionEngine": "orange",
           "xShift": -16,

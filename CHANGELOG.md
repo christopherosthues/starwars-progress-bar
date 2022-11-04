@@ -10,6 +10,7 @@
 - Platoon Attack Craft to CIS faction
 - AT-ACT, Victory I-class Star Destroyer, Onager-class Star Destroyer and TIE Striker to Galactic Empire faction
 - Kit Fisto's Delta-7b to Galactic Republic faction
+- Acushnet to Scoundrels faction
 
 ### Changed
 - Corrected progressbar color for:
