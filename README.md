@@ -273,4 +273,3 @@ The vehicle name should not contain any spaces or dashes. Please use underscores
 ### Misc
 
 * Special thanks to George Lucas and Lucasfilm for creating Star Wars
-

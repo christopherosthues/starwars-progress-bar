@@ -125,6 +125,8 @@ class IconResourceTests {
         "scoundrels${File.separatorChar}lady_luck@2x.png",
         "scoundrels${File.separatorChar}outrider@2x.png",
         "scoundrels${File.separatorChar}outrider_r@2x.png",
+        "rebel_alliance${File.separatorChar}phantom@2x.png",
+        "rebel_alliance${File.separatorChar}phantom_r@2x.png",
         "confederacy_of_independent_systems${File.separatorChar}count_dookus_flitknot_speeder@2x.png",
         "confederacy_of_independent_systems${File.separatorChar}nr_n99_persuader_class_droid_enforcer@2x.png"
     )
