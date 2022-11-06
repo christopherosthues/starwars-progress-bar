@@ -107,6 +107,13 @@
           "velocity": 2.5
         },
         {
+          "id": "barriss_offees_delta_7b_jedi_starfighter",
+          "ionEngine": "blue",
+          "xShift": -6,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
           "id": "blade_of_dorin",
           "ionEngine": "red",
           "xShift": -6,
