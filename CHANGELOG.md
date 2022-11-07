@@ -5,7 +5,7 @@
 ## [Unreleased]
 
 ### Added
-- Ghost, Phantom II and Prototype B6 to Rebel Alliance faction
+- Ghost, Phantom, Phantom II and Prototype B6 to Rebel Alliance faction
 - Aldar Beedo's, Clegg Holdfast's, Mawhonic's, Neva Kee's, Ody Mandrell's and Ratts Tyerell's podracers
 - Platoon Attack Craft to CIS faction
 - AT-ACT, Victory I-class Star Destroyer, Onager-class Star Destroyer and TIE Striker to Galactic Empire faction

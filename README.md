@@ -185,6 +185,7 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 * ![MC80-Liberty Star Cruiser](src/main/resources/icons/rebel_alliance/mc80_liberty_star_cruiser@2x.png) MC80-Liberty Star Cruiser ![MC80-Liberty Star Cruiser](src/main/resources/icons/rebel_alliance/mc80_liberty_star_cruiser_r@2x.png)
 * ![Millennium Falcon](src/main/resources/icons/rebel_alliance/millennium_falcon@2x.png) Millennium Falcon ![Millennium Falcon](src/main/resources/icons/rebel_alliance/millennium_falcon_r@2x.png)
 * ![Nebulon-B Frigate](src/main/resources/icons/rebel_alliance/nebulon_b_frigate@2x.png) Nebulon-B Frigate ![Nebulon-B Frigate](src/main/resources/icons/rebel_alliance/nebulon_b_frigate_r@2x.png)
+* ![Phantom](src/main/resources/icons/rebel_alliance/phantom@2x.png) Phantom ![Phantom](src/main/resources/icons/rebel_alliance/phantom_r@2x.png)
 * ![Phantom II](src/main/resources/icons/rebel_alliance/phantom_ii@2x.png) Phantom II ![Phantom II](src/main/resources/icons/rebel_alliance/phantom_ii_r@2x.png)
 * ![Prototype B6](src/main/resources/icons/rebel_alliance/prototype_b6@2x.png) Prototype B6 ![Prototype B6](src/main/resources/icons/rebel_alliance/prototype_b6_r@2x.png)
 * ![Rogue Shadow](src/main/resources/icons/rebel_alliance/rogue_shadow@2x.png) Rogue Shadow ![Rogue Shadow](src/main/resources/icons/rebel_alliance/rogue_shadow_r@2x.png)

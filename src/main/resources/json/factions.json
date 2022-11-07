@@ -743,6 +743,13 @@
           "velocity": 2.5
         },
         {
+          "id": "phantom",
+          "ionEngine": "orange",
+          "xShift": 0,
+          "yShift": -6,
+          "velocity": 3
+        },
+        {
           "id": "phantom_ii",
           "ionEngine": "yellow",
           "xShift": -4,
