@@ -135,6 +135,13 @@
           "velocity": 2.5
         },
         {
+          "id": "luminara_undulis_delta_7b_jedi_starfighter",
+          "ionEngine": "blue",
+          "xShift": -6,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
           "id": "mace_windus_delta_7b_jedi_starfighter",
           "ionEngine": "blue",
           "xShift": -6,
