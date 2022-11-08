@@ -3,6 +3,11 @@ package com.christopherosthues.starwarsprogressbar.configuration.components
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENABLE_NEW_VEHICLES
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SAME_VEHICLE_VELOCITY
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_FACTION_CRESTS
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_TOOLTIPS
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE_NAMES
 import com.intellij.ui.components.JBCheckBox
 import java.awt.GridLayout
 
@@ -11,17 +16,19 @@ private const val GAP = 5
 private const val NUMBER_OF_ROWS = 3
 
 internal class UiOptionsPanel : JTitledPanel(StarWarsBundle.message(BundleConstants.UI_OPTIONS)) {
-    private val showVehicleNameCheckBox = JBCheckBox(StarWarsBundle.message(BundleConstants.SHOW_VEHICLE_NAME), false)
-    private val showToolTipsCheckBox = JBCheckBox(StarWarsBundle.message(BundleConstants.SHOW_TOOL_TIPS), true)
+    private val showVehicleNameCheckBox =
+        JBCheckBox(StarWarsBundle.message(BundleConstants.SHOW_VEHICLE_NAME), DEFAULT_SHOW_VEHICLE_NAMES)
+    private val showToolTipsCheckBox =
+        JBCheckBox(StarWarsBundle.message(BundleConstants.SHOW_TOOL_TIPS), DEFAULT_SHOW_TOOLTIPS)
     private val showFactionCrestsCheckBox =
-        JBCheckBox(StarWarsBundle.message(BundleConstants.SHOW_FACTION_CRESTS), false)
+        JBCheckBox(StarWarsBundle.message(BundleConstants.SHOW_FACTION_CRESTS), DEFAULT_SHOW_FACTION_CRESTS)
     private val sameVehicleVelocityCheckBox = JBCheckBox(
         StarWarsBundle.message(BundleConstants.SAME_VEHICLE_VELOCITY),
-        false
+        DEFAULT_SAME_VEHICLE_VELOCITY
     )
     private val enableNewVehiclesCheckBox = JBCheckBox(
         StarWarsBundle.message(BundleConstants.ENABLE_NEW_VEHICLES),
-        true
+        DEFAULT_ENABLE_NEW_VEHICLES
     )
 
     val showVehicleNames: Boolean

@@ -22,6 +22,10 @@ package com.christopherosthues.starwarsprogressbar.ui
 
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SAME_VEHICLE_VELOCITY
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_FACTION_CRESTS
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_TOOLTIPS
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE_NAMES
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.ui.components.ColoredImageComponent
 import com.christopherosthues.starwarsprogressbar.util.StarWarsResourceLoader
@@ -66,10 +70,10 @@ internal class StarWarsProgressBarUI(
     constructor(vehicle: StarWarsVehicle) : this(
         vehicle,
         // TODO: extract default values into own class (progress bar UI + StarWarsState + configuration panels
-        { StarWarsPersistentStateComponent.instance?.state?.showVehicleNames ?: false },
-        { StarWarsPersistentStateComponent.instance?.state?.showToolTips ?: true },
-        { StarWarsPersistentStateComponent.instance?.state?.showFactionCrests ?: false },
-        { StarWarsPersistentStateComponent.instance?.state?.sameVehicleVelocity ?: false }
+        { StarWarsPersistentStateComponent.instance?.state?.showVehicleNames ?: DEFAULT_SHOW_VEHICLE_NAMES },
+        { StarWarsPersistentStateComponent.instance?.state?.showToolTips ?: DEFAULT_SHOW_TOOLTIPS },
+        { StarWarsPersistentStateComponent.instance?.state?.showFactionCrests ?: DEFAULT_SHOW_FACTION_CRESTS },
+        { StarWarsPersistentStateComponent.instance?.state?.sameVehicleVelocity ?: DEFAULT_SAME_VEHICLE_VELOCITY }
     )
 
     private fun getVelocity(): Float {

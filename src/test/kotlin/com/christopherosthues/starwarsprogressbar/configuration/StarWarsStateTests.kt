@@ -1,5 +1,10 @@
 package com.christopherosthues.starwarsprogressbar.configuration
 
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENABLE_NEW_VEHICLES
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SAME_VEHICLE_VELOCITY
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_FACTION_CRESTS
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_TOOLTIPS
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE_NAMES
 import com.christopherosthues.starwarsprogressbar.models.FactionHolder
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.intellij.idea.TestFor
@@ -120,11 +125,11 @@ class StarWarsStateTests {
 
     private fun assertDefaultValues(sut: StarWarsState) {
         assertAll(
-            { assertFalse(sut.showVehicleNames) },
-            { assertTrue(sut.showToolTips) },
-            { assertFalse(sut.showFactionCrests) },
-            { assertFalse(sut.sameVehicleVelocity) },
-            { assertTrue(sut.enableNewVehicles) },
+            { assertEquals(DEFAULT_SHOW_VEHICLE_NAMES, sut.showVehicleNames) },
+            { assertEquals(DEFAULT_SHOW_TOOLTIPS, sut.showToolTips) },
+            { assertEquals(DEFAULT_SHOW_FACTION_CRESTS, sut.showFactionCrests) },
+            { assertEquals(DEFAULT_SAME_VEHICLE_VELOCITY, sut.sameVehicleVelocity) },
+            { assertEquals(DEFAULT_ENABLE_NEW_VEHICLES, sut.enableNewVehicles) },
             { assertEquals("", sut.version) },
             { assertTrue(sut.vehiclesEnabled.isEmpty()) }
         )
