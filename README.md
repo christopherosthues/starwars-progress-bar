@@ -227,6 +227,7 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 * ![Ben Quadinaros' Podracer](src/main/resources/icons/podracer/ben_quadinaros_podracer@2x.png) Ben Quadinaros' Podracer ![Ben Quadinaros' Podracer](src/main/resources/icons/podracer/ben_quadinaros_podracer_r@2x.png)
 * ![Boles Roor's Podracer](src/main/resources/icons/podracer/boles_roors_podracer@2x.png) Boles Roor's Podracer ![Boles Roor's Podracer](src/main/resources/icons/podracer/boles_roors_podracer_r@2x.png)
 * ![Clegg Holdfast's Podracer](src/main/resources/icons/podracer/clegg_holdfasts_podracer@2x.png) Clegg Holdfast's Podracer ![Clegg Holdfast's Podracer](src/main/resources/icons/podracer/clegg_holdfasts_podracer_r@2x.png)
+* ![Dud Bolt's Podracer](src/main/resources/icons/podracer/dud_bolts_podracer@2x.png) Dud Bolt's Podracer ![Dud Bolt's Podracer](src/main/resources/icons/podracer/dud_bolts_podracer_r@2x.png)
 * ![Elan Mak's Podracer](src/main/resources/icons/podracer/elan_maks_podracer@2x.png) Elan Mak's Podracer ![Elan Mak's Podracer](src/main/resources/icons/podracer/elan_maks_podracer_r@2x.png)
 * ![Gasgano's Podracer](src/main/resources/icons/podracer/gasganos_podracer@2x.png) Gasgano's Podracer ![Gasgano's Podracer](src/main/resources/icons/podracer/gasganos_podracer_r@2x.png)
 * ![Mars Guo's Podracer](src/main/resources/icons/podracer/mars_guos_podracer@2x.png) Mars Guo's Podracer ![Mars Guo's Podracer](src/main/resources/icons/podracer/mars_guos_podracer_r@2x.png)
