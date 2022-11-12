@@ -33,6 +33,13 @@ jobs:
       changelog: ${{ steps.properties.outputs.changelog }}
     steps:
 
+      # Free GitHub Actions Environment Disk Space
+      - name: Maximize Build Space
+        run: |
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /opt/ghc
+
       # Check out current repository
       - name: Fetch Sources
         uses: actions/checkout@v3
@@ -72,7 +79,7 @@ jobs:
 
       # Run tests
       - name: Run Tests
-        run: ./gradlew test
+        run: ./gradlew check
 
       # Collect Tests Result of failed tests
       - name: Collect Tests Result
@@ -81,6 +88,12 @@ jobs:
         with:
           name: tests-result
           path: ${{ github.workspace }}/build/reports/tests
+
+      # Upload Kover report to CodeCov
+      - name: Upload Code Coverage Report
+        uses: codecov/codecov-action@v3
+        with:
+          files: ${{ github.workspace }}/build/reports/kover/xml/report.xml
 
       # Cache Plugin Verifier IDEs
       - name: Setup Plugin Verifier IDEs Cache

@@ -52,6 +52,8 @@ import javax.swing.plaf.basic.BasicProgressBarUI
 private const val PROGRESSBAR_HEIGHT = 20
 private const val PROGRESSBAR_CORNER_SIZE = 9f
 
+private const val FACTION_CREST_X_POSITION = 4.0
+
 internal class StarWarsProgressBarUI(
     private val vehicle: StarWarsVehicle,
     private val showVehicleName: () -> Boolean,
@@ -69,7 +71,6 @@ internal class StarWarsProgressBarUI(
 
     constructor(vehicle: StarWarsVehicle) : this(
         vehicle,
-        // TODO: extract default values into own class (progress bar UI + StarWarsState + configuration panels
         { StarWarsPersistentStateComponent.instance?.state?.showVehicleNames ?: DEFAULT_SHOW_VEHICLE_NAMES },
         { StarWarsPersistentStateComponent.instance?.state?.showToolTips ?: DEFAULT_SHOW_TOOLTIPS },
         { StarWarsPersistentStateComponent.instance?.state?.showFactionCrests ?: DEFAULT_SHOW_FACTION_CRESTS },
@@ -225,7 +226,7 @@ internal class StarWarsProgressBarUI(
             graphics2D.clip = clip
             graphics2D.color = component.foreground
 
-            var x = 4.0
+            var x = FACTION_CREST_X_POSITION
             val y = (height.toDouble() + JBUIScale.scale(-factionCrestIcon.preferredSize.height)) / 2
 
             factionCrestIcon.foreground = component.foreground

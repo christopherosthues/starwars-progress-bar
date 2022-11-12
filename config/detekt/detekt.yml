@@ -1,5 +1,5 @@
 build:
-  maxIssues: 0
+  maxIssues: 10
   excludeCorrectable: false
   weights:
     # complexity: 2
@@ -89,7 +89,7 @@ complexity:
   active: true
   ComplexCondition:
     active: true
-    threshold: 4
+    threshold: 5
   ComplexInterface:
     active: false
     threshold: 10
@@ -116,12 +116,15 @@ complexity:
     ignoredLabels: []
   LargeClass:
     active: true
+    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
     threshold: 600
   LongMethod:
     active: true
+    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
     threshold: 60
   LongParameterList:
     active: true
+    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
     functionThreshold: 6
     constructorThreshold: 7
     ignoreDefaultParameters: false
@@ -158,8 +161,8 @@ complexity:
   TooManyFunctions:
     active: true
     excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
-    thresholdInFiles: 11
-    thresholdInClasses: 11
+    thresholdInFiles: 25
+    thresholdInClasses: 25
     thresholdInInterfaces: 11
     thresholdInObjects: 11
     thresholdInEnums: 11
@@ -588,6 +591,7 @@ style:
     maxChainedCalls: 5
   MaxLineLength:
     active: true
+    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**', '**/*.kts']
     maxLineLength: 120
     excludePackageStatements: true
     excludeImportStatements: true
@@ -673,6 +677,7 @@ style:
     active: true
   UnusedPrivateMember:
     active: true
+    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
     allowedNames: '(_|ignored|expected|serialVersionUID)'
   UseAnyOrNoneInsteadOfFind:
     active: true
