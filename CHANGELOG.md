@@ -12,7 +12,7 @@
 
 ### Fixed
 
-## [[1.6.0]] - 2022-11-12
+## [1.6.0] - 2022-11-12
 
 ### Added
 - Ghost, Phantom, Phantom II and Prototype B6 to Rebel Alliance faction
