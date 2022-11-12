@@ -5,6 +5,16 @@
 ## [Unreleased]
 
 ### Added
+
+### Changed
+
+### Removed
+
+### Fixed
+
+## [[1.6.0]] - 2022-11-12
+
+### Added
 - Ghost, Phantom, Phantom II and Prototype B6 to Rebel Alliance faction
 - Aldar Beedo's, Ark "Bumpy" Roose's, Clegg Holdfast's, Dud Bolt's, Ebe Endocott's, Mawhonic's, Neva Kee's, Ody Mandrell's and Ratts Tyerell's podracers
 - Platoon Attack Craft and Punworcca 116-class interstellar sloop to CIS faction
@@ -96,3 +106,19 @@
 ### Added
 - Initial release
 - Progress bar with vehicles from Star Wars
+
+[Unreleased]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.6.0...HEAD
+
+[1.6.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.5.0...v1.6.0
+
+[1.5.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.4.0...v1.5.0
+
+[1.4.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.3.0...v1.4.0
+
+[1.3.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.2.0...v1.3.0
+
+[1.2.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.1.0...v1.2.0
+
+[1.1.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.0.0...v1.1.0
+
+[1.0.0]: https://github.com/christopherosthues/starwars-progress-bar/commits/v1.0.0
