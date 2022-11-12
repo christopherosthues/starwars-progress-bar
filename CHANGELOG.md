@@ -7,7 +7,7 @@
 ### Added
 - Ghost, Phantom, Phantom II and Prototype B6 to Rebel Alliance faction
 - Aldar Beedo's, Ark "Bumpy" Roose's, Clegg Holdfast's, Dud Bolt's, Ebe Endocott's, Mawhonic's, Neva Kee's, Ody Mandrell's and Ratts Tyerell's podracers
-- Platoon Attack Craft to CIS faction
+- Platoon Attack Craft and Punworcca 116-class interstellar sloop to CIS faction
 - AT-ACT, Victory I-class Star Destroyer, Onager-class Star Destroyer and TIE Striker to Galactic Empire faction
 - Barriss Offee's, Kit Fisto's, Luminara Unduli's, Mace Windu's and Saesee Tiin's Delta-7b to Galactic Republic faction
 - Acushnet and Last Chance to Scoundrels faction

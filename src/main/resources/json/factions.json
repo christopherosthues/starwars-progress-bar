@@ -474,6 +474,13 @@
           "velocity": 2.5
         },
         {
+          "id": "punworcca_116_class_interstellar_sloop",
+          "ionEngine": "yellow",
+          "xShift": -23,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
           "id": "recusant_class_destroyer",
           "ionEngine": "yellow",
           "xShift": -2,
