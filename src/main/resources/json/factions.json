@@ -942,12 +942,19 @@
           "ionEngine": "orange",
           "xShift": -16,
           "yShift": -6,
-          "velocity": 5
+          "velocity": 4.5
         },
         {
           "id": "anakin_skywalkers_podracer",
           "ionEngine": "orange",
           "xShift": -14,
+          "yShift": -6,
+          "velocity": 5
+        },
+        {
+          "id": "ark_bumpy_rooses_podracer",
+          "ionEngine": "orange",
+          "xShift": -19,
           "yShift": -6,
           "velocity": 5
         },

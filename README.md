@@ -224,6 +224,7 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 
 * ![Aldar Beedo's Podracer](src/main/resources/icons/podracer/aldar_beedos_podracer@2x.png) Aldar Beedo's Podracer ![Aldar Beedo's Podracer](src/main/resources/icons/podracer/aldar_beedos_podracer_r@2x.png)
 * ![Anakin Skywalker's Podracer](src/main/resources/icons/podracer/anakin_skywalkers_podracer@2x.png) Anakin Skywalker's Podracer ![Anakin Skywalker's Podracer](src/main/resources/icons/podracer/anakin_skywalkers_podracer_r@2x.png)
+* ![Ark "Bumpy" Roose's Podracer](src/main/resources/icons/podracer/ark_bumpy_rooses_podracer@2x.png) Ark "Bumpy" Roose's Podracer ![Ark "Bumpy" Roose's Podracer](src/main/resources/icons/podracer/ark_bumpy_rooses_podracer_r@2x.png)
 * ![Ben Quadinaros' Podracer](src/main/resources/icons/podracer/ben_quadinaros_podracer@2x.png) Ben Quadinaros' Podracer ![Ben Quadinaros' Podracer](src/main/resources/icons/podracer/ben_quadinaros_podracer_r@2x.png)
 * ![Boles Roor's Podracer](src/main/resources/icons/podracer/boles_roors_podracer@2x.png) Boles Roor's Podracer ![Boles Roor's Podracer](src/main/resources/icons/podracer/boles_roors_podracer_r@2x.png)
 * ![Clegg Holdfast's Podracer](src/main/resources/icons/podracer/clegg_holdfasts_podracer@2x.png) Clegg Holdfast's Podracer ![Clegg Holdfast's Podracer](src/main/resources/icons/podracer/clegg_holdfasts_podracer_r@2x.png)

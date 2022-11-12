@@ -13,18 +13,7 @@
 - Acushnet to Scoundrels faction
 
 ### Changed
-- Corrected progressbar color for:
-  - A-Wing
-  - Boba Fett's Slave One
-  - Jango Fett's Slave One
-  - Nebulon-B Frigate
-  - Obi-Wan Kenobi's Delta-7 Aethersprite
-  - Soulless One
-  - TIE Advanced x1
-  - TIE Avenger
-  - TIE Bomber
-  - TIE Fighter
-  - TIE Interceptor
+- Corrected progressbar color for A-Wing, Boba Fett's Slave One, Jango Fett's Slave One, Nebulon-B Frigate, Obi-Wan Kenobi's Delta-7 Aethersprite, Soulless One, TIE Advanced x1, TIE Avenger, TIE Bomber, TIE Fighter and TIE Interceptor
 - Reworked Darth Vader's TIE Advanced X1
 
 ### Fixed
@@ -35,14 +24,7 @@
 ### Added
 - BTL-B Y-Wing and Captain Rex's BTL-B Y-Wing to Galactic Republic faction
 - Mining Guild TIE fighter to Galactic Empire faction
-- Podracers of:
-  - Ben Quadinaros
-  - Boles Roor
-  - Elan Mak
-  - Gasgano
-  - Mars Guo
-  - Teemto Pagalies
-  - Wan Sandage
+- Podracers of Ben Quadinaros, Boles Roor, Elan Mak, Gasgano, Mars Guo, Teemto Pagalies and Wan Sandage
 
 ### Changed
 - Updated to Java 17
