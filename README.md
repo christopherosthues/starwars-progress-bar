@@ -216,6 +216,7 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 * ![Acushnet](src/main/resources/icons/scoundrels/acushnet@2x.png) Acushnet ![Acushnet](src/main/resources/icons/scoundrels/acushnet_r@2x.png)
 * ![Cloud City](src/main/resources/icons/scoundrels/cloud_city@2x.png) Cloud City ![Cloud City](src/main/resources/icons/scoundrels/cloud_city_r@2x.png)
 * ![Errant Venture](src/main/resources/icons/scoundrels/errant_venture@2x.png) Errant Venture ![Errant Venture](src/main/resources/icons/scoundrels/errant_venture_r@2x.png)
+* ![Last Chance](src/main/resources/icons/scoundrels/last_chance@2x.png) Last Chance ![Last Chance](src/main/resources/icons/scoundrels/last_chance_r@2x.png)
 * ![Sandcrawler](src/main/resources/icons/scoundrels/sandcrawler@2x.png) Sandcrawler ![Sandcrawler](src/main/resources/icons/scoundrels/sandcrawler_r@2x.png)
 * ![Storm IV Twin-Pod cloud car](src/main/resources/icons/scoundrels/storm_iv_twin_pod_cloud_car@2x.png) Storm IV Twin-Pod cloud car ![Storm IV Twin-Pod cloud car](src/main/resources/icons/scoundrels/storm_iv_twin_pod_cloud_car_r@2x.png)
 * ![Wild Karrde](src/main/resources/icons/scoundrels/wild_karrde@2x.png) Wild Karrde ![Wild Karrde](src/main/resources/icons/scoundrels/wild_karrde_r@2x.png)

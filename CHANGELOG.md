@@ -10,7 +10,7 @@
 - Platoon Attack Craft to CIS faction
 - AT-ACT, Victory I-class Star Destroyer, Onager-class Star Destroyer and TIE Striker to Galactic Empire faction
 - Barriss Offee's, Kit Fisto's, Luminara Unduli's, Mace Windu's and Saesee Tiin's Delta-7b to Galactic Republic faction
-- Acushnet to Scoundrels faction
+- Acushnet and Last Chance to Scoundrels faction
 
 ### Changed
 - Corrected progressbar color for A-Wing, Boba Fett's Slave One, Jango Fett's Slave One, Nebulon-B Frigate, Obi-Wan Kenobi's Delta-7 Aethersprite, Soulless One, TIE Advanced x1, TIE Avenger, TIE Bomber, TIE Fighter and TIE Interceptor

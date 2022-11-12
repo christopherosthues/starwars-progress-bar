@@ -912,6 +912,13 @@
           "velocity": 2.5
         },
         {
+          "id": "last_chance",
+          "ionEngine": "blue",
+          "xShift": -8,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
           "id": "sandcrawler",
           "ionEngine": "brown",
           "xShift": -5,
