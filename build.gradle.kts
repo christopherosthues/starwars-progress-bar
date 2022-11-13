@@ -84,7 +84,6 @@ intellij {
 // Configure Gradle Changelog Plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
 changelog {
     groups.set(listOf("Added", "Changed", "Removed", "Fixed"))
-    header.set(provider { "[${version.get()}] - ${date()}" })
     repositoryUrl.set(properties("pluginRepositoryUrl"))
 }
 
