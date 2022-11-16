@@ -5,6 +5,7 @@
 ## [Unreleased]
 
 ### Added
+- Core ship to CIS faction
 
 ### Changed
 

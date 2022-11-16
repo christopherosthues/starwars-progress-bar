@@ -52,7 +52,7 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 
 - Using IDE built-in plugin system:
 
-  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "starwars-progress-bar"</kbd> >
+  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "Star Wars Progress Bar"</kbd> >
   <kbd>Install Plugin</kbd>
 
 - Manually:
@@ -126,6 +126,7 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 
 * ![Armored Assault Tank Mk I](src/main/resources/icons/confederacy_of_independent_systems/armored_assault_tank_cis@2x.png) Armored Assault Tank Mk I ![Armored Assault Tank Mk I](src/main/resources/icons/confederacy_of_independent_systems/armored_assault_tank_cis_r@2x.png)
 * ![Bloodfin](src/main/resources/icons/confederacy_of_independent_systems/bloodfin@2x.png) Bloodfin ![Bloodfin](src/main/resources/icons/confederacy_of_independent_systems/bloodfin_r@2x.png)
+* ![Core ship](src/main/resources/icons/confederacy_of_independent_systems/core_ship@2x.png) Core ship ![Core ship](src/main/resources/icons/confederacy_of_independent_systems/core_ship_r@2x.png)
 * ![DH-Omni Support Vessel](src/main/resources/icons/confederacy_of_independent_systems/separatist_supply_ship@2x.png) DH-Omni Support Vessel ![DH-Omni Support Vessel](src/main/resources/icons/confederacy_of_independent_systems/separatist_supply_ship_r@2x.png)
 * ![Diamond-class Cruiser](src/main/resources/icons/confederacy_of_independent_systems/diamond_class_cruiser@2x.png) Diamond-class Cruiser ![Diamond-class Cruiser](src/main/resources/icons/confederacy_of_independent_systems/diamond_class_cruiser_r@2x.png)
 * ![Droid Tri-Fighter](src/main/resources/icons/confederacy_of_independent_systems/droid_tri_fighter@2x.png) Droid Tri-Fighter ![Droid Tri-Fighter](src/main/resources/icons/confederacy_of_independent_systems/droid_tri_fighter_r@2x.png)

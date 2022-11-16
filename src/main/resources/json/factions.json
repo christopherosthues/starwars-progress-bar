@@ -362,6 +362,13 @@
           "velocity": 2.5
         },
         {
+          "id": "core_ship",
+          "ionEngine": "blue",
+          "xShift": -9,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
           "id": "diamond_class_cruiser",
           "ionEngine": "yellow",
           "xShift": -12,
