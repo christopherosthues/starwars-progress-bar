@@ -467,6 +467,13 @@
           "velocity": 2.5
         },
         {
+          "id": "og_9_homing_spider_droid",
+          "ionEngine": "brown",
+          "xShift": -8,
+          "yShift": -6,
+          "velocity": 2
+        },
+        {
           "id": "platoon_attack_craft_cis",
           "ionEngine": "brown",
           "xShift": 0,

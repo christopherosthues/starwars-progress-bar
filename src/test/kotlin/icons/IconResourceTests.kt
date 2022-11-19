@@ -126,7 +126,6 @@ class IconResourceTests {
         "scoundrels${File.separatorChar}outrider@2x.png",
         "scoundrels${File.separatorChar}outrider_r@2x.png",
         "confederacy_of_independent_systems${File.separatorChar}count_dookus_flitknot_speeder@2x.png",
-        "confederacy_of_independent_systems${File.separatorChar}og_9_homing_spider_droid@2x.png",
         "confederacy_of_independent_systems${File.separatorChar}nr_n99_persuader_class_droid_enforcer@2x.png"
     )
 

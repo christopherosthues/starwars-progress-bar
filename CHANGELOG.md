@@ -5,7 +5,7 @@
 ## [Unreleased]
 
 ### Added
-- Core ship to CIS faction
+- Core ship and OG-9 homing spider droid to CIS faction
 
 ### Changed
 
