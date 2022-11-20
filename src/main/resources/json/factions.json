@@ -204,7 +204,7 @@
         },
         {
           "id": "arc_170_starfighter",
-          "ionEngine": "red",
+          "ionEngine": "purple",
           "xShift": -12,
           "yShift": -6,
           "velocity": 2.5
@@ -225,7 +225,7 @@
         },
         {
           "id": "btl_b_y_wing",
-          "ionEngine": "red",
+          "ionEngine": "purple",
           "xShift": -2,
           "yShift": -6,
           "velocity": 2
@@ -391,7 +391,7 @@
         },
         {
           "id": "heavy_missile_platform_droid_gunship",
-          "ionEngine": "orange",
+          "ionEngine": "white",
           "xShift": -7,
           "yShift": -6,
           "velocity": 2.5
@@ -692,6 +692,13 @@
           "id": "tie_interceptor",
           "ionEngine": "red",
           "xShift": -9,
+          "yShift": -6,
+          "velocity": 4.5
+        },
+        {
+          "id": "tie_reaper",
+          "ionEngine": "red",
+          "xShift": -5,
           "yShift": -6,
           "velocity": 4.5
         },
