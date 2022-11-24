@@ -7,6 +7,7 @@
 ### Added
 - Core ship and OG-9 homing spider droid to CIS
 - TIE Reaper to Galactic Empire
+- Khetanna to Scoundrels
 
 ### Changed
 

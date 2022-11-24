@@ -940,6 +940,13 @@
           "velocity": 2.5
         },
         {
+          "id": "khetanna",
+          "ionEngine": "yellow",
+          "xShift": 0,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
           "id": "last_chance",
           "ionEngine": "blue",
           "xShift": -8,
