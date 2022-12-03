@@ -17,7 +17,7 @@ object StarWarsPluginConstants {
     const val INCLUDED_VEHICLES_SECTION = "## Included vehicles$NEW_LINE"
 
     private const val RESOURCE_PATH = "src/main/resources/"
-    const val IMAGE_RESOURCE_PATH = RESOURCE_PATH + "icons/"
+    const val IMAGE_RESOURCE_PATH = "icons/"
     const val JSON_RESOURCE_PATH = RESOURCE_PATH + "json/"
     const val MESSAGES_RESOURCE_PATH = RESOURCE_PATH + "messages/"
     const val FACTION = "faction."

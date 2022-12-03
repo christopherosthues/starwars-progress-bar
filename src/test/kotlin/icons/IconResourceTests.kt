@@ -35,6 +35,7 @@ class IconResourceTests {
                 val iconBasePath =
                     ".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}" +
                         "resources${File.separatorChar}icons/${vehicle.fileName}"
+                val icon2xBasePath = ".${File.separatorChar}icons/${vehicle.fileName}"
                 listOf(
                     { assertTrue(File("$iconBasePath.png").exists(), "Icon $iconBasePath.png does not exist.") },
                     {
@@ -43,11 +44,16 @@ class IconResourceTests {
                             "Icon ${iconBasePath}_r.png does not exist."
                         )
                     },
-                    { assertTrue(File("$iconBasePath@2x.png").exists(), "Icon $iconBasePath@2x.png does not exist.") },
                     {
                         assertTrue(
-                            File("${iconBasePath}_r@2x.png").exists(),
-                            "Icon ${iconBasePath}_r@2x.png does not exist."
+                            File("$icon2xBasePath@2x.png").exists(),
+                            "Icon $icon2xBasePath@2x.png does not exist."
+                        )
+                    },
+                    {
+                        assertTrue(
+                            File("${icon2xBasePath}_r@2x.png").exists(),
+                            "Icon ${icon2xBasePath}_r@2x.png does not exist."
                         )
                     }
                 )
@@ -102,7 +108,7 @@ class IconResourceTests {
         val iconPaths = starWarsFactions.map {
             it.vehicles.map { vehicle ->
                 val iconFilePath = vehicle.fileName.replace('/', File.separatorChar)
-                listOf("$iconFilePath.png", "${iconFilePath}_r.png", "$iconFilePath@2x.png", "${iconFilePath}_r@2x.png")
+                listOf("$iconFilePath.png", "${iconFilePath}_r.png")
             }.stream().flatMap { e -> e.stream() }.collect(toList())
         }.stream().flatMap { it.stream() }.collect(toList())
 
@@ -117,16 +123,55 @@ class IconResourceTests {
         )
     }
 
+    @Test
+    fun `all 2x icon resources should be used`() {
+        // Arrange
+        val starWarsFactions = FactionHolder.factions
+        val iconBasePath =
+            "${File.separatorChar}icons"
+
+        val matcher = FileSystems.getDefault().getPathMatcher("glob:**/*\\.png")
+        val path = File(".$iconBasePath").toPath()
+        val basePath = "$iconBasePath${File.separatorChar}"
+        val imageFiles = Files.walk(path)
+            .filter {
+                matcher.matches(it)
+            }
+            .collect(toList())
+            .map {
+                val imagePath = it.toAbsolutePath().absolutePathString()
+                imagePath.drop(imagePath.indexOf(basePath) + basePath.length)
+            }
+
+        // Act
+        val iconPaths = starWarsFactions.map {
+            it.vehicles.map { vehicle ->
+                val iconFilePath = vehicle.fileName.replace('/', File.separatorChar)
+                listOf("$iconFilePath@2x.png", "${iconFilePath}_r@2x.png")
+            }.stream().flatMap { e -> e.stream() }.collect(toList())
+        }.stream().flatMap { it.stream() }.collect(toList())
+
+        // Assert
+        val imagesNotReferences = imageFiles.filter {
+            !iconPaths.contains(it) && !iconWhitelist.contains(it)
+        }
+        assertTrue(
+            imagesNotReferences.isEmpty(),
+            getFormattedImagesNotReferencedErrorMessage(imagesNotReferences)
+        )
+    }
+
     //endregion
 
     //region Helper methods
 
     private val iconWhitelist = listOf(
+        "confederacy_of_independent_systems${File.separatorChar}count_dookus_flitknot_speeder@2x.png",
+        "confederacy_of_independent_systems${File.separatorChar}nr_n99_persuader_class_droid_enforcer@2x.png",
+        "first_order${File.separatorChar}starkiller_base@2x.png",
         "scoundrels${File.separatorChar}lady_luck@2x.png",
         "scoundrels${File.separatorChar}outrider@2x.png",
-        "scoundrels${File.separatorChar}outrider_r@2x.png",
-        "confederacy_of_independent_systems${File.separatorChar}count_dookus_flitknot_speeder@2x.png",
-        "confederacy_of_independent_systems${File.separatorChar}nr_n99_persuader_class_droid_enforcer@2x.png"
+        "scoundrels${File.separatorChar}outrider_r@2x.png"
     )
 
     private fun getFormattedImagesNotReferencedErrorMessage(imagesNotReferenced: List<String>): String {
