@@ -5,7 +5,7 @@
 ## [Unreleased]
 
 ### Added
-- Core ship and OG-9 homing spider droid to CIS
+- Core ship, OG-9 homing spider droid and NR-N99 Persuader-class droid enforcer to CIS
 - TIE Reaper to Galactic Empire
 - Khetanna to Scoundrels
 
@@ -22,7 +22,7 @@
 - Aldar Beedo's, Ark "Bumpy" Roose's, Clegg Holdfast's, Dud Bolt's, Ebe Endocott's, Mawhonic's, Neva Kee's, Ody Mandrell's and Ratts Tyerell's podracers
 - Platoon Attack Craft and Punworcca 116-class interstellar sloop to CIS faction
 - AT-ACT, Victory I-class Star Destroyer, Onager-class Star Destroyer and TIE Striker to Galactic Empire faction
-- Barriss Offee's, Kit Fisto's, Luminara Unduli's, Mace Windu's and Saesee Tiin's Delta-7b to Galactic Republic faction
+- Barriss Offee's, Kit Fisto's, Luminara Unduli's, Mace Windu's and Saesee Tiin's Delta-7b to Jedi faction
 - Acushnet and Last Chance to Scoundrels faction
 
 ### Changed

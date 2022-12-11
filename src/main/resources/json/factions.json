@@ -467,6 +467,13 @@
           "velocity": 2.5
         },
         {
+          "id": "nr_n99_persuader_class_droid_enforcer",
+          "ionEngine": "brown",
+          "xShift": -3,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
           "id": "og_9_homing_spider_droid",
           "ionEngine": "brown",
           "xShift": -8,

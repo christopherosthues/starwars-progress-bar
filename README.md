@@ -30,7 +30,7 @@ This is the Star Wars Progress Bar for IJ based IDEs. It replaces the progress b
 
 <h3>Features</h3>
 <ul>
-  <li>Support of over 100 vehicles from the Star Wars movies, TV series, books and comics from the canon and legends</li>
+  <li>Support of over 150 vehicles from the Star Wars movies, TV series, books and comics from the canon and legends</li>
   <li>Configurable via the settings (<kbd>Settings/Preferences</kbd> > <kbd>Appearance &amp; Behavior</kbd> > <kbd>Star Wars Progress Bar</kbd>)</li>
   <ul>
     <li>Selection of specific vehicles</li>
@@ -142,6 +142,7 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 * ![Multi-Troop Transport](icons/confederacy_of_independent_systems/multi_troop_transport_cis@2x.png) Multi-Troop Transport ![Multi-Troop Transport](icons/confederacy_of_independent_systems/multi_troop_transport_cis_r@2x.png)
 * ![Munificent-class Star Frigate](icons/confederacy_of_independent_systems/munificent_class_star_frigate@2x.png) Munificent-class Star Frigate ![Munificent-class Star Frigate](icons/confederacy_of_independent_systems/munificent_class_star_frigate_r@2x.png)
 * ![Nantex-class Starfighter](icons/confederacy_of_independent_systems/nantex_class_starfighter@2x.png) Nantex-class Starfighter ![Nantex-class Starfighter](icons/confederacy_of_independent_systems/nantex_class_starfighter_r@2x.png)
+* ![NR-N99 Persuader-class droid enforcer](icons/confederacy_of_independent_systems/nr_n99_persuader_class_droid_enforcer@2x.png) NR-N99 Persuader-class droid enforcer ![NR-N99 Persuader-class droid enforcer](icons/confederacy_of_independent_systems/nr_n99_persuader_class_droid_enforcer_r@2x.png)
 * ![OG-9 homing spider droid](icons/confederacy_of_independent_systems/og_9_homing_spider_droid@2x.png) OG-9 homing spider droid ![OG-9 homing spider droid](icons/confederacy_of_independent_systems/og_9_homing_spider_droid_r@2x.png)
 * ![Platoon Attack Craft](icons/confederacy_of_independent_systems/platoon_attack_craft_cis@2x.png) Platoon Attack Craft ![Platoon Attack Craft](icons/confederacy_of_independent_systems/platoon_attack_craft_cis_r@2x.png)
 * ![Porax-38 Starfighter](icons/confederacy_of_independent_systems/porax_38_starfighter@2x.png) Porax-38 Starfighter ![Porax-38 Starfighter](icons/confederacy_of_independent_systems/porax_38_starfighter_r@2x.png)
