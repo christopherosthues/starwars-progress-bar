@@ -55,7 +55,7 @@
         {
           "id": "vulture_droid",
           "ionEngine": "purple",
-          "xShift": -12,
+          "xShift": -3,
           "yShift": -6,
           "velocity": 2.5
         }
