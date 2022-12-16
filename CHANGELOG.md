@@ -10,7 +10,7 @@
 - Khetanna to Scoundrels
 
 ### Changed
-- Reworked Vulture Droid of Trade Federation
+- Reworked Vulture Droid of Trade Federation and CIS
 
 ### Removed
 
