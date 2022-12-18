@@ -577,6 +577,13 @@
           "velocity": 1.5
         },
         {
+          "id": "at_st",
+          "ionEngine": "brown",
+          "xShift": -14,
+          "yShift": -6,
+          "velocity": 1.5
+        },
+        {
           "id": "eclipse",
           "ionEngine": "red",
           "xShift": -2,

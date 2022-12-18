@@ -6,7 +6,7 @@
 
 ### Added
 - Core ship, OG-9 homing spider droid and NR-N99 Persuader-class droid enforcer to CIS
-- TIE Reaper to Galactic Empire
+- AT-ST and TIE Reaper to Galactic Empire
 - Khetanna to Scoundrels
 
 ### Changed

@@ -159,6 +159,7 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 
 * ![AT-ACT](icons/galactic_empire/at_act@2x.png) AT-ACT ![AT-ACT](icons/galactic_empire/at_act_r@2x.png)
 * ![AT-AT](icons/galactic_empire/at_at@2x.png) AT-AT ![AT-AT](icons/galactic_empire/at_at_r@2x.png)
+* ![AT-ST](icons/galactic_empire/at_st@2x.png) AT-ST ![AT-ST](icons/galactic_empire/at_st_r@2x.png)
 * ![Eclipse](icons/galactic_empire/eclipse@2x.png) Eclipse ![Eclipse](icons/galactic_empire/eclipse_r@2x.png)
 * ![Executor](icons/galactic_empire/executor@2x.png) Executor ![Executor](icons/galactic_empire/executor_r@2x.png)
 * ![First Death Star](icons/galactic_empire/first_death_star@2x.png) First Death Star ![First Death Star](icons/galactic_empire/first_death_star_r@2x.png)
