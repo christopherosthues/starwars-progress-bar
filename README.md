@@ -88,6 +88,7 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 * ![Barriss Offee's Delta-7b-Aethersprite Starfighter](icons/jedi/barriss_offees_delta_7b_jedi_starfighter@2x.png) Barriss Offee's Delta-7b-Aethersprite Starfighter ![Barriss Offee's Delta-7b-Aethersprite Starfighter](icons/jedi/barriss_offees_delta_7b_jedi_starfighter_r@2x.png)
 * ![Blade of Dorin](icons/jedi/blade_of_dorin@2x.png) Blade of Dorin ![Blade of Dorin](icons/jedi/blade_of_dorin_r@2x.png)
 * ![DC0052 Speeder](icons/jedi/dc0052_speeder@2x.png) DC0052 Speeder ![DC0052 Speeder](icons/jedi/dc0052_speeder_r@2x.png)
+* ![Eta-class Shuttle](icons/jedi/eta_class_shuttle@2x.png) Eta-class Shuttle ![Eta-class Shuttle](icons/jedi/eta_class_shuttle_r@2x.png)
 * ![Kit Fisto's Delta-7b-Aethersprite Starfighter](icons/jedi/kit_fistos_delta_7b_jedi_starfighter@2x.png) Kit Fisto's Delta-7b-Aethersprite Starfighter ![Kit Fisto's Delta-7b-Aethersprite Starfighter](icons/jedi/kit_fistos_delta_7b_jedi_starfighter_r@2x.png)
 * ![Luminara Unduli's Delta-7b-Aethersprite Starfighter](icons/jedi/luminara_undulis_delta_7b_jedi_starfighter@2x.png) Luminara Unduli's Delta-7b-Aethersprite Starfighter ![Luminara Unduli's Delta-7b-Aethersprite Starfighter](icons/jedi/luminara_undulis_delta_7b_jedi_starfighter_r@2x.png)
 * ![Mace Windu's Delta-7b-Aethersprite Starfighter](icons/jedi/mace_windus_delta_7b_jedi_starfighter@2x.png) Mace Windu's Delta-7b-Aethersprite Starfighter ![Mace Windu's Delta-7b-Aethersprite Starfighter](icons/jedi/mace_windus_delta_7b_jedi_starfighter_r@2x.png)
