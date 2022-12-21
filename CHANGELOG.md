@@ -4,6 +4,15 @@
 
 ## [Unreleased]
 
+### Added
+- Eta-class Shuttle to Jedi faction
+
+### Changed
+
+### Removed
+
+### Fixed
+
 ## [1.7.0] - 2022-12-21
 
 ### Added
