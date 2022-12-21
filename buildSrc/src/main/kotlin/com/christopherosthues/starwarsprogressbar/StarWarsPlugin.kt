@@ -44,6 +44,8 @@ class StarWarsPlugin : Plugin<Project> {
             messagesFile.convention {
                 project.file(extension.messagesFilePath.get())
             }
+            group = StarWarsPluginConstants.EXTENSION_NAME
+            description = "Adds all available vehicles to the Readme file."
         }
 
         project.tasks.register(StarWarsPluginConstants.VERSION_BUMP_NAME, VersionBumpTask::class.java) {
@@ -54,6 +56,8 @@ class StarWarsPlugin : Plugin<Project> {
                 project.file(extension.gradlePropertiesFile.get())
             }
             increaseVersion.set(extension.increaseVersion)
+            group = StarWarsPluginConstants.EXTENSION_NAME
+            description = "Increases the version number of this plugin in the gradle.properties file."
         }
     }
 }
