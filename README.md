@@ -107,6 +107,7 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 * ![Berenko-class gondola speeder](icons/galactic_republic/berenko_class_gondola_speeder@2x.png) Berenko-class gondola speeder ![Berenko-class gondola speeder](icons/galactic_republic/berenko_class_gondola_speeder_r@2x.png)
 * ![BTL-B Y-Wing](icons/galactic_republic/btl_b_y_wing@2x.png) BTL-B Y-Wing ![BTL-B Y-Wing](icons/galactic_republic/btl_b_y_wing_r@2x.png)
 * ![Captain Rex's BTL-B Y-Wing](icons/galactic_republic/captain_rex_y_wing@2x.png) Captain Rex's BTL-B Y-Wing ![Captain Rex's BTL-B Y-Wing](icons/galactic_republic/captain_rex_y_wing_r@2x.png)
+* ![CSS-1 Corellian Star Shuttle](icons/galactic_republic/css_1_corellian_star_shuttle@2x.png) CSS-1 Corellian Star Shuttle ![CSS-1 Corellian Star Shuttle](icons/galactic_republic/css_1_corellian_star_shuttle_r@2x.png)
 * ![H-Type Naboo Yacht](icons/galactic_republic/h_type_naboo_yacht@2x.png) H-Type Naboo Yacht ![H-Type Naboo Yacht](icons/galactic_republic/h_type_naboo_yacht_r@2x.png)
 * ![Heavy Assault Vehicle/Wheeled A6 Juggernaut](icons/galactic_republic/havw_a6_juggernaut@2x.png) Heavy Assault Vehicle/Wheeled A6 Juggernaut ![Heavy Assault Vehicle/Wheeled A6 Juggernaut](icons/galactic_republic/havw_a6_juggernaut_r@2x.png)
 * ![Infantry Support Platform](icons/galactic_republic/infantry_support_platform@2x.png) Infantry Support Platform ![Infantry Support Platform](icons/galactic_republic/infantry_support_platform_r@2x.png)
