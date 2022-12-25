@@ -7,6 +7,7 @@
 ### Added
 - Eta-class Shuttle to Jedi faction
 - CSS-1 Corellian Star Shuttle to Galactic Republic
+- Octuptarra tri-droid to CIS
 
 ### Changed
 

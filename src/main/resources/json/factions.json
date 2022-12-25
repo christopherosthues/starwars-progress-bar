@@ -488,6 +488,13 @@
           "velocity": 2.5
         },
         {
+          "id": "octuptarra_tri_droid",
+          "ionEngine": "brown",
+          "xShift": -4,
+          "yShift": -6,
+          "velocity": 2
+        },
+        {
           "id": "og_9_homing_spider_droid",
           "ionEngine": "brown",
           "xShift": -8,
