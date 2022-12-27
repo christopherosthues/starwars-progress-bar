@@ -116,6 +116,7 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 * ![LAAT/i](icons/galactic_republic/laat_i@2x.png) LAAT/i ![LAAT/i](icons/galactic_republic/laat_i_r@2x.png)
 * ![N-1 Starfighter](icons/galactic_republic/n_1_starfighter@2x.png) N-1 Starfighter ![N-1 Starfighter](icons/galactic_republic/n_1_starfighter_r@2x.png)
 * ![Naboo Royal Starship](icons/galactic_republic/naboo_royal_starship@2x.png) Naboo Royal Starship ![Naboo Royal Starship](icons/galactic_republic/naboo_royal_starship_r@2x.png)
+* ![Oevvaor Jet Catamaran](icons/galactic_republic/oevvaor_jet_catamaran@2x.png) Oevvaor Jet Catamaran ![Oevvaor Jet Catamaran](icons/galactic_republic/oevvaor_jet_catamaran_r@2x.png)
 * ![Seraph-class Flash speeder](icons/galactic_republic/seraph_class_speeder@2x.png) Seraph-class Flash speeder ![Seraph-class Flash speeder](icons/galactic_republic/seraph_class_speeder_r@2x.png)
 * ![Syluire-31 hyperdrive docking ring](icons/galactic_republic/syluire_31_hyperspace_docking_ring@2x.png) Syluire-31 hyperdrive docking ring ![Syluire-31 hyperdrive docking ring](icons/galactic_republic/syluire_31_hyperspace_docking_ring_r@2x.png)
 * ![V-19 Torrent Starfighter](icons/galactic_republic/v_19_torrent_starfighter@2x.png) V-19 Torrent Starfighter ![V-19 Torrent Starfighter](icons/galactic_republic/v_19_torrent_starfighter_r@2x.png)

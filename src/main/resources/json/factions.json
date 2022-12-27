@@ -308,6 +308,13 @@
           "velocity": 2.5
         },
         {
+          "id": "oevvaor_jet_catamaran",
+          "ionEngine": "white",
+          "xShift": -16,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
           "id": "seraph_class_speeder",
           "ionEngine": "orange",
           "xShift": -6,
