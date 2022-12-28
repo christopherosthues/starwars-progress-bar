@@ -132,6 +132,7 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 * ![Core ship](icons/confederacy_of_independent_systems/core_ship@2x.png) Core ship ![Core ship](icons/confederacy_of_independent_systems/core_ship_r@2x.png)
 * ![DH-Omni Support Vessel](icons/confederacy_of_independent_systems/separatist_supply_ship@2x.png) DH-Omni Support Vessel ![DH-Omni Support Vessel](icons/confederacy_of_independent_systems/separatist_supply_ship_r@2x.png)
 * ![Diamond-class Cruiser](icons/confederacy_of_independent_systems/diamond_class_cruiser@2x.png) Diamond-class Cruiser ![Diamond-class Cruiser](icons/confederacy_of_independent_systems/diamond_class_cruiser_r@2x.png)
+* ![Droch-class boarding ship](icons/confederacy_of_independent_systems/droch_class_boarding_ship@2x.png) Droch-class boarding ship ![Droch-class boarding ship](icons/confederacy_of_independent_systems/droch_class_boarding_ship_r@2x.png)
 * ![Droid Tri-Fighter](icons/confederacy_of_independent_systems/droid_tri_fighter@2x.png) Droid Tri-Fighter ![Droid Tri-Fighter](icons/confederacy_of_independent_systems/droid_tri_fighter_r@2x.png)
 * ![Fanblade](icons/confederacy_of_independent_systems/fanblade@2x.png) Fanblade ![Fanblade](icons/confederacy_of_independent_systems/fanblade_r@2x.png)
 * ![Heavy Missile Platform droid gunship](icons/confederacy_of_independent_systems/heavy_missile_platform_droid_gunship@2x.png) Heavy Missile Platform droid gunship ![Heavy Missile Platform droid gunship](icons/confederacy_of_independent_systems/heavy_missile_platform_droid_gunship_r@2x.png)

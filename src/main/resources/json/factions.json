@@ -397,6 +397,13 @@
           "velocity": 2.5
         },
         {
+          "id": "droch_class_boarding_ship",
+          "ionEngine": "yellow",
+          "xShift": -2,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
           "id": "droid_tri_fighter",
           "ionEngine": "orange",
           "xShift": -3,

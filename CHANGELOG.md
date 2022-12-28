@@ -7,7 +7,7 @@
 ### Added
 - Eta-class Shuttle to Jedi faction
 - CSS-1 Corellian Star Shuttle and Oevvaor Jet Catamaran to Galactic Republic
-- Octuptarra tri-droid to CIS
+- Droch-class boarding ship and Octuptarra tri-droid to CIS
 
 ### Changed
 
