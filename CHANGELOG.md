@@ -5,6 +5,7 @@
 ## [Unreleased]
 
 ### Added
+- Translations for spanish
 - Eta-class Shuttle to Jedi faction
 - CSS-1 Corellian Star Shuttle and Oevvaor Jet Catamaran to Galactic Republic
 - Droch-class boarding ship and Octuptarra tri-droid to CIS
