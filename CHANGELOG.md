@@ -6,7 +6,8 @@
 
 ### Added
 - Translations for spanish
-- Add option to draw solid progress bar
+- Option to draw solid progress bar
+- Option to hide/display vehicle in progress bar
 - Eta-class Shuttle to Jedi faction
 - CSS-1 Corellian Star Shuttle and Oevvaor Jet Catamaran to Galactic Republic
 - Count Dooku's Flitknot Speeder Bike, Droch-class boarding ship, Flitknot Speeder Bike and Octuptarra tri-droid to CIS
