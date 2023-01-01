@@ -418,6 +418,13 @@
           "velocity": 2.5
         },
         {
+          "id": "flitknot_speeder",
+          "ionEngine": "yellow",
+          "xShift": 0,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
           "id": "heavy_missile_platform_droid_gunship",
           "ionEngine": "white",
           "xShift": -7,

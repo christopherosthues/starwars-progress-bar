@@ -167,7 +167,6 @@ class IconResourceTests {
 
     private val iconWhitelist = listOf(
         "confederacy_of_independent_systems${File.separatorChar}count_dookus_flitknot_speeder@2x.png",
-        "confederacy_of_independent_systems${File.separatorChar}flitknot_speeder@2x.png",
         "galactic_republic${File.separatorChar}high_altitude_entry_transport_221_r@2x.png",
         "galactic_republic${File.separatorChar}at_te@2x.png",
         "first_order${File.separatorChar}starkiller_base@2x.png",
