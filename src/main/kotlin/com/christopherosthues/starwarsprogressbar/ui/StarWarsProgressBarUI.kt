@@ -330,7 +330,7 @@ internal class StarWarsProgressBarUI(
             if (isMovingRight) {
                 JBUIScale.scale(vehicle.xShift)
             } else {
-                JBUIScale.scale(-icon.width - vehicle.xShift)
+                JBUIScale.scale(-icon.preferredSize.width - vehicle.xShift)
             }
         val y = vehicle.yShift
         graphics2D.translate(x, y)
