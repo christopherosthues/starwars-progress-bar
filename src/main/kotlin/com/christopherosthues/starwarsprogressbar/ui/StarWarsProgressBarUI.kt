@@ -26,6 +26,7 @@ import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SAME_VEHICLE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_FACTION_CRESTS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_TOOLTIPS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE_NAMES
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRESS_BAR_COLOR
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.ui.components.ColoredImageComponent
 import com.christopherosthues.starwarsprogressbar.util.StarWarsResourceLoader
@@ -59,7 +60,8 @@ internal class StarWarsProgressBarUI(
     private val showVehicleName: () -> Boolean,
     private val showToolTips: () -> Boolean,
     private val showFactionCrests: () -> Boolean,
-    private val sameVehicleVelocity: () -> Boolean
+    private val sameVehicleVelocity: () -> Boolean,
+    private val solidProgressBarColor: () -> Boolean
 ) : BasicProgressBarUI() {
 
     private val forwardIcon = StarWarsResourceLoader.getIcon(vehicle.fileName)
@@ -74,7 +76,8 @@ internal class StarWarsProgressBarUI(
         { StarWarsPersistentStateComponent.instance?.state?.showVehicleNames ?: DEFAULT_SHOW_VEHICLE_NAMES },
         { StarWarsPersistentStateComponent.instance?.state?.showToolTips ?: DEFAULT_SHOW_TOOLTIPS },
         { StarWarsPersistentStateComponent.instance?.state?.showFactionCrests ?: DEFAULT_SHOW_FACTION_CRESTS },
-        { StarWarsPersistentStateComponent.instance?.state?.sameVehicleVelocity ?: DEFAULT_SAME_VEHICLE_VELOCITY }
+        { StarWarsPersistentStateComponent.instance?.state?.sameVehicleVelocity ?: DEFAULT_SAME_VEHICLE_VELOCITY },
+        { StarWarsPersistentStateComponent.instance?.state?.solidProgressBarColor ?: DEFAULT_SOLID_PROGRESS_BAR_COLOR }
     )
 
     private fun getVelocity(): Float {
@@ -276,6 +279,11 @@ internal class StarWarsProgressBarUI(
 
     private fun getTransparencyPaint(backgroundColor: Color, progress: Int, width: Int, movingRight: Boolean): Paint {
         val transparent = JBColor(Color(0, 0, 0, 0), Color(0, 0, 0, 0))
+
+        if (solidProgressBarColor()) {
+            return transparent
+        }
+
         if (movingRight) {
             return if (progress > 0) {
                 LinearGradientPaint(

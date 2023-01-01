@@ -5,6 +5,7 @@ import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SAME_VEHICLE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_FACTION_CRESTS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_TOOLTIPS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE_NAMES
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRESS_BAR_COLOR
 import com.christopherosthues.starwarsprogressbar.models.FactionHolder
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.intellij.idea.TestFor
@@ -71,6 +72,7 @@ class StarWarsStateTests {
         val showFactionCrests = true
         val sameVehicleVelocity = true
         val enableNewVehicles = false
+        val solidProgressBarColor = true
         val version = "1.0.0"
 
         assertDefaultValues(sut)
@@ -82,6 +84,7 @@ class StarWarsStateTests {
         sut.showFactionCrests = showFactionCrests
         sut.sameVehicleVelocity = sameVehicleVelocity
         sut.enableNewVehicles = enableNewVehicles
+        sut.solidProgressBarColor = solidProgressBarColor
         sut.version = version
 
         // Assert
@@ -91,6 +94,7 @@ class StarWarsStateTests {
             { assertEquals(showFactionCrests, sut.showFactionCrests) },
             { assertEquals(sameVehicleVelocity, sut.sameVehicleVelocity) },
             { assertEquals(enableNewVehicles, sut.enableNewVehicles) },
+            { assertEquals(solidProgressBarColor, sut.solidProgressBarColor) },
             { assertEquals(version, sut.version) },
             { assertTrue(sut.vehiclesEnabled.isNotEmpty()) },
             { assertEquals(2, sut.vehiclesEnabled.size) },
@@ -130,6 +134,7 @@ class StarWarsStateTests {
             { assertEquals(DEFAULT_SHOW_FACTION_CRESTS, sut.showFactionCrests) },
             { assertEquals(DEFAULT_SAME_VEHICLE_VELOCITY, sut.sameVehicleVelocity) },
             { assertEquals(DEFAULT_ENABLE_NEW_VEHICLES, sut.enableNewVehicles) },
+            { assertEquals(DEFAULT_SOLID_PROGRESS_BAR_COLOR, sut.solidProgressBarColor) },
             { assertEquals("", sut.version) },
             { assertTrue(sut.vehiclesEnabled.isEmpty()) }
         )

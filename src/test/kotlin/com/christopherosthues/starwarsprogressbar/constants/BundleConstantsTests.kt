@@ -54,6 +54,7 @@ class BundleConstantsTests {
                 Arguments.of("configuration.showFactionCrests", BundleConstants.SHOW_FACTION_CRESTS),
                 Arguments.of("configuration.sameVehicleVelocity", BundleConstants.SAME_VEHICLE_VELOCITY),
                 Arguments.of("configuration.enableNewVehicles", BundleConstants.ENABLE_NEW_VEHICLES),
+                Arguments.of("configuration.solidProgressBarColor", BundleConstants.SOLID_PROGRESS_BAR_COLOR),
                 Arguments.of("configuration.vehicles", BundleConstants.VEHICLES_TITLE),
                 Arguments.of("configuration.selectAll", BundleConstants.SELECT_ALL),
                 Arguments.of("configuration.deselectAll", BundleConstants.DESELECT_ALL),

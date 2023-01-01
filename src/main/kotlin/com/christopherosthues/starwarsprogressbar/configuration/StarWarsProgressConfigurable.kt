@@ -28,7 +28,8 @@ internal class StarWarsProgressConfigurable : SearchableConfigurable {
             starWarsState.showToolTips != component!!.showToolTips ||
             starWarsState.showFactionCrests != component!!.showFactionCrests ||
             starWarsState.sameVehicleVelocity != component!!.sameVehicleVelocity ||
-            starWarsState.enableNewVehicles != component!!.enableNewVehicles
+            starWarsState.enableNewVehicles != component!!.enableNewVehicles ||
+            starWarsState.solidProgressBarColor != component!!.solidProgressBarColor
     }
 
     override fun apply() {
@@ -43,6 +44,7 @@ internal class StarWarsProgressConfigurable : SearchableConfigurable {
             starWarsState.showFactionCrests = component.showFactionCrests
             starWarsState.sameVehicleVelocity = component.sameVehicleVelocity
             starWarsState.enableNewVehicles = component.enableNewVehicles
+            starWarsState.solidProgressBarColor = component.solidProgressBarColor
         }
     }
 

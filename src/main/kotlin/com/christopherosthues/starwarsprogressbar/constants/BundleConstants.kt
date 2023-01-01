@@ -18,6 +18,7 @@ internal object BundleConstants {
     const val SHOW_FACTION_CRESTS = CONFIGURATION + "showFactionCrests"
     const val SAME_VEHICLE_VELOCITY = CONFIGURATION + "sameVehicleVelocity"
     const val ENABLE_NEW_VEHICLES = CONFIGURATION + "enableNewVehicles"
+    const val SOLID_PROGRESS_BAR_COLOR = CONFIGURATION + "solidProgressBarColor"
     const val VEHICLES_TITLE = CONFIGURATION + "vehicles"
     const val SELECT_ALL = CONFIGURATION + "selectAll"
     const val DESELECT_ALL = CONFIGURATION + "deselectAll"

@@ -15,7 +15,8 @@ class ConfigurationConstantsTests {
             { Assertions.assertTrue(DEFAULT_SHOW_TOOLTIPS) },
             { Assertions.assertFalse(DEFAULT_SHOW_VEHICLE_NAMES) },
             { Assertions.assertFalse(DEFAULT_SHOW_FACTION_CRESTS) },
-            { Assertions.assertFalse(DEFAULT_SAME_VEHICLE_VELOCITY) }
+            { Assertions.assertFalse(DEFAULT_SAME_VEHICLE_VELOCITY) },
+            { Assertions.assertFalse(DEFAULT_SOLID_PROGRESS_BAR_COLOR) }
         )
     }
 }

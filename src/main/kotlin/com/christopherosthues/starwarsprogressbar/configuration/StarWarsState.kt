@@ -5,6 +5,7 @@ import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SAME_VEHICLE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_FACTION_CRESTS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_TOOLTIPS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE_NAMES
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRESS_BAR_COLOR
 import com.christopherosthues.starwarsprogressbar.models.FactionHolder
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import java.util.stream.Collectors
@@ -23,6 +24,8 @@ internal class StarWarsState {
     var sameVehicleVelocity: Boolean = DEFAULT_SAME_VEHICLE_VELOCITY
 
     var enableNewVehicles: Boolean = DEFAULT_ENABLE_NEW_VEHICLES
+
+    var solidProgressBarColor: Boolean = DEFAULT_SOLID_PROGRESS_BAR_COLOR
 
     var version: String = ""
 }

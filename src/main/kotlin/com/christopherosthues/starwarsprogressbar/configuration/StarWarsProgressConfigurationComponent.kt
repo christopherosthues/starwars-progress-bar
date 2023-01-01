@@ -39,6 +39,9 @@ internal class StarWarsProgressConfigurationComponent {
     val enableNewVehicles: Boolean
         get() = uiOptionsPanel.enableNewVehicles
 
+    val solidProgressBarColor: Boolean
+        get() = uiOptionsPanel.solidProgressBarColor
+
     init {
         createUI()
     }
@@ -71,6 +74,7 @@ internal class StarWarsProgressConfigurationComponent {
             this::showFactionCrests,
             this::sameVehicleVelocity,
             this::enableNewVehicles,
+            this::solidProgressBarColor,
             this::enabledVehicles
         )
 
@@ -79,16 +83,21 @@ internal class StarWarsProgressConfigurationComponent {
 
     private fun createUiOptionsSection(formBuilder: FormBuilder) {
         uiOptionsPanel.addPropertyChangeListener() {
-            if (it.propertyName.equals(UiOptionsPanel::showVehicleNames.name) ||
-                it.propertyName.equals(UiOptionsPanel::showToolTips.name) ||
-                it.propertyName.equals(UiOptionsPanel::showFactionCrests.name) ||
-                it.propertyName.equals(UiOptionsPanel::sameVehicleVelocity.name)
+            if (isProgressBarTextEvent(it.propertyName) ||
+                it.propertyName == UiOptionsPanel::showFactionCrests.name ||
+                it.propertyName == UiOptionsPanel::sameVehicleVelocity.name ||
+                it.propertyName == UiOptionsPanel::solidProgressBarColor.name
             ) {
                 repaintProgressBar()
             }
         }
 
         formBuilder.addComponent(uiOptionsPanel)
+    }
+
+    private fun isProgressBarTextEvent(propertyName: String): Boolean {
+        return propertyName == UiOptionsPanel::showVehicleNames.name ||
+            propertyName == UiOptionsPanel::showToolTips.name
     }
 
     private fun repaintProgressBar() {
