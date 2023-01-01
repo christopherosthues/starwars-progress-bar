@@ -11,6 +11,7 @@
 - Count Dooku's Flitknot Speeder Bike, Droch-class boarding ship, Flitknot Speeder Bike and Octuptarra tri-droid to CIS
 
 ### Changed
+- Change color of progressbar for Azure Angel from red to blue
 
 ### Removed
 

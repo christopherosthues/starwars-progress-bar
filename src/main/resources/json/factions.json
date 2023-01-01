@@ -101,7 +101,7 @@
         },
         {
           "id": "azure_angel",
-          "ionEngine": "red",
+          "ionEngine": "blue",
           "xShift": -10,
           "yShift": -6,
           "velocity": 2.5
