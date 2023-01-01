@@ -1,5 +1,6 @@
 package com.christopherosthues.starwarsprogressbar.configuration
 
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_DRAW_SILHOUETTES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENABLE_NEW_VEHICLES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SAME_VEHICLE_VELOCITY
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_FACTION_CRESTS
@@ -75,6 +76,7 @@ class StarWarsStateTests {
         val sameVehicleVelocity = true
         val enableNewVehicles = false
         val solidProgressBarColor = true
+        val drawSilhouettes = true
         val version = "1.0.0"
 
         assertDefaultValues(sut)
@@ -88,6 +90,7 @@ class StarWarsStateTests {
         sut.sameVehicleVelocity = sameVehicleVelocity
         sut.enableNewVehicles = enableNewVehicles
         sut.solidProgressBarColor = solidProgressBarColor
+        sut.drawSilhouettes = drawSilhouettes
         sut.version = version
 
         // Assert
@@ -99,6 +102,7 @@ class StarWarsStateTests {
             { assertEquals(sameVehicleVelocity, sut.sameVehicleVelocity) },
             { assertEquals(enableNewVehicles, sut.enableNewVehicles) },
             { assertEquals(solidProgressBarColor, sut.solidProgressBarColor) },
+            { assertEquals(drawSilhouettes, sut.drawSilhouettes) },
             { assertEquals(version, sut.version) },
             { assertTrue(sut.vehiclesEnabled.isNotEmpty()) },
             { assertEquals(2, sut.vehiclesEnabled.size) },
@@ -140,6 +144,7 @@ class StarWarsStateTests {
             { assertEquals(DEFAULT_SAME_VEHICLE_VELOCITY, sut.sameVehicleVelocity) },
             { assertEquals(DEFAULT_ENABLE_NEW_VEHICLES, sut.enableNewVehicles) },
             { assertEquals(DEFAULT_SOLID_PROGRESS_BAR_COLOR, sut.solidProgressBarColor) },
+            { assertEquals(DEFAULT_DRAW_SILHOUETTES, sut.drawSilhouettes) },
             { assertEquals("", sut.version) },
             { assertTrue(sut.vehiclesEnabled.isEmpty()) }
         )

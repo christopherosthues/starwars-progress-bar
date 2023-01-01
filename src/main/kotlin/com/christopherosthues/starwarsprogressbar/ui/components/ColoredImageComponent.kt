@@ -10,8 +10,11 @@ import javax.swing.JComponent
 private const val TRANSPARENT = 0x00000000L
 private const val NOT_TRANSPARENT = 0xFF000000
 
-internal class ColoredImageComponent(private val image: BufferedImage) : JComponent() {
+internal class ColoredImageComponent(private var image: BufferedImage) : JComponent() {
+    private lateinit var paintedImage: BufferedImage
+
     init {
+        paintedImage = BufferedImage(image.colorModel, image.copyData(null), image.colorModel.isAlphaPremultiplied, null)
         preferredSize = Dimension(image.width, image.height)
         minimumSize = preferredSize
     }
@@ -38,7 +41,10 @@ internal class ColoredImageComponent(private val image: BufferedImage) : JCompon
     }
 
     override fun setForeground(fg: Color?) {
-        requireNotNull(fg)
+        if (fg == null) {
+            image = BufferedImage(paintedImage.colorModel, paintedImage.copyData(null), paintedImage.colorModel.isAlphaPremultiplied, null)
+            return
+        }
 
         for (x in 0 until image.width) {
             for (y in 0 until image.height) {

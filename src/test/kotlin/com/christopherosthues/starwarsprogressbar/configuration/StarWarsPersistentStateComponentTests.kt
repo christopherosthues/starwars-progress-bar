@@ -83,6 +83,7 @@ class StarWarsPersistentStateComponentTests {
             { assertFalse(result!!.sameVehicleVelocity) },
             { assertTrue(result!!.enableNewVehicles) },
             { assertFalse(result!!.solidProgressBarColor) },
+            { assertFalse(result!!.drawSilhouettes) },
             { assertEquals("", result!!.version) }
         )
     }
@@ -102,6 +103,7 @@ class StarWarsPersistentStateComponentTests {
             sameVehicleVelocity = true
             enableNewVehicles = false
             solidProgressBarColor = true
+            drawSilhouettes = true
             version = expectedVersion
         }
 
@@ -128,6 +130,7 @@ class StarWarsPersistentStateComponentTests {
             { assertEquals(starWarsState.sameVehicleVelocity, result!!.sameVehicleVelocity) },
             { assertEquals(starWarsState.enableNewVehicles, result!!.enableNewVehicles) },
             { assertEquals(starWarsState.solidProgressBarColor, result!!.solidProgressBarColor) },
+            { assertEquals(starWarsState.drawSilhouettes, result!!.drawSilhouettes) },
             { assertEquals(starWarsState.version, result!!.version) },
 
             { assertEquals(expectedVehiclesEnabled, result!!.vehiclesEnabled) },
@@ -138,6 +141,7 @@ class StarWarsPersistentStateComponentTests {
             { assertTrue(result!!.sameVehicleVelocity) },
             { assertFalse(result!!.enableNewVehicles) },
             { assertTrue(result!!.solidProgressBarColor) },
+            { assertTrue(result!!.drawSilhouettes) },
             { assertEquals(expectedVersion, result!!.version) }
         )
 
@@ -224,6 +228,7 @@ class StarWarsPersistentStateComponentTests {
             { assertFalse(starWarsState!!.sameVehicleVelocity) },
             { assertTrue(starWarsState!!.enableNewVehicles) },
             { assertFalse(starWarsState!!.solidProgressBarColor) },
+            { assertFalse(starWarsState!!.drawSilhouettes) },
             { assertEquals("", starWarsState!!.version) }
         )
     }

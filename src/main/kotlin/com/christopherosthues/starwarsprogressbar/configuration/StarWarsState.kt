@@ -1,5 +1,6 @@
 package com.christopherosthues.starwarsprogressbar.configuration
 
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_DRAW_SILHOUETTES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENABLE_NEW_VEHICLES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SAME_VEHICLE_VELOCITY
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_FACTION_CRESTS
@@ -29,6 +30,8 @@ internal class StarWarsState {
     var enableNewVehicles: Boolean = DEFAULT_ENABLE_NEW_VEHICLES
 
     var solidProgressBarColor: Boolean = DEFAULT_SOLID_PROGRESS_BAR_COLOR
+
+    var drawSilhouettes: Boolean = DEFAULT_DRAW_SILHOUETTES
 
     var version: String = ""
 }

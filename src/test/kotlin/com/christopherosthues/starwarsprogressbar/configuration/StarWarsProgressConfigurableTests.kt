@@ -126,7 +126,8 @@ class StarWarsProgressConfigurableTests {
         showFactionCrests: Boolean,
         sameVehicleVelocity: Boolean,
         enableNewVehicles: Boolean,
-        solidProgressBarColor: Boolean
+        solidProgressBarColor: Boolean,
+        drawSilhouettes: Boolean
     ) {
         // Arrange
         setupStarWarsState(
@@ -137,7 +138,8 @@ class StarWarsProgressConfigurableTests {
             showFactionCrests,
             sameVehicleVelocity,
             enableNewVehicles,
-            solidProgressBarColor
+            solidProgressBarColor,
+            drawSilhouettes
         )
         setupComponentState(
             enabledVehicles,
@@ -147,7 +149,8 @@ class StarWarsProgressConfigurableTests {
             showFactionCrests,
             sameVehicleVelocity,
             enableNewVehicles,
-            solidProgressBarColor
+            solidProgressBarColor,
+            drawSilhouettes
         )
         val sut = StarWarsProgressConfigurable()
         sut.createComponent()
@@ -174,7 +177,8 @@ class StarWarsProgressConfigurableTests {
             starWarsStateData.showFactionCrests,
             starWarsStateData.sameVehicleVelocity,
             starWarsStateData.enableNewVehicles,
-            starWarsStateData.solidProgressBarColor
+            starWarsStateData.solidProgressBarColor,
+            starWarsStateData.drawSilhouettes
         )
         setupComponentState(
             componentStateData.enabledVehicles,
@@ -184,7 +188,8 @@ class StarWarsProgressConfigurableTests {
             componentStateData.showFactionCrests,
             componentStateData.sameVehicleVelocity,
             componentStateData.enableNewVehicles,
-            componentStateData.solidProgressBarColor
+            componentStateData.solidProgressBarColor,
+            componentStateData.drawSilhouettes
         )
         val sut = StarWarsProgressConfigurable()
         sut.createComponent()
@@ -232,6 +237,7 @@ class StarWarsProgressConfigurableTests {
         verify(exactly = 0) { starWarsStateMock.sameVehicleVelocity }
         verify(exactly = 0) { starWarsStateMock.enableNewVehicles }
         verify(exactly = 0) { starWarsStateMock.solidProgressBarColor }
+        verify(exactly = 0) { starWarsStateMock.drawSilhouettes }
     }
 
     @ParameterizedTest
@@ -244,7 +250,8 @@ class StarWarsProgressConfigurableTests {
         showFactionCrests: Boolean = false,
         sameVehicleVelocity: Boolean = false,
         enableNewVehicles: Boolean = false,
-        solidProgressBarColor: Boolean = false
+        solidProgressBarColor: Boolean = false,
+        drawSilhouettes: Boolean = false
     ) {
         // Arrange
         val starWarsStateMock = setupStarWarsPersistentStateComponentMock().state!!
@@ -256,7 +263,8 @@ class StarWarsProgressConfigurableTests {
             showFactionCrests,
             sameVehicleVelocity,
             enableNewVehicles,
-            solidProgressBarColor
+            solidProgressBarColor,
+            drawSilhouettes
         )
         val sut = StarWarsProgressConfigurable()
         sut.createComponent()
@@ -272,6 +280,7 @@ class StarWarsProgressConfigurableTests {
         verify(exactly = 1) { starWarsStateMock.sameVehicleVelocity = sameVehicleVelocity }
         verify(exactly = 1) { starWarsStateMock.enableNewVehicles = enableNewVehicles }
         verify(exactly = 1) { starWarsStateMock.solidProgressBarColor = solidProgressBarColor }
+        verify(exactly = 1) { starWarsStateMock.drawSilhouettes = drawSilhouettes }
         assertEquals(enabledVehicles, starWarsStateMock.vehiclesEnabled, StarWarsState::vehiclesEnabled.name)
     }
 
@@ -420,7 +429,8 @@ class StarWarsProgressConfigurableTests {
         showFactionCrests: Boolean = false,
         sameVehicleVelocity: Boolean = false,
         enableNewVehicles: Boolean = false,
-        solidProgressBarColor: Boolean = false
+        solidProgressBarColor: Boolean = false,
+        drawSilhouettes: Boolean = false
     ): StarWarsState {
         val starWarsStateMock = mockk<StarWarsState>()
         starWarsStateMock.vehiclesEnabled = enabledVehicles
@@ -431,6 +441,7 @@ class StarWarsProgressConfigurableTests {
         every { starWarsStateMock.sameVehicleVelocity } returns sameVehicleVelocity
         every { starWarsStateMock.enableNewVehicles } returns enableNewVehicles
         every { starWarsStateMock.solidProgressBarColor } returns solidProgressBarColor
+        every { starWarsStateMock.drawSilhouettes } returns drawSilhouettes
         every { starWarsStateMock.version } returns ""
         val starWarsPersistentStateComponentMock = mockk<StarWarsPersistentStateComponent>(relaxed = true)
         every { StarWarsPersistentStateComponent.instance } returns starWarsPersistentStateComponentMock
@@ -447,7 +458,8 @@ class StarWarsProgressConfigurableTests {
         showFactionCrests: Boolean = false,
         sameVehicleVelocity: Boolean = false,
         enableNewVehicles: Boolean = false,
-        solidProgressBarColor: Boolean = false
+        solidProgressBarColor: Boolean = false,
+        drawSilhouettes: Boolean = false
     ) {
         every { starWarsProgressConfigurationComponentMock.enabledVehicles } returns enabledVehicles
         every { starWarsProgressConfigurationComponentMock.showVehicle } returns showVehicle
@@ -457,6 +469,7 @@ class StarWarsProgressConfigurableTests {
         every { starWarsProgressConfigurationComponentMock.sameVehicleVelocity } returns sameVehicleVelocity
         every { starWarsProgressConfigurationComponentMock.enableNewVehicles } returns enableNewVehicles
         every { starWarsProgressConfigurationComponentMock.solidProgressBarColor } returns solidProgressBarColor
+        every { starWarsProgressConfigurationComponentMock.drawSilhouettes } returns drawSilhouettes
     }
 
     //endregion
@@ -471,269 +484,16 @@ class StarWarsProgressConfigurableTests {
         val showFactionCrests: Boolean = false,
         val sameVehicleVelocity: Boolean = false,
         val enableNewVehicles: Boolean = false,
-        val solidProgressBarColor: Boolean = false
+        val solidProgressBarColor: Boolean = false,
+        val drawSilhouettes: Boolean = false
     )
 
     companion object {
         @JvmStatic
         fun isNotModifiedValues(): Stream<Arguments> {
             return Stream.of(
-                Arguments.of(mapOf<String, Boolean>(), false, false, false, false, false, false, false),
-                Arguments.of(mapOf<String, Boolean>(), false, false, false, false, false, false, true),
-                Arguments.of(mapOf<String, Boolean>(), false, false, false, false, false, true, false),
-                Arguments.of(mapOf<String, Boolean>(), false, false, false, false, false, true, true),
-                Arguments.of(mapOf<String, Boolean>(), false, false, false, false, true, false, false),
-                Arguments.of(mapOf<String, Boolean>(), false, false, false, false, true, false, true),
-                Arguments.of(mapOf<String, Boolean>(), false, false, false, false, true, true, false),
-                Arguments.of(mapOf<String, Boolean>(), false, false, false, false, true, true, true),
-                Arguments.of(mapOf<String, Boolean>(), false, false, false, true, false, false, false),
-                Arguments.of(mapOf<String, Boolean>(), false, false, false, true, false, false, true),
-                Arguments.of(mapOf<String, Boolean>(), false, false, false, true, false, true, false),
-                Arguments.of(mapOf<String, Boolean>(), false, false, false, true, false, true, true),
-                Arguments.of(mapOf<String, Boolean>(), false, false, false, true, true, false, false),
-                Arguments.of(mapOf<String, Boolean>(), false, false, false, true, true, false, true),
-                Arguments.of(mapOf<String, Boolean>(), false, false, false, true, true, true, false),
-                Arguments.of(mapOf<String, Boolean>(), false, false, false, true, true, true, true),
-                Arguments.of(mapOf<String, Boolean>(), false, false, true, false, false, false, false),
-                Arguments.of(mapOf<String, Boolean>(), false, false, true, false, false, false, true),
-                Arguments.of(mapOf<String, Boolean>(), false, false, true, false, false, true, false),
-                Arguments.of(mapOf<String, Boolean>(), false, false, true, false, false, true, true),
-                Arguments.of(mapOf<String, Boolean>(), false, false, true, false, true, false, false),
-                Arguments.of(mapOf<String, Boolean>(), false, false, true, false, true, false, true),
-                Arguments.of(mapOf<String, Boolean>(), false, false, true, false, true, true, false),
-                Arguments.of(mapOf<String, Boolean>(), false, false, true, false, true, true, true),
-                Arguments.of(mapOf<String, Boolean>(), false, false, true, true, false, false, false),
-                Arguments.of(mapOf<String, Boolean>(), false, false, true, true, false, false, true),
-                Arguments.of(mapOf<String, Boolean>(), false, false, true, true, false, true, false),
-                Arguments.of(mapOf<String, Boolean>(), false, false, true, true, false, true, true),
-                Arguments.of(mapOf<String, Boolean>(), false, false, true, true, true, false, false),
-                Arguments.of(mapOf<String, Boolean>(), false, false, true, true, true, false, true),
-                Arguments.of(mapOf<String, Boolean>(), false, false, true, true, true, true, false),
-                Arguments.of(mapOf<String, Boolean>(), false, false, true, true, true, true, true),
-                Arguments.of(mapOf<String, Boolean>(), false, true, false, false, false, false, false),
-                Arguments.of(mapOf<String, Boolean>(), false, true, false, false, false, false, true),
-                Arguments.of(mapOf<String, Boolean>(), false, true, false, false, false, true, false),
-                Arguments.of(mapOf<String, Boolean>(), false, true, false, false, false, true, true),
-                Arguments.of(mapOf<String, Boolean>(), false, true, false, false, true, false, false),
-                Arguments.of(mapOf<String, Boolean>(), false, true, false, false, true, false, true),
-                Arguments.of(mapOf<String, Boolean>(), false, true, false, false, true, true, false),
-                Arguments.of(mapOf<String, Boolean>(), false, true, false, false, true, true, true),
-                Arguments.of(mapOf<String, Boolean>(), false, true, false, true, false, false, false),
-                Arguments.of(mapOf<String, Boolean>(), false, true, false, true, false, false, true),
-                Arguments.of(mapOf<String, Boolean>(), false, true, false, true, false, true, false),
-                Arguments.of(mapOf<String, Boolean>(), false, true, false, true, false, true, true),
-                Arguments.of(mapOf<String, Boolean>(), false, true, false, true, true, false, false),
-                Arguments.of(mapOf<String, Boolean>(), false, true, false, true, true, false, true),
-                Arguments.of(mapOf<String, Boolean>(), false, true, false, true, true, true, false),
-                Arguments.of(mapOf<String, Boolean>(), false, true, false, true, true, true, true),
-                Arguments.of(mapOf<String, Boolean>(), false, true, true, false, false, false, false),
-                Arguments.of(mapOf<String, Boolean>(), false, true, true, false, false, false, true),
-                Arguments.of(mapOf<String, Boolean>(), false, true, true, false, false, true, false),
-                Arguments.of(mapOf<String, Boolean>(), false, true, true, false, false, true, true),
-                Arguments.of(mapOf<String, Boolean>(), false, true, true, false, true, false, false),
-                Arguments.of(mapOf<String, Boolean>(), false, true, true, false, true, false, true),
-                Arguments.of(mapOf<String, Boolean>(), false, true, true, false, true, true, false),
-                Arguments.of(mapOf<String, Boolean>(), false, true, true, false, true, true, true),
-                Arguments.of(mapOf<String, Boolean>(), false, true, true, true, false, false, false),
-                Arguments.of(mapOf<String, Boolean>(), false, true, true, true, false, false, true),
-                Arguments.of(mapOf<String, Boolean>(), false, true, true, true, false, true, false),
-                Arguments.of(mapOf<String, Boolean>(), false, true, true, true, false, true, true),
-                Arguments.of(mapOf<String, Boolean>(), false, true, true, true, true, false, false),
-                Arguments.of(mapOf<String, Boolean>(), false, true, true, true, true, false, true),
-                Arguments.of(mapOf<String, Boolean>(), false, true, true, true, true, true, false),
-                Arguments.of(mapOf<String, Boolean>(), false, true, true, true, true, true, true),
-                Arguments.of(mapOf<String, Boolean>(), true, false, false, false, false, false, false),
-                Arguments.of(mapOf<String, Boolean>(), true, false, false, false, false, false, true),
-                Arguments.of(mapOf<String, Boolean>(), true, false, false, false, false, true, false),
-                Arguments.of(mapOf<String, Boolean>(), true, false, false, false, false, true, true),
-                Arguments.of(mapOf<String, Boolean>(), true, false, false, false, true, false, false),
-                Arguments.of(mapOf<String, Boolean>(), true, false, false, false, true, false, true),
-                Arguments.of(mapOf<String, Boolean>(), true, false, false, false, true, true, false),
-                Arguments.of(mapOf<String, Boolean>(), true, false, false, false, true, true, true),
-                Arguments.of(mapOf<String, Boolean>(), true, false, false, true, false, false, false),
-                Arguments.of(mapOf<String, Boolean>(), true, false, false, true, false, false, true),
-                Arguments.of(mapOf<String, Boolean>(), true, false, false, true, false, true, false),
-                Arguments.of(mapOf<String, Boolean>(), true, false, false, true, false, true, true),
-                Arguments.of(mapOf<String, Boolean>(), true, false, false, true, true, false, false),
-                Arguments.of(mapOf<String, Boolean>(), true, false, false, true, true, false, true),
-                Arguments.of(mapOf<String, Boolean>(), true, false, false, true, true, true, false),
-                Arguments.of(mapOf<String, Boolean>(), true, false, false, true, true, true, true),
-                Arguments.of(mapOf<String, Boolean>(), true, false, true, false, false, false, false),
-                Arguments.of(mapOf<String, Boolean>(), true, false, true, false, false, false, true),
-                Arguments.of(mapOf<String, Boolean>(), true, false, true, false, false, true, false),
-                Arguments.of(mapOf<String, Boolean>(), true, false, true, false, false, true, true),
-                Arguments.of(mapOf<String, Boolean>(), true, false, true, false, true, false, false),
-                Arguments.of(mapOf<String, Boolean>(), true, false, true, false, true, false, true),
-                Arguments.of(mapOf<String, Boolean>(), true, false, true, false, true, true, false),
-                Arguments.of(mapOf<String, Boolean>(), true, false, true, false, true, true, true),
-                Arguments.of(mapOf<String, Boolean>(), true, false, true, true, false, false, false),
-                Arguments.of(mapOf<String, Boolean>(), true, false, true, true, false, false, true),
-                Arguments.of(mapOf<String, Boolean>(), true, false, true, true, false, true, false),
-                Arguments.of(mapOf<String, Boolean>(), true, false, true, true, false, true, true),
-                Arguments.of(mapOf<String, Boolean>(), true, false, true, true, true, false, false),
-                Arguments.of(mapOf<String, Boolean>(), true, false, true, true, true, false, true),
-                Arguments.of(mapOf<String, Boolean>(), true, false, true, true, true, true, false),
-                Arguments.of(mapOf<String, Boolean>(), true, false, true, true, true, true, true),
-                Arguments.of(mapOf<String, Boolean>(), true, true, false, false, false, false, false),
-                Arguments.of(mapOf<String, Boolean>(), true, true, false, false, false, false, true),
-                Arguments.of(mapOf<String, Boolean>(), true, true, false, false, false, true, false),
-                Arguments.of(mapOf<String, Boolean>(), true, true, false, false, false, true, true),
-                Arguments.of(mapOf<String, Boolean>(), true, true, false, false, true, false, false),
-                Arguments.of(mapOf<String, Boolean>(), true, true, false, false, true, false, true),
-                Arguments.of(mapOf<String, Boolean>(), true, true, false, false, true, true, false),
-                Arguments.of(mapOf<String, Boolean>(), true, true, false, false, true, true, true),
-                Arguments.of(mapOf<String, Boolean>(), true, true, false, true, false, false, false),
-                Arguments.of(mapOf<String, Boolean>(), true, true, false, true, false, false, true),
-                Arguments.of(mapOf<String, Boolean>(), true, true, false, true, false, true, false),
-                Arguments.of(mapOf<String, Boolean>(), true, true, false, true, false, true, true),
-                Arguments.of(mapOf<String, Boolean>(), true, true, false, true, true, false, false),
-                Arguments.of(mapOf<String, Boolean>(), true, true, false, true, true, false, true),
-                Arguments.of(mapOf<String, Boolean>(), true, true, false, true, true, true, false),
-                Arguments.of(mapOf<String, Boolean>(), true, true, false, true, true, true, true),
-                Arguments.of(mapOf<String, Boolean>(), true, true, true, false, false, false, false),
-                Arguments.of(mapOf<String, Boolean>(), true, true, true, false, false, false, true),
-                Arguments.of(mapOf<String, Boolean>(), true, true, true, false, false, true, false),
-                Arguments.of(mapOf<String, Boolean>(), true, true, true, false, false, true, true),
-                Arguments.of(mapOf<String, Boolean>(), true, true, true, false, true, false, false),
-                Arguments.of(mapOf<String, Boolean>(), true, true, true, false, true, false, true),
-                Arguments.of(mapOf<String, Boolean>(), true, true, true, false, true, true, false),
-                Arguments.of(mapOf<String, Boolean>(), true, true, true, false, true, true, true),
-                Arguments.of(mapOf<String, Boolean>(), true, true, true, true, false, false, false),
-                Arguments.of(mapOf<String, Boolean>(), true, true, true, true, false, false, true),
-                Arguments.of(mapOf<String, Boolean>(), true, true, true, true, false, true, false),
-                Arguments.of(mapOf<String, Boolean>(), true, true, true, true, false, true, true),
-                Arguments.of(mapOf<String, Boolean>(), true, true, true, true, true, false, false),
-                Arguments.of(mapOf<String, Boolean>(), true, true, true, true, true, false, true),
-                Arguments.of(mapOf<String, Boolean>(), true, true, true, true, true, true, false),
-                Arguments.of(mapOf<String, Boolean>(), true, true, true, true, true, true, true),
-                Arguments.of(mapOf("1" to true, "2" to false), false, false, false, false, false, false, false),
-                Arguments.of(mapOf("1" to true, "2" to false), false, false, false, false, false, false, true),
-                Arguments.of(mapOf("1" to true, "2" to false), false, false, false, false, false, true, false),
-                Arguments.of(mapOf("1" to true, "2" to false), false, false, false, false, false, true, true),
-                Arguments.of(mapOf("1" to true, "2" to false), false, false, false, false, true, false, false),
-                Arguments.of(mapOf("1" to true, "2" to false), false, false, false, false, true, false, true),
-                Arguments.of(mapOf("1" to true, "2" to false), false, false, false, false, true, true, false),
-                Arguments.of(mapOf("1" to true, "2" to false), false, false, false, false, true, true, true),
-                Arguments.of(mapOf("1" to true, "2" to false), false, false, false, true, false, false, false),
-                Arguments.of(mapOf("1" to true, "2" to false), false, false, false, true, false, false, true),
-                Arguments.of(mapOf("1" to true, "2" to false), false, false, false, true, false, true, false),
-                Arguments.of(mapOf("1" to true, "2" to false), false, false, false, true, false, true, true),
-                Arguments.of(mapOf("1" to true, "2" to false), false, false, false, true, true, false, false),
-                Arguments.of(mapOf("1" to true, "2" to false), false, false, false, true, true, false, true),
-                Arguments.of(mapOf("1" to true, "2" to false), false, false, false, true, true, true, false),
-                Arguments.of(mapOf("1" to true, "2" to false), false, false, false, true, true, true, true),
-                Arguments.of(mapOf("1" to true, "2" to false), false, false, true, false, false, false, false),
-                Arguments.of(mapOf("1" to true, "2" to false), false, false, true, false, false, false, true),
-                Arguments.of(mapOf("1" to true, "2" to false), false, false, true, false, false, true, false),
-                Arguments.of(mapOf("1" to true, "2" to false), false, false, true, false, false, true, true),
-                Arguments.of(mapOf("1" to true, "2" to false), false, false, true, false, true, false, false),
-                Arguments.of(mapOf("1" to true, "2" to false), false, false, true, false, true, false, true),
-                Arguments.of(mapOf("1" to true, "2" to false), false, false, true, false, true, true, false),
-                Arguments.of(mapOf("1" to true, "2" to false), false, false, true, false, true, true, true),
-                Arguments.of(mapOf("1" to true, "2" to false), false, false, true, true, false, false, false),
-                Arguments.of(mapOf("1" to true, "2" to false), false, false, true, true, false, false, true),
-                Arguments.of(mapOf("1" to true, "2" to false), false, false, true, true, false, true, false),
-                Arguments.of(mapOf("1" to true, "2" to false), false, false, true, true, false, true, true),
-                Arguments.of(mapOf("1" to true, "2" to false), false, false, true, true, true, false, false),
-                Arguments.of(mapOf("1" to true, "2" to false), false, false, true, true, true, false, true),
-                Arguments.of(mapOf("1" to true, "2" to false), false, false, true, true, true, true, false),
-                Arguments.of(mapOf("1" to true, "2" to false), false, false, true, true, true, true, true),
-                Arguments.of(mapOf("1" to true, "2" to false), false, true, false, false, false, false, false),
-                Arguments.of(mapOf("1" to true, "2" to false), false, true, false, false, false, false, true),
-                Arguments.of(mapOf("1" to true, "2" to false), false, true, false, false, false, true, false),
-                Arguments.of(mapOf("1" to true, "2" to false), false, true, false, false, false, true, true),
-                Arguments.of(mapOf("1" to true, "2" to false), false, true, false, false, true, false, false),
-                Arguments.of(mapOf("1" to true, "2" to false), false, true, false, false, true, false, true),
-                Arguments.of(mapOf("1" to true, "2" to false), false, true, false, false, true, true, false),
-                Arguments.of(mapOf("1" to true, "2" to false), false, true, false, false, true, true, true),
-                Arguments.of(mapOf("1" to true, "2" to false), false, true, false, true, false, false, false),
-                Arguments.of(mapOf("1" to true, "2" to false), false, true, false, true, false, false, true),
-                Arguments.of(mapOf("1" to true, "2" to false), false, true, false, true, false, true, false),
-                Arguments.of(mapOf("1" to true, "2" to false), false, true, false, true, false, true, true),
-                Arguments.of(mapOf("1" to true, "2" to false), false, true, false, true, true, false, false),
-                Arguments.of(mapOf("1" to true, "2" to false), false, true, false, true, true, false, true),
-                Arguments.of(mapOf("1" to true, "2" to false), false, true, false, true, true, true, false),
-                Arguments.of(mapOf("1" to true, "2" to false), false, true, false, true, true, true, true),
-                Arguments.of(mapOf("1" to true, "2" to false), false, true, true, false, false, false, false),
-                Arguments.of(mapOf("1" to true, "2" to false), false, true, true, false, false, false, true),
-                Arguments.of(mapOf("1" to true, "2" to false), false, true, true, false, false, true, false),
-                Arguments.of(mapOf("1" to true, "2" to false), false, true, true, false, false, true, true),
-                Arguments.of(mapOf("1" to true, "2" to false), false, true, true, false, true, false, false),
-                Arguments.of(mapOf("1" to true, "2" to false), false, true, true, false, true, false, true),
-                Arguments.of(mapOf("1" to true, "2" to false), false, true, true, false, true, true, false),
-                Arguments.of(mapOf("1" to true, "2" to false), false, true, true, false, true, true, true),
-                Arguments.of(mapOf("1" to true, "2" to false), false, true, true, true, false, false, false),
-                Arguments.of(mapOf("1" to true, "2" to false), false, true, true, true, false, false, true),
-                Arguments.of(mapOf("1" to true, "2" to false), false, true, true, true, false, true, false),
-                Arguments.of(mapOf("1" to true, "2" to false), false, true, true, true, false, true, true),
-                Arguments.of(mapOf("1" to true, "2" to false), false, true, true, true, true, false, false),
-                Arguments.of(mapOf("1" to true, "2" to false), false, true, true, true, true, false, true),
-                Arguments.of(mapOf("1" to true, "2" to false), false, true, true, true, true, true, false),
-                Arguments.of(mapOf("1" to true, "2" to false), false, true, true, true, true, true, true),
-                Arguments.of(mapOf("1" to true, "2" to false), true, false, false, false, false, false, false),
-                Arguments.of(mapOf("1" to true, "2" to false), true, false, false, false, false, false, true),
-                Arguments.of(mapOf("1" to true, "2" to false), true, false, false, false, false, true, false),
-                Arguments.of(mapOf("1" to true, "2" to false), true, false, false, false, false, true, true),
-                Arguments.of(mapOf("1" to true, "2" to false), true, false, false, false, true, false, false),
-                Arguments.of(mapOf("1" to true, "2" to false), true, false, false, false, true, false, true),
-                Arguments.of(mapOf("1" to true, "2" to false), true, false, false, false, true, true, false),
-                Arguments.of(mapOf("1" to true, "2" to false), true, false, false, false, true, true, true),
-                Arguments.of(mapOf("1" to true, "2" to false), true, false, false, true, false, false, false),
-                Arguments.of(mapOf("1" to true, "2" to false), true, false, false, true, false, false, true),
-                Arguments.of(mapOf("1" to true, "2" to false), true, false, false, true, false, true, false),
-                Arguments.of(mapOf("1" to true, "2" to false), true, false, false, true, false, true, true),
-                Arguments.of(mapOf("1" to true, "2" to false), true, false, false, true, true, false, false),
-                Arguments.of(mapOf("1" to true, "2" to false), true, false, false, true, true, false, true),
-                Arguments.of(mapOf("1" to true, "2" to false), true, false, false, true, true, true, false),
-                Arguments.of(mapOf("1" to true, "2" to false), true, false, false, true, true, true, true),
-                Arguments.of(mapOf("1" to true, "2" to false), true, false, true, false, false, false, false),
-                Arguments.of(mapOf("1" to true, "2" to false), true, false, true, false, false, false, true),
-                Arguments.of(mapOf("1" to true, "2" to false), true, false, true, false, false, true, false),
-                Arguments.of(mapOf("1" to true, "2" to false), true, false, true, false, false, true, true),
-                Arguments.of(mapOf("1" to true, "2" to false), true, false, true, false, true, false, false),
-                Arguments.of(mapOf("1" to true, "2" to false), true, false, true, false, true, false, true),
-                Arguments.of(mapOf("1" to true, "2" to false), true, false, true, false, true, true, false),
-                Arguments.of(mapOf("1" to true, "2" to false), true, false, true, false, true, true, true),
-                Arguments.of(mapOf("1" to true, "2" to false), true, false, true, true, false, false, false),
-                Arguments.of(mapOf("1" to true, "2" to false), true, false, true, true, false, false, true),
-                Arguments.of(mapOf("1" to true, "2" to false), true, false, true, true, false, true, false),
-                Arguments.of(mapOf("1" to true, "2" to false), true, false, true, true, false, true, true),
-                Arguments.of(mapOf("1" to true, "2" to false), true, false, true, true, true, false, false),
-                Arguments.of(mapOf("1" to true, "2" to false), true, false, true, true, true, false, true),
-                Arguments.of(mapOf("1" to true, "2" to false), true, false, true, true, true, true, false),
-                Arguments.of(mapOf("1" to true, "2" to false), true, false, true, true, true, true, true),
-                Arguments.of(mapOf("1" to true, "2" to false), true, true, false, false, false, false, false),
-                Arguments.of(mapOf("1" to true, "2" to false), true, true, false, false, false, false, true),
-                Arguments.of(mapOf("1" to true, "2" to false), true, true, false, false, false, true, false),
-                Arguments.of(mapOf("1" to true, "2" to false), true, true, false, false, false, true, true),
-                Arguments.of(mapOf("1" to true, "2" to false), true, true, false, false, true, false, false),
-                Arguments.of(mapOf("1" to true, "2" to false), true, true, false, false, true, false, true),
-                Arguments.of(mapOf("1" to true, "2" to false), true, true, false, false, true, true, false),
-                Arguments.of(mapOf("1" to true, "2" to false), true, true, false, false, true, true, true),
-                Arguments.of(mapOf("1" to true, "2" to false), true, true, false, true, false, false, false),
-                Arguments.of(mapOf("1" to true, "2" to false), true, true, false, true, false, false, true),
-                Arguments.of(mapOf("1" to true, "2" to false), true, true, false, true, false, true, false),
-                Arguments.of(mapOf("1" to true, "2" to false), true, true, false, true, false, true, true),
-                Arguments.of(mapOf("1" to true, "2" to false), true, true, false, true, true, false, false),
-                Arguments.of(mapOf("1" to true, "2" to false), true, true, false, true, true, false, true),
-                Arguments.of(mapOf("1" to true, "2" to false), true, true, false, true, true, true, false),
-                Arguments.of(mapOf("1" to true, "2" to false), true, true, false, true, true, true, true),
-                Arguments.of(mapOf("1" to true, "2" to false), true, true, true, false, false, false, false),
-                Arguments.of(mapOf("1" to true, "2" to false), true, true, true, false, false, false, true),
-                Arguments.of(mapOf("1" to true, "2" to false), true, true, true, false, false, true, false),
-                Arguments.of(mapOf("1" to true, "2" to false), true, true, true, false, false, true, true),
-                Arguments.of(mapOf("1" to true, "2" to false), true, true, true, false, true, false, false),
-                Arguments.of(mapOf("1" to true, "2" to false), true, true, true, false, true, false, true),
-                Arguments.of(mapOf("1" to true, "2" to false), true, true, true, false, true, true, false),
-                Arguments.of(mapOf("1" to true, "2" to false), true, true, true, false, true, true, true),
-                Arguments.of(mapOf("1" to true, "2" to false), true, true, true, true, false, false, false),
-                Arguments.of(mapOf("1" to true, "2" to false), true, true, true, true, false, false, true),
-                Arguments.of(mapOf("1" to true, "2" to false), true, true, true, true, false, true, false),
-                Arguments.of(mapOf("1" to true, "2" to false), true, true, true, true, false, true, true),
-                Arguments.of(mapOf("1" to true, "2" to false), true, true, true, true, true, false, false),
-                Arguments.of(mapOf("1" to true, "2" to false), true, true, true, true, true, false, true),
-                Arguments.of(mapOf("1" to true, "2" to false), true, true, true, true, true, true, false),
-                Arguments.of(mapOf("1" to true, "2" to false), true, true, true, true, true, true, true)
+                Arguments.of(mapOf<String, Boolean>(), true, false, true, false, true, false, true, false),
+                Arguments.of(mapOf("1" to true, "2" to false), false, true, false, true, false, true, false, true)
             )
         }
 
@@ -741,68 +501,76 @@ class StarWarsProgressConfigurableTests {
         fun isModifiedValues(): Stream<Arguments> {
             return Stream.of(
                 Arguments.of(
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, false),
-                    IsModifiedData(mapOf("1" to true, "2" to false), false, false, false, false, false, false, false)
+                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, false),
+                    IsModifiedData(mapOf("1" to true, "2" to false), false, false, false, false, false, false, false, false)
                 ),
                 Arguments.of(
-                    IsModifiedData(mapOf("1" to true, "2" to false), false, false, false, false, false, false, false),
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, false)
+                    IsModifiedData(mapOf("1" to true, "2" to false), false, false, false, false, false, false, false, false),
+                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, false)
                 ),
                 Arguments.of(
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, false),
-                    IsModifiedData(mapOf(), true, false, false, false, false, false, false)
+                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, false),
+                    IsModifiedData(mapOf(), true, false, false, false, false, false, false, false)
                 ),
                 Arguments.of(
-                    IsModifiedData(mapOf(), true, false, false, false, false, false, false),
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, false)
+                    IsModifiedData(mapOf(), true, false, false, false, false, false, false, false),
+                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, false)
                 ),
                 Arguments.of(
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, false),
-                    IsModifiedData(mapOf(), false, true, false, false, false, false, false)
+                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, false),
+                    IsModifiedData(mapOf(), false, true, false, false, false, false, false, false)
                 ),
                 Arguments.of(
-                    IsModifiedData(mapOf(), false, true, false, false, false, false, false),
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, false)
+                    IsModifiedData(mapOf(), false, true, false, false, false, false, false, false),
+                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, false)
                 ),
                 Arguments.of(
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, false),
-                    IsModifiedData(mapOf(), false, false, true, false, false, false, false)
+                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, false),
+                    IsModifiedData(mapOf(), false, false, true, false, false, false, false, false)
                 ),
                 Arguments.of(
-                    IsModifiedData(mapOf(), false, false, true, false, false, false, false),
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, false)
+                    IsModifiedData(mapOf(), false, false, true, false, false, false, false, false),
+                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, false)
                 ),
                 Arguments.of(
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, false),
-                    IsModifiedData(mapOf(), false, false, false, true, false, false, false)
+                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, false),
+                    IsModifiedData(mapOf(), false, false, false, true, false, false, false, false)
                 ),
                 Arguments.of(
-                    IsModifiedData(mapOf(), false, false, false, true, false, false, false),
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, false)
+                    IsModifiedData(mapOf(), false, false, false, true, false, false, false, false),
+                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, false)
                 ),
                 Arguments.of(
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, false),
-                    IsModifiedData(mapOf(), false, false, false, false, true, false, false)
+                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, false),
+                    IsModifiedData(mapOf(), false, false, false, false, true, false, false, false)
                 ),
                 Arguments.of(
-                    IsModifiedData(mapOf(), false, false, false, false, true, false, false),
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, false)
+                    IsModifiedData(mapOf(), false, false, false, false, true, false, false, false),
+                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, false)
                 ),
                 Arguments.of(
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, false),
-                    IsModifiedData(mapOf(), false, false, false, false, false, true, false)
+                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, false),
+                    IsModifiedData(mapOf(), false, false, false, false, false, true, false, false)
                 ),
                 Arguments.of(
-                    IsModifiedData(mapOf(), false, false, false, false, false, true, false),
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, false)
+                    IsModifiedData(mapOf(), false, false, false, false, false, true, false, false),
+                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, false)
                 ),
                 Arguments.of(
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, false),
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, true)
+                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, false),
+                    IsModifiedData(mapOf(), false, false, false, false, false, false, true, false)
                 ),
                 Arguments.of(
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, true),
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, false)
+                    IsModifiedData(mapOf(), false, false, false, false, false, false, true, false),
+                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, false)
+                ),
+                Arguments.of(
+                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, false),
+                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, true)
+                ),
+                Arguments.of(
+                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, true),
+                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, false)
                 )
             )
         }

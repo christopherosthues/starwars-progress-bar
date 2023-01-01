@@ -3,6 +3,7 @@ package com.christopherosthues.starwarsprogressbar.configuration.components
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_DRAW_SILHOUETTES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENABLE_NEW_VEHICLES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SAME_VEHICLE_VELOCITY
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_FACTION_CRESTS
@@ -40,6 +41,10 @@ internal class UiOptionsPanel : JTitledPanel(StarWarsBundle.message(BundleConsta
         StarWarsBundle.message(BundleConstants.SHOW_VEHICLE),
         DEFAULT_SHOW_VEHICLE
     )
+    private val drawSilhouttesCheckBox = JBCheckBox(
+        StarWarsBundle.message(BundleConstants.DRAW_SILHOUETTES),
+        DEFAULT_DRAW_SILHOUETTES
+    )
 
     val showVehicle: Boolean
         get() = showVehicleCheckBox.isSelected
@@ -61,6 +66,9 @@ internal class UiOptionsPanel : JTitledPanel(StarWarsBundle.message(BundleConsta
 
     val solidProgressBarColor: Boolean
         get() = solidProgressBarColorCheckBox.isSelected
+
+    val drawSilhouttes: Boolean
+        get() = drawSilhouttesCheckBox.isSelected
 
     init {
         layout = GridLayout(NUMBER_OF_ROWS, 2, GAP, GAP)
@@ -114,6 +122,13 @@ internal class UiOptionsPanel : JTitledPanel(StarWarsBundle.message(BundleConsta
                 solidProgressBarColor
             )
         }
+        drawSilhouttesCheckBox.addItemListener {
+            firePropertyChange(
+                this::drawSilhouttes.name,
+                !drawSilhouttes,
+                drawSilhouttes
+            )
+        }
 
         add(showVehicleCheckBox)
         add(sameVehicleVelocityCheckBox)
@@ -122,6 +137,7 @@ internal class UiOptionsPanel : JTitledPanel(StarWarsBundle.message(BundleConsta
         add(showToolTipsCheckBox)
         add(solidProgressBarColorCheckBox)
         add(showFactionCrestsCheckBox)
+        add(drawSilhouttesCheckBox)
     }
 
     fun updateUI(starWarsState: StarWarsState) {
@@ -132,5 +148,6 @@ internal class UiOptionsPanel : JTitledPanel(StarWarsBundle.message(BundleConsta
         sameVehicleVelocityCheckBox.isSelected = starWarsState.sameVehicleVelocity
         enableNewVehiclesCheckBox.isSelected = starWarsState.enableNewVehicles
         solidProgressBarColorCheckBox.isSelected = starWarsState.solidProgressBarColor
+        drawSilhouttesCheckBox.isSelected = starWarsState.drawSilhouettes
     }
 }

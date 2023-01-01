@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertAll
+import java.awt.color.ColorSpace
 
 class CreateStarWarsProgressConfigurationComponentTests {
     //region Test lifecycle
@@ -32,6 +33,18 @@ class CreateStarWarsProgressConfigurationComponentTests {
         every { StarWarsResourceLoader.getFactionLogo(any(), any()) } returns mockk() {
             every { height } returns 10
             every { width } returns 10
+            every { colorModel } returns mockk() {
+                every { isCompatibleRaster(any()) } returns true
+                every { isAlphaPremultiplied } returns true
+                every { hasAlpha() } returns true
+                every { colorSpace } returns mockk() {
+                    every { type } returns ColorSpace.TYPE_RGB
+                }
+            }
+            every { copyData(any()) } returns mockk() {
+                every { numBands } returns 0
+                every { sampleModel } returns mockk()
+            }
         }
     }
 

@@ -25,6 +25,7 @@ internal class PreviewPanel(
     private val sameVehicleVelocity: () -> Boolean,
     private val enableNewVehicles: () -> Boolean,
     private val solidProgressBarColor: () -> Boolean,
+    private val drawSilhouettes: () -> Boolean,
     private val enabledVehicles: () -> Map<String, Boolean>?
 ) : JTitledPanel(StarWarsBundle.message(BundleConstants.PREVIEW_TITLE)) {
 
@@ -89,7 +90,8 @@ internal class PreviewPanel(
                 showToolTips,
                 showFactionCrests,
                 sameVehicleVelocity,
-                solidProgressBarColor
+                solidProgressBarColor,
+                drawSilhouettes
             )
         )
 
@@ -101,7 +103,8 @@ internal class PreviewPanel(
                 showToolTips,
                 showFactionCrests,
                 sameVehicleVelocity,
-                solidProgressBarColor
+                solidProgressBarColor,
+                drawSilhouettes
             )
         )
     }

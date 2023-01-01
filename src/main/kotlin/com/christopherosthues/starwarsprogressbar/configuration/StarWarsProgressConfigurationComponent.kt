@@ -45,6 +45,9 @@ internal class StarWarsProgressConfigurationComponent {
     val solidProgressBarColor: Boolean
         get() = uiOptionsPanel.solidProgressBarColor
 
+    val drawSilhouettes: Boolean
+        get() = uiOptionsPanel.drawSilhouttes
+
     init {
         createUI()
     }
@@ -79,6 +82,7 @@ internal class StarWarsProgressConfigurationComponent {
             this::sameVehicleVelocity,
             this::enableNewVehicles,
             this::solidProgressBarColor,
+            this::drawSilhouettes,
             this::enabledVehicles
         )
 
@@ -106,7 +110,8 @@ internal class StarWarsProgressConfigurationComponent {
         return propertyName == UiOptionsPanel::showFactionCrests.name ||
             propertyName == UiOptionsPanel::sameVehicleVelocity.name ||
             propertyName == UiOptionsPanel::solidProgressBarColor.name ||
-            propertyName == UiOptionsPanel::showVehicle.name
+            propertyName == UiOptionsPanel::showVehicle.name ||
+            propertyName == UiOptionsPanel::drawSilhouttes.name
     }
 
     private fun repaintProgressBar() {
