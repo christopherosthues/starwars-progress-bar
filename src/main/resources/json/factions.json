@@ -390,6 +390,13 @@
           "velocity": 2.5
         },
         {
+          "id": "count_dookus_flitknot_speeder",
+          "ionEngine": "yellow",
+          "xShift": 0,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
           "id": "diamond_class_cruiser",
           "ionEngine": "yellow",
           "xShift": -12,
