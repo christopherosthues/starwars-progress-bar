@@ -17,6 +17,10 @@ internal class ColoredImageComponent(private val image: BufferedImage) : JCompon
     }
 
     override fun paint(g: Graphics) {
+        paint(g, 0, 0)
+    }
+
+    fun paint(g: Graphics, x: Int, y: Int) {
         val graphics2d = g.create()
 
         if (graphics2d is Graphics2D) {
@@ -24,7 +28,7 @@ internal class ColoredImageComponent(private val image: BufferedImage) : JCompon
 
             graphics2d.background = background
 
-            graphics2d.drawImage(image, 0, 0, image.width, image.height) { _, _, _, _, _, _ -> false }
+            graphics2d.drawImage(image, x, y, image.width, image.height) { _, _, _, _, _, _ -> false }
 
             graphics2d.transform = transform
             graphics2d.dispose()

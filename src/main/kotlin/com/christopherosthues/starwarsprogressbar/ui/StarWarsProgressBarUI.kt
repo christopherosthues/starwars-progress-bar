@@ -239,21 +239,15 @@ internal class StarWarsProgressBarUI(
 
             factionCrestIcon.foreground = component.foreground
             // left crest
-            graphics2D.translate(x, y)
-            factionCrestIcon.paint(graphics2D)
-            graphics2D.translate(-x, 0.0)
+            factionCrestIcon.paint(graphics2D, x.toInt(), y.toInt())
 
             // middle crest
             x = width.toDouble() / 2 + JBUIScale.scale(-factionCrestIcon.preferredSize.width / 2)
-            graphics2D.translate(x, 0.0)
-            factionCrestIcon.paint(graphics2D)
-            graphics2D.translate(-x, 0.0)
+            factionCrestIcon.paint(graphics2D, x.toInt(), y.toInt())
 
             // right crest
             x = width.toDouble() + JBUIScale.scale(-factionCrestIcon.preferredSize.width) - 2
-            graphics2D.translate(x, 0.0)
-            factionCrestIcon.paint(graphics2D)
-            graphics2D.translate(-x, -y)
+            factionCrestIcon.paint(graphics2D, x.toInt(), y.toInt())
 
             graphics2D.clip = previousClip
             graphics2D.color = previousColor
@@ -333,9 +327,7 @@ internal class StarWarsProgressBarUI(
                 JBUIScale.scale(-icon.preferredSize.width - vehicle.xShift)
             }
         val y = vehicle.yShift
-        graphics2D.translate(x, y)
-        icon.paint(graphics2D)
-        graphics2D.translate(-x, -y)
+        icon.paint(graphics2D, x, y)
         graphics2D.clip = previousClip
     }
 
