@@ -4,6 +4,7 @@ import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENABLE_NEW_V
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SAME_VEHICLE_VELOCITY
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_FACTION_CRESTS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_TOOLTIPS
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE_NAMES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRESS_BAR_COLOR
 import com.christopherosthues.starwarsprogressbar.models.FactionHolder
@@ -67,6 +68,7 @@ class StarWarsStateTests {
     fun `values should be updated on set`() {
         // Arrange
         val sut = StarWarsState()
+        val showVehicle = false
         val showVehicleNames = true
         val showToolTips = false
         val showFactionCrests = true
@@ -79,6 +81,7 @@ class StarWarsStateTests {
 
         // Act
         sut.vehiclesEnabled = mapOf("1" to false, "2" to true)
+        sut.showVehicle = showVehicle
         sut.showVehicleNames = showVehicleNames
         sut.showToolTips = showToolTips
         sut.showFactionCrests = showFactionCrests
@@ -89,6 +92,7 @@ class StarWarsStateTests {
 
         // Assert
         assertAll(
+            { assertEquals(showVehicle, sut.showVehicle) },
             { assertEquals(showVehicleNames, sut.showVehicleNames) },
             { assertEquals(showToolTips, sut.showToolTips) },
             { assertEquals(showFactionCrests, sut.showFactionCrests) },
@@ -130,6 +134,7 @@ class StarWarsStateTests {
     private fun assertDefaultValues(sut: StarWarsState) {
         assertAll(
             { assertEquals(DEFAULT_SHOW_VEHICLE_NAMES, sut.showVehicleNames) },
+            { assertEquals(DEFAULT_SHOW_VEHICLE, sut.showVehicle) },
             { assertEquals(DEFAULT_SHOW_TOOLTIPS, sut.showToolTips) },
             { assertEquals(DEFAULT_SHOW_FACTION_CRESTS, sut.showFactionCrests) },
             { assertEquals(DEFAULT_SAME_VEHICLE_VELOCITY, sut.sameVehicleVelocity) },

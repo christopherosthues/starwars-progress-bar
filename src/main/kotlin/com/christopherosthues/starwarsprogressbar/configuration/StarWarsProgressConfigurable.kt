@@ -24,6 +24,7 @@ internal class StarWarsProgressConfigurable : SearchableConfigurable {
 
     private fun isStateModified(starWarsState: StarWarsState): Boolean {
         return starWarsState.vehiclesEnabled != component!!.enabledVehicles ||
+            starWarsState.showVehicle != component!!.showVehicle ||
             starWarsState.showVehicleNames != component!!.showVehicleNames ||
             starWarsState.showToolTips != component!!.showToolTips ||
             starWarsState.showFactionCrests != component!!.showFactionCrests ||
@@ -39,6 +40,7 @@ internal class StarWarsProgressConfigurable : SearchableConfigurable {
             throw ConfigurationException("The configuration state cannot be null!")
         } else if (component != null) {
             starWarsState.vehiclesEnabled = component.enabledVehicles
+            starWarsState.showVehicle = component.showVehicle
             starWarsState.showVehicleNames = component.showVehicleNames
             starWarsState.showToolTips = component.showToolTips
             starWarsState.showFactionCrests = component.showFactionCrests

@@ -4,6 +4,7 @@ import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENABLE_NEW_V
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SAME_VEHICLE_VELOCITY
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_FACTION_CRESTS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_TOOLTIPS
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE_NAMES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRESS_BAR_COLOR
 import com.christopherosthues.starwarsprogressbar.models.FactionHolder
@@ -14,6 +15,8 @@ internal class StarWarsState {
     @JvmField
     var vehiclesEnabled: Map<String, Boolean> =
         FactionHolder.defaultVehicles.stream().collect(Collectors.toMap(StarWarsVehicle::id) { true })
+
+    var showVehicle: Boolean = DEFAULT_SHOW_VEHICLE
 
     var showVehicleNames: Boolean = DEFAULT_SHOW_VEHICLE_NAMES
 

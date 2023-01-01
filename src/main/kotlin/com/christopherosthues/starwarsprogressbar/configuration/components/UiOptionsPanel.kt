@@ -7,6 +7,7 @@ import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENABLE_NEW_V
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SAME_VEHICLE_VELOCITY
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_FACTION_CRESTS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_TOOLTIPS
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE_NAMES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRESS_BAR_COLOR
 import com.intellij.ui.components.JBCheckBox
@@ -14,7 +15,7 @@ import java.awt.GridLayout
 
 private const val GAP = 5
 
-private const val NUMBER_OF_ROWS = 3
+private const val NUMBER_OF_ROWS = 4
 
 internal class UiOptionsPanel : JTitledPanel(StarWarsBundle.message(BundleConstants.UI_OPTIONS)) {
     private val showVehicleNameCheckBox =
@@ -35,6 +36,13 @@ internal class UiOptionsPanel : JTitledPanel(StarWarsBundle.message(BundleConsta
         StarWarsBundle.message(BundleConstants.SOLID_PROGRESS_BAR_COLOR),
         DEFAULT_SOLID_PROGRESS_BAR_COLOR
     )
+    private val showVehicleCheckBox = JBCheckBox(
+        StarWarsBundle.message(BundleConstants.SHOW_VEHICLE),
+        DEFAULT_SHOW_VEHICLE
+    )
+
+    val showVehicle: Boolean
+        get() = showVehicleCheckBox.isSelected
 
     val showVehicleNames: Boolean
         get() = showVehicleNameCheckBox.isSelected
@@ -57,6 +65,13 @@ internal class UiOptionsPanel : JTitledPanel(StarWarsBundle.message(BundleConsta
     init {
         layout = GridLayout(NUMBER_OF_ROWS, 2, GAP, GAP)
 
+        showVehicleCheckBox.addItemListener {
+            firePropertyChange(
+                this::showVehicle.name,
+                !showVehicle,
+                showVehicle
+            )
+        }
         showVehicleNameCheckBox.addItemListener {
             firePropertyChange(
                 this::showVehicleNames.name,
@@ -100,16 +115,18 @@ internal class UiOptionsPanel : JTitledPanel(StarWarsBundle.message(BundleConsta
             )
         }
 
-        add(showVehicleNameCheckBox)
+        add(showVehicleCheckBox)
         add(sameVehicleVelocityCheckBox)
-        add(showToolTipsCheckBox)
+        add(showVehicleNameCheckBox)
         add(enableNewVehiclesCheckBox)
-        add(showFactionCrestsCheckBox)
+        add(showToolTipsCheckBox)
         add(solidProgressBarColorCheckBox)
+        add(showFactionCrestsCheckBox)
     }
 
     fun updateUI(starWarsState: StarWarsState) {
         showVehicleNameCheckBox.isSelected = starWarsState.showVehicleNames
+        showVehicleCheckBox.isSelected = starWarsState.showVehicle
         showToolTipsCheckBox.isSelected = starWarsState.showToolTips
         showFactionCrestsCheckBox.isSelected = starWarsState.showFactionCrests
         sameVehicleVelocityCheckBox.isSelected = starWarsState.sameVehicleVelocity

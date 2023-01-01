@@ -76,11 +76,13 @@ class StarWarsPersistentStateComponentTests {
                     { assertEquals(true, vehiclesEnabled["3"]) }
                 )
             },
+            { assertTrue(result!!.showVehicle) },
             { assertFalse(result!!.showVehicleNames) },
             { assertTrue(result!!.showToolTips) },
             { assertFalse(result!!.showFactionCrests) },
             { assertFalse(result!!.sameVehicleVelocity) },
             { assertTrue(result!!.enableNewVehicles) },
+            { assertFalse(result!!.solidProgressBarColor) },
             { assertEquals("", result!!.version) }
         )
     }
@@ -93,11 +95,13 @@ class StarWarsPersistentStateComponentTests {
         val expectedVehiclesEnabled = mapOf("1" to false, "2" to true, "3" to false, "4" to false, "5" to true)
         val starWarsState = StarWarsState().apply {
             vehiclesEnabled = expectedVehiclesEnabled
+            showVehicle = false
             showVehicleNames = true
             showToolTips = false
             showFactionCrests = true
             sameVehicleVelocity = true
             enableNewVehicles = false
+            solidProgressBarColor = true
             version = expectedVersion
         }
 
@@ -117,19 +121,23 @@ class StarWarsPersistentStateComponentTests {
             { assertNotNull(result) },
             { assertNotSame(starWarsState, result) },
             { assertEquals(starWarsState.vehiclesEnabled, result!!.vehiclesEnabled) },
+            { assertEquals(starWarsState.showVehicle, result!!.showVehicle) },
             { assertEquals(starWarsState.showVehicleNames, result!!.showVehicleNames) },
             { assertEquals(starWarsState.showToolTips, result!!.showToolTips) },
             { assertEquals(starWarsState.showFactionCrests, result!!.showFactionCrests) },
             { assertEquals(starWarsState.sameVehicleVelocity, result!!.sameVehicleVelocity) },
             { assertEquals(starWarsState.enableNewVehicles, result!!.enableNewVehicles) },
+            { assertEquals(starWarsState.solidProgressBarColor, result!!.solidProgressBarColor) },
             { assertEquals(starWarsState.version, result!!.version) },
 
             { assertEquals(expectedVehiclesEnabled, result!!.vehiclesEnabled) },
+            { assertFalse(result!!.showVehicle) },
             { assertTrue(result!!.showVehicleNames) },
             { assertFalse(result!!.showToolTips) },
             { assertTrue(result!!.showFactionCrests) },
             { assertTrue(result!!.sameVehicleVelocity) },
             { assertFalse(result!!.enableNewVehicles) },
+            { assertTrue(result!!.solidProgressBarColor) },
             { assertEquals(expectedVersion, result!!.version) }
         )
 
@@ -209,11 +217,13 @@ class StarWarsPersistentStateComponentTests {
         assertAll(
             { assertNotNull(starWarsState) },
             { assertTrue(starWarsState!!.vehiclesEnabled.isEmpty()) },
+            { assertTrue(starWarsState!!.showVehicle) },
             { assertFalse(starWarsState!!.showVehicleNames) },
             { assertTrue(starWarsState!!.showToolTips) },
             { assertFalse(starWarsState!!.showFactionCrests) },
             { assertFalse(starWarsState!!.sameVehicleVelocity) },
             { assertTrue(starWarsState!!.enableNewVehicles) },
+            { assertFalse(starWarsState!!.solidProgressBarColor) },
             { assertEquals("", starWarsState!!.version) }
         )
     }

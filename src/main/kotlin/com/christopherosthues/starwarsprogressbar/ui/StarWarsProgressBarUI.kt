@@ -25,6 +25,7 @@ import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersiste
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SAME_VEHICLE_VELOCITY
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_FACTION_CRESTS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_TOOLTIPS
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE_NAMES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRESS_BAR_COLOR
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
@@ -57,6 +58,7 @@ private const val FACTION_CREST_X_POSITION = 4.0
 
 internal class StarWarsProgressBarUI(
     private val vehicle: StarWarsVehicle,
+    private val showVehicle: () -> Boolean,
     private val showVehicleName: () -> Boolean,
     private val showToolTips: () -> Boolean,
     private val showFactionCrests: () -> Boolean,
@@ -74,6 +76,7 @@ internal class StarWarsProgressBarUI(
     constructor(vehicle: StarWarsVehicle) : this(
         vehicle,
         { StarWarsPersistentStateComponent.instance?.state?.showVehicleNames ?: DEFAULT_SHOW_VEHICLE_NAMES },
+        { StarWarsPersistentStateComponent.instance?.state?.showVehicle ?: DEFAULT_SHOW_VEHICLE },
         { StarWarsPersistentStateComponent.instance?.state?.showToolTips ?: DEFAULT_SHOW_TOOLTIPS },
         { StarWarsPersistentStateComponent.instance?.state?.showFactionCrests ?: DEFAULT_SHOW_FACTION_CRESTS },
         { StarWarsPersistentStateComponent.instance?.state?.sameVehicleVelocity ?: DEFAULT_SAME_VEHICLE_VELOCITY },
@@ -168,7 +171,9 @@ internal class StarWarsProgressBarUI(
             val rectangle2D = getRoundRectangle(width, height)
             drawProgress(width, height, amountFull, graphics2D, rectangle2D)
             drawFactionCrest(width, height, graphics2D, rectangle2D, c)
-            drawIcon(amountFull, graphics2D, rectangle2D)
+            if (showVehicle()) {
+                drawIcon(amountFull, graphics2D, rectangle2D)
+            }
             drawBorder(rectangle2D, graphics2D)
             paintStringIfNeeded(graphics2D, c, height, border, barRectWidth, barRectHeight, amountFull)
 

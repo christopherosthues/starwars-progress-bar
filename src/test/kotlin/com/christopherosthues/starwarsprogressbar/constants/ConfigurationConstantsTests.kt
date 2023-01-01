@@ -11,6 +11,7 @@ class ConfigurationConstantsTests {
 
         // Act and Assert
         assertAll(
+            { Assertions.assertTrue(DEFAULT_SHOW_VEHICLE) },
             { Assertions.assertTrue(DEFAULT_ENABLE_NEW_VEHICLES) },
             { Assertions.assertTrue(DEFAULT_SHOW_TOOLTIPS) },
             { Assertions.assertFalse(DEFAULT_SHOW_VEHICLE_NAMES) },

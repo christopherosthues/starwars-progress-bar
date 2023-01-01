@@ -18,6 +18,7 @@ import javax.swing.JProgressBar
 private const val HORIZONTAL_GAP = 10
 
 internal class PreviewPanel(
+    private val showVehicle: () -> Boolean,
     private val showVehicleNames: () -> Boolean,
     private val showToolTips: () -> Boolean,
     private val showFactionCrests: () -> Boolean,
@@ -83,6 +84,7 @@ internal class PreviewPanel(
         determinateProgressBar.setUI(
             StarWarsProgressBarUI(
                 determinateVehicle,
+                showVehicle,
                 showVehicleNames,
                 showToolTips,
                 showFactionCrests,
@@ -94,6 +96,7 @@ internal class PreviewPanel(
         indeterminateProgressBar.setUI(
             StarWarsProgressBarUI(
                 indeterminateVehicle,
+                showVehicle,
                 showVehicleNames,
                 showToolTips,
                 showFactionCrests,

@@ -13,6 +13,7 @@ internal object BundleConstants {
     const val DETERMINATE = CONFIGURATION + "determinate"
     const val INDETERMINATE = CONFIGURATION + "indeterminate"
     const val UI_OPTIONS = CONFIGURATION + "uiOptions"
+    const val SHOW_VEHICLE = CONFIGURATION + "showVehicle"
     const val SHOW_VEHICLE_NAME = CONFIGURATION + "showVehicleName"
     const val SHOW_TOOL_TIPS = CONFIGURATION + "showToolTips"
     const val SHOW_FACTION_CRESTS = CONFIGURATION + "showFactionCrests"
