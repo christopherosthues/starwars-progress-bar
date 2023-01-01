@@ -209,15 +209,7 @@ internal class StarWarsResourceLoaderTests {
         val result = StarWarsResourceLoader.getFactionLogo(factionName, isLargeIcon)
 
         // Assert
-        verifyOrder {
-            classLoaderMock.getResource(resourceName)
-            createImageIconFromURL(url)
-        }
-        verify(exactly = 1) { classLoaderMock.getResource(resourceName) }
-        verify(exactly = 1) { createImageIconFromURL(url) }
-        verify(exactly = 0) { classLoaderMock.getResource("/$resourceName") }
-        verify(exactly = 0) { createEmptyImageIconFromBufferedImage(32) }
-        verify(exactly = 0) { createEmptyImageIcon() }
+        verifyImage(classLoaderMock, resourceName, url)
         verifyBufferedImagePainted(bufferedImageMock, result, imageIconMock, graphicsMock)
     }
 
@@ -235,15 +227,7 @@ internal class StarWarsResourceLoaderTests {
 
         var result = StarWarsResourceLoader.getFactionLogo(factionName, isLargeIcon)
 
-        verifyOrder {
-            classLoaderMock.getResource(resourceName)
-            createImageIconFromURL(url)
-        }
-        verify(exactly = 1) { classLoaderMock.getResource(resourceName) }
-        verify(exactly = 1) { createImageIconFromURL(url) }
-        verify(exactly = 0) { classLoaderMock.getResource("/$resourceName") }
-        verify(exactly = 0) { createEmptyImageIconFromBufferedImage(32) }
-        verify(exactly = 0) { createEmptyImageIcon() }
+        verifyImage(classLoaderMock, resourceName, url)
         verifyBufferedImagePainted(bufferedImageMock, result, imageIconMock, graphicsMock)
 
         // Act
@@ -254,15 +238,7 @@ internal class StarWarsResourceLoaderTests {
             { assertEquals(bufferedImageMock, result) },
             { assertSame(bufferedImageMock, result) }
         )
-        verifyOrder {
-            classLoaderMock.getResource(resourceName)
-            createImageIconFromURL(url)
-        }
-        verify(exactly = 1) { classLoaderMock.getResource(resourceName) }
-        verify(exactly = 1) { createImageIconFromURL(url) }
-        verify(exactly = 0) { classLoaderMock.getResource("/$resourceName") }
-        verify(exactly = 0) { createEmptyImageIconFromBufferedImage(32) }
-        verify(exactly = 0) { createEmptyImageIcon() }
+        verifyImage(classLoaderMock, resourceName, url)
     }
 
     @ParameterizedTest
@@ -283,16 +259,7 @@ internal class StarWarsResourceLoaderTests {
         val result = StarWarsResourceLoader.getFactionLogo(factionName, isLargeIcon)
 
         // Assert
-        verifyOrder {
-            classLoaderMock.getResource(resourceName)
-            classLoaderMock.getResource("/$resourceName")
-            createImageIconFromURL(url)
-        }
-        verify(exactly = 1) { classLoaderMock.getResource(resourceName) }
-        verify(exactly = 1) { classLoaderMock.getResource("/$resourceName") }
-        verify(exactly = 1) { createImageIconFromURL(url) }
-        verify(exactly = 0) { createEmptyImageIconFromBufferedImage(32) }
-        verify(exactly = 0) { createEmptyImageIcon() }
+        verifyImageForSlashPath(classLoaderMock, resourceName, url)
         verifyBufferedImagePainted(bufferedImageMock, result, imageIconMock, graphicsMock)
     }
 
@@ -312,16 +279,7 @@ internal class StarWarsResourceLoaderTests {
         val result = StarWarsResourceLoader.getFactionLogo(factionName, isLargeIcon)
 
         // Assert
-        verifyOrder {
-            classLoaderMock.getResource(resourceName)
-            classLoaderMock.getResource("/$resourceName")
-            createEmptyImageIconFromBufferedImage(32)
-        }
-        verify(exactly = 1) { classLoaderMock.getResource(resourceName) }
-        verify(exactly = 1) { classLoaderMock.getResource("/$resourceName") }
-        verify(exactly = 0) { createImageIconFromURL(url) }
-        verify(exactly = 1) { createEmptyImageIconFromBufferedImage(32) }
-        verify(exactly = 0) { createEmptyImageIcon() }
+        verifyEmptyImageForMissingResource(classLoaderMock, resourceName, url)
         verifyBufferedImagePainted(bufferedImageMock, result, imageIconMock, graphicsMock)
     }
 
@@ -341,15 +299,7 @@ internal class StarWarsResourceLoaderTests {
         val result = StarWarsResourceLoader.getFactionLogo(factionName, isLargeIcon)
 
         // Assert
-        verifyOrder {
-            classLoaderMock.getResource(resourceName)
-            createEmptyImageIcon()
-        }
-        verify(exactly = 1) { classLoaderMock.getResource(resourceName) }
-        verify(exactly = 0) { classLoaderMock.getResource("/$resourceName") }
-        verify(exactly = 0) { createImageIconFromURL(url) }
-        verify(exactly = 0) { createEmptyImageIconFromBufferedImage(32) }
-        verify(exactly = 1) { createEmptyImageIcon() }
+        verifyEmptyImageAfterException(classLoaderMock, resourceName, url)
         verifyBufferedImagePainted(bufferedImageMock, result, imageIconMock, graphicsMock)
     }
 
@@ -465,15 +415,7 @@ internal class StarWarsResourceLoaderTests {
         val result = StarWarsResourceLoader.getVehicleImage(vehicleName)
 
         // Assert
-        verifyOrder {
-            classLoaderMock.getResource(resourceName)
-            createImageIconFromURL(url)
-        }
-        verify(exactly = 1) { classLoaderMock.getResource(resourceName) }
-        verify(exactly = 1) { createImageIconFromURL(url) }
-        verify(exactly = 0) { classLoaderMock.getResource("/$resourceName") }
-        verify(exactly = 0) { createEmptyImageIconFromBufferedImage(32) }
-        verify(exactly = 0) { createEmptyImageIcon() }
+        verifyImage(classLoaderMock, resourceName, url)
         verifyBufferedImagePainted(bufferedImageMock, result, imageIconMock, graphicsMock)
     }
 
@@ -490,15 +432,7 @@ internal class StarWarsResourceLoaderTests {
 
         var result = StarWarsResourceLoader.getVehicleImage(vehicleName)
 
-        verifyOrder {
-            classLoaderMock.getResource(resourceName)
-            createImageIconFromURL(url)
-        }
-        verify(exactly = 1) { classLoaderMock.getResource(resourceName) }
-        verify(exactly = 1) { createImageIconFromURL(url) }
-        verify(exactly = 0) { classLoaderMock.getResource("/$resourceName") }
-        verify(exactly = 0) { createEmptyImageIconFromBufferedImage(32) }
-        verify(exactly = 0) { createEmptyImageIcon() }
+        verifyImage(classLoaderMock, resourceName, url)
         verifyBufferedImagePainted(bufferedImageMock, result, imageIconMock, graphicsMock)
 
         // Act
@@ -509,15 +443,7 @@ internal class StarWarsResourceLoaderTests {
             { assertEquals(bufferedImageMock, result) },
             { assertSame(bufferedImageMock, result) }
         )
-        verifyOrder {
-            classLoaderMock.getResource(resourceName)
-            createImageIconFromURL(url)
-        }
-        verify(exactly = 1) { classLoaderMock.getResource(resourceName) }
-        verify(exactly = 1) { createImageIconFromURL(url) }
-        verify(exactly = 0) { classLoaderMock.getResource("/$resourceName") }
-        verify(exactly = 0) { createEmptyImageIconFromBufferedImage(32) }
-        verify(exactly = 0) { createEmptyImageIcon() }
+        verifyImage(classLoaderMock, resourceName, url)
     }
 
     @Test
@@ -535,16 +461,7 @@ internal class StarWarsResourceLoaderTests {
         val result = StarWarsResourceLoader.getVehicleImage(vehicleName)
 
         // Assert
-        verifyOrder {
-            classLoaderMock.getResource(resourceName)
-            classLoaderMock.getResource("/$resourceName")
-            createImageIconFromURL(url)
-        }
-        verify(exactly = 1) { classLoaderMock.getResource(resourceName) }
-        verify(exactly = 1) { classLoaderMock.getResource("/$resourceName") }
-        verify(exactly = 1) { createImageIconFromURL(url) }
-        verify(exactly = 0) { createEmptyImageIconFromBufferedImage(32) }
-        verify(exactly = 0) { createEmptyImageIcon() }
+        verifyImageForSlashPath(classLoaderMock, resourceName, url)
         verifyBufferedImagePainted(bufferedImageMock, result, imageIconMock, graphicsMock)
     }
 
@@ -563,16 +480,7 @@ internal class StarWarsResourceLoaderTests {
         val result = StarWarsResourceLoader.getVehicleImage(vehicleName)
 
         // Assert
-        verifyOrder {
-            classLoaderMock.getResource(resourceName)
-            classLoaderMock.getResource("/$resourceName")
-            createEmptyImageIconFromBufferedImage(32)
-        }
-        verify(exactly = 1) { classLoaderMock.getResource(resourceName) }
-        verify(exactly = 1) { classLoaderMock.getResource("/$resourceName") }
-        verify(exactly = 0) { createImageIconFromURL(url) }
-        verify(exactly = 1) { createEmptyImageIconFromBufferedImage(32) }
-        verify(exactly = 0) { createEmptyImageIcon() }
+        verifyEmptyImageForMissingResource(classLoaderMock, resourceName, url)
         verifyBufferedImagePainted(bufferedImageMock, result, imageIconMock, graphicsMock)
     }
 
@@ -591,15 +499,7 @@ internal class StarWarsResourceLoaderTests {
         val result = StarWarsResourceLoader.getVehicleImage(vehicleName)
 
         // Assert
-        verifyOrder {
-            classLoaderMock.getResource(resourceName)
-            createEmptyImageIcon()
-        }
-        verify(exactly = 1) { classLoaderMock.getResource(resourceName) }
-        verify(exactly = 0) { classLoaderMock.getResource("/$resourceName") }
-        verify(exactly = 0) { createImageIconFromURL(url) }
-        verify(exactly = 0) { createEmptyImageIconFromBufferedImage(32) }
-        verify(exactly = 1) { createEmptyImageIcon() }
+        verifyEmptyImageAfterException(classLoaderMock, resourceName, url)
         verifyBufferedImagePainted(bufferedImageMock, result, imageIconMock, graphicsMock)
     }
 
@@ -622,15 +522,7 @@ internal class StarWarsResourceLoaderTests {
         val result = StarWarsResourceLoader.getReversedVehicleImage(vehicleName)
 
         // Assert
-        verifyOrder {
-            classLoaderMock.getResource(resourceName)
-            createImageIconFromURL(url)
-        }
-        verify(exactly = 1) { classLoaderMock.getResource(resourceName) }
-        verify(exactly = 1) { createImageIconFromURL(url) }
-        verify(exactly = 0) { classLoaderMock.getResource("/$resourceName") }
-        verify(exactly = 0) { createEmptyImageIconFromBufferedImage(32) }
-        verify(exactly = 0) { createEmptyImageIcon() }
+        verifyImage(classLoaderMock, resourceName, url)
         verifyBufferedImagePainted(bufferedImageMock, result, imageIconMock, graphicsMock)
     }
 
@@ -647,15 +539,7 @@ internal class StarWarsResourceLoaderTests {
 
         var result = StarWarsResourceLoader.getReversedVehicleImage(vehicleName)
 
-        verifyOrder {
-            classLoaderMock.getResource(resourceName)
-            createImageIconFromURL(url)
-        }
-        verify(exactly = 1) { classLoaderMock.getResource(resourceName) }
-        verify(exactly = 1) { createImageIconFromURL(url) }
-        verify(exactly = 0) { classLoaderMock.getResource("/$resourceName") }
-        verify(exactly = 0) { createEmptyImageIconFromBufferedImage(32) }
-        verify(exactly = 0) { createEmptyImageIcon() }
+        verifyImage(classLoaderMock, resourceName, url)
         verifyBufferedImagePainted(bufferedImageMock, result, imageIconMock, graphicsMock)
 
         // Act
@@ -666,15 +550,7 @@ internal class StarWarsResourceLoaderTests {
             { assertEquals(bufferedImageMock, result) },
             { assertSame(bufferedImageMock, result) }
         )
-        verifyOrder {
-            classLoaderMock.getResource(resourceName)
-            createImageIconFromURL(url)
-        }
-        verify(exactly = 1) { classLoaderMock.getResource(resourceName) }
-        verify(exactly = 1) { createImageIconFromURL(url) }
-        verify(exactly = 0) { classLoaderMock.getResource("/$resourceName") }
-        verify(exactly = 0) { createEmptyImageIconFromBufferedImage(32) }
-        verify(exactly = 0) { createEmptyImageIcon() }
+        verifyImage(classLoaderMock, resourceName, url)
     }
 
     @Test
@@ -692,16 +568,7 @@ internal class StarWarsResourceLoaderTests {
         val result = StarWarsResourceLoader.getReversedVehicleImage(vehicleName)
 
         // Assert
-        verifyOrder {
-            classLoaderMock.getResource(resourceName)
-            classLoaderMock.getResource("/$resourceName")
-            createImageIconFromURL(url)
-        }
-        verify(exactly = 1) { classLoaderMock.getResource(resourceName) }
-        verify(exactly = 1) { classLoaderMock.getResource("/$resourceName") }
-        verify(exactly = 1) { createImageIconFromURL(url) }
-        verify(exactly = 0) { createEmptyImageIconFromBufferedImage(32) }
-        verify(exactly = 0) { createEmptyImageIcon() }
+        verifyImageForSlashPath(classLoaderMock, resourceName, url)
         verifyBufferedImagePainted(bufferedImageMock, result, imageIconMock, graphicsMock)
     }
 
@@ -720,16 +587,7 @@ internal class StarWarsResourceLoaderTests {
         val result = StarWarsResourceLoader.getReversedVehicleImage(vehicleName)
 
         // Assert
-        verifyOrder {
-            classLoaderMock.getResource(resourceName)
-            classLoaderMock.getResource("/$resourceName")
-            createEmptyImageIconFromBufferedImage(32)
-        }
-        verify(exactly = 1) { classLoaderMock.getResource(resourceName) }
-        verify(exactly = 1) { classLoaderMock.getResource("/$resourceName") }
-        verify(exactly = 0) { createImageIconFromURL(url) }
-        verify(exactly = 1) { createEmptyImageIconFromBufferedImage(32) }
-        verify(exactly = 0) { createEmptyImageIcon() }
+        verifyEmptyImageForMissingResource(classLoaderMock, resourceName, url)
         verifyBufferedImagePainted(bufferedImageMock, result, imageIconMock, graphicsMock)
     }
 
@@ -748,15 +606,7 @@ internal class StarWarsResourceLoaderTests {
         val result = StarWarsResourceLoader.getReversedVehicleImage(vehicleName)
 
         // Assert
-        verifyOrder {
-            classLoaderMock.getResource(resourceName)
-            createEmptyImageIcon()
-        }
-        verify(exactly = 1) { classLoaderMock.getResource(resourceName) }
-        verify(exactly = 0) { classLoaderMock.getResource("/$resourceName") }
-        verify(exactly = 0) { createImageIconFromURL(url) }
-        verify(exactly = 0) { createEmptyImageIconFromBufferedImage(32) }
-        verify(exactly = 1) { createEmptyImageIcon() }
+        verifyEmptyImageAfterException(classLoaderMock, resourceName, url)
         verifyBufferedImagePainted(bufferedImageMock, result, imageIconMock, graphicsMock)
     }
 
@@ -919,6 +769,14 @@ internal class StarWarsResourceLoaderTests {
         imageIconMock: ImageIcon,
         result: Icon
     ) {
+        verifyImage(classLoaderMock, resourceName, url)
+        assertAll(
+            { assertEquals(imageIconMock, result) },
+            { assertSame(imageIconMock, result) }
+        )
+    }
+
+    private fun verifyImage(classLoaderMock: ClassLoader, resourceName: String, url: URL) {
         verifyOrder {
             classLoaderMock.getResource(resourceName)
             createImageIconFromURL(url)
@@ -928,10 +786,6 @@ internal class StarWarsResourceLoaderTests {
         verify(exactly = 0) { classLoaderMock.getResource("/$resourceName") }
         verify(exactly = 0) { createEmptyImageIconFromBufferedImage(32) }
         verify(exactly = 0) { createEmptyImageIcon() }
-        assertAll(
-            { assertEquals(imageIconMock, result) },
-            { assertSame(imageIconMock, result) }
-        )
     }
 
     private fun verifyIconForSlashPath(
@@ -941,6 +795,14 @@ internal class StarWarsResourceLoaderTests {
         imageIconMock: ImageIcon,
         result: Icon
     ) {
+        verifyImageForSlashPath(classLoaderMock, resourceName, url)
+        assertAll(
+            { assertEquals(imageIconMock, result) },
+            { assertSame(imageIconMock, result) }
+        )
+    }
+
+    private fun verifyImageForSlashPath(classLoaderMock: ClassLoader, resourceName: String, url: URL) {
         verifyOrder {
             classLoaderMock.getResource(resourceName)
             classLoaderMock.getResource("/$resourceName")
@@ -951,10 +813,6 @@ internal class StarWarsResourceLoaderTests {
         verify(exactly = 1) { createImageIconFromURL(url) }
         verify(exactly = 0) { createEmptyImageIconFromBufferedImage(32) }
         verify(exactly = 0) { createEmptyImageIcon() }
-        assertAll(
-            { assertEquals(imageIconMock, result) },
-            { assertSame(imageIconMock, result) }
-        )
     }
 
     private fun verifyEmptyIconForMissingResource(
@@ -964,6 +822,14 @@ internal class StarWarsResourceLoaderTests {
         imageIconMock: ImageIcon,
         result: Icon
     ) {
+        verifyEmptyImageForMissingResource(classLoaderMock, resourceName, url)
+        assertAll(
+            { assertEquals(imageIconMock, result) },
+            { assertSame(imageIconMock, result) }
+        )
+    }
+
+    private fun verifyEmptyImageForMissingResource(classLoaderMock: ClassLoader, resourceName: String, url: URL) {
         verifyOrder {
             classLoaderMock.getResource(resourceName)
             classLoaderMock.getResource("/$resourceName")
@@ -974,10 +840,6 @@ internal class StarWarsResourceLoaderTests {
         verify(exactly = 0) { createImageIconFromURL(url) }
         verify(exactly = 1) { createEmptyImageIconFromBufferedImage(32) }
         verify(exactly = 0) { createEmptyImageIcon() }
-        assertAll(
-            { assertEquals(imageIconMock, result) },
-            { assertSame(imageIconMock, result) }
-        )
     }
 
     private fun verifyEmptyIconAfterException(
@@ -987,6 +849,14 @@ internal class StarWarsResourceLoaderTests {
         imageIconMock: ImageIcon,
         result: Icon
     ) {
+        verifyEmptyImageAfterException(classLoaderMock, resourceName, url)
+        assertAll(
+            { assertEquals(imageIconMock, result) },
+            { assertSame(imageIconMock, result) }
+        )
+    }
+
+    private fun verifyEmptyImageAfterException(classLoaderMock: ClassLoader, resourceName: String, url: URL) {
         verifyOrder {
             classLoaderMock.getResource(resourceName)
             createEmptyImageIcon()
@@ -996,10 +866,6 @@ internal class StarWarsResourceLoaderTests {
         verify(exactly = 0) { createImageIconFromURL(url) }
         verify(exactly = 0) { createEmptyImageIconFromBufferedImage(32) }
         verify(exactly = 1) { createEmptyImageIcon() }
-        assertAll(
-            { assertEquals(imageIconMock, result) },
-            { assertSame(imageIconMock, result) }
-        )
     }
 
     private fun verifyLoadedFactions(

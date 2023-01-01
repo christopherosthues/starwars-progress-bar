@@ -11,10 +11,10 @@ private const val TRANSPARENT = 0x00000000L
 private const val NOT_TRANSPARENT = 0xFF000000
 
 internal class ColoredImageComponent(private var image: BufferedImage) : JComponent() {
-    private lateinit var paintedImage: BufferedImage
+    private val paintedImage: BufferedImage =
+        BufferedImage(image.colorModel, image.copyData(null), image.colorModel.isAlphaPremultiplied, null)
 
     init {
-        paintedImage = BufferedImage(image.colorModel, image.copyData(null), image.colorModel.isAlphaPremultiplied, null)
         preferredSize = Dimension(image.width, image.height)
         minimumSize = preferredSize
     }
