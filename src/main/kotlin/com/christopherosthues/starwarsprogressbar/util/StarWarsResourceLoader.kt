@@ -68,6 +68,10 @@ internal object StarWarsResourceLoader {
         val iconSize = if (largeIcon) "@2x" else ""
         val icon = getIconInternal("$factionName/logo$iconSize")
 
+        return getVehicleImage(icon)
+    }
+
+    private fun getVehicleImage(icon: Icon): BufferedImage {
         val iconWidth = icon.iconWidth
         val iconHeight = icon.iconHeight
 
@@ -80,13 +84,18 @@ internal object StarWarsResourceLoader {
     }
 
     @JvmStatic
-    fun getIcon(name: String): Icon {
-        return getIconInternal(name)
+    fun getVehicleImage(name: String): BufferedImage {
+        return getVehicleImage(getIconInternal(name))
     }
 
     @JvmStatic
-    fun getReversedIcon(name: String): Icon {
-        return getIconInternal(name + "_r")
+    fun getReversedVehicleImage(name: String): BufferedImage {
+        return getVehicleImage(getIconInternal(name + "_r"))
+    }
+
+    @JvmStatic
+    fun getIcon(name: String): Icon {
+        return getIconInternal(name)
     }
 
     private fun getIconInternal(name: String): Icon {

@@ -66,8 +66,8 @@ internal class StarWarsProgressBarUI(
     private val solidProgressBarColor: () -> Boolean
 ) : BasicProgressBarUI() {
 
-    private val forwardIcon = StarWarsResourceLoader.getIcon(vehicle.fileName)
-    private val backwardIcon = StarWarsResourceLoader.getReversedIcon(vehicle.fileName)
+    private val forwardIcon = ColoredImageComponent(StarWarsResourceLoader.getVehicleImage(vehicle.fileName))
+    private val backwardIcon = ColoredImageComponent(StarWarsResourceLoader.getReversedVehicleImage(vehicle.fileName))
     private val factionCrestIcon =
         ColoredImageComponent(StarWarsResourceLoader.getFactionLogo(vehicle.factionId, false))
     private var velocity = getVelocity()
@@ -330,10 +330,12 @@ internal class StarWarsProgressBarUI(
             if (isMovingRight) {
                 JBUIScale.scale(vehicle.xShift)
             } else {
-                JBUIScale.scale(-icon.iconWidth - vehicle.xShift)
+                JBUIScale.scale(-icon.width - vehicle.xShift)
             }
         val y = vehicle.yShift
-        icon.paintIcon(progressBar, graphics2D, x, y)
+        graphics2D.translate(x, y)
+        icon.paint(graphics2D)
+        graphics2D.translate(-x, -y)
         graphics2D.clip = previousClip
     }
 

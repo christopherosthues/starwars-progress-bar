@@ -362,7 +362,7 @@ internal class StarWarsResourceLoaderTests {
         // Arrange
         val imageIconMock = setupIconImage()
         val vehicleName = "vehicle"
-        val resourceName = setupIconResourceName(vehicleName)
+        val resourceName = setupVehicleImageResourceName(vehicleName)
         val url = setupResourceUrl()
         val classLoaderMock = setupClassLoader(resourceName, url, "/$resourceName", null)
         every { createImageIconFromURL(url) } returns imageIconMock
@@ -379,7 +379,7 @@ internal class StarWarsResourceLoaderTests {
         // Arrange
         val imageIconMock = setupIconImage()
         val vehicleName = "vehicle_cached"
-        val resourceName = setupIconResourceName(vehicleName)
+        val resourceName = setupVehicleImageResourceName(vehicleName)
         val url = setupResourceUrl()
         val classLoaderMock = setupClassLoader(resourceName, url, "/$resourceName", null)
         every { createImageIconFromURL(url) } returns imageIconMock
@@ -400,7 +400,7 @@ internal class StarWarsResourceLoaderTests {
         // Arrange
         val imageIconMock = setupIconImage()
         val vehicleName = "vehicle2"
-        val resourceName = setupIconResourceName(vehicleName)
+        val resourceName = setupVehicleImageResourceName(vehicleName)
         val url = setupResourceUrl()
         val classLoaderMock = setupClassLoader(resourceName, null, "/$resourceName", url)
         every { createImageIconFromURL(url) } returns imageIconMock
@@ -417,7 +417,7 @@ internal class StarWarsResourceLoaderTests {
         // Arrange
         val imageIconMock = setupIconImage()
         val vehicleName = "vehicle3"
-        val resourceName = setupIconResourceName(vehicleName)
+        val resourceName = setupVehicleImageResourceName(vehicleName)
         val url = setupResourceUrl()
         val classLoaderMock = setupClassLoader(resourceName, null, "/$resourceName", null)
         every { createEmptyImageIconFromBufferedImage(32) } returns imageIconMock
@@ -434,7 +434,7 @@ internal class StarWarsResourceLoaderTests {
         // Arrange
         val imageIconMock = setupIconImage()
         val vehicleName = "vehicle4"
-        val resourceName = setupIconResourceName(vehicleName)
+        val resourceName = setupVehicleImageResourceName(vehicleName)
         val url = setupResourceUrl()
         val classLoaderMock = setupClassLoader(resourceName, null, "/$resourceName", null, true)
         every { createEmptyImageIcon() } returns imageIconMock
@@ -448,95 +448,316 @@ internal class StarWarsResourceLoaderTests {
 
     //endregion
 
-    //region getIcon tests
+    //region getVehicleImage tests
 
     @Test
-    fun `getReversedIcon should return icon for provided vehicle name`() {
+    fun `getVehicleImage should return icon for provided vehicle name`() {
         // Arrange
         val imageIconMock = setupIconImage()
-        val vehicleName = "vehicle"
-        val resourceName = setupReversedIconResourceName(vehicleName)
+        val vehicleName = "vehicleImage"
+        val resourceName = setupVehicleImageResourceName(vehicleName)
         val url = setupResourceUrl()
         val classLoaderMock = setupClassLoader(resourceName, url, "/$resourceName", null)
+        val (bufferedImageMock, graphicsMock) = setupImageScaling()
         every { createImageIconFromURL(url) } returns imageIconMock
 
         // Act
-        val result = StarWarsResourceLoader.getReversedIcon(vehicleName)
+        val result = StarWarsResourceLoader.getVehicleImage(vehicleName)
 
         // Assert
-        verifyImageIcon(classLoaderMock, resourceName, url, imageIconMock, result)
+        verifyOrder {
+            classLoaderMock.getResource(resourceName)
+            createImageIconFromURL(url)
+        }
+        verify(exactly = 1) { classLoaderMock.getResource(resourceName) }
+        verify(exactly = 1) { createImageIconFromURL(url) }
+        verify(exactly = 0) { classLoaderMock.getResource("/$resourceName") }
+        verify(exactly = 0) { createEmptyImageIconFromBufferedImage(32) }
+        verify(exactly = 0) { createEmptyImageIcon() }
+        verifyBufferedImagePainted(bufferedImageMock, result, imageIconMock, graphicsMock)
     }
 
     @Test
-    fun `getReversedIcon should return cached icon if icon was queried before`() {
+    fun `getVehicleImage should return cached icon if icon was queried before`() {
         // Arrange
         val imageIconMock = setupIconImage()
-        val vehicleName = "vehicle_cached"
-        val resourceName = setupReversedIconResourceName(vehicleName)
+        val vehicleName = "vehicleImage_cached"
+        val resourceName = setupVehicleImageResourceName(vehicleName)
         val url = setupResourceUrl()
         val classLoaderMock = setupClassLoader(resourceName, url, "/$resourceName", null)
+        val (bufferedImageMock, graphicsMock) = setupImageScaling()
         every { createImageIconFromURL(url) } returns imageIconMock
 
-        var result = StarWarsResourceLoader.getReversedIcon(vehicleName)
+        var result = StarWarsResourceLoader.getVehicleImage(vehicleName)
 
-        verifyImageIcon(classLoaderMock, resourceName, url, imageIconMock, result)
+        verifyOrder {
+            classLoaderMock.getResource(resourceName)
+            createImageIconFromURL(url)
+        }
+        verify(exactly = 1) { classLoaderMock.getResource(resourceName) }
+        verify(exactly = 1) { createImageIconFromURL(url) }
+        verify(exactly = 0) { classLoaderMock.getResource("/$resourceName") }
+        verify(exactly = 0) { createEmptyImageIconFromBufferedImage(32) }
+        verify(exactly = 0) { createEmptyImageIcon() }
+        verifyBufferedImagePainted(bufferedImageMock, result, imageIconMock, graphicsMock)
 
         // Act
-        result = StarWarsResourceLoader.getReversedIcon(vehicleName)
+        result = StarWarsResourceLoader.getVehicleImage(vehicleName)
 
         // Assert
-        verifyImageIcon(classLoaderMock, resourceName, url, imageIconMock, result)
+        assertAll(
+            { assertEquals(bufferedImageMock, result) },
+            { assertSame(bufferedImageMock, result) }
+        )
+        verifyOrder {
+            classLoaderMock.getResource(resourceName)
+            createImageIconFromURL(url)
+        }
+        verify(exactly = 1) { classLoaderMock.getResource(resourceName) }
+        verify(exactly = 1) { createImageIconFromURL(url) }
+        verify(exactly = 0) { classLoaderMock.getResource("/$resourceName") }
+        verify(exactly = 0) { createEmptyImageIconFromBufferedImage(32) }
+        verify(exactly = 0) { createEmptyImageIcon() }
     }
 
     @Test
-    fun `getReversedIcon should return correct icon for provided vehicle name if resource path starts with a slash`() {
+    fun `getVehicleImage should return correct icon for provided vehicle name if resource path starts with a slash`() {
         // Arrange
         val imageIconMock = setupIconImage()
-        val vehicleName = "vehicle2"
-        val resourceName = setupReversedIconResourceName(vehicleName)
+        val vehicleName = "vehicleImage2"
+        val resourceName = setupVehicleImageResourceName(vehicleName)
         val url = setupResourceUrl()
         val classLoaderMock = setupClassLoader(resourceName, null, "/$resourceName", url)
+        val (bufferedImageMock, graphicsMock) = setupImageScaling()
         every { createImageIconFromURL(url) } returns imageIconMock
 
         // Act
-        val result = StarWarsResourceLoader.getReversedIcon(vehicleName)
+        val result = StarWarsResourceLoader.getVehicleImage(vehicleName)
 
         // Assert
-        verifyIconForSlashPath(classLoaderMock, resourceName, url, imageIconMock, result)
+        verifyOrder {
+            classLoaderMock.getResource(resourceName)
+            classLoaderMock.getResource("/$resourceName")
+            createImageIconFromURL(url)
+        }
+        verify(exactly = 1) { classLoaderMock.getResource(resourceName) }
+        verify(exactly = 1) { classLoaderMock.getResource("/$resourceName") }
+        verify(exactly = 1) { createImageIconFromURL(url) }
+        verify(exactly = 0) { createEmptyImageIconFromBufferedImage(32) }
+        verify(exactly = 0) { createEmptyImageIcon() }
+        verifyBufferedImagePainted(bufferedImageMock, result, imageIconMock, graphicsMock)
     }
 
     @Test
-    fun `getReversedIcon should return empty image icon if resource does not exists`() {
+    fun `getVehicleImage should return empty image icon if resource does not exists`() {
         // Arrange
         val imageIconMock = setupIconImage()
-        val vehicleName = "vehicle3"
-        val resourceName = setupReversedIconResourceName(vehicleName)
+        val vehicleName = "vehicleImage3"
+        val resourceName = setupVehicleImageResourceName(vehicleName)
         val url = setupResourceUrl()
         val classLoaderMock = setupClassLoader(resourceName, null, "/$resourceName", null)
+        val (bufferedImageMock, graphicsMock) = setupImageScaling()
         every { createEmptyImageIconFromBufferedImage(32) } returns imageIconMock
 
         // Act
-        val result = StarWarsResourceLoader.getReversedIcon(vehicleName)
+        val result = StarWarsResourceLoader.getVehicleImage(vehicleName)
 
         // Assert
-        verifyEmptyIconForMissingResource(classLoaderMock, resourceName, url, imageIconMock, result)
+        verifyOrder {
+            classLoaderMock.getResource(resourceName)
+            classLoaderMock.getResource("/$resourceName")
+            createEmptyImageIconFromBufferedImage(32)
+        }
+        verify(exactly = 1) { classLoaderMock.getResource(resourceName) }
+        verify(exactly = 1) { classLoaderMock.getResource("/$resourceName") }
+        verify(exactly = 0) { createImageIconFromURL(url) }
+        verify(exactly = 1) { createEmptyImageIconFromBufferedImage(32) }
+        verify(exactly = 0) { createEmptyImageIcon() }
+        verifyBufferedImagePainted(bufferedImageMock, result, imageIconMock, graphicsMock)
     }
 
     @Test
-    fun `getReversedIcon should return empty image icon if an execution exception is thrown`() {
+    fun `getVehicleImage should return empty image icon if an execution exception is thrown`() {
         // Arrange
         val imageIconMock = setupIconImage()
-        val vehicleName = "vehicle4"
-        val resourceName = setupReversedIconResourceName(vehicleName)
+        val vehicleName = "vehicleImage4"
+        val resourceName = setupVehicleImageResourceName(vehicleName)
         val url = setupResourceUrl()
         val classLoaderMock = setupClassLoader(resourceName, null, "/$resourceName", null, true)
+        val (bufferedImageMock, graphicsMock) = setupImageScaling()
         every { createEmptyImageIcon() } returns imageIconMock
 
         // Act
-        val result = StarWarsResourceLoader.getReversedIcon(vehicleName)
+        val result = StarWarsResourceLoader.getVehicleImage(vehicleName)
 
         // Assert
-        verifyEmptyIconAfterException(classLoaderMock, resourceName, url, imageIconMock, result)
+        verifyOrder {
+            classLoaderMock.getResource(resourceName)
+            createEmptyImageIcon()
+        }
+        verify(exactly = 1) { classLoaderMock.getResource(resourceName) }
+        verify(exactly = 0) { classLoaderMock.getResource("/$resourceName") }
+        verify(exactly = 0) { createImageIconFromURL(url) }
+        verify(exactly = 0) { createEmptyImageIconFromBufferedImage(32) }
+        verify(exactly = 1) { createEmptyImageIcon() }
+        verifyBufferedImagePainted(bufferedImageMock, result, imageIconMock, graphicsMock)
+    }
+
+    //endregion
+
+    //region getReversedVehicleImage tests
+
+    @Test
+    fun `getReversedVehicleImage should return icon for provided vehicle name`() {
+        // Arrange
+        val imageIconMock = setupIconImage()
+        val vehicleName = "vehicleImageReversed"
+        val resourceName = setupReversedVehicleImageResourceName(vehicleName)
+        val url = setupResourceUrl()
+        val classLoaderMock = setupClassLoader(resourceName, url, "/$resourceName", null)
+        val (bufferedImageMock, graphicsMock) = setupImageScaling()
+        every { createImageIconFromURL(url) } returns imageIconMock
+
+        // Act
+        val result = StarWarsResourceLoader.getReversedVehicleImage(vehicleName)
+
+        // Assert
+        verifyOrder {
+            classLoaderMock.getResource(resourceName)
+            createImageIconFromURL(url)
+        }
+        verify(exactly = 1) { classLoaderMock.getResource(resourceName) }
+        verify(exactly = 1) { createImageIconFromURL(url) }
+        verify(exactly = 0) { classLoaderMock.getResource("/$resourceName") }
+        verify(exactly = 0) { createEmptyImageIconFromBufferedImage(32) }
+        verify(exactly = 0) { createEmptyImageIcon() }
+        verifyBufferedImagePainted(bufferedImageMock, result, imageIconMock, graphicsMock)
+    }
+
+    @Test
+    fun `getReversedVehicleImage should return cached icon if icon was queried before`() {
+        // Arrange
+        val imageIconMock = setupIconImage()
+        val vehicleName = "vehicleImageReversed_cached"
+        val resourceName = setupReversedVehicleImageResourceName(vehicleName)
+        val url = setupResourceUrl()
+        val classLoaderMock = setupClassLoader(resourceName, url, "/$resourceName", null)
+        val (bufferedImageMock, graphicsMock) = setupImageScaling()
+        every { createImageIconFromURL(url) } returns imageIconMock
+
+        var result = StarWarsResourceLoader.getReversedVehicleImage(vehicleName)
+
+        verifyOrder {
+            classLoaderMock.getResource(resourceName)
+            createImageIconFromURL(url)
+        }
+        verify(exactly = 1) { classLoaderMock.getResource(resourceName) }
+        verify(exactly = 1) { createImageIconFromURL(url) }
+        verify(exactly = 0) { classLoaderMock.getResource("/$resourceName") }
+        verify(exactly = 0) { createEmptyImageIconFromBufferedImage(32) }
+        verify(exactly = 0) { createEmptyImageIcon() }
+        verifyBufferedImagePainted(bufferedImageMock, result, imageIconMock, graphicsMock)
+
+        // Act
+        result = StarWarsResourceLoader.getReversedVehicleImage(vehicleName)
+
+        // Assert
+        assertAll(
+            { assertEquals(bufferedImageMock, result) },
+            { assertSame(bufferedImageMock, result) }
+        )
+        verifyOrder {
+            classLoaderMock.getResource(resourceName)
+            createImageIconFromURL(url)
+        }
+        verify(exactly = 1) { classLoaderMock.getResource(resourceName) }
+        verify(exactly = 1) { createImageIconFromURL(url) }
+        verify(exactly = 0) { classLoaderMock.getResource("/$resourceName") }
+        verify(exactly = 0) { createEmptyImageIconFromBufferedImage(32) }
+        verify(exactly = 0) { createEmptyImageIcon() }
+    }
+
+    @Test
+    fun `getReversedVehicleImage should return correct icon for provided vehicle name if resource path starts with a slash`() {
+        // Arrange
+        val imageIconMock = setupIconImage()
+        val vehicleName = "vehicleImageReversed2"
+        val resourceName = setupReversedVehicleImageResourceName(vehicleName)
+        val url = setupResourceUrl()
+        val classLoaderMock = setupClassLoader(resourceName, null, "/$resourceName", url)
+        val (bufferedImageMock, graphicsMock) = setupImageScaling()
+        every { createImageIconFromURL(url) } returns imageIconMock
+
+        // Act
+        val result = StarWarsResourceLoader.getReversedVehicleImage(vehicleName)
+
+        // Assert
+        verifyOrder {
+            classLoaderMock.getResource(resourceName)
+            classLoaderMock.getResource("/$resourceName")
+            createImageIconFromURL(url)
+        }
+        verify(exactly = 1) { classLoaderMock.getResource(resourceName) }
+        verify(exactly = 1) { classLoaderMock.getResource("/$resourceName") }
+        verify(exactly = 1) { createImageIconFromURL(url) }
+        verify(exactly = 0) { createEmptyImageIconFromBufferedImage(32) }
+        verify(exactly = 0) { createEmptyImageIcon() }
+        verifyBufferedImagePainted(bufferedImageMock, result, imageIconMock, graphicsMock)
+    }
+
+    @Test
+    fun `getReversedVehicleImage should return empty image icon if resource does not exists`() {
+        // Arrange
+        val imageIconMock = setupIconImage()
+        val vehicleName = "vehicleImageReversed3"
+        val resourceName = setupReversedVehicleImageResourceName(vehicleName)
+        val url = setupResourceUrl()
+        val classLoaderMock = setupClassLoader(resourceName, null, "/$resourceName", null)
+        val (bufferedImageMock, graphicsMock) = setupImageScaling()
+        every { createEmptyImageIconFromBufferedImage(32) } returns imageIconMock
+
+        // Act
+        val result = StarWarsResourceLoader.getReversedVehicleImage(vehicleName)
+
+        // Assert
+        verifyOrder {
+            classLoaderMock.getResource(resourceName)
+            classLoaderMock.getResource("/$resourceName")
+            createEmptyImageIconFromBufferedImage(32)
+        }
+        verify(exactly = 1) { classLoaderMock.getResource(resourceName) }
+        verify(exactly = 1) { classLoaderMock.getResource("/$resourceName") }
+        verify(exactly = 0) { createImageIconFromURL(url) }
+        verify(exactly = 1) { createEmptyImageIconFromBufferedImage(32) }
+        verify(exactly = 0) { createEmptyImageIcon() }
+        verifyBufferedImagePainted(bufferedImageMock, result, imageIconMock, graphicsMock)
+    }
+
+    @Test
+    fun `getReversedVehicleImage should return empty image icon if an execution exception is thrown`() {
+        // Arrange
+        val imageIconMock = setupIconImage()
+        val vehicleName = "vehicleImageReversed4"
+        val resourceName = setupReversedVehicleImageResourceName(vehicleName)
+        val url = setupResourceUrl()
+        val classLoaderMock = setupClassLoader(resourceName, null, "/$resourceName", null, true)
+        val (bufferedImageMock, graphicsMock) = setupImageScaling()
+        every { createEmptyImageIcon() } returns imageIconMock
+
+        // Act
+        val result = StarWarsResourceLoader.getReversedVehicleImage(vehicleName)
+
+        // Assert
+        verifyOrder {
+            classLoaderMock.getResource(resourceName)
+            createEmptyImageIcon()
+        }
+        verify(exactly = 1) { classLoaderMock.getResource(resourceName) }
+        verify(exactly = 0) { classLoaderMock.getResource("/$resourceName") }
+        verify(exactly = 0) { createImageIconFromURL(url) }
+        verify(exactly = 0) { createEmptyImageIconFromBufferedImage(32) }
+        verify(exactly = 1) { createEmptyImageIcon() }
+        verifyBufferedImagePainted(bufferedImageMock, result, imageIconMock, graphicsMock)
     }
 
     //endregion
@@ -623,11 +844,11 @@ internal class StarWarsResourceLoaderTests {
         return "icons/$factionName/logo$largeIcon.png"
     }
 
-    private fun setupIconResourceName(vehicleName: String): String {
+    private fun setupVehicleImageResourceName(vehicleName: String): String {
         return "icons/$vehicleName.png"
     }
 
-    private fun setupReversedIconResourceName(vehicleName: String): String {
+    private fun setupReversedVehicleImageResourceName(vehicleName: String): String {
         return "icons/${vehicleName}_r.png"
     }
 
