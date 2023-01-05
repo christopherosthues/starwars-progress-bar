@@ -8,6 +8,8 @@ import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_TOOLTIP
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE_NAMES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRESS_BAR_COLOR
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_CHANGE_VEHICLE_AFTER_PASS
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE
 import com.christopherosthues.starwarsprogressbar.models.FactionHolder
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.intellij.idea.TestFor
@@ -77,6 +79,8 @@ class StarWarsStateTests {
         val enableNewVehicles = false
         val solidProgressBarColor = true
         val drawSilhouettes = true
+        val changeVehicleAfterPass = true
+        val numberOfPassesUntilVehicleChange = 1
         val version = "1.0.0"
 
         assertDefaultValues(sut)
@@ -91,6 +95,8 @@ class StarWarsStateTests {
         sut.enableNewVehicles = enableNewVehicles
         sut.solidProgressBarColor = solidProgressBarColor
         sut.drawSilhouettes = drawSilhouettes
+        sut.changeVehicleAfterPass = changeVehicleAfterPass
+        sut.numberOfPassesUntilVehicleChange = numberOfPassesUntilVehicleChange
         sut.version = version
 
         // Assert
@@ -103,6 +109,8 @@ class StarWarsStateTests {
             { assertEquals(enableNewVehicles, sut.enableNewVehicles) },
             { assertEquals(solidProgressBarColor, sut.solidProgressBarColor) },
             { assertEquals(drawSilhouettes, sut.drawSilhouettes) },
+            { assertEquals(changeVehicleAfterPass, sut.changeVehicleAfterPass) },
+            { assertEquals(numberOfPassesUntilVehicleChange, sut.numberOfPassesUntilVehicleChange) },
             { assertEquals(version, sut.version) },
             { assertTrue(sut.vehiclesEnabled.isNotEmpty()) },
             { assertEquals(2, sut.vehiclesEnabled.size) },
@@ -145,6 +153,8 @@ class StarWarsStateTests {
             { assertEquals(DEFAULT_ENABLE_NEW_VEHICLES, sut.enableNewVehicles) },
             { assertEquals(DEFAULT_SOLID_PROGRESS_BAR_COLOR, sut.solidProgressBarColor) },
             { assertEquals(DEFAULT_DRAW_SILHOUETTES, sut.drawSilhouettes) },
+            { assertEquals(DEFAULT_CHANGE_VEHICLE_AFTER_PASS, sut.changeVehicleAfterPass) },
+            { assertEquals(DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE, sut.numberOfPassesUntilVehicleChange) },
             { assertEquals("", sut.version) },
             { assertTrue(sut.vehiclesEnabled.isEmpty()) }
         )

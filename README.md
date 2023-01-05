@@ -35,10 +35,13 @@ This is the Star Wars Progress Bar for IJ based IDEs. It replaces the progress b
   <ul>
     <li>Selection of specific vehicles</li>
     <li>Selection of entire factions </li>
+    <li>Show/hide vehicle in progress bar</li>
     <li>Display vehicle name in progress bar tooltip</li>
     <li>Display vehicle name in progress bar</li>
     <li>Display faction crest in progress bar</li>
     <li>Display solid or semi-transparent progress bar</li>
+    <li>Display only the silhouette of the vehicle in progress bar</li>
+    <li>Automatically change vehicle after a custom defined number of passes for the indeterminate progress bar</li>
     <li>Different velocities for different vehicles</li>
     <li>Preview vehicles by clicking on their icon</li>
   </ul>
