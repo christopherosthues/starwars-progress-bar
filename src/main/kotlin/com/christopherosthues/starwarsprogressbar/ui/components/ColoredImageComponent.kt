@@ -42,7 +42,12 @@ internal class ColoredImageComponent(private var image: BufferedImage) : JCompon
 
     override fun setForeground(fg: Color?) {
         if (fg == null) {
-            image = BufferedImage(paintedImage.colorModel, paintedImage.copyData(null), paintedImage.colorModel.isAlphaPremultiplied, null)
+            image = BufferedImage(
+                paintedImage.colorModel,
+                paintedImage.copyData(null),
+                paintedImage.colorModel.isAlphaPremultiplied,
+                null
+            )
             return
         }
 

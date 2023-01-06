@@ -40,7 +40,7 @@ class StarWarsProgressBarFactoryTests {
         componentMock = mockk()
 
         justRun { componentMock.border = any() }
-        every { VehicleSelector.selectRandomVehicle() } returns mockk(relaxed = true)
+        every { VehicleSelector.selectRandomVehicle(any(), any()) } returns mockk(relaxed = true)
         every {
             ApplicationManager.getApplication().getService(StarWarsPersistentStateComponent::class.java)
         } returns starWarsPersistentStateComponent
@@ -80,6 +80,6 @@ class StarWarsProgressBarFactoryTests {
 
         // Assert
         assertTrue(result is StarWarsProgressBarUI)
-        verify(exactly = 1) { VehicleSelector.selectRandomVehicle() }
+        verify(exactly = 1) { VehicleSelector.selectRandomVehicle(any(), false) }
     }
 }

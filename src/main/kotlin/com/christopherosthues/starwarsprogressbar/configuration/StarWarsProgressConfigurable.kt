@@ -18,23 +18,24 @@ internal class StarWarsProgressConfigurable : SearchableConfigurable {
     override fun isModified(): Boolean {
         val starWarsState = getStarWarsState()
         return component != null &&
-            starWarsState != null &&
-            isStateModified(starWarsState)
+                starWarsState != null &&
+                isStateModified(starWarsState)
     }
 
     private fun isStateModified(starWarsState: StarWarsState): Boolean {
         return starWarsState.vehiclesEnabled != component!!.enabledVehicles ||
-            starWarsState.showVehicle != component!!.showVehicle ||
-            starWarsState.showVehicleNames != component!!.showVehicleNames ||
-            starWarsState.showToolTips != component!!.showToolTips ||
-            starWarsState.showFactionCrests != component!!.showFactionCrests ||
-            starWarsState.sameVehicleVelocity != component!!.sameVehicleVelocity ||
-            starWarsState.enableNewVehicles != component!!.enableNewVehicles ||
-            starWarsState.solidProgressBarColor != component!!.solidProgressBarColor ||
-            starWarsState.drawSilhouettes != component!!.drawSilhouettes ||
+                starWarsState.showVehicle != component!!.showVehicle ||
+                starWarsState.showVehicleNames != component!!.showVehicleNames ||
+                starWarsState.showToolTips != component!!.showToolTips ||
+                starWarsState.showFactionCrests != component!!.showFactionCrests ||
+                starWarsState.sameVehicleVelocity != component!!.sameVehicleVelocity ||
+                starWarsState.enableNewVehicles != component!!.enableNewVehicles ||
+                starWarsState.solidProgressBarColor != component!!.solidProgressBarColor ||
+                starWarsState.drawSilhouettes != component!!.drawSilhouettes ||
                 // TODO unit test me
-            starWarsState.changeVehicleAfterPass != component!!.changeVehicleAfterPass ||
-                (starWarsState.numberOfPassesUntilVehicleChange != component!!.numberOfPassesUntilVehicleChange && component!!.changeVehicleAfterPass)
+                starWarsState.changeVehicleAfterPass != component!!.changeVehicleAfterPass ||
+                (starWarsState.numberOfPassesUntilVehicleChange != component!!.numberOfPassesUntilVehicleChange &&
+                        component!!.changeVehicleAfterPass)
     }
 
     override fun apply() {

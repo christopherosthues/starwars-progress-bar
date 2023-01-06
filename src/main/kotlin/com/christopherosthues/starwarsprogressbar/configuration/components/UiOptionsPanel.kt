@@ -2,7 +2,6 @@ package com.christopherosthues.starwarsprogressbar.configuration.components
 
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
-import com.christopherosthues.starwarsprogressbar.constants.*
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_CHANGE_VEHICLE_AFTER_PASS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_DRAW_SILHOUETTES
@@ -13,6 +12,7 @@ import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_TOOLTIP
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE_NAMES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRESS_BAR_COLOR
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE
 import com.intellij.ui.JBIntSpinner
 import com.intellij.ui.components.JBCheckBox
 import com.intellij.ui.components.JBPanel
@@ -25,6 +25,8 @@ import javax.swing.event.ChangeEvent
 private const val GAP = 5
 
 private const val NUMBER_OF_ROWS = 5
+private const val MINIMUM_NUMBER_OF_PASSES = 1
+private const val MAXIMUM_NUMBER_OF_PASSES = 20
 
 internal class UiOptionsPanel : JTitledPanel(StarWarsBundle.message(BundleConstants.UI_OPTIONS)) {
     private val showVehicleNameCheckBox =
@@ -57,7 +59,8 @@ internal class UiOptionsPanel : JTitledPanel(StarWarsBundle.message(BundleConsta
         StarWarsBundle.message(BundleConstants.CHANGE_VEHICLE_AFTER_PASS),
         DEFAULT_CHANGE_VEHICLE_AFTER_PASS
     )
-    private val numberOfPassesUntilVehicleChangeSpinner = JBIntSpinner(DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE, 1, 20)
+    private val numberOfPassesUntilVehicleChangeSpinner =
+        JBIntSpinner(DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE, MINIMUM_NUMBER_OF_PASSES, MAXIMUM_NUMBER_OF_PASSES)
 
     val showVehicle: Boolean
         get() = showVehicleCheckBox.isSelected

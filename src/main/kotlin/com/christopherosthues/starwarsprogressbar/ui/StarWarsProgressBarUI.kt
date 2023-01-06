@@ -22,7 +22,15 @@ package com.christopherosthues.starwarsprogressbar.ui
 
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
-import com.christopherosthues.starwarsprogressbar.constants.*
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SAME_VEHICLE_VELOCITY
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_FACTION_CRESTS
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_TOOLTIPS
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE_NAMES
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_CHANGE_VEHICLE_AFTER_PASS
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_DRAW_SILHOUETTES
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRESS_BAR_COLOR
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.ui.components.ColoredImageComponent
 import com.christopherosthues.starwarsprogressbar.util.StarWarsResourceLoader
@@ -31,7 +39,17 @@ import com.intellij.ui.JBColor
 import com.intellij.ui.scale.JBUIScale
 import com.intellij.util.ui.GraphicsUtil
 import com.intellij.util.ui.UIUtil
-import java.awt.*
+import java.awt.BasicStroke
+import java.awt.Color
+import java.awt.Component
+import java.awt.Dimension
+import java.awt.Graphics
+import java.awt.Graphics2D
+import java.awt.Insets
+import java.awt.LinearGradientPaint
+import java.awt.Paint
+import java.awt.Rectangle
+import java.awt.Shape
 import java.awt.geom.RoundRectangle2D
 import javax.swing.JComponent
 import javax.swing.SwingConstants
@@ -58,10 +76,12 @@ internal class StarWarsProgressBarUI(
 
     private var forwardIcon = ColoredImageComponent(StarWarsResourceLoader.getVehicleImage(vehicle.fileName))
     private var backwardIcon = ColoredImageComponent(StarWarsResourceLoader.getReversedVehicleImage(vehicle.fileName))
-    private var factionCrestIcon = ColoredImageComponent(StarWarsResourceLoader.getFactionLogo(vehicle.factionId, false))
+    private var factionCrestIcon =
+        ColoredImageComponent(StarWarsResourceLoader.getFactionLogo(vehicle.factionId, false))
     private var velocity = getVelocity()
     private var position = 0
     private var numberOfPasses = 0
+    private var oldAmountFull = 0
 
     constructor() : this(
         selectRandomVehicle(StarWarsPersistentStateComponent.instance?.state?.vehiclesEnabled, false),
@@ -73,8 +93,14 @@ internal class StarWarsProgressBarUI(
         { StarWarsPersistentStateComponent.instance?.state?.sameVehicleVelocity ?: DEFAULT_SAME_VEHICLE_VELOCITY },
         { StarWarsPersistentStateComponent.instance?.state?.solidProgressBarColor ?: DEFAULT_SOLID_PROGRESS_BAR_COLOR },
         { StarWarsPersistentStateComponent.instance?.state?.drawSilhouettes ?: DEFAULT_DRAW_SILHOUETTES },
-        { StarWarsPersistentStateComponent.instance?.state?.changeVehicleAfterPass ?: DEFAULT_CHANGE_VEHICLE_AFTER_PASS },
-        { StarWarsPersistentStateComponent.instance?.state?.numberOfPassesUntilVehicleChange ?: DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE },
+        {
+            StarWarsPersistentStateComponent.instance?.state?.changeVehicleAfterPass
+                ?: DEFAULT_CHANGE_VEHICLE_AFTER_PASS
+        },
+        {
+            StarWarsPersistentStateComponent.instance?.state?.numberOfPassesUntilVehicleChange
+                ?: DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE
+        },
     )
 
     private fun updateVehicle() {
@@ -104,6 +130,34 @@ internal class StarWarsProgressBarUI(
     override fun paintDeterminate(g: Graphics?, c: JComponent?) {
         resetPositionAndVelocity()
         paintProgressBar(g, c, true)
+        updateNumberOfPassesDeterminate(c)
+    }
+
+    private fun updateNumberOfPassesDeterminate(c: JComponent?) {
+        if (c == null) {
+            return
+        }
+
+        val border = progressBar.insets
+        val width = progressBar.width
+        var height = progressBar.preferredSize.height
+        if (isOdd(c.height - height)) {
+            height++
+        }
+        val barRectWidth = width - (border.right + border.left)
+        val barRectHeight = height - (border.top + border.bottom)
+        if (barRectWidth <= 0 || barRectHeight <= 0) {
+            return
+        }
+        val amountFull = getAmountFull(border, barRectWidth, barRectHeight)
+        if (amountFull >= width) {
+            if (amountFull != oldAmountFull){
+                oldAmountFull = amountFull
+                updateNumberOfPasses()
+            } else {
+                oldAmountFull = 0
+            }
+        }
     }
 
     private fun updatePositionAndVelocity() {
@@ -193,7 +247,7 @@ internal class StarWarsProgressBarUI(
 
     private fun isUnsupported(graphics: Graphics, component: JComponent): Boolean {
         return graphics !is Graphics2D || progressBar.orientation != SwingConstants.HORIZONTAL ||
-            !component.componentOrientation.isLeftToRight
+                !component.componentOrientation.isLeftToRight
     }
 
     private fun setToolTipText() {
@@ -339,11 +393,11 @@ internal class StarWarsProgressBarUI(
             icon.foreground = null
         }
         val x = amountFull +
-            if (isMovingRight) {
-                JBUIScale.scale(vehicle.xShift)
-            } else {
-                JBUIScale.scale(-icon.preferredSize.width - vehicle.xShift)
-            }
+                if (isMovingRight) {
+                    JBUIScale.scale(vehicle.xShift)
+                } else {
+                    JBUIScale.scale(-icon.preferredSize.width - vehicle.xShift)
+                }
         val y = vehicle.yShift
         icon.paint(graphics2D, x, y)
         graphics2D.clip = previousClip
