@@ -1,5 +1,6 @@
 package com.christopherosthues.starwarsprogressbar.configuration
 
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE
 import com.christopherosthues.starwarsprogressbar.models.FactionHolder
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
@@ -84,6 +85,8 @@ class StarWarsPersistentStateComponentTests {
             { assertTrue(result!!.enableNewVehicles) },
             { assertFalse(result!!.solidProgressBarColor) },
             { assertFalse(result!!.drawSilhouettes) },
+            { assertFalse(result!!.changeVehicleAfterPass) },
+            { assertEquals(DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE, result!!.numberOfPassesUntilVehicleChange) },
             { assertEquals("", result!!.version) }
         )
     }
@@ -104,6 +107,8 @@ class StarWarsPersistentStateComponentTests {
             enableNewVehicles = false
             solidProgressBarColor = true
             drawSilhouettes = true
+            changeVehicleAfterPass = true
+            numberOfPassesUntilVehicleChange = 3
             version = expectedVersion
         }
 
@@ -131,6 +136,8 @@ class StarWarsPersistentStateComponentTests {
             { assertEquals(starWarsState.enableNewVehicles, result!!.enableNewVehicles) },
             { assertEquals(starWarsState.solidProgressBarColor, result!!.solidProgressBarColor) },
             { assertEquals(starWarsState.drawSilhouettes, result!!.drawSilhouettes) },
+            { assertEquals(starWarsState.changeVehicleAfterPass, result!!.changeVehicleAfterPass) },
+            { assertEquals(starWarsState.numberOfPassesUntilVehicleChange, result!!.numberOfPassesUntilVehicleChange) },
             { assertEquals(starWarsState.version, result!!.version) },
 
             { assertEquals(expectedVehiclesEnabled, result!!.vehiclesEnabled) },
@@ -142,6 +149,8 @@ class StarWarsPersistentStateComponentTests {
             { assertFalse(result!!.enableNewVehicles) },
             { assertTrue(result!!.solidProgressBarColor) },
             { assertTrue(result!!.drawSilhouettes) },
+            { assertTrue(result!!.changeVehicleAfterPass) },
+            { assertEquals(3, result!!.numberOfPassesUntilVehicleChange) },
             { assertEquals(expectedVersion, result!!.version) }
         )
 
@@ -229,6 +238,8 @@ class StarWarsPersistentStateComponentTests {
             { assertTrue(starWarsState!!.enableNewVehicles) },
             { assertFalse(starWarsState!!.solidProgressBarColor) },
             { assertFalse(starWarsState!!.drawSilhouettes) },
+            { assertFalse(starWarsState!!.changeVehicleAfterPass) },
+            { assertEquals(DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE, starWarsState!!.numberOfPassesUntilVehicleChange) },
             { assertEquals("", starWarsState!!.version) }
         )
     }

@@ -127,7 +127,9 @@ class StarWarsProgressConfigurableTests {
         sameVehicleVelocity: Boolean,
         enableNewVehicles: Boolean,
         solidProgressBarColor: Boolean,
-        drawSilhouettes: Boolean
+        drawSilhouettes: Boolean,
+        changeVehicleAfterPass: Boolean = false,
+        numberOfPassesUntilVehicleChange: Int = 2
     ) {
         // Arrange
         setupStarWarsState(
@@ -139,7 +141,9 @@ class StarWarsProgressConfigurableTests {
             sameVehicleVelocity,
             enableNewVehicles,
             solidProgressBarColor,
-            drawSilhouettes
+            drawSilhouettes,
+            changeVehicleAfterPass,
+            numberOfPassesUntilVehicleChange
         )
         setupComponentState(
             enabledVehicles,
@@ -150,7 +154,27 @@ class StarWarsProgressConfigurableTests {
             sameVehicleVelocity,
             enableNewVehicles,
             solidProgressBarColor,
-            drawSilhouettes
+            drawSilhouettes,
+            changeVehicleAfterPass,
+            numberOfPassesUntilVehicleChange
+        )
+        val sut = StarWarsProgressConfigurable()
+        sut.createComponent()
+
+        // Act
+        val result = sut.isModified
+
+        // Assert
+        assertFalse(result)
+    }
+
+    @Test
+    fun `isModified should return false if all properties are all equal except number of passes and change vehicle after pass is false`() {
+        // Arrange
+        setupStarWarsState()
+        setupComponentState(
+            changeVehicleAfterPass = false,
+            numberOfPassesUntilVehicleChange = 3
         )
         val sut = StarWarsProgressConfigurable()
         sut.createComponent()
@@ -178,7 +202,9 @@ class StarWarsProgressConfigurableTests {
             starWarsStateData.sameVehicleVelocity,
             starWarsStateData.enableNewVehicles,
             starWarsStateData.solidProgressBarColor,
-            starWarsStateData.drawSilhouettes
+            starWarsStateData.drawSilhouettes,
+            starWarsStateData.changeVehicleAfterPass,
+            starWarsStateData.numberOfPassesUntilVehicleChange
         )
         setupComponentState(
             componentStateData.enabledVehicles,
@@ -189,7 +215,9 @@ class StarWarsProgressConfigurableTests {
             componentStateData.sameVehicleVelocity,
             componentStateData.enableNewVehicles,
             componentStateData.solidProgressBarColor,
-            componentStateData.drawSilhouettes
+            componentStateData.drawSilhouettes,
+            componentStateData.changeVehicleAfterPass,
+            componentStateData.numberOfPassesUntilVehicleChange
         )
         val sut = StarWarsProgressConfigurable()
         sut.createComponent()
@@ -238,6 +266,8 @@ class StarWarsProgressConfigurableTests {
         verify(exactly = 0) { starWarsStateMock.enableNewVehicles }
         verify(exactly = 0) { starWarsStateMock.solidProgressBarColor }
         verify(exactly = 0) { starWarsStateMock.drawSilhouettes }
+        verify(exactly = 0) { starWarsStateMock.changeVehicleAfterPass }
+        verify(exactly = 0) { starWarsStateMock.numberOfPassesUntilVehicleChange }
     }
 
     @ParameterizedTest
@@ -251,7 +281,9 @@ class StarWarsProgressConfigurableTests {
         sameVehicleVelocity: Boolean = false,
         enableNewVehicles: Boolean = false,
         solidProgressBarColor: Boolean = false,
-        drawSilhouettes: Boolean = false
+        drawSilhouettes: Boolean = false,
+        changeVehicleAfterPass: Boolean = false,
+        numberOfPassesUntilVehicleChange: Int = 2
     ) {
         // Arrange
         val starWarsStateMock = setupStarWarsPersistentStateComponentMock().state!!
@@ -264,7 +296,9 @@ class StarWarsProgressConfigurableTests {
             sameVehicleVelocity,
             enableNewVehicles,
             solidProgressBarColor,
-            drawSilhouettes
+            drawSilhouettes,
+            changeVehicleAfterPass,
+            numberOfPassesUntilVehicleChange
         )
         val sut = StarWarsProgressConfigurable()
         sut.createComponent()
@@ -273,6 +307,7 @@ class StarWarsProgressConfigurableTests {
         sut.apply()
 
         // Assert
+        val numberOfPassesSet = if (changeVehicleAfterPass) 1 else 0
         verify(exactly = 1) { starWarsStateMock.showVehicle = showVehicle }
         verify(exactly = 1) { starWarsStateMock.showVehicleNames = showVehicleNames }
         verify(exactly = 1) { starWarsStateMock.showToolTips = showToolTips }
@@ -281,6 +316,8 @@ class StarWarsProgressConfigurableTests {
         verify(exactly = 1) { starWarsStateMock.enableNewVehicles = enableNewVehicles }
         verify(exactly = 1) { starWarsStateMock.solidProgressBarColor = solidProgressBarColor }
         verify(exactly = 1) { starWarsStateMock.drawSilhouettes = drawSilhouettes }
+        verify(exactly = 1) { starWarsStateMock.changeVehicleAfterPass = changeVehicleAfterPass }
+        verify(exactly = numberOfPassesSet) { starWarsStateMock.numberOfPassesUntilVehicleChange = numberOfPassesUntilVehicleChange }
         assertEquals(enabledVehicles, starWarsStateMock.vehiclesEnabled, StarWarsState::vehiclesEnabled.name)
     }
 
@@ -430,7 +467,9 @@ class StarWarsProgressConfigurableTests {
         sameVehicleVelocity: Boolean = false,
         enableNewVehicles: Boolean = false,
         solidProgressBarColor: Boolean = false,
-        drawSilhouettes: Boolean = false
+        drawSilhouettes: Boolean = false,
+        changeVehicleAfterPass: Boolean = false,
+        numberOfPassesUntilVehicleChange: Int = 2
     ): StarWarsState {
         val starWarsStateMock = mockk<StarWarsState>()
         starWarsStateMock.vehiclesEnabled = enabledVehicles
@@ -442,6 +481,8 @@ class StarWarsProgressConfigurableTests {
         every { starWarsStateMock.enableNewVehicles } returns enableNewVehicles
         every { starWarsStateMock.solidProgressBarColor } returns solidProgressBarColor
         every { starWarsStateMock.drawSilhouettes } returns drawSilhouettes
+        every { starWarsStateMock.changeVehicleAfterPass } returns changeVehicleAfterPass
+        every { starWarsStateMock.numberOfPassesUntilVehicleChange } returns numberOfPassesUntilVehicleChange
         every { starWarsStateMock.version } returns ""
         val starWarsPersistentStateComponentMock = mockk<StarWarsPersistentStateComponent>(relaxed = true)
         every { StarWarsPersistentStateComponent.instance } returns starWarsPersistentStateComponentMock
@@ -459,7 +500,9 @@ class StarWarsProgressConfigurableTests {
         sameVehicleVelocity: Boolean = false,
         enableNewVehicles: Boolean = false,
         solidProgressBarColor: Boolean = false,
-        drawSilhouettes: Boolean = false
+        drawSilhouettes: Boolean = false,
+        changeVehicleAfterPass: Boolean = false,
+        numberOfPassesUntilVehicleChange: Int = 2
     ) {
         every { starWarsProgressConfigurationComponentMock.enabledVehicles } returns enabledVehicles
         every { starWarsProgressConfigurationComponentMock.showVehicle } returns showVehicle
@@ -470,6 +513,8 @@ class StarWarsProgressConfigurableTests {
         every { starWarsProgressConfigurationComponentMock.enableNewVehicles } returns enableNewVehicles
         every { starWarsProgressConfigurationComponentMock.solidProgressBarColor } returns solidProgressBarColor
         every { starWarsProgressConfigurationComponentMock.drawSilhouettes } returns drawSilhouettes
+        every { starWarsProgressConfigurationComponentMock.changeVehicleAfterPass } returns changeVehicleAfterPass
+        every { starWarsProgressConfigurationComponentMock.numberOfPassesUntilVehicleChange } returns numberOfPassesUntilVehicleChange
     }
 
     //endregion
@@ -485,93 +530,85 @@ class StarWarsProgressConfigurableTests {
         val sameVehicleVelocity: Boolean = false,
         val enableNewVehicles: Boolean = false,
         val solidProgressBarColor: Boolean = false,
-        val drawSilhouettes: Boolean = false
+        val drawSilhouettes: Boolean = false,
+        val changeVehicleAfterPass: Boolean = false,
+        val numberOfPassesUntilVehicleChange: Int = 2
     )
 
     companion object {
         @JvmStatic
         fun isNotModifiedValues(): Stream<Arguments> {
             return Stream.of(
-                Arguments.of(mapOf<String, Boolean>(), true, false, true, false, true, false, true, false),
-                Arguments.of(mapOf("1" to true, "2" to false), false, true, false, true, false, true, false, true)
+                Arguments.of(mapOf<String, Boolean>(), true, false, true, false, true, false, true, false, false, 2),
+                Arguments.of(
+                    mapOf("1" to true, "2" to false),
+                    false,
+                    true,
+                    false,
+                    true,
+                    false,
+                    true,
+                    false,
+                    true,
+                    true,
+                    2
+                ),
+                Arguments.of(
+                    mapOf("1" to true, "2" to false),
+                    false,
+                    true,
+                    false,
+                    true,
+                    false,
+                    true,
+                    false,
+                    true,
+                    true,
+                    4
+                ),
+                Arguments.of(
+                    mapOf("1" to true, "2" to false),
+                    false,
+                    true,
+                    false,
+                    true,
+                    false,
+                    true,
+                    false,
+                    true,
+                    false,
+                    4
+                )
             )
         }
 
         @JvmStatic
         fun isModifiedValues(): Stream<Arguments> {
             return Stream.of(
-                Arguments.of(
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, false),
-                    IsModifiedData(mapOf("1" to true, "2" to false), false, false, false, false, false, false, false, false)
-                ),
-                Arguments.of(
-                    IsModifiedData(mapOf("1" to true, "2" to false), false, false, false, false, false, false, false, false),
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, false)
-                ),
-                Arguments.of(
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, false),
-                    IsModifiedData(mapOf(), true, false, false, false, false, false, false, false)
-                ),
-                Arguments.of(
-                    IsModifiedData(mapOf(), true, false, false, false, false, false, false, false),
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, false)
-                ),
-                Arguments.of(
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, false),
-                    IsModifiedData(mapOf(), false, true, false, false, false, false, false, false)
-                ),
-                Arguments.of(
-                    IsModifiedData(mapOf(), false, true, false, false, false, false, false, false),
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, false)
-                ),
-                Arguments.of(
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, false),
-                    IsModifiedData(mapOf(), false, false, true, false, false, false, false, false)
-                ),
-                Arguments.of(
-                    IsModifiedData(mapOf(), false, false, true, false, false, false, false, false),
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, false)
-                ),
-                Arguments.of(
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, false),
-                    IsModifiedData(mapOf(), false, false, false, true, false, false, false, false)
-                ),
-                Arguments.of(
-                    IsModifiedData(mapOf(), false, false, false, true, false, false, false, false),
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, false)
-                ),
-                Arguments.of(
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, false),
-                    IsModifiedData(mapOf(), false, false, false, false, true, false, false, false)
-                ),
-                Arguments.of(
-                    IsModifiedData(mapOf(), false, false, false, false, true, false, false, false),
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, false)
-                ),
-                Arguments.of(
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, false),
-                    IsModifiedData(mapOf(), false, false, false, false, false, true, false, false)
-                ),
-                Arguments.of(
-                    IsModifiedData(mapOf(), false, false, false, false, false, true, false, false),
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, false)
-                ),
-                Arguments.of(
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, false),
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, true, false)
-                ),
-                Arguments.of(
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, true, false),
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, false)
-                ),
-                Arguments.of(
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, false),
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, true)
-                ),
-                Arguments.of(
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, true),
-                    IsModifiedData(mapOf(), false, false, false, false, false, false, false, false)
-                )
+                Arguments.of(IsModifiedData(), IsModifiedData(mapOf("1" to true, "2" to false))),
+                Arguments.of(IsModifiedData(mapOf("1" to true, "2" to false)), IsModifiedData()),
+                Arguments.of(IsModifiedData(), IsModifiedData(showVehicle = true)),
+                Arguments.of(IsModifiedData(showVehicle = true), IsModifiedData()),
+                Arguments.of(IsModifiedData(), IsModifiedData(mapOf(), showVehicle = true)),
+                Arguments.of(IsModifiedData(showVehicle = true), IsModifiedData()),
+                Arguments.of(IsModifiedData(), IsModifiedData(mapOf(), showToolTips = true)),
+                Arguments.of(IsModifiedData(showToolTips = true), IsModifiedData()),
+                Arguments.of(IsModifiedData(), IsModifiedData(mapOf(), showFactionCrests = true)),
+                Arguments.of(IsModifiedData(showFactionCrests = true), IsModifiedData()),
+                Arguments.of(IsModifiedData(), IsModifiedData(mapOf(), sameVehicleVelocity = true)),
+                Arguments.of(IsModifiedData(sameVehicleVelocity = true), IsModifiedData()),
+                Arguments.of(IsModifiedData(), IsModifiedData(mapOf(), enableNewVehicles = true)),
+                Arguments.of(IsModifiedData(enableNewVehicles = true), IsModifiedData()),
+                Arguments.of(IsModifiedData(), IsModifiedData(mapOf(), solidProgressBarColor = true)),
+                Arguments.of(IsModifiedData(solidProgressBarColor = true), IsModifiedData()),
+                Arguments.of(IsModifiedData(), IsModifiedData(mapOf(), drawSilhouettes = true)),
+                Arguments.of(IsModifiedData(drawSilhouettes = true), IsModifiedData()),
+                Arguments.of(IsModifiedData(changeVehicleAfterPass = true), IsModifiedData()),
+                Arguments.of(IsModifiedData(), IsModifiedData(changeVehicleAfterPass = true)),
+                Arguments.of(IsModifiedData(changeVehicleAfterPass = true, numberOfPassesUntilVehicleChange = 4), IsModifiedData()),
+                Arguments.of(IsModifiedData(), IsModifiedData(changeVehicleAfterPass = true, numberOfPassesUntilVehicleChange = 4)),
+                Arguments.of(IsModifiedData(changeVehicleAfterPass = true), IsModifiedData(numberOfPassesUntilVehicleChange = 4)),
+                Arguments.of(IsModifiedData(numberOfPassesUntilVehicleChange = 4), IsModifiedData(changeVehicleAfterPass = true))
             )
         }
     }

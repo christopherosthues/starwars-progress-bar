@@ -8,7 +8,6 @@ internal object VehicleSelector {
     fun selectRandomVehicle(enabledVehicles: Map<String, Boolean>?, defaultEnabled: Boolean): StarWarsVehicle {
         var currentEnabledVehicles = enabledVehicles
         if (currentEnabledVehicles == null) {
-            // TODO unit test me
             val persistentStateComponent = StarWarsPersistentStateComponent.instance
             val starWarsState = persistentStateComponent?.state ?: return FactionHolder.missingVehicle
 

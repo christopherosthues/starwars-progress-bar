@@ -251,43 +251,39 @@ class VehicleSelectorTests {
         verify(exactly = 1) { randomInt(vehicles.size - 2) }
     }
 
-    //endregion
-
-    //region selectRandomVehicles tests
-
     @Test
-    fun `selectRandomVehicles should not update factions of faction holder if factions of faction holder are not empty`() {
+    fun `selectRandomVehicle should not update factions of faction holder if factions of faction holder are not empty`() {
         // Arrange
         every { FactionHolder.factions } returns listOf(StarWarsFaction("1", listOf()))
 
         // Act
-        VehicleSelector.selectRandomVehicle()
+        VehicleSelector.selectRandomVehicle(null, false)
 
         // Assert
         verify(exactly = 0) { FactionHolder.updateFactions(any()) }
     }
 
     @Test
-    fun `selectRandomVehicles should return missing vehicle if persistent state component is null`() {
+    fun `selectRandomVehicle should return missing vehicle if persistent state component is null`() {
         // Arrange
         every { FactionHolder.factions } returns listOf(StarWarsFaction("1", listOf()))
         setupStarWarsState(null)
 
         // Act
-        val result = VehicleSelector.selectRandomVehicle()
+        val result = VehicleSelector.selectRandomVehicle(null, false)
 
         // Assert
         assertEquals(missingVehicle, result)
     }
 
     @Test
-    fun `selectRandomVehicles should return missing vehicle if state is null`() {
+    fun `selectRandomVehicle should return missing vehicle if state is null`() {
         // Arrange
         every { FactionHolder.factions } returns listOf(StarWarsFaction("1", listOf()))
         setupStarWarsState(null)
 
         // Act
-        val result = VehicleSelector.selectRandomVehicle()
+        val result = VehicleSelector.selectRandomVehicle(null, false)
 
         // Assert
         assertEquals(missingVehicle, result)
@@ -307,7 +303,7 @@ class VehicleSelectorTests {
         setupStarWarsState(starWarsState)
 
         // Act
-        val result = VehicleSelector.selectRandomVehicle()
+        val result = VehicleSelector.selectRandomVehicle(null, false)
 
         // Assert
         assertEquals(missingVehicle, result)
@@ -327,7 +323,7 @@ class VehicleSelectorTests {
         setupStarWarsState(starWarsState)
 
         // Act
-        val result = VehicleSelector.selectRandomVehicle()
+        val result = VehicleSelector.selectRandomVehicle(null, false)
 
         // Assert
         assertEquals(missingVehicle, result)
@@ -347,7 +343,7 @@ class VehicleSelectorTests {
         setupStarWarsState(starWarsState)
 
         // Act
-        val result = VehicleSelector.selectRandomVehicle()
+        val result = VehicleSelector.selectRandomVehicle(null, false)
 
         // Assert
         assertEquals(missingVehicle, result)
@@ -364,7 +360,7 @@ class VehicleSelectorTests {
         setupStarWarsState(starWarsState)
 
         // Act
-        val result = VehicleSelector.selectRandomVehicle()
+        val result = VehicleSelector.selectRandomVehicle(null, false)
 
         // Assert
         assertEquals(missingVehicle, result)
@@ -387,7 +383,7 @@ class VehicleSelectorTests {
         every { randomInt(any()) } returns index
 
         // Act
-        val result = VehicleSelector.selectRandomVehicle()
+        val result = VehicleSelector.selectRandomVehicle(null, true)
 
         // Assert
         assertAll(
@@ -411,7 +407,7 @@ class VehicleSelectorTests {
         setupStarWarsState(starWarsState)
 
         // Act
-        val result = VehicleSelector.selectRandomVehicle()
+        val result = VehicleSelector.selectRandomVehicle(null, false)
 
         // Assert
         assertEquals(missingVehicle, result)
@@ -435,7 +431,7 @@ class VehicleSelectorTests {
         every { randomInt(any()) } returns index
 
         // Act
-        val result = VehicleSelector.selectRandomVehicle()
+        val result = VehicleSelector.selectRandomVehicle(null, false)
 
         // Assert
         assertAll(
@@ -462,7 +458,7 @@ class VehicleSelectorTests {
         every { randomInt(any()) } returns index
 
         // Act
-        val result = VehicleSelector.selectRandomVehicle()
+        val result = VehicleSelector.selectRandomVehicle(null, false)
 
         // Assert
         assertAll(
@@ -489,7 +485,7 @@ class VehicleSelectorTests {
         every { randomInt(any()) } returns index
 
         // Act
-        val result = VehicleSelector.selectRandomVehicle()
+        val result = VehicleSelector.selectRandomVehicle(null, true)
 
         // Assert
         assertAll(
@@ -516,7 +512,7 @@ class VehicleSelectorTests {
         every { randomInt(any()) } returns index
 
         // Act
-        val result = VehicleSelector.selectRandomVehicle()
+        val result = VehicleSelector.selectRandomVehicle(null, true)
 
         // Assert
         assertAll(
@@ -540,7 +536,7 @@ class VehicleSelectorTests {
         every { randomInt(any()) } returns 0
 
         // Act
-        val result = VehicleSelector.selectRandomVehicle()
+        val result = VehicleSelector.selectRandomVehicle(null, false)
 
         // Assert
         assertAll(
