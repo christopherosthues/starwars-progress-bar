@@ -48,6 +48,12 @@ internal class StarWarsProgressConfigurationComponent {
     val drawSilhouettes: Boolean
         get() = uiOptionsPanel.drawSilhouttes
 
+    val changeVehicleAfterPass: Boolean
+        get() = uiOptionsPanel.changeVehicleAfterPass
+
+    val numberOfPassesUntilVehicleChange: Int
+        get() = uiOptionsPanel.numberOfPassesUntilVehicleChange
+
     init {
         createUI()
     }
@@ -83,6 +89,8 @@ internal class StarWarsProgressConfigurationComponent {
             this::enableNewVehicles,
             this::solidProgressBarColor,
             this::drawSilhouettes,
+            this::changeVehicleAfterPass,
+            this::numberOfPassesUntilVehicleChange,
             this::enabledVehicles
         )
 
@@ -92,7 +100,8 @@ internal class StarWarsProgressConfigurationComponent {
     private fun createUiOptionsSection(formBuilder: FormBuilder) {
         uiOptionsPanel.addPropertyChangeListener() {
             if (isProgressBarTextEvent(it.propertyName) ||
-                isProgressBarDrawEvent(it.propertyName)
+                isProgressBarDrawEvent(it.propertyName) ||
+                isVehicleChangeEvent(it.propertyName)
             ) {
                 repaintProgressBar()
             }
@@ -112,6 +121,11 @@ internal class StarWarsProgressConfigurationComponent {
             propertyName == UiOptionsPanel::solidProgressBarColor.name ||
             propertyName == UiOptionsPanel::showVehicle.name ||
             propertyName == UiOptionsPanel::drawSilhouttes.name
+    }
+
+    private fun isVehicleChangeEvent(propertyName: String): Boolean {
+        return propertyName == UiOptionsPanel::changeVehicleAfterPass.name ||
+                propertyName == UiOptionsPanel::numberOfPassesUntilVehicleChange.name;
     }
 
     private fun repaintProgressBar() {

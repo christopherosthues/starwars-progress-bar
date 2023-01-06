@@ -31,7 +31,12 @@ internal class StarWarsProgressConfigurable : SearchableConfigurable {
             starWarsState.sameVehicleVelocity != component!!.sameVehicleVelocity ||
             starWarsState.enableNewVehicles != component!!.enableNewVehicles ||
             starWarsState.solidProgressBarColor != component!!.solidProgressBarColor ||
-            starWarsState.drawSilhouettes != component!!.drawSilhouettes
+            starWarsState.drawSilhouettes != component!!.drawSilhouettes ||
+            starWarsState.changeVehicleAfterPass != component!!.changeVehicleAfterPass ||
+            (
+                starWarsState.numberOfPassesUntilVehicleChange != component!!.numberOfPassesUntilVehicleChange &&
+                    component!!.changeVehicleAfterPass
+                )
     }
 
     override fun apply() {
@@ -49,6 +54,10 @@ internal class StarWarsProgressConfigurable : SearchableConfigurable {
             starWarsState.enableNewVehicles = component.enableNewVehicles
             starWarsState.solidProgressBarColor = component.solidProgressBarColor
             starWarsState.drawSilhouettes = component.drawSilhouettes
+            starWarsState.changeVehicleAfterPass = component.changeVehicleAfterPass
+            if (component.changeVehicleAfterPass) {
+                starWarsState.numberOfPassesUntilVehicleChange = component.numberOfPassesUntilVehicleChange
+            }
         }
     }
 

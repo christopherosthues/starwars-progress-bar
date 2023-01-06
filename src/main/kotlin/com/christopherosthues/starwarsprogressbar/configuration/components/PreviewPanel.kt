@@ -26,6 +26,8 @@ internal class PreviewPanel(
     private val enableNewVehicles: () -> Boolean,
     private val solidProgressBarColor: () -> Boolean,
     private val drawSilhouettes: () -> Boolean,
+    private val changeVehicleAfterPass: () -> Boolean,
+    private val numberOfPassesUntilVehicleChange: () -> Int,
     private val enabledVehicles: () -> Map<String, Boolean>?
 ) : JTitledPanel(StarWarsBundle.message(BundleConstants.PREVIEW_TITLE)) {
 
@@ -85,36 +87,38 @@ internal class PreviewPanel(
         determinateProgressBar.setUI(
             StarWarsProgressBarUI(
                 determinateVehicle,
+                enabledVehicles,
                 showVehicle,
                 showVehicleNames,
                 showToolTips,
                 showFactionCrests,
                 sameVehicleVelocity,
                 solidProgressBarColor,
-                drawSilhouettes
+                drawSilhouettes,
+                changeVehicleAfterPass,
+                numberOfPassesUntilVehicleChange
             )
         )
 
         indeterminateProgressBar.setUI(
             StarWarsProgressBarUI(
                 indeterminateVehicle,
+                enabledVehicles,
                 showVehicle,
                 showVehicleNames,
                 showToolTips,
                 showFactionCrests,
                 sameVehicleVelocity,
                 solidProgressBarColor,
-                drawSilhouettes
+                drawSilhouettes,
+                changeVehicleAfterPass,
+                numberOfPassesUntilVehicleChange
             )
         )
     }
 
     private fun selectRandomVehicle(enabledVehicles: Map<String, Boolean>?): StarWarsVehicle {
-        return if (enabledVehicles != null) {
-            VehicleSelector.selectRandomVehicle(enabledVehicles, enableNewVehicles())
-        } else {
-            VehicleSelector.selectRandomVehicle()
-        }
+        return VehicleSelector.selectRandomVehicle(enabledVehicles, enableNewVehicles())
     }
 
     fun selectVehicle(vehicle: StarWarsVehicle) {
