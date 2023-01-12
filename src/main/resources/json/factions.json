@@ -259,6 +259,13 @@
           "velocity": 2
         },
         {
+          "id": "high_altitude_entry_transport_221",
+          "ionEngine": "blue",
+          "xShift": -11,
+          "yShift": -6,
+          "velocity": 2
+        },
+        {
           "id": "h_type_naboo_yacht",
           "ionEngine": "blue",
           "xShift": -4,

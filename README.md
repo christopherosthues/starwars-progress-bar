@@ -114,6 +114,7 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 * ![CSS-1 Corellian Star Shuttle](icons/galactic_republic/css_1_corellian_star_shuttle@2x.png) CSS-1 Corellian Star Shuttle ![CSS-1 Corellian Star Shuttle](icons/galactic_republic/css_1_corellian_star_shuttle_r@2x.png)
 * ![H-Type Naboo Yacht](icons/galactic_republic/h_type_naboo_yacht@2x.png) H-Type Naboo Yacht ![H-Type Naboo Yacht](icons/galactic_republic/h_type_naboo_yacht_r@2x.png)
 * ![Heavy Assault Vehicle/Wheeled A6 Juggernaut](icons/galactic_republic/havw_a6_juggernaut@2x.png) Heavy Assault Vehicle/Wheeled A6 Juggernaut ![Heavy Assault Vehicle/Wheeled A6 Juggernaut](icons/galactic_republic/havw_a6_juggernaut_r@2x.png)
+* ![High-Altitude Entry Transport-221](icons/galactic_republic/high_altitude_entry_transport_221@2x.png) High-Altitude Entry Transport-221 ![High-Altitude Entry Transport-221](icons/galactic_republic/high_altitude_entry_transport_221_r@2x.png)
 * ![Infantry Support Platform](icons/galactic_republic/infantry_support_platform@2x.png) Infantry Support Platform ![Infantry Support Platform](icons/galactic_republic/infantry_support_platform_r@2x.png)
 * ![J-Type Diplomatic Barge](icons/galactic_republic/j_type_diplomatic_barge@2x.png) J-Type Diplomatic Barge ![J-Type Diplomatic Barge](icons/galactic_republic/j_type_diplomatic_barge_r@2x.png)
 * ![J-Type Naboo Star Skiff](icons/galactic_republic/j_type_naboo_star_skiff@2x.png) J-Type Naboo Star Skiff ![J-Type Naboo Star Skiff](icons/galactic_republic/j_type_naboo_star_skiff_r@2x.png)
