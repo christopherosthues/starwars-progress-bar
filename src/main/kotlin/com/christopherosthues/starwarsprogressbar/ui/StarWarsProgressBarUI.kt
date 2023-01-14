@@ -22,14 +22,14 @@ package com.christopherosthues.starwarsprogressbar.ui
 
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_CHANGE_VEHICLE_AFTER_PASS
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_DRAW_SILHOUETTES
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SAME_VEHICLE_VELOCITY
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_FACTION_CRESTS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_TOOLTIPS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE_NAMES
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_CHANGE_VEHICLE_AFTER_PASS
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_DRAW_SILHOUETTES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRESS_BAR_COLOR
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.ui.components.ColoredImageComponent
@@ -71,7 +71,7 @@ internal class StarWarsProgressBarUI(
     private val solidProgressBarColor: () -> Boolean,
     private val drawSilhouettes: () -> Boolean,
     private val changeVehicleAfterPass: () -> Boolean,
-    private val numberOfPassesUntilVehicleChange: () -> Int,
+    private val numberOfPassesUntilVehicleChange: () -> Int
 ) : BasicProgressBarUI() {
 
     private var forwardIcon = ColoredImageComponent(StarWarsResourceLoader.getVehicleImage(vehicle.fileName))
@@ -100,7 +100,7 @@ internal class StarWarsProgressBarUI(
         {
             StarWarsPersistentStateComponent.instance?.state?.numberOfPassesUntilVehicleChange
                 ?: DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE
-        },
+        }
     )
 
     private fun updateVehicle() {
@@ -130,34 +130,6 @@ internal class StarWarsProgressBarUI(
     override fun paintDeterminate(g: Graphics?, c: JComponent?) {
         resetPositionAndVelocity()
         paintProgressBar(g, c, true)
-        updateNumberOfPassesDeterminate(c)
-    }
-
-    private fun updateNumberOfPassesDeterminate(c: JComponent?) {
-        if (c == null) {
-            return
-        }
-
-        val border = progressBar.insets
-        val width = progressBar.width
-        var height = progressBar.preferredSize.height
-        if (isOdd(c.height - height)) {
-            height++
-        }
-        val barRectWidth = width - (border.right + border.left)
-        val barRectHeight = height - (border.top + border.bottom)
-        if (barRectWidth <= 0 || barRectHeight <= 0) {
-            return
-        }
-        val amountFull = getAmountFull(border, barRectWidth, barRectHeight)
-        if (amountFull >= width) {
-            if (amountFull != oldAmountFull){
-                oldAmountFull = amountFull
-                updateNumberOfPasses()
-            } else {
-                oldAmountFull = 0
-            }
-        }
     }
 
     private fun updatePositionAndVelocity() {
@@ -247,7 +219,7 @@ internal class StarWarsProgressBarUI(
 
     private fun isUnsupported(graphics: Graphics, component: JComponent): Boolean {
         return graphics !is Graphics2D || progressBar.orientation != SwingConstants.HORIZONTAL ||
-                !component.componentOrientation.isLeftToRight
+            !component.componentOrientation.isLeftToRight
     }
 
     private fun setToolTipText() {
@@ -393,11 +365,11 @@ internal class StarWarsProgressBarUI(
             icon.foreground = null
         }
         val x = amountFull +
-                if (isMovingRight) {
-                    JBUIScale.scale(vehicle.xShift)
-                } else {
-                    JBUIScale.scale(-icon.preferredSize.width - vehicle.xShift)
-                }
+            if (isMovingRight) {
+                JBUIScale.scale(vehicle.xShift)
+            } else {
+                JBUIScale.scale(-icon.preferredSize.width - vehicle.xShift)
+            }
         val y = vehicle.yShift
         icon.paint(graphics2D, x, y)
         graphics2D.clip = previousClip
