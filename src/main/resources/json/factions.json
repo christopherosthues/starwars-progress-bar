@@ -937,6 +937,13 @@
           "velocity": 2.5
         },
         {
+          "id": "starkiller_base",
+          "ionEngine": "red",
+          "xShift": -8,
+          "yShift": -6,
+          "velocity": 1
+        },
+        {
           "id": "tie_baron",
           "ionEngine": "blue",
           "xShift": -4,

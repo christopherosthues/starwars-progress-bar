@@ -13,6 +13,7 @@
 - Eta-class Shuttle to Jedi faction
 - CSS-1 Corellian Star Shuttle, High-Altitude Entry Transport-221 and Oevvaor Jet Catamaran to Galactic Republic
 - Count Dooku's Flitknot Speeder Bike, Droch-class boarding ship, Flitknot Speeder Bike and Octuptarra tri-droid to CIS
+- Starkiller Base to First Order
 
 ### Changed
 - Change color of progressbar for Azure Angel from red to blue
