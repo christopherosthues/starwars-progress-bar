@@ -696,6 +696,13 @@
           "velocity": 2.5
         },
         {
+          "id": "quasar_fire_class_cruiser_carrier",
+          "ionEngine": "blue",
+          "xShift": -7,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
           "id": "second_death_star",
           "ionEngine": "green",
           "xShift": -12,
@@ -860,6 +867,13 @@
           "xShift": -4,
           "yShift": -6,
           "velocity": 3
+        },
+        {
+          "id": "phoenix_nest",
+          "ionEngine": "blue",
+          "xShift": -7,
+          "yShift": -6,
+          "velocity": 2.5
         },
         {
           "id": "prototype_b6",
