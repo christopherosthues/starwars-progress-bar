@@ -222,6 +222,7 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 
 * ![First Order TIE Fighter](icons/first_order/first_order_tie_fighter@2x.png) First Order TIE Fighter ![First Order TIE Fighter](icons/first_order/first_order_tie_fighter_r@2x.png)
 * ![Starkiller Base](icons/first_order/starkiller_base@2x.png) Starkiller Base ![Starkiller Base](icons/first_order/starkiller_base_r@2x.png)
+* ![Supremacy](icons/first_order/supremacy@2x.png) Supremacy ![Supremacy](icons/first_order/supremacy_r@2x.png)
 * ![TIE Baron](icons/first_order/tie_baron@2x.png) TIE Baron ![TIE Baron](icons/first_order/tie_baron_r@2x.png)
 * ![TIE Dagger](icons/first_order/tie_dagger@2x.png) TIE Dagger ![TIE Dagger](icons/first_order/tie_dagger_r@2x.png)
 

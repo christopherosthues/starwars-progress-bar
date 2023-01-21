@@ -958,6 +958,13 @@
           "velocity": 1
         },
         {
+          "id": "supremacy",
+          "ionEngine": "red",
+          "xShift": -15,
+          "yShift": -6,
+          "velocity": 2
+        },
+        {
           "id": "tie_baron",
           "ionEngine": "blue",
           "xShift": -4,
