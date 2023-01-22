@@ -19,6 +19,7 @@
 
 ### Changed
 - Change color of progressbar for Azure Angel from red to blue
+- Update TIE Baron
 
 ### Removed
 
