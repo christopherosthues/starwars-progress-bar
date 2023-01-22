@@ -969,14 +969,21 @@
           "ionEngine": "blue",
           "xShift": -4,
           "yShift": -6,
-          "velocity": 2.5
+          "velocity": 3
         },
         {
           "id": "tie_dagger",
           "ionEngine": "blue",
           "xShift": -7,
           "yShift": -6,
-          "velocity": 2.5
+          "velocity": 3.5
+        },
+        {
+          "id": "tie_silencer",
+          "ionEngine": "red",
+          "xShift": -5,
+          "yShift": -6,
+          "velocity": 4
         }
       ]
     },

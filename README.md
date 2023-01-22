@@ -225,6 +225,7 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 * ![Supremacy](icons/first_order/supremacy@2x.png) Supremacy ![Supremacy](icons/first_order/supremacy_r@2x.png)
 * ![TIE Baron](icons/first_order/tie_baron@2x.png) TIE Baron ![TIE Baron](icons/first_order/tie_baron_r@2x.png)
 * ![TIE Dagger](icons/first_order/tie_dagger@2x.png) TIE Dagger ![TIE Dagger](icons/first_order/tie_dagger_r@2x.png)
+* ![TIE Silencer](icons/first_order/tie_silencer@2x.png) TIE Silencer ![TIE Silencer](icons/first_order/tie_silencer_r@2x.png)
 
 ### Bounty Hunters
 
