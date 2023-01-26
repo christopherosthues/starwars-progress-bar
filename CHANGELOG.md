@@ -5,6 +5,17 @@
 ## [Unreleased]
 
 ### Added
+- Arquitens
+
+### Changed
+
+### Removed
+
+### Fixed
+
+## [1.8.0] - 2023-01-25
+
+### Added
 - Translations for spanish
 - Option to draw solid progress bar
 - Option to hide/display vehicle in progress bar
@@ -20,10 +31,6 @@
 ### Changed
 - Change color of progressbar for Azure Angel from red to blue
 - Update TIE Baron
-
-### Removed
-
-### Fixed
 
 ## [1.7.0] - 2022-12-21
 
@@ -130,20 +137,13 @@
 - Initial release
 - Progress bar with vehicles from Star Wars
 
-[Unreleased]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.7.0...HEAD
-
+[Unreleased]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.8.0...HEAD
+[1.8.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.7.0...v1.8.0
 [1.7.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.6.0...v1.7.0
-
 [1.6.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.5.0...v1.6.0
-
 [1.5.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.4.0...v1.5.0
-
 [1.4.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.3.0...v1.4.0
-
 [1.3.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.2.0...v1.3.0
-
 [1.2.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.1.0...v1.2.0
-
 [1.1.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.0.0...v1.1.0
-
 [1.0.0]: https://github.com/christopherosthues/starwars-progress-bar/commits/v1.0.0

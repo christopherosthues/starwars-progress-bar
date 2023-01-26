@@ -619,6 +619,13 @@
       "id": "galactic_empire",
       "vehicles": [
         {
+          "id": "arquitens_class_command_cruiser",
+          "ionEngine": "blue",
+          "xShift": 0,
+          "yShift": -6,
+          "velocity": 3.5
+        },
+        {
           "id": "at_at",
           "ionEngine": "brown",
           "xShift": -5,
