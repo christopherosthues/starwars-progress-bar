@@ -5,13 +5,14 @@
 ## [Unreleased]
 
 ### Added
-- Arquitens
+- Arquitens-class command cruiser to Galactic Empire
 
 ### Changed
 
 ### Removed
 
 ### Fixed
+- Sort vehicles alphabetically by their name in settings without case sensitivity
 
 ## [1.8.0] - 2023-01-25
 

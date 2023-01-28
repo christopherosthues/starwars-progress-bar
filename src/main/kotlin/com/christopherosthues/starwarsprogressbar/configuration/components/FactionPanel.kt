@@ -46,7 +46,7 @@ internal class FactionPanel(private val faction: StarWarsFaction) :
         if (vehiclesAvailable) {
             addFactionCheckBox()
 
-            val localizedNameComparator = compareBy<StarWarsVehicle> { StarWarsBundle.message(it.localizationKey) }
+            val localizedNameComparator = compareBy<StarWarsVehicle> { StarWarsBundle.message(it.localizationKey).lowercase() }
 
             faction.vehicles.stream().sorted(localizedNameComparator).forEach { vehicle ->
                 addVehicleCheckBox(vehicle)
