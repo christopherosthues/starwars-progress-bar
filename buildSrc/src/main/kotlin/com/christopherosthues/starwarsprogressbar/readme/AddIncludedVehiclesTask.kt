@@ -2,7 +2,6 @@ package com.christopherosthues.starwarsprogressbar.readme
 
 import com.christopherosthues.starwarsprogressbar.StarWarsPluginConstants
 import com.christopherosthues.starwarsprogressbar.readme.models.StarWarsFactions
-import com.christopherosthues.starwarsprogressbar.readme.models.StarWarsVehicle
 import com.google.gson.Gson
 import org.gradle.api.DefaultTask
 import org.gradle.api.file.RegularFileProperty
@@ -52,8 +51,8 @@ open class AddIncludedVehiclesTask @Inject constructor(
 
                 it.vehicles.sortedWith(
                     compareBy(
-                        String.CASE_INSENSITIVE_ORDER,
-                        { vehicle -> messages.getProperty(vehicle.localizationKey) })
+                        String.CASE_INSENSITIVE_ORDER
+                    ) { vehicle -> messages.getProperty(vehicle.localizationKey) }
                 )
                     .forEach { vehicle ->
                         vehicle.faction = it

@@ -15,7 +15,7 @@ internal object VehicleSelector {
         }
 
         val vehicles = FactionHolder.defaultVehicles.filter { vehicle ->
-            currentEnabledVehicles.getOrDefault(vehicle.id, defaultEnabled)
+            currentEnabledVehicles.getOrDefault(vehicle.vehicleId, defaultEnabled)
         }
 
         var vehicle = FactionHolder.missingVehicle

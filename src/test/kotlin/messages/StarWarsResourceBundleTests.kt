@@ -154,7 +154,7 @@ class StarWarsResourceBundleTests {
                 {
                     assertNotNull(
                         bundle[vehicle.localizationKey],
-                        "Vehicle ${vehicle.id} with localization key ${vehicle.localizationKey} has no translation"
+                        "Vehicle ${vehicle.vehicleId} with localization key ${vehicle.localizationKey} has no translation"
                     )
                 }
             }

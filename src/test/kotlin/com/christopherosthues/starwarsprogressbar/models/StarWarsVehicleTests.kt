@@ -100,7 +100,36 @@ class StarWarsVehicleTests {
     }
 
     @Test
-    fun `localizationKey should return correct localization key for vehicle`() {
+    fun `vehicleId should return correct id for vehicle if faction id is set`() {
+        // Arrange
+        val factionId = "faction"
+        val id = "123456789"
+        val sut = StarWarsVehicle(id, "a", 1, 2, 3f)
+        sut.factionId = factionId
+
+        // Act
+        val result = sut.vehicleId
+
+        // Assert
+        val expectedVehicleId = "$factionId.$id"
+        assertEquals(expectedVehicleId, result)
+    }
+
+    @Test
+    fun `vehicleId should return correct id for vehicle if faction id is not set`() {
+        // Arrange
+        val id = "123456789"
+        val sut = StarWarsVehicle(id, "a", 1, 2, 3f)
+
+        // Act
+        val result = sut.vehicleId
+
+        // Assert
+        assertEquals(id, result)
+    }
+
+    @Test
+    fun `localizationKey should return correct localization key for vehicle if faction is empty`() {
         // Arrange
         val id = "123456789"
         val sut = StarWarsVehicle(id, "a", 1, 2, 3f)
@@ -110,6 +139,22 @@ class StarWarsVehicleTests {
 
         // Assert
         val expectedLocalizationKey = "${BundleConstants.VEHICLES}$id"
+        assertEquals(expectedLocalizationKey, result)
+    }
+
+    @Test
+    fun `localizationKey should return correct localization key for vehicle if faction is not empty`() {
+        // Arrange
+        val id = "123456789"
+        val faction = "faction"
+        val sut = StarWarsVehicle(id, "a", 1, 2, 3f)
+        sut.factionId = faction
+
+        // Act
+        val result = sut.localizationKey
+
+        // Assert
+        val expectedLocalizationKey = "${BundleConstants.VEHICLES}$faction.$id"
         assertEquals(expectedLocalizationKey, result)
     }
 
@@ -155,6 +200,7 @@ class StarWarsVehicleTests {
         // Assert
         assertAll(
             { assertEquals("missing", result.id) },
+            { assertEquals("missing", result.vehicleId) },
             { assertEquals("green", result.ionEngine) },
             { assertEquals(-4, result.xShift) },
             { assertEquals(-6, result.yShift) },

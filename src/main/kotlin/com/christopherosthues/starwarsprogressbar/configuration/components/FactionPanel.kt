@@ -130,7 +130,7 @@ internal class FactionPanel(private val faction: StarWarsFaction) :
             iconComponent,
             checkBox
         )
-        vehiclesCheckboxes[vehicle.id] = checkBox
+        vehiclesCheckboxes[vehicle.vehicleId] = checkBox
         selectedVehiclesCount.incrementAndGet()
     }
 

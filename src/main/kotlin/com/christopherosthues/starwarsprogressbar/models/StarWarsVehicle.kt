@@ -13,11 +13,14 @@ internal data class StarWarsVehicle(
 ) {
     var factionId: String = ""
 
+    val vehicleId: String
+        get() = if (factionId.isEmpty()) id else "$factionId.$id"
+
     val fileName: String
         get() = if (factionId.isEmpty()) id else "$factionId/$id"
 
     val localizationKey: String
-        get() = "${BundleConstants.VEHICLES}$id"
+        get() = "${BundleConstants.VEHICLES}$vehicleId"
 
     val color: JBColor
         get() = IonEngineColor.colors[ionEngine] ?: IonEngineColor.BlueEngine

@@ -135,7 +135,7 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 
 ### Confederacy of independent systems
 
-* ![Armored Assault Tank Mk I](icons/confederacy_of_independent_systems/armored_assault_tank_cis@2x.png) Armored Assault Tank Mk I ![Armored Assault Tank Mk I](icons/confederacy_of_independent_systems/armored_assault_tank_cis_r@2x.png)
+* ![Armored Assault Tank Mk I](icons/confederacy_of_independent_systems/armored_assault_tank@2x.png) Armored Assault Tank Mk I ![Armored Assault Tank Mk I](icons/confederacy_of_independent_systems/armored_assault_tank_r@2x.png)
 * ![Bloodfin](icons/confederacy_of_independent_systems/bloodfin@2x.png) Bloodfin ![Bloodfin](icons/confederacy_of_independent_systems/bloodfin_r@2x.png)
 * ![Core ship](icons/confederacy_of_independent_systems/core_ship@2x.png) Core ship ![Core ship](icons/confederacy_of_independent_systems/core_ship_r@2x.png)
 * ![Count Dooku's Flitknot Speeder Bike](icons/confederacy_of_independent_systems/count_dookus_flitknot_speeder@2x.png) Count Dooku's Flitknot Speeder Bike ![Count Dooku's Flitknot Speeder Bike](icons/confederacy_of_independent_systems/count_dookus_flitknot_speeder_r@2x.png)
@@ -153,22 +153,22 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 * ![Malevolence](icons/confederacy_of_independent_systems/malevolence@2x.png) Malevolence ![Malevolence](icons/confederacy_of_independent_systems/malevolence_r@2x.png)
 * ![Mankvim-814 Interceptor](icons/confederacy_of_independent_systems/mankvim_814_interceptor@2x.png) Mankvim-814 Interceptor ![Mankvim-814 Interceptor](icons/confederacy_of_independent_systems/mankvim_814_interceptor_r@2x.png)
 * ![Maxillipede-class Shuttle](icons/confederacy_of_independent_systems/maxillipede_shuttle@2x.png) Maxillipede-class Shuttle ![Maxillipede-class Shuttle](icons/confederacy_of_independent_systems/maxillipede_shuttle_r@2x.png)
-* ![Multi-Troop Transport](icons/confederacy_of_independent_systems/multi_troop_transport_cis@2x.png) Multi-Troop Transport ![Multi-Troop Transport](icons/confederacy_of_independent_systems/multi_troop_transport_cis_r@2x.png)
+* ![Multi-Troop Transport](icons/confederacy_of_independent_systems/multi_troop_transport@2x.png) Multi-Troop Transport ![Multi-Troop Transport](icons/confederacy_of_independent_systems/multi_troop_transport_r@2x.png)
 * ![Munificent-class Star Frigate](icons/confederacy_of_independent_systems/munificent_class_star_frigate@2x.png) Munificent-class Star Frigate ![Munificent-class Star Frigate](icons/confederacy_of_independent_systems/munificent_class_star_frigate_r@2x.png)
 * ![Nantex-class Starfighter](icons/confederacy_of_independent_systems/nantex_class_starfighter@2x.png) Nantex-class Starfighter ![Nantex-class Starfighter](icons/confederacy_of_independent_systems/nantex_class_starfighter_r@2x.png)
 * ![NR-N99 Persuader-class droid enforcer](icons/confederacy_of_independent_systems/nr_n99_persuader_class_droid_enforcer@2x.png) NR-N99 Persuader-class droid enforcer ![NR-N99 Persuader-class droid enforcer](icons/confederacy_of_independent_systems/nr_n99_persuader_class_droid_enforcer_r@2x.png)
 * ![Octuptarra tri-droid](icons/confederacy_of_independent_systems/octuptarra_tri_droid@2x.png) Octuptarra tri-droid ![Octuptarra tri-droid](icons/confederacy_of_independent_systems/octuptarra_tri_droid_r@2x.png)
 * ![OG-9 homing spider droid](icons/confederacy_of_independent_systems/og_9_homing_spider_droid@2x.png) OG-9 homing spider droid ![OG-9 homing spider droid](icons/confederacy_of_independent_systems/og_9_homing_spider_droid_r@2x.png)
-* ![Platoon Attack Craft](icons/confederacy_of_independent_systems/platoon_attack_craft_cis@2x.png) Platoon Attack Craft ![Platoon Attack Craft](icons/confederacy_of_independent_systems/platoon_attack_craft_cis_r@2x.png)
+* ![Platoon Attack Craft](icons/confederacy_of_independent_systems/platoon_attack_craft@2x.png) Platoon Attack Craft ![Platoon Attack Craft](icons/confederacy_of_independent_systems/platoon_attack_craft_r@2x.png)
 * ![Porax-38 Starfighter](icons/confederacy_of_independent_systems/porax_38_starfighter@2x.png) Porax-38 Starfighter ![Porax-38 Starfighter](icons/confederacy_of_independent_systems/porax_38_starfighter_r@2x.png)
 * ![Punworcca 116-class interstellar sloop](icons/confederacy_of_independent_systems/punworcca_116_class_interstellar_sloop@2x.png) Punworcca 116-class interstellar sloop ![Punworcca 116-class interstellar sloop](icons/confederacy_of_independent_systems/punworcca_116_class_interstellar_sloop_r@2x.png)
 * ![Recusant-class Destroyer](icons/confederacy_of_independent_systems/recusant_class_destroyer@2x.png) Recusant-class Destroyer ![Recusant-class Destroyer](icons/confederacy_of_independent_systems/recusant_class_destroyer_r@2x.png)
 * ![Scimitar](icons/confederacy_of_independent_systems/scimitar@2x.png) Scimitar ![Scimitar](icons/confederacy_of_independent_systems/scimitar_r@2x.png)
-* ![Sheathipede-class tranport shuttle](icons/confederacy_of_independent_systems/sheathipede_class_shuttle_cis@2x.png) Sheathipede-class tranport shuttle ![Sheathipede-class tranport shuttle](icons/confederacy_of_independent_systems/sheathipede_class_shuttle_cis_r@2x.png)
+* ![Sheathipede-class tranport shuttle](icons/confederacy_of_independent_systems/sheathipede_class_shuttle@2x.png) Sheathipede-class tranport shuttle ![Sheathipede-class tranport shuttle](icons/confederacy_of_independent_systems/sheathipede_class_shuttle_r@2x.png)
 * ![Sheathipede-class Type B shuttle](icons/confederacy_of_independent_systems/sheathipede_class_type_b_shuttle@2x.png) Sheathipede-class Type B shuttle ![Sheathipede-class Type B shuttle](icons/confederacy_of_independent_systems/sheathipede_class_type_b_shuttle_r@2x.png)
 * ![Soulless One](icons/confederacy_of_independent_systems/soulless_one@2x.png) Soulless One ![Soulless One](icons/confederacy_of_independent_systems/soulless_one_r@2x.png)
-* ![STAP](icons/confederacy_of_independent_systems/stap_cis@2x.png) STAP ![STAP](icons/confederacy_of_independent_systems/stap_cis_r@2x.png)
-* ![Vulture Droid](icons/confederacy_of_independent_systems/vulture_droid_cis@2x.png) Vulture Droid ![Vulture Droid](icons/confederacy_of_independent_systems/vulture_droid_cis_r@2x.png)
+* ![STAP](icons/confederacy_of_independent_systems/stap@2x.png) STAP ![STAP](icons/confederacy_of_independent_systems/stap_r@2x.png)
+* ![Vulture Droid](icons/confederacy_of_independent_systems/vulture_droid@2x.png) Vulture Droid ![Vulture Droid](icons/confederacy_of_independent_systems/vulture_droid_r@2x.png)
 
 ### Galactic Empire
 

@@ -15,5 +15,5 @@ internal data class StarWarsVehicle(
         get() = "${faction!!.id}/$id"
 
     val localizationKey: String
-        get() = "${StarWarsPluginConstants.VEHICLES}$id"
+        get() = "${StarWarsPluginConstants.VEHICLES}${faction!!.id}.$id"
 }
