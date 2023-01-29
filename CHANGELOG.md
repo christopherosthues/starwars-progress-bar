@@ -6,6 +6,7 @@
 
 ### Added
 - Arquitens-class command cruiser to Galactic Empire
+- Arquitens-class light cruiser to Galactic Republic
 
 ### Changed
 

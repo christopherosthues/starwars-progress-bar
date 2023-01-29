@@ -217,6 +217,13 @@
           "velocity": 2.5
         },
         {
+          "id": "arquitens_class_light_cruiser",
+          "ionEngine": "blue",
+          "xShift": 0,
+          "yShift": -6,
+          "velocity": 3.5
+        },
+        {
           "id": "at_ap",
           "ionEngine": "brown",
           "xShift": -7,

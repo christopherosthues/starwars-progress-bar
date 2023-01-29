@@ -109,6 +109,7 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 * ![Acclamator-class Assault Ship](icons/galactic_republic/acclamator_class_assault_ship@2x.png) Acclamator-class Assault Ship ![Acclamator-class Assault Ship](icons/galactic_republic/acclamator_class_assault_ship_r@2x.png)
 * ![Acclamator-II-class Assault Ship](icons/galactic_republic/acclamator_ii_class_assault_ship@2x.png) Acclamator-II-class Assault Ship ![Acclamator-II-class Assault Ship](icons/galactic_republic/acclamator_ii_class_assault_ship_r@2x.png)
 * ![ARC-170 Starfighter](icons/galactic_republic/arc_170_starfighter@2x.png) ARC-170 Starfighter ![ARC-170 Starfighter](icons/galactic_republic/arc_170_starfighter_r@2x.png)
+* ![Arquitens-class light cruiser](icons/galactic_republic/arquitens_class_light_cruiser@2x.png) Arquitens-class light cruiser ![Arquitens-class light cruiser](icons/galactic_republic/arquitens_class_light_cruiser_r@2x.png)
 * ![AT-AP](icons/galactic_republic/at_ap@2x.png) AT-AP ![AT-AP](icons/galactic_republic/at_ap_r@2x.png)
 * ![Berenko-class gondola speeder](icons/galactic_republic/berenko_class_gondola_speeder@2x.png) Berenko-class gondola speeder ![Berenko-class gondola speeder](icons/galactic_republic/berenko_class_gondola_speeder_r@2x.png)
 * ![BTL-B Y-Wing](icons/galactic_republic/btl_b_y_wing@2x.png) BTL-B Y-Wing ![BTL-B Y-Wing](icons/galactic_republic/btl_b_y_wing_r@2x.png)
