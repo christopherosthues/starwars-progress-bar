@@ -6,7 +6,7 @@
 
 ### Added
 - Arquitens-class command cruiser to Galactic Empire
-- Arquitens-class light cruiser to Galactic Republic
+- Arquitens-class light cruiser and IPV-2C Stealth Corvette to Galactic Republic
 
 ### Changed
 

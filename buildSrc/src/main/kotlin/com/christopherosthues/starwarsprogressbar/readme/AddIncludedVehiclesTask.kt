@@ -49,13 +49,15 @@ open class AddIncludedVehiclesTask @Inject constructor(
             .forEach {
                 readme.addNewFaction(messages.getProperty(it.localizationKey))
 
+                it.vehicles.forEach { vehicle ->
+                    vehicle.faction = it
+                }
                 it.vehicles.sortedWith(
                     compareBy(
                         String.CASE_INSENSITIVE_ORDER
                     ) { vehicle -> messages.getProperty(vehicle.localizationKey) }
                 )
                     .forEach { vehicle ->
-                        vehicle.faction = it
                         val imagePath = "${StarWarsPluginConstants.IMAGE_RESOURCE_PATH}${vehicle.fileName}"
                         readme.addVehicle(
                             messages.getProperty(vehicle.localizationKey),

@@ -287,6 +287,13 @@
           "velocity": 2.5
         },
         {
+          "id": "ipv_2c_stealth_corvette",
+          "ionEngine": "orange",
+          "xShift": -2,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
           "id": "j_type_diplomatic_barge",
           "ionEngine": "blue",
           "xShift": -14,
