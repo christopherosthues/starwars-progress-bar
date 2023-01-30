@@ -54,7 +54,7 @@ dependencies {
     testImplementation("org.junit.platform:junit-platform-launcher:1.9.2")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.2")
     testImplementation("org.junit.platform:junit-platform-suite-engine:1.9.2")
-    testImplementation("io.mockk:mockk:1.13.3")
+    testImplementation("io.mockk:mockk:1.13.4")
 }
 
 tasks.test {
