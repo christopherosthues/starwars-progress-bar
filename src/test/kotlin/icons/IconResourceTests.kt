@@ -167,6 +167,7 @@ class IconResourceTests {
 
     private val iconWhitelist = listOf(
         "galactic_republic${File.separatorChar}at_te@2x.png",
+        "galactic_republic${File.separatorChar}haven_class_medical_station@2x.png",
         "new_republic${File.separatorChar}starhawk_class_battleship_r@2x.png",
         "scoundrels${File.separatorChar}lady_luck@2x.png",
         "scoundrels${File.separatorChar}outrider@2x.png",
