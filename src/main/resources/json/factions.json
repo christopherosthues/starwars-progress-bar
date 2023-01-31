@@ -259,6 +259,13 @@
           "velocity": 2
         },
         {
+          "id": "haven_class_medical_station",
+          "ionEngine": "blue",
+          "xShift": -15,
+          "yShift": -6,
+          "velocity": 2
+        },
+        {
           "id": "havw_a6_juggernaut",
           "ionEngine": "brown",
           "xShift": -1,
