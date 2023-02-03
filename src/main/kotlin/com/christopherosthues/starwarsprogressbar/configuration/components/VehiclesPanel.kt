@@ -12,7 +12,6 @@ import java.awt.GridBagConstraints
 import java.awt.GridBagLayout
 import javax.swing.BoxLayout
 import javax.swing.JPanel
-import javax.swing.border.EmptyBorder
 
 private const val FACTION_PADDING = 5
 private const val SELECTION_PANEL_BOTTOM_PADDING = 10
@@ -56,7 +55,7 @@ internal class VehiclesPanel : JTitledPanel(StarWarsBundle.message(BundleConstan
 
     private fun createSelectionPanel() {
         val selectionPanel = JPanel(BorderLayout())
-        selectionPanel.border = EmptyBorder(0, 0, SELECTION_PANEL_BOTTOM_PADDING, 0)
+        selectionPanel.border = JBUI.Borders.emptyBottom(SELECTION_PANEL_BOTTOM_PADDING)
 
         selectedVehiclesCheckBox.isThirdStateEnabled = false
         selectedVehiclesCheckBox.addItemListener {
@@ -104,8 +103,7 @@ internal class VehiclesPanel : JTitledPanel(StarWarsBundle.message(BundleConstan
         gridBagConstraints.gridx = if (isFactionCountEven) 0 else 1
         gridBagConstraints.gridy = factionRowCount
         gridBagConstraints.weightx = 1.0
-        gridBagConstraints.weighty = 0.0
-        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL
+        gridBagConstraints.fill = GridBagConstraints.BOTH
         gridBagConstraints.anchor = GridBagConstraints.NORTHWEST
         gridBagConstraints.insets = JBUI.insets(0, leftPadding, FACTION_PADDING, rightPadding)
 

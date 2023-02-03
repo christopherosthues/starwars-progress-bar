@@ -1016,6 +1016,18 @@
       ]
     },
     {
+      "id": "new_republic",
+      "vehicles": [
+        {
+          "id": "starhawk_class_battleship",
+          "ionEngine": "blue",
+          "xShift": -21,
+          "yShift": -6,
+          "velocity": 3
+        }
+      ]
+    },
+    {
       "id": "bounty_hunters",
       "vehicles": [
         {

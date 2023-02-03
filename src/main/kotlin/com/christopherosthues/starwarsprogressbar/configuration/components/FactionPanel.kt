@@ -26,8 +26,7 @@ import javax.swing.JPanel
 private const val TOP_PADDING = 10
 private const val LEFT_PADDING = 5
 
-internal class FactionPanel(private val faction: StarWarsFaction) :
-    JPanel(GridBagLayout()) {
+internal class FactionPanel(private val faction: StarWarsFaction) : JPanel(GridBagLayout()) {
     private val selectVehiclesCheckbox = ThreeStateCheckBox(ThreeStateCheckBox.State.SELECTED)
     private val vehiclesCheckboxes: MutableMap<String, JCheckBox> = HashMap()
     private var vehicleRowCount: Int = 0
@@ -53,6 +52,8 @@ internal class FactionPanel(private val faction: StarWarsFaction) :
             }
 
             updateSelectionButtons()
+
+            addEmptyBottomElement()
         }
     }
 
@@ -196,5 +197,18 @@ internal class FactionPanel(private val faction: StarWarsFaction) :
 
             add(component, gridBagConstraints)
         }
+    }
+
+    private fun addEmptyBottomElement() {
+        val element = JPanel()
+        val gridBagConstraints = GridBagConstraints()
+        gridBagConstraints.gridwidth = 2
+        gridBagConstraints.gridx = 0
+        gridBagConstraints.gridy = vehicleRowCount
+        gridBagConstraints.weightx = 1.0
+        gridBagConstraints.weighty = 1.0
+        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL
+        gridBagConstraints.anchor = GridBagConstraints.SOUTHWEST
+        add(element, gridBagConstraints)
     }
 }

@@ -233,6 +233,10 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 * ![TIE Dagger](icons/first_order/tie_dagger@2x.png) TIE Dagger ![TIE Dagger](icons/first_order/tie_dagger_r@2x.png)
 * ![TIE Silencer](icons/first_order/tie_silencer@2x.png) TIE Silencer ![TIE Silencer](icons/first_order/tie_silencer_r@2x.png)
 
+### New Republic
+
+* ![Starhawk-class battleship](icons/new_republic/starhawk_class_battleship@2x.png) Starhawk-class battleship ![Starhawk-class battleship](icons/new_republic/starhawk_class_battleship_r@2x.png)
+
 ### Bounty Hunters
 
 * ![Boba Fett's Slave One](icons/bounty_hunters/boba_fetts_slave_one@2x.png) Boba Fett's Slave One ![Boba Fett's Slave One](icons/bounty_hunters/boba_fetts_slave_one_r@2x.png)
