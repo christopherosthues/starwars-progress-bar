@@ -668,6 +668,13 @@
           "velocity": 1.5
         },
         {
+          "id": "cantwell_class_arrestor_cruiser",
+          "ionEngine": "blue",
+          "xShift": 0,
+          "yShift": -6,
+          "velocity": 3
+        },
+        {
           "id": "eclipse",
           "ionEngine": "red",
           "xShift": -2,

@@ -5,7 +5,7 @@
 ## [Unreleased]
 
 ### Added
-- Arquitens-class command cruiser to Galactic Empire
+- Arquitens-class command cruiser and Cantwell-class Arrestor Cruiser to Galactic Empire
 - Arquitens-class light cruiser, Haven-class medical station and IPV-2C Stealth Corvette to Galactic Republic
 - New faction New Republic
 - Starhawk-class Battleship to New Republic
