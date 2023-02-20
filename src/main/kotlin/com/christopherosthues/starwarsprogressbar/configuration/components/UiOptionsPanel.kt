@@ -6,21 +6,18 @@ import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_CHANGE_VEHICLE_AFTER_PASS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_DRAW_SILHOUETTES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENABLE_NEW_VEHICLES
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SAME_VEHICLE_VELOCITY
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_FACTION_CRESTS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_TOOLTIPS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE_NAMES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRESS_BAR_COLOR
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE
 import com.intellij.ui.JBIntSpinner
 import com.intellij.ui.components.JBCheckBox
-import com.intellij.ui.components.JBPanel
 import java.awt.FlowLayout
 import java.awt.GridLayout
-import java.awt.Insets
 import javax.swing.JPanel
-import javax.swing.event.ChangeEvent
 
 private const val GAP = 5
 

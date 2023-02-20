@@ -20,6 +20,6 @@ kotlin {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.10")
     implementation("com.google.code.gson:gson:2.10.1")
 }
