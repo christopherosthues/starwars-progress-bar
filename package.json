@@ -3,6 +3,7 @@
     "*.kt": "java --add-opens java.base/java.lang=ALL-UNNAMED -jar ktlint.jar -F --relative"
   },
   "devDependencies": {
-    "husky": "^8.0.2"
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.0"
   }
 }
