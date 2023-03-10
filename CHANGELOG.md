@@ -9,6 +9,7 @@
 - Arquitens-class light cruiser, Haven-class medical station and IPV-2C Stealth Corvette to Galactic Republic
 - New faction New Republic
 - Starhawk-class Battleship to New Republic
+- Singer Mantis to Jedi
 
 ### Changed
 

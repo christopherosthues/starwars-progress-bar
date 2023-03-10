@@ -102,6 +102,7 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 * ![Obi-Wan Kenobi's Eta-2 Actis Interceptor](icons/jedi/obi_wan_kenobis_eta_2_actis_interceptor@2x.png) Obi-Wan Kenobi's Eta-2 Actis Interceptor ![Obi-Wan Kenobi's Eta-2 Actis Interceptor](icons/jedi/obi_wan_kenobis_eta_2_actis_interceptor_r@2x.png)
 * ![Praxis Mk I turbo speeder](icons/jedi/praxis_mk_i_turbo_speeder@2x.png) Praxis Mk I turbo speeder ![Praxis Mk I turbo speeder](icons/jedi/praxis_mk_i_turbo_speeder_r@2x.png)
 * ![Saesee Tiin's Delta-7b-Aethersprite Starfighter](icons/jedi/saesee_tiins_delta_7b_jedi_starfighter@2x.png) Saesee Tiin's Delta-7b-Aethersprite Starfighter ![Saesee Tiin's Delta-7b-Aethersprite Starfighter](icons/jedi/saesee_tiins_delta_7b_jedi_starfighter_r@2x.png)
+* ![Stinger Mantis](icons/jedi/stinger_mantis@2x.png) Stinger Mantis ![Stinger Mantis](icons/jedi/stinger_mantis_r@2x.png)
 
 ### Galactic Republic
 

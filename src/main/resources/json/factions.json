@@ -182,6 +182,13 @@
           "xShift": -6,
           "yShift": -6,
           "velocity": 2.5
+        },
+        {
+          "id": "stinger_mantis",
+          "ionEngine": "blue",
+          "xShift": -11,
+          "yShift": -6,
+          "velocity": 3.5
         }
       ]
     },
