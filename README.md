@@ -239,6 +239,10 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 
 * ![Starhawk-class battleship](icons/new_republic/starhawk_class_battleship@2x.png) Starhawk-class battleship ![Starhawk-class battleship](icons/new_republic/starhawk_class_battleship_r@2x.png)
 
+### Mandalorians
+
+* ![Din Djarin's N-1 Starfighter](icons/mandalorians/mandos_n_1_starfighter@2x.png) Starhawk-class battleship ![Din Djarin's N-1 Starfighter](icons/mandalorians/mandos_n_1_starfighter_r@2x.png)
+
 ### Bounty Hunters
 
 * ![Boba Fett's Slave One](icons/bounty_hunters/boba_fetts_slave_one@2x.png) Boba Fett's Slave One ![Boba Fett's Slave One](icons/bounty_hunters/boba_fetts_slave_one_r@2x.png)

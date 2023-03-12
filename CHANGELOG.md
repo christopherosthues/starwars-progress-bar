@@ -10,6 +10,7 @@
 - New faction New Republic
 - Starhawk-class Battleship to New Republic
 - Singer Mantis to Jedi
+- Din Djarin's N-1 starfighter to Mandalorians
 
 ### Changed
 

@@ -1042,6 +1042,18 @@
       ]
     },
     {
+      "id": "mandalorians",
+      "vehicles": [
+        {
+          "id": "mandos_n_1_starfighter",
+          "ionEngine": "blue",
+          "xShift": -21,
+          "yShift": -6,
+          "velocity": 4.75
+        }
+      ]
+    },
+    {
       "id": "bounty_hunters",
       "vehicles": [
         {
