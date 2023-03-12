@@ -241,7 +241,7 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 
 ### Mandalorians
 
-* ![Din Djarin's N-1 Starfighter](icons/mandalorians/mandos_n_1_starfighter@2x.png) Starhawk-class battleship ![Din Djarin's N-1 Starfighter](icons/mandalorians/mandos_n_1_starfighter_r@2x.png)
+* ![Din Djarin's N-1 Starfighter](icons/mandalorians/mandos_n_1_starfighter@2x.png) Din Djarin's N-1 Starfighter ![Din Djarin's N-1 Starfighter](icons/mandalorians/mandos_n_1_starfighter_r@2x.png)
 
 ### Bounty Hunters
 
