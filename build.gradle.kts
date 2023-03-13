@@ -182,7 +182,7 @@ tasks {
     }
 
     publishPlugin {
-        dependsOn("includeVehicles")
+//        dependsOn("includeVehicles")
         token.set(environment("PUBLISH_TOKEN"))
         // The pluginVersion is based on the SemVer (https://semver.org) and supports pre-release labels, like 2.1.7-alpha.3
         // Specify pre-release label to publish the plugin in a custom Release Channel automatically. Read more:
