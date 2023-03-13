@@ -12,10 +12,6 @@
 - Stinger Mantis to Jedi
 - Din Djarin's N-1 starfighter to Mandalorians
 
-### Changed
-
-### Removed
-
 ### Fixed
 - Sort vehicles alphabetically by their name in settings without case sensitivity
 
