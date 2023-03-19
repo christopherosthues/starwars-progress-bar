@@ -41,21 +41,21 @@ class IconResourceTests {
                     {
                         assertTrue(
                             File("${iconBasePath}_r.png").exists(),
-                            "Icon ${iconBasePath}_r.png does not exist."
+                            "Icon ${iconBasePath}_r.png does not exist.",
                         )
                     },
                     {
                         assertTrue(
                             File("$icon2xBasePath@2x.png").exists(),
-                            "Icon $icon2xBasePath@2x.png does not exist."
+                            "Icon $icon2xBasePath@2x.png does not exist.",
                         )
                     },
                     {
                         assertTrue(
                             File("${icon2xBasePath}_r@2x.png").exists(),
-                            "Icon ${icon2xBasePath}_r@2x.png does not exist."
+                            "Icon ${icon2xBasePath}_r@2x.png does not exist.",
                         )
-                    }
+                    },
                 )
             }.stream().flatMap { e -> e.stream() }.collect(toList())
         }.stream().flatMap { it.stream() }.collect(toList())
@@ -76,7 +76,7 @@ class IconResourceTests {
                     "${File.separatorChar}icons${File.separatorChar}${it.id}${File.separatorChar}logo"
             listOf(
                 { assertTrue(File("$iconBasePath.png").exists(), "Icon $iconBasePath.png does not exist.") },
-                { assertTrue(File("$iconBasePath@2x.png").exists(), "Icon $iconBasePath@2x.png does not exist.") }
+                { assertTrue(File("$iconBasePath@2x.png").exists(), "Icon $iconBasePath@2x.png does not exist.") },
             )
         }.stream().flatMap { it.stream() }.collect(toList())
 
@@ -119,7 +119,7 @@ class IconResourceTests {
         }
         assertTrue(
             imagesNotReferences.isEmpty(),
-            getFormattedImagesNotReferencedErrorMessage(imagesNotReferences)
+            getFormattedImagesNotReferencedErrorMessage(imagesNotReferences),
         )
     }
 
@@ -157,7 +157,7 @@ class IconResourceTests {
         }
         assertTrue(
             imagesNotReferences.isEmpty(),
-            getFormattedImagesNotReferencedErrorMessage(imagesNotReferences)
+            getFormattedImagesNotReferencedErrorMessage(imagesNotReferences),
         )
     }
 
@@ -167,9 +167,10 @@ class IconResourceTests {
 
     private val iconWhitelist = listOf(
         "galactic_republic${File.separatorChar}at_te@2x.png",
+        "rebel_alliance${File.separatorChar}sphyrna_class_hammerhead_corvette@2x.png",
         "scoundrels${File.separatorChar}lady_luck@2x.png",
         "scoundrels${File.separatorChar}outrider@2x.png",
-        "scoundrels${File.separatorChar}outrider_r@2x.png"
+        "scoundrels${File.separatorChar}outrider_r@2x.png",
     )
 
     private fun getFormattedImagesNotReferencedErrorMessage(imagesNotReferenced: List<String>): String {

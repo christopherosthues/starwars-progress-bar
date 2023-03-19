@@ -5,16 +5,23 @@
 ## [Unreleased]
 
 ### Added
+- AT-DP to Galactic Empire
+
+### Changed
+
+### Removed
+
+### Fixed
+
+## [1.9.0] - 2023-03-13
+
+### Added
 - Arquitens-class command cruiser and Cantwell-class Arrestor Cruiser to Galactic Empire
 - Arquitens-class light cruiser, Haven-class medical station and IPV-2C Stealth Corvette to Galactic Republic
 - New faction New Republic
 - Starhawk-class Battleship to New Republic
 - Stinger Mantis to Jedi
 - Din Djarin's N-1 starfighter to Mandalorians
-
-### Changed
-
-### Removed
 
 ### Fixed
 - Sort vehicles alphabetically by their name in settings without case sensitivity
@@ -143,13 +150,24 @@
 - Initial release
 - Progress bar with vehicles from Star Wars
 
-[Unreleased]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.8.0...HEAD
+[Unreleased]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.9.0...HEAD
+
+[1.9.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.8.0...v1.9.0
+
 [1.8.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.7.0...v1.8.0
+
 [1.7.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.6.0...v1.7.0
+
 [1.6.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.5.0...v1.6.0
+
 [1.5.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.4.0...v1.5.0
+
 [1.4.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.3.0...v1.4.0
+
 [1.3.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.2.0...v1.3.0
+
 [1.2.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.1.0...v1.2.0
+
 [1.1.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.0.0...v1.1.0
+
 [1.0.0]: https://github.com/christopherosthues/starwars-progress-bar/commits/v1.0.0
