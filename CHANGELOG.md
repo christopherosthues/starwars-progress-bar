@@ -8,7 +8,7 @@
 - AT-DP to Galactic Empire
 
 ### Changed
-- Updated Quasar Fire-class cruiser carrier and Phoenix Nest
+- Updated Interdictor-class Star Destroyer, Phoenix Nest and Quasar Fire-class cruiser carrier 
 
 ### Removed
 
