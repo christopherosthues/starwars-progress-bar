@@ -8,7 +8,7 @@
 - AT-DP to Galactic Empire
 
 ### Changed
-- Updated Interdictor-class Star Destroyer, Phoenix Nest and Quasar Fire-class cruiser carrier 
+- Updated Interdictor-class Star Destroyer, Mining Guild TIE Fighter, Phoenix Nest and Quasar Fire-class cruiser carrier 
 
 ### Removed
 

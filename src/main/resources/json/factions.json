@@ -733,7 +733,7 @@
         {
           "id": "mining_guild_tie_fighter",
           "ionEngine": "red",
-          "xShift": -11,
+          "xShift": -14,
           "yShift": -6,
           "velocity": 4.5
         },
