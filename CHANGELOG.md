@@ -8,6 +8,7 @@
 - AT-DP to Galactic Empire
 
 ### Changed
+- Updated Quasar Fire-class cruiser carrier
 
 ### Removed
 
