@@ -19,7 +19,7 @@
 ### Added
 - Arquitens-class command cruiser and Cantwell-class Arrestor Cruiser to Galactic Empire
 - Arquitens-class light cruiser, Haven-class medical station and IPV-2C Stealth Corvette to Galactic Republic
-- New faction New Republic
+- New factions: Mandalorians and New Republic
 - Starhawk-class Battleship to New Republic
 - Stinger Mantis to Jedi
 - Din Djarin's N-1 starfighter to Mandalorians
