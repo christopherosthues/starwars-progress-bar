@@ -221,11 +221,10 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 * ![Rogue Shadow](icons/rebel_alliance/rogue_shadow@2x.png) Rogue Shadow ![Rogue Shadow](icons/rebel_alliance/rogue_shadow_r@2x.png)
 * ![T-16 Skyhopper](icons/rebel_alliance/t_16_skyhopper@2x.png) T-16 Skyhopper ![T-16 Skyhopper](icons/rebel_alliance/t_16_skyhopper_r@2x.png)
 * ![T-47 Snowspeeder](icons/rebel_alliance/t_47_snowspeeder@2x.png) T-47 Snowspeeder ![T-47 Snowspeeder](icons/rebel_alliance/t_47_snowspeeder_r@2x.png)
-* ![T-65 X-wing starfighter](icons/rebel_alliance/t_65_x_wing_starfighter@2x.png) T-65 X-wing starfighter ![T-65 X-wing starfighter](icons/rebel_alliance/t_65_x_wing_starfighter_r@2x.png)
+* ![T-65 X-wing starfighter](icons/rebel_alliance/t_65_x_wing_starfighter@2x.png) T-65 X-Wing starfighter ![T-65 X-wing starfighter](icons/rebel_alliance/t_65_x_wing_starfighter_r@2x.png)
 * ![Tantive IV](icons/rebel_alliance/tantive_iv@2x.png) Tantive IV ![Tantive IV](icons/rebel_alliance/tantive_iv_r@2x.png)
 * ![Taylander Shuttle](icons/rebel_alliance/taylander_shuttle@2x.png) Taylander Shuttle ![Taylander Shuttle](icons/rebel_alliance/taylander_shuttle_r@2x.png)
 * ![U-Wing](icons/rebel_alliance/u_wing@2x.png) U-Wing ![U-Wing](icons/rebel_alliance/u_wing_r@2x.png)
-* ![X-Wing](icons/rebel_alliance/x_wing@2x.png) X-Wing ![X-Wing](icons/rebel_alliance/x_wing_r@2x.png)
 * ![Y-Wing](icons/rebel_alliance/y_wing@2x.png) Y-Wing ![Y-Wing](icons/rebel_alliance/y_wing_r@2x.png)
 
 ### First Order
