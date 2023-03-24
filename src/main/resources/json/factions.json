@@ -323,7 +323,7 @@
         },
         {
           "id": "laat_i",
-          "ionEngine": "blue",
+          "ionEngine": "red",
           "xShift": 0,
           "yShift": -6,
           "velocity": 2.5
@@ -967,16 +967,16 @@
           "velocity": 2.5
         },
         {
-          "id": "u_wing",
-          "ionEngine": "blue",
+          "id": "t_65_x_wing_starfighter",
+          "ionEngine": "red",
           "xShift": 0,
           "yShift": -6,
           "velocity": 4
         },
         {
-          "id": "x_wing",
-          "ionEngine": "red",
-          "xShift": -4,
+          "id": "u_wing",
+          "ionEngine": "blue",
+          "xShift": 0,
           "yShift": -6,
           "velocity": 4
         },

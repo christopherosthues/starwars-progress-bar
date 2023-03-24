@@ -8,11 +8,12 @@
 - AT-DP to Galactic Empire
 
 ### Changed
-- Updated Interdictor-class Star Destroyer, Mining Guild TIE Fighter, Phoenix Nest and Quasar Fire-class cruiser carrier 
+- Updated Interdictor-class Star Destroyer, Mining Guild TIE Fighter, Phoenix Nest, Quasar Fire-class cruiser carrier and T-65  
 
 ### Removed
 
 ### Fixed
+- Progressbar color of LAAT/i
 
 ## [1.9.0] - 2023-03-13
 

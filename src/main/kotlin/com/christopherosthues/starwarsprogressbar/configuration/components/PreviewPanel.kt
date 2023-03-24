@@ -3,8 +3,8 @@ package com.christopherosthues.starwarsprogressbar.configuration.components
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.selectors.VehicleSelector
 import com.christopherosthues.starwarsprogressbar.ui.StarWarsProgressBarUI
-import com.christopherosthues.starwarsprogressbar.util.VehicleSelector
 import com.intellij.icons.AllIcons
 import com.intellij.openapi.ui.LabeledComponent
 import java.awt.BorderLayout
@@ -28,7 +28,7 @@ internal class PreviewPanel(
     private val drawSilhouettes: () -> Boolean,
     private val changeVehicleAfterPass: () -> Boolean,
     private val numberOfPassesUntilVehicleChange: () -> Int,
-    private val enabledVehicles: () -> Map<String, Boolean>?
+    private val enabledVehicles: () -> Map<String, Boolean>?,
 ) : JTitledPanel(StarWarsBundle.message(BundleConstants.PREVIEW_TITLE)) {
 
     private var determinateProgressBar: JProgressBar
@@ -60,15 +60,15 @@ internal class PreviewPanel(
             LabeledComponent.create(
                 determinateProgressBar,
                 StarWarsBundle.message(BundleConstants.DETERMINATE),
-                BorderLayout.NORTH
-            )
+                BorderLayout.NORTH,
+            ),
         )
         progressBarPanel.add(
             LabeledComponent.create(
                 indeterminateProgressBar,
                 StarWarsBundle.message(BundleConstants.INDETERMINATE),
-                BorderLayout.NORTH
-            )
+                BorderLayout.NORTH,
+            ),
         )
 
         gridBagConstraints = GridBagConstraints()
@@ -96,8 +96,8 @@ internal class PreviewPanel(
                 solidProgressBarColor,
                 drawSilhouettes,
                 changeVehicleAfterPass,
-                numberOfPassesUntilVehicleChange
-            )
+                numberOfPassesUntilVehicleChange,
+            ),
         )
 
         indeterminateProgressBar.setUI(
@@ -112,8 +112,8 @@ internal class PreviewPanel(
                 solidProgressBarColor,
                 drawSilhouettes,
                 changeVehicleAfterPass,
-                numberOfPassesUntilVehicleChange
-            )
+                numberOfPassesUntilVehicleChange,
+            ),
         )
     }
 

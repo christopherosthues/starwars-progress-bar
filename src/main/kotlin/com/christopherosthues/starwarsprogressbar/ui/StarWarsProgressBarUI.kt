@@ -32,9 +32,9 @@ import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE_NAMES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRESS_BAR_COLOR
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.selectors.VehicleSelector.selectRandomVehicle
 import com.christopherosthues.starwarsprogressbar.ui.components.ColoredImageComponent
 import com.christopherosthues.starwarsprogressbar.util.StarWarsResourceLoader
-import com.christopherosthues.starwarsprogressbar.util.VehicleSelector.selectRandomVehicle
 import com.intellij.ui.JBColor
 import com.intellij.ui.scale.JBUIScale
 import com.intellij.util.ui.GraphicsUtil
@@ -71,7 +71,7 @@ internal class StarWarsProgressBarUI(
     private val solidProgressBarColor: () -> Boolean,
     private val drawSilhouettes: () -> Boolean,
     private val changeVehicleAfterPass: () -> Boolean,
-    private val numberOfPassesUntilVehicleChange: () -> Int
+    private val numberOfPassesUntilVehicleChange: () -> Int,
 ) : BasicProgressBarUI() {
 
     private var forwardIcon = ColoredImageComponent(StarWarsResourceLoader.getVehicleImage(vehicle.fileName))
@@ -100,7 +100,7 @@ internal class StarWarsProgressBarUI(
         {
             StarWarsPersistentStateComponent.instance?.state?.numberOfPassesUntilVehicleChange
                 ?: DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE
-        }
+        },
     )
 
     private fun updateVehicle() {
@@ -259,7 +259,7 @@ internal class StarWarsProgressBarUI(
             width - offset,
             height - offset,
             arcLength,
-            arcLength
+            arcLength,
         )
     }
 
@@ -295,7 +295,7 @@ internal class StarWarsProgressBarUI(
         height: Int,
         progress: Int,
         graphics2D: Graphics2D,
-        rectangle2D: RoundRectangle2D
+        rectangle2D: RoundRectangle2D,
     ) {
         val paint = graphics2D.paint
         val clip = graphics2D.clip
@@ -327,7 +327,7 @@ internal class StarWarsProgressBarUI(
                     progress.toFloat(),
                     JBUIScale.scale(2f),
                     floatArrayOf(0f, 1f),
-                    arrayOf(backgroundColor, transparent)
+                    arrayOf(backgroundColor, transparent),
                 )
             } else {
                 transparent
@@ -340,7 +340,7 @@ internal class StarWarsProgressBarUI(
                 width.toFloat(),
                 JBUIScale.scale(2f),
                 floatArrayOf(0f, 1f),
-                arrayOf(transparent, backgroundColor)
+                arrayOf(transparent, backgroundColor),
             )
         } else {
             transparent
@@ -393,7 +393,7 @@ internal class StarWarsProgressBarUI(
         border: Insets,
         barRectWidth: Int,
         barRectHeight: Int,
-        amountFull: Int
+        amountFull: Int,
     ) {
         if (progressBar.isStringPainted) {
             graphics2D.translate(0, -(component.height - height) / 2)

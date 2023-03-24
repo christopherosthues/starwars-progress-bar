@@ -1,7 +1,7 @@
 package com.christopherosthues.starwarsprogressbar.ui
 
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
-import com.christopherosthues.starwarsprogressbar.util.VehicleSelector
+import com.christopherosthues.starwarsprogressbar.selectors.VehicleSelector
 import com.intellij.idea.TestFor
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.util.ui.JBEmptyBorder
