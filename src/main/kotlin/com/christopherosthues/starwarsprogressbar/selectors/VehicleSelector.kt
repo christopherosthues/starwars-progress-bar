@@ -3,10 +3,13 @@ package com.christopherosthues.starwarsprogressbar.selectors
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
 import com.christopherosthues.starwarsprogressbar.models.FactionHolder
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
-import com.christopherosthues.starwarsprogressbar.util.randomInt
 
 internal object VehicleSelector {
-    fun selectRandomVehicle(enabledVehicles: Map<String, Boolean>?, defaultEnabled: Boolean): StarWarsVehicle {
+    fun selectVehicle(
+        enabledVehicles: Map<String, Boolean>?,
+        defaultEnabled: Boolean,
+        selectionType: SelectionType = SelectionType.RANDOM_ALL,
+    ): StarWarsVehicle {
         var currentEnabledVehicles = enabledVehicles
         if (currentEnabledVehicles == null) {
             val persistentStateComponent = StarWarsPersistentStateComponent.instance
@@ -15,15 +18,16 @@ internal object VehicleSelector {
             currentEnabledVehicles = starWarsState.vehiclesEnabled
         }
 
-        val vehicles = FactionHolder.defaultVehicles.filter { vehicle ->
-            currentEnabledVehicles.getOrDefault(vehicle.vehicleId, defaultEnabled)
+        val selector = when (selectionType) {
+            SelectionType.RANDOM_ALL -> RandomVehicleSelector
+            SelectionType.RANDOM_NOT_DISPLAYED -> RollingRandomVehicleSelector
+            SelectionType.INORDER_VEHICLE_NAME -> InorderVehicleNameVehicleSelector
+            SelectionType.REVERSE_ORDER_VEHICLE_NAME -> ReverseOrderVehicleNameVehicleSelector
+            SelectionType.INORDER_FACTION -> InorderFactionVehicleSelector
+            SelectionType.REVERSE_ORDER_FACTION -> ReverseOrderFactionVehicleSelector
+            else -> RandomVehicleSelector
         }
 
-        var vehicle = FactionHolder.missingVehicle
-        if (vehicles.isNotEmpty()) {
-            vehicle = vehicles[randomInt(vehicles.size)]
-        }
-
-        return vehicle
+        return selector.selectVehicle(currentEnabledVehicles, defaultEnabled)
     }
 }

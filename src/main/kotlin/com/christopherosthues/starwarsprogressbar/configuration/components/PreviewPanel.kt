@@ -118,7 +118,7 @@ internal class PreviewPanel(
     }
 
     private fun selectRandomVehicle(enabledVehicles: Map<String, Boolean>?): StarWarsVehicle {
-        return VehicleSelector.selectRandomVehicle(enabledVehicles, enableNewVehicles())
+        return VehicleSelector.selectVehicle(enabledVehicles, enableNewVehicles())
     }
 
     fun selectVehicle(vehicle: StarWarsVehicle) {

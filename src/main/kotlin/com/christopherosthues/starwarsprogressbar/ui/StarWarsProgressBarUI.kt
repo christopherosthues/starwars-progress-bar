@@ -32,7 +32,7 @@ import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE_NAMES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRESS_BAR_COLOR
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
-import com.christopherosthues.starwarsprogressbar.selectors.VehicleSelector.selectRandomVehicle
+import com.christopherosthues.starwarsprogressbar.selectors.VehicleSelector.selectVehicle
 import com.christopherosthues.starwarsprogressbar.ui.components.ColoredImageComponent
 import com.christopherosthues.starwarsprogressbar.util.StarWarsResourceLoader
 import com.intellij.ui.JBColor
@@ -84,7 +84,7 @@ internal class StarWarsProgressBarUI(
     private var oldAmountFull = 0
 
     constructor() : this(
-        selectRandomVehicle(StarWarsPersistentStateComponent.instance?.state?.vehiclesEnabled, false),
+        selectVehicle(StarWarsPersistentStateComponent.instance?.state?.vehiclesEnabled, false),
         { StarWarsPersistentStateComponent.instance?.state?.vehiclesEnabled },
         { StarWarsPersistentStateComponent.instance?.state?.showVehicle ?: DEFAULT_SHOW_VEHICLE },
         { StarWarsPersistentStateComponent.instance?.state?.showVehicleNames ?: DEFAULT_SHOW_VEHICLE_NAMES },
@@ -104,7 +104,7 @@ internal class StarWarsProgressBarUI(
     )
 
     private fun updateVehicle() {
-        vehicle = selectRandomVehicle(enabledVehicles(), false)
+        vehicle = selectVehicle(enabledVehicles(), false)
         forwardIcon = ColoredImageComponent(StarWarsResourceLoader.getVehicleImage(vehicle.fileName))
         backwardIcon = ColoredImageComponent(StarWarsResourceLoader.getReversedVehicleImage(vehicle.fileName))
         factionCrestIcon = ColoredImageComponent(StarWarsResourceLoader.getFactionLogo(vehicle.factionId, false))
