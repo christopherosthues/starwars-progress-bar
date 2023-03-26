@@ -8,8 +8,9 @@ internal object VehicleSelector {
     fun selectVehicle(
         enabledVehicles: Map<String, Boolean>?,
         defaultEnabled: Boolean,
-        selectionType: SelectionType = SelectionType.RANDOM_ALL,
+        selectionType: SelectionType,
     ): StarWarsVehicle {
+        // TODO unit test me
         var currentEnabledVehicles = enabledVehicles
         if (currentEnabledVehicles == null) {
             val persistentStateComponent = StarWarsPersistentStateComponent.instance
@@ -25,7 +26,6 @@ internal object VehicleSelector {
             SelectionType.REVERSE_ORDER_VEHICLE_NAME -> ReverseOrderVehicleNameVehicleSelector
             SelectionType.INORDER_FACTION -> InorderFactionVehicleSelector
             SelectionType.REVERSE_ORDER_FACTION -> ReverseOrderFactionVehicleSelector
-            else -> RandomVehicleSelector
         }
 
         return selector.selectVehicle(currentEnabledVehicles, defaultEnabled)

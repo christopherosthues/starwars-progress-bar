@@ -3,6 +3,7 @@ package com.christopherosthues.starwarsprogressbar.configuration.components
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.selectors.SelectionType
 import com.christopherosthues.starwarsprogressbar.selectors.VehicleSelector
 import com.christopherosthues.starwarsprogressbar.ui.StarWarsProgressBarUI
 import com.intellij.icons.AllIcons
@@ -29,6 +30,7 @@ internal class PreviewPanel(
     private val changeVehicleAfterPass: () -> Boolean,
     private val numberOfPassesUntilVehicleChange: () -> Int,
     private val enabledVehicles: () -> Map<String, Boolean>?,
+    private val vehicleSelector: () -> SelectionType,
 ) : JTitledPanel(StarWarsBundle.message(BundleConstants.PREVIEW_TITLE)) {
 
     private var determinateProgressBar: JProgressBar
@@ -80,7 +82,10 @@ internal class PreviewPanel(
     }
 
     private fun setProgressBarUI(enabledVehicles: Map<String, Boolean>?) {
-        setProgressBarUI(selectRandomVehicle(enabledVehicles), selectRandomVehicle(enabledVehicles))
+        setProgressBarUI(
+            selectVehicle(enabledVehicles),
+            selectVehicle(enabledVehicles),
+        )
     }
 
     private fun setProgressBarUI(determinateVehicle: StarWarsVehicle, indeterminateVehicle: StarWarsVehicle) {
@@ -97,6 +102,7 @@ internal class PreviewPanel(
                 drawSilhouettes,
                 changeVehicleAfterPass,
                 numberOfPassesUntilVehicleChange,
+                vehicleSelector,
             ),
         )
 
@@ -113,12 +119,13 @@ internal class PreviewPanel(
                 drawSilhouettes,
                 changeVehicleAfterPass,
                 numberOfPassesUntilVehicleChange,
+                vehicleSelector,
             ),
         )
     }
 
-    private fun selectRandomVehicle(enabledVehicles: Map<String, Boolean>?): StarWarsVehicle {
-        return VehicleSelector.selectVehicle(enabledVehicles, enableNewVehicles())
+    private fun selectVehicle(enabledVehicles: Map<String, Boolean>?): StarWarsVehicle {
+        return VehicleSelector.selectVehicle(enabledVehicles, enableNewVehicles(), vehicleSelector())
     }
 
     fun selectVehicle(vehicle: StarWarsVehicle) {

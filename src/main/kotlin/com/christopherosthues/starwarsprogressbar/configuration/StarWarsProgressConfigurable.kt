@@ -11,8 +11,9 @@ internal class StarWarsProgressConfigurable : SearchableConfigurable {
     private var component: StarWarsProgressConfigurationComponent? = null
 
     override fun createComponent(): JComponent {
-        component = createStarWarsProgressConfigurationComponent()
-        return component!!.panel
+        val comp = createStarWarsProgressConfigurationComponent()
+        component = comp
+        return comp.panel
     }
 
     override fun isModified(): Boolean {
@@ -23,19 +24,31 @@ internal class StarWarsProgressConfigurable : SearchableConfigurable {
     }
 
     private fun isStateModified(starWarsState: StarWarsState): Boolean {
-        return starWarsState.vehiclesEnabled != component!!.enabledVehicles ||
-            starWarsState.showVehicle != component!!.showVehicle ||
-            starWarsState.showVehicleNames != component!!.showVehicleNames ||
-            starWarsState.showToolTips != component!!.showToolTips ||
-            starWarsState.showFactionCrests != component!!.showFactionCrests ||
-            starWarsState.sameVehicleVelocity != component!!.sameVehicleVelocity ||
-            starWarsState.enableNewVehicles != component!!.enableNewVehicles ||
-            starWarsState.solidProgressBarColor != component!!.solidProgressBarColor ||
-            starWarsState.drawSilhouettes != component!!.drawSilhouettes ||
-            starWarsState.changeVehicleAfterPass != component!!.changeVehicleAfterPass ||
+        val comp = component
+        return comp != null &&
             (
-                starWarsState.numberOfPassesUntilVehicleChange != component!!.numberOfPassesUntilVehicleChange &&
-                    component!!.changeVehicleAfterPass
+                starWarsState.vehiclesEnabled != comp.enabledVehicles ||
+                    starWarsState.showVehicle != comp.showVehicle ||
+                    starWarsState.showVehicleNames != comp.showVehicleNames ||
+                    starWarsState.showToolTips != comp.showToolTips ||
+                    starWarsState.showFactionCrests != comp.showFactionCrests ||
+                    starWarsState.sameVehicleVelocity != comp.sameVehicleVelocity ||
+                    starWarsState.enableNewVehicles != comp.enableNewVehicles ||
+                    starWarsState.solidProgressBarColor != comp.solidProgressBarColor ||
+                    starWarsState.drawSilhouettes != comp.drawSilhouettes ||
+                    starWarsState.vehicleSelector != comp.vehicleSelector ||
+                    isVehiclePassesModified(starWarsState, comp)
+                )
+    }
+
+    private fun isVehiclePassesModified(
+        starWarsState: StarWarsState,
+        component: StarWarsProgressConfigurationComponent,
+    ): Boolean {
+        return starWarsState.changeVehicleAfterPass != component.changeVehicleAfterPass ||
+            (
+                starWarsState.numberOfPassesUntilVehicleChange != component.numberOfPassesUntilVehicleChange &&
+                    component.changeVehicleAfterPass
                 )
     }
 
@@ -55,6 +68,7 @@ internal class StarWarsProgressConfigurable : SearchableConfigurable {
             starWarsState.solidProgressBarColor = component.solidProgressBarColor
             starWarsState.drawSilhouettes = component.drawSilhouettes
             starWarsState.changeVehicleAfterPass = component.changeVehicleAfterPass
+            starWarsState.vehicleSelector = component.vehicleSelector
             if (component.changeVehicleAfterPass) {
                 starWarsState.numberOfPassesUntilVehicleChange = component.numberOfPassesUntilVehicleChange
             }

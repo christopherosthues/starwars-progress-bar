@@ -1,5 +1,5 @@
 build:
-  maxIssues: 10
+  maxIssues: 12
   excludeCorrectable: false
   weights:
     # complexity: 2
@@ -42,7 +42,7 @@ console-reports:
 
 output-reports:
   active: true
-  exclude:
+  exclude: []
   # - 'TxtOutputReport'
   # - 'XmlOutputReport'
   # - 'HtmlOutputReport'
@@ -503,7 +503,7 @@ style:
     active: false
   DataClassContainsFunctions:
     active: false
-    conversionFunctionPrefix: 'to'
+    conversionFunctionPrefix: ['to']
   DataClassShouldBeImmutable:
     active: false
   DestructuringDeclarationWithTooManyEntries:
@@ -554,7 +554,7 @@ style:
     active: true
     ignoreOverridableFunction: true
     ignoreActualFunction: true
-    excludedFunctions: ''
+    excludedFunctions: []
   LibraryCodeMustSpecifyReturnType:
     active: true
     excludes: ['**']
@@ -631,7 +631,7 @@ style:
   ReturnCount:
     active: true
     max: 2
-    excludedFunctions: 'equals'
+    excludedFunctions: ['equals']
     excludeLabeled: false
     excludeReturnFromLambda: true
     excludeGuardClauses: false

@@ -5,8 +5,9 @@ import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.util.randomInt
 
 internal object RollingRandomVehicleSelector : IVehicleSelector {
+    // TODO unit test me
     private val displayedVehicles = mutableSetOf<String>()
-    private var lock = Any()
+    private val lock = Any()
 
     override fun selectVehicle(enabledVehicles: Map<String, Boolean>, defaultEnabled: Boolean): StarWarsVehicle {
         var vehicle = FactionHolder.missingVehicle

@@ -4,6 +4,7 @@ import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
 import com.christopherosthues.starwarsprogressbar.constants.PluginConstants
 import com.christopherosthues.starwarsprogressbar.models.FactionHolder
+import com.christopherosthues.starwarsprogressbar.selectors.SelectionType
 import com.intellij.idea.TestFor
 import com.intellij.openapi.options.ConfigurationException
 import io.mockk.every
@@ -129,7 +130,8 @@ class StarWarsProgressConfigurableTests {
         solidProgressBarColor: Boolean,
         drawSilhouettes: Boolean,
         changeVehicleAfterPass: Boolean = false,
-        numberOfPassesUntilVehicleChange: Int = 2
+        numberOfPassesUntilVehicleChange: Int = 2,
+        vehicleSelector: SelectionType = SelectionType.RANDOM_ALL,
     ) {
         // Arrange
         setupStarWarsState(
@@ -143,7 +145,8 @@ class StarWarsProgressConfigurableTests {
             solidProgressBarColor,
             drawSilhouettes,
             changeVehicleAfterPass,
-            numberOfPassesUntilVehicleChange
+            numberOfPassesUntilVehicleChange,
+            vehicleSelector,
         )
         setupComponentState(
             enabledVehicles,
@@ -156,7 +159,8 @@ class StarWarsProgressConfigurableTests {
             solidProgressBarColor,
             drawSilhouettes,
             changeVehicleAfterPass,
-            numberOfPassesUntilVehicleChange
+            numberOfPassesUntilVehicleChange,
+            vehicleSelector,
         )
         val sut = StarWarsProgressConfigurable()
         sut.createComponent()
@@ -174,7 +178,7 @@ class StarWarsProgressConfigurableTests {
         setupStarWarsState()
         setupComponentState(
             changeVehicleAfterPass = false,
-            numberOfPassesUntilVehicleChange = 3
+            numberOfPassesUntilVehicleChange = 3,
         )
         val sut = StarWarsProgressConfigurable()
         sut.createComponent()
@@ -190,7 +194,7 @@ class StarWarsProgressConfigurableTests {
     @MethodSource("isModifiedValues")
     fun `isModified should return true if star wars state and component properties are not all equal`(
         starWarsStateData: IsModifiedData,
-        componentStateData: IsModifiedData
+        componentStateData: IsModifiedData,
     ) {
         // Arrange
         setupStarWarsState(
@@ -204,7 +208,8 @@ class StarWarsProgressConfigurableTests {
             starWarsStateData.solidProgressBarColor,
             starWarsStateData.drawSilhouettes,
             starWarsStateData.changeVehicleAfterPass,
-            starWarsStateData.numberOfPassesUntilVehicleChange
+            starWarsStateData.numberOfPassesUntilVehicleChange,
+            starWarsStateData.vehicleSelector,
         )
         setupComponentState(
             componentStateData.enabledVehicles,
@@ -217,7 +222,8 @@ class StarWarsProgressConfigurableTests {
             componentStateData.solidProgressBarColor,
             componentStateData.drawSilhouettes,
             componentStateData.changeVehicleAfterPass,
-            componentStateData.numberOfPassesUntilVehicleChange
+            componentStateData.numberOfPassesUntilVehicleChange,
+            componentStateData.vehicleSelector,
         )
         val sut = StarWarsProgressConfigurable()
         sut.createComponent()
@@ -268,6 +274,7 @@ class StarWarsProgressConfigurableTests {
         verify(exactly = 0) { starWarsStateMock.drawSilhouettes }
         verify(exactly = 0) { starWarsStateMock.changeVehicleAfterPass }
         verify(exactly = 0) { starWarsStateMock.numberOfPassesUntilVehicleChange }
+        verify(exactly = 0) { starWarsStateMock.vehicleSelector }
     }
 
     @ParameterizedTest
@@ -283,7 +290,8 @@ class StarWarsProgressConfigurableTests {
         solidProgressBarColor: Boolean = false,
         drawSilhouettes: Boolean = false,
         changeVehicleAfterPass: Boolean = false,
-        numberOfPassesUntilVehicleChange: Int = 2
+        numberOfPassesUntilVehicleChange: Int = 2,
+        vehicleSelector: SelectionType = SelectionType.RANDOM_ALL,
     ) {
         // Arrange
         val starWarsStateMock = setupStarWarsPersistentStateComponentMock().state!!
@@ -298,7 +306,8 @@ class StarWarsProgressConfigurableTests {
             solidProgressBarColor,
             drawSilhouettes,
             changeVehicleAfterPass,
-            numberOfPassesUntilVehicleChange
+            numberOfPassesUntilVehicleChange,
+            vehicleSelector,
         )
         val sut = StarWarsProgressConfigurable()
         sut.createComponent()
@@ -317,6 +326,7 @@ class StarWarsProgressConfigurableTests {
         verify(exactly = 1) { starWarsStateMock.solidProgressBarColor = solidProgressBarColor }
         verify(exactly = 1) { starWarsStateMock.drawSilhouettes = drawSilhouettes }
         verify(exactly = 1) { starWarsStateMock.changeVehicleAfterPass = changeVehicleAfterPass }
+        verify(exactly = 1) { starWarsStateMock.vehicleSelector = vehicleSelector }
         verify(exactly = numberOfPassesSet) { starWarsStateMock.numberOfPassesUntilVehicleChange = numberOfPassesUntilVehicleChange }
         assertEquals(enabledVehicles, starWarsStateMock.vehiclesEnabled, StarWarsState::vehiclesEnabled.name)
     }
@@ -446,7 +456,7 @@ class StarWarsProgressConfigurableTests {
     //region Helper methods
 
     private fun setupStarWarsPersistentStateComponentMock(
-        initializeStarWarsState: Boolean = true
+        initializeStarWarsState: Boolean = true,
     ): StarWarsPersistentStateComponent {
         val starWarsStateMock = mockk<StarWarsState>(relaxed = true)
         val starWarsPersistentStateComponentMock = mockk<StarWarsPersistentStateComponent>(relaxed = true)
@@ -469,7 +479,8 @@ class StarWarsProgressConfigurableTests {
         solidProgressBarColor: Boolean = false,
         drawSilhouettes: Boolean = false,
         changeVehicleAfterPass: Boolean = false,
-        numberOfPassesUntilVehicleChange: Int = 2
+        numberOfPassesUntilVehicleChange: Int = 2,
+        vehicleSelector: SelectionType = SelectionType.RANDOM_ALL,
     ): StarWarsState {
         val starWarsStateMock = mockk<StarWarsState>()
         starWarsStateMock.vehiclesEnabled = enabledVehicles
@@ -483,6 +494,7 @@ class StarWarsProgressConfigurableTests {
         every { starWarsStateMock.drawSilhouettes } returns drawSilhouettes
         every { starWarsStateMock.changeVehicleAfterPass } returns changeVehicleAfterPass
         every { starWarsStateMock.numberOfPassesUntilVehicleChange } returns numberOfPassesUntilVehicleChange
+        every { starWarsStateMock.vehicleSelector } returns vehicleSelector
         every { starWarsStateMock.version } returns ""
         val starWarsPersistentStateComponentMock = mockk<StarWarsPersistentStateComponent>(relaxed = true)
         every { StarWarsPersistentStateComponent.instance } returns starWarsPersistentStateComponentMock
@@ -502,7 +514,8 @@ class StarWarsProgressConfigurableTests {
         solidProgressBarColor: Boolean = false,
         drawSilhouettes: Boolean = false,
         changeVehicleAfterPass: Boolean = false,
-        numberOfPassesUntilVehicleChange: Int = 2
+        numberOfPassesUntilVehicleChange: Int = 2,
+        vehicleSelector: SelectionType = SelectionType.RANDOM_ALL,
     ) {
         every { starWarsProgressConfigurationComponentMock.enabledVehicles } returns enabledVehicles
         every { starWarsProgressConfigurationComponentMock.showVehicle } returns showVehicle
@@ -515,6 +528,7 @@ class StarWarsProgressConfigurableTests {
         every { starWarsProgressConfigurationComponentMock.drawSilhouettes } returns drawSilhouettes
         every { starWarsProgressConfigurationComponentMock.changeVehicleAfterPass } returns changeVehicleAfterPass
         every { starWarsProgressConfigurationComponentMock.numberOfPassesUntilVehicleChange } returns numberOfPassesUntilVehicleChange
+        every { starWarsProgressConfigurationComponentMock.vehicleSelector } returns vehicleSelector
     }
 
     //endregion
@@ -532,14 +546,15 @@ class StarWarsProgressConfigurableTests {
         val solidProgressBarColor: Boolean = false,
         val drawSilhouettes: Boolean = false,
         val changeVehicleAfterPass: Boolean = false,
-        val numberOfPassesUntilVehicleChange: Int = 2
+        val numberOfPassesUntilVehicleChange: Int = 2,
+        val vehicleSelector: SelectionType = SelectionType.RANDOM_ALL,
     )
 
     companion object {
         @JvmStatic
         fun isNotModifiedValues(): Stream<Arguments> {
             return Stream.of(
-                Arguments.of(mapOf<String, Boolean>(), true, false, true, false, true, false, true, false, false, 2),
+                Arguments.of(mapOf<String, Boolean>(), true, false, true, false, true, false, true, false, false, 2, SelectionType.RANDOM_ALL),
                 Arguments.of(
                     mapOf("1" to true, "2" to false),
                     false,
@@ -551,7 +566,8 @@ class StarWarsProgressConfigurableTests {
                     false,
                     true,
                     true,
-                    2
+                    2,
+                    SelectionType.RANDOM_ALL,
                 ),
                 Arguments.of(
                     mapOf("1" to true, "2" to false),
@@ -564,7 +580,8 @@ class StarWarsProgressConfigurableTests {
                     false,
                     true,
                     true,
-                    4
+                    4,
+                    SelectionType.RANDOM_NOT_DISPLAYED,
                 ),
                 Arguments.of(
                     mapOf("1" to true, "2" to false),
@@ -577,8 +594,9 @@ class StarWarsProgressConfigurableTests {
                     false,
                     true,
                     false,
-                    4
-                )
+                    4,
+                    SelectionType.RANDOM_NOT_DISPLAYED,
+                ),
             )
         }
 
@@ -603,12 +621,14 @@ class StarWarsProgressConfigurableTests {
                 Arguments.of(IsModifiedData(solidProgressBarColor = true), IsModifiedData()),
                 Arguments.of(IsModifiedData(), IsModifiedData(mapOf(), drawSilhouettes = true)),
                 Arguments.of(IsModifiedData(drawSilhouettes = true), IsModifiedData()),
+                Arguments.of(IsModifiedData(), IsModifiedData(mapOf(), vehicleSelector = SelectionType.INORDER_VEHICLE_NAME)),
+                Arguments.of(IsModifiedData(vehicleSelector = SelectionType.INORDER_VEHICLE_NAME), IsModifiedData()),
                 Arguments.of(IsModifiedData(changeVehicleAfterPass = true), IsModifiedData()),
                 Arguments.of(IsModifiedData(), IsModifiedData(changeVehicleAfterPass = true)),
                 Arguments.of(IsModifiedData(changeVehicleAfterPass = true, numberOfPassesUntilVehicleChange = 4), IsModifiedData()),
                 Arguments.of(IsModifiedData(), IsModifiedData(changeVehicleAfterPass = true, numberOfPassesUntilVehicleChange = 4)),
                 Arguments.of(IsModifiedData(changeVehicleAfterPass = true), IsModifiedData(numberOfPassesUntilVehicleChange = 4)),
-                Arguments.of(IsModifiedData(numberOfPassesUntilVehicleChange = 4), IsModifiedData(changeVehicleAfterPass = true))
+                Arguments.of(IsModifiedData(numberOfPassesUntilVehicleChange = 4), IsModifiedData(changeVehicleAfterPass = true)),
             )
         }
     }

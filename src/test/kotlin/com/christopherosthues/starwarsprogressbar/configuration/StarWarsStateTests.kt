@@ -1,17 +1,19 @@
 package com.christopherosthues.starwarsprogressbar.configuration
 
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_CHANGE_VEHICLE_AFTER_PASS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_DRAW_SILHOUETTES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENABLE_NEW_VEHICLES
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SAME_VEHICLE_VELOCITY
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_FACTION_CRESTS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_TOOLTIPS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE_NAMES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRESS_BAR_COLOR
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_CHANGE_VEHICLE_AFTER_PASS
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_VEHICLE_SELECTOR
 import com.christopherosthues.starwarsprogressbar.models.FactionHolder
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.selectors.SelectionType
 import com.intellij.idea.TestFor
 import io.mockk.every
 import io.mockk.mockkObject
@@ -81,6 +83,7 @@ class StarWarsStateTests {
         val drawSilhouettes = true
         val changeVehicleAfterPass = true
         val numberOfPassesUntilVehicleChange = 1
+        val vehicleSelector = SelectionType.RANDOM_NOT_DISPLAYED
         val version = "1.0.0"
 
         assertDefaultValues(sut)
@@ -97,6 +100,7 @@ class StarWarsStateTests {
         sut.drawSilhouettes = drawSilhouettes
         sut.changeVehicleAfterPass = changeVehicleAfterPass
         sut.numberOfPassesUntilVehicleChange = numberOfPassesUntilVehicleChange
+        sut.vehicleSelector = vehicleSelector
         sut.version = version
 
         // Assert
@@ -111,11 +115,12 @@ class StarWarsStateTests {
             { assertEquals(drawSilhouettes, sut.drawSilhouettes) },
             { assertEquals(changeVehicleAfterPass, sut.changeVehicleAfterPass) },
             { assertEquals(numberOfPassesUntilVehicleChange, sut.numberOfPassesUntilVehicleChange) },
+            { assertEquals(vehicleSelector, sut.vehicleSelector) },
             { assertEquals(version, sut.version) },
             { assertTrue(sut.vehiclesEnabled.isNotEmpty()) },
             { assertEquals(2, sut.vehiclesEnabled.size) },
             { assertFalse(sut.vehiclesEnabled["1"]!!) },
-            { assertTrue(sut.vehiclesEnabled["2"]!!) }
+            { assertTrue(sut.vehiclesEnabled["2"]!!) },
         )
     }
 
@@ -135,7 +140,7 @@ class StarWarsStateTests {
             { assertTrue(sut.vehiclesEnabled.isNotEmpty()) },
             { assertEquals(2, sut.vehiclesEnabled.size) },
             { assertFalse(sut.vehiclesEnabled["1"]!!) },
-            { assertTrue(sut.vehiclesEnabled["2"]!!) }
+            { assertTrue(sut.vehiclesEnabled["2"]!!) },
         )
     }
 
@@ -155,8 +160,9 @@ class StarWarsStateTests {
             { assertEquals(DEFAULT_DRAW_SILHOUETTES, sut.drawSilhouettes) },
             { assertEquals(DEFAULT_CHANGE_VEHICLE_AFTER_PASS, sut.changeVehicleAfterPass) },
             { assertEquals(DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE, sut.numberOfPassesUntilVehicleChange) },
+            { assertEquals(DEFAULT_VEHICLE_SELECTOR, sut.vehicleSelector) },
             { assertEquals("", sut.version) },
-            { assertTrue(sut.vehiclesEnabled.isEmpty()) }
+            { assertTrue(sut.vehiclesEnabled.isEmpty()) },
         )
     }
 
@@ -164,7 +170,7 @@ class StarWarsStateTests {
         assertAll(
             { assertEquals(6, vehiclesEnabled.size) },
             { assertTrue(vehiclesEnabled.keys.containsAll(listOf("1", "2", "3", "4", "5", "6"))) },
-            { assertTrue(vehiclesEnabled.values.all { v -> v }) }
+            { assertTrue(vehiclesEnabled.values.all { v -> v }) },
         )
     }
 
@@ -175,7 +181,7 @@ class StarWarsStateTests {
             StarWarsVehicle("3", "c", 4, 5, 6f),
             StarWarsVehicle("4", "d", 5, 6, 7f),
             StarWarsVehicle("5", "e", 6, 7, 8f),
-            StarWarsVehicle("6", "f", 7, 8, 9f)
+            StarWarsVehicle("6", "f", 7, 8, 9f),
         )
     }
 

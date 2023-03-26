@@ -4,6 +4,7 @@ import com.christopherosthues.starwarsprogressbar.configuration.components.Previ
 import com.christopherosthues.starwarsprogressbar.configuration.components.UiOptionsPanel
 import com.christopherosthues.starwarsprogressbar.configuration.components.VehiclesPanel
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.selectors.SelectionType
 import com.christopherosthues.starwarsprogressbar.ui.events.VehicleClickListener
 import com.intellij.util.ui.FormBuilder
 import java.awt.BorderLayout
@@ -54,6 +55,9 @@ internal class StarWarsProgressConfigurationComponent {
     val numberOfPassesUntilVehicleChange: Int
         get() = uiOptionsPanel.numberOfPassesUntilVehicleChange
 
+    val vehicleSelector: SelectionType
+        get() = uiOptionsPanel.vehicleSelector
+
     init {
         createUI()
     }
@@ -91,7 +95,8 @@ internal class StarWarsProgressConfigurationComponent {
             this::drawSilhouettes,
             this::changeVehicleAfterPass,
             this::numberOfPassesUntilVehicleChange,
-            this::enabledVehicles
+            this::enabledVehicles,
+            this::vehicleSelector,
         )
 
         formBuilder.addComponent(previewPanel)
@@ -101,7 +106,8 @@ internal class StarWarsProgressConfigurationComponent {
         uiOptionsPanel.addPropertyChangeListener() {
             if (isProgressBarTextEvent(it.propertyName) ||
                 isProgressBarDrawEvent(it.propertyName) ||
-                isVehicleChangeEvent(it.propertyName)
+                isVehicleChangeEvent(it.propertyName) ||
+                it.propertyName == UiOptionsPanel::vehicleSelector.name
             ) {
                 repaintProgressBar()
             }
@@ -125,7 +131,7 @@ internal class StarWarsProgressConfigurationComponent {
 
     private fun isVehicleChangeEvent(propertyName: String): Boolean {
         return propertyName == UiOptionsPanel::changeVehicleAfterPass.name ||
-                propertyName == UiOptionsPanel::numberOfPassesUntilVehicleChange.name;
+            propertyName == UiOptionsPanel::numberOfPassesUntilVehicleChange.name
     }
 
     private fun repaintProgressBar() {

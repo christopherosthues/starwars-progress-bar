@@ -1,5 +1,6 @@
 package com.christopherosthues.starwarsprogressbar.constants
 
+import com.christopherosthues.starwarsprogressbar.selectors.SelectionType
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertAll
@@ -20,7 +21,8 @@ class ConfigurationConstantsTests {
             { Assertions.assertFalse(DEFAULT_SOLID_PROGRESS_BAR_COLOR) },
             { Assertions.assertFalse(DEFAULT_DRAW_SILHOUETTES) },
             { Assertions.assertFalse(DEFAULT_CHANGE_VEHICLE_AFTER_PASS) },
-            { Assertions.assertEquals(2, DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE) }
+            { Assertions.assertEquals(SelectionType.RANDOM_ALL, DEFAULT_VEHICLE_SELECTOR) },
+            { Assertions.assertEquals(2, DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE) },
         )
     }
 }

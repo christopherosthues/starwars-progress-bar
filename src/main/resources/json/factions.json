@@ -925,6 +925,13 @@
           "velocity": 2.5
         },
         {
+          "id": "profundity",
+          "ionEngine": "blue",
+          "xShift": 0,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
           "id": "prototype_b6",
           "ionEngine": "red",
           "xShift": -13,

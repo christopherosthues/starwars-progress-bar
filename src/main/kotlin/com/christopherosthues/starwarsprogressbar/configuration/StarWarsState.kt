@@ -10,8 +10,10 @@ import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_TOOLTIP
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE_NAMES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRESS_BAR_COLOR
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_VEHICLE_SELECTOR
 import com.christopherosthues.starwarsprogressbar.models.FactionHolder
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.selectors.SelectionType
 import java.util.stream.Collectors
 
 internal class StarWarsState {
@@ -38,6 +40,8 @@ internal class StarWarsState {
     var changeVehicleAfterPass: Boolean = DEFAULT_CHANGE_VEHICLE_AFTER_PASS
 
     var numberOfPassesUntilVehicleChange: Int = DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE
+
+    var vehicleSelector: SelectionType = DEFAULT_VEHICLE_SELECTOR
 
     var version: String = ""
 }

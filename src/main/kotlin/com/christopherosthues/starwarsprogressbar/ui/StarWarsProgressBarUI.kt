@@ -31,7 +31,9 @@ import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_TOOLTIP
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE_NAMES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRESS_BAR_COLOR
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_VEHICLE_SELECTOR
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.selectors.SelectionType
 import com.christopherosthues.starwarsprogressbar.selectors.VehicleSelector.selectVehicle
 import com.christopherosthues.starwarsprogressbar.ui.components.ColoredImageComponent
 import com.christopherosthues.starwarsprogressbar.util.StarWarsResourceLoader
@@ -72,6 +74,7 @@ internal class StarWarsProgressBarUI(
     private val drawSilhouettes: () -> Boolean,
     private val changeVehicleAfterPass: () -> Boolean,
     private val numberOfPassesUntilVehicleChange: () -> Int,
+    private val vehicleSelector: () -> SelectionType,
 ) : BasicProgressBarUI() {
 
     private var forwardIcon = ColoredImageComponent(StarWarsResourceLoader.getVehicleImage(vehicle.fileName))
@@ -81,10 +84,14 @@ internal class StarWarsProgressBarUI(
     private var velocity = getVelocity()
     private var position = 0
     private var numberOfPasses = 0
-    private var oldAmountFull = 0
 
     constructor() : this(
-        selectVehicle(StarWarsPersistentStateComponent.instance?.state?.vehiclesEnabled, false),
+        selectVehicle(
+            StarWarsPersistentStateComponent.instance?.state?.vehiclesEnabled,
+            false,
+            StarWarsPersistentStateComponent.instance?.state?.vehicleSelector
+                ?: DEFAULT_VEHICLE_SELECTOR,
+        ),
         { StarWarsPersistentStateComponent.instance?.state?.vehiclesEnabled },
         { StarWarsPersistentStateComponent.instance?.state?.showVehicle ?: DEFAULT_SHOW_VEHICLE },
         { StarWarsPersistentStateComponent.instance?.state?.showVehicleNames ?: DEFAULT_SHOW_VEHICLE_NAMES },
@@ -101,10 +108,14 @@ internal class StarWarsProgressBarUI(
             StarWarsPersistentStateComponent.instance?.state?.numberOfPassesUntilVehicleChange
                 ?: DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE
         },
+        {
+            StarWarsPersistentStateComponent.instance?.state?.vehicleSelector
+                ?: DEFAULT_VEHICLE_SELECTOR
+        },
     )
 
     private fun updateVehicle() {
-        vehicle = selectVehicle(enabledVehicles(), false)
+        vehicle = selectVehicle(enabledVehicles(), false, vehicleSelector())
         forwardIcon = ColoredImageComponent(StarWarsResourceLoader.getVehicleImage(vehicle.fileName))
         backwardIcon = ColoredImageComponent(StarWarsResourceLoader.getReversedVehicleImage(vehicle.fileName))
         factionCrestIcon = ColoredImageComponent(StarWarsResourceLoader.getFactionLogo(vehicle.factionId, false))

@@ -45,7 +45,8 @@ internal class FactionPanel(private val faction: StarWarsFaction) : JPanel(GridB
         if (vehiclesAvailable) {
             addFactionCheckBox()
 
-            val localizedNameComparator = compareBy<StarWarsVehicle> { StarWarsBundle.message(it.localizationKey).lowercase() }
+            val localizedNameComparator =
+                compareBy<StarWarsVehicle> { StarWarsBundle.message(it.localizationKey).lowercase() }
 
             faction.vehicles.stream().sorted(localizedNameComparator).forEach { vehicle ->
                 addVehicleCheckBox(vehicle)
@@ -113,7 +114,7 @@ internal class FactionPanel(private val faction: StarWarsFaction) : JPanel(GridB
                     this,
                     FactionPanel::selectedVehiclesCount.name,
                     oldValue,
-                    selectedVehiclesCount.get()
+                    selectedVehiclesCount.get(),
                 )
                 l.propertyChange(propertyChangeEvent)
             }
@@ -129,7 +130,7 @@ internal class FactionPanel(private val faction: StarWarsFaction) : JPanel(GridB
         })
         addLabeledComponent(
             iconComponent,
-            checkBox
+            checkBox,
         )
         vehiclesCheckboxes[vehicle.vehicleId] = checkBox
         selectedVehiclesCount.incrementAndGet()
@@ -152,13 +153,13 @@ internal class FactionPanel(private val faction: StarWarsFaction) : JPanel(GridB
                 BundleConstants.DESELECT_ALL
             } else {
                 BundleConstants.SELECT_ALL
-            }
+            },
         )
         selectVehiclesCheckbox.text = StarWarsBundle.message(
             BundleConstants.SELECTED,
             selected,
             numberOfVehicles,
-            selectionText
+            selectionText,
         )
     }
 

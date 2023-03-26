@@ -62,8 +62,9 @@ class BundleConstantsTests {
                 Arguments.of("configuration.selectAll", BundleConstants.SELECT_ALL),
                 Arguments.of("configuration.deselectAll", BundleConstants.DESELECT_ALL),
                 Arguments.of("configuration.selected", BundleConstants.SELECTED),
+                Arguments.of("configuration.selector", BundleConstants.SELECTOR),
                 Arguments.of("faction.", BundleConstants.FACTION),
-                Arguments.of("vehicles.", BundleConstants.VEHICLES)
+                Arguments.of("vehicles.", BundleConstants.VEHICLES),
             )
         }
     }

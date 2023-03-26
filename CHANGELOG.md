@@ -5,7 +5,9 @@
 ## [Unreleased]
 
 ### Added
+- Different selection modes for vehicles
 - AT-DP to Galactic Empire
+- Profundity to Rebel Alliance
 
 ### Changed
 - Updated Interdictor-class Star Destroyer, Mining Guild TIE Fighter, Phoenix Nest, Quasar Fire-class cruiser carrier and T-65 X-Wing starfighter 
