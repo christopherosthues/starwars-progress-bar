@@ -189,6 +189,13 @@
           "xShift": -11,
           "yShift": -6,
           "velocity": 3.5
+        },
+        {
+          "id": "t_6_shuttle",
+          "ionEngine": "blue",
+          "xShift": -11,
+          "yShift": -6,
+          "velocity": 3
         }
       ]
     },

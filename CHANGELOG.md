@@ -8,6 +8,7 @@
 - Different selection modes for vehicles
 - AT-DP to Galactic Empire
 - Profundity to Rebel Alliance
+- T-6 Shuttle to Jedi
 
 ### Changed
 - Updated Interdictor-class Star Destroyer, Mining Guild TIE Fighter, Phoenix Nest, Quasar Fire-class cruiser carrier and T-65 X-Wing starfighter 
@@ -15,7 +16,7 @@
 ### Removed
 
 ### Fixed
-- Progressbar color of LAAT/i
+- Progress bar color of LAAT/i
 
 ## [1.9.0] - 2023-03-13
 

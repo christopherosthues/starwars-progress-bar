@@ -32,6 +32,7 @@
 * ![Praxis Mk I turbo speeder](icons/jedi/praxis_mk_i_turbo_speeder@2x.png) Praxis Mk I turbo speeder ![Praxis Mk I turbo speeder](icons/jedi/praxis_mk_i_turbo_speeder_r@2x.png)
 * ![Saesee Tiin's Delta-7b-Aethersprite Starfighter](icons/jedi/saesee_tiins_delta_7b_jedi_starfighter@2x.png) Saesee Tiin's Delta-7b-Aethersprite Starfighter ![Saesee Tiin's Delta-7b-Aethersprite Starfighter](icons/jedi/saesee_tiins_delta_7b_jedi_starfighter_r@2x.png)
 * ![Stinger Mantis](icons/jedi/stinger_mantis@2x.png) Stinger Mantis ![Stinger Mantis](icons/jedi/stinger_mantis_r@2x.png)
+* ![T-6 Shuttle](icons/jedi/t_6_shuttle@2x.png) T-6 Shuttle ![T-6 Shuttle](icons/jedi/t_6_shuttle_r@2x.png)
 
 ### Galactic Republic
 
