@@ -1,5 +1,7 @@
 package com.christopherosthues.starwarsprogressbar.selectors
 
+import com.christopherosthues.starwarsprogressbar.StarWarsBundle
+import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
 import com.christopherosthues.starwarsprogressbar.models.FactionHolder
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import java.util.concurrent.atomic.AtomicInteger
@@ -11,8 +13,13 @@ internal object ReverseOrderFactionVehicleSelector : IVehicleSelector {
     override fun selectVehicle(enabledVehicles: Map<String, Boolean>, defaultEnabled: Boolean): StarWarsVehicle {
         val vehicles = FactionHolder.defaultVehicles.filter { vehicle ->
             enabledVehicles.getOrDefault(vehicle.vehicleId, defaultEnabled)
-        }
-        // TODO: reverse order factions
+        }.sortedWith(
+            compareByDescending<StarWarsVehicle> { StarWarsBundle.message("${BundleConstants.FACTION}${it.factionId}") }.thenByDescending {
+                StarWarsBundle.message(
+                    it.localizationKey,
+                ).lowercase()
+            },
+        )
 
         var vehicle = FactionHolder.missingVehicle
         if (vehicles.isNotEmpty()) {
