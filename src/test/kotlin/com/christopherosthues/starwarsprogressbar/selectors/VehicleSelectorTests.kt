@@ -47,211 +47,6 @@ class VehicleSelectorTests {
 
     //region Tests
 
-    //region selectVehicle with parameters tests
-
-    @ParameterizedTest
-    @MethodSource("defaultEnabledValues")
-    fun `selectVehicle with parameters should return missing vehicle if provided enabled vehicles and default vehicles are empty`(
-        defaultEnabled: Boolean,
-    ) {
-        // Arrange
-        every { FactionHolder.defaultVehicles } returns listOf()
-
-        // Act
-        val result = VehicleSelector.selectVehicle(mapOf(), defaultEnabled, SelectionType.RANDOM_ALL)
-
-        // Assert
-        assertEquals(missingVehicle, result)
-    }
-
-    @ParameterizedTest
-    @MethodSource("defaultEnabledValues")
-    fun `selectVehicle with parameters should return missing vehicle if provided enabled vehicles are not empty and default vehicles are empty`(
-        defaultEnabled: Boolean,
-    ) {
-        // Arrange
-        every { FactionHolder.defaultVehicles } returns listOf()
-
-        // Act
-        val result = VehicleSelector.selectVehicle(mapOf("1" to true, "2" to false, "3" to true), defaultEnabled, SelectionType.RANDOM_ALL)
-
-        // Assert
-        assertEquals(missingVehicle, result)
-    }
-
-    @ParameterizedTest
-    @ValueSource(booleans = [true, false])
-    fun `selectVehicle with parameters should return missing vehicle if provided enabled vehicles are not empty and default vehicles are empty and all values are true or false`(
-        enabled: Boolean,
-    ) {
-        // Arrange
-        every { FactionHolder.defaultVehicles } returns listOf()
-
-        // Act
-        val result = VehicleSelector.selectVehicle(mapOf("1" to enabled, "2" to enabled, "3" to enabled), true, SelectionType.RANDOM_ALL)
-
-        // Assert
-        assertEquals(missingVehicle, result)
-    }
-
-    @Test
-    fun `selectVehicle with parameters should return missing vehicle if provided enabled vehicles are empty and default vehicles are not empty and default enabled is false`() {
-        // Arrange
-        every { FactionHolder.defaultVehicles } returns createStarWarsVehicles()
-
-        // Act
-        val result = VehicleSelector.selectVehicle(mapOf(), false, SelectionType.RANDOM_ALL)
-
-        // Assert
-        assertEquals(missingVehicle, result)
-    }
-
-    @ParameterizedTest
-    @ValueSource(ints = [0, 1, 2])
-    fun `selectVehicle with parameters should return correct vehicle if provided enabled vehicles are empty and default vehicles are not empty and default enabled is true`(
-        index: Int,
-    ) {
-        // Arrange
-        mockkStatic(::randomInt)
-        val vehicles = createStarWarsVehicles()
-        every { FactionHolder.defaultVehicles } returns vehicles
-        every { randomInt(any()) } returns index
-
-        // Act
-        val result = VehicleSelector.selectVehicle(mapOf(), true, SelectionType.RANDOM_ALL)
-
-        // Assert
-        assertAll(
-            { assertEquals(vehicles[index], result) },
-            { assertNotEquals(missingVehicle, result) },
-        )
-        verify(exactly = 1) { randomInt(vehicles.size) }
-    }
-
-    @ParameterizedTest
-    @MethodSource("defaultEnabledValues")
-    fun `selectVehicle with parameters should return missing vehicle if provided enabled vehicles are all false and default vehicles are not empty`(
-        defaultEnabled: Boolean,
-    ) {
-        // Arrange
-        every { FactionHolder.defaultVehicles } returns createStarWarsVehicles()
-
-        // Act
-        val result =
-            VehicleSelector.selectVehicle(mapOf("1" to false, "2" to false, "3" to false), defaultEnabled, SelectionType.RANDOM_ALL)
-
-        // Assert
-        assertEquals(missingVehicle, result)
-    }
-
-    @ParameterizedTest
-    @MethodSource("indexAndDefaultEnabledValues")
-    fun `selectVehicle with parameters should return correct vehicle if provided enabled vehicles are all true and default vehicles are not empty`(
-        index: Int,
-        defaultEnabled: Boolean,
-    ) {
-        // Arrange
-        mockkStatic(::randomInt)
-        val vehicles = createStarWarsVehicles()
-        every { FactionHolder.defaultVehicles } returns vehicles
-        every { randomInt(any()) } returns index
-
-        // Act
-        val result = VehicleSelector.selectVehicle(mapOf("1" to true, "2" to true, "3" to true), defaultEnabled, SelectionType.RANDOM_ALL)
-
-        // Assert
-        assertAll(
-            { assertEquals(vehicles[index], result) },
-            { assertNotEquals(missingVehicle, result) },
-        )
-        verify(exactly = 1) { randomInt(vehicles.size) }
-    }
-
-    @ParameterizedTest
-    @ValueSource(ints = [0, 1])
-    fun `selectVehicle with parameters should return correct vehicle if provided enabled vehicles do not contain all default vehicles and default enabled is false`(
-        index: Int,
-    ) {
-        // Arrange
-        mockkStatic(::randomInt)
-        val vehicles = createStarWarsVehicles()
-        every { FactionHolder.defaultVehicles } returns vehicles
-        every { randomInt(any()) } returns index
-
-        // Act
-        val result = VehicleSelector.selectVehicle(mapOf("2" to true, "3" to true), false, SelectionType.RANDOM_ALL)
-
-        // Assert
-        assertAll(
-            { assertEquals(vehicles[index + 1], result) },
-            { assertNotEquals(missingVehicle, result) },
-        )
-        verify(exactly = 1) { randomInt(vehicles.size - 1) }
-    }
-
-    @ParameterizedTest
-    @ValueSource(ints = [0, 1, 2])
-    fun `selectVehicle with parameters should return correct vehicle if provided enabled vehicles do not contain all default vehicles and default enabled is true`(
-        index: Int,
-    ) {
-        // Arrange
-        mockkStatic(::randomInt)
-        val vehicles = createStarWarsVehicles()
-        every { FactionHolder.defaultVehicles } returns vehicles
-        every { randomInt(any()) } returns index
-
-        // Act
-        val result = VehicleSelector.selectVehicle(mapOf("2" to true, "3" to true), true, SelectionType.RANDOM_ALL)
-
-        // Assert
-        assertAll(
-            { assertEquals(vehicles[index], result) },
-            { assertNotEquals(missingVehicle, result) },
-        )
-        verify(exactly = 1) { randomInt(vehicles.size) }
-    }
-
-    @ParameterizedTest
-    @ValueSource(ints = [0, 1, 2])
-    fun `selectVehicle with parameters should return correct vehicle if provided enabled vehicles and default vehicles have different additional entries`(
-        index: Int,
-    ) {
-        // Arrange
-        mockkStatic(::randomInt)
-        val vehicles = createStarWarsVehicles()
-        every { FactionHolder.defaultVehicles } returns vehicles
-        every { randomInt(any()) } returns index
-
-        // Act
-        val result = VehicleSelector.selectVehicle(mapOf("2" to true, "3" to true, "4" to true), true, SelectionType.RANDOM_ALL)
-
-        // Assert
-        assertAll(
-            { assertEquals(vehicles[index], result) },
-            { assertNotEquals(missingVehicle, result) },
-        )
-        verify(exactly = 1) { randomInt(vehicles.size) }
-    }
-
-    @Test
-    fun `selectVehicle with parameters should return correct vehicle if default vehicles are not all enabled`() {
-        // Arrange
-        mockkStatic(::randomInt)
-        val vehicles = createStarWarsVehicles()
-        every { FactionHolder.defaultVehicles } returns vehicles
-        every { randomInt(any()) } returns 0
-
-        // Act
-        val result = VehicleSelector.selectVehicle(mapOf("1" to false, "2" to true, "3" to false), true, SelectionType.RANDOM_ALL)
-
-        // Assert
-        assertAll(
-            { assertEquals(vehicles[1], result) },
-            { assertNotEquals(missingVehicle, result) },
-        )
-        verify(exactly = 1) { randomInt(vehicles.size - 2) }
-    }
-
     @Test
     fun `selectVehicle should not update factions of faction holder if factions of faction holder are not empty`() {
         // Arrange
@@ -288,6 +83,142 @@ class VehicleSelectorTests {
 
         // Assert
         assertEquals(missingVehicle, result)
+    }
+
+    // random tests
+    @ParameterizedTest
+    @ValueSource(ints = [0, 1, 2])
+    fun `selectVehicle with parameters should return correct vehicle if provided enabled vehicles are empty and default vehicles are not empty and default enabled is true`(
+        index: Int,
+    ) {
+        // Arrange
+        mockkStatic(::randomInt)
+        val vehicles = createStarWarsVehicles()
+        every { FactionHolder.defaultVehicles } returns vehicles
+        every { randomInt(any()) } returns index
+
+        // Act
+        val result = VehicleSelector.selectVehicle(mapOf(), true, SelectionType.RANDOM_ALL)
+
+        // Assert
+        assertAll(
+            { assertEquals(vehicles[index], result) },
+            { assertNotEquals(missingVehicle, result) },
+        )
+        verify(exactly = 1) { randomInt(vehicles.size) }
+    }
+
+    // random tests
+    @ParameterizedTest
+    @MethodSource("indexAndDefaultEnabledValues")
+    fun `selectVehicle with parameters should return correct vehicle if provided enabled vehicles are all true and default vehicles are not empty`(
+        index: Int,
+        defaultEnabled: Boolean,
+    ) {
+        // Arrange
+        mockkStatic(::randomInt)
+        val vehicles = createStarWarsVehicles()
+        every { FactionHolder.defaultVehicles } returns vehicles
+        every { randomInt(any()) } returns index
+
+        // Act
+        val result = VehicleSelector.selectVehicle(mapOf("1" to true, "2" to true, "3" to true), defaultEnabled, SelectionType.RANDOM_ALL)
+
+        // Assert
+        assertAll(
+            { assertEquals(vehicles[index], result) },
+            { assertNotEquals(missingVehicle, result) },
+        )
+        verify(exactly = 1) { randomInt(vehicles.size) }
+    }
+
+    // random tests
+    @ParameterizedTest
+    @ValueSource(ints = [0, 1])
+    fun `selectVehicle with parameters should return correct vehicle if provided enabled vehicles do not contain all default vehicles and default enabled is false`(
+        index: Int,
+    ) {
+        // Arrange
+        mockkStatic(::randomInt)
+        val vehicles = createStarWarsVehicles()
+        every { FactionHolder.defaultVehicles } returns vehicles
+        every { randomInt(any()) } returns index
+
+        // Act
+        val result = VehicleSelector.selectVehicle(mapOf("2" to true, "3" to true), false, SelectionType.RANDOM_ALL)
+
+        // Assert
+        assertAll(
+            { assertEquals(vehicles[index + 1], result) },
+            { assertNotEquals(missingVehicle, result) },
+        )
+        verify(exactly = 1) { randomInt(vehicles.size - 1) }
+    }
+
+    // random tests
+    @ParameterizedTest
+    @ValueSource(ints = [0, 1, 2])
+    fun `selectVehicle with parameters should return correct vehicle if provided enabled vehicles do not contain all default vehicles and default enabled is true`(
+        index: Int,
+    ) {
+        // Arrange
+        mockkStatic(::randomInt)
+        val vehicles = createStarWarsVehicles()
+        every { FactionHolder.defaultVehicles } returns vehicles
+        every { randomInt(any()) } returns index
+
+        // Act
+        val result = VehicleSelector.selectVehicle(mapOf("2" to true, "3" to true), true, SelectionType.RANDOM_ALL)
+
+        // Assert
+        assertAll(
+            { assertEquals(vehicles[index], result) },
+            { assertNotEquals(missingVehicle, result) },
+        )
+        verify(exactly = 1) { randomInt(vehicles.size) }
+    }
+
+    // random tests
+    @ParameterizedTest
+    @ValueSource(ints = [0, 1, 2])
+    fun `selectVehicle with parameters should return correct vehicle if provided enabled vehicles and default vehicles have different additional entries`(
+        index: Int,
+    ) {
+        // Arrange
+        mockkStatic(::randomInt)
+        val vehicles = createStarWarsVehicles()
+        every { FactionHolder.defaultVehicles } returns vehicles
+        every { randomInt(any()) } returns index
+
+        // Act
+        val result = VehicleSelector.selectVehicle(mapOf("2" to true, "3" to true, "4" to true), true, SelectionType.RANDOM_ALL)
+
+        // Assert
+        assertAll(
+            { assertEquals(vehicles[index], result) },
+            { assertNotEquals(missingVehicle, result) },
+        )
+        verify(exactly = 1) { randomInt(vehicles.size) }
+    }
+
+    // random tests
+    @Test
+    fun `selectVehicle with parameters should return correct vehicle if default vehicles are not all enabled`() {
+        // Arrange
+        mockkStatic(::randomInt)
+        val vehicles = createStarWarsVehicles()
+        every { FactionHolder.defaultVehicles } returns vehicles
+        every { randomInt(any()) } returns 0
+
+        // Act
+        val result = VehicleSelector.selectVehicle(mapOf("1" to false, "2" to true, "3" to false), true, SelectionType.RANDOM_ALL)
+
+        // Assert
+        assertAll(
+            { assertEquals(vehicles[1], result) },
+            { assertNotEquals(missingVehicle, result) },
+        )
+        verify(exactly = 1) { randomInt(vehicles.size - 2) }
     }
 
     @ParameterizedTest
@@ -367,6 +298,7 @@ class VehicleSelectorTests {
         assertEquals(missingVehicle, result)
     }
 
+    // random test
     @ParameterizedTest
     @ValueSource(ints = [0, 1, 2])
     fun `selectVehicle should return correct vehicle if provided enabled vehicles are empty and default vehicles are not empty and default enabled is true`(
@@ -414,6 +346,7 @@ class VehicleSelectorTests {
         assertEquals(missingVehicle, result)
     }
 
+    // random test
     @ParameterizedTest
     @MethodSource("indexAndDefaultEnabledValues")
     fun `selectVehicle should return correct vehicle if provided enabled vehicles are all true and default vehicles are not empty`(
@@ -442,6 +375,7 @@ class VehicleSelectorTests {
         verify(exactly = 1) { randomInt(vehicles.size) }
     }
 
+    // random test
     @ParameterizedTest
     @ValueSource(ints = [0, 1])
     fun `selectVehicle should return correct vehicle if provided enabled vehicles do not contain all default vehicles and default enabled is false`(
@@ -469,6 +403,7 @@ class VehicleSelectorTests {
         verify(exactly = 1) { randomInt(vehicles.size - 1) }
     }
 
+    // random test
     @ParameterizedTest
     @ValueSource(ints = [0, 1, 2])
     fun `selectVehicle should return correct vehicle if provided enabled vehicles do not contain all default vehicles and default enabled is true`(
@@ -496,6 +431,7 @@ class VehicleSelectorTests {
         verify(exactly = 1) { randomInt(vehicles.size) }
     }
 
+    // random test
     @ParameterizedTest
     @ValueSource(ints = [0, 1, 2])
     fun `selectVehicle should return correct vehicle if provided enabled vehicles and default vehicles have different additional entries`(
@@ -523,6 +459,7 @@ class VehicleSelectorTests {
         verify(exactly = 1) { randomInt(vehicles.size) }
     }
 
+    // random test
     @Test
     fun `selectVehicle should return correct vehicle if default vehicles are not all enabled`() {
         // Arrange
@@ -546,8 +483,6 @@ class VehicleSelectorTests {
         )
         verify(exactly = 1) { randomInt(vehicles.size - 2) }
     }
-
-    //endregion
 
     //endregion
 

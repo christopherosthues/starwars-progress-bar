@@ -14,10 +14,10 @@ internal object ReverseOrderFactionVehicleSelector : IVehicleSelector {
         val vehicles = FactionHolder.defaultVehicles.filter { vehicle ->
             enabledVehicles.getOrDefault(vehicle.vehicleId, defaultEnabled)
         }.sortedWith(
-            compareByDescending<StarWarsVehicle> { StarWarsBundle.message("${BundleConstants.FACTION}${it.factionId}") }.thenByDescending {
-                StarWarsBundle.message(
-                    it.localizationKey,
-                ).lowercase()
+            compareByDescending<StarWarsVehicle> {
+                StarWarsBundle.message("${BundleConstants.FACTION}${it.factionId}")
+            }.thenByDescending {
+                StarWarsBundle.message(it.localizationKey).lowercase()
             },
         )
 
