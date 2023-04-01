@@ -263,18 +263,6 @@ class InorderVehicleNameVehicleSelectorTests {
         fun defaultEnabledValues(): Stream<Arguments> {
             return Stream.of(Arguments.of(true), Arguments.of(false))
         }
-
-        @JvmStatic
-        fun indexAndDefaultEnabledValues(): Stream<Arguments> {
-            return Stream.of(
-                Arguments.of(0, true),
-                Arguments.of(0, false),
-                Arguments.of(1, true),
-                Arguments.of(1, false),
-                Arguments.of(2, true),
-                Arguments.of(2, false),
-            )
-        }
     }
 
     //endregion

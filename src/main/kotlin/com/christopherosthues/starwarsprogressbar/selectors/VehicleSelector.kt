@@ -20,12 +20,12 @@ internal object VehicleSelector {
         }
 
         val selector = when (selectionType) {
+            SelectionType.INORDER_FACTION -> InorderFactionVehicleSelector
+            SelectionType.INORDER_VEHICLE_NAME -> InorderVehicleNameVehicleSelector
             SelectionType.RANDOM_ALL -> RandomVehicleSelector
             SelectionType.RANDOM_NOT_DISPLAYED -> RollingRandomVehicleSelector
-            SelectionType.INORDER_VEHICLE_NAME -> InorderVehicleNameVehicleSelector
-            SelectionType.REVERSE_ORDER_VEHICLE_NAME -> ReverseOrderVehicleNameVehicleSelector
-            SelectionType.INORDER_FACTION -> InorderFactionVehicleSelector
             SelectionType.REVERSE_ORDER_FACTION -> ReverseOrderFactionVehicleSelector
+            SelectionType.REVERSE_ORDER_VEHICLE_NAME -> ReverseOrderVehicleNameVehicleSelector
         }
 
         return selector.selectVehicle(currentEnabledVehicles, defaultEnabled)
