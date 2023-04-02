@@ -5,7 +5,6 @@ import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.util.randomInt
 
 internal object RandomVehicleSelector : IVehicleSelector {
-    // TODO unit test me
     override fun selectVehicle(enabledVehicles: Map<String, Boolean>, defaultEnabled: Boolean): StarWarsVehicle {
         val vehicles = FactionHolder.defaultVehicles.filter { vehicle ->
             enabledVehicles.getOrDefault(vehicle.vehicleId, defaultEnabled)

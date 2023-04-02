@@ -167,10 +167,12 @@ class IconResourceTests {
 
     private val iconWhitelist = listOf(
         "galactic_republic${File.separatorChar}at_te@2x.png",
+        "galactic_republic${File.separatorChar}at_te2@2x.png",
         "rebel_alliance${File.separatorChar}sphyrna_class_hammerhead_corvette@2x.png",
         "scoundrels${File.separatorChar}lady_luck@2x.png",
         "scoundrels${File.separatorChar}outrider@2x.png",
         "scoundrels${File.separatorChar}outrider_r@2x.png",
+        "mandalorians${File.separatorChar}razor_crest@2x.png",
     )
 
     private fun getFormattedImagesNotReferencedErrorMessage(imagesNotReferenced: List<String>): String {
