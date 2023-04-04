@@ -7,7 +7,6 @@ import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import java.util.concurrent.atomic.AtomicInteger
 
 internal object ReverseOrderFactionVehicleSelector : IVehicleSelector {
-    // TODO unit test me
     private val index = AtomicInteger()
 
     override fun selectVehicle(enabledVehicles: Map<String, Boolean>, defaultEnabled: Boolean): StarWarsVehicle {

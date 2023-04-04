@@ -10,7 +10,6 @@ internal object VehicleSelector {
         defaultEnabled: Boolean,
         selectionType: SelectionType,
     ): StarWarsVehicle {
-        // TODO unit test me
         var currentEnabledVehicles = enabledVehicles
         if (currentEnabledVehicles == null) {
             val persistentStateComponent = StarWarsPersistentStateComponent.instance
