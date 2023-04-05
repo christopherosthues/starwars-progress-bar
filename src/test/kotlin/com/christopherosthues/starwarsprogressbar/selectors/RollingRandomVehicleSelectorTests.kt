@@ -4,6 +4,7 @@ import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
 import com.christopherosthues.starwarsprogressbar.models.FactionHolder
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.util.randomInt
 import com.intellij.idea.TestFor
 import io.mockk.every
 import io.mockk.mockkObject
@@ -119,6 +120,32 @@ class RollingRandomVehicleSelectorTests {
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
+    }
+
+    fun `selectVehicle should return random vehicles`() {
+        // Arrange
+        val vehicles = createStarWarsVehicles().toMutableList()
+        every { FactionHolder.defaultVehicles } returns vehicles
+        every { randomInt(any()) } returns 0
+
+        // Act
+        var result = mutableListOf<StarWarsVehicle>()
+        for (i in vehicles.indices) {
+            result.add(
+                InorderVehicleNameVehicleSelector.selectVehicle(
+                    mapOf("2.1" to true, "1.2" to true, "1.3" to true),
+                    true,
+                ),
+            )
+        }
+
+        // Assert
+        Assertions.assertAll(
+            { Assertions.assertEquals(3, result.size) },
+            { Assertions.assertEquals(vehicles[0], result[0]) },
+            { Assertions.assertEquals(vehicles[1], result[1]) },
+            { Assertions.assertEquals(vehicles[2], result[2]) },
+        )
     }
 
     //endregion
