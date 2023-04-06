@@ -129,6 +129,12 @@ class VehicleSelectorTests {
             enableNewVehicles = true
         }
         setupStarWarsState(starWarsState)
+        every { InorderFactionVehicleSelector.selectVehicle(any(), defaultEnabled) } returns vehicles[1]
+        every { InorderVehicleNameVehicleSelector.selectVehicle(any(), defaultEnabled) } returns vehicles[1]
+        every { RandomVehicleSelector.selectVehicle(any(), defaultEnabled) } returns vehicles[1]
+        every { ReverseOrderFactionVehicleSelector.selectVehicle(any(), defaultEnabled) } returns vehicles[1]
+        every { ReverseOrderVehicleNameVehicleSelector.selectVehicle(any(), defaultEnabled) } returns vehicles[1]
+        every { RollingRandomVehicleSelector.selectVehicle(any(), defaultEnabled) } returns vehicles[1]
 
         // Act
         val result = VehicleSelector.selectVehicle(null, defaultEnabled, selectionType)
@@ -169,6 +175,12 @@ class VehicleSelectorTests {
             enableNewVehicles = true
         }
         setupStarWarsState(starWarsState)
+        every { InorderFactionVehicleSelector.selectVehicle(enabledVehicles, defaultEnabled) } returns vehicles[1]
+        every { InorderVehicleNameVehicleSelector.selectVehicle(enabledVehicles, defaultEnabled) } returns vehicles[1]
+        every { RandomVehicleSelector.selectVehicle(enabledVehicles, defaultEnabled) } returns vehicles[1]
+        every { ReverseOrderFactionVehicleSelector.selectVehicle(enabledVehicles, defaultEnabled) } returns vehicles[1]
+        every { ReverseOrderVehicleNameVehicleSelector.selectVehicle(enabledVehicles, defaultEnabled) } returns vehicles[1]
+        every { RollingRandomVehicleSelector.selectVehicle(enabledVehicles, defaultEnabled) } returns vehicles[1]
 
         // Act
         val result = VehicleSelector.selectVehicle(enabledVehicles, defaultEnabled, selectionType)

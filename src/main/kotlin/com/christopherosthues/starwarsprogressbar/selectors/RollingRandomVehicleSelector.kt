@@ -5,7 +5,6 @@ import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.util.randomInt
 
 internal object RollingRandomVehicleSelector : IVehicleSelector {
-    // TODO unit test me
     private val displayedVehicles = mutableSetOf<String>()
     private val lock = Any()
 

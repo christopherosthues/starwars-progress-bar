@@ -27,6 +27,7 @@ class RollingRandomVehicleSelectorTests {
     @BeforeEach
     fun setup() {
         mockkStatic(StarWarsBundle::message)
+        mockkStatic(::randomInt)
         mockkObject(FactionHolder)
         mockkObject(StarWarsPersistentStateComponent)
 
@@ -85,7 +86,10 @@ class RollingRandomVehicleSelectorTests {
 
         // Act
         val result =
-            RollingRandomVehicleSelector.selectVehicle(mapOf("2.1" to enabled, "1.2" to enabled, "1.3" to enabled), true)
+            RollingRandomVehicleSelector.selectVehicle(
+                mapOf("2.1" to enabled, "1.2" to enabled, "1.3" to enabled),
+                true,
+            )
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -122,6 +126,7 @@ class RollingRandomVehicleSelectorTests {
         Assertions.assertEquals(missingVehicle, result)
     }
 
+    @Test
     fun `selectVehicle should return random vehicles`() {
         // Arrange
         val vehicles = createStarWarsVehicles().toMutableList()
@@ -130,9 +135,9 @@ class RollingRandomVehicleSelectorTests {
 
         // Act
         var result = mutableListOf<StarWarsVehicle>()
-        for (i in vehicles.indices) {
+        for (i in 0 until (2 * vehicles.size)) {
             result.add(
-                InorderVehicleNameVehicleSelector.selectVehicle(
+                RollingRandomVehicleSelector.selectVehicle(
                     mapOf("2.1" to true, "1.2" to true, "1.3" to true),
                     true,
                 ),
@@ -141,10 +146,62 @@ class RollingRandomVehicleSelectorTests {
 
         // Assert
         Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
+            { Assertions.assertEquals(6, result.size) },
             { Assertions.assertEquals(vehicles[0], result[0]) },
             { Assertions.assertEquals(vehicles[1], result[1]) },
             { Assertions.assertEquals(vehicles[2], result[2]) },
+            { Assertions.assertEquals(vehicles[0], result[3]) },
+            { Assertions.assertEquals(vehicles[1], result[4]) },
+            { Assertions.assertEquals(vehicles[2], result[5]) },
+        )
+
+        // Arrange
+        vehicles[0] = vehicles[2].also {
+            vehicles[2] = vehicles[0]
+        }
+
+        // Act
+        result = mutableListOf()
+        for (i in 0 until (2 * vehicles.size)) {
+            result.add(
+                RollingRandomVehicleSelector.selectVehicle(
+                    mapOf("2.1" to true, "1.2" to true, "1.3" to true),
+                    true,
+                ),
+            )
+        }
+
+        // Assert
+        Assertions.assertAll(
+            { Assertions.assertEquals(6, result.size) },
+            { Assertions.assertEquals(vehicles[0], result[0]) },
+            { Assertions.assertEquals(vehicles[1], result[1]) },
+            { Assertions.assertEquals(vehicles[2], result[2]) },
+            { Assertions.assertEquals(vehicles[0], result[3]) },
+            { Assertions.assertEquals(vehicles[1], result[4]) },
+            { Assertions.assertEquals(vehicles[2], result[5]) },
+        )
+
+        // Act
+        result = mutableListOf()
+        for (i in 0 until (2 * vehicles.size)) {
+            result.add(
+                RollingRandomVehicleSelector.selectVehicle(
+                    mapOf("2.1" to true, "1.2" to false, "1.3" to true),
+                    true,
+                ),
+            )
+        }
+
+        // Assert
+        Assertions.assertAll(
+            { Assertions.assertEquals(6, result.size) },
+            { Assertions.assertEquals(vehicles[0], result[0]) },
+            { Assertions.assertEquals(vehicles[2], result[1]) },
+            { Assertions.assertEquals(vehicles[0], result[2]) },
+            { Assertions.assertEquals(vehicles[2], result[3]) },
+            { Assertions.assertEquals(vehicles[0], result[4]) },
+            { Assertions.assertEquals(vehicles[2], result[5]) },
         )
     }
 
@@ -179,18 +236,6 @@ class RollingRandomVehicleSelectorTests {
         @JvmStatic
         fun defaultEnabledValues(): Stream<Arguments> {
             return Stream.of(Arguments.of(true), Arguments.of(false))
-        }
-
-        @JvmStatic
-        fun indexAndDefaultEnabledValues(): Stream<Arguments> {
-            return Stream.of(
-                Arguments.of(0, true),
-                Arguments.of(0, false),
-                Arguments.of(1, true),
-                Arguments.of(1, false),
-                Arguments.of(2, true),
-                Arguments.of(2, false),
-            )
         }
     }
 
