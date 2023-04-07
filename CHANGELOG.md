@@ -11,7 +11,7 @@
 - T-6 Shuttle to Jedi
 
 ### Changed
-- Updated Interdictor-class Star Destroyer, Mining Guild TIE Fighter, Phoenix Nest, Quasar Fire-class cruiser carrier and T-65 X-Wing starfighter 
+- Updated AT-ACT, Interdictor-class Star Destroyer, Mining Guild TIE Fighter, Phoenix Nest, Quasar Fire-class cruiser carrier and T-65 X-Wing starfighter 
 
 ### Removed
 
