@@ -5,9 +5,9 @@
 ## [Unreleased]
 
 ### Added
-- Different selection modes for vehicles
+- Different selection modes for vehicles (inorder, reverse order (faction, vehicle names), all random, random vehicles that were not displayed)
 - AT-DP to Galactic Empire
-- Profundity to Rebel Alliance
+- Profundity and Saw Gerrera's LAAT/i to Rebel Alliance
 - T-6 Shuttle to Jedi
 
 ### Changed
