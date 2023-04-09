@@ -173,6 +173,8 @@ class IconResourceTests {
         "scoundrels${File.separatorChar}outrider@2x.png",
         "scoundrels${File.separatorChar}outrider_r@2x.png",
         "mandalorians${File.separatorChar}razor_crest@2x.png",
+        "mandalorians${File.separatorChar}razor_crest_r@2x.png",
+        "bounty_hunters${File.separatorChar}shadow_caster@2x.png",
     )
 
     private fun getFormattedImagesNotReferencedErrorMessage(imagesNotReferenced: List<String>): String {
