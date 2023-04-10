@@ -245,6 +245,13 @@
           "velocity": 1.5
         },
         {
+          "id": "at_te",
+          "ionEngine": "brown",
+          "xShift": -2,
+          "yShift": -6,
+          "velocity": 1.5
+        },
+        {
           "id": "berenko_class_gondola_speeder",
           "ionEngine": "blue",
           "xShift": -10,

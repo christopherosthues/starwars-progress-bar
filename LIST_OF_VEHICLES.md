@@ -42,6 +42,7 @@
 * ![ARC-170 Starfighter](icons/galactic_republic/arc_170_starfighter@2x.png) ARC-170 Starfighter ![ARC-170 Starfighter](icons/galactic_republic/arc_170_starfighter_r@2x.png)
 * ![Arquitens-class light cruiser](icons/galactic_republic/arquitens_class_light_cruiser@2x.png) Arquitens-class light cruiser ![Arquitens-class light cruiser](icons/galactic_republic/arquitens_class_light_cruiser_r@2x.png)
 * ![AT-AP](icons/galactic_republic/at_ap@2x.png) AT-AP ![AT-AP](icons/galactic_republic/at_ap_r@2x.png)
+* ![AT-TE](icons/galactic_republic/at_te@2x.png) AT-TE ![AT-TE](icons/galactic_republic/at_te_r@2x.png)
 * ![Berenko-class gondola speeder](icons/galactic_republic/berenko_class_gondola_speeder@2x.png) Berenko-class gondola speeder ![Berenko-class gondola speeder](icons/galactic_republic/berenko_class_gondola_speeder_r@2x.png)
 * ![BTL-B Y-Wing](icons/galactic_republic/btl_b_y_wing@2x.png) BTL-B Y-Wing ![BTL-B Y-Wing](icons/galactic_republic/btl_b_y_wing_r@2x.png)
 * ![Captain Rex's BTL-B Y-Wing](icons/galactic_republic/captain_rex_y_wing@2x.png) Captain Rex's BTL-B Y-Wing ![Captain Rex's BTL-B Y-Wing](icons/galactic_republic/captain_rex_y_wing_r@2x.png)

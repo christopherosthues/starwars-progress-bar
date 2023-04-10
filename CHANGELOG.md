@@ -9,6 +9,7 @@
 - AT-DP to Galactic Empire
 - Profundity and Saw Gerrera's LAAT/i to Rebel Alliance
 - T-6 Shuttle to Jedi
+- AT-TE to Galactic Republic
 
 ### Changed
 - Updated AT-ACT, Interdictor-class Star Destroyer, Mining Guild TIE Fighter, Phoenix Nest, Quasar Fire-class cruiser carrier, T-65 X-Wing starfighter and U-Wing 
