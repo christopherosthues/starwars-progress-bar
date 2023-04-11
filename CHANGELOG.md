@@ -6,7 +6,7 @@
 
 ### Added
 - Different selection modes for vehicles (inorder, reverse order (faction, vehicle names), all random, random vehicles that were not displayed)
-- AT-DP to Galactic Empire
+- AT-DP and Class four container transport to Galactic Empire
 - Profundity and Saw Gerrera's LAAT/i to Rebel Alliance
 - T-6 Shuttle to Jedi
 - AT-TE to Galactic Republic

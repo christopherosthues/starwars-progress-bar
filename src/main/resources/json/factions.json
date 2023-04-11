@@ -703,6 +703,13 @@
           "velocity": 3
         },
         {
+          "id": "class_four_container_transport",
+          "ionEngine": "blue",
+          "xShift": -17,
+          "yShift": -6,
+          "velocity": 3
+        },
+        {
           "id": "eclipse",
           "ionEngine": "red",
           "xShift": -2,

@@ -112,6 +112,7 @@
 * ![AT-DP](icons/galactic_empire/at_dp@2x.png) AT-DP ![AT-DP](icons/galactic_empire/at_dp_r@2x.png)
 * ![AT-ST](icons/galactic_empire/at_st@2x.png) AT-ST ![AT-ST](icons/galactic_empire/at_st_r@2x.png)
 * ![Cantwell-class Arrestor Cruiser](icons/galactic_empire/cantwell_class_arrestor_cruiser@2x.png) Cantwell-class Arrestor Cruiser ![Cantwell-class Arrestor Cruiser](icons/galactic_empire/cantwell_class_arrestor_cruiser_r@2x.png)
+* ![Class four container transport](icons/galactic_empire/class_four_container_transport@2x.png) Class four container transport ![Class four container transport](icons/galactic_empire/class_four_container_transport_r@2x.png)
 * ![Eclipse](icons/galactic_empire/eclipse@2x.png) Eclipse ![Eclipse](icons/galactic_empire/eclipse_r@2x.png)
 * ![Executor](icons/galactic_empire/executor@2x.png) Executor ![Executor](icons/galactic_empire/executor_r@2x.png)
 * ![First Death Star](icons/galactic_empire/first_death_star@2x.png) First Death Star ![First Death Star](icons/galactic_empire/first_death_star_r@2x.png)
