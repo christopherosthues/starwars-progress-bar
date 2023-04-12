@@ -1,9 +1,8 @@
 package com.christopherosthues.starwarsprogressbar.util
 
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactions
-import com.google.gson.Gson
-import com.google.gson.JsonSyntaxException
 import com.intellij.util.ui.UIUtil
+import kotlinx.serialization.json.Json.Default.decodeFromString
 import java.awt.Image
 import java.awt.image.BufferedImage
 import java.net.URL
@@ -18,17 +17,11 @@ internal fun readTextFromUrl(url: URL): String {
 }
 
 internal fun parseFactionsFromJson(json: String): StarWarsFactions {
-    val gson = Gson()
     var loadedFactions = StarWarsFactions(listOf())
     try {
-        loadedFactions = gson.fromJson(json, StarWarsFactions::class.java)
+        loadedFactions = decodeFromString(StarWarsFactions.serializer(), json)
     } catch (exception: Exception) {
-        when (exception){
-            is NullPointerException, is JsonSyntaxException -> {
-                return loadedFactions
-            }
-            else -> throw exception
-        }
+        return loadedFactions
     }
 
     return if (loadedFactions.factions != null) loadedFactions else StarWarsFactions(listOf())

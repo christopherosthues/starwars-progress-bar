@@ -3,13 +3,15 @@ package com.christopherosthues.starwarsprogressbar.models
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
 import com.christopherosthues.starwarsprogressbar.ui.IonEngineColor
 import com.intellij.ui.JBColor
+import kotlinx.serialization.Serializable
 
+@Serializable
 internal data class StarWarsVehicle(
     val id: String,
     val ionEngine: String,
     val xShift: Int,
     val yShift: Int,
-    val velocity: Float
+    val velocity: Float,
 ) {
     var factionId: String = ""
 

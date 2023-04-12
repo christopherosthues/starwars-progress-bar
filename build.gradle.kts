@@ -23,6 +23,7 @@ plugins {
     id("org.jetbrains.kotlinx.kover") version "0.6.1"
     // Build Plugins
 //    id("com.christopherosthues.build")
+    kotlin("plugin.serialization") version "1.8.10"
 }
 
 group = properties("pluginGroup").get()
@@ -47,7 +48,7 @@ kotlin {
 }
 
 dependencies {
-    implementation("com.google.code.gson:gson:2.10.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
 
     testImplementation(platform("org.junit:junit-bom:5.9.2"))
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.2")

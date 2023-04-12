@@ -84,7 +84,14 @@ class ReverseOrderFactionVehicleSelectorTests {
 
         // Act
         val result =
-            ReverseOrderFactionVehicleSelector.selectVehicle(mapOf("2.1" to enabled, "1.2" to enabled, "1.3" to enabled), true)
+            ReverseOrderFactionVehicleSelector.selectVehicle(
+                mapOf(
+                    "2.1" to enabled,
+                    "1.2" to enabled,
+                    "1.3" to enabled,
+                ),
+                true,
+            )
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -128,15 +135,7 @@ class ReverseOrderFactionVehicleSelectorTests {
         every { FactionHolder.defaultVehicles } returns vehicles
 
         // Act
-        var result = mutableListOf<StarWarsVehicle>()
-        for (i in vehicles.indices) {
-            result.add(
-                ReverseOrderFactionVehicleSelector.selectVehicle(
-                    mapOf("2.1" to true, "1.2" to true, "1.3" to true),
-                    true,
-                ),
-            )
-        }
+        var result = selectMultipleVehicles(vehicles, mapOf("2.1" to true, "1.2" to true, "1.3" to true), true)
 
         // Assert
         Assertions.assertAll(
@@ -154,15 +153,7 @@ class ReverseOrderFactionVehicleSelectorTests {
         }
 
         // Act
-        result = mutableListOf()
-        for (i in vehicles.indices) {
-            result.add(
-                ReverseOrderFactionVehicleSelector.selectVehicle(
-                    mapOf("2.1" to true, "1.2" to true, "1.3" to true),
-                    true,
-                ),
-            )
-        }
+        result = selectMultipleVehicles(vehicles, mapOf("2.1" to true, "1.2" to true, "1.3" to true), true)
 
         // Assert
         Assertions.assertAll(
@@ -173,15 +164,7 @@ class ReverseOrderFactionVehicleSelectorTests {
         )
 
         // Act
-        result = mutableListOf()
-        for (i in vehicles.indices) {
-            result.add(
-                ReverseOrderFactionVehicleSelector.selectVehicle(
-                    mapOf("2.1" to true, "1.2" to false, "1.3" to true),
-                    true,
-                ),
-            )
-        }
+        result = selectMultipleVehicles(vehicles, mapOf("2.1" to true, "1.2" to false, "1.3" to true), true)
 
         // Assert
         Assertions.assertAll(
@@ -192,15 +175,7 @@ class ReverseOrderFactionVehicleSelectorTests {
         )
 
         // Act
-        result = mutableListOf()
-        for (i in vehicles.indices) {
-            result.add(
-                ReverseOrderFactionVehicleSelector.selectVehicle(
-                    mapOf("2.1" to true, "1.2" to false),
-                    true,
-                ),
-            )
-        }
+        result = selectMultipleVehicles(vehicles, mapOf("2.1" to true, "1.2" to false), true)
 
         // Assert
         Assertions.assertAll(
@@ -211,15 +186,7 @@ class ReverseOrderFactionVehicleSelectorTests {
         )
 
         // Act
-        result = mutableListOf()
-        for (i in vehicles.indices) {
-            result.add(
-                ReverseOrderFactionVehicleSelector.selectVehicle(
-                    mapOf("2.1" to true, "1.2" to false),
-                    false,
-                ),
-            )
-        }
+        result = selectMultipleVehicles(vehicles, mapOf("2.1" to true, "1.2" to false), false)
 
         // Assert
         Assertions.assertAll(
@@ -246,15 +213,7 @@ class ReverseOrderFactionVehicleSelectorTests {
         )
 
         // Act
-        result = mutableListOf()
-        for (i in vehicles.indices) {
-            result.add(
-                ReverseOrderFactionVehicleSelector.selectVehicle(
-                    mapOf("1.1" to true, "1.2" to true, "1.3" to true),
-                    true,
-                ),
-            )
-        }
+        result = selectMultipleVehicles(vehicles, mapOf("1.1" to true, "1.2" to true, "1.3" to true), true)
 
         // Assert
         Assertions.assertAll(
@@ -272,15 +231,7 @@ class ReverseOrderFactionVehicleSelectorTests {
         }
 
         // Act
-        result = mutableListOf()
-        for (i in vehicles.indices) {
-            result.add(
-                ReverseOrderFactionVehicleSelector.selectVehicle(
-                    mapOf("1.1" to true, "1.2" to true, "1.3" to true),
-                    true,
-                ),
-            )
-        }
+        result = selectMultipleVehicles(vehicles, mapOf("1.1" to true, "1.2" to true, "1.3" to true), true)
 
         // Assert
         Assertions.assertAll(
@@ -291,15 +242,7 @@ class ReverseOrderFactionVehicleSelectorTests {
         )
 
         // Act
-        result = mutableListOf()
-        for (i in vehicles.indices) {
-            result.add(
-                ReverseOrderFactionVehicleSelector.selectVehicle(
-                    mapOf("1.1" to true, "1.2" to false, "1.3" to true),
-                    true,
-                ),
-            )
-        }
+        result = selectMultipleVehicles(vehicles, mapOf("1.1" to true, "1.2" to false, "1.3" to true), true)
 
         // Assert
         Assertions.assertAll(
@@ -310,15 +253,7 @@ class ReverseOrderFactionVehicleSelectorTests {
         )
 
         // Act
-        result = mutableListOf()
-        for (i in vehicles.indices) {
-            result.add(
-                ReverseOrderFactionVehicleSelector.selectVehicle(
-                    mapOf("1.1" to true, "1.2" to false),
-                    true,
-                ),
-            )
-        }
+        result = selectMultipleVehicles(vehicles, mapOf("1.1" to true, "1.2" to false), true)
 
         // Assert
         Assertions.assertAll(
@@ -329,15 +264,7 @@ class ReverseOrderFactionVehicleSelectorTests {
         )
 
         // Act
-        result = mutableListOf()
-        for (i in vehicles.indices) {
-            result.add(
-                ReverseOrderFactionVehicleSelector.selectVehicle(
-                    mapOf("1.1" to true, "1.2" to false),
-                    false,
-                ),
-            )
-        }
+        result = selectMultipleVehicles(vehicles, mapOf("1.1" to true, "1.2" to false), false)
 
         // Assert
         Assertions.assertAll(
@@ -363,6 +290,24 @@ class ReverseOrderFactionVehicleSelectorTests {
         }
 
         return vehicles
+    }
+
+    private fun selectMultipleVehicles(
+        vehicles: MutableList<StarWarsVehicle>,
+        enabledVehicles: Map<String, Boolean>,
+        defaultEnabled: Boolean,
+    ): List<StarWarsVehicle> {
+        val result = mutableListOf<StarWarsVehicle>()
+        for (i in vehicles.indices) {
+            result.add(
+                ReverseOrderFactionVehicleSelector.selectVehicle(
+                    enabledVehicles,
+                    defaultEnabled,
+                ),
+            )
+        }
+
+        return result
     }
 
     //endregion
