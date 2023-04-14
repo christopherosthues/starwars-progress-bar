@@ -177,6 +177,7 @@
 ### Mandalorians
 
 * ![Din Djarin's N-1 Starfighter](icons/mandalorians/mandos_n_1_starfighter@2x.png) Din Djarin's N-1 Starfighter ![Din Djarin's N-1 Starfighter](icons/mandalorians/mandos_n_1_starfighter_r@2x.png)
+* ![Razor Crest](icons/mandalorians/razor_crest@2x.png) Razor Crest ![Razor Crest](icons/mandalorians/razor_crest_r@2x.png)
 
 ### Bounty Hunters
 

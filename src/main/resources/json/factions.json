@@ -1092,6 +1092,13 @@
           "xShift": -21,
           "yShift": -6,
           "velocity": 4.75
+        },
+        {
+          "id": "razor_crest",
+          "ionEngine": "orange",
+          "xShift": -5,
+          "yShift": -6,
+          "velocity": 3
         }
       ]
     },
