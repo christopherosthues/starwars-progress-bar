@@ -8,7 +8,7 @@
 - Different selection modes for vehicles (inorder, reverse order (faction, vehicle names), all random, random vehicles that were not displayed)
 - Razor Crest to Mandalorians
 - AT-TE to Galactic Republic
-- AT-DP and Class four container transport to Galactic Empire
+- AT-DP, AT-DP Arc Cannon Prototype and Class four container transport to Galactic Empire
 - Profundity and Saw Gerrera's LAAT/i to Rebel Alliance
 - T-6 Shuttle to Jedi
 

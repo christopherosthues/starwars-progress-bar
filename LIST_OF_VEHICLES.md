@@ -110,6 +110,7 @@
 * ![AT-ACT](icons/galactic_empire/at_act@2x.png) AT-ACT ![AT-ACT](icons/galactic_empire/at_act_r@2x.png)
 * ![AT-AT](icons/galactic_empire/at_at@2x.png) AT-AT ![AT-AT](icons/galactic_empire/at_at_r@2x.png)
 * ![AT-DP](icons/galactic_empire/at_dp@2x.png) AT-DP ![AT-DP](icons/galactic_empire/at_dp_r@2x.png)
+* ![AT-DP Arc Cannon Prototype](icons/galactic_empire/at_dp_arc_cannon_prototype@2x.png) AT-DP Arc Cannon Prototype ![AT-DP Arc Cannon Prototype](icons/galactic_empire/at_dp_arc_cannon_prototype_r@2x.png)
 * ![AT-ST](icons/galactic_empire/at_st@2x.png) AT-ST ![AT-ST](icons/galactic_empire/at_st_r@2x.png)
 * ![Cantwell-class Arrestor Cruiser](icons/galactic_empire/cantwell_class_arrestor_cruiser@2x.png) Cantwell-class Arrestor Cruiser ![Cantwell-class Arrestor Cruiser](icons/galactic_empire/cantwell_class_arrestor_cruiser_r@2x.png)
 * ![Class four container transport](icons/galactic_empire/class_four_container_transport@2x.png) Class four container transport ![Class four container transport](icons/galactic_empire/class_four_container_transport_r@2x.png)
