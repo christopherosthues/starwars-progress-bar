@@ -55,6 +55,7 @@
 * ![IPV-2C Stealth Corvette](icons/galactic_republic/ipv_2c_stealth_corvette@2x.png) IPV-2C Stealth Corvette ![IPV-2C Stealth Corvette](icons/galactic_republic/ipv_2c_stealth_corvette_r@2x.png)
 * ![J-Type Diplomatic Barge](icons/galactic_republic/j_type_diplomatic_barge@2x.png) J-Type Diplomatic Barge ![J-Type Diplomatic Barge](icons/galactic_republic/j_type_diplomatic_barge_r@2x.png)
 * ![J-Type Naboo Star Skiff](icons/galactic_republic/j_type_naboo_star_skiff@2x.png) J-Type Naboo Star Skiff ![J-Type Naboo Star Skiff](icons/galactic_republic/j_type_naboo_star_skiff_r@2x.png)
+* ![LAAT/c](icons/galactic_republic/laat_c@2x.png) LAAT/c ![LAAT/c](icons/galactic_republic/laat_c_r@2x.png)
 * ![LAAT/i](icons/galactic_republic/laat_i@2x.png) LAAT/i ![LAAT/i](icons/galactic_republic/laat_i_r@2x.png)
 * ![N-1 Starfighter](icons/galactic_republic/n_1_starfighter@2x.png) N-1 Starfighter ![N-1 Starfighter](icons/galactic_republic/n_1_starfighter_r@2x.png)
 * ![Naboo Royal Starship](icons/galactic_republic/naboo_royal_starship@2x.png) Naboo Royal Starship ![Naboo Royal Starship](icons/galactic_republic/naboo_royal_starship_r@2x.png)

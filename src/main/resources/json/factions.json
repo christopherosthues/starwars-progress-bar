@@ -336,6 +336,13 @@
           "velocity": 2.5
         },
         {
+          "id": "laat_c",
+          "ionEngine": "red",
+          "xShift": -2,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
           "id": "laat_i",
           "ionEngine": "red",
           "xShift": 0,
