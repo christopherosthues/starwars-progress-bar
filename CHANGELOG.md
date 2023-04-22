@@ -5,6 +5,17 @@
 ## [Unreleased]
 
 ### Added
+- TIE Brute to Galactic Empire
+
+### Changed
+
+### Removed
+
+### Fixed
+
+## [1.10.0] - 2023-04-21
+
+### Added
 - Different selection modes for vehicles (inorder, reverse order (faction, vehicle names), all random, random vehicles that were not displayed)
 - Razor Crest to Mandalorians
 - AT-TE and LAAT/c to Galactic Republic
@@ -13,9 +24,7 @@
 - T-6 Shuttle to Jedi
 
 ### Changed
-- Updated AT-ACT, Interdictor-class Star Destroyer, Mining Guild TIE Fighter, Phoenix Nest, Quasar Fire-class cruiser carrier, T-65 X-Wing starfighter and U-Wing 
-
-### Removed
+- Updated AT-ACT, Interdictor-class Star Destroyer, Mining Guild TIE Fighter, Phoenix Nest, Quasar Fire-class cruiser carrier, T-65 X-Wing starfighter and U-Wing
 
 ### Fixed
 - Progress bar color of LAAT/i
@@ -158,6 +167,30 @@
 - Progress bar with vehicles from Star Wars
 
 [Unreleased]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.9.0...HEAD
+
+[1.9.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.8.0...v1.9.0
+
+[1.8.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.7.0...v1.8.0
+
+[1.7.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.6.0...v1.7.0
+
+[1.6.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.5.0...v1.6.0
+
+[1.5.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.4.0...v1.5.0
+
+[1.4.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.3.0...v1.4.0
+
+[1.3.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.2.0...v1.3.0
+
+[1.2.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.1.0...v1.2.0
+
+[1.1.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.0.0...v1.1.0
+
+[1.0.0]: https://github.com/christopherosthues/starwars-progress-bar/commits/v1.0.0
+
+[Unreleased]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.10.0...HEAD
+
+[1.10.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.9.0...v1.10.0
 
 [1.9.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.8.0...v1.9.0
 

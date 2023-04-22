@@ -131,6 +131,7 @@
 * ![TIE Advanced x1](icons/galactic_empire/tie_advanced_x1@2x.png) TIE Advanced x1 ![TIE Advanced x1](icons/galactic_empire/tie_advanced_x1_r@2x.png)
 * ![TIE Avenger](icons/galactic_empire/tie_avenger@2x.png) TIE Avenger ![TIE Avenger](icons/galactic_empire/tie_avenger_r@2x.png)
 * ![TIE Bomber](icons/galactic_empire/tie_bomber@2x.png) TIE Bomber ![TIE Bomber](icons/galactic_empire/tie_bomber_r@2x.png)
+* ![TIE Brute](icons/galactic_empire/tie_brute@2x.png) TIE Brute ![TIE Brute](icons/galactic_empire/tie_brute_r@2x.png)
 * ![TIE Crawler](icons/galactic_empire/tie_crawler@2x.png) TIE Crawler ![TIE Crawler](icons/galactic_empire/tie_crawler_r@2x.png)
 * ![TIE Fighter](icons/galactic_empire/tie_fighter@2x.png) TIE Fighter ![TIE Fighter](icons/galactic_empire/tie_fighter_r@2x.png)
 * ![TIE Interceptor](icons/galactic_empire/tie_interceptor@2x.png) TIE Interceptor ![TIE Interceptor](icons/galactic_empire/tie_interceptor_r@2x.png)

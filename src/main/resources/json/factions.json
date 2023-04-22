@@ -836,6 +836,13 @@
           "velocity": 4
         },
         {
+          "id": "tie_brute",
+          "ionEngine": "red",
+          "xShift": -12,
+          "yShift": -6,
+          "velocity": 4
+        },
+        {
           "id": "tie_crawler",
           "ionEngine": "brown",
           "xShift": -8,
