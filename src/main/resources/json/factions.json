@@ -988,6 +988,13 @@
           "velocity": 2.5
         },
         {
+          "id": "sphyrna_class_hammerhead_corvette",
+          "ionEngine": "orange",
+          "xShift": -3,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
           "id": "laat_i",
           "ionEngine": "red",
           "xShift": 0,

@@ -156,6 +156,7 @@
 * ![Prototype B6](icons/rebel_alliance/prototype_b6@2x.png) Prototype B6 ![Prototype B6](icons/rebel_alliance/prototype_b6_r@2x.png)
 * ![Rogue Shadow](icons/rebel_alliance/rogue_shadow@2x.png) Rogue Shadow ![Rogue Shadow](icons/rebel_alliance/rogue_shadow_r@2x.png)
 * ![Saw Gerreras LAAT/i](icons/rebel_alliance/laat_i@2x.png) Saw Gerreras LAAT/i ![Saw Gerreras LAAT/i](icons/rebel_alliance/laat_i_r@2x.png)
+* ![Sphyrna-class Hammerhead corvette](icons/rebel_alliance/sphyrna_class_hammerhead_corvette@2x.png) Sphyrna-class Hammerhead corvette ![Sphyrna-class Hammerhead corvette](icons/rebel_alliance/sphyrna_class_hammerhead_corvette_r@2x.png)
 * ![T-16 Skyhopper](icons/rebel_alliance/t_16_skyhopper@2x.png) T-16 Skyhopper ![T-16 Skyhopper](icons/rebel_alliance/t_16_skyhopper_r@2x.png)
 * ![T-47 Snowspeeder](icons/rebel_alliance/t_47_snowspeeder@2x.png) T-47 Snowspeeder ![T-47 Snowspeeder](icons/rebel_alliance/t_47_snowspeeder_r@2x.png)
 * ![T-65 X-wing starfighter](icons/rebel_alliance/t_65_x_wing_starfighter@2x.png) T-65 X-Wing starfighter ![T-65 X-wing starfighter](icons/rebel_alliance/t_65_x_wing_starfighter_r@2x.png)
