@@ -23,7 +23,7 @@ plugins {
     id("org.jetbrains.kotlinx.kover") version "0.6.1"
     // Build Plugins
 //    id("com.christopherosthues.build")
-    kotlin("plugin.serialization") version "1.8.20"
+    kotlin("plugin.serialization") version "1.8.21"
 }
 
 group = properties("pluginGroup").get()
