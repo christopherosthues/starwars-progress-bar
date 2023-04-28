@@ -119,6 +119,7 @@
 * ![Executor](icons/galactic_empire/executor@2x.png) Executor ![Executor](icons/galactic_empire/executor_r@2x.png)
 * ![First Death Star](icons/galactic_empire/first_death_star@2x.png) First Death Star ![First Death Star](icons/galactic_empire/first_death_star_r@2x.png)
 * ![Imperial II-class Star Destroyer](icons/galactic_empire/imperial_class_star_destroyer@2x.png) Imperial II-class Star Destroyer ![Imperial II-class Star Destroyer](icons/galactic_empire/imperial_class_star_destroyer_r@2x.png)
+* ![Imperial transport](icons/galactic_empire/imperial_transport@2x.png) Imperial transport ![Imperial transport](icons/galactic_empire/imperial_transport_r@2x.png)
 * ![Interdictor-class Star Destroyer](icons/galactic_empire/interdictor_class_star_destroyer@2x.png) Interdictor-class Star Destroyer ![Interdictor-class Star Destroyer](icons/galactic_empire/interdictor_class_star_destroyer_r@2x.png)
 * ![Lambda-class Shuttle](icons/galactic_empire/lambda_class_shuttle@2x.png) Lambda-class Shuttle ![Lambda-class Shuttle](icons/galactic_empire/lambda_class_shuttle_r@2x.png)
 * ![Mining Guild TIE Fighter](icons/galactic_empire/mining_guild_tie_fighter@2x.png) Mining Guild TIE Fighter ![Mining Guild TIE Fighter](icons/galactic_empire/mining_guild_tie_fighter_r@2x.png)

@@ -5,7 +5,7 @@
 ## [Unreleased]
 
 ### Added
-- TIE Brute to Galactic Empire
+- Imperial transport and TIE Brute to Galactic Empire
 - Sphyrna-class Hammerhead corvette to Rebel Alliance
 
 ### Changed

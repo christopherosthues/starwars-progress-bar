@@ -752,6 +752,13 @@
           "velocity": 2.5
         },
         {
+          "id": "imperial_transport",
+          "ionEngine": "blue",
+          "xShift": -1,
+          "yShift": -6,
+          "velocity": 2.5
+        },
+        {
           "id": "interdictor_class_star_destroyer",
           "ionEngine": "blue",
           "xShift": -5,
