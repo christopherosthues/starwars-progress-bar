@@ -350,6 +350,13 @@
           "velocity": 2.5
         },
         {
+          "id": "marauder",
+          "ionEngine": "blue",
+          "xShift": -7,
+          "yShift": -6,
+          "velocity": 3.5
+        },
+        {
           "id": "n_1_starfighter",
           "ionEngine": "blue",
           "xShift": -16,

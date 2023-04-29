@@ -166,7 +166,6 @@ class IconResourceTests {
     //region Helper methods
 
     private val iconWhitelist = listOf(
-        "galactic_republic${File.separatorChar}marauder_r@2x.png",
         "scoundrels${File.separatorChar}lady_luck@2x.png",
         "scoundrels${File.separatorChar}outrider@2x.png",
         "scoundrels${File.separatorChar}outrider_r@2x.png",

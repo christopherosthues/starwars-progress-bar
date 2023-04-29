@@ -57,6 +57,7 @@
 * ![J-Type Naboo Star Skiff](icons/galactic_republic/j_type_naboo_star_skiff@2x.png) J-Type Naboo Star Skiff ![J-Type Naboo Star Skiff](icons/galactic_republic/j_type_naboo_star_skiff_r@2x.png)
 * ![LAAT/c](icons/galactic_republic/laat_c@2x.png) LAAT/c ![LAAT/c](icons/galactic_republic/laat_c_r@2x.png)
 * ![LAAT/i](icons/galactic_republic/laat_i@2x.png) LAAT/i ![LAAT/i](icons/galactic_republic/laat_i_r@2x.png)
+* ![Marauder](icons/galactic_republic/marauder@2x.png) Marauder ![Marauder](icons/galactic_republic/marauder_r@2x.png)
 * ![N-1 Starfighter](icons/galactic_republic/n_1_starfighter@2x.png) N-1 Starfighter ![N-1 Starfighter](icons/galactic_republic/n_1_starfighter_r@2x.png)
 * ![Naboo Royal Starship](icons/galactic_republic/naboo_royal_starship@2x.png) Naboo Royal Starship ![Naboo Royal Starship](icons/galactic_republic/naboo_royal_starship_r@2x.png)
 * ![Oevvaor Jet Catamaran](icons/galactic_republic/oevvaor_jet_catamaran@2x.png) Oevvaor Jet Catamaran ![Oevvaor Jet Catamaran](icons/galactic_republic/oevvaor_jet_catamaran_r@2x.png)
