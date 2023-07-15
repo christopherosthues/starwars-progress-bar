@@ -10,11 +10,11 @@ plugins {
     // Java support
     id("java")
     // Kotlin support
-    id("org.jetbrains.kotlin.jvm") version "1.8.22"
+    id("org.jetbrains.kotlin.jvm") version "1.9.0"
     // Gradle IntelliJ Plugin
-    id("org.jetbrains.intellij") version "1.14.2"
+    id("org.jetbrains.intellij") version "1.15.0"
     // Gradle Changelog Plugin
-    id("org.jetbrains.changelog") version "2.1.0"
+    id("org.jetbrains.changelog") version "2.1.2"
     // Gradle Qodana Plugin
     id("org.jetbrains.qodana") version "0.1.13"
     // Kotlin linter
@@ -23,7 +23,7 @@ plugins {
     id("org.jetbrains.kotlinx.kover") version "0.7.2"
     // Build Plugins
 //    id("com.christopherosthues.build")
-    kotlin("plugin.serialization") version "1.8.22"
+    kotlin("plugin.serialization") version "1.9.0"
 }
 
 group = properties("pluginGroup").get()
