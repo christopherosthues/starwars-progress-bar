@@ -24,7 +24,7 @@ import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactions
 import com.google.common.cache.Cache
 import com.google.common.cache.CacheBuilder
-import com.intellij.ui.IconManager
+import com.intellij.openapi.util.IconLoader
 import java.awt.Image
 import java.awt.image.BufferedImage
 import java.util.Optional
@@ -43,7 +43,7 @@ internal object StarWarsResourceLoader {
 
     fun getPluginIcon(): Icon {
         return scaleIcon(
-            IconManager.getInstance().getIcon("/META-INF/pluginIcon.svg", StarWarsResourceLoader.javaClass)
+            IconLoader.getIcon("/META-INF/pluginIcon.svg", StarWarsResourceLoader.javaClass),
         )
     }
 
@@ -105,11 +105,11 @@ internal object StarWarsResourceLoader {
                 resourceName, {
                     Optional.ofNullable(
                         Optional.ofNullable(createClassLoader().getResource(resourceName))
-                            .orElseGet { createClassLoader().getResource("/$resourceName") }
+                            .orElseGet { createClassLoader().getResource("/$resourceName") },
                     )
                         .map { icon -> createImageIconFromURL(icon) }
                         .orElseGet { createEmptyImageIconFromBufferedImage(ICON_SIZE) }
-                }
+                },
             ]
         } catch (ex: ExecutionException) {
             createEmptyImageIcon()
@@ -120,7 +120,7 @@ internal object StarWarsResourceLoader {
         val factionsFileName = "json/factions.json"
         val json = Optional.ofNullable(
             Optional.ofNullable(createClassLoader().getResource(factionsFileName))
-                .orElseGet { createClassLoader().getResource("/$factionsFileName") }
+                .orElseGet { createClassLoader().getResource("/$factionsFileName") },
         )
             .map { file -> readTextFromUrl(file) }
             .orElseGet { EMPTY_FACTIONS_JSON_DATA }

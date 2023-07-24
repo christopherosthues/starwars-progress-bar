@@ -10,6 +10,7 @@
 - Marauder to Galactic Republic
 
 ### Changed
+- Replaced call to deprecated IconManager API
 
 ### Removed
 

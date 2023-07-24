@@ -4,7 +4,7 @@ import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactions
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.intellij.idea.TestFor
-import com.intellij.ui.IconManager
+import com.intellij.openapi.util.IconLoader
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.mockkStatic
@@ -38,7 +38,7 @@ internal class StarWarsResourceLoaderTests {
 
     @BeforeEach
     fun setup() {
-        mockkStatic(IconManager::class)
+        mockkStatic(IconLoader::class)
         mockkStatic(::createClassLoader)
         mockkStatic(::readTextFromUrl)
         mockkStatic(::parseFactionsFromJson)
@@ -65,25 +65,16 @@ internal class StarWarsResourceLoaderTests {
     @Test
     fun `getPluginIcon should load plugin icon`() {
         // Arrange
-        val iconManagerMock = mockk<IconManager>(relaxed = true)
-        every { IconManager.getInstance() } returns iconManagerMock
-        every {
-            iconManagerMock.getIcon(
-                pluginIconPath,
-                StarWarsResourceLoader.javaClass
-            )
-        } returns mockk(relaxed = true)
+        every { IconLoader.getIcon(pluginIconPath, StarWarsResourceLoader.javaClass) } returns mockk(relaxed = true)
 
         // Act
         StarWarsResourceLoader.getPluginIcon()
 
         // Assert
         verifyOrder {
-            IconManager.getInstance()
-            iconManagerMock.getIcon(pluginIconPath, StarWarsResourceLoader.javaClass)
+            IconLoader.getIcon(pluginIconPath, StarWarsResourceLoader.javaClass)
         }
-        verify(exactly = 1) { IconManager.getInstance() }
-        verify(exactly = 1) { iconManagerMock.getIcon(pluginIconPath, StarWarsResourceLoader.javaClass) }
+        verify(exactly = 1) { IconLoader.getIcon(pluginIconPath, StarWarsResourceLoader.javaClass) }
     }
 
     @ParameterizedTest
@@ -100,7 +91,7 @@ internal class StarWarsResourceLoaderTests {
         // Assert
         assertAll(
             { assertEquals(imageIconMock, result) },
-            { assertSame(imageIconMock, result) }
+            { assertSame(imageIconMock, result) },
         )
         verify(exactly = 1) { createScaledEmptyImageIcon(scaledIconSize) }
         verify(exactly = 0) { createEmptyTranslucentBufferedImage(10, height) }
@@ -120,7 +111,7 @@ internal class StarWarsResourceLoaderTests {
         // Assert
         assertAll(
             { assertEquals(imageIconMock, result) },
-            { assertSame(imageIconMock, result) }
+            { assertSame(imageIconMock, result) },
         )
         verify(exactly = 1) { createScaledEmptyImageIcon(scaledIconSize) }
         verify(exactly = 0) { createEmptyTranslucentBufferedImage(width, 10) }
@@ -139,7 +130,7 @@ internal class StarWarsResourceLoaderTests {
         // Assert
         assertAll(
             { assertNotEquals(imageIconMock, result) },
-            { assertNotSame(imageIconMock, result) }
+            { assertNotSame(imageIconMock, result) },
         )
         verify(exactly = 0) { createScaledEmptyImageIcon(scaledIconSize) }
     }
@@ -158,7 +149,7 @@ internal class StarWarsResourceLoaderTests {
             bufferedImageMock.getScaledInstance(
                 scaledIconSize,
                 scaledIconSize,
-                Image.SCALE_SMOOTH
+                Image.SCALE_SMOOTH,
             )
         } returns imageMock
         every { createImageIconFromImage(imageMock) } returns imageIconMock
@@ -169,7 +160,7 @@ internal class StarWarsResourceLoaderTests {
         // Assert
         assertAll(
             { assertEquals(imageIconMock, result) },
-            { assertSame(imageIconMock, result) }
+            { assertSame(imageIconMock, result) },
         )
         verify(exactly = 0) { createScaledEmptyImageIcon(scaledIconSize) }
         verifyOrder {
@@ -236,7 +227,7 @@ internal class StarWarsResourceLoaderTests {
         // Assert
         assertAll(
             { assertEquals(bufferedImageMock, result) },
-            { assertSame(bufferedImageMock, result) }
+            { assertSame(bufferedImageMock, result) },
         )
         verifyImage(classLoaderMock, resourceName, url)
     }
@@ -244,7 +235,7 @@ internal class StarWarsResourceLoaderTests {
     @ParameterizedTest
     @ValueSource(booleans = [true, false])
     fun `getFactionLogo should return icon converted to buffered image if resource path starts with a slash`(
-        isLargeIcon: Boolean
+        isLargeIcon: Boolean,
     ) {
         // Arrange
         val imageIconMock = setupIconImage()
@@ -441,7 +432,7 @@ internal class StarWarsResourceLoaderTests {
         // Assert
         assertAll(
             { assertEquals(bufferedImageMock, result) },
-            { assertSame(bufferedImageMock, result) }
+            { assertSame(bufferedImageMock, result) },
         )
         verifyImage(classLoaderMock, resourceName, url)
     }
@@ -548,7 +539,7 @@ internal class StarWarsResourceLoaderTests {
         // Assert
         assertAll(
             { assertEquals(bufferedImageMock, result) },
-            { assertSame(bufferedImageMock, result) }
+            { assertSame(bufferedImageMock, result) },
         )
         verifyImage(classLoaderMock, resourceName, url)
     }
@@ -633,7 +624,7 @@ internal class StarWarsResourceLoaderTests {
     @ParameterizedTest
     @MethodSource("factionValues")
     fun `loadFactions should return loaded factions if resource path starts with a slash`(
-        starWarsFactions: StarWarsFactions
+        starWarsFactions: StarWarsFactions,
     ) {
         // Arrange
         val factionJson = ""
@@ -672,9 +663,7 @@ internal class StarWarsResourceLoaderTests {
 
     private fun setupPluginIcon(width: Int, height: Int): Icon {
         val iconMock = mockk<Icon>(relaxed = true)
-        val iconManagerMock = mockk<IconManager>(relaxed = true)
-        every { IconManager.getInstance() } returns iconManagerMock
-        every { iconManagerMock.getIcon(pluginIconPath, StarWarsResourceLoader.javaClass) } returns iconMock
+        every { IconLoader.getIcon(pluginIconPath, StarWarsResourceLoader.javaClass) } returns iconMock
         every { iconMock.iconWidth } returns width
         every { iconMock.iconHeight } returns height
 
@@ -719,7 +708,7 @@ internal class StarWarsResourceLoaderTests {
         firstUrl: URL?,
         secondResourceName: String,
         secondURL: URL?,
-        shouldSetupException: Boolean = false
+        shouldSetupException: Boolean = false,
     ): ClassLoader {
         val classLoaderMock = mockk<ClassLoader>(relaxed = true)
         if (shouldSetupException) {
@@ -744,11 +733,11 @@ internal class StarWarsResourceLoaderTests {
         bufferedImageMock: BufferedImage,
         result: BufferedImage,
         imageIconMock: ImageIcon,
-        graphicsMock: Graphics2D
+        graphicsMock: Graphics2D,
     ) {
         assertAll(
             { assertEquals(bufferedImageMock, result) },
-            { assertSame(bufferedImageMock, result) }
+            { assertSame(bufferedImageMock, result) },
         )
         verifyOrder {
             createEmptyBufferedImage(width, height)
@@ -767,12 +756,12 @@ internal class StarWarsResourceLoaderTests {
         resourceName: String,
         url: URL,
         imageIconMock: ImageIcon,
-        result: Icon
+        result: Icon,
     ) {
         verifyImage(classLoaderMock, resourceName, url)
         assertAll(
             { assertEquals(imageIconMock, result) },
-            { assertSame(imageIconMock, result) }
+            { assertSame(imageIconMock, result) },
         )
     }
 
@@ -793,12 +782,12 @@ internal class StarWarsResourceLoaderTests {
         resourceName: String,
         url: URL,
         imageIconMock: ImageIcon,
-        result: Icon
+        result: Icon,
     ) {
         verifyImageForSlashPath(classLoaderMock, resourceName, url)
         assertAll(
             { assertEquals(imageIconMock, result) },
-            { assertSame(imageIconMock, result) }
+            { assertSame(imageIconMock, result) },
         )
     }
 
@@ -820,12 +809,12 @@ internal class StarWarsResourceLoaderTests {
         resourceName: String,
         url: URL,
         imageIconMock: ImageIcon,
-        result: Icon
+        result: Icon,
     ) {
         verifyEmptyImageForMissingResource(classLoaderMock, resourceName, url)
         assertAll(
             { assertEquals(imageIconMock, result) },
-            { assertSame(imageIconMock, result) }
+            { assertSame(imageIconMock, result) },
         )
     }
 
@@ -847,12 +836,12 @@ internal class StarWarsResourceLoaderTests {
         resourceName: String,
         url: URL,
         imageIconMock: ImageIcon,
-        result: Icon
+        result: Icon,
     ) {
         verifyEmptyImageAfterException(classLoaderMock, resourceName, url)
         assertAll(
             { assertEquals(imageIconMock, result) },
-            { assertSame(imageIconMock, result) }
+            { assertSame(imageIconMock, result) },
         )
     }
 
@@ -873,7 +862,7 @@ internal class StarWarsResourceLoaderTests {
         url: URL,
         factionJson: String,
         loadedFactions: StarWarsFactions,
-        result: StarWarsFactions
+        result: StarWarsFactions,
     ) {
         verifyOrder {
             classLoaderMock.getResource(factionFileName)
@@ -892,7 +881,7 @@ internal class StarWarsResourceLoaderTests {
                         assertEquals(faction.id, it.factionId)
                     }
                 }
-            }
+            },
         )
     }
 
@@ -901,7 +890,7 @@ internal class StarWarsResourceLoaderTests {
         url: URL,
         factionJson: String,
         loadedFactions: StarWarsFactions,
-        result: StarWarsFactions
+        result: StarWarsFactions,
     ) {
         verifyOrder {
             classLoaderMock.getResource("/$factionFileName")
@@ -920,7 +909,7 @@ internal class StarWarsResourceLoaderTests {
                         assertEquals(faction.id, it.factionId)
                     }
                 }
-            }
+            },
         )
     }
 
@@ -928,7 +917,7 @@ internal class StarWarsResourceLoaderTests {
         classLoaderMock: ClassLoader,
         url: URL,
         loadedFactions: StarWarsFactions,
-        result: StarWarsFactions
+        result: StarWarsFactions,
     ) {
         verifyOrder {
             classLoaderMock.getResource("/$factionFileName")
@@ -946,7 +935,7 @@ internal class StarWarsResourceLoaderTests {
                         assertEquals(faction.id, it.factionId)
                     }
                 }
-            }
+            },
         )
     }
 
@@ -972,7 +961,7 @@ internal class StarWarsResourceLoaderTests {
                 Arguments.of(setupEmptyStarWarsFactions()),
                 Arguments.of(setupStarWarsFactionsWithOneFactionWithoutVehicles()),
                 Arguments.of(setupStarWarsFactionsWithOneFactionWithVehicles()),
-                Arguments.of(setupStarWarsFactions())
+                Arguments.of(setupStarWarsFactions()),
             )
         }
 
@@ -998,9 +987,9 @@ internal class StarWarsResourceLoaderTests {
                     listOf(
                         StarWarsVehicle("1", "a", 1, 1, 1f),
                         StarWarsVehicle("2", "b", 2, 2, 2f),
-                        StarWarsVehicle("3", "c", 3, 3, 3f)
-                    )
-                )
+                        StarWarsVehicle("3", "c", 3, 3, 3f),
+                    ),
+                ),
             )
 
             return loadedFactions
@@ -1014,25 +1003,25 @@ internal class StarWarsResourceLoaderTests {
                     listOf(
                         StarWarsVehicle("1", "a", 1, 1, 1f),
                         StarWarsVehicle("2", "b", 2, 2, 2f),
-                        StarWarsVehicle("3", "c", 3, 3, 3f)
-                    )
+                        StarWarsVehicle("3", "c", 3, 3, 3f),
+                    ),
                 ),
                 StarWarsFaction(
                     "2",
                     listOf(
                         StarWarsVehicle("1", "a", 1, 1, 1f),
                         StarWarsVehicle("2", "b", 2, 2, 2f),
-                        StarWarsVehicle("3", "c", 3, 3, 3f)
-                    )
+                        StarWarsVehicle("3", "c", 3, 3, 3f),
+                    ),
                 ),
                 StarWarsFaction(
                     "3",
                     listOf(
                         StarWarsVehicle("1", "a", 1, 1, 1f),
                         StarWarsVehicle("2", "b", 2, 2, 2f),
-                        StarWarsVehicle("3", "c", 3, 3, 3f)
-                    )
-                )
+                        StarWarsVehicle("3", "c", 3, 3, 3f),
+                    ),
+                ),
             )
 
             return loadedFactions
