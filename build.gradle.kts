@@ -18,7 +18,7 @@ plugins {
     // Gradle Qodana Plugin
     id("org.jetbrains.qodana") version "0.1.13"
     // Kotlin linter
-    id("io.gitlab.arturbosch.detekt").version("1.22.0")
+    id("io.gitlab.arturbosch.detekt").version("1.23.0")
     // Gradle Kover Plugin
     id("org.jetbrains.kotlinx.kover") version "0.7.2"
     // Build Plugins
@@ -50,12 +50,12 @@ kotlin {
 dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
 
-    testImplementation(platform("org.junit:junit-bom:5.9.3"))
-    testImplementation("org.junit.jupiter:junit-jupiter:5.9.3")
-    testImplementation("org.junit.jupiter:junit-jupiter-params:5.9.3")
-    testImplementation("org.junit.platform:junit-platform-launcher:1.9.3")
-    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.3")
-    testImplementation("org.junit.platform:junit-platform-suite-engine:1.9.3")
+    testImplementation(platform("org.junit:junit-bom:5.10.0"))
+    testImplementation("org.junit.jupiter:junit-jupiter:5.10.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:5.10.0")
+    testImplementation("org.junit.platform:junit-platform-launcher:1.10.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.10.0")
+    testImplementation("org.junit.platform:junit-platform-suite-engine:1.10.0")
     testImplementation("io.mockk:mockk:1.13.5")
 }
 
@@ -67,7 +67,7 @@ tasks.test {
 }
 
 detekt {
-    toolVersion = "1.22.0"
+    toolVersion = "1.23.0"
     config = files("config/detekt/detekt.yml")
     buildUponDefaultConfig = true
 }
