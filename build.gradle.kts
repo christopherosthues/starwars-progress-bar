@@ -20,7 +20,7 @@ plugins {
     // Kotlin linter
     id("io.gitlab.arturbosch.detekt").version("1.23.0")
     // Gradle Kover Plugin
-    id("org.jetbrains.kotlinx.kover") version "0.7.2"
+    id("org.jetbrains.kotlinx.kover") version "0.7.3"
     // Build Plugins
 //    id("com.christopherosthues.build")
     kotlin("plugin.serialization") version "1.9.0"
