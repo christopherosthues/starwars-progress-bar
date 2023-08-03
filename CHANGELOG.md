@@ -4,6 +4,11 @@
 
 ## [Unreleased]
 
+### Fixed
+- Exception due to an unspecified display name
+
+## [1.11.0] - 2023-07-14
+
 ### Added
 - Imperial transport and TIE Brute to Galactic Empire
 - Sphyrna-class Hammerhead corvette to Rebel Alliance
@@ -11,10 +16,6 @@
 
 ### Changed
 - Replaced call to deprecated IconManager API
-
-### Removed
-
-### Fixed
 
 ## [1.10.0] - 2023-04-21
 
@@ -169,26 +170,16 @@
 - Initial release
 - Progress bar with vehicles from Star Wars
 
-[Unreleased]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.10.0...HEAD
-
+[Unreleased]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.11.0...HEAD
+[1.11.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.10.0...v1.11.0
 [1.10.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.9.0...v1.10.0
-
 [1.9.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.8.0...v1.9.0
-
 [1.8.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.7.0...v1.8.0
-
 [1.7.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.6.0...v1.7.0
-
 [1.6.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.5.0...v1.6.0
-
 [1.5.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.4.0...v1.5.0
-
 [1.4.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.3.0...v1.4.0
-
 [1.3.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.2.0...v1.3.0
-
 [1.2.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.1.0...v1.2.0
-
 [1.1.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.0.0...v1.1.0
-
 [1.0.0]: https://github.com/christopherosthues/starwars-progress-bar/commits/v1.0.0
