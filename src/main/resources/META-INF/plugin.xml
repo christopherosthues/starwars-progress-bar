@@ -11,7 +11,8 @@
         <applicationConfigurable parentId="appearance"
                                  instance="com.christopherosthues.starwarsprogressbar.configuration.StarWarsProgressConfigurable"
                                  id="org.intellij.sdk.settings.AppSettingsConfigurable"
-                                 dynamic="true"/>
+                                 dynamic="true"
+                                 displayName="Star Wars Progress Bar" />
 
         <applicationService
                 serviceImplementation="com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent"/>
