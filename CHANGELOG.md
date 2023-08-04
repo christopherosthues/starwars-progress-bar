@@ -4,10 +4,20 @@
 
 ## [Unreleased]
 
+### Added
+
+### Changed
+
+### Removed
+
+### Fixed
+
+## [1.11.1] - 2023-08-03
+
 ### Fixed
 - Exception due to an unspecified display name
 
-## [1.11.0] - 2023-07-14
+## [1.11.0] - 2023-07-24
 
 ### Added
 - Imperial transport and TIE Brute to Galactic Empire
@@ -170,7 +180,8 @@
 - Initial release
 - Progress bar with vehicles from Star Wars
 
-[Unreleased]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.11.0...HEAD
+[Unreleased]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.11.1...HEAD
+[1.11.1]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.11.0...v1.11.1
 [1.11.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.10.0...v1.11.0
 [1.10.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.9.0...v1.10.0
 [1.9.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.8.0...v1.9.0
