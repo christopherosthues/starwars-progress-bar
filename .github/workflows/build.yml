@@ -41,7 +41,7 @@ jobs:
 
       # Check out current repository
       - name: Fetch Sources
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           lfs: true
 
@@ -109,7 +109,7 @@ jobs:
 
       # Check out current repository
       - name: Fetch Sources
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Setup Java environment for the next steps
       - name: Setup Java
@@ -153,7 +153,7 @@ jobs:
 
       # Check out current repository
       - name: Fetch Sources
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Setup Java environment for the next steps
       - name: Setup Java
@@ -177,7 +177,7 @@ jobs:
 
       # Check out current repository
       - name: Fetch Sources
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Setup Java environment for the next steps
       - name: Setup Java
@@ -222,7 +222,7 @@ jobs:
 
       # Check out current repository
       - name: Fetch Sources
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           lfs: true
 
