@@ -63,7 +63,7 @@ internal class UiOptionsPanel : JTitledPanel(StarWarsBundle.message(BundleConsta
     )
     private val numberOfPassesUntilVehicleChangeSpinner =
         JBIntSpinner(DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE, MINIMUM_NUMBER_OF_PASSES, MAXIMUM_NUMBER_OF_PASSES)
-    private val vehicleSelectorComboBox = ComboBox(SelectionType.values())
+    private val vehicleSelectorComboBox = ComboBox(SelectionType.entries.toTypedArray())
 
     val showVehicle: Boolean
         get() = showVehicleCheckBox.isSelected
