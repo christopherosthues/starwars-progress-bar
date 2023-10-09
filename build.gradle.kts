@@ -10,20 +10,19 @@ plugins {
     // Java support
     id("java")
     // Kotlin support
-    id("org.jetbrains.kotlin.jvm") version "1.9.10"
+    alias(libs.plugins.kotlin)
     // Gradle IntelliJ Plugin
-    id("org.jetbrains.intellij") version "1.16.0"
+    alias(libs.plugins.gradleIntelliJPlugin)
     // Gradle Changelog Plugin
-    id("org.jetbrains.changelog") version "2.2.0"
+    alias(libs.plugins.changelog)
     // Gradle Qodana Plugin
-    id("org.jetbrains.qodana") version "0.1.13"
+    alias(libs.plugins.qodana)
     // Kotlin linter
-    id("io.gitlab.arturbosch.detekt").version("1.23.0")
+    alias(libs.plugins.detekt)
     // Gradle Kover Plugin
-    id("org.jetbrains.kotlinx.kover") version "0.7.3"
+    alias(libs.plugins.kover)
     // Build Plugins
-//    id("com.christopherosthues.build")
-    kotlin("plugin.serialization") version "1.9.10"
+    kotlin("plugin.serialization") version libs.versions.serialization.get()
 }
 
 group = properties("pluginGroup").get()
@@ -36,27 +35,25 @@ repositories {
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
+        languageVersion = JavaLanguageVersion.of(17)
     }
 }
 
 // Set the JVM language level used to compile sources and generate files - Java 17 is required since 2022.2
 kotlin {
-    jvmToolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
-    }
+    jvmToolchain(17)
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
+    implementation(libs.kotlinx.serialization.json)
 
-    testImplementation(platform("org.junit:junit-bom:5.10.0"))
-    testImplementation("org.junit.jupiter:junit-jupiter:5.10.0")
-    testImplementation("org.junit.jupiter:junit-jupiter-params:5.10.0")
-    testImplementation("org.junit.platform:junit-platform-launcher:1.10.0")
-    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.10.0")
-    testImplementation("org.junit.platform:junit-platform-suite-engine:1.10.0")
-    testImplementation("io.mockk:mockk:1.13.8")
+    testImplementation(platform(libs.junit.bom))
+    testImplementation(libs.junit.jupiter.core)
+    testImplementation(libs.junit.jupiter.params)
+    testImplementation(libs.junit.jupiter.engine)
+    testImplementation(libs.junit.platform.launcher)
+    testImplementation(libs.junit.platform.suite.engine)
+    testImplementation(libs.mocking.mockk)
 }
 
 tasks.test {
@@ -68,33 +65,33 @@ tasks.test {
 
 detekt {
     toolVersion = "1.23.0"
-    config = files("config/detekt/detekt.yml")
+    config.from("config/detekt/detekt.yml")
     buildUponDefaultConfig = true
 }
 
 // Configure Gradle IntelliJ Plugin - read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
 intellij {
-    pluginName.set(properties("pluginName"))
-    version.set(properties("platformVersion"))
-    type.set(properties("platformType"))
-    updateSinceUntilBuild.set(false)
+    pluginName = properties("pluginName")
+    version = properties("platformVersion")
+    type = properties("platformType")
+    updateSinceUntilBuild = false
 
     // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file.
-    plugins.set(properties("platformPlugins").map { it.split(',').map(String::trim).filter(String::isNotEmpty) })
+    plugins = properties("platformPlugins").map { it.split(',').map(String::trim).filter(String::isNotEmpty) }
 }
 
 // Configure Gradle Changelog Plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
 changelog {
-    groups.set(listOf("Added", "Changed", "Removed", "Fixed"))
-    repositoryUrl.set(properties("pluginRepositoryUrl"))
+    groups = listOf("Added", "Changed", "Removed", "Fixed")
+    repositoryUrl = properties("pluginRepositoryUrl")
 }
 
 // Configure Gradle Qodana Plugin - read more: https://github.com/JetBrains/gradle-qodana-plugin
 qodana {
-    cachePath.set(provider { file(".qodana").canonicalPath })
-    reportPath.set(provider { file("build/reports/inspections").canonicalPath })
-    saveReport.set(true)
-    showReport.set(environment("QODANA_SHOW_REPORT").map { it.toBoolean() }.getOrElse(false))
+    cachePath = provider { file(".qodana").canonicalPath }
+    reportPath = provider { file("build/reports/inspections").canonicalPath }
+    saveReport = true
+    showReport = environment("QODANA_SHOW_REPORT").map { it.toBoolean() }.getOrElse(false)
 }
 
 // Configure Gradle Kover Plugin - read more: https://github.com/Kotlin/kotlinx-kover#configuration
@@ -109,12 +106,12 @@ koverReport {
 // Kotlin DSL
 tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
     reports {
-        html.required.set(true)
-        html.outputLocation.set(file("build/reports/mydetekt.html"))
-        md.required.set(false)
-        sarif.required.set(false)
-        txt.required.set(false)
-        xml.required.set(false)
+        html.required = true
+        html.outputLocation = file("build/reports/mydetekt.html")
+        md.required = false
+        sarif.required = false
+        txt.required = false
+        xml.required = false
     }
 }
 
@@ -132,12 +129,12 @@ tasks {
     }
 
     patchPluginXml {
-        version.set(properties("pluginVersion"))
-        untilBuild.set(null as String?)
-        sinceBuild.set(properties("pluginSinceBuild"))
+        version = properties("pluginVersion")
+        untilBuild = null as String?
+        sinceBuild = properties("pluginSinceBuild")
 
         // Extract the <!-- Plugin description --> section from README.md and provide for the plugin's manifest
-        pluginDescription.set(providers.fileContents(layout.projectDirectory.file("README.md")).asText.map {
+        pluginDescription = providers.fileContents(layout.projectDirectory.file("README.md")).asText.map {
                 val start = "<!-- Plugin description -->"
                 val end = "<!-- Plugin description end -->"
 
@@ -147,28 +144,25 @@ tasks {
                 }
                 subList(indexOf(start) + 1, indexOf(end)).joinToString("\n").let(::markdownToHTML)
             }
-        })
+        }
 
         val changelog = project.changelog // local variable for configuration cache compatibility
         // Get the latest available change notes from the changelog file
-        changeNotes.set(properties("pluginVersion").map { pluginVersion ->
+        changeNotes = properties("pluginVersion").map { pluginVersion ->
             with(changelog) {
                 renderItem(
                     (getOrNull(pluginVersion) ?: getUnreleased())
                         .withHeader(false)
                         .withEmptySections(false),
-//                        getOrNull(properties("pluginVersion"))
-//                            ?: runCatching { getLatest() }.getOrElse { getUnreleased() },
                         Changelog.OutputType.HTML,
-                    )
-                }
+                )
             }
-        )
+        }
     }
 
     runPluginVerifier {
-        ideVersions.set(properties("pluginVerifierIdeVersions").map { it.split(",").map { split -> split.trim() }.toList() })
-        failureLevel.set(FailureLevel.ALL)
+        ideVersions = properties("pluginVerifierIdeVersions").map { it.split(",").map { split -> split.trim() }.toList() }
+        failureLevel = FailureLevel.ALL
     }
 
     // Configure UI tests plugin
@@ -181,17 +175,16 @@ tasks {
     }
 
     signPlugin {
-        certificateChain.set(environment("CERTIFICATE_CHAIN"))
-        privateKey.set(environment("PRIVATE_KEY"))
-        password.set(environment("PRIVATE_KEY_PASSWORD"))
+        certificateChain = environment("CERTIFICATE_CHAIN")
+        privateKey = environment("PRIVATE_KEY")
+        password = environment("PRIVATE_KEY_PASSWORD")
     }
 
     publishPlugin {
-//        dependsOn("includeVehicles")
-        token.set(environment("PUBLISH_TOKEN"))
+        token = environment("PUBLISH_TOKEN")
         // The pluginVersion is based on the SemVer (https://semver.org) and supports pre-release labels, like 2.1.7-alpha.3
         // Specify pre-release label to publish the plugin in a custom Release Channel automatically. Read more:
         // https://plugins.jetbrains.com/docs/intellij/deployment.html#specifying-a-release-channel
-        channels.set(properties("pluginVersion").map { listOf(it.split('-').getOrElse(1) { "default" }.split('.').first()) })
+        channels = properties("pluginVersion").map { listOf(it.split('-').getOrElse(1) { "default" }.split('.').first()) }
     }
 }
