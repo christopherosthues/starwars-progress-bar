@@ -80,7 +80,7 @@ internal class StarWarsProgressConfigurable : SearchableConfigurable {
     }
 
     override fun getId(): String {
-        return PluginConstants.PluginSearchId
+        return PluginConstants.PLUGIN_SEARCH_ID
     }
 
     override fun reset() {

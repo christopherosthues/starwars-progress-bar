@@ -63,7 +63,7 @@ class PluginUpdatedActivityTests {
         every {
             StarWarsBundle.message(
                 BundleConstants.NOTIFICATION_PLUGIN_UPDATED,
-                installedVersion
+                installedVersion,
             )
         } returns pluginUpdatedMessage
         every { StarWarsBundle.message(BundleConstants.NOTIFICATION_CONFIGURE) } returns configureNotificationText
@@ -85,7 +85,7 @@ class PluginUpdatedActivityTests {
     fun `runActivity should retrieve correct plugin id`() {
         // Arrange
         val pluginIdMock = mockk<PluginId>(relaxed = true)
-        every { PluginId.getId(PluginConstants.PluginId) } returns pluginIdMock
+        every { PluginId.getId(PluginConstants.PLUGIN_ID) } returns pluginIdMock
         every { PluginManagerCore.getPlugin(pluginIdMock) } returns null
         val sut = PluginUpdatedActivity()
 
@@ -93,7 +93,7 @@ class PluginUpdatedActivityTests {
         sut.runActivity(mockk())
 
         // Assert
-        verify(exactly = 1) { PluginId.getId(PluginConstants.PluginId) }
+        verify(exactly = 1) { PluginId.getId(PluginConstants.PLUGIN_ID) }
         verify(exactly = 1) { PluginManagerCore.getPlugin(pluginIdMock) }
     }
 
@@ -102,7 +102,7 @@ class PluginUpdatedActivityTests {
         // Arrange
         val pluginIdMock = mockk<PluginId>(relaxed = true)
         val starWarsStateMock = mockk<StarWarsState>(relaxed = true)
-        every { PluginId.getId(PluginConstants.PluginId) } returns pluginIdMock
+        every { PluginId.getId(PluginConstants.PLUGIN_ID) } returns pluginIdMock
         every { PluginManagerCore.getPlugin(pluginIdMock) } returns null
         every { starWarsPersistentStateComponent.state } returns starWarsStateMock
         val sut = PluginUpdatedActivity()
@@ -121,7 +121,7 @@ class PluginUpdatedActivityTests {
         // Arrange
         val pluginIdMock = mockk<PluginId>(relaxed = true)
         val pluginDescriptorMock = mockk<IdeaPluginDescriptor>(relaxed = true)
-        every { PluginId.getId(PluginConstants.PluginId) } returns pluginIdMock
+        every { PluginId.getId(PluginConstants.PLUGIN_ID) } returns pluginIdMock
         every { PluginManagerCore.getPlugin(pluginIdMock) } returns pluginDescriptorMock
         every { StarWarsPersistentStateComponent.instance } returns null
         val sut = PluginUpdatedActivity()
@@ -140,7 +140,7 @@ class PluginUpdatedActivityTests {
         // Arrange
         val pluginIdMock = mockk<PluginId>(relaxed = true)
         val pluginDescriptorMock = mockk<IdeaPluginDescriptor>(relaxed = true)
-        every { PluginId.getId(PluginConstants.PluginId) } returns pluginIdMock
+        every { PluginId.getId(PluginConstants.PLUGIN_ID) } returns pluginIdMock
         every { PluginManagerCore.getPlugin(pluginIdMock) } returns pluginDescriptorMock
         every { starWarsPersistentStateComponent.state } returns null
         val sut = PluginUpdatedActivity()
@@ -214,7 +214,7 @@ class PluginUpdatedActivityTests {
 
         // Assert
         verify(exactly = 1) { NotificationGroupManager.getInstance() }
-        verify(exactly = 1) { notificationManagerMock.getNotificationGroup(PluginConstants.NotificationGroupId) }
+        verify(exactly = 1) { notificationManagerMock.getNotificationGroup(PluginConstants.NOTIFICATION_GROUP_ID) }
     }
 
     @Test
@@ -233,7 +233,7 @@ class PluginUpdatedActivityTests {
             notificationGroupMock.createNotification(
                 pluginName,
                 pluginUpdatedMessage,
-                NotificationType.INFORMATION
+                NotificationType.INFORMATION,
             )
         }
     }
@@ -312,7 +312,7 @@ class PluginUpdatedActivityTests {
         // Assert
         assertAll(
             { assertEquals(2, actions.size) },
-            { assertEquals(configureNotificationText, actions.first().templateText) }
+            { assertEquals(configureNotificationText, actions.first().templateText) },
         )
 
         // Act
@@ -322,7 +322,7 @@ class PluginUpdatedActivityTests {
         verify(exactly = 1) {
             showSettingsUtilMock.showSettingsDialog(
                 projectMock,
-                StarWarsProgressConfigurable::class.java
+                StarWarsProgressConfigurable::class.java,
             )
         }
     }
@@ -347,7 +347,7 @@ class PluginUpdatedActivityTests {
         // Assert
         assertAll(
             { assertEquals(2, actions.size) },
-            { assertEquals(doNotShowAgainNotificationText, actions[1].templateText) }
+            { assertEquals(doNotShowAgainNotificationText, actions[1].templateText) },
         )
 
         // Act
@@ -363,12 +363,12 @@ class PluginUpdatedActivityTests {
     //region Helper methods
 
     private fun setupPluginDescriptorAndStarWarsState(
-        storedVersion: String = storedDifferentVersion
+        storedVersion: String = storedDifferentVersion,
     ): Pair<IdeaPluginDescriptor, StarWarsState> {
         val pluginIdMock = mockk<PluginId>(relaxed = true)
         val pluginDescriptorMock = mockk<IdeaPluginDescriptor>(relaxed = true)
         val starWarsStateMock = mockk<StarWarsState>(relaxed = true)
-        every { PluginId.getId(PluginConstants.PluginId) } returns pluginIdMock
+        every { PluginId.getId(PluginConstants.PLUGIN_ID) } returns pluginIdMock
         every { PluginManagerCore.getPlugin(pluginIdMock) } returns pluginDescriptorMock
         every { starWarsPersistentStateComponent.state } returns starWarsStateMock
         every { starWarsStateMock.version } returns storedVersion
@@ -384,13 +384,13 @@ class PluginUpdatedActivityTests {
         every { DoNotAskService.canShowNotification() } returns true
         every { NotificationGroupManager.getInstance() } returns notificationManagerMock
         every {
-            notificationManagerMock.getNotificationGroup(PluginConstants.NotificationGroupId)
+            notificationManagerMock.getNotificationGroup(PluginConstants.NOTIFICATION_GROUP_ID)
         } returns notificationGroupMock
         every {
             notificationGroupMock.createNotification(
                 pluginName,
                 pluginUpdatedMessage,
-                NotificationType.INFORMATION
+                NotificationType.INFORMATION,
             )
         } returns notificationMock
         every { notificationMock.addAction(any()) } returns notificationMock

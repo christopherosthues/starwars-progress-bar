@@ -364,7 +364,7 @@ class StarWarsProgressConfigurableTests {
         val result = sut.id
 
         // Assert
-        assertEquals(PluginConstants.PluginSearchId, result)
+        assertEquals(PluginConstants.PLUGIN_SEARCH_ID, result)
     }
 
     //endregion

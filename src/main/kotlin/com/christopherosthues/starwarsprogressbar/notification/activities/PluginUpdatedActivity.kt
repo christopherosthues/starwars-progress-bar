@@ -20,7 +20,7 @@ import com.intellij.openapi.startup.StartupActivity.DumbAware
 
 class PluginUpdatedActivity : DumbAware {
     override fun runActivity(project: Project) {
-        val pluginDescriptor = PluginManagerCore.getPlugin(PluginId.getId(PluginConstants.PluginId))
+        val pluginDescriptor = PluginManagerCore.getPlugin(PluginId.getId(PluginConstants.PLUGIN_ID))
         val starWarsState = StarWarsPersistentStateComponent.instance?.state
         if (pluginDescriptor != null && starWarsState != null) {
             val installedVersion = pluginDescriptor.version
@@ -39,26 +39,26 @@ class PluginUpdatedActivity : DumbAware {
         }
 
         val notification = NotificationGroupManager.getInstance()
-            .getNotificationGroup(PluginConstants.NotificationGroupId)
+            .getNotificationGroup(PluginConstants.NOTIFICATION_GROUP_ID)
             .createNotification(
                 StarWarsBundle.message(BundleConstants.PLUGIN_NAME),
                 StarWarsBundle.message(BundleConstants.NOTIFICATION_PLUGIN_UPDATED, version),
-                NotificationType.INFORMATION
+                NotificationType.INFORMATION,
             )
         notification.icon = StarWarsResourceLoader.getPluginIcon()
         notification.addAction(object :
-                DumbAwareAction(StarWarsBundle.message(BundleConstants.NOTIFICATION_CONFIGURE)) {
-                override fun actionPerformed(e: AnActionEvent) {
-                    ShowSettingsUtil.getInstance().showSettingsDialog(project, StarWarsProgressConfigurable::class.java)
-                }
-            })
+            DumbAwareAction(StarWarsBundle.message(BundleConstants.NOTIFICATION_CONFIGURE)) {
+            override fun actionPerformed(e: AnActionEvent) {
+                ShowSettingsUtil.getInstance().showSettingsDialog(project, StarWarsProgressConfigurable::class.java)
+            }
+        })
         notification.addAction(object :
-                DumbAwareAction(StarWarsBundle.message(BundleConstants.NOTIFICATION_DONT_SHOW_AGAIN)) {
-                override fun actionPerformed(e: AnActionEvent) {
-                    setDoNotAskFor(true)
-                    notification.hideBalloon()
-                }
-            })
+            DumbAwareAction(StarWarsBundle.message(BundleConstants.NOTIFICATION_DONT_SHOW_AGAIN)) {
+            override fun actionPerformed(e: AnActionEvent) {
+                setDoNotAskFor(true)
+                notification.hideBalloon()
+            }
+        })
         notification.notify(project)
     }
 }

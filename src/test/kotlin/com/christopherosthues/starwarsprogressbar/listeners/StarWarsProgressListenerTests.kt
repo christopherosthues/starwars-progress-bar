@@ -52,7 +52,7 @@ class StarWarsProgressListenerTests {
 
         every { UIManager.get(any()) } returns ""
         every { UIManager.put(any(), any()) } returns ""
-        every { PluginId.getId(PluginConstants.PluginId) } returns pluginIdMock
+        every { PluginId.getId(PluginConstants.PLUGIN_ID) } returns pluginIdMock
     }
 
     @AfterEach
@@ -106,13 +106,13 @@ class StarWarsProgressListenerTests {
         StarWarsProgressListener()
 
         // Assert
-        verify(exactly = 1) { PluginId.getId(PluginConstants.PluginId) }
+        verify(exactly = 1) { PluginId.getId(PluginConstants.PLUGIN_ID) }
     }
 
     @ParameterizedTest
     @ValueSource(booleans = [true, false])
     fun `constructor should not save progress bar if progress bar is equal to star wars progress bar key`(
-        isUpdate: Boolean
+        isUpdate: Boolean,
     ) {
         // Arrange
         val ideaPluginDescriptorMock = createAndSetupPluginDescriptorMock(pluginId)
@@ -181,7 +181,7 @@ class StarWarsProgressListenerTests {
     @ParameterizedTest
     @ValueSource(booleans = [true, false])
     fun `lookAndFeelChanged should not save progress bar if progress bar is equal to star wars progress bar key`(
-        isUpdate: Boolean
+        isUpdate: Boolean,
     ) {
         // Arrange
         val lookAndFellMock = mockk<LafManager>()
@@ -207,7 +207,7 @@ class StarWarsProgressListenerTests {
     @ParameterizedTest
     @ValueSource(booleans = [true, false])
     fun `lookAndFeelChanged should save progress bar if progress bar is equal to star wars progress bar key`(
-        isUpdate: Boolean
+        isUpdate: Boolean,
     ) {
         // Arrange
         val lookAndFellMock = mockk<LafManager>()
@@ -250,7 +250,7 @@ class StarWarsProgressListenerTests {
     @EmptySource
     @MethodSource("otherPluginValues")
     fun `pluginLoaded should retrieve current progress bar ui key if provided plugin descriptor is not star wars progress bar plugin`(
-        pluginId: String
+        pluginId: String,
     ) {
         // Arrange
         val ideaPluginDescriptorMock = createAndSetupPluginDescriptorMock(pluginId)
@@ -284,7 +284,7 @@ class StarWarsProgressListenerTests {
     @EmptySource
     @MethodSource("otherPluginValues")
     fun `pluginLoaded should store progress bar ui key of star wars progress bar if provided plugin descriptor is not star wars progress bar plugin`(
-        pluginId: String
+        pluginId: String,
     ) {
         // Arrange
         val ideaPluginDescriptorMock = createAndSetupPluginDescriptorMock(pluginId)
@@ -319,7 +319,7 @@ class StarWarsProgressListenerTests {
     @EmptySource
     @MethodSource("otherPluginValues")
     fun `pluginLoaded should store progress bar factory if provided plugin descriptor is not star wars progress bar plugin`(
-        pluginId: String
+        pluginId: String,
     ) {
         // Arrange
         val ideaPluginDescriptorMock = createAndSetupPluginDescriptorMock(pluginId)
@@ -338,7 +338,7 @@ class StarWarsProgressListenerTests {
     @ParameterizedTest
     @ValueSource(booleans = [true, false])
     fun `pluginLoaded should not store previous progress bar if previous progress bar is equal to star wars progress bar key`(
-        isUpdate: Boolean
+        isUpdate: Boolean,
     ) {
         // Arrange
         val ideaPluginDescriptorMock = createAndSetupPluginDescriptorMock(pluginId)
@@ -363,7 +363,7 @@ class StarWarsProgressListenerTests {
     @ParameterizedTest
     @ValueSource(booleans = [true, false])
     fun `pluginLoaded should store previous progress bar if previous progress bar is equal to star wars progress bar key`(
-        isUpdate: Boolean
+        isUpdate: Boolean,
     ) {
         // Arrange
         val ideaPluginDescriptorMock = createAndSetupPluginDescriptorMock(pluginId)
@@ -405,7 +405,7 @@ class StarWarsProgressListenerTests {
     @MethodSource("otherPluginAndPreviousProgressBarKeyValues")
     fun `beforePluginUnload should not reset progress bar ui key to previous key if provided plugin descriptor is not star wars progress bar plugin and is plugin update`(
         pluginId: String,
-        previousProgressBarKey: String
+        previousProgressBarKey: String,
     ) {
         // Arrange
         val ideaPluginDescriptorMock = createAndSetupPluginDescriptorMock(pluginId)
@@ -438,7 +438,7 @@ class StarWarsProgressListenerTests {
     @MethodSource("otherPluginAndPreviousProgressBarKeyValues")
     fun `beforePluginUnload should not reset progress bar ui key to previous key if provided plugin descriptor is not star wars progress bar plugin`(
         pluginId: String,
-        previousProgressBarKey: String
+        previousProgressBarKey: String,
     ) {
         // Arrange
         val ideaPluginDescriptorMock = createAndSetupPluginDescriptorMock(pluginId)
@@ -493,7 +493,7 @@ class StarWarsProgressListenerTests {
         verify(exactly = exactlyCalled) {
             UIManager.put(
                 PROGRESS_BAR_UI_KEY,
-                StarWarsProgressBarFactory::class.java.name
+                StarWarsProgressBarFactory::class.java.name,
             )
         }
     }
@@ -517,7 +517,7 @@ class StarWarsProgressListenerTests {
                 "starwarsprogressbar",
                 "StarWarsBarProgressFactor",
                 "StarWarsBarProgressFactoryy",
-                "starwarsprogressbarfactory"
+                "starwarsprogressbarfactory",
             )
         }
 
@@ -529,7 +529,7 @@ class StarWarsProgressListenerTests {
                 Arguments.of("starwarsprogressba", "StarWarsBarProgressFactor"),
                 Arguments.of("starwarsprogressbarr", "StarWarsBarProgressFactoryy"),
                 Arguments.of("tarwarsprogressbar", "starwarsprogressbarfactory"),
-                Arguments.of("", "")
+                Arguments.of("", ""),
             )
         }
     }

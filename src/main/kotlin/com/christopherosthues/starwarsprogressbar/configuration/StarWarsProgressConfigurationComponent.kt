@@ -103,7 +103,7 @@ internal class StarWarsProgressConfigurationComponent {
     }
 
     private fun createUiOptionsSection(formBuilder: FormBuilder) {
-        uiOptionsPanel.addPropertyChangeListener() {
+        uiOptionsPanel.addPropertyChangeListener {
             if (isProgressBarTextEvent(it.propertyName) ||
                 isProgressBarDrawEvent(it.propertyName) ||
                 isVehicleChangeEvent(it.propertyName) ||

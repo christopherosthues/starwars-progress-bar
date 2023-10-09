@@ -40,7 +40,7 @@ public class StarWarsProgressListener implements LafManagerListener, DynamicPlug
 
     public StarWarsProgressListener() {
         updateProgressBarUi();
-        pluginId = PluginId.getId(PluginConstants.PluginId);
+        pluginId = PluginId.getId(PluginConstants.PLUGIN_ID);
     }
 
     @Override

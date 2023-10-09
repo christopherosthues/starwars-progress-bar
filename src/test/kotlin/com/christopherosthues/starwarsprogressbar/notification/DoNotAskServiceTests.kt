@@ -55,7 +55,7 @@ class DoNotAskServiceTests {
     @MethodSource("doNotAskValues")
     fun `canShowNotification should return negated stored do not ask value`(doNotAsk: Boolean) {
         // Arrange
-        val propertyId = "Notification.DoNotAsk-${PluginConstants.NotificationGroupId}"
+        val propertyId = "Notification.DoNotAsk-${PluginConstants.NOTIFICATION_GROUP_ID}"
         every { propertiesComponentMock.getBoolean(propertyId, any()) } returns doNotAsk
 
         // Act
@@ -68,7 +68,7 @@ class DoNotAskServiceTests {
     @Test
     fun `canShowNotification should set default value of do not ask to false`() {
         // Arrange
-        val propertyId = "Notification.DoNotAsk-${PluginConstants.NotificationGroupId}"
+        val propertyId = "Notification.DoNotAsk-${PluginConstants.NOTIFICATION_GROUP_ID}"
         every { propertiesComponentMock.getBoolean(propertyId, any()) } returns true
 
         // Act
@@ -81,7 +81,7 @@ class DoNotAskServiceTests {
     @Test
     fun `canShowNotification should retrieve correct do not ask id`() {
         // Arrange
-        val propertyId = "Notification.DoNotAsk-${PluginConstants.NotificationGroupId}"
+        val propertyId = "Notification.DoNotAsk-${PluginConstants.NOTIFICATION_GROUP_ID}"
         every { propertiesComponentMock.getBoolean(propertyId, any()) } returns true
 
         // Act
@@ -100,7 +100,7 @@ class DoNotAskServiceTests {
     fun `setDoNotAskFor should set correct value for do not ask`(doNotAsk: Boolean) {
         // Arrange
         mockkObject(NotificationGroup)
-        every { NotificationGroup.getGroupTitle(PluginConstants.NotificationGroupId) } returns null
+        every { NotificationGroup.getGroupTitle(PluginConstants.NOTIFICATION_GROUP_ID) } returns null
         justRun { propertiesComponentMock.setValue(any(), any<Boolean>()) }
 
         // Act
@@ -109,8 +109,8 @@ class DoNotAskServiceTests {
         // Assert
         verify(exactly = 1) {
             propertiesComponentMock.setValue(
-                "Notification.DoNotAsk-${PluginConstants.NotificationGroupId}",
-                doNotAsk
+                "Notification.DoNotAsk-${PluginConstants.NOTIFICATION_GROUP_ID}",
+                doNotAsk,
             )
         }
     }
@@ -119,13 +119,13 @@ class DoNotAskServiceTests {
     fun `setDoNotAskFor should retrieve correct notification group title`() {
         // Arrange
         mockkObject(NotificationGroup)
-        every { NotificationGroup.getGroupTitle(PluginConstants.NotificationGroupId) } returns null
+        every { NotificationGroup.getGroupTitle(PluginConstants.NOTIFICATION_GROUP_ID) } returns null
 
         // Act
         DoNotAskService.setDoNotAskFor(false)
 
         // Assert
-        verify(exactly = 1) { NotificationGroup.getGroupTitle(PluginConstants.NotificationGroupId) }
+        verify(exactly = 1) { NotificationGroup.getGroupTitle(PluginConstants.NOTIFICATION_GROUP_ID) }
     }
 
     @ParameterizedTest
@@ -134,20 +134,20 @@ class DoNotAskServiceTests {
     fun `setDoNotAskFor should store correct display name for notification group`(displayName: String) {
         // Arrange
         mockkObject(NotificationGroup)
-        every { NotificationGroup.getGroupTitle(PluginConstants.NotificationGroupId) } returns displayName
+        every { NotificationGroup.getGroupTitle(PluginConstants.NOTIFICATION_GROUP_ID) } returns displayName
         justRun { propertiesComponentMock.setValue(any(), any<Boolean>()) }
         justRun { propertiesComponentMock.setValue(any(), any<String>()) }
 
         // Act
         DoNotAskService.setDoNotAskFor(false)
 
-        "Notification.DisplayName-DoNotAsk-${PluginConstants.NotificationGroupId}"
+        "Notification.DisplayName-DoNotAsk-${PluginConstants.NOTIFICATION_GROUP_ID}"
 
         // Assert
         verify(exactly = 1) {
             propertiesComponentMock.setValue(
-                "Notification.DisplayName-DoNotAsk-${PluginConstants.NotificationGroupId}",
-                displayName
+                "Notification.DisplayName-DoNotAsk-${PluginConstants.NOTIFICATION_GROUP_ID}",
+                displayName,
             )
         }
     }
@@ -156,20 +156,20 @@ class DoNotAskServiceTests {
     fun `setDoNotAskFor should store notification group id as display name if notification group title is null`() {
         // Arrange
         mockkObject(NotificationGroup)
-        every { NotificationGroup.getGroupTitle(PluginConstants.NotificationGroupId) } returns null
+        every { NotificationGroup.getGroupTitle(PluginConstants.NOTIFICATION_GROUP_ID) } returns null
         justRun { propertiesComponentMock.setValue(any(), any<Boolean>()) }
         justRun { propertiesComponentMock.setValue(any(), any<String>()) }
 
         // Act
         DoNotAskService.setDoNotAskFor(false)
 
-        "Notification.DisplayName-DoNotAsk-${PluginConstants.NotificationGroupId}"
+        "Notification.DisplayName-DoNotAsk-${PluginConstants.NOTIFICATION_GROUP_ID}"
 
         // Assert
         verify(exactly = 1) {
             propertiesComponentMock.setValue(
-                "Notification.DisplayName-DoNotAsk-${PluginConstants.NotificationGroupId}",
-                PluginConstants.NotificationGroupId
+                "Notification.DisplayName-DoNotAsk-${PluginConstants.NOTIFICATION_GROUP_ID}",
+                PluginConstants.NOTIFICATION_GROUP_ID,
             )
         }
     }
@@ -185,7 +185,7 @@ class DoNotAskServiceTests {
         fun doNotAskValues(): Stream<Arguments> {
             return Stream.of(
                 Arguments.of(true),
-                Arguments.of(false)
+                Arguments.of(false),
             )
         }
     }
