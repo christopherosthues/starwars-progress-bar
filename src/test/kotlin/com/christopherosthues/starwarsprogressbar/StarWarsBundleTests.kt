@@ -68,7 +68,7 @@ internal class StarWarsBundleTests {
 
         // Assert
         assertEquals(expectedMessage, result)
-        verify() { BundleBase.messageOrDefault(any(), key, any()) }
+        verify { BundleBase.messageOrDefault(any(), key, any()) }
     }
 
     @Test

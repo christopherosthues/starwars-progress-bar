@@ -11,7 +11,7 @@ internal object FactionCreationHelper {
         return listOf(
             StarWarsFaction("", listOf()),
             StarWarsFaction("", listOf()),
-            StarWarsFaction("", listOf())
+            StarWarsFaction("", listOf()),
         )
     }
 
@@ -20,7 +20,7 @@ internal object FactionCreationHelper {
         return listOf(
             StarWarsFaction("", listOf()),
             StarWarsFaction("", listOf(StarWarsVehicle("1", "blue", 0, 2, 3f))),
-            StarWarsFaction("", listOf(StarWarsVehicle("2", "green", 4, 5, 6f)))
+            StarWarsFaction("", listOf(StarWarsVehicle("2", "green", 4, 5, 6f))),
         )
     }
 
@@ -29,7 +29,7 @@ internal object FactionCreationHelper {
         return listOf(
             StarWarsFaction("", listOf(StarWarsVehicle("1", "blue", 0, 2, 3f))),
             StarWarsFaction("", listOf(StarWarsVehicle("2", "green", 4, 5, 6f))),
-            StarWarsFaction("", listOf(StarWarsVehicle("3", "red", 7, 8, 9f)))
+            StarWarsFaction("", listOf(StarWarsVehicle("3", "red", 7, 8, 9f))),
         )
     }
 
@@ -40,23 +40,23 @@ internal object FactionCreationHelper {
                 "1",
                 listOf(
                     StarWarsVehicle("1", "blue", 1, 2, 3f),
-                    StarWarsVehicle("2", "brown", 4, 5, 6f)
-                )
+                    StarWarsVehicle("2", "brown", 4, 5, 6f),
+                ),
             ),
             StarWarsFaction(
                 "",
                 listOf(
                     StarWarsVehicle("3", "green", 7, 8, 9f),
-                    StarWarsVehicle("4", "yellow", 10, 11, 12f)
-                )
+                    StarWarsVehicle("4", "yellow", 10, 11, 12f),
+                ),
             ),
             StarWarsFaction(
                 "3",
                 listOf(
                     StarWarsVehicle("5", "red", 13, 14, 15f),
-                    StarWarsVehicle("6", "purple", 16, 17, 18f)
-                )
-            )
+                    StarWarsVehicle("6", "purple", 16, 17, 18f),
+                ),
+            ),
         )
     }
 
@@ -67,30 +67,30 @@ internal object FactionCreationHelper {
                 "",
                 listOf(
                     StarWarsVehicle("3", "green", 7, 8, 9f),
-                    StarWarsVehicle("4", "yellow", 10, 11, 12f)
-                )
+                    StarWarsVehicle("4", "yellow", 10, 11, 12f),
+                ),
             ),
             StarWarsFaction(
                 "2",
                 listOf(
                     StarWarsVehicle("1", "blue", 1, 2, 3f),
-                    StarWarsVehicle("2", "brown", 4, 5, 6f)
-                )
+                    StarWarsVehicle("2", "brown", 4, 5, 6f),
+                ),
             ),
             StarWarsFaction(
                 "3",
                 listOf(
                     StarWarsVehicle("5", "red", 13, 14, 15f),
-                    StarWarsVehicle("6", "purple", 16, 17, 18f)
-                )
+                    StarWarsVehicle("6", "purple", 16, 17, 18f),
+                ),
             ),
             StarWarsFaction(
                 "",
                 listOf(
                     StarWarsVehicle("7", "green", 7, 8, 9f),
-                    StarWarsVehicle("8", "yellow", 10, 11, 12f)
-                )
-            )
+                    StarWarsVehicle("8", "yellow", 10, 11, 12f),
+                ),
+            ),
         )
     }
 
@@ -101,31 +101,31 @@ internal object FactionCreationHelper {
                 "",
                 listOf(
                     StarWarsVehicle("3", "green", 7, 8, 9f),
-                    StarWarsVehicle("4", "yellow", 10, 11, 12f)
-                )
+                    StarWarsVehicle("4", "yellow", 10, 11, 12f),
+                ),
             ),
             StarWarsFaction(
                 "2",
                 listOf(
                     StarWarsVehicle("1", "blue", 1, 2, 3f),
-                    StarWarsVehicle("2", "brown", 4, 5, 6f)
-                )
+                    StarWarsVehicle("2", "brown", 4, 5, 6f),
+                ),
             ),
             StarWarsFaction(
                 "3",
                 listOf(
                     StarWarsVehicle("5", "red", 13, 14, 15f),
-                    StarWarsVehicle("6", "purple", 16, 17, 18f)
-                )
+                    StarWarsVehicle("6", "purple", 16, 17, 18f),
+                ),
             ),
             StarWarsFaction(
                 "",
                 listOf(
                     StarWarsVehicle("7", "green", 7, 8, 9f),
-                    StarWarsVehicle("8", "yellow", 10, 11, 12f)
-                )
+                    StarWarsVehicle("8", "yellow", 10, 11, 12f),
+                ),
             ),
-            StarWarsFaction("5", listOf())
+            StarWarsFaction("5", listOf()),
         )
     }
 
@@ -136,23 +136,23 @@ internal object FactionCreationHelper {
                 "1",
                 listOf(
                     StarWarsVehicle("1", "blue", 1, 2, 3f),
-                    StarWarsVehicle("2", "brown", 4, 5, 6f)
-                )
+                    StarWarsVehicle("2", "brown", 4, 5, 6f),
+                ),
             ),
             StarWarsFaction(
                 "2",
                 listOf(
                     StarWarsVehicle("3", "green", 7, 8, 9f),
-                    StarWarsVehicle("4", "yellow", 10, 11, 12f)
-                )
+                    StarWarsVehicle("4", "yellow", 10, 11, 12f),
+                ),
             ),
             StarWarsFaction(
                 "3",
                 listOf(
                     StarWarsVehicle("5", "red", 13, 14, 15f),
-                    StarWarsVehicle("6", "purple", 16, 17, 18f)
-                )
-            )
+                    StarWarsVehicle("6", "purple", 16, 17, 18f),
+                ),
+            ),
         )
     }
 }

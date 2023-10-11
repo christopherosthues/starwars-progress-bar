@@ -177,7 +177,7 @@ class FactionHolderTests {
         assertAll(
             { assertTrue(result.isNotEmpty()) },
             { assertEquals(2, result.size) },
-            { assertEquals(expectedFactions, result) }
+            { assertEquals(expectedFactions, result) },
         )
     }
 
@@ -196,7 +196,7 @@ class FactionHolderTests {
         assertAll(
             { assertTrue(result.isNotEmpty()) },
             { assertEquals(2, result.size) },
-            { assertEquals(expectedFactions, result) }
+            { assertEquals(expectedFactions, result) },
         )
     }
 
@@ -214,7 +214,7 @@ class FactionHolderTests {
         assertAll(
             { assertTrue(result.isNotEmpty()) },
             { assertEquals(3, result.size) },
-            { assertEquals(expectedFactions, result) }
+            { assertEquals(expectedFactions, result) },
         )
     }
 
@@ -268,8 +268,8 @@ class FactionHolderTests {
 
         // Assert
         assertAll(
-            { assertDoesNotThrow() { FactionHolder.missingVehicle } },
-            { assertEquals(expectedVehicle, FactionHolder.missingVehicle) }
+            { assertDoesNotThrow { FactionHolder.missingVehicle } },
+            { assertEquals(expectedVehicle, FactionHolder.missingVehicle) },
         )
     }
 
@@ -284,8 +284,8 @@ class FactionHolderTests {
 
         // Assert
         assertAll(
-            { assertDoesNotThrow() { FactionHolder.missingVehicle } },
-            { assertEquals(expectedVehicle, FactionHolder.missingVehicle) }
+            { assertDoesNotThrow { FactionHolder.missingVehicle } },
+            { assertEquals(expectedVehicle, FactionHolder.missingVehicle) },
         )
     }
 
@@ -301,8 +301,8 @@ class FactionHolderTests {
 
         // Assert
         assertAll(
-            { assertDoesNotThrow() { FactionHolder.missingVehicle } },
-            { assertEquals(expectedVehicle, FactionHolder.missingVehicle) }
+            { assertDoesNotThrow { FactionHolder.missingVehicle } },
+            { assertEquals(expectedVehicle, FactionHolder.missingVehicle) },
         )
     }
 
@@ -418,7 +418,7 @@ class FactionHolderTests {
             {
                 expectedVehicles.addAll(factions[4].vehicles)
                 assertEquals(expectedVehicles, FactionHolder.defaultVehicles)
-            }
+            },
         )
     }
 
@@ -451,7 +451,7 @@ class FactionHolderTests {
 
         assertAll(
             { assertNotNull(missingVehicle) },
-            { assertEquals(this.missingVehicle, missingVehicle) }
+            { assertEquals(this.missingVehicle, missingVehicle) },
         )
     }
 

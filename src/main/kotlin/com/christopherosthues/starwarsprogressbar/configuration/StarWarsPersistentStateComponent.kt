@@ -8,7 +8,7 @@ import com.intellij.util.xmlb.XmlSerializerUtil
 
 @State(
     name = "com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent",
-    storages = [Storage("StarWarsProgress.xml")]
+    storages = [Storage("StarWarsProgress.xml")],
 )
 internal class StarWarsPersistentStateComponent : PersistentStateComponent<StarWarsState> {
     private val state = StarWarsState()

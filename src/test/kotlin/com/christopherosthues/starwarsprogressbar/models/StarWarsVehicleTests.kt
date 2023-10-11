@@ -53,7 +53,7 @@ class StarWarsVehicleTests {
             { assertEquals(xShift, sut.xShift) },
             { assertEquals(yShift, sut.yShift) },
             { assertEquals(velocity, sut.velocity) },
-            { assertEquals("", sut.factionId) }
+            { assertEquals("", sut.factionId) },
         )
     }
 
@@ -204,7 +204,7 @@ class StarWarsVehicleTests {
             { assertEquals("green", result.ionEngine) },
             { assertEquals(-4, result.xShift) },
             { assertEquals(-6, result.yShift) },
-            { assertEquals(2.5f, result.velocity) }
+            { assertEquals(2.5f, result.velocity) },
         )
     }
 

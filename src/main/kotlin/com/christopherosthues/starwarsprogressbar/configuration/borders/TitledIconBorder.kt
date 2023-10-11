@@ -62,7 +62,7 @@ internal class TitledIconBorder(title: String, iconName: String) : AbstractBorde
             BASE_MARGIN + BASE_MARGIN / 2 - icon.preferredSize.height / 2,
             BASE_MARGIN + LEFT_RIGHT_BORDER_MARGIN,
             BASE_MARGIN,
-            BASE_MARGIN + LEFT_RIGHT_BORDER_MARGIN
+            BASE_MARGIN + LEFT_RIGHT_BORDER_MARGIN,
         )
 
         val borderShape = BorderShape(x, y, width, height, BASE_MARGIN, insets.top)
@@ -85,7 +85,7 @@ internal class TitledIconBorder(title: String, iconName: String) : AbstractBorde
     private fun drawBorder(
         c: Component,
         g: Graphics,
-        borderShape: BorderShape
+        borderShape: BorderShape,
     ) {
         val graphics2d = g.create()
         val borderWidth = borderShape.width
@@ -113,7 +113,7 @@ internal class TitledIconBorder(title: String, iconName: String) : AbstractBorde
         c: Component,
         g: Graphics,
         iconShape: IconShape,
-        labelShape: LabelShape
+        labelShape: LabelShape,
     ) {
         // Draw background for icon and title
         val graphicsColor = g.color
@@ -122,7 +122,7 @@ internal class TitledIconBorder(title: String, iconName: String) : AbstractBorde
             iconShape.x - BORDER_MARGIN,
             iconShape.y,
             iconShape.width + labelShape.width + ICON_TEXT_SPACING + 2 * BORDER_MARGIN,
-            iconShape.height
+            iconShape.height,
         )
         g.color = graphicsColor
 

@@ -132,13 +132,13 @@ internal class VehiclesPanel : JTitledPanel(StarWarsBundle.message(BundleConstan
                 BundleConstants.DESELECT_ALL
             } else {
                 BundleConstants.SELECT_ALL
-            }
+            },
         )
         selectedVehiclesCheckBox.text = StarWarsBundle.message(
             BundleConstants.SELECTED,
             selected,
             numberOfVehicles,
-            selectionText
+            selectionText,
         )
     }
 }

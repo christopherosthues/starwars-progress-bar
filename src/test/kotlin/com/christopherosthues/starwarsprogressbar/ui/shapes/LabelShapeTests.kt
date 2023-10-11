@@ -34,7 +34,7 @@ class LabelShapeTests {
         width: Int,
         leftInset: Int,
         rightInset: Int,
-        expectedWidth: Int
+        expectedWidth: Int,
     ) {
         // Arrange
         val iconShapeMock = mockk<IconShape>()
@@ -82,7 +82,7 @@ class LabelShapeTests {
     fun `constructor should set x to x of icon shape plus width of icon shape plus icon test spacing`(
         iconShapeX: Int,
         iconShapeWidth: Int,
-        expectedX: Int
+        expectedX: Int,
     ) {
         // Arrange
         val iconShapeMock = mockk<IconShape>()
@@ -111,7 +111,7 @@ class LabelShapeTests {
         iconShapeY: Int,
         iconShapeHeight: Int,
         dimensionHeight: Int,
-        expectedY: Int
+        expectedY: Int,
     ) {
         // Arrange
         val iconShapeMock = mockk<IconShape>()
@@ -129,7 +129,7 @@ class LabelShapeTests {
         val labelShape = LabelShape(
             Dimension(width, dimensionHeight),
             Insets(topInset, leftInset, bottomInset, rightInset),
-            iconShapeMock
+            iconShapeMock,
         )
 
         // Assert
@@ -152,7 +152,7 @@ class LabelShapeTests {
                 Arguments.of(1, 0, -1, 2),
                 Arguments.of(1, 0, -5, 6),
                 Arguments.of(-3, 1, 2, -3),
-                Arguments.of(3, -2, 2, 3)
+                Arguments.of(3, -2, 2, 3),
             )
         }
 
@@ -167,7 +167,7 @@ class LabelShapeTests {
                 Arguments.of(-3, 1, 3),
                 Arguments.of(3, -2, 6),
                 Arguments.of(-3, -2, 0),
-                Arguments.of(-30, -2, -27)
+                Arguments.of(-30, -2, -27),
             )
         }
 
@@ -182,7 +182,7 @@ class LabelShapeTests {
                 Arguments.of(-3, 1, 3, -4),
                 Arguments.of(3, -2, 6, -1),
                 Arguments.of(-3, -2, 0, -4),
-                Arguments.of(-30, -2, -27, -18)
+                Arguments.of(-30, -2, -27, -18),
             )
         }
     }

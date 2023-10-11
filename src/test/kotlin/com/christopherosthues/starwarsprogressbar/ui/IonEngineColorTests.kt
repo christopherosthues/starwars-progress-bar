@@ -53,7 +53,7 @@ class IonEngineColorTests {
                 Arguments.of("purple", JBColor(Color(255, 73, 245), Color(255, 73, 245))),
                 Arguments.of("red", JBColor(Color(255, 107, 107), Color(255, 107, 107))),
                 Arguments.of("yellow", JBColor(Color(245, 238, 60), Color(245, 238, 60))),
-                Arguments.of("white", JBColor(Color(255, 255, 255), Color(255, 255, 255)))
+                Arguments.of("white", JBColor(Color(255, 255, 255), Color(255, 255, 255))),
             )
         }
     }

@@ -46,7 +46,7 @@ class BorderShapeTests {
         y: Int,
         margin: Int,
         topInset: Int,
-        expectedY: Int
+        expectedY: Int,
     ) {
         // Arrange
         val x = Random.nextInt()
@@ -65,7 +65,7 @@ class BorderShapeTests {
     fun `constructor should set width to width minus two times of the margin`(
         width: Int,
         margin: Int,
-        expectedWidth: Int
+        expectedWidth: Int,
     ) {
         // Arrange
         val x = Random.nextInt()
@@ -84,7 +84,7 @@ class BorderShapeTests {
     fun `constructor should set height to height minus two times of the margin`(
         height: Int,
         margin: Int,
-        expectedHeight: Int
+        expectedHeight: Int,
     ) {
         // Arrange
         val x = Random.nextInt()
@@ -104,7 +104,7 @@ class BorderShapeTests {
         height: Int,
         margin: Int,
         topInset: Int,
-        expectedHeight: Int
+        expectedHeight: Int,
     ) {
         // Arrange
         val x = Random.nextInt()
@@ -130,7 +130,7 @@ class BorderShapeTests {
                 Arguments.of(-1, 1, 0),
                 Arguments.of(1, -1, 0),
                 Arguments.of(10, -1, 9),
-                Arguments.of(10, 5, 15)
+                Arguments.of(10, 5, 15),
             )
         }
 
@@ -143,7 +143,7 @@ class BorderShapeTests {
                 Arguments.of(-1, 1, -3),
                 Arguments.of(1, -1, 3),
                 Arguments.of(10, -1, 12),
-                Arguments.of(10, 5, 0)
+                Arguments.of(10, 5, 0),
             )
         }
 
@@ -156,7 +156,7 @@ class BorderShapeTests {
                 Arguments.of(-1, 1, 0, 0),
                 Arguments.of(1, -1, -9, 9),
                 Arguments.of(10, -1, -54, 63),
-                Arguments.of(10, 5, 3, 12)
+                Arguments.of(10, 5, 3, 12),
             )
         }
 
@@ -169,7 +169,7 @@ class BorderShapeTests {
                 Arguments.of(-1, 1, 0, -3),
                 Arguments.of(1, -1, -9, -6),
                 Arguments.of(10, -1, -54, -42),
-                Arguments.of(10, 5, 3, 3)
+                Arguments.of(10, 5, 3, 3),
             )
         }
     }

@@ -18,7 +18,7 @@ class IconShapeTests {
     fun `constructor should set x to x plus default left padding + left padding`(
         x: Int,
         leftInset: Int,
-        expectedX: Int
+        expectedX: Int,
     ) {
         // Arrange
         val y = Random.nextInt()
@@ -58,7 +58,7 @@ class IconShapeTests {
     fun `constructor should set y to y plus top padding if top padding is greater than or equal to base margin`(
         y: Int,
         topInset: Int,
-        expectedY: Int
+        expectedY: Int,
     ) {
         // Arrange
         val x = Random.nextInt()
@@ -122,7 +122,7 @@ class IconShapeTests {
                 Arguments.of(0, 0, 8),
                 Arguments.of(0, 2, 10),
                 Arguments.of(-10, 5, 3),
-                Arguments.of(-5, 3, 6)
+                Arguments.of(-5, 3, 6),
             )
         }
 
@@ -132,7 +132,7 @@ class IconShapeTests {
                 Arguments.of(0, 1),
                 Arguments.of(0, -2),
                 Arguments.of(-10, 0),
-                Arguments.of(-5, -13)
+                Arguments.of(-5, -13),
             )
         }
 
@@ -142,7 +142,7 @@ class IconShapeTests {
                 Arguments.of(0, 2, 2),
                 Arguments.of(0, 3, 3),
                 Arguments.of(-10, 8, -2),
-                Arguments.of(-5, 2, -3)
+                Arguments.of(-5, 2, -3),
             )
         }
     }

@@ -35,7 +35,7 @@ class ResourceFactoryTests {
         // Assert
         assertAll(
             { assertEquals(classLoader, result) },
-            { assertSame(classLoader, result) }
+            { assertSame(classLoader, result) },
         )
     }
 
@@ -96,9 +96,9 @@ class ResourceFactoryTests {
                 "faction2",
                 listOf(
                     StarWarsVehicle("vehicle2", "blue", -6, -6, 2.5f),
-                    StarWarsVehicle("vehicle3", "blue", -6, -6, 2.5f)
-                )
-            )
+                    StarWarsVehicle("vehicle3", "blue", -6, -6, 2.5f),
+                ),
+            ),
         )
 
         // Act and Assert
@@ -129,7 +129,7 @@ class ResourceFactoryTests {
                 "          \"yShift\": -6,\n" +
                 "          \"velocity\": 2.5\n" +
                 "        }]}" +
-                "]}"
+                "]}",
         )
 
         // Assert
@@ -138,7 +138,7 @@ class ResourceFactoryTests {
             { assertEquals(factions, resultFactions) },
             { assertEquals(factions.size, resultFactions.size) },
             { assertEquals(factions[0], resultFactions[0]) },
-            { assertEquals(factions[1], resultFactions[1]) }
+            { assertEquals(factions[1], resultFactions[1]) },
         )
     }
 
@@ -161,7 +161,7 @@ class ResourceFactoryTests {
             { assertInstanceOf(ImageIcon::class.java, result) },
             { assertInstanceOf(BufferedImage::class.java, result.image) },
             { assertEquals(size, result.image.getHeight { _, _, _, _, _, _ -> false }) },
-            { assertEquals(size, result.image.getWidth { _, _, _, _, _, _ -> false }) }
+            { assertEquals(size, result.image.getWidth { _, _, _, _, _, _ -> false }) },
         )
     }
 
@@ -179,7 +179,7 @@ class ResourceFactoryTests {
         // Assert
         assertAll(
             { assertEquals(bufferedImageMock, result.image) },
-            { assertSame(bufferedImageMock, result.image) }
+            { assertSame(bufferedImageMock, result.image) },
         )
         verify(exactly = 1) { createEmptyBufferedImage(size, size) }
 
@@ -205,7 +205,7 @@ class ResourceFactoryTests {
             { assertInstanceOf(ImageIcon::class.java, result) },
             { assertInstanceOf(BufferedImage::class.java, result.image) },
             { assertEquals(size, result.image.getHeight { _, _, _, _, _, _ -> false }) },
-            { assertEquals(size, result.image.getWidth { _, _, _, _, _, _ -> false }) }
+            { assertEquals(size, result.image.getWidth { _, _, _, _, _, _ -> false }) },
         )
     }
 
@@ -230,7 +230,7 @@ class ResourceFactoryTests {
             { assertInstanceOf(BufferedImage::class.java, result.image) },
             { assertEquals(image, result.image) },
             { assertEquals(size, result.image.getHeight { _, _, _, _, _, _ -> false }) },
-            { assertEquals(size, result.image.getWidth { _, _, _, _, _, _ -> false }) }
+            { assertEquals(size, result.image.getWidth { _, _, _, _, _, _ -> false }) },
         )
     }
 
@@ -262,7 +262,7 @@ class ResourceFactoryTests {
             { assertEquals(size, result.iconWidth) },
             { assertEquals(size, result.iconHeight) },
             { assertEquals(size, result.image.getHeight { _, _, _, _, _, _ -> false }) },
-            { assertEquals(size, result.image.getWidth { _, _, _, _, _, _ -> false }) }
+            { assertEquals(size, result.image.getWidth { _, _, _, _, _, _ -> false }) },
         )
     }
 
@@ -283,7 +283,7 @@ class ResourceFactoryTests {
             { assertInstanceOf(ImageIcon::class.java, result) },
             { assertEquals(size, result.iconWidth) },
             { assertEquals(size, result.iconHeight) },
-            { assertNull(result.image) }
+            { assertNull(result.image) },
         )
     }
 
@@ -306,7 +306,7 @@ class ResourceFactoryTests {
         assertAll(
             { assertInstanceOf(BufferedImage::class.java, result) },
             { assertEquals((height * scalingFactor).toInt(), result.getHeight { _, _, _, _, _, _ -> false }, "width") },
-            { assertEquals((width * scalingFactor).toInt(), result.getWidth { _, _, _, _, _, _ -> false }, "height") }
+            { assertEquals((width * scalingFactor).toInt(), result.getWidth { _, _, _, _, _, _ -> false }, "height") },
         )
     }
 
@@ -327,7 +327,7 @@ class ResourceFactoryTests {
         assertAll(
             { assertInstanceOf(BufferedImage::class.java, result) },
             { assertEquals(height, result.getHeight { _, _, _, _, _, _ -> false }) },
-            { assertEquals(width, result.getWidth { _, _, _, _, _, _ -> false }) }
+            { assertEquals(width, result.getWidth { _, _, _, _, _, _ -> false }) },
         )
     }
 

@@ -46,7 +46,7 @@ internal class ColoredImageComponent(private var image: BufferedImage) : JCompon
                 paintedImage.colorModel,
                 paintedImage.copyData(null),
                 paintedImage.colorModel.isAlphaPremultiplied,
-                null
+                null,
             )
             return
         }

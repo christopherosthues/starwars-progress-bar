@@ -15,7 +15,7 @@ class BorderConstantsTests {
             { assertEquals(5, ICON_TEXT_SPACING) },
             { assertEquals(6, BORDER_MARGIN) },
             { assertEquals(7, LEFT_RIGHT_BORDER_MARGIN) },
-            { assertEquals(3, BORDER_LINE_MARGIN) }
+            { assertEquals(3, BORDER_LINE_MARGIN) },
         )
     }
 }

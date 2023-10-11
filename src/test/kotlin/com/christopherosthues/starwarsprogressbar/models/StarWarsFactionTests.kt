@@ -14,7 +14,7 @@ class StarWarsFactionTests {
         // Arrange
         val vehicles = listOf(
             StarWarsVehicle("1", "a", 1, 2, 3f),
-            StarWarsVehicle("2", "b", 2, 3, 4f)
+            StarWarsVehicle("2", "b", 2, 3, 4f),
         )
 
         // Act
@@ -23,7 +23,7 @@ class StarWarsFactionTests {
         // Assert
         assertAll(
             { assertEquals(vehicles, sut.vehicles) },
-            { assertSame(vehicles, sut.vehicles) }
+            { assertSame(vehicles, sut.vehicles) },
         )
     }
 

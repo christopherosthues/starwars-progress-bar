@@ -33,42 +33,42 @@ private const val YELLOW_B_VALUE = 60
 internal object IonEngineColor {
     val BlueEngine = JBColor(
         Color(BLUE_R_VALUE, BLUE_G_VALUE, BLUE_B_VALUE),
-        Color(BLUE_R_VALUE, BLUE_G_VALUE, BLUE_B_VALUE)
+        Color(BLUE_R_VALUE, BLUE_G_VALUE, BLUE_B_VALUE),
     )
 
     private val BrownEngine = JBColor(
         Color(BROWN_R_VALUE, BROWN_G_VALUE, BROWN_B_VALUE),
-        Color(BROWN_R_VALUE, BROWN_G_VALUE, BROWN_B_VALUE)
+        Color(BROWN_R_VALUE, BROWN_G_VALUE, BROWN_B_VALUE),
     )
 
     private val GreenEngine = JBColor(
         Color(GREEN_R_VALUE, MAX_RGB_VALUE, GREEN_B_VALUE),
-        Color(GREEN_R_VALUE, MAX_RGB_VALUE, GREEN_B_VALUE)
+        Color(GREEN_R_VALUE, MAX_RGB_VALUE, GREEN_B_VALUE),
     )
 
     private val OrangeEngine = JBColor(
         Color(ORANGE_R_VALUE, ORANGE_G_VALUE, ORANGE_B_VALUE),
-        Color(ORANGE_R_VALUE, ORANGE_G_VALUE, ORANGE_B_VALUE)
+        Color(ORANGE_R_VALUE, ORANGE_G_VALUE, ORANGE_B_VALUE),
     )
 
     private val PurpleEngine = JBColor(
         Color(MAX_RGB_VALUE, PURPLE_G_VALUE, PURPLE_B_VALUE),
-        Color(MAX_RGB_VALUE, PURPLE_G_VALUE, PURPLE_B_VALUE)
+        Color(MAX_RGB_VALUE, PURPLE_G_VALUE, PURPLE_B_VALUE),
     )
 
     private val RedEngine = JBColor(
         Color(MAX_RGB_VALUE, RED_G_VALUE, RED_B_VALUE),
-        Color(MAX_RGB_VALUE, RED_G_VALUE, RED_B_VALUE)
+        Color(MAX_RGB_VALUE, RED_G_VALUE, RED_B_VALUE),
     )
 
     private val YellowEngine = JBColor(
         Color(YELLOW_R_VALUE, YELLOW_G_VALUE, YELLOW_B_VALUE),
-        Color(YELLOW_R_VALUE, YELLOW_G_VALUE, YELLOW_B_VALUE)
+        Color(YELLOW_R_VALUE, YELLOW_G_VALUE, YELLOW_B_VALUE),
     )
 
     private val WhiteEngine = JBColor(
         Color(MAX_RGB_VALUE, MAX_RGB_VALUE, MAX_RGB_VALUE),
-        Color(MAX_RGB_VALUE, MAX_RGB_VALUE, MAX_RGB_VALUE)
+        Color(MAX_RGB_VALUE, MAX_RGB_VALUE, MAX_RGB_VALUE),
     )
 
     val colors = mapOf(
@@ -79,6 +79,6 @@ internal object IonEngineColor {
         "purple" to PurpleEngine,
         "red" to RedEngine,
         "yellow" to YellowEngine,
-        "white" to WhiteEngine
+        "white" to WhiteEngine,
     )
 }

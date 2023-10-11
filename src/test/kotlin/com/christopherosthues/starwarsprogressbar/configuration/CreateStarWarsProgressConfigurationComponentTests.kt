@@ -26,18 +26,18 @@ class CreateStarWarsProgressConfigurationComponentTests {
         every { starWarsPersistentStateComponentMock.state } returns null
         every { FactionHolder.missingVehicle } returns StarWarsVehicle("missing", "green", 0, 0, 0f)
 
-        every { StarWarsResourceLoader.getFactionLogo(any(), any()) } returns mockk() {
+        every { StarWarsResourceLoader.getFactionLogo(any(), any()) } returns mockk {
             every { height } returns 10
             every { width } returns 10
-            every { colorModel } returns mockk() {
+            every { colorModel } returns mockk {
                 every { isCompatibleRaster(any()) } returns true
                 every { isAlphaPremultiplied } returns true
                 every { hasAlpha() } returns true
-                every { colorSpace } returns mockk() {
+                every { colorSpace } returns mockk {
                     every { type } returns ColorSpace.TYPE_RGB
                 }
             }
-            every { copyData(any()) } returns mockk() {
+            every { copyData(any()) } returns mockk {
                 every { numBands } returns 0
                 every { sampleModel } returns mockk()
             }
