@@ -67,6 +67,16 @@ tasks.test {
     }
 }
 
+tasks.register("installGitHooks", Copy::class) {
+    from(file("$rootDir/scripts/pre-commit"))
+    into(file("$rootDir/.git/hooks"))
+    fileMode = 0b0111101101
+}
+
+tasks.named("build") {
+    dependsOn("installGitHooks")
+}
+
 ktlint {
     verbose = true
     version = libs.versions.ktlint.get()
@@ -80,7 +90,7 @@ ktlint {
 }
 
 detekt {
-    toolVersion = "1.23.0"
+    toolVersion = libs.versions.detekt.get()
     config.from("config/detekt/detekt.yml")
     buildUponDefaultConfig = true
 }

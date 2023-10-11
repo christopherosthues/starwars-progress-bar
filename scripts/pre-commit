@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+./gradlew ktlintFormat && rm -rf build/test-results/test && ./gradlew test
+git add .
