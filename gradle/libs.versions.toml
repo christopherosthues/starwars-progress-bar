@@ -4,7 +4,7 @@ kotlinxSerializationJson = "1.6.1"
 
 # plugins
 changelog = "2.2.0"
-detekt = "1.23.3"
+detekt = "1.23.4"
 gradleIntelliJPlugin = "1.16.0"
 junit = "5.10.1"
 junitJupiter = "5.10.1"
