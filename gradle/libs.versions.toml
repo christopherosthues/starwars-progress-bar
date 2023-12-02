@@ -1,6 +1,6 @@
 [versions]
 # libraries
-kotlinxSerializationJson = "1.6.1"
+kotlinxSerializationJson = "1.6.2"
 
 # plugins
 changelog = "2.2.0"
