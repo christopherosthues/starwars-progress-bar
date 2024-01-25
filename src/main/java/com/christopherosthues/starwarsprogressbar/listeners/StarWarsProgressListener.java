@@ -26,13 +26,15 @@ import com.intellij.ide.plugins.DynamicPluginListener;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.LafManagerListener;
+import com.intellij.openapi.application.ApplicationActivationListener;
 import com.intellij.openapi.extensions.PluginId;
+import com.intellij.openapi.wm.IdeFrame;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.util.Objects;
 
-public class StarWarsProgressListener implements LafManagerListener, DynamicPluginListener {
+public class StarWarsProgressListener implements LafManagerListener, DynamicPluginListener, ApplicationActivationListener {
     private static final String PROGRESS_BAR_UI_KEY = "ProgressBarUI";
     private static final String STAR_WARS_PROGRESS_BAR_UI_IMPLEMENTATION_NAME = StarWarsProgressBarFactory.class.getName();
     private volatile static Object previousProgressBar = null;
@@ -60,6 +62,11 @@ public class StarWarsProgressListener implements LafManagerListener, DynamicPlug
         if (pluginId.equals(pluginDescriptor.getPluginId())) {
             resetProgressBarUi();
         }
+    }
+
+    @Override
+    public void applicationActivated(@NotNull IdeFrame ideFrame) {
+        updateProgressBarUi();
     }
 
     static void updateProgressBarUi() {

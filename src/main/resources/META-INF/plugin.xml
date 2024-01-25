@@ -27,5 +27,8 @@
 
         <listener class="com.christopherosthues.starwarsprogressbar.listeners.StarWarsProgressListener"
                   topic="com.intellij.ide.plugins.DynamicPluginListener"/>
+
+        <listener class="com.christopherosthues.starwarsprogressbar.listeners.StarWarsProgressListener"
+                  topic="com.intellij.openapi.application.ApplicationActivationListener"/>
     </applicationListeners>
 </idea-plugin>
