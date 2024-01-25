@@ -174,6 +174,7 @@ class IconResourceTests {
         "mandalorians${File.separatorChar}fang_class_starfighter_r@2x.png",
         "mandalorians${File.separatorChar}gauntlet_r@2x.png",
         "scoundrels${File.separatorChar}nightbrother_r@2x.png",
+        "sith_empire${File.separatorChar}harrower_class_star_destroyer_r@2x.png",
     )
 
     private fun getFormattedImagesNotReferencedErrorMessage(imagesNotReferenced: List<String>): String {
