@@ -11,6 +11,7 @@
 ### Removed
 
 ### Fixed
+- Load progress bar on IDE startup
 
 ## [1.11.1] - 2023-08-03
 
