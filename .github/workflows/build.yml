@@ -58,7 +58,7 @@ jobs:
 
       # Setup Gradle
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v3
 
       # Set environment variables
       - name: Export Properties
@@ -120,7 +120,7 @@ jobs:
 
       # Setup Gradle
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v3
 
       # Run tests
       - name: Run Tests
@@ -188,7 +188,7 @@ jobs:
 
       # Setup Gradle
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v3
 
       # Cache Plugin Verifier IDEs
       - name: Setup Plugin Verifier IDEs Cache
