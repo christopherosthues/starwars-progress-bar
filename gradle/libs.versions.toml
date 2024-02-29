@@ -13,7 +13,7 @@ kotlin = "1.9.22"
 kover = "0.7.6"
 ktlint = "1.0.0"
 ktlintPlugin = "12.1.0"
-mockk = "1.13.9"
+mockk = "1.13.10"
 qodana = "0.1.13"
 serialization = "1.9.10"
 
