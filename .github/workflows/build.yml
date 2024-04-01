@@ -32,6 +32,10 @@ jobs:
       pluginVerifierHomeDir: ${{ steps.properties.outputs.pluginVerifierHomeDir }}
     steps:
 
+      - name: Print disc space
+        run: |
+          df -h
+
       # Free GitHub Actions Environment Disk Space
       - name: Maximize Build Space
         run: |
@@ -106,6 +110,9 @@ jobs:
     needs: [ build ]
     runs-on: ubuntu-latest
     steps:
+      - name: Print disc space
+        run: |
+          df -h
 
       # Check out current repository
       - name: Fetch Sources
@@ -151,6 +158,10 @@ jobs:
       pull-requests: write
     steps:
 
+      - name: Print disc space
+        run: |
+          df -h
+
       # Check out current repository
       - name: Fetch Sources
         uses: actions/checkout@v4
@@ -174,6 +185,10 @@ jobs:
     needs: [ build, test, inspectCode ]
     runs-on: ubuntu-latest
     steps:
+
+      - name: Print disc space
+        run: |
+          df -h
 
       # Check out current repository
       - name: Fetch Sources
