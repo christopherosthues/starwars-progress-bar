@@ -1,6 +1,6 @@
 [versions]
 # libraries
-kotlinxSerializationJson = "1.6.3"
+kotlinxSerializationJson = "1.7.0"
 
 # plugins
 changelog = "2.2.0"
@@ -10,7 +10,7 @@ junit = "5.10.2"
 junitJupiter = "5.10.2"
 junitPlatform = "1.10.2"
 kotlin = "2.0.0"
-kover = "0.7.6"
+kover = "0.8.1"
 ktlint = "1.0.0"
 ktlintPlugin = "12.1.1"
 mockk = "1.13.11"
