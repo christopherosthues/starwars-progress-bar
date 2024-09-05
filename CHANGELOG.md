@@ -6,6 +6,9 @@
 
 ### Added
 
+- New faction Sith Empire
+- Harrower-class dreadnought to Sith Empire
+
 ### Changed
 
 ### Removed
