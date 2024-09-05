@@ -1,1385 +1,1397 @@
 {
-  "factions": [
-    {
-      "id": "trade_federation",
-      "vehicles": [
+    "factions": [
         {
-          "id": "armored_assault_tank",
-          "ionEngine": "brown",
-          "xShift": -4,
-          "yShift": -6,
-          "velocity": 2.5
+            "id": "sith_empire",
+            "vehicles": [
+                {
+                    "id": "harrower_class_dreadnought",
+                    "ionEngine": "blue",
+                    "xShift": -3,
+                    "yShift": -6,
+                    "velocity": 2.5
+                }
+            ]
         },
         {
-          "id": "lucrehulk_class_droid_control_ship",
-          "ionEngine": "blue",
-          "xShift": -6,
-          "yShift": -6,
-          "velocity": 2.5
+            "id": "trade_federation",
+            "vehicles": [
+                {
+                    "id": "armored_assault_tank",
+                    "ionEngine": "brown",
+                    "xShift": -4,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "lucrehulk_class_droid_control_ship",
+                    "ionEngine": "blue",
+                    "xShift": -6,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "multi_troop_transport",
+                    "ionEngine": "brown",
+                    "xShift": 0,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "platoon_attack_craft",
+                    "ionEngine": "brown",
+                    "xShift": 0,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "sheathipede_class_shuttle",
+                    "ionEngine": "yellow",
+                    "xShift": -5,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "stap",
+                    "ionEngine": "yellow",
+                    "xShift": -12,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "trade_federation_landing_ship",
+                    "ionEngine": "orange",
+                    "xShift": -12,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "vulture_droid",
+                    "ionEngine": "purple",
+                    "xShift": -3,
+                    "yShift": -6,
+                    "velocity": 2.5
+                }
+            ]
         },
         {
-          "id": "multi_troop_transport",
-          "ionEngine": "brown",
-          "xShift": 0,
-          "yShift": -6,
-          "velocity": 2.5
+            "id": "jedi",
+            "vehicles": [
+                {
+                    "id": "adi_gallias_delta_7b_jedi_starfighter",
+                    "ionEngine": "blue",
+                    "xShift": -6,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "ahsoka_tanos_delta_7b_jedi_starfighter",
+                    "ionEngine": "blue",
+                    "xShift": -6,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "ahsoka_tanos_eta_2_actis_interceptor",
+                    "ionEngine": "blue",
+                    "xShift": -6,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "anakin_skywalkers_delta_7b_jedi_starfighter",
+                    "ionEngine": "blue",
+                    "xShift": -6,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "anakin_skywalkers_eta_2_actis_interceptor",
+                    "ionEngine": "blue",
+                    "xShift": -6,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "azure_angel",
+                    "ionEngine": "blue",
+                    "xShift": -10,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "barriss_offees_delta_7b_jedi_starfighter",
+                    "ionEngine": "blue",
+                    "xShift": -6,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "blade_of_dorin",
+                    "ionEngine": "red",
+                    "xShift": -6,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "dc0052_speeder",
+                    "ionEngine": "blue",
+                    "xShift": -13,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "eta_class_shuttle",
+                    "ionEngine": "blue",
+                    "xShift": -11,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "kit_fistos_delta_7b_jedi_starfighter",
+                    "ionEngine": "blue",
+                    "xShift": -6,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "luminara_undulis_delta_7b_jedi_starfighter",
+                    "ionEngine": "blue",
+                    "xShift": -6,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "mace_windus_delta_7b_jedi_starfighter",
+                    "ionEngine": "blue",
+                    "xShift": -6,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "obi_wan_kenobis_delta_7_jedi_starfighter",
+                    "ionEngine": "orange",
+                    "xShift": -4,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "obi_wan_kenobis_eta_2_actis_interceptor",
+                    "ionEngine": "blue",
+                    "xShift": -6,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "praxis_mk_i_turbo_speeder",
+                    "ionEngine": "blue",
+                    "xShift": -22,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "saesee_tiins_delta_7b_jedi_starfighter",
+                    "ionEngine": "blue",
+                    "xShift": -6,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "stinger_mantis",
+                    "ionEngine": "blue",
+                    "xShift": -11,
+                    "yShift": -6,
+                    "velocity": 3.5
+                },
+                {
+                    "id": "t_6_shuttle",
+                    "ionEngine": "blue",
+                    "xShift": -11,
+                    "yShift": -6,
+                    "velocity": 3
+                }
+            ]
         },
         {
-          "id": "platoon_attack_craft",
-          "ionEngine": "brown",
-          "xShift": 0,
-          "yShift": -6,
-          "velocity": 2.5
+            "id": "galactic_republic",
+            "vehicles": [
+                {
+                    "id": "aa_9_coruscant_freighter",
+                    "ionEngine": "blue",
+                    "xShift": -4,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "acclamator_class_assault_ship",
+                    "ionEngine": "blue",
+                    "xShift": -7,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "acclamator_ii_class_assault_ship",
+                    "ionEngine": "blue",
+                    "xShift": -7,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "arc_170_starfighter",
+                    "ionEngine": "purple",
+                    "xShift": -12,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "arquitens_class_light_cruiser",
+                    "ionEngine": "blue",
+                    "xShift": 0,
+                    "yShift": -6,
+                    "velocity": 3.5
+                },
+                {
+                    "id": "at_ap",
+                    "ionEngine": "brown",
+                    "xShift": -7,
+                    "yShift": -6,
+                    "velocity": 1.5
+                },
+                {
+                    "id": "at_te",
+                    "ionEngine": "brown",
+                    "xShift": -2,
+                    "yShift": -6,
+                    "velocity": 1.5
+                },
+                {
+                    "id": "berenko_class_gondola_speeder",
+                    "ionEngine": "blue",
+                    "xShift": -10,
+                    "yShift": -6,
+                    "velocity": 1
+                },
+                {
+                    "id": "btl_b_y_wing",
+                    "ionEngine": "purple",
+                    "xShift": -2,
+                    "yShift": -6,
+                    "velocity": 2
+                },
+                {
+                    "id": "captain_rex_y_wing",
+                    "ionEngine": "red",
+                    "xShift": -2,
+                    "yShift": -6,
+                    "velocity": 2
+                },
+                {
+                    "id": "css_1_corellian_star_shuttle",
+                    "ionEngine": "blue",
+                    "xShift": -1,
+                    "yShift": -6,
+                    "velocity": 2
+                },
+                {
+                    "id": "haven_class_medical_station",
+                    "ionEngine": "blue",
+                    "xShift": -15,
+                    "yShift": -6,
+                    "velocity": 2
+                },
+                {
+                    "id": "havw_a6_juggernaut",
+                    "ionEngine": "brown",
+                    "xShift": -1,
+                    "yShift": -6,
+                    "velocity": 2
+                },
+                {
+                    "id": "high_altitude_entry_transport_221",
+                    "ionEngine": "blue",
+                    "xShift": -11,
+                    "yShift": -6,
+                    "velocity": 2
+                },
+                {
+                    "id": "h_type_naboo_yacht",
+                    "ionEngine": "blue",
+                    "xShift": -4,
+                    "yShift": -6,
+                    "velocity": 1
+                },
+                {
+                    "id": "infantry_support_platform",
+                    "ionEngine": "brown",
+                    "xShift": -9,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "ipv_2c_stealth_corvette",
+                    "ionEngine": "orange",
+                    "xShift": -2,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "j_type_diplomatic_barge",
+                    "ionEngine": "blue",
+                    "xShift": -14,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "j_type_naboo_star_skiff",
+                    "ionEngine": "blue",
+                    "xShift": -14,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "laat_c",
+                    "ionEngine": "red",
+                    "xShift": -2,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "laat_i",
+                    "ionEngine": "red",
+                    "xShift": 0,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "marauder",
+                    "ionEngine": "blue",
+                    "xShift": -7,
+                    "yShift": -6,
+                    "velocity": 3.5
+                },
+                {
+                    "id": "n_1_starfighter",
+                    "ionEngine": "blue",
+                    "xShift": -16,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "naboo_royal_starship",
+                    "ionEngine": "blue",
+                    "xShift": -6,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "oevvaor_jet_catamaran",
+                    "ionEngine": "white",
+                    "xShift": -16,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "seraph_class_speeder",
+                    "ionEngine": "orange",
+                    "xShift": -6,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "syluire_31_hyperspace_docking_ring",
+                    "ionEngine": "blue",
+                    "xShift": -10,
+                    "yShift": -6,
+                    "velocity": 4.5
+                },
+                {
+                    "id": "v_wing",
+                    "ionEngine": "yellow",
+                    "xShift": 0,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "venator_class_star_destroyer",
+                    "ionEngine": "blue",
+                    "xShift": 0,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "v_19_torrent_starfighter",
+                    "ionEngine": "blue",
+                    "xShift": -10,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "xj_6_airspeeder",
+                    "ionEngine": "red",
+                    "xShift": -1,
+                    "yShift": -6,
+                    "velocity": 4
+                },
+                {
+                    "id": "z_95_headhunter",
+                    "ionEngine": "red",
+                    "xShift": -9,
+                    "yShift": -6,
+                    "velocity": 2.5
+                }
+            ]
         },
         {
-          "id": "sheathipede_class_shuttle",
-          "ionEngine": "yellow",
-          "xShift": -5,
-          "yShift": -6,
-          "velocity": 2.5
+            "id": "confederacy_of_independent_systems",
+            "vehicles": [
+                {
+                    "id": "armored_assault_tank",
+                    "ionEngine": "brown",
+                    "xShift": -4,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "bloodfin",
+                    "ionEngine": "green",
+                    "xShift": -4,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "core_ship",
+                    "ionEngine": "blue",
+                    "xShift": -9,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "count_dookus_flitknot_speeder",
+                    "ionEngine": "yellow",
+                    "xShift": 0,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "diamond_class_cruiser",
+                    "ionEngine": "yellow",
+                    "xShift": -12,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "droch_class_boarding_ship",
+                    "ionEngine": "yellow",
+                    "xShift": -2,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "droid_tri_fighter",
+                    "ionEngine": "orange",
+                    "xShift": -3,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "fanblade",
+                    "ionEngine": "yellow",
+                    "xShift": -12,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "flitknot_speeder",
+                    "ionEngine": "yellow",
+                    "xShift": 0,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "heavy_missile_platform_droid_gunship",
+                    "ionEngine": "white",
+                    "xShift": -7,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "ig_227_hailfire_class_droid_tank",
+                    "ionEngine": "brown",
+                    "xShift": -12,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "invisible_hand",
+                    "ionEngine": "orange",
+                    "xShift": 0,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "landing_craft",
+                    "ionEngine": "orange",
+                    "xShift": -12,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "lucrehulk_class_battleship",
+                    "ionEngine": "blue",
+                    "xShift": -6,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "malevolence",
+                    "ionEngine": "yellow",
+                    "xShift": 0,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "mankvim_814_interceptor",
+                    "ionEngine": "blue",
+                    "xShift": -6,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "maxillipede_shuttle",
+                    "ionEngine": "yellow",
+                    "xShift": -5,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "multi_troop_transport",
+                    "ionEngine": "brown",
+                    "xShift": 0,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "munificent_class_star_frigate",
+                    "ionEngine": "yellow",
+                    "xShift": -3,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "nantex_class_starfighter",
+                    "ionEngine": "blue",
+                    "xShift": 0,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "nr_n99_persuader_class_droid_enforcer",
+                    "ionEngine": "brown",
+                    "xShift": -3,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "octuptarra_tri_droid",
+                    "ionEngine": "brown",
+                    "xShift": -4,
+                    "yShift": -6,
+                    "velocity": 2
+                },
+                {
+                    "id": "og_9_homing_spider_droid",
+                    "ionEngine": "brown",
+                    "xShift": -8,
+                    "yShift": -6,
+                    "velocity": 2
+                },
+                {
+                    "id": "platoon_attack_craft",
+                    "ionEngine": "brown",
+                    "xShift": 0,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "porax_38_starfighter",
+                    "ionEngine": "yellow",
+                    "xShift": -10,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "punworcca_116_class_interstellar_sloop",
+                    "ionEngine": "yellow",
+                    "xShift": -23,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "recusant_class_destroyer",
+                    "ionEngine": "yellow",
+                    "xShift": -2,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "scimitar",
+                    "ionEngine": "green",
+                    "xShift": -2,
+                    "yShift": -6,
+                    "velocity": 5
+                },
+                {
+                    "id": "separatist_supply_ship",
+                    "ionEngine": "blue",
+                    "xShift": -10,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "sheathipede_class_shuttle",
+                    "ionEngine": "yellow",
+                    "xShift": -6,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "sheathipede_class_type_b_shuttle",
+                    "ionEngine": "yellow",
+                    "xShift": -1,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "soulless_one",
+                    "ionEngine": "orange",
+                    "xShift": -12,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "stap",
+                    "ionEngine": "yellow",
+                    "xShift": -12,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "vulture_droid",
+                    "ionEngine": "red",
+                    "xShift": -3,
+                    "yShift": -6,
+                    "velocity": 2.5
+                }
+            ]
         },
         {
-          "id": "stap",
-          "ionEngine": "yellow",
-          "xShift": -12,
-          "yShift": -6,
-          "velocity": 2.5
+            "id": "galactic_empire",
+            "vehicles": [
+                {
+                    "id": "arquitens_class_command_cruiser",
+                    "ionEngine": "blue",
+                    "xShift": 0,
+                    "yShift": -6,
+                    "velocity": 3.5
+                },
+                {
+                    "id": "at_at",
+                    "ionEngine": "brown",
+                    "xShift": -5,
+                    "yShift": -6,
+                    "velocity": 1.5
+                },
+                {
+                    "id": "at_act",
+                    "ionEngine": "brown",
+                    "xShift": -5,
+                    "yShift": -6,
+                    "velocity": 1.5
+                },
+                {
+                    "id": "at_dp",
+                    "ionEngine": "brown",
+                    "xShift": -14,
+                    "yShift": -6,
+                    "velocity": 1.5
+                },
+                {
+                    "id": "at_dp_arc_cannon_prototype",
+                    "ionEngine": "brown",
+                    "xShift": -14,
+                    "yShift": -6,
+                    "velocity": 1.5
+                },
+                {
+                    "id": "at_st",
+                    "ionEngine": "brown",
+                    "xShift": -14,
+                    "yShift": -6,
+                    "velocity": 1.5
+                },
+                {
+                    "id": "cantwell_class_arrestor_cruiser",
+                    "ionEngine": "blue",
+                    "xShift": 0,
+                    "yShift": -6,
+                    "velocity": 3
+                },
+                {
+                    "id": "class_four_container_transport",
+                    "ionEngine": "blue",
+                    "xShift": -17,
+                    "yShift": -6,
+                    "velocity": 3
+                },
+                {
+                    "id": "eclipse",
+                    "ionEngine": "red",
+                    "xShift": -2,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "executor",
+                    "ionEngine": "red",
+                    "xShift": -8,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "first_death_star",
+                    "ionEngine": "green",
+                    "xShift": -12,
+                    "yShift": -6,
+                    "velocity": 1
+                },
+                {
+                    "id": "imperial_class_star_destroyer",
+                    "ionEngine": "blue",
+                    "xShift": -1,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "imperial_transport",
+                    "ionEngine": "blue",
+                    "xShift": -1,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "interdictor_class_star_destroyer",
+                    "ionEngine": "blue",
+                    "xShift": -5,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "lambda_class_shuttle",
+                    "ionEngine": "blue",
+                    "xShift": -13,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "mining_guild_tie_fighter",
+                    "ionEngine": "red",
+                    "xShift": -14,
+                    "yShift": -6,
+                    "velocity": 4.5
+                },
+                {
+                    "id": "onager_class_star_destroyer",
+                    "ionEngine": "blue",
+                    "xShift": -6,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "quasar_fire_class_cruiser_carrier",
+                    "ionEngine": "blue",
+                    "xShift": -7,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "second_death_star",
+                    "ionEngine": "green",
+                    "xShift": -12,
+                    "yShift": -6,
+                    "velocity": 1
+                },
+                {
+                    "id": "sentinel_class_shuttle",
+                    "ionEngine": "blue",
+                    "xShift": -8,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "tartan_class_patrol_cruiser",
+                    "ionEngine": "blue",
+                    "xShift": 0,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "theta_class_shuttle",
+                    "ionEngine": "blue",
+                    "xShift": -12,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "tie_advanced_x1",
+                    "ionEngine": "red",
+                    "xShift": -10,
+                    "yShift": -6,
+                    "velocity": 3.5
+                },
+                {
+                    "id": "tie_avenger",
+                    "ionEngine": "red",
+                    "xShift": -6,
+                    "yShift": -6,
+                    "velocity": 5
+                },
+                {
+                    "id": "tie_bomber",
+                    "ionEngine": "red",
+                    "xShift": -8,
+                    "yShift": -6,
+                    "velocity": 4
+                },
+                {
+                    "id": "tie_brute",
+                    "ionEngine": "red",
+                    "xShift": -12,
+                    "yShift": -6,
+                    "velocity": 4
+                },
+                {
+                    "id": "tie_crawler",
+                    "ionEngine": "brown",
+                    "xShift": -8,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "tie_fighter",
+                    "ionEngine": "red",
+                    "xShift": -16,
+                    "yShift": -6,
+                    "velocity": 4.5
+                },
+                {
+                    "id": "tie_interceptor",
+                    "ionEngine": "red",
+                    "xShift": -9,
+                    "yShift": -6,
+                    "velocity": 4.5
+                },
+                {
+                    "id": "tie_reaper",
+                    "ionEngine": "red",
+                    "xShift": -5,
+                    "yShift": -6,
+                    "velocity": 4.5
+                },
+                {
+                    "id": "tie_striker",
+                    "ionEngine": "red",
+                    "xShift": -7,
+                    "yShift": -6,
+                    "velocity": 4.5
+                },
+                {
+                    "id": "victory_i_class_star_destroyer",
+                    "ionEngine": "blue",
+                    "xShift": -6,
+                    "yShift": -6,
+                    "velocity": 3
+                }
+            ]
         },
         {
-          "id": "trade_federation_landing_ship",
-          "ionEngine": "orange",
-          "xShift": -12,
-          "yShift": -6,
-          "velocity": 2.5
+            "id": "rebel_alliance",
+            "vehicles": [
+                {
+                    "id": "a_wing",
+                    "ionEngine": "yellow",
+                    "xShift": -4,
+                    "yShift": -6,
+                    "velocity": 4.9
+                },
+                {
+                    "id": "b_wing",
+                    "ionEngine": "red",
+                    "xShift": -13,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "ghost",
+                    "ionEngine": "orange",
+                    "xShift": -5,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "gr_75_transport",
+                    "ionEngine": "blue",
+                    "xShift": 0,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "home_one",
+                    "ionEngine": "blue",
+                    "xShift": -2,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "mc80_liberty_star_cruiser",
+                    "ionEngine": "blue",
+                    "xShift": -9,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "millennium_falcon",
+                    "ionEngine": "blue",
+                    "xShift": -16,
+                    "yShift": -6,
+                    "velocity": 5
+                },
+                {
+                    "id": "nebulon_b_frigate",
+                    "ionEngine": "yellow",
+                    "xShift": -1,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "phantom",
+                    "ionEngine": "orange",
+                    "xShift": 0,
+                    "yShift": -6,
+                    "velocity": 3
+                },
+                {
+                    "id": "phantom_ii",
+                    "ionEngine": "yellow",
+                    "xShift": -4,
+                    "yShift": -6,
+                    "velocity": 3
+                },
+                {
+                    "id": "phoenix_nest",
+                    "ionEngine": "blue",
+                    "xShift": -7,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "profundity",
+                    "ionEngine": "blue",
+                    "xShift": 0,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "prototype_b6",
+                    "ionEngine": "red",
+                    "xShift": -13,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "rogue_shadow",
+                    "ionEngine": "blue",
+                    "xShift": -5,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "sphyrna_class_hammerhead_corvette",
+                    "ionEngine": "orange",
+                    "xShift": -3,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "laat_i",
+                    "ionEngine": "red",
+                    "xShift": 0,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "tantive_iv",
+                    "ionEngine": "red",
+                    "xShift": 0,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "taylander_shuttle",
+                    "ionEngine": "yellow",
+                    "xShift": 0,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "t_16_skyhopper",
+                    "ionEngine": "blue",
+                    "xShift": -9,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "t_47_snowspeeder",
+                    "ionEngine": "white",
+                    "xShift": -9,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "t_65_x_wing_starfighter",
+                    "ionEngine": "red",
+                    "xShift": 0,
+                    "yShift": -6,
+                    "velocity": 4
+                },
+                {
+                    "id": "u_wing",
+                    "ionEngine": "blue",
+                    "xShift": 0,
+                    "yShift": -6,
+                    "velocity": 4
+                },
+                {
+                    "id": "y_wing",
+                    "ionEngine": "red",
+                    "xShift": -2,
+                    "yShift": -6,
+                    "velocity": 2
+                }
+            ]
         },
         {
-          "id": "vulture_droid",
-          "ionEngine": "purple",
-          "xShift": -3,
-          "yShift": -6,
-          "velocity": 2.5
+            "id": "first_order",
+            "vehicles": [
+                {
+                    "id": "first_order_tie_fighter",
+                    "ionEngine": "blue",
+                    "xShift": -16,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "starkiller_base",
+                    "ionEngine": "red",
+                    "xShift": -8,
+                    "yShift": -6,
+                    "velocity": 1
+                },
+                {
+                    "id": "supremacy",
+                    "ionEngine": "red",
+                    "xShift": -15,
+                    "yShift": -6,
+                    "velocity": 2
+                },
+                {
+                    "id": "tie_baron",
+                    "ionEngine": "blue",
+                    "xShift": -4,
+                    "yShift": -6,
+                    "velocity": 3
+                },
+                {
+                    "id": "tie_dagger",
+                    "ionEngine": "blue",
+                    "xShift": -7,
+                    "yShift": -6,
+                    "velocity": 3.5
+                },
+                {
+                    "id": "tie_silencer",
+                    "ionEngine": "red",
+                    "xShift": -5,
+                    "yShift": -6,
+                    "velocity": 4
+                }
+            ]
+        },
+        {
+            "id": "new_republic",
+            "vehicles": [
+                {
+                    "id": "starhawk_class_battleship",
+                    "ionEngine": "blue",
+                    "xShift": -21,
+                    "yShift": -6,
+                    "velocity": 3
+                }
+            ]
+        },
+        {
+            "id": "mandalorians",
+            "vehicles": [
+                {
+                    "id": "mandos_n_1_starfighter",
+                    "ionEngine": "blue",
+                    "xShift": -21,
+                    "yShift": -6,
+                    "velocity": 4.75
+                },
+                {
+                    "id": "razor_crest",
+                    "ionEngine": "orange",
+                    "xShift": -5,
+                    "yShift": -6,
+                    "velocity": 3
+                }
+            ]
+        },
+        {
+            "id": "bounty_hunters",
+            "vehicles": [
+                {
+                    "id": "boba_fetts_slave_one",
+                    "ionEngine": "orange",
+                    "xShift": -12,
+                    "yShift": -6,
+                    "velocity": 4.75
+                },
+                {
+                    "id": "ig_2000",
+                    "ionEngine": "blue",
+                    "xShift": -8,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "jango_fetts_slave_one",
+                    "ionEngine": "orange",
+                    "xShift": -12,
+                    "yShift": -6,
+                    "velocity": 4.75
+                },
+                {
+                    "id": "koro_2_all_environment_exodrive_airspeeder",
+                    "ionEngine": "red",
+                    "xShift": 0,
+                    "yShift": -6,
+                    "velocity": 3.5
+                }
+            ]
+        },
+        {
+            "id": "scoundrels",
+            "vehicles": [
+                {
+                    "id": "acushnet",
+                    "ionEngine": "white",
+                    "xShift": -16,
+                    "yShift": -6,
+                    "velocity": 3.5
+                },
+                {
+                    "id": "cloud_city",
+                    "ionEngine": "orange",
+                    "xShift": -16,
+                    "yShift": -6,
+                    "velocity": 1
+                },
+                {
+                    "id": "errant_venture",
+                    "ionEngine": "blue",
+                    "xShift": -1,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "khetanna",
+                    "ionEngine": "yellow",
+                    "xShift": 0,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "last_chance",
+                    "ionEngine": "blue",
+                    "xShift": -8,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "sandcrawler",
+                    "ionEngine": "brown",
+                    "xShift": -5,
+                    "yShift": -6,
+                    "velocity": 1
+                },
+                {
+                    "id": "storm_iv_twin_pod_cloud_car",
+                    "ionEngine": "blue",
+                    "xShift": -8,
+                    "yShift": -6,
+                    "velocity": 2.5
+                },
+                {
+                    "id": "wild_karrde",
+                    "ionEngine": "blue",
+                    "xShift": 0,
+                    "yShift": -6,
+                    "velocity": 3.75
+                }
+            ]
+        },
+        {
+            "id": "podracer",
+            "vehicles": [
+                {
+                    "id": "aldar_beedos_podracer",
+                    "ionEngine": "orange",
+                    "xShift": -16,
+                    "yShift": -6,
+                    "velocity": 4.5
+                },
+                {
+                    "id": "anakin_skywalkers_podracer",
+                    "ionEngine": "orange",
+                    "xShift": -14,
+                    "yShift": -6,
+                    "velocity": 5
+                },
+                {
+                    "id": "ark_bumpy_rooses_podracer",
+                    "ionEngine": "orange",
+                    "xShift": -19,
+                    "yShift": -6,
+                    "velocity": 5
+                },
+                {
+                    "id": "ben_quadinaros_podracer",
+                    "ionEngine": "orange",
+                    "xShift": -15,
+                    "yShift": -6,
+                    "velocity": 4.5
+                },
+                {
+                    "id": "boles_roors_podracer",
+                    "ionEngine": "orange",
+                    "xShift": -20,
+                    "yShift": -6,
+                    "velocity": 4.5
+                },
+                {
+                    "id": "clegg_holdfasts_podracer",
+                    "ionEngine": "orange",
+                    "xShift": -16,
+                    "yShift": -6,
+                    "velocity": 4.5
+                },
+                {
+                    "id": "dud_bolts_podracer",
+                    "ionEngine": "orange",
+                    "xShift": -15,
+                    "yShift": -6,
+                    "velocity": 4.5
+                },
+                {
+                    "id": "ebe_endocotts_podracer",
+                    "ionEngine": "orange",
+                    "xShift": -8,
+                    "yShift": -6,
+                    "velocity": 4.5
+                },
+                {
+                    "id": "elan_maks_podracer",
+                    "ionEngine": "orange",
+                    "xShift": -14,
+                    "yShift": -6,
+                    "velocity": 4.5
+                },
+                {
+                    "id": "gasganos_podracer",
+                    "ionEngine": "orange",
+                    "xShift": -13,
+                    "yShift": -6,
+                    "velocity": 4.5
+                },
+                {
+                    "id": "mawhonics_podracer",
+                    "ionEngine": "orange",
+                    "xShift": -25,
+                    "yShift": -6,
+                    "velocity": 4.5
+                },
+                {
+                    "id": "mars_guos_podracer",
+                    "ionEngine": "orange",
+                    "xShift": -18,
+                    "yShift": -6,
+                    "velocity": 4.5
+                },
+                {
+                    "id": "neva_kees_podracer",
+                    "ionEngine": "orange",
+                    "xShift": -5,
+                    "yShift": -6,
+                    "velocity": 4.5
+                },
+                {
+                    "id": "ody_mandrells_podracer",
+                    "ionEngine": "orange",
+                    "xShift": -12,
+                    "yShift": -6,
+                    "velocity": 4.5
+                },
+                {
+                    "id": "ratts_tyerells_podracer",
+                    "ionEngine": "orange",
+                    "xShift": -13,
+                    "yShift": -6,
+                    "velocity": 4.5
+                },
+                {
+                    "id": "sebulbas_podracer",
+                    "ionEngine": "orange",
+                    "xShift": -14,
+                    "yShift": -6,
+                    "velocity": 4.5
+                },
+                {
+                    "id": "teemto_pagalies_podracer",
+                    "ionEngine": "orange",
+                    "xShift": -21,
+                    "yShift": -6,
+                    "velocity": 4.5
+                },
+                {
+                    "id": "wan_sandages_podracer",
+                    "ionEngine": "orange",
+                    "xShift": -16,
+                    "yShift": -6,
+                    "velocity": 4.5
+                }
+            ]
+        },
+        {
+            "id": "",
+            "vehicles": [
+                {
+                    "id": "missing",
+                    "ionEngine": "green",
+                    "xShift": -4,
+                    "yShift": -6,
+                    "velocity": 2.5
+                }
+            ]
         }
-      ]
-    },
-    {
-      "id": "jedi",
-      "vehicles": [
-        {
-          "id": "adi_gallias_delta_7b_jedi_starfighter",
-          "ionEngine": "blue",
-          "xShift": -6,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "ahsoka_tanos_delta_7b_jedi_starfighter",
-          "ionEngine": "blue",
-          "xShift": -6,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "ahsoka_tanos_eta_2_actis_interceptor",
-          "ionEngine": "blue",
-          "xShift": -6,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "anakin_skywalkers_delta_7b_jedi_starfighter",
-          "ionEngine": "blue",
-          "xShift": -6,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "anakin_skywalkers_eta_2_actis_interceptor",
-          "ionEngine": "blue",
-          "xShift": -6,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "azure_angel",
-          "ionEngine": "blue",
-          "xShift": -10,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "barriss_offees_delta_7b_jedi_starfighter",
-          "ionEngine": "blue",
-          "xShift": -6,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "blade_of_dorin",
-          "ionEngine": "red",
-          "xShift": -6,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "dc0052_speeder",
-          "ionEngine": "blue",
-          "xShift": -13,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "eta_class_shuttle",
-          "ionEngine": "blue",
-          "xShift": -11,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "kit_fistos_delta_7b_jedi_starfighter",
-          "ionEngine": "blue",
-          "xShift": -6,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "luminara_undulis_delta_7b_jedi_starfighter",
-          "ionEngine": "blue",
-          "xShift": -6,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "mace_windus_delta_7b_jedi_starfighter",
-          "ionEngine": "blue",
-          "xShift": -6,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "obi_wan_kenobis_delta_7_jedi_starfighter",
-          "ionEngine": "orange",
-          "xShift": -4,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "obi_wan_kenobis_eta_2_actis_interceptor",
-          "ionEngine": "blue",
-          "xShift": -6,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "praxis_mk_i_turbo_speeder",
-          "ionEngine": "blue",
-          "xShift": -22,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "saesee_tiins_delta_7b_jedi_starfighter",
-          "ionEngine": "blue",
-          "xShift": -6,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "stinger_mantis",
-          "ionEngine": "blue",
-          "xShift": -11,
-          "yShift": -6,
-          "velocity": 3.5
-        },
-        {
-          "id": "t_6_shuttle",
-          "ionEngine": "blue",
-          "xShift": -11,
-          "yShift": -6,
-          "velocity": 3
-        }
-      ]
-    },
-    {
-      "id": "galactic_republic",
-      "vehicles": [
-        {
-          "id": "aa_9_coruscant_freighter",
-          "ionEngine": "blue",
-          "xShift": -4,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "acclamator_class_assault_ship",
-          "ionEngine": "blue",
-          "xShift": -7,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "acclamator_ii_class_assault_ship",
-          "ionEngine": "blue",
-          "xShift": -7,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "arc_170_starfighter",
-          "ionEngine": "purple",
-          "xShift": -12,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "arquitens_class_light_cruiser",
-          "ionEngine": "blue",
-          "xShift": 0,
-          "yShift": -6,
-          "velocity": 3.5
-        },
-        {
-          "id": "at_ap",
-          "ionEngine": "brown",
-          "xShift": -7,
-          "yShift": -6,
-          "velocity": 1.5
-        },
-        {
-          "id": "at_te",
-          "ionEngine": "brown",
-          "xShift": -2,
-          "yShift": -6,
-          "velocity": 1.5
-        },
-        {
-          "id": "berenko_class_gondola_speeder",
-          "ionEngine": "blue",
-          "xShift": -10,
-          "yShift": -6,
-          "velocity": 1
-        },
-        {
-          "id": "btl_b_y_wing",
-          "ionEngine": "purple",
-          "xShift": -2,
-          "yShift": -6,
-          "velocity": 2
-        },
-        {
-          "id": "captain_rex_y_wing",
-          "ionEngine": "red",
-          "xShift": -2,
-          "yShift": -6,
-          "velocity": 2
-        },
-        {
-          "id": "css_1_corellian_star_shuttle",
-          "ionEngine": "blue",
-          "xShift": -1,
-          "yShift": -6,
-          "velocity": 2
-        },
-        {
-          "id": "haven_class_medical_station",
-          "ionEngine": "blue",
-          "xShift": -15,
-          "yShift": -6,
-          "velocity": 2
-        },
-        {
-          "id": "havw_a6_juggernaut",
-          "ionEngine": "brown",
-          "xShift": -1,
-          "yShift": -6,
-          "velocity": 2
-        },
-        {
-          "id": "high_altitude_entry_transport_221",
-          "ionEngine": "blue",
-          "xShift": -11,
-          "yShift": -6,
-          "velocity": 2
-        },
-        {
-          "id": "h_type_naboo_yacht",
-          "ionEngine": "blue",
-          "xShift": -4,
-          "yShift": -6,
-          "velocity": 1
-        },
-        {
-          "id": "infantry_support_platform",
-          "ionEngine": "brown",
-          "xShift": -9,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "ipv_2c_stealth_corvette",
-          "ionEngine": "orange",
-          "xShift": -2,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "j_type_diplomatic_barge",
-          "ionEngine": "blue",
-          "xShift": -14,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "j_type_naboo_star_skiff",
-          "ionEngine": "blue",
-          "xShift": -14,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "laat_c",
-          "ionEngine": "red",
-          "xShift": -2,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "laat_i",
-          "ionEngine": "red",
-          "xShift": 0,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "marauder",
-          "ionEngine": "blue",
-          "xShift": -7,
-          "yShift": -6,
-          "velocity": 3.5
-        },
-        {
-          "id": "n_1_starfighter",
-          "ionEngine": "blue",
-          "xShift": -16,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "naboo_royal_starship",
-          "ionEngine": "blue",
-          "xShift": -6,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "oevvaor_jet_catamaran",
-          "ionEngine": "white",
-          "xShift": -16,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "seraph_class_speeder",
-          "ionEngine": "orange",
-          "xShift": -6,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "syluire_31_hyperspace_docking_ring",
-          "ionEngine": "blue",
-          "xShift": -10,
-          "yShift": -6,
-          "velocity": 4.5
-        },
-        {
-          "id": "v_wing",
-          "ionEngine": "yellow",
-          "xShift": 0,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "venator_class_star_destroyer",
-          "ionEngine": "blue",
-          "xShift": 0,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "v_19_torrent_starfighter",
-          "ionEngine": "blue",
-          "xShift": -10,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "xj_6_airspeeder",
-          "ionEngine": "red",
-          "xShift": -1,
-          "yShift": -6,
-          "velocity": 4
-        },
-        {
-          "id": "z_95_headhunter",
-          "ionEngine": "red",
-          "xShift": -9,
-          "yShift": -6,
-          "velocity": 2.5
-        }
-      ]
-    },
-    {
-      "id": "confederacy_of_independent_systems",
-      "vehicles": [
-        {
-          "id": "armored_assault_tank",
-          "ionEngine": "brown",
-          "xShift": -4,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "bloodfin",
-          "ionEngine": "green",
-          "xShift": -4,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "core_ship",
-          "ionEngine": "blue",
-          "xShift": -9,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "count_dookus_flitknot_speeder",
-          "ionEngine": "yellow",
-          "xShift": 0,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "diamond_class_cruiser",
-          "ionEngine": "yellow",
-          "xShift": -12,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "droch_class_boarding_ship",
-          "ionEngine": "yellow",
-          "xShift": -2,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "droid_tri_fighter",
-          "ionEngine": "orange",
-          "xShift": -3,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "fanblade",
-          "ionEngine": "yellow",
-          "xShift": -12,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "flitknot_speeder",
-          "ionEngine": "yellow",
-          "xShift": 0,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "heavy_missile_platform_droid_gunship",
-          "ionEngine": "white",
-          "xShift": -7,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "ig_227_hailfire_class_droid_tank",
-          "ionEngine": "brown",
-          "xShift": -12,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "invisible_hand",
-          "ionEngine": "orange",
-          "xShift": 0,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "landing_craft",
-          "ionEngine": "orange",
-          "xShift": -12,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "lucrehulk_class_battleship",
-          "ionEngine": "blue",
-          "xShift": -6,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "malevolence",
-          "ionEngine": "yellow",
-          "xShift": 0,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "mankvim_814_interceptor",
-          "ionEngine": "blue",
-          "xShift": -6,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "maxillipede_shuttle",
-          "ionEngine": "yellow",
-          "xShift": -5,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "multi_troop_transport",
-          "ionEngine": "brown",
-          "xShift": 0,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "munificent_class_star_frigate",
-          "ionEngine": "yellow",
-          "xShift": -3,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "nantex_class_starfighter",
-          "ionEngine": "blue",
-          "xShift": 0,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "nr_n99_persuader_class_droid_enforcer",
-          "ionEngine": "brown",
-          "xShift": -3,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "octuptarra_tri_droid",
-          "ionEngine": "brown",
-          "xShift": -4,
-          "yShift": -6,
-          "velocity": 2
-        },
-        {
-          "id": "og_9_homing_spider_droid",
-          "ionEngine": "brown",
-          "xShift": -8,
-          "yShift": -6,
-          "velocity": 2
-        },
-        {
-          "id": "platoon_attack_craft",
-          "ionEngine": "brown",
-          "xShift": 0,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "porax_38_starfighter",
-          "ionEngine": "yellow",
-          "xShift": -10,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "punworcca_116_class_interstellar_sloop",
-          "ionEngine": "yellow",
-          "xShift": -23,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "recusant_class_destroyer",
-          "ionEngine": "yellow",
-          "xShift": -2,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "scimitar",
-          "ionEngine": "green",
-          "xShift": -2,
-          "yShift": -6,
-          "velocity": 5
-        },
-        {
-          "id": "separatist_supply_ship",
-          "ionEngine": "blue",
-          "xShift": -10,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "sheathipede_class_shuttle",
-          "ionEngine": "yellow",
-          "xShift": -6,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "sheathipede_class_type_b_shuttle",
-          "ionEngine": "yellow",
-          "xShift": -1,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "soulless_one",
-          "ionEngine": "orange",
-          "xShift": -12,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "stap",
-          "ionEngine": "yellow",
-          "xShift": -12,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "vulture_droid",
-          "ionEngine": "red",
-          "xShift": -3,
-          "yShift": -6,
-          "velocity": 2.5
-        }
-      ]
-    },
-    {
-      "id": "galactic_empire",
-      "vehicles": [
-        {
-          "id": "arquitens_class_command_cruiser",
-          "ionEngine": "blue",
-          "xShift": 0,
-          "yShift": -6,
-          "velocity": 3.5
-        },
-        {
-          "id": "at_at",
-          "ionEngine": "brown",
-          "xShift": -5,
-          "yShift": -6,
-          "velocity": 1.5
-        },
-        {
-          "id": "at_act",
-          "ionEngine": "brown",
-          "xShift": -5,
-          "yShift": -6,
-          "velocity": 1.5
-        },
-        {
-          "id": "at_dp",
-          "ionEngine": "brown",
-          "xShift": -14,
-          "yShift": -6,
-          "velocity": 1.5
-        },
-        {
-          "id": "at_dp_arc_cannon_prototype",
-          "ionEngine": "brown",
-          "xShift": -14,
-          "yShift": -6,
-          "velocity": 1.5
-        },
-        {
-          "id": "at_st",
-          "ionEngine": "brown",
-          "xShift": -14,
-          "yShift": -6,
-          "velocity": 1.5
-        },
-        {
-          "id": "cantwell_class_arrestor_cruiser",
-          "ionEngine": "blue",
-          "xShift": 0,
-          "yShift": -6,
-          "velocity": 3
-        },
-        {
-          "id": "class_four_container_transport",
-          "ionEngine": "blue",
-          "xShift": -17,
-          "yShift": -6,
-          "velocity": 3
-        },
-        {
-          "id": "eclipse",
-          "ionEngine": "red",
-          "xShift": -2,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "executor",
-          "ionEngine": "red",
-          "xShift": -8,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "first_death_star",
-          "ionEngine": "green",
-          "xShift": -12,
-          "yShift": -6,
-          "velocity": 1
-        },
-        {
-          "id": "imperial_class_star_destroyer",
-          "ionEngine": "blue",
-          "xShift": -1,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "imperial_transport",
-          "ionEngine": "blue",
-          "xShift": -1,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "interdictor_class_star_destroyer",
-          "ionEngine": "blue",
-          "xShift": -5,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "lambda_class_shuttle",
-          "ionEngine": "blue",
-          "xShift": -13,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "mining_guild_tie_fighter",
-          "ionEngine": "red",
-          "xShift": -14,
-          "yShift": -6,
-          "velocity": 4.5
-        },
-        {
-          "id": "onager_class_star_destroyer",
-          "ionEngine": "blue",
-          "xShift": -6,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "quasar_fire_class_cruiser_carrier",
-          "ionEngine": "blue",
-          "xShift": -7,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "second_death_star",
-          "ionEngine": "green",
-          "xShift": -12,
-          "yShift": -6,
-          "velocity": 1
-        },
-        {
-          "id": "sentinel_class_shuttle",
-          "ionEngine": "blue",
-          "xShift": -8,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "tartan_class_patrol_cruiser",
-          "ionEngine": "blue",
-          "xShift": 0,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "theta_class_shuttle",
-          "ionEngine": "blue",
-          "xShift": -12,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "tie_advanced_x1",
-          "ionEngine": "red",
-          "xShift": -10,
-          "yShift": -6,
-          "velocity": 3.5
-        },
-        {
-          "id": "tie_avenger",
-          "ionEngine": "red",
-          "xShift": -6,
-          "yShift": -6,
-          "velocity": 5
-        },
-        {
-          "id": "tie_bomber",
-          "ionEngine": "red",
-          "xShift": -8,
-          "yShift": -6,
-          "velocity": 4
-        },
-        {
-          "id": "tie_brute",
-          "ionEngine": "red",
-          "xShift": -12,
-          "yShift": -6,
-          "velocity": 4
-        },
-        {
-          "id": "tie_crawler",
-          "ionEngine": "brown",
-          "xShift": -8,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "tie_fighter",
-          "ionEngine": "red",
-          "xShift": -16,
-          "yShift": -6,
-          "velocity": 4.5
-        },
-        {
-          "id": "tie_interceptor",
-          "ionEngine": "red",
-          "xShift": -9,
-          "yShift": -6,
-          "velocity": 4.5
-        },
-        {
-          "id": "tie_reaper",
-          "ionEngine": "red",
-          "xShift": -5,
-          "yShift": -6,
-          "velocity": 4.5
-        },
-        {
-          "id": "tie_striker",
-          "ionEngine": "red",
-          "xShift": -7,
-          "yShift": -6,
-          "velocity": 4.5
-        },
-        {
-          "id": "victory_i_class_star_destroyer",
-          "ionEngine": "blue",
-          "xShift": -6,
-          "yShift": -6,
-          "velocity": 3
-        }
-      ]
-    },
-    {
-      "id": "rebel_alliance",
-      "vehicles": [
-        {
-          "id": "a_wing",
-          "ionEngine": "yellow",
-          "xShift": -4,
-          "yShift": -6,
-          "velocity": 4.9
-        },
-        {
-          "id": "b_wing",
-          "ionEngine": "red",
-          "xShift": -13,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "ghost",
-          "ionEngine": "orange",
-          "xShift": -5,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "gr_75_transport",
-          "ionEngine": "blue",
-          "xShift": 0,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "home_one",
-          "ionEngine": "blue",
-          "xShift": -2,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "mc80_liberty_star_cruiser",
-          "ionEngine": "blue",
-          "xShift": -9,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "millennium_falcon",
-          "ionEngine": "blue",
-          "xShift": -16,
-          "yShift": -6,
-          "velocity": 5
-        },
-        {
-          "id": "nebulon_b_frigate",
-          "ionEngine": "yellow",
-          "xShift": -1,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "phantom",
-          "ionEngine": "orange",
-          "xShift": 0,
-          "yShift": -6,
-          "velocity": 3
-        },
-        {
-          "id": "phantom_ii",
-          "ionEngine": "yellow",
-          "xShift": -4,
-          "yShift": -6,
-          "velocity": 3
-        },
-        {
-          "id": "phoenix_nest",
-          "ionEngine": "blue",
-          "xShift": -7,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "profundity",
-          "ionEngine": "blue",
-          "xShift": 0,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "prototype_b6",
-          "ionEngine": "red",
-          "xShift": -13,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "rogue_shadow",
-          "ionEngine": "blue",
-          "xShift": -5,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "sphyrna_class_hammerhead_corvette",
-          "ionEngine": "orange",
-          "xShift": -3,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "laat_i",
-          "ionEngine": "red",
-          "xShift": 0,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "tantive_iv",
-          "ionEngine": "red",
-          "xShift": 0,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "taylander_shuttle",
-          "ionEngine": "yellow",
-          "xShift": 0,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "t_16_skyhopper",
-          "ionEngine": "blue",
-          "xShift": -9,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "t_47_snowspeeder",
-          "ionEngine": "white",
-          "xShift": -9,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "t_65_x_wing_starfighter",
-          "ionEngine": "red",
-          "xShift": 0,
-          "yShift": -6,
-          "velocity": 4
-        },
-        {
-          "id": "u_wing",
-          "ionEngine": "blue",
-          "xShift": 0,
-          "yShift": -6,
-          "velocity": 4
-        },
-        {
-          "id": "y_wing",
-          "ionEngine": "red",
-          "xShift": -2,
-          "yShift": -6,
-          "velocity": 2
-        }
-      ]
-    },
-    {
-      "id": "first_order",
-      "vehicles": [
-        {
-          "id": "first_order_tie_fighter",
-          "ionEngine": "blue",
-          "xShift": -16,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "starkiller_base",
-          "ionEngine": "red",
-          "xShift": -8,
-          "yShift": -6,
-          "velocity": 1
-        },
-        {
-          "id": "supremacy",
-          "ionEngine": "red",
-          "xShift": -15,
-          "yShift": -6,
-          "velocity": 2
-        },
-        {
-          "id": "tie_baron",
-          "ionEngine": "blue",
-          "xShift": -4,
-          "yShift": -6,
-          "velocity": 3
-        },
-        {
-          "id": "tie_dagger",
-          "ionEngine": "blue",
-          "xShift": -7,
-          "yShift": -6,
-          "velocity": 3.5
-        },
-        {
-          "id": "tie_silencer",
-          "ionEngine": "red",
-          "xShift": -5,
-          "yShift": -6,
-          "velocity": 4
-        }
-      ]
-    },
-    {
-      "id": "new_republic",
-      "vehicles": [
-        {
-          "id": "starhawk_class_battleship",
-          "ionEngine": "blue",
-          "xShift": -21,
-          "yShift": -6,
-          "velocity": 3
-        }
-      ]
-    },
-    {
-      "id": "mandalorians",
-      "vehicles": [
-        {
-          "id": "mandos_n_1_starfighter",
-          "ionEngine": "blue",
-          "xShift": -21,
-          "yShift": -6,
-          "velocity": 4.75
-        },
-        {
-          "id": "razor_crest",
-          "ionEngine": "orange",
-          "xShift": -5,
-          "yShift": -6,
-          "velocity": 3
-        }
-      ]
-    },
-    {
-      "id": "bounty_hunters",
-      "vehicles": [
-        {
-          "id": "boba_fetts_slave_one",
-          "ionEngine": "orange",
-          "xShift": -12,
-          "yShift": -6,
-          "velocity": 4.75
-        },
-        {
-          "id": "ig_2000",
-          "ionEngine": "blue",
-          "xShift": -8,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "jango_fetts_slave_one",
-          "ionEngine": "orange",
-          "xShift": -12,
-          "yShift": -6,
-          "velocity": 4.75
-        },
-        {
-          "id": "koro_2_all_environment_exodrive_airspeeder",
-          "ionEngine": "red",
-          "xShift": 0,
-          "yShift": -6,
-          "velocity": 3.5
-        }
-      ]
-    },
-    {
-      "id": "scoundrels",
-      "vehicles": [
-        {
-          "id": "acushnet",
-          "ionEngine": "white",
-          "xShift": -16,
-          "yShift": -6,
-          "velocity": 3.5
-        },
-        {
-          "id": "cloud_city",
-          "ionEngine": "orange",
-          "xShift": -16,
-          "yShift": -6,
-          "velocity": 1
-        },
-        {
-          "id": "errant_venture",
-          "ionEngine": "blue",
-          "xShift": -1,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "khetanna",
-          "ionEngine": "yellow",
-          "xShift": 0,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "last_chance",
-          "ionEngine": "blue",
-          "xShift": -8,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "sandcrawler",
-          "ionEngine": "brown",
-          "xShift": -5,
-          "yShift": -6,
-          "velocity": 1
-        },
-        {
-          "id": "storm_iv_twin_pod_cloud_car",
-          "ionEngine": "blue",
-          "xShift": -8,
-          "yShift": -6,
-          "velocity": 2.5
-        },
-        {
-          "id": "wild_karrde",
-          "ionEngine": "blue",
-          "xShift": 0,
-          "yShift": -6,
-          "velocity": 3.75
-        }
-      ]
-    },
-    {
-      "id": "podracer",
-      "vehicles": [
-        {
-          "id": "aldar_beedos_podracer",
-          "ionEngine": "orange",
-          "xShift": -16,
-          "yShift": -6,
-          "velocity": 4.5
-        },
-        {
-          "id": "anakin_skywalkers_podracer",
-          "ionEngine": "orange",
-          "xShift": -14,
-          "yShift": -6,
-          "velocity": 5
-        },
-        {
-          "id": "ark_bumpy_rooses_podracer",
-          "ionEngine": "orange",
-          "xShift": -19,
-          "yShift": -6,
-          "velocity": 5
-        },
-        {
-          "id": "ben_quadinaros_podracer",
-          "ionEngine": "orange",
-          "xShift": -15,
-          "yShift": -6,
-          "velocity": 4.5
-        },
-        {
-          "id": "boles_roors_podracer",
-          "ionEngine": "orange",
-          "xShift": -20,
-          "yShift": -6,
-          "velocity": 4.5
-        },
-        {
-          "id": "clegg_holdfasts_podracer",
-          "ionEngine": "orange",
-          "xShift": -16,
-          "yShift": -6,
-          "velocity": 4.5
-        },
-        {
-          "id": "dud_bolts_podracer",
-          "ionEngine": "orange",
-          "xShift": -15,
-          "yShift": -6,
-          "velocity": 4.5
-        },
-        {
-          "id": "ebe_endocotts_podracer",
-          "ionEngine": "orange",
-          "xShift": -8,
-          "yShift": -6,
-          "velocity": 4.5
-        },
-        {
-          "id": "elan_maks_podracer",
-          "ionEngine": "orange",
-          "xShift": -14,
-          "yShift": -6,
-          "velocity": 4.5
-        },
-        {
-          "id": "gasganos_podracer",
-          "ionEngine": "orange",
-          "xShift": -13,
-          "yShift": -6,
-          "velocity": 4.5
-        },
-        {
-          "id": "mawhonics_podracer",
-          "ionEngine": "orange",
-          "xShift": -25,
-          "yShift": -6,
-          "velocity": 4.5
-        },
-        {
-          "id": "mars_guos_podracer",
-          "ionEngine": "orange",
-          "xShift": -18,
-          "yShift": -6,
-          "velocity": 4.5
-        },
-        {
-          "id": "neva_kees_podracer",
-          "ionEngine": "orange",
-          "xShift": -5,
-          "yShift": -6,
-          "velocity": 4.5
-        },
-        {
-          "id": "ody_mandrells_podracer",
-          "ionEngine": "orange",
-          "xShift": -12,
-          "yShift": -6,
-          "velocity": 4.5
-        },
-        {
-          "id": "ratts_tyerells_podracer",
-          "ionEngine": "orange",
-          "xShift": -13,
-          "yShift": -6,
-          "velocity": 4.5
-        },
-        {
-          "id": "sebulbas_podracer",
-          "ionEngine": "orange",
-          "xShift": -14,
-          "yShift": -6,
-          "velocity": 4.5
-        },
-        {
-          "id": "teemto_pagalies_podracer",
-          "ionEngine": "orange",
-          "xShift": -21,
-          "yShift": -6,
-          "velocity": 4.5
-        },
-        {
-          "id": "wan_sandages_podracer",
-          "ionEngine": "orange",
-          "xShift": -16,
-          "yShift": -6,
-          "velocity": 4.5
-        }
-      ]
-    },
-    {
-      "id": "",
-      "vehicles": [
-        {
-          "id": "missing",
-          "ionEngine": "green",
-          "xShift": -4,
-          "yShift": -6,
-          "velocity": 2.5
-        }
-      ]
-    }
-  ]
+    ]
 }

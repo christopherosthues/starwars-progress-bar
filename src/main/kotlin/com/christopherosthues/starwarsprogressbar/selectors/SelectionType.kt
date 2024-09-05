@@ -11,7 +11,5 @@ enum class SelectionType(val localizationKey: String) {
     RANDOM_ALL("random_all"),
     RANDOM_NOT_DISPLAYED("random_not_displayed"), ;
 
-    override fun toString(): String {
-        return StarWarsBundle.message("${BundleConstants.SELECTOR}.$localizationKey")
-    }
+    override fun toString(): String = StarWarsBundle.message("${BundleConstants.SELECTOR}.$localizationKey")
 }

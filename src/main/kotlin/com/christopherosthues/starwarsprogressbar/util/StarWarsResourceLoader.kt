@@ -41,11 +41,9 @@ internal object StarWarsResourceLoader {
 
     private val cache: Cache<String, Icon> = CacheBuilder.newBuilder().maximumSize(MAXIMUM_CACHE_SIZE).build()
 
-    fun getPluginIcon(): Icon {
-        return scaleIcon(
-            IconLoader.getIcon("/META-INF/pluginIcon.svg", StarWarsResourceLoader.javaClass),
-        )
-    }
+    fun getPluginIcon(): Icon = scaleIcon(
+        IconLoader.getIcon("/META-INF/pluginIcon.svg", StarWarsResourceLoader.javaClass),
+    )
 
     private fun scaleIcon(icon: Icon): ImageIcon {
         val w = icon.iconWidth
@@ -84,19 +82,13 @@ internal object StarWarsResourceLoader {
     }
 
     @JvmStatic
-    fun getVehicleImage(name: String): BufferedImage {
-        return getVehicleImage(getIconInternal(name))
-    }
+    fun getVehicleImage(name: String): BufferedImage = getVehicleImage(getIconInternal(name))
 
     @JvmStatic
-    fun getReversedVehicleImage(name: String): BufferedImage {
-        return getVehicleImage(getIconInternal(name + "_r"))
-    }
+    fun getReversedVehicleImage(name: String): BufferedImage = getVehicleImage(getIconInternal(name + "_r"))
 
     @JvmStatic
-    fun getIcon(name: String): Icon {
-        return getIconInternal(name)
-    }
+    fun getIcon(name: String): Icon = getIconInternal(name)
 
     private fun getIconInternal(name: String): Icon {
         val resourceName = "$ICON_RESOURCE_PATH$name.png"

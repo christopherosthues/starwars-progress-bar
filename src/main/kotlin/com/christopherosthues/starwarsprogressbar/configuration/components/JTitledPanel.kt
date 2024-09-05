@@ -57,31 +57,23 @@ internal open class JTitledPanel(title: String) : JPanel() {
         super.add(contentPanel, BorderLayout.CENTER)
     }
 
-    override fun getLayout(): LayoutManager? {
-        return contentPanel?.layout
-    }
+    override fun getLayout(): LayoutManager? = contentPanel?.layout
 
     override fun setLayout(mgr: LayoutManager?) {
         contentPanel?.layout = mgr
     }
 
-    override fun add(comp: Component?): Component {
-        return contentPanel.add(comp)
-    }
+    override fun add(comp: Component?): Component = contentPanel.add(comp)
 
     override fun add(comp: Component, constraints: Any?) {
         contentPanel.add(comp, constraints)
     }
 
-    override fun add(comp: Component?, index: Int): Component {
-        return contentPanel.add(comp, index)
-    }
+    override fun add(comp: Component?, index: Int): Component = contentPanel.add(comp, index)
 
     override fun add(comp: Component?, constraints: Any?, index: Int) {
         contentPanel.add(comp, constraints, index)
     }
 
-    override fun add(name: String?, comp: Component?): Component {
-        return contentPanel.add(name, comp)
-    }
+    override fun add(name: String?, comp: Component?): Component = contentPanel.add(name, comp)
 }

@@ -13,9 +13,7 @@ import com.intellij.util.xmlb.XmlSerializerUtil
 internal class StarWarsPersistentStateComponent : PersistentStateComponent<StarWarsState> {
     private val state = StarWarsState()
 
-    override fun getState(): StarWarsState? {
-        return state
-    }
+    override fun getState(): StarWarsState? = state
 
     override fun loadState(state: StarWarsState) {
         XmlSerializerUtil.copyBean(state, this.state)

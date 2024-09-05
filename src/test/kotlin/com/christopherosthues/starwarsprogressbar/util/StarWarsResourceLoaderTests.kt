@@ -683,17 +683,11 @@ internal class StarWarsResourceLoaderTests {
         return "icons/$factionName/logo$largeIcon.png"
     }
 
-    private fun setupVehicleImageResourceName(vehicleName: String): String {
-        return "icons/$vehicleName.png"
-    }
+    private fun setupVehicleImageResourceName(vehicleName: String): String = "icons/$vehicleName.png"
 
-    private fun setupReversedVehicleImageResourceName(vehicleName: String): String {
-        return "icons/${vehicleName}_r.png"
-    }
+    private fun setupReversedVehicleImageResourceName(vehicleName: String): String = "icons/${vehicleName}_r.png"
 
-    private fun setupResourceUrl(): URL {
-        return mockk(relaxed = true)
-    }
+    private fun setupResourceUrl(): URL = mockk(relaxed = true)
 
     private fun setupImageScaling(): Pair<BufferedImage, Graphics2D> {
         val bufferedImageMock = mockk<BufferedImage>(relaxed = true)
@@ -956,14 +950,12 @@ internal class StarWarsResourceLoaderTests {
 
     companion object {
         @JvmStatic
-        fun factionValues(): Stream<Arguments> {
-            return Stream.of(
-                Arguments.of(setupEmptyStarWarsFactions()),
-                Arguments.of(setupStarWarsFactionsWithOneFactionWithoutVehicles()),
-                Arguments.of(setupStarWarsFactionsWithOneFactionWithVehicles()),
-                Arguments.of(setupStarWarsFactions()),
-            )
-        }
+        fun factionValues(): Stream<Arguments> = Stream.of(
+            Arguments.of(setupEmptyStarWarsFactions()),
+            Arguments.of(setupStarWarsFactionsWithOneFactionWithoutVehicles()),
+            Arguments.of(setupStarWarsFactionsWithOneFactionWithVehicles()),
+            Arguments.of(setupStarWarsFactions()),
+        )
 
         private fun setupEmptyStarWarsFactions(): StarWarsFactions {
             val loadedFactions = mockk<StarWarsFactions>(relaxed = true)

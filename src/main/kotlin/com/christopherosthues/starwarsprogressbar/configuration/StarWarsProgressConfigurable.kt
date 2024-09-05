@@ -44,13 +44,11 @@ internal class StarWarsProgressConfigurable : SearchableConfigurable {
     private fun isVehiclePassesModified(
         starWarsState: StarWarsState,
         component: StarWarsProgressConfigurationComponent,
-    ): Boolean {
-        return starWarsState.changeVehicleAfterPass != component.changeVehicleAfterPass ||
-            (
-                starWarsState.numberOfPassesUntilVehicleChange != component.numberOfPassesUntilVehicleChange &&
-                    component.changeVehicleAfterPass
-                )
-    }
+    ): Boolean = starWarsState.changeVehicleAfterPass != component.changeVehicleAfterPass ||
+        (
+            starWarsState.numberOfPassesUntilVehicleChange != component.numberOfPassesUntilVehicleChange &&
+                component.changeVehicleAfterPass
+            )
 
     override fun apply() {
         val starWarsState = getStarWarsState()
@@ -75,13 +73,9 @@ internal class StarWarsProgressConfigurable : SearchableConfigurable {
         }
     }
 
-    override fun getDisplayName(): String {
-        return StarWarsBundle.message(BundleConstants.PLUGIN_NAME)
-    }
+    override fun getDisplayName(): String = StarWarsBundle.message(BundleConstants.PLUGIN_NAME)
 
-    override fun getId(): String {
-        return PluginConstants.PLUGIN_SEARCH_ID
-    }
+    override fun getId(): String = PluginConstants.PLUGIN_SEARCH_ID
 
     override fun reset() {
         val starWarsState = getStarWarsState()

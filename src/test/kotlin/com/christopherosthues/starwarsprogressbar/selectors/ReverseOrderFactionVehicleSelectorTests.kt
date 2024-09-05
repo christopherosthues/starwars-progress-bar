@@ -322,9 +322,7 @@ class ReverseOrderFactionVehicleSelectorTests {
 
     companion object {
         @JvmStatic
-        fun defaultEnabledValues(): Stream<Arguments> {
-            return Stream.of(Arguments.of(true), Arguments.of(false))
-        }
+        fun defaultEnabledValues(): Stream<Arguments> = Stream.of(Arguments.of(true), Arguments.of(false))
     }
 
     //endregion

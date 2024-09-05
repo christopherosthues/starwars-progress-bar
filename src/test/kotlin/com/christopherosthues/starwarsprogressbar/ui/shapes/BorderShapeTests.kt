@@ -122,56 +122,48 @@ class BorderShapeTests {
 
     companion object {
         @JvmStatic
-        fun xAndYValues(): Stream<Arguments> {
-            return Stream.of(
-                Arguments.of(0, 0, 0),
-                Arguments.of(1, 0, 1),
-                Arguments.of(-1, 0, -1),
-                Arguments.of(-1, 1, 0),
-                Arguments.of(1, -1, 0),
-                Arguments.of(10, -1, 9),
-                Arguments.of(10, 5, 15),
-            )
-        }
+        fun xAndYValues(): Stream<Arguments> = Stream.of(
+            Arguments.of(0, 0, 0),
+            Arguments.of(1, 0, 1),
+            Arguments.of(-1, 0, -1),
+            Arguments.of(-1, 1, 0),
+            Arguments.of(1, -1, 0),
+            Arguments.of(10, -1, 9),
+            Arguments.of(10, 5, 15),
+        )
 
         @JvmStatic
-        fun widthAndHeightValues(): Stream<Arguments> {
-            return Stream.of(
-                Arguments.of(0, 0, 0),
-                Arguments.of(1, 0, 1),
-                Arguments.of(-1, 0, -1),
-                Arguments.of(-1, 1, -3),
-                Arguments.of(1, -1, 3),
-                Arguments.of(10, -1, 12),
-                Arguments.of(10, 5, 0),
-            )
-        }
+        fun widthAndHeightValues(): Stream<Arguments> = Stream.of(
+            Arguments.of(0, 0, 0),
+            Arguments.of(1, 0, 1),
+            Arguments.of(-1, 0, -1),
+            Arguments.of(-1, 1, -3),
+            Arguments.of(1, -1, 3),
+            Arguments.of(10, -1, 12),
+            Arguments.of(10, 5, 0),
+        )
 
         @JvmStatic
-        fun topInsetLessThanMarginForYValues(): Stream<Arguments> {
-            return Stream.of(
-                Arguments.of(0, 0, -1, 1),
-                Arguments.of(1, 0, -5, 6),
-                Arguments.of(-1, 0, -3, 2),
-                Arguments.of(-1, 1, 0, 0),
-                Arguments.of(1, -1, -9, 9),
-                Arguments.of(10, -1, -54, 63),
-                Arguments.of(10, 5, 3, 12),
-            )
-        }
+        fun topInsetLessThanMarginForYValues(): Stream<Arguments> = Stream.of(
+            Arguments.of(0, 0, -1, 1),
+            Arguments.of(1, 0, -5, 6),
+            Arguments.of(-1, 0, -3, 2),
+            Arguments.of(-1, 1, 0, 0),
+            Arguments.of(1, -1, -9, 9),
+            Arguments.of(10, -1, -54, 63),
+            Arguments.of(10, 5, 3, 12),
+        )
 
         @JvmStatic
-        fun topInsetLessThanMarginForHeightValues(): Stream<Arguments> {
-            return Stream.of(
-                Arguments.of(0, 0, -1, -1),
-                Arguments.of(1, 0, -5, -4),
-                Arguments.of(-1, 0, -3, -4),
-                Arguments.of(-1, 1, 0, -3),
-                Arguments.of(1, -1, -9, -6),
-                Arguments.of(10, -1, -54, -42),
-                Arguments.of(10, 5, 3, 3),
-            )
-        }
+        fun topInsetLessThanMarginForHeightValues(): Stream<Arguments> = Stream.of(
+            Arguments.of(0, 0, -1, -1),
+            Arguments.of(1, 0, -5, -4),
+            Arguments.of(-1, 0, -3, -4),
+            Arguments.of(-1, 1, 0, -3),
+            Arguments.of(1, -1, -9, -6),
+            Arguments.of(10, -1, -54, -42),
+            Arguments.of(10, 5, 3, 3),
+        )
     }
 
     //endregion

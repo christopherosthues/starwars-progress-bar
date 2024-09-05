@@ -39,16 +39,14 @@ class PluginConstantsTests {
 
     companion object {
         @JvmStatic
-        fun pluginConstants(): Stream<Arguments> {
-            return Stream.of(
-                Arguments.of("com.christopherosthues.starwarsprogressbar", PluginConstants.PLUGIN_ID),
-                Arguments.of(
-                    "com.christopherosthues.starwarsprogressbar.ui.configuration",
-                    PluginConstants.PLUGIN_SEARCH_ID,
-                ),
-                Arguments.of("Star Wars Progress Bar updated", PluginConstants.NOTIFICATION_GROUP_ID),
-            )
-        }
+        fun pluginConstants(): Stream<Arguments> = Stream.of(
+            Arguments.of("com.christopherosthues.starwarsprogressbar", PluginConstants.PLUGIN_ID),
+            Arguments.of(
+                "com.christopherosthues.starwarsprogressbar.ui.configuration",
+                PluginConstants.PLUGIN_SEARCH_ID,
+            ),
+            Arguments.of("Star Wars Progress Bar updated", PluginConstants.NOTIFICATION_GROUP_ID),
+        )
     }
 
     //endregion

@@ -182,12 +182,10 @@ class DoNotAskServiceTests {
 
     companion object {
         @JvmStatic
-        fun doNotAskValues(): Stream<Arguments> {
-            return Stream.of(
-                Arguments.of(true),
-                Arguments.of(false),
-            )
-        }
+        fun doNotAskValues(): Stream<Arguments> = Stream.of(
+            Arguments.of(true),
+            Arguments.of(false),
+        )
     }
 
     //endregion

@@ -124,9 +124,7 @@ internal class PreviewPanel(
         )
     }
 
-    private fun selectVehicle(enabledVehicles: Map<String, Boolean>?): StarWarsVehicle {
-        return VehicleSelector.selectVehicle(enabledVehicles, enableNewVehicles(), vehicleSelector())
-    }
+    private fun selectVehicle(enabledVehicles: Map<String, Boolean>?): StarWarsVehicle = VehicleSelector.selectVehicle(enabledVehicles, enableNewVehicles(), vehicleSelector())
 
     fun selectVehicle(vehicle: StarWarsVehicle) {
         setProgressBarUI(vehicle, vehicle)

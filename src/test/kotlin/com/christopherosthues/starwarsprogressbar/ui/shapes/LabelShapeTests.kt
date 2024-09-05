@@ -142,49 +142,43 @@ class LabelShapeTests {
 
     companion object {
         @JvmStatic
-        fun widthValues(): Stream<Arguments> {
-            return Stream.of(
-                Arguments.of(0, 0, 0, 0),
-                Arguments.of(1, 0, 0, 1),
-                Arguments.of(1, -1, 0, 2),
-                Arguments.of(1, -5, 0, 6),
-                Arguments.of(1, 1, 0, 1),
-                Arguments.of(1, 0, -1, 2),
-                Arguments.of(1, 0, -5, 6),
-                Arguments.of(-3, 1, 2, -3),
-                Arguments.of(3, -2, 2, 3),
-            )
-        }
+        fun widthValues(): Stream<Arguments> = Stream.of(
+            Arguments.of(0, 0, 0, 0),
+            Arguments.of(1, 0, 0, 1),
+            Arguments.of(1, -1, 0, 2),
+            Arguments.of(1, -5, 0, 6),
+            Arguments.of(1, 1, 0, 1),
+            Arguments.of(1, 0, -1, 2),
+            Arguments.of(1, 0, -5, 6),
+            Arguments.of(-3, 1, 2, -3),
+            Arguments.of(3, -2, 2, 3),
+        )
 
         @JvmStatic
-        fun xValues(): Stream<Arguments> {
-            return Stream.of(
-                Arguments.of(0, 0, 5),
-                Arguments.of(1, 0, 6),
-                Arguments.of(1, -1, 5),
-                Arguments.of(1, -5, 1),
-                Arguments.of(1, 1, 7),
-                Arguments.of(-3, 1, 3),
-                Arguments.of(3, -2, 6),
-                Arguments.of(-3, -2, 0),
-                Arguments.of(-30, -2, -27),
-            )
-        }
+        fun xValues(): Stream<Arguments> = Stream.of(
+            Arguments.of(0, 0, 5),
+            Arguments.of(1, 0, 6),
+            Arguments.of(1, -1, 5),
+            Arguments.of(1, -5, 1),
+            Arguments.of(1, 1, 7),
+            Arguments.of(-3, 1, 3),
+            Arguments.of(3, -2, 6),
+            Arguments.of(-3, -2, 0),
+            Arguments.of(-30, -2, -27),
+        )
 
         @JvmStatic
-        fun yValues(): Stream<Arguments> {
-            return Stream.of(
-                Arguments.of(0, 0, 0, 0),
-                Arguments.of(1, 0, 6, -2),
-                Arguments.of(1, -1, 5, -1),
-                Arguments.of(1, -5, 1, -1),
-                Arguments.of(1, 1, 7, -2),
-                Arguments.of(-3, 1, 3, -4),
-                Arguments.of(3, -2, 6, -1),
-                Arguments.of(-3, -2, 0, -4),
-                Arguments.of(-30, -2, -27, -18),
-            )
-        }
+        fun yValues(): Stream<Arguments> = Stream.of(
+            Arguments.of(0, 0, 0, 0),
+            Arguments.of(1, 0, 6, -2),
+            Arguments.of(1, -1, 5, -1),
+            Arguments.of(1, -5, 1, -1),
+            Arguments.of(1, 1, 7, -2),
+            Arguments.of(-3, 1, 3, -4),
+            Arguments.of(3, -2, 6, -1),
+            Arguments.of(-3, -2, 0, -4),
+            Arguments.of(-30, -2, -27, -18),
+        )
     }
 
     //endregion

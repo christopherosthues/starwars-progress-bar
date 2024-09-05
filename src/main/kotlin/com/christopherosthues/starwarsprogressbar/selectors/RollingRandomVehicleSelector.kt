@@ -33,11 +33,9 @@ internal object RollingRandomVehicleSelector : IVehicleSelector {
     private fun allVehiclesDisplayed(
         enabledVehicles: Map<String, Boolean>,
         defaultEnabled: Boolean,
-    ): Boolean {
-        return displayedVehicles.containsAll(
-            FactionHolder.defaultVehicles.filter { v ->
-                enabledVehicles.getOrDefault(v.vehicleId, defaultEnabled)
-            }.map { v -> v.vehicleId },
-        )
-    }
+    ): Boolean = displayedVehicles.containsAll(
+        FactionHolder.defaultVehicles.filter { v ->
+            enabledVehicles.getOrDefault(v.vehicleId, defaultEnabled)
+        }.map { v -> v.vehicleId },
+    )
 }

@@ -117,34 +117,28 @@ class IconShapeTests {
 
     companion object {
         @JvmStatic
-        fun xValues(): Stream<Arguments> {
-            return Stream.of(
-                Arguments.of(0, 0, 8),
-                Arguments.of(0, 2, 10),
-                Arguments.of(-10, 5, 3),
-                Arguments.of(-5, 3, 6),
-            )
-        }
+        fun xValues(): Stream<Arguments> = Stream.of(
+            Arguments.of(0, 0, 8),
+            Arguments.of(0, 2, 10),
+            Arguments.of(-10, 5, 3),
+            Arguments.of(-5, 3, 6),
+        )
 
         @JvmStatic
-        fun yForTopPaddingLessThanBaseMarginValues(): Stream<Arguments> {
-            return Stream.of(
-                Arguments.of(0, 1),
-                Arguments.of(0, -2),
-                Arguments.of(-10, 0),
-                Arguments.of(-5, -13),
-            )
-        }
+        fun yForTopPaddingLessThanBaseMarginValues(): Stream<Arguments> = Stream.of(
+            Arguments.of(0, 1),
+            Arguments.of(0, -2),
+            Arguments.of(-10, 0),
+            Arguments.of(-5, -13),
+        )
 
         @JvmStatic
-        fun yForTopPaddingGreaterThanOrEqualToBaseMarginValues(): Stream<Arguments> {
-            return Stream.of(
-                Arguments.of(0, 2, 2),
-                Arguments.of(0, 3, 3),
-                Arguments.of(-10, 8, -2),
-                Arguments.of(-5, 2, -3),
-            )
-        }
+        fun yForTopPaddingGreaterThanOrEqualToBaseMarginValues(): Stream<Arguments> = Stream.of(
+            Arguments.of(0, 2, 2),
+            Arguments.of(0, 3, 3),
+            Arguments.of(-10, 8, -2),
+            Arguments.of(-5, 2, -3),
+        )
     }
 
     //endregion
