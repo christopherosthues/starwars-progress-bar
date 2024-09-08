@@ -8,6 +8,7 @@
 
 - New faction Sith Empire
 - Harrower-class dreadnought to Sith Empire
+- Selection of language in settings
 
 ### Changed
 

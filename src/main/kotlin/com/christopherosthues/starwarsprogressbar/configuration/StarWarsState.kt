@@ -3,6 +3,7 @@ package com.christopherosthues.starwarsprogressbar.configuration
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_CHANGE_VEHICLE_AFTER_PASS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_DRAW_SILHOUETTES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENABLE_NEW_VEHICLES
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_LANGUAGE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SAME_VEHICLE_VELOCITY
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_FACTION_CRESTS
@@ -17,6 +18,16 @@ import com.christopherosthues.starwarsprogressbar.selectors.SelectionType
 import java.util.stream.Collectors
 
 internal class StarWarsState {
+    var languageOrdinal: Int = DEFAULT_LANGUAGE.ordinal
+
+    internal var language: Language?
+        get() = languageOrdinal.let {
+            Language.entries.getOrNull(it) ?: DEFAULT_LANGUAGE
+        }
+        set(value) {
+            languageOrdinal = value?.ordinal ?: DEFAULT_LANGUAGE.ordinal
+        }
+
     @JvmField
     var vehiclesEnabled: Map<String, Boolean> =
         FactionHolder.defaultVehicles.stream().collect(Collectors.toMap(StarWarsVehicle::vehicleId) { true })
@@ -41,7 +52,15 @@ internal class StarWarsState {
 
     var numberOfPassesUntilVehicleChange: Int = DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE
 
-    var vehicleSelector: SelectionType = DEFAULT_VEHICLE_SELECTOR
+    var vehicleSelectorOrdinal: Int = DEFAULT_VEHICLE_SELECTOR.ordinal
+
+    internal var vehicleSelector: SelectionType?
+        get() = vehicleSelectorOrdinal.let {
+            SelectionType.entries.getOrNull(it) ?: DEFAULT_VEHICLE_SELECTOR
+        }
+        set(value) {
+            vehicleSelectorOrdinal = value?.ordinal ?: DEFAULT_VEHICLE_SELECTOR.ordinal
+        }
 
     var version: String = ""
 }

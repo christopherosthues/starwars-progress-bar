@@ -39,6 +39,10 @@ internal class FactionPanel(private val faction: StarWarsFaction) : JPanel(GridB
             .collect(Collectors.toMap({ entry -> entry.key }, { entry -> entry.value.isSelected }))
 
     init {
+        initFactionPanel()
+    }
+
+    private fun initFactionPanel() {
         val localizedName = StarWarsBundle.message(faction.localizationKey)
         border = TitledIconBorder(localizedName, faction.id)
         val vehiclesAvailable = faction.vehicles.any()
@@ -211,5 +215,17 @@ internal class FactionPanel(private val faction: StarWarsFaction) : JPanel(GridB
         gridBagConstraints.fill = GridBagConstraints.HORIZONTAL
         gridBagConstraints.anchor = GridBagConstraints.SOUTHWEST
         add(element, gridBagConstraints)
+    }
+
+    fun addPropertyChangeListener(uiOptionsPanel: UiOptionsPanel) {
+        uiOptionsPanel.addPropertyChangeListener(UiOptionsPanel::language.name) {
+            val enabledVehicles = this.enabledVehicles
+            removeAll()
+            selectedVehiclesCount.set(0)
+            initFactionPanel()
+            vehiclesCheckboxes.forEach {
+                it.value.isSelected = enabledVehicles[it.key]!!
+            }
+        }
     }
 }

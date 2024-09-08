@@ -37,6 +37,8 @@ internal class StarWarsProgressConfigurable : SearchableConfigurable {
                     starWarsState.solidProgressBarColor != comp.solidProgressBarColor ||
                     starWarsState.drawSilhouettes != comp.drawSilhouettes ||
                     starWarsState.vehicleSelector != comp.vehicleSelector ||
+                    starWarsState.language != comp.language ||
+                    // TODO: add unit test
                     isVehiclePassesModified(starWarsState, comp)
                 )
     }
@@ -67,6 +69,7 @@ internal class StarWarsProgressConfigurable : SearchableConfigurable {
             starWarsState.drawSilhouettes = component.drawSilhouettes
             starWarsState.changeVehicleAfterPass = component.changeVehicleAfterPass
             starWarsState.vehicleSelector = component.vehicleSelector
+            starWarsState.language = component.language // TODO: add unit test
             if (component.changeVehicleAfterPass) {
                 starWarsState.numberOfPassesUntilVehicleChange = component.numberOfPassesUntilVehicleChange
             }

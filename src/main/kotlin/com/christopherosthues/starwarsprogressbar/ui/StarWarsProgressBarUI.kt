@@ -227,19 +227,23 @@ internal class StarWarsProgressBarUI(
         !component.componentOrientation.isLeftToRight
 
     private fun setToolTipText() {
-        val localizedName = StarWarsBundle.message(vehicle.localizationKey)
-        if (showToolTips() && progressBar.toolTipText != localizedName) {
-            progressBar.toolTipText = localizedName
+        if (showToolTips()) {
+            val localizedName = StarWarsBundle.message(vehicle.localizationKey)
+            if (progressBar.toolTipText != localizedName) {
+                progressBar.toolTipText = localizedName
+            }
         } else if (!showToolTips()) {
             progressBar.toolTipText = ""
         }
     }
 
     private fun setProgressBarText() {
-        val localizedName = StarWarsBundle.message(vehicle.localizationKey)
         progressBar.isStringPainted = showVehicleName()
-        if (showVehicleName() && progressBar.string != localizedName) {
-            progressBar.string = localizedName
+        if (showVehicleName()) {
+            val localizedName = StarWarsBundle.message(vehicle.localizationKey)
+            if (progressBar.string != localizedName) {
+                progressBar.string = localizedName
+            }
         } else if (!showVehicleName()) {
             progressBar.string = ""
         }
