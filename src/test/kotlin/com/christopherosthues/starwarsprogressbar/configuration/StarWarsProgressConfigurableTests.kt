@@ -210,6 +210,7 @@ class StarWarsProgressConfigurableTests {
             starWarsStateData.changeVehicleAfterPass,
             starWarsStateData.numberOfPassesUntilVehicleChange,
             starWarsStateData.vehicleSelector,
+            starWarsStateData.language,
         )
         setupComponentState(
             componentStateData.enabledVehicles,
@@ -224,6 +225,7 @@ class StarWarsProgressConfigurableTests {
             componentStateData.changeVehicleAfterPass,
             componentStateData.numberOfPassesUntilVehicleChange,
             componentStateData.vehicleSelector,
+            componentStateData.language,
         )
         val sut = StarWarsProgressConfigurable()
         sut.createComponent()
@@ -275,6 +277,7 @@ class StarWarsProgressConfigurableTests {
         verify(exactly = 0) { starWarsStateMock.changeVehicleAfterPass }
         verify(exactly = 0) { starWarsStateMock.numberOfPassesUntilVehicleChange }
         verify(exactly = 0) { starWarsStateMock.vehicleSelector }
+        verify(exactly = 0) { starWarsStateMock.language }
     }
 
     @ParameterizedTest
@@ -292,6 +295,7 @@ class StarWarsProgressConfigurableTests {
         changeVehicleAfterPass: Boolean = false,
         numberOfPassesUntilVehicleChange: Int = 2,
         vehicleSelector: SelectionType = SelectionType.RANDOM_ALL,
+        language: Language = Language.ENGLISH,
     ) {
         // Arrange
         val starWarsStateMock = setupStarWarsPersistentStateComponentMock().state!!
@@ -308,6 +312,7 @@ class StarWarsProgressConfigurableTests {
             changeVehicleAfterPass,
             numberOfPassesUntilVehicleChange,
             vehicleSelector,
+            language,
         )
         val sut = StarWarsProgressConfigurable()
         sut.createComponent()
@@ -327,6 +332,7 @@ class StarWarsProgressConfigurableTests {
         verify(exactly = 1) { starWarsStateMock.drawSilhouettes = drawSilhouettes }
         verify(exactly = 1) { starWarsStateMock.changeVehicleAfterPass = changeVehicleAfterPass }
         verify(exactly = 1) { starWarsStateMock.vehicleSelector = vehicleSelector }
+        verify(exactly = 1) { starWarsStateMock.language = language }
         verify(exactly = numberOfPassesSet) { starWarsStateMock.numberOfPassesUntilVehicleChange = numberOfPassesUntilVehicleChange }
         assertEquals(enabledVehicles, starWarsStateMock.vehiclesEnabled, StarWarsState::vehiclesEnabled.name)
     }
@@ -481,6 +487,7 @@ class StarWarsProgressConfigurableTests {
         changeVehicleAfterPass: Boolean = false,
         numberOfPassesUntilVehicleChange: Int = 2,
         vehicleSelector: SelectionType = SelectionType.RANDOM_ALL,
+        language: Language = Language.ENGLISH,
     ): StarWarsState {
         val starWarsStateMock = mockk<StarWarsState>()
         starWarsStateMock.vehiclesEnabled = enabledVehicles
@@ -496,6 +503,7 @@ class StarWarsProgressConfigurableTests {
         every { starWarsStateMock.numberOfPassesUntilVehicleChange } returns numberOfPassesUntilVehicleChange
         every { starWarsStateMock.vehicleSelector } returns vehicleSelector
         every { starWarsStateMock.version } returns ""
+        every { starWarsStateMock.language } returns language
         val starWarsPersistentStateComponentMock = mockk<StarWarsPersistentStateComponent>(relaxed = true)
         every { StarWarsPersistentStateComponent.instance } returns starWarsPersistentStateComponentMock
         every { starWarsPersistentStateComponentMock.state } returns starWarsStateMock
@@ -516,6 +524,7 @@ class StarWarsProgressConfigurableTests {
         changeVehicleAfterPass: Boolean = false,
         numberOfPassesUntilVehicleChange: Int = 2,
         vehicleSelector: SelectionType = SelectionType.RANDOM_ALL,
+        language: Language = Language.ENGLISH,
     ) {
         every { starWarsProgressConfigurationComponentMock.enabledVehicles } returns enabledVehicles
         every { starWarsProgressConfigurationComponentMock.showVehicle } returns showVehicle
@@ -529,6 +538,7 @@ class StarWarsProgressConfigurableTests {
         every { starWarsProgressConfigurationComponentMock.changeVehicleAfterPass } returns changeVehicleAfterPass
         every { starWarsProgressConfigurationComponentMock.numberOfPassesUntilVehicleChange } returns numberOfPassesUntilVehicleChange
         every { starWarsProgressConfigurationComponentMock.vehicleSelector } returns vehicleSelector
+        every { starWarsProgressConfigurationComponentMock.language } returns language
     }
 
     //endregion
@@ -548,12 +558,13 @@ class StarWarsProgressConfigurableTests {
         val changeVehicleAfterPass: Boolean = false,
         val numberOfPassesUntilVehicleChange: Int = 2,
         val vehicleSelector: SelectionType = SelectionType.RANDOM_ALL,
+        val language: Language = Language.ENGLISH,
     )
 
     companion object {
         @JvmStatic
         fun isNotModifiedValues(): Stream<Arguments> = Stream.of(
-            Arguments.of(mapOf<String, Boolean>(), true, false, true, false, true, false, true, false, false, 2, SelectionType.RANDOM_ALL),
+            Arguments.of(mapOf<String, Boolean>(), true, false, true, false, true, false, true, false, false, 2, SelectionType.RANDOM_ALL, Language.ENGLISH),
             Arguments.of(
                 mapOf("1" to true, "2" to false),
                 false,
@@ -567,6 +578,7 @@ class StarWarsProgressConfigurableTests {
                 true,
                 2,
                 SelectionType.RANDOM_ALL,
+                Language.ENGLISH,
             ),
             Arguments.of(
                 mapOf("1" to true, "2" to false),
@@ -581,6 +593,7 @@ class StarWarsProgressConfigurableTests {
                 true,
                 4,
                 SelectionType.RANDOM_NOT_DISPLAYED,
+                Language.GERMAN,
             ),
             Arguments.of(
                 mapOf("1" to true, "2" to false),
@@ -595,6 +608,7 @@ class StarWarsProgressConfigurableTests {
                 false,
                 4,
                 SelectionType.RANDOM_NOT_DISPLAYED,
+                Language.GERMAN,
             ),
         )
 
@@ -626,6 +640,8 @@ class StarWarsProgressConfigurableTests {
             Arguments.of(IsModifiedData(), IsModifiedData(changeVehicleAfterPass = true, numberOfPassesUntilVehicleChange = 4)),
             Arguments.of(IsModifiedData(changeVehicleAfterPass = true), IsModifiedData(numberOfPassesUntilVehicleChange = 4)),
             Arguments.of(IsModifiedData(numberOfPassesUntilVehicleChange = 4), IsModifiedData(changeVehicleAfterPass = true)),
+            Arguments.of(IsModifiedData(), IsModifiedData(language = Language.GERMAN)),
+            Arguments.of(IsModifiedData(language = Language.GERMAN), IsModifiedData()),
         )
     }
 

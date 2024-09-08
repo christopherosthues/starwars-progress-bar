@@ -50,6 +50,7 @@ class PluginUpdatedActivityTests {
         mockkObject(StarWarsResourceLoader)
         mockkObject(DoNotAskService)
         mockkObject(StarWarsBundle)
+        mockkStatic(StarWarsBundle::message)
         mockkStatic(PluginManagerCore::class)
         mockkStatic(PluginId::class)
         mockkStatic(NotificationGroupManager::class)

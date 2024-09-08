@@ -47,6 +47,7 @@ class BundleConstantsTests {
             Arguments.of("configuration.preview", BundleConstants.PREVIEW_TITLE),
             Arguments.of("configuration.determinate", BundleConstants.DETERMINATE),
             Arguments.of("configuration.indeterminate", BundleConstants.INDETERMINATE),
+            Arguments.of("configuration.language", BundleConstants.LANGUAGE),
             Arguments.of("configuration.uiOptions", BundleConstants.UI_OPTIONS),
             Arguments.of("configuration.showVehicle", BundleConstants.SHOW_VEHICLE),
             Arguments.of("configuration.showVehicleName", BundleConstants.SHOW_VEHICLE_NAME),

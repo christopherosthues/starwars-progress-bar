@@ -125,7 +125,8 @@ internal class StarWarsProgressBarUI(
 
     override fun getBoxLength(availableLength: Int, otherDimension: Int): Int = availableLength
 
-    override fun getPreferredSize(c: JComponent?): Dimension = Dimension(super.getPreferredSize(c).width, JBUIScale.scale(PROGRESSBAR_HEIGHT))
+    override fun getPreferredSize(c: JComponent?): Dimension =
+        Dimension(super.getPreferredSize(c).width, JBUIScale.scale(PROGRESSBAR_HEIGHT))
 
     override fun paintIndeterminate(g: Graphics?, c: JComponent?) {
         paintProgressBar(g, c, false)

@@ -17,6 +17,7 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import org.junit.jupiter.params.provider.ValueSource
+import java.util.*
 import java.util.stream.Stream
 
 @TestFor(classes = [ReverseOrderFactionVehicleSelector::class])
@@ -133,6 +134,7 @@ class ReverseOrderFactionVehicleSelectorTests {
         // Arrange
         val vehicles = createStarWarsVehicles().toMutableList()
         every { FactionHolder.defaultVehicles } returns vehicles
+        every { StarWarsBundle.message(any()) } returnsArgument 0
 
         // Act
         var result = selectMultipleVehicles(vehicles, mapOf("2.1" to true, "1.2" to true, "1.3" to true), true)

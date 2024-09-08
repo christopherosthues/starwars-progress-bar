@@ -50,7 +50,8 @@ internal class TitledIconBorder(title: String, iconName: String) : AbstractBorde
         return if (insets.top < BASE_MARGIN) baseline else baseline + insets.top
     }
 
-    override fun getBaselineResizeBehavior(c: Component): Component.BaselineResizeBehavior = Component.BaselineResizeBehavior.CONSTANT_ASCENT
+    override fun getBaselineResizeBehavior(c: Component): Component.BaselineResizeBehavior =
+        Component.BaselineResizeBehavior.CONSTANT_ASCENT
 
     override fun paintBorder(c: Component, g: Graphics, x: Int, y: Int, width: Int, height: Int) {
         updateLabel(c)

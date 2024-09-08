@@ -252,7 +252,7 @@ internal class UiOptionsPanel : JTitledPanel(StarWarsBundle.message(BundleConsta
     }
 
     fun updateUI(starWarsState: StarWarsState) {
-        languageComboBox.item = starWarsState.language // TODO: not null here
+        languageComboBox.item = starWarsState.language
         showVehicleNameCheckBox.isSelected = starWarsState.showVehicleNames
         showVehicleCheckBox.isSelected = starWarsState.showVehicle
         showToolTipsCheckBox.isSelected = starWarsState.showToolTips
@@ -263,7 +263,7 @@ internal class UiOptionsPanel : JTitledPanel(StarWarsBundle.message(BundleConsta
         drawSilhouettesCheckBox.isSelected = starWarsState.drawSilhouettes
         changeVehicleAfterPassCheckBox.isSelected = starWarsState.changeVehicleAfterPass
         numberOfPassesUntilVehicleChangeSpinner.value = starWarsState.numberOfPassesUntilVehicleChange
-        vehicleSelectorComboBox.item = starWarsState.vehicleSelector // TODO: not null here
+        vehicleSelectorComboBox.item = starWarsState.vehicleSelector
 
         StarWarsBundle.setLocale(language.toLocale())
         firePropertyChange(

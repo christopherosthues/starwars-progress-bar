@@ -123,17 +123,20 @@ internal class StarWarsProgressConfigurationComponent {
         formBuilder.addComponent(uiOptionsPanel)
     }
 
-    private fun isProgressBarTextEvent(propertyName: String): Boolean = propertyName == UiOptionsPanel::showVehicleNames.name ||
-        propertyName == UiOptionsPanel::showToolTips.name
+    private fun isProgressBarTextEvent(propertyName: String): Boolean =
+        propertyName == UiOptionsPanel::showVehicleNames.name ||
+            propertyName == UiOptionsPanel::showToolTips.name
 
-    private fun isProgressBarDrawEvent(propertyName: String): Boolean = propertyName == UiOptionsPanel::showFactionCrests.name ||
-        propertyName == UiOptionsPanel::sameVehicleVelocity.name ||
-        propertyName == UiOptionsPanel::solidProgressBarColor.name ||
-        propertyName == UiOptionsPanel::showVehicle.name ||
-        propertyName == UiOptionsPanel::drawSilhouettes.name
+    private fun isProgressBarDrawEvent(propertyName: String): Boolean =
+        propertyName == UiOptionsPanel::showFactionCrests.name ||
+            propertyName == UiOptionsPanel::sameVehicleVelocity.name ||
+            propertyName == UiOptionsPanel::solidProgressBarColor.name ||
+            propertyName == UiOptionsPanel::showVehicle.name ||
+            propertyName == UiOptionsPanel::drawSilhouettes.name
 
-    private fun isVehicleChangeEvent(propertyName: String): Boolean = propertyName == UiOptionsPanel::changeVehicleAfterPass.name ||
-        propertyName == UiOptionsPanel::numberOfPassesUntilVehicleChange.name
+    private fun isVehicleChangeEvent(propertyName: String): Boolean =
+        propertyName == UiOptionsPanel::changeVehicleAfterPass.name ||
+            propertyName == UiOptionsPanel::numberOfPassesUntilVehicleChange.name
 
     private fun repaintProgressBar() {
         previewPanel.repaintProgressBar()
