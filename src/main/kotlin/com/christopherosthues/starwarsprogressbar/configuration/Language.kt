@@ -8,6 +8,7 @@ enum class Language(private val languageCode: String, private val displayLanguag
     SPANISH("es", "Espa\u00f1ol"),
     ;
 
+    // TODO: use Locale.of after migration to Java 21
     fun toLocale(): Locale = Locale(languageCode)
 
     override fun toString(): String = displayLanguage
