@@ -8,6 +8,7 @@ import com.christopherosthues.starwarsprogressbar.selectors.SelectionType
 import com.christopherosthues.starwarsprogressbar.ui.events.VehicleClickListener
 import com.intellij.util.ui.FormBuilder
 import java.awt.BorderLayout
+import java.util.*
 import javax.swing.JPanel
 
 internal class StarWarsProgressConfigurationComponent {
@@ -47,7 +48,7 @@ internal class StarWarsProgressConfigurationComponent {
         get() = uiOptionsPanel.solidProgressBarColor
 
     val drawSilhouettes: Boolean
-        get() = uiOptionsPanel.drawSilhouttes
+        get() = uiOptionsPanel.drawSilhouettes
 
     val changeVehicleAfterPass: Boolean
         get() = uiOptionsPanel.changeVehicleAfterPass
@@ -57,6 +58,9 @@ internal class StarWarsProgressConfigurationComponent {
 
     val vehicleSelector: SelectionType
         get() = uiOptionsPanel.vehicleSelector
+
+    val language: Language
+        get() = uiOptionsPanel.language
 
     init {
         createUI()
@@ -81,6 +85,9 @@ internal class StarWarsProgressConfigurationComponent {
         createVehicleSection(formBuilder)
 
         mainPanel.add(formBuilder.panel, BorderLayout.NORTH)
+
+        previewPanel.addPropertyChangeListener(uiOptionsPanel)
+        vehiclesPanel.addPropertyChangeListener(uiOptionsPanel)
     }
 
     private fun createPreviewSection(formBuilder: FormBuilder) {
@@ -116,23 +123,20 @@ internal class StarWarsProgressConfigurationComponent {
         formBuilder.addComponent(uiOptionsPanel)
     }
 
-    private fun isProgressBarTextEvent(propertyName: String): Boolean {
-        return propertyName == UiOptionsPanel::showVehicleNames.name ||
+    private fun isProgressBarTextEvent(propertyName: String): Boolean =
+        propertyName == UiOptionsPanel::showVehicleNames.name ||
             propertyName == UiOptionsPanel::showToolTips.name
-    }
 
-    private fun isProgressBarDrawEvent(propertyName: String): Boolean {
-        return propertyName == UiOptionsPanel::showFactionCrests.name ||
+    private fun isProgressBarDrawEvent(propertyName: String): Boolean =
+        propertyName == UiOptionsPanel::showFactionCrests.name ||
             propertyName == UiOptionsPanel::sameVehicleVelocity.name ||
             propertyName == UiOptionsPanel::solidProgressBarColor.name ||
             propertyName == UiOptionsPanel::showVehicle.name ||
-            propertyName == UiOptionsPanel::drawSilhouttes.name
-    }
+            propertyName == UiOptionsPanel::drawSilhouettes.name
 
-    private fun isVehicleChangeEvent(propertyName: String): Boolean {
-        return propertyName == UiOptionsPanel::changeVehicleAfterPass.name ||
+    private fun isVehicleChangeEvent(propertyName: String): Boolean =
+        propertyName == UiOptionsPanel::changeVehicleAfterPass.name ||
             propertyName == UiOptionsPanel::numberOfPassesUntilVehicleChange.name
-    }
 
     private fun repaintProgressBar() {
         previewPanel.repaintProgressBar()

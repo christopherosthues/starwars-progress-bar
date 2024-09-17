@@ -506,32 +506,26 @@ class StarWarsProgressListenerTests {
 
     companion object {
         @JvmStatic
-        private fun otherPluginValues(): Stream<String> {
-            return Stream.of("progressbar", "aSFAf", "starwarsprogressba", "starwarsprogressbarr", "tarwarsprogressbar")
-        }
+        private fun otherPluginValues(): Stream<String> = Stream.of("progressbar", "aSFAf", "starwarsprogressba", "starwarsprogressbarr", "tarwarsprogressbar")
 
         @JvmStatic
-        private fun previousProgressBarKeyValues(): Stream<String> {
-            return Stream.of(
-                "asdas",
-                "starwarsprogressbar",
-                "StarWarsBarProgressFactor",
-                "StarWarsBarProgressFactoryy",
-                "starwarsprogressbarfactory",
-            )
-        }
+        private fun previousProgressBarKeyValues(): Stream<String> = Stream.of(
+            "asdas",
+            "starwarsprogressbar",
+            "StarWarsBarProgressFactor",
+            "StarWarsBarProgressFactoryy",
+            "starwarsprogressbarfactory",
+        )
 
         @JvmStatic
-        private fun otherPluginAndPreviousProgressBarKeyValues(): Stream<Arguments> {
-            return Stream.of(
-                Arguments.of("progressbar", "asdas"),
-                Arguments.of("aSFAf", "starwarsprogressbar"),
-                Arguments.of("starwarsprogressba", "StarWarsBarProgressFactor"),
-                Arguments.of("starwarsprogressbarr", "StarWarsBarProgressFactoryy"),
-                Arguments.of("tarwarsprogressbar", "starwarsprogressbarfactory"),
-                Arguments.of("", ""),
-            )
-        }
+        private fun otherPluginAndPreviousProgressBarKeyValues(): Stream<Arguments> = Stream.of(
+            Arguments.of("progressbar", "asdas"),
+            Arguments.of("aSFAf", "starwarsprogressbar"),
+            Arguments.of("starwarsprogressba", "StarWarsBarProgressFactor"),
+            Arguments.of("starwarsprogressbarr", "StarWarsBarProgressFactoryy"),
+            Arguments.of("tarwarsprogressbar", "starwarsprogressbarfactory"),
+            Arguments.of("", ""),
+        )
     }
 
     //endregion

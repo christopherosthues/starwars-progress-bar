@@ -141,4 +141,14 @@ internal class VehiclesPanel : JTitledPanel(StarWarsBundle.message(BundleConstan
             selectionText,
         )
     }
+
+    fun addPropertyChangeListener(uiOptionsPanel: UiOptionsPanel) {
+        uiOptionsPanel.addPropertyChangeListener(UiOptionsPanel::language.name) {
+            title = StarWarsBundle.message(BundleConstants.VEHICLES_TITLE)
+            updateSelectionButtons()
+        }
+        factionPanels.forEach {
+            it.addPropertyChangeListener(uiOptionsPanel)
+        }
+    }
 }

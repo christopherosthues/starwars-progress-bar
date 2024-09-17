@@ -37,6 +37,7 @@ internal class StarWarsProgressConfigurable : SearchableConfigurable {
                     starWarsState.solidProgressBarColor != comp.solidProgressBarColor ||
                     starWarsState.drawSilhouettes != comp.drawSilhouettes ||
                     starWarsState.vehicleSelector != comp.vehicleSelector ||
+                    starWarsState.language != comp.language ||
                     isVehiclePassesModified(starWarsState, comp)
                 )
     }
@@ -44,13 +45,11 @@ internal class StarWarsProgressConfigurable : SearchableConfigurable {
     private fun isVehiclePassesModified(
         starWarsState: StarWarsState,
         component: StarWarsProgressConfigurationComponent,
-    ): Boolean {
-        return starWarsState.changeVehicleAfterPass != component.changeVehicleAfterPass ||
-            (
-                starWarsState.numberOfPassesUntilVehicleChange != component.numberOfPassesUntilVehicleChange &&
-                    component.changeVehicleAfterPass
-                )
-    }
+    ): Boolean = starWarsState.changeVehicleAfterPass != component.changeVehicleAfterPass ||
+        (
+            starWarsState.numberOfPassesUntilVehicleChange != component.numberOfPassesUntilVehicleChange &&
+                component.changeVehicleAfterPass
+            )
 
     override fun apply() {
         val starWarsState = getStarWarsState()
@@ -69,19 +68,16 @@ internal class StarWarsProgressConfigurable : SearchableConfigurable {
             starWarsState.drawSilhouettes = component.drawSilhouettes
             starWarsState.changeVehicleAfterPass = component.changeVehicleAfterPass
             starWarsState.vehicleSelector = component.vehicleSelector
+            starWarsState.language = component.language
             if (component.changeVehicleAfterPass) {
                 starWarsState.numberOfPassesUntilVehicleChange = component.numberOfPassesUntilVehicleChange
             }
         }
     }
 
-    override fun getDisplayName(): String {
-        return StarWarsBundle.message(BundleConstants.PLUGIN_NAME)
-    }
+    override fun getDisplayName(): String = StarWarsBundle.message(BundleConstants.PLUGIN_NAME)
 
-    override fun getId(): String {
-        return PluginConstants.PLUGIN_SEARCH_ID
-    }
+    override fun getId(): String = PluginConstants.PLUGIN_SEARCH_ID
 
     override fun reset() {
         val starWarsState = getStarWarsState()

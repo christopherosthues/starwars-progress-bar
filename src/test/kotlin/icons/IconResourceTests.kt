@@ -114,7 +114,9 @@ class IconResourceTests {
 
         // Assert
         val imagesNotReferences = imageFiles.filter {
-            !iconPaths.contains(it) && !iconWhitelist.contains(it) && !it.endsWith("logo.png") &&
+            !iconPaths.contains(it) &&
+                !iconWhitelist.contains(it) &&
+                !it.endsWith("logo.png") &&
                 !it.endsWith("logo@2x.png")
         }
         assertTrue(
@@ -174,7 +176,7 @@ class IconResourceTests {
         "mandalorians${File.separatorChar}fang_class_starfighter_r@2x.png",
         "mandalorians${File.separatorChar}gauntlet_r@2x.png",
         "scoundrels${File.separatorChar}nightbrother_r@2x.png",
-        "sith_empire${File.separatorChar}harrower_class_star_destroyer_r@2x.png",
+        "sith_empire${File.separatorChar}harrower_class_dreadnought_r_raw@2x.png",
     )
 
     private fun getFormattedImagesNotReferencedErrorMessage(imagesNotReferenced: List<String>): String {

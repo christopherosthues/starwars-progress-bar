@@ -121,17 +121,12 @@ internal class StarWarsProgressBarUI(
         factionCrestIcon = ColoredImageComponent(StarWarsResourceLoader.getFactionLogo(vehicle.factionId, false))
     }
 
-    private fun getVelocity(): Float {
-        return if (sameVehicleVelocity()) 1f else vehicle.velocity
-    }
+    private fun getVelocity(): Float = if (sameVehicleVelocity()) 1f else vehicle.velocity
 
-    override fun getBoxLength(availableLength: Int, otherDimension: Int): Int {
-        return availableLength
-    }
+    override fun getBoxLength(availableLength: Int, otherDimension: Int): Int = availableLength
 
-    override fun getPreferredSize(c: JComponent?): Dimension {
-        return Dimension(super.getPreferredSize(c).width, JBUIScale.scale(PROGRESSBAR_HEIGHT))
-    }
+    override fun getPreferredSize(c: JComponent?): Dimension =
+        Dimension(super.getPreferredSize(c).width, JBUIScale.scale(PROGRESSBAR_HEIGHT))
 
     override fun paintIndeterminate(g: Graphics?, c: JComponent?) {
         paintProgressBar(g, c, false)
@@ -228,33 +223,34 @@ internal class StarWarsProgressBarUI(
         }
     }
 
-    private fun isUnsupported(graphics: Graphics, component: JComponent): Boolean {
-        return graphics !is Graphics2D || progressBar.orientation != SwingConstants.HORIZONTAL ||
-            !component.componentOrientation.isLeftToRight
-    }
+    private fun isUnsupported(graphics: Graphics, component: JComponent): Boolean = graphics !is Graphics2D ||
+        progressBar.orientation != SwingConstants.HORIZONTAL ||
+        !component.componentOrientation.isLeftToRight
 
     private fun setToolTipText() {
-        val localizedName = StarWarsBundle.message(vehicle.localizationKey)
-        if (showToolTips() && progressBar.toolTipText != localizedName) {
-            progressBar.toolTipText = localizedName
+        if (showToolTips()) {
+            val localizedName = StarWarsBundle.message(vehicle.localizationKey)
+            if (progressBar.toolTipText != localizedName) {
+                progressBar.toolTipText = localizedName
+            }
         } else if (!showToolTips()) {
             progressBar.toolTipText = ""
         }
     }
 
     private fun setProgressBarText() {
-        val localizedName = StarWarsBundle.message(vehicle.localizationKey)
         progressBar.isStringPainted = showVehicleName()
-        if (showVehicleName() && progressBar.string != localizedName) {
-            progressBar.string = localizedName
+        if (showVehicleName()) {
+            val localizedName = StarWarsBundle.message(vehicle.localizationKey)
+            if (progressBar.string != localizedName) {
+                progressBar.string = localizedName
+            }
         } else if (!showVehicleName()) {
             progressBar.string = ""
         }
     }
 
-    private fun isOdd(value: Int): Boolean {
-        return value % 2 == 1
-    }
+    private fun isOdd(value: Int): Boolean = value % 2 == 1
 
     private fun getBackgroundColor(component: JComponent): Color {
         val parent = component.parent
@@ -358,9 +354,7 @@ internal class StarWarsProgressBarUI(
         }
     }
 
-    private fun getFillPaint(): Paint {
-        return vehicle.color
-    }
+    private fun getFillPaint(): Paint = vehicle.color
 
     private fun drawIcon(amountFull: Int, graphics2D: Graphics2D, clip: Shape, component: JComponent) {
         val previousClip = graphics2D.clip

@@ -1,7 +1,9 @@
 .gradle
 .idea
+.intellijPlatform
 .qodana
 build/
 .DS_Store
 ktlint.jar
 node_modules/
+.kotlin

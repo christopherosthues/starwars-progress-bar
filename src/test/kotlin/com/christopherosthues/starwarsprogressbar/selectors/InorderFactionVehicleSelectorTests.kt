@@ -130,6 +130,7 @@ class InorderFactionVehicleSelectorTests {
         val vehicles = createStarWarsVehicles().toMutableList()
         vehicles[0].factionId = "2"
         every { FactionHolder.defaultVehicles } returns vehicles
+        every { StarWarsBundle.message(any()) } returnsArgument 0
 
         // Act
         var result = selectMultipleVehicles(vehicles, mapOf("2.1" to true, "1.2" to true, "1.3" to true), true)
@@ -319,9 +320,7 @@ class InorderFactionVehicleSelectorTests {
 
     companion object {
         @JvmStatic
-        fun defaultEnabledValues(): Stream<Arguments> {
-            return Stream.of(Arguments.of(true), Arguments.of(false))
-        }
+        fun defaultEnabledValues(): Stream<Arguments> = Stream.of(Arguments.of(true), Arguments.of(false))
     }
 
     //endregion

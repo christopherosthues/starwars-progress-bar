@@ -227,16 +227,14 @@ class VehicleSelectorTests {
 
     companion object {
         @JvmStatic
-        fun selectorValues(): Stream<Arguments> {
-            return Stream.of(
-                Arguments.of(SelectionType.INORDER_FACTION, 1, 0, 0, 0, 0, 0),
-                Arguments.of(SelectionType.INORDER_VEHICLE_NAME, 0, 1, 0, 0, 0, 0),
-                Arguments.of(SelectionType.RANDOM_ALL, 0, 0, 1, 0, 0, 0),
-                Arguments.of(SelectionType.RANDOM_NOT_DISPLAYED, 0, 0, 0, 1, 0, 0),
-                Arguments.of(SelectionType.REVERSE_ORDER_FACTION, 0, 0, 0, 0, 1, 0),
-                Arguments.of(SelectionType.REVERSE_ORDER_VEHICLE_NAME, 0, 0, 0, 0, 0, 1),
-            )
-        }
+        fun selectorValues(): Stream<Arguments> = Stream.of(
+            Arguments.of(SelectionType.INORDER_FACTION, 1, 0, 0, 0, 0, 0),
+            Arguments.of(SelectionType.INORDER_VEHICLE_NAME, 0, 1, 0, 0, 0, 0),
+            Arguments.of(SelectionType.RANDOM_ALL, 0, 0, 1, 0, 0, 0),
+            Arguments.of(SelectionType.RANDOM_NOT_DISPLAYED, 0, 0, 0, 1, 0, 0),
+            Arguments.of(SelectionType.REVERSE_ORDER_FACTION, 0, 0, 0, 0, 1, 0),
+            Arguments.of(SelectionType.REVERSE_ORDER_VEHICLE_NAME, 0, 0, 0, 0, 0, 1),
+        )
     }
 
     //endregion
