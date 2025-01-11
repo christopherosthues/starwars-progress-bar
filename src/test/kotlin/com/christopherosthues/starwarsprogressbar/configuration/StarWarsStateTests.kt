@@ -89,7 +89,7 @@ class StarWarsStateTests {
         assertDefaultValues(sut)
 
         // Act
-        sut.vehiclesEnabled = mapOf("1" to false, "2" to true)
+        sut.vehiclesEnabled = mutableMapOf("1" to false, "2" to true)
         sut.showVehicle = showVehicle
         sut.showVehicleNames = showVehicleNames
         sut.showToolTips = showToolTips
@@ -133,7 +133,7 @@ class StarWarsStateTests {
         assertVehiclesEnabled(sut.vehiclesEnabled)
 
         // Act
-        sut.vehiclesEnabled = mapOf("1" to false, "2" to true)
+        sut.vehiclesEnabled = mutableMapOf("1" to false, "2" to true)
 
         // Assert
         assertAll(

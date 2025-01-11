@@ -1,6 +1,7 @@
 package com.christopherosthues.starwarsprogressbar.configuration.components
 
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
+import com.christopherosthues.starwarsprogressbar.configuration.LanguageEvent
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
 import com.christopherosthues.starwarsprogressbar.models.FactionHolder
@@ -16,7 +17,7 @@ import javax.swing.JPanel
 private const val FACTION_PADDING = 5
 private const val SELECTION_PANEL_BOTTOM_PADDING = 10
 
-internal class VehiclesPanel : JTitledPanel(StarWarsBundle.message(BundleConstants.VEHICLES_TITLE)) {
+internal class VehiclesPanel(private val starWarsState: StarWarsState) : JTitledPanel(StarWarsBundle.message(BundleConstants.VEHICLES_TITLE)) {
     private val selectedVehiclesCheckBox = ThreeStateCheckBox(ThreeStateCheckBox.State.SELECTED)
     private val factionPanels: MutableList<FactionPanel> = mutableListOf()
 
@@ -24,13 +25,13 @@ internal class VehiclesPanel : JTitledPanel(StarWarsBundle.message(BundleConstan
     private var factionRowCount: Int = 0
     private var factionCount: Int = 0
 
-    val enabledVehicles: Map<String, Boolean>
-        get() = factionPanels.map { it.enabledVehicles }.fold(hashMapOf()) { acc, map ->
-            map.forEach {
-                acc.merge(it.key, it.value) { new, _ -> new }
-            }
-            acc
-        }
+//    val enabledVehicles: Map<String, Boolean>
+//        get() = factionPanels.map { it.enabledVehicles }.fold(hashMapOf()) { acc, map ->
+//            map.forEach {
+//                acc.merge(it.key, it.value) { new, _ -> new }
+//            }
+//            acc
+//        }
 
     private val selectedVehiclesCount: Int
         get() = factionPanels.sumOf { it.selectedVehiclesCount.get() }
@@ -82,7 +83,7 @@ internal class VehiclesPanel : JTitledPanel(StarWarsBundle.message(BundleConstan
 
             val vehiclesAvailable = faction.vehicles.any()
             if (vehiclesAvailable) {
-                val factionPanel = FactionPanel(faction)
+                val factionPanel = FactionPanel(starWarsState, faction)
                 factionPanel.addPropertyChangeListener(FactionPanel::selectedVehiclesCount.name) {
                     updateSelectionButtons()
                 }
@@ -143,7 +144,7 @@ internal class VehiclesPanel : JTitledPanel(StarWarsBundle.message(BundleConstan
     }
 
     fun addPropertyChangeListener(uiOptionsPanel: UiOptionsPanel) {
-        uiOptionsPanel.addPropertyChangeListener(UiOptionsPanel::language.name) {
+        uiOptionsPanel.addPropertyChangeListener(LanguageEvent) {
             title = StarWarsBundle.message(BundleConstants.VEHICLES_TITLE)
             updateSelectionButtons()
         }

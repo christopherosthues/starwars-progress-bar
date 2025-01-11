@@ -22,6 +22,7 @@ package com.christopherosthues.starwarsprogressbar.ui
 
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
+import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_CHANGE_VEHICLE_AFTER_PASS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_DRAW_SILHOUETTES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE
@@ -33,7 +34,6 @@ import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRESS_BAR_COLOR
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_VEHICLE_SELECTOR
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
-import com.christopherosthues.starwarsprogressbar.selectors.SelectionType
 import com.christopherosthues.starwarsprogressbar.selectors.VehicleSelector.selectVehicle
 import com.christopherosthues.starwarsprogressbar.ui.components.ColoredImageComponent
 import com.christopherosthues.starwarsprogressbar.util.StarWarsResourceLoader
@@ -63,18 +63,8 @@ private const val PROGRESSBAR_CORNER_SIZE = 9f
 private const val FACTION_CREST_X_POSITION = 4.0
 
 internal class StarWarsProgressBarUI(
+    private val starWarsState: () -> StarWarsState?,
     private var vehicle: StarWarsVehicle,
-    private val enabledVehicles: () -> Map<String, Boolean>?,
-    private val showVehicle: () -> Boolean,
-    private val showVehicleName: () -> Boolean,
-    private val showToolTips: () -> Boolean,
-    private val showFactionCrests: () -> Boolean,
-    private val sameVehicleVelocity: () -> Boolean,
-    private val solidProgressBarColor: () -> Boolean,
-    private val drawSilhouettes: () -> Boolean,
-    private val changeVehicleAfterPass: () -> Boolean,
-    private val numberOfPassesUntilVehicleChange: () -> Int,
-    private val vehicleSelector: () -> SelectionType,
 ) : BasicProgressBarUI() {
 
     private var forwardIcon = ColoredImageComponent(StarWarsResourceLoader.getVehicleImage(vehicle.fileName))
@@ -86,42 +76,28 @@ internal class StarWarsProgressBarUI(
     private var numberOfPasses = 0
 
     constructor() : this(
+        { StarWarsPersistentStateComponent.instance?.state },
         selectVehicle(
             StarWarsPersistentStateComponent.instance?.state?.vehiclesEnabled,
             false,
             StarWarsPersistentStateComponent.instance?.state?.vehicleSelector
                 ?: DEFAULT_VEHICLE_SELECTOR,
         ),
-        { StarWarsPersistentStateComponent.instance?.state?.vehiclesEnabled },
-        { StarWarsPersistentStateComponent.instance?.state?.showVehicle ?: DEFAULT_SHOW_VEHICLE },
-        { StarWarsPersistentStateComponent.instance?.state?.showVehicleNames ?: DEFAULT_SHOW_VEHICLE_NAMES },
-        { StarWarsPersistentStateComponent.instance?.state?.showToolTips ?: DEFAULT_SHOW_TOOLTIPS },
-        { StarWarsPersistentStateComponent.instance?.state?.showFactionCrests ?: DEFAULT_SHOW_FACTION_CRESTS },
-        { StarWarsPersistentStateComponent.instance?.state?.sameVehicleVelocity ?: DEFAULT_SAME_VEHICLE_VELOCITY },
-        { StarWarsPersistentStateComponent.instance?.state?.solidProgressBarColor ?: DEFAULT_SOLID_PROGRESS_BAR_COLOR },
-        { StarWarsPersistentStateComponent.instance?.state?.drawSilhouettes ?: DEFAULT_DRAW_SILHOUETTES },
-        {
-            StarWarsPersistentStateComponent.instance?.state?.changeVehicleAfterPass
-                ?: DEFAULT_CHANGE_VEHICLE_AFTER_PASS
-        },
-        {
-            StarWarsPersistentStateComponent.instance?.state?.numberOfPassesUntilVehicleChange
-                ?: DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE
-        },
-        {
-            StarWarsPersistentStateComponent.instance?.state?.vehicleSelector
-                ?: DEFAULT_VEHICLE_SELECTOR
-        },
     )
 
     private fun updateVehicle() {
-        vehicle = selectVehicle(enabledVehicles(), false, vehicleSelector())
+        vehicle = selectVehicle(
+            starWarsState()?.vehiclesEnabled,
+            false,
+            starWarsState()?.vehicleSelector ?: DEFAULT_VEHICLE_SELECTOR,
+        )
         forwardIcon = ColoredImageComponent(StarWarsResourceLoader.getVehicleImage(vehicle.fileName))
         backwardIcon = ColoredImageComponent(StarWarsResourceLoader.getReversedVehicleImage(vehicle.fileName))
         factionCrestIcon = ColoredImageComponent(StarWarsResourceLoader.getFactionLogo(vehicle.factionId, false))
     }
 
-    private fun getVelocity(): Float = if (sameVehicleVelocity()) 1f else vehicle.velocity
+    private fun getVelocity(): Float =
+        if (starWarsState()?.sameVehicleVelocity ?: DEFAULT_SAME_VEHICLE_VELOCITY) 1f else vehicle.velocity
 
     override fun getBoxLength(availableLength: Int, otherDimension: Int): Int = availableLength
 
@@ -164,7 +140,15 @@ internal class StarWarsProgressBarUI(
 
     private fun updateNumberOfPasses() {
         numberOfPasses++
-        if (changeVehicleAfterPass() && numberOfPasses % numberOfPassesUntilVehicleChange() == 0) {
+        if ((
+                starWarsState()?.changeVehicleAfterPass
+                    ?: DEFAULT_CHANGE_VEHICLE_AFTER_PASS
+                ) &&
+            numberOfPasses % (
+                starWarsState()?.numberOfPassesUntilVehicleChange
+                    ?: DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE
+                ) == 0
+        ) {
             updateVehicle()
         }
     }
@@ -213,7 +197,7 @@ internal class StarWarsProgressBarUI(
             val rectangle2D = getRoundRectangle(width, height)
             drawProgress(width, height, amountFull, graphics2D, rectangle2D)
             drawFactionCrest(width, height, graphics2D, rectangle2D, c)
-            if (showVehicle()) {
+            if (starWarsState()?.showVehicle ?: DEFAULT_SHOW_VEHICLE) {
                 drawIcon(amountFull, graphics2D, rectangle2D, c)
             }
             drawBorder(rectangle2D, graphics2D)
@@ -228,24 +212,24 @@ internal class StarWarsProgressBarUI(
         !component.componentOrientation.isLeftToRight
 
     private fun setToolTipText() {
-        if (showToolTips()) {
+        if (starWarsState()?.showToolTips ?: DEFAULT_SHOW_TOOLTIPS) {
             val localizedName = StarWarsBundle.message(vehicle.localizationKey)
             if (progressBar.toolTipText != localizedName) {
                 progressBar.toolTipText = localizedName
             }
-        } else if (!showToolTips()) {
+        } else if (!(starWarsState()?.showToolTips ?: DEFAULT_SHOW_TOOLTIPS)) {
             progressBar.toolTipText = ""
         }
     }
 
     private fun setProgressBarText() {
-        progressBar.isStringPainted = showVehicleName()
-        if (showVehicleName()) {
+        progressBar.isStringPainted = starWarsState()?.showVehicleNames ?: DEFAULT_SHOW_VEHICLE_NAMES
+        if (starWarsState()?.showVehicleNames ?: DEFAULT_SHOW_VEHICLE_NAMES) {
             val localizedName = StarWarsBundle.message(vehicle.localizationKey)
             if (progressBar.string != localizedName) {
                 progressBar.string = localizedName
             }
-        } else if (!showVehicleName()) {
+        } else if (!(starWarsState()?.showVehicleNames ?: DEFAULT_SHOW_VEHICLE_NAMES)) {
             progressBar.string = ""
         }
     }
@@ -271,7 +255,7 @@ internal class StarWarsProgressBarUI(
     }
 
     private fun drawFactionCrest(width: Int, height: Int, graphics2D: Graphics2D, clip: Shape, component: JComponent) {
-        if (showFactionCrests()) {
+        if (starWarsState()?.showFactionCrests ?: DEFAULT_SHOW_FACTION_CRESTS) {
             val previousClip = graphics2D.clip
             val previousColor = graphics2D.color
             graphics2D.clip = clip
@@ -322,7 +306,7 @@ internal class StarWarsProgressBarUI(
     private fun getTransparencyPaint(backgroundColor: Color, progress: Int, width: Int, movingRight: Boolean): Paint {
         val transparent = JBColor(Color(0, 0, 0, 0), Color(0, 0, 0, 0))
 
-        if (solidProgressBarColor()) {
+        if (starWarsState()?.solidProgressBarColor ?: DEFAULT_SOLID_PROGRESS_BAR_COLOR) {
             return transparent
         }
 
@@ -363,7 +347,7 @@ internal class StarWarsProgressBarUI(
 
         val isMovingRight = velocity >= 0
         val icon = if (isMovingRight) forwardIcon else backwardIcon
-        if (drawSilhouettes()) {
+        if (starWarsState()?.drawSilhouettes ?: DEFAULT_DRAW_SILHOUETTES) {
             graphics2D.color = component.foreground
             icon.foreground = component.foreground
         } else {

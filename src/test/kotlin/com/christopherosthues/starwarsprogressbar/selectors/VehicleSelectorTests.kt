@@ -122,7 +122,7 @@ class VehicleSelectorTests {
         // Arrange
         val vehicles = createStarWarsVehicles()
         every { FactionHolder.defaultVehicles } returns vehicles
-        val enabledVehicles = mapOf("1" to false, "2" to true, "3" to false)
+        val enabledVehicles = mutableMapOf("1" to false, "2" to true, "3" to false)
         val defaultEnabled = false
         val starWarsState = StarWarsState().apply {
             vehiclesEnabled = enabledVehicles
@@ -168,7 +168,7 @@ class VehicleSelectorTests {
         val vehicles = createStarWarsVehicles()
         every { FactionHolder.defaultVehicles } returns vehicles
         val enabledVehicles = mapOf("1" to false, "2" to true, "3" to false)
-        val vehiclesEnabledState = mapOf("1" to true, "2" to true, "3" to false)
+        val vehiclesEnabledState = mutableMapOf("1" to true, "2" to true, "3" to false)
         val defaultEnabled = true
         val starWarsState = StarWarsState().apply {
             vehiclesEnabled = vehiclesEnabledState

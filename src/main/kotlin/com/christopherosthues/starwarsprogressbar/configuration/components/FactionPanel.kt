@@ -1,6 +1,7 @@
 package com.christopherosthues.starwarsprogressbar.configuration.components
 
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
+import com.christopherosthues.starwarsprogressbar.configuration.LanguageEvent
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
 import com.christopherosthues.starwarsprogressbar.configuration.borders.TitledIconBorder
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
@@ -18,7 +19,6 @@ import java.awt.event.ItemEvent
 import java.awt.event.MouseAdapter
 import java.awt.event.MouseEvent
 import java.beans.PropertyChangeEvent
-import java.util.stream.Collectors
 import javax.swing.JCheckBox
 import javax.swing.JComponent
 import javax.swing.JPanel
@@ -26,7 +26,7 @@ import javax.swing.JPanel
 private const val TOP_PADDING = 10
 private const val LEFT_PADDING = 5
 
-internal class FactionPanel(private val faction: StarWarsFaction) : JPanel(GridBagLayout()) {
+internal class FactionPanel(private val starWarsState: StarWarsState, private val faction: StarWarsFaction) : JPanel(GridBagLayout()) {
     private val selectVehiclesCheckbox = ThreeStateCheckBox(ThreeStateCheckBox.State.SELECTED)
     private val vehiclesCheckboxes: MutableMap<String, JCheckBox> = HashMap()
     private var vehicleRowCount: Int = 0
@@ -34,9 +34,9 @@ internal class FactionPanel(private val faction: StarWarsFaction) : JPanel(GridB
 
     val selectedVehiclesCount: AtomicInteger = AtomicInteger(0)
 
-    val enabledVehicles: MutableMap<String, Boolean>
-        get() = vehiclesCheckboxes.entries.stream()
-            .collect(Collectors.toMap({ entry -> entry.key }, { entry -> entry.value.isSelected }))
+//    val enabledVehicles: MutableMap<String, Boolean>
+//        get() = vehiclesCheckboxes.entries.stream()
+//            .collect(Collectors.toMap({ entry -> entry.key }, { entry -> entry.value.isSelected }))
 
     init {
         initFactionPanel()
@@ -77,7 +77,12 @@ internal class FactionPanel(private val faction: StarWarsFaction) : JPanel(GridB
     }
 
     fun selectVehicles(isSelected: Boolean) {
-        vehiclesCheckboxes.values.forEach { c: JCheckBox -> c.isSelected = isSelected }
+        vehiclesCheckboxes.values.forEach { c: JCheckBox ->
+            c.isSelected = isSelected
+            faction.vehicles.forEach {
+                starWarsState.vehiclesEnabled[it.vehicleId] = isSelected
+            }
+        }
     }
 
     fun addVehicleListener(listener: VehicleClickListener) {
@@ -112,6 +117,7 @@ internal class FactionPanel(private val faction: StarWarsFaction) : JPanel(GridB
             } else if (it.stateChange == ItemEvent.DESELECTED) {
                 selectedVehiclesCount.decrementAndGet()
             }
+            starWarsState.vehiclesEnabled[vehicle.vehicleId] = checkBox.isSelected
 
             propertyChangeListeners.forEach { l ->
                 val propertyChangeEvent = PropertyChangeEvent(
@@ -218,8 +224,8 @@ internal class FactionPanel(private val faction: StarWarsFaction) : JPanel(GridB
     }
 
     fun addPropertyChangeListener(uiOptionsPanel: UiOptionsPanel) {
-        uiOptionsPanel.addPropertyChangeListener(UiOptionsPanel::language.name) {
-            val enabledVehicles = this.enabledVehicles
+        uiOptionsPanel.addPropertyChangeListener(LanguageEvent) {
+            val enabledVehicles = starWarsState.vehiclesEnabled
             removeAll()
             selectedVehiclesCount.set(0)
             initFactionPanel()

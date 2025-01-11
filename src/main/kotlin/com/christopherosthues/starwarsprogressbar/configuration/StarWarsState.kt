@@ -29,7 +29,7 @@ internal class StarWarsState {
         }
 
     @JvmField
-    var vehiclesEnabled: Map<String, Boolean> =
+    var vehiclesEnabled: MutableMap<String, Boolean> =
         FactionHolder.defaultVehicles.stream().collect(Collectors.toMap(StarWarsVehicle::vehicleId) { true })
 
     var showVehicle: Boolean = DEFAULT_SHOW_VEHICLE
@@ -63,4 +63,22 @@ internal class StarWarsState {
         }
 
     var version: String = ""
+
+    fun copy(starWarsState: StarWarsState) {
+        language = starWarsState.language
+        vehiclesEnabled.clear()
+        vehiclesEnabled.putAll(starWarsState.vehiclesEnabled)
+        showVehicle = starWarsState.showVehicle
+        showVehicleNames = starWarsState.showVehicleNames
+        showToolTips = starWarsState.showToolTips
+        showFactionCrests = starWarsState.showFactionCrests
+        sameVehicleVelocity = starWarsState.sameVehicleVelocity
+        enableNewVehicles = starWarsState.enableNewVehicles
+        solidProgressBarColor = starWarsState.solidProgressBarColor
+        drawSilhouettes = starWarsState.drawSilhouettes
+        changeVehicleAfterPass = starWarsState.changeVehicleAfterPass
+        numberOfPassesUntilVehicleChange = starWarsState.numberOfPassesUntilVehicleChange
+        vehicleSelector = starWarsState.vehicleSelector
+        version = starWarsState.version
+    }
 }

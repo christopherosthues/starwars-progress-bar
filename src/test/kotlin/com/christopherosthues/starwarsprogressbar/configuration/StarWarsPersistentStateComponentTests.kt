@@ -9,6 +9,7 @@ import com.christopherosthues.starwarsprogressbar.selectors.SelectionType
 import com.intellij.idea.TestFor
 import com.intellij.openapi.application.Application
 import com.intellij.openapi.application.ApplicationManager
+import com.intellij.openapi.components.Service
 import com.intellij.openapi.components.State
 import com.intellij.util.xmlb.XmlSerializerUtil
 import io.mockk.every
@@ -23,7 +24,6 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertNotSame
-import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Assertions.assertSame
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
@@ -99,7 +99,7 @@ class StarWarsPersistentStateComponentTests {
         // Arrange
         val sut = StarWarsPersistentStateComponent()
         val expectedVersion = "1.0.0"
-        val expectedVehiclesEnabled = mapOf("1" to false, "2" to true, "3" to false, "4" to false, "5" to true)
+        val expectedVehiclesEnabled = mutableMapOf("1" to false, "2" to true, "3" to false, "4" to false, "5" to true)
         val starWarsState = StarWarsState().apply {
             vehiclesEnabled = expectedVehiclesEnabled
             showVehicle = false
@@ -188,26 +188,6 @@ class StarWarsPersistentStateComponentTests {
     }
 
     @Test
-    fun `instance should return null if application manager returns null`() {
-        // Arrange
-        mockkStatic(ApplicationManager::class)
-
-        val applicationMock = mockk<Application>()
-
-        every { ApplicationManager.getApplication() } returns applicationMock
-        every { applicationMock.getService(StarWarsPersistentStateComponent::class.java) } returns null
-
-        // Act
-        val result = StarWarsPersistentStateComponent.instance
-
-        // Assert
-        assertNull(result)
-
-        verify(exactly = 1) { ApplicationManager.getApplication() }
-        verify(exactly = 1) { applicationMock.getService(StarWarsPersistentStateComponent::class.java) }
-    }
-
-    @Test
     fun `class annotation parameters should be set correctly`() {
         // Arrange
 
@@ -216,13 +196,14 @@ class StarWarsPersistentStateComponentTests {
 
         // Assert
         assertAll(
-            { assertEquals(1, annotations.size) },
-            { assertEquals(State::class, annotations.first().annotationClass) },
-            { assertEquals("StarWarsProgress.xml", (annotations.first() as State).storages.first().value) },
+            { assertEquals(2, annotations.size) },
+            { assertEquals(Service::class, annotations.first().annotationClass) },
+            { assertEquals(State::class, annotations[1].annotationClass) },
+            { assertEquals("StarWarsProgress.xml", (annotations[1] as State).storages.first().value) },
             {
                 assertEquals(
                     "com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent",
-                    (annotations.first() as State).name,
+                    (annotations[1] as State).name,
                 )
             },
         )

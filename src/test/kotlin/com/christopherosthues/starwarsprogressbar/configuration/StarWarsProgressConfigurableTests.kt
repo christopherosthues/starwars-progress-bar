@@ -120,7 +120,7 @@ class StarWarsProgressConfigurableTests {
     @ParameterizedTest
     @MethodSource("isNotModifiedValues")
     fun `isModified should return false if star wars state and component properties are all equal`(
-        enabledVehicles: Map<String, Boolean>,
+        enabledVehicles: MutableMap<String, Boolean>,
         showVehicle: Boolean,
         showVehicleNames: Boolean,
         showToolTips: Boolean,
@@ -257,7 +257,7 @@ class StarWarsProgressConfigurableTests {
     fun `apply should not update star wars state if component is null`() {
         // Arrange
         val starWarsStateMock = setupStarWarsPersistentStateComponentMock().state!!
-        val enabledVehicles = mapOf("1" to true, "2" to false)
+        val enabledVehicles = mutableMapOf("1" to true, "2" to false)
         starWarsStateMock.vehiclesEnabled = enabledVehicles
         val sut = StarWarsProgressConfigurable()
 
@@ -283,7 +283,7 @@ class StarWarsProgressConfigurableTests {
     @ParameterizedTest
     @MethodSource("isNotModifiedValues")
     fun `apply should update star wars state`(
-        enabledVehicles: Map<String, Boolean> = mapOf(),
+        enabledVehicles: MutableMap<String, Boolean> = mutableMapOf(),
         showVehicle: Boolean = false,
         showVehicleNames: Boolean = false,
         showToolTips: Boolean = false,
@@ -475,7 +475,7 @@ class StarWarsProgressConfigurableTests {
     }
 
     private fun setupStarWarsState(
-        enabledVehicles: Map<String, Boolean> = mapOf(),
+        enabledVehicles: MutableMap<String, Boolean> = mutableMapOf(),
         showVehicle: Boolean = false,
         showVehicleNames: Boolean = false,
         showToolTips: Boolean = false,
@@ -512,7 +512,7 @@ class StarWarsProgressConfigurableTests {
     }
 
     private fun setupComponentState(
-        enabledVehicles: Map<String, Boolean> = mapOf(),
+        enabledVehicles: MutableMap<String, Boolean> = mutableMapOf(),
         showVehicle: Boolean = false,
         showVehicleNames: Boolean = false,
         showToolTips: Boolean = false,
@@ -526,19 +526,21 @@ class StarWarsProgressConfigurableTests {
         vehicleSelector: SelectionType = SelectionType.RANDOM_ALL,
         language: Language = Language.ENGLISH,
     ) {
-        every { starWarsProgressConfigurationComponentMock.enabledVehicles } returns enabledVehicles
-        every { starWarsProgressConfigurationComponentMock.showVehicle } returns showVehicle
-        every { starWarsProgressConfigurationComponentMock.showVehicleNames } returns showVehicleNames
-        every { starWarsProgressConfigurationComponentMock.showToolTips } returns showToolTips
-        every { starWarsProgressConfigurationComponentMock.showFactionCrests } returns showFactionCrests
-        every { starWarsProgressConfigurationComponentMock.sameVehicleVelocity } returns sameVehicleVelocity
-        every { starWarsProgressConfigurationComponentMock.enableNewVehicles } returns enableNewVehicles
-        every { starWarsProgressConfigurationComponentMock.solidProgressBarColor } returns solidProgressBarColor
-        every { starWarsProgressConfigurationComponentMock.drawSilhouettes } returns drawSilhouettes
-        every { starWarsProgressConfigurationComponentMock.changeVehicleAfterPass } returns changeVehicleAfterPass
-        every { starWarsProgressConfigurationComponentMock.numberOfPassesUntilVehicleChange } returns numberOfPassesUntilVehicleChange
-        every { starWarsProgressConfigurationComponentMock.vehicleSelector } returns vehicleSelector
-        every { starWarsProgressConfigurationComponentMock.language } returns language
+        val starWarsState = StarWarsState()
+        starWarsState.vehiclesEnabled = enabledVehicles
+        starWarsState.showVehicle = showVehicle
+        starWarsState.showVehicleNames = showVehicleNames
+        starWarsState.showToolTips = showToolTips
+        starWarsState.showFactionCrests = showFactionCrests
+        starWarsState.sameVehicleVelocity = sameVehicleVelocity
+        starWarsState.enableNewVehicles = enableNewVehicles
+        starWarsState.solidProgressBarColor = solidProgressBarColor
+        starWarsState.drawSilhouettes = drawSilhouettes
+        starWarsState.changeVehicleAfterPass = changeVehicleAfterPass
+        starWarsState.numberOfPassesUntilVehicleChange = numberOfPassesUntilVehicleChange
+        starWarsState.vehicleSelector = vehicleSelector
+        starWarsState.language = language
+        every { starWarsProgressConfigurationComponentMock.starWarsState } returns starWarsState
     }
 
     //endregion
@@ -546,7 +548,7 @@ class StarWarsProgressConfigurableTests {
     //region Test case data
 
     data class IsModifiedData(
-        val enabledVehicles: Map<String, Boolean> = mapOf(),
+        val enabledVehicles: MutableMap<String, Boolean> = mutableMapOf(),
         val showVehicle: Boolean = false,
         val showVehicleNames: Boolean = false,
         val showToolTips: Boolean = false,
@@ -614,25 +616,25 @@ class StarWarsProgressConfigurableTests {
 
         @JvmStatic
         fun isModifiedValues(): Stream<Arguments> = Stream.of(
-            Arguments.of(IsModifiedData(), IsModifiedData(mapOf("1" to true, "2" to false))),
-            Arguments.of(IsModifiedData(mapOf("1" to true, "2" to false)), IsModifiedData()),
+            Arguments.of(IsModifiedData(), IsModifiedData(mutableMapOf("1" to true, "2" to false))),
+            Arguments.of(IsModifiedData(mutableMapOf("1" to true, "2" to false)), IsModifiedData()),
             Arguments.of(IsModifiedData(), IsModifiedData(showVehicle = true)),
             Arguments.of(IsModifiedData(showVehicle = true), IsModifiedData()),
-            Arguments.of(IsModifiedData(), IsModifiedData(mapOf(), showVehicle = true)),
+            Arguments.of(IsModifiedData(), IsModifiedData(mutableMapOf(), showVehicle = true)),
             Arguments.of(IsModifiedData(showVehicle = true), IsModifiedData()),
-            Arguments.of(IsModifiedData(), IsModifiedData(mapOf(), showToolTips = true)),
+            Arguments.of(IsModifiedData(), IsModifiedData(mutableMapOf(), showToolTips = true)),
             Arguments.of(IsModifiedData(showToolTips = true), IsModifiedData()),
-            Arguments.of(IsModifiedData(), IsModifiedData(mapOf(), showFactionCrests = true)),
+            Arguments.of(IsModifiedData(), IsModifiedData(mutableMapOf(), showFactionCrests = true)),
             Arguments.of(IsModifiedData(showFactionCrests = true), IsModifiedData()),
-            Arguments.of(IsModifiedData(), IsModifiedData(mapOf(), sameVehicleVelocity = true)),
+            Arguments.of(IsModifiedData(), IsModifiedData(mutableMapOf(), sameVehicleVelocity = true)),
             Arguments.of(IsModifiedData(sameVehicleVelocity = true), IsModifiedData()),
-            Arguments.of(IsModifiedData(), IsModifiedData(mapOf(), enableNewVehicles = true)),
+            Arguments.of(IsModifiedData(), IsModifiedData(mutableMapOf(), enableNewVehicles = true)),
             Arguments.of(IsModifiedData(enableNewVehicles = true), IsModifiedData()),
-            Arguments.of(IsModifiedData(), IsModifiedData(mapOf(), solidProgressBarColor = true)),
+            Arguments.of(IsModifiedData(), IsModifiedData(mutableMapOf(), solidProgressBarColor = true)),
             Arguments.of(IsModifiedData(solidProgressBarColor = true), IsModifiedData()),
-            Arguments.of(IsModifiedData(), IsModifiedData(mapOf(), drawSilhouettes = true)),
+            Arguments.of(IsModifiedData(), IsModifiedData(mutableMapOf(), drawSilhouettes = true)),
             Arguments.of(IsModifiedData(drawSilhouettes = true), IsModifiedData()),
-            Arguments.of(IsModifiedData(), IsModifiedData(mapOf(), vehicleSelector = SelectionType.INORDER_VEHICLE_NAME)),
+            Arguments.of(IsModifiedData(), IsModifiedData(mutableMapOf(), vehicleSelector = SelectionType.INORDER_VEHICLE_NAME)),
             Arguments.of(IsModifiedData(vehicleSelector = SelectionType.INORDER_VEHICLE_NAME), IsModifiedData()),
             Arguments.of(IsModifiedData(changeVehicleAfterPass = true), IsModifiedData()),
             Arguments.of(IsModifiedData(), IsModifiedData(changeVehicleAfterPass = true)),

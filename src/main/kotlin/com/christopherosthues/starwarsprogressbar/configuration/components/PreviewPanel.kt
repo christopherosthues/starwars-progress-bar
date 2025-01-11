@@ -1,9 +1,10 @@
 package com.christopherosthues.starwarsprogressbar.configuration.components
 
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
+import com.christopherosthues.starwarsprogressbar.configuration.LanguageEvent
+import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
-import com.christopherosthues.starwarsprogressbar.selectors.SelectionType
 import com.christopherosthues.starwarsprogressbar.selectors.VehicleSelector
 import com.christopherosthues.starwarsprogressbar.ui.StarWarsProgressBarUI
 import com.intellij.icons.AllIcons
@@ -20,18 +21,7 @@ import javax.swing.JProgressBar
 private const val HORIZONTAL_GAP = 10
 
 internal class PreviewPanel(
-    private val showVehicle: () -> Boolean,
-    private val showVehicleNames: () -> Boolean,
-    private val showToolTips: () -> Boolean,
-    private val showFactionCrests: () -> Boolean,
-    private val sameVehicleVelocity: () -> Boolean,
-    private val enableNewVehicles: () -> Boolean,
-    private val solidProgressBarColor: () -> Boolean,
-    private val drawSilhouettes: () -> Boolean,
-    private val changeVehicleAfterPass: () -> Boolean,
-    private val numberOfPassesUntilVehicleChange: () -> Int,
-    private val enabledVehicles: () -> Map<String, Boolean>?,
-    private val vehicleSelector: () -> SelectionType,
+    private val starWarsState: StarWarsState,
 ) : JTitledPanel(StarWarsBundle.message(BundleConstants.PREVIEW_TITLE)) {
 
     private var determinateProgressBarContainer: LabeledComponent<JComponent>
@@ -45,7 +35,7 @@ internal class PreviewPanel(
 
         val previewButton = JButton(AllIcons.Actions.Refresh)
         previewButton.addActionListener {
-            setProgressBarUI(enabledVehicles())
+            setProgressBarUI(starWarsState.vehiclesEnabled)
         }
         var gridBagConstraints = GridBagConstraints()
         gridBagConstraints.fill = GridBagConstraints.NONE
@@ -92,41 +82,21 @@ internal class PreviewPanel(
     private fun setProgressBarUI(determinateVehicle: StarWarsVehicle, indeterminateVehicle: StarWarsVehicle) {
         determinateProgressBar.setUI(
             StarWarsProgressBarUI(
+                { starWarsState },
                 determinateVehicle,
-                enabledVehicles,
-                showVehicle,
-                showVehicleNames,
-                showToolTips,
-                showFactionCrests,
-                sameVehicleVelocity,
-                solidProgressBarColor,
-                drawSilhouettes,
-                changeVehicleAfterPass,
-                numberOfPassesUntilVehicleChange,
-                vehicleSelector,
             ),
         )
 
         indeterminateProgressBar.setUI(
             StarWarsProgressBarUI(
+                { starWarsState },
                 indeterminateVehicle,
-                enabledVehicles,
-                showVehicle,
-                showVehicleNames,
-                showToolTips,
-                showFactionCrests,
-                sameVehicleVelocity,
-                solidProgressBarColor,
-                drawSilhouettes,
-                changeVehicleAfterPass,
-                numberOfPassesUntilVehicleChange,
-                vehicleSelector,
             ),
         )
     }
 
     private fun selectVehicle(enabledVehicles: Map<String, Boolean>?): StarWarsVehicle =
-        VehicleSelector.selectVehicle(enabledVehicles, enableNewVehicles(), vehicleSelector())
+        VehicleSelector.selectVehicle(enabledVehicles, starWarsState.enableNewVehicles, starWarsState.vehicleSelector!!)
 
     fun selectVehicle(vehicle: StarWarsVehicle) {
         setProgressBarUI(vehicle, vehicle)
@@ -137,7 +107,7 @@ internal class PreviewPanel(
     }
 
     fun addPropertyChangeListener(uiOptionsPanel: UiOptionsPanel) {
-        uiOptionsPanel.addPropertyChangeListener(UiOptionsPanel::language.name) {
+        uiOptionsPanel.addPropertyChangeListener(LanguageEvent) {
             title = StarWarsBundle.message(BundleConstants.PREVIEW_TITLE)
             determinateProgressBarContainer.text = StarWarsBundle.message(BundleConstants.DETERMINATE)
             indeterminateProgressBarContainer.text = StarWarsBundle.message(BundleConstants.INDETERMINATE)

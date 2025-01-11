@@ -4,7 +4,6 @@ import com.christopherosthues.starwarsprogressbar.configuration.components.Previ
 import com.christopherosthues.starwarsprogressbar.configuration.components.UiOptionsPanel
 import com.christopherosthues.starwarsprogressbar.configuration.components.VehiclesPanel
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
-import com.christopherosthues.starwarsprogressbar.selectors.SelectionType
 import com.christopherosthues.starwarsprogressbar.ui.events.VehicleClickListener
 import com.intellij.util.ui.FormBuilder
 import java.awt.BorderLayout
@@ -16,51 +15,14 @@ internal class StarWarsProgressConfigurationComponent {
 
     private lateinit var previewPanel: PreviewPanel
 
-    private val uiOptionsPanel = UiOptionsPanel()
+    val starWarsState: StarWarsState = StarWarsState()
 
-    private val vehiclesPanel = VehiclesPanel()
+    private val uiOptionsPanel = UiOptionsPanel(starWarsState)
+
+    private val vehiclesPanel = VehiclesPanel(starWarsState)
 
     val panel: JPanel
         get() = mainPanel
-
-    val enabledVehicles: Map<String, Boolean>
-        get() = vehiclesPanel.enabledVehicles
-
-    val showVehicle: Boolean
-        get() = uiOptionsPanel.showVehicle
-
-    val showVehicleNames: Boolean
-        get() = uiOptionsPanel.showVehicleNames
-
-    val showToolTips: Boolean
-        get() = uiOptionsPanel.showToolTips
-
-    val showFactionCrests: Boolean
-        get() = uiOptionsPanel.showFactionCrests
-
-    val sameVehicleVelocity: Boolean
-        get() = uiOptionsPanel.sameVehicleVelocity
-
-    val enableNewVehicles: Boolean
-        get() = uiOptionsPanel.enableNewVehicles
-
-    val solidProgressBarColor: Boolean
-        get() = uiOptionsPanel.solidProgressBarColor
-
-    val drawSilhouettes: Boolean
-        get() = uiOptionsPanel.drawSilhouettes
-
-    val changeVehicleAfterPass: Boolean
-        get() = uiOptionsPanel.changeVehicleAfterPass
-
-    val numberOfPassesUntilVehicleChange: Int
-        get() = uiOptionsPanel.numberOfPassesUntilVehicleChange
-
-    val vehicleSelector: SelectionType
-        get() = uiOptionsPanel.vehicleSelector
-
-    val language: Language
-        get() = uiOptionsPanel.language
 
     init {
         createUI()
@@ -68,6 +30,7 @@ internal class StarWarsProgressConfigurationComponent {
 
     fun updateUI(starWarsState: StarWarsState?) {
         if (starWarsState != null) {
+            this.starWarsState.copy(starWarsState)
             uiOptionsPanel.updateUI(starWarsState)
 
             vehiclesPanel.updateUI(starWarsState)
@@ -92,18 +55,7 @@ internal class StarWarsProgressConfigurationComponent {
 
     private fun createPreviewSection(formBuilder: FormBuilder) {
         previewPanel = PreviewPanel(
-            this::showVehicle,
-            this::showVehicleNames,
-            this::showToolTips,
-            this::showFactionCrests,
-            this::sameVehicleVelocity,
-            this::enableNewVehicles,
-            this::solidProgressBarColor,
-            this::drawSilhouettes,
-            this::changeVehicleAfterPass,
-            this::numberOfPassesUntilVehicleChange,
-            this::enabledVehicles,
-            this::vehicleSelector,
+            starWarsState,
         )
 
         formBuilder.addComponent(previewPanel)
@@ -114,7 +66,7 @@ internal class StarWarsProgressConfigurationComponent {
             if (isProgressBarTextEvent(it.propertyName) ||
                 isProgressBarDrawEvent(it.propertyName) ||
                 isVehicleChangeEvent(it.propertyName) ||
-                it.propertyName == UiOptionsPanel::vehicleSelector.name
+                it.propertyName == VehicleSelectorEvent
             ) {
                 repaintProgressBar()
             }
@@ -124,19 +76,19 @@ internal class StarWarsProgressConfigurationComponent {
     }
 
     private fun isProgressBarTextEvent(propertyName: String): Boolean =
-        propertyName == UiOptionsPanel::showVehicleNames.name ||
-            propertyName == UiOptionsPanel::showToolTips.name
+        propertyName == ShowVehicleNamesEvent ||
+            propertyName == ShowToolTipsEvent
 
     private fun isProgressBarDrawEvent(propertyName: String): Boolean =
-        propertyName == UiOptionsPanel::showFactionCrests.name ||
-            propertyName == UiOptionsPanel::sameVehicleVelocity.name ||
-            propertyName == UiOptionsPanel::solidProgressBarColor.name ||
-            propertyName == UiOptionsPanel::showVehicle.name ||
-            propertyName == UiOptionsPanel::drawSilhouettes.name
+        propertyName == ShowFactionCrestsEvent ||
+            propertyName == SameVelocityEvent ||
+            propertyName == SolidProgressBarColorEvent ||
+            propertyName == ShowVehicleEvent ||
+            propertyName == DrawSilhouettesEvent
 
     private fun isVehicleChangeEvent(propertyName: String): Boolean =
-        propertyName == UiOptionsPanel::changeVehicleAfterPass.name ||
-            propertyName == UiOptionsPanel::numberOfPassesUntilVehicleChange.name
+        propertyName == ChangeVehicleAfterPassEvent ||
+            propertyName == NumberOfPassesUntilVehicleChangeEvent
 
     private fun repaintProgressBar() {
         previewPanel.repaintProgressBar()
