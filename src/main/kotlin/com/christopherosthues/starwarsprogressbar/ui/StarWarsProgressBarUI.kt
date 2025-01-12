@@ -34,8 +34,8 @@ import javax.swing.SwingConstants
 import javax.swing.plaf.basic.BasicProgressBarUI
 
 internal class StarWarsProgressBarUI(
-    private val starWarsState: () -> StarWarsState?,
-    private var vehicle: StarWarsVehicle,
+    starWarsState: () -> StarWarsState?,
+    vehicle: StarWarsVehicle,
 ) : BasicProgressBarUI() {
     private val vehicleProgressBarDecorator = VehicleProgressBarDecorator(starWarsState, vehicle)
     private val lightsaberProgressBarDecorator = LightsaberProgressBarDecorator()
