@@ -1,4 +1,11 @@
 {
+    "lightsabers": [
+        {
+            "id": "youngling_slayer_9000",
+            "color": "blue",
+            "velocity": 4
+        }
+    ],
     "factions": [
         {
             "id": "sith_empire",

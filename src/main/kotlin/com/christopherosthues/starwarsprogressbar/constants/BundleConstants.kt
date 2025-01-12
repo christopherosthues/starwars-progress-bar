@@ -32,4 +32,6 @@ internal object BundleConstants {
     const val FACTION = "faction."
 
     const val VEHICLES = "vehicles."
+
+    const val LIGHTSABERS = "lightsabers."
 }
