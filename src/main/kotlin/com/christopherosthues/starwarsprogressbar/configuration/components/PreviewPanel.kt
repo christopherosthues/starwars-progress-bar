@@ -1,7 +1,7 @@
 package com.christopherosthues.starwarsprogressbar.configuration.components
 
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
-import com.christopherosthues.starwarsprogressbar.configuration.LanguageEvent
+import com.christopherosthues.starwarsprogressbar.configuration.LANGUAGE_EVENT
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
@@ -107,7 +107,7 @@ internal class PreviewPanel(
     }
 
     fun addPropertyChangeListener(uiOptionsPanel: UiOptionsPanel) {
-        uiOptionsPanel.addPropertyChangeListener(LanguageEvent) {
+        uiOptionsPanel.addPropertyChangeListener(LANGUAGE_EVENT) {
             title = StarWarsBundle.message(BundleConstants.PREVIEW_TITLE)
             determinateProgressBarContainer.text = StarWarsBundle.message(BundleConstants.DETERMINATE)
             indeterminateProgressBarContainer.text = StarWarsBundle.message(BundleConstants.INDETERMINATE)

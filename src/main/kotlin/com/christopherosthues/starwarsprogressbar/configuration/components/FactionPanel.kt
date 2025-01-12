@@ -1,7 +1,7 @@
 package com.christopherosthues.starwarsprogressbar.configuration.components
 
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
-import com.christopherosthues.starwarsprogressbar.configuration.LanguageEvent
+import com.christopherosthues.starwarsprogressbar.configuration.LANGUAGE_EVENT
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
 import com.christopherosthues.starwarsprogressbar.configuration.borders.TitledIconBorder
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
@@ -224,7 +224,7 @@ internal class FactionPanel(private val starWarsState: StarWarsState, private va
     }
 
     fun addPropertyChangeListener(uiOptionsPanel: UiOptionsPanel) {
-        uiOptionsPanel.addPropertyChangeListener(LanguageEvent) {
+        uiOptionsPanel.addPropertyChangeListener(LANGUAGE_EVENT) {
             val enabledVehicles = starWarsState.vehiclesEnabled
             removeAll()
             selectedVehiclesCount.set(0)

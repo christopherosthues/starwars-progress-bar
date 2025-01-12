@@ -7,7 +7,6 @@ import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.ui.events.VehicleClickListener
 import com.intellij.util.ui.FormBuilder
 import java.awt.BorderLayout
-import java.util.*
 import javax.swing.JPanel
 
 internal class StarWarsProgressConfigurationComponent {
@@ -66,7 +65,7 @@ internal class StarWarsProgressConfigurationComponent {
             if (isProgressBarTextEvent(it.propertyName) ||
                 isProgressBarDrawEvent(it.propertyName) ||
                 isVehicleChangeEvent(it.propertyName) ||
-                it.propertyName == VehicleSelectorEvent
+                it.propertyName == VEHICLE_SELECTOR_EVENT
             ) {
                 repaintProgressBar()
             }
@@ -76,19 +75,19 @@ internal class StarWarsProgressConfigurationComponent {
     }
 
     private fun isProgressBarTextEvent(propertyName: String): Boolean =
-        propertyName == ShowVehicleNamesEvent ||
-            propertyName == ShowToolTipsEvent
+        propertyName == SHOW_VEHICLE_NAMES_EVENT ||
+            propertyName == SHOW_TOOL_TIPS_EVENT
 
     private fun isProgressBarDrawEvent(propertyName: String): Boolean =
-        propertyName == ShowFactionCrestsEvent ||
-            propertyName == SameVelocityEvent ||
-            propertyName == SolidProgressBarColorEvent ||
-            propertyName == ShowVehicleEvent ||
-            propertyName == DrawSilhouettesEvent
+        propertyName == SHOW_FACTION_CRESTS_EVENT ||
+            propertyName == SAME_VELOCITY_EVENT ||
+            propertyName == SOLID_PROGRESS_BAR_COLOR_EVENT ||
+            propertyName == SHOW_VEHICLE_EVENT ||
+            propertyName == DRAW_SILHOUETTES_EVENT
 
     private fun isVehicleChangeEvent(propertyName: String): Boolean =
-        propertyName == ChangeVehicleAfterPassEvent ||
-            propertyName == NumberOfPassesUntilVehicleChangeEvent
+        propertyName == CHANGE_VEHICLE_AFTER_PASS_EVENT ||
+            propertyName == NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE_EVENT
 
     private fun repaintProgressBar() {
         previewPanel.repaintProgressBar()
