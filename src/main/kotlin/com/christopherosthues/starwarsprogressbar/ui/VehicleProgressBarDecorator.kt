@@ -2,8 +2,10 @@ package com.christopherosthues.starwarsprogressbar.ui
 
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
-import com.christopherosthues.starwarsprogressbar.constants.*
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_CHANGE_VEHICLE_AFTER_PASS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_DRAW_SILHOUETTES
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SAME_VEHICLE_VELOCITY
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_FACTION_CRESTS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_TOOLTIPS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE
@@ -18,7 +20,17 @@ import com.intellij.ui.JBColor
 import com.intellij.ui.scale.JBUIScale
 import com.intellij.util.ui.GraphicsUtil
 import com.intellij.util.ui.UIUtil
-import java.awt.*
+import java.awt.BasicStroke
+import java.awt.Color
+import java.awt.Component
+import java.awt.Dimension
+import java.awt.Graphics
+import java.awt.Graphics2D
+import java.awt.Insets
+import java.awt.LinearGradientPaint
+import java.awt.Paint
+import java.awt.Rectangle
+import java.awt.Shape
 import java.awt.geom.RoundRectangle2D
 import javax.swing.JComponent
 import javax.swing.JProgressBar
