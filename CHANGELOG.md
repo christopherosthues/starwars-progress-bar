@@ -8,6 +8,9 @@
 
 ### Changed
 
+- Updated to Java 21
+- Updated supported IDEA versions to 2024.2+
+
 ### Removed
 
 ### Fixed

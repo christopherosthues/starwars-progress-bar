@@ -32,9 +32,9 @@ plugins {
 group = providers.gradleProperty("pluginGroup").get()
 version = providers.gradleProperty("pluginVersion").get()
 
-// Set the JVM language level used to compile sources and generate files - Java 17 is required since 2022.2
+// Set the JVM language level used to compile sources and generate files - Java 21 is required since 2024.2
 kotlin {
-    jvmToolchain(17)
+    jvmToolchain(21)
 }
 
 // Configure project's dependencies
@@ -49,7 +49,7 @@ repositories {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
+        languageVersion = JavaLanguageVersion.of(21)
     }
 }
 
@@ -216,10 +216,10 @@ tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
 
 // Kotlin DSL
 tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
-    this.jvmTarget = "17"
+    this.jvmTarget = "21"
 }
 tasks.withType<io.gitlab.arturbosch.detekt.DetektCreateBaselineTask>().configureEach {
-    this.jvmTarget = "17"
+    this.jvmTarget = "21"
 }
 
 intellijPlatformTesting {
