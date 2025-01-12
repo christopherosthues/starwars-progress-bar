@@ -1,0 +1,3 @@
+package com.christopherosthues.starwarsprogressbar.ui
+
+internal class LightsaberProgressBarDecorator
