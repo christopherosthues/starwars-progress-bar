@@ -6,6 +6,8 @@
 
 ### Added
 
+[//]: # (- Lightsaber progress bar)
+
 ### Changed
 
 - Updated to Java 21
@@ -14,6 +16,8 @@
 ### Removed
 
 ### Fixed
+
+- Corrected German translation of TIE Striker
 
 ## [1.12.0] - 2024-09-17
 
