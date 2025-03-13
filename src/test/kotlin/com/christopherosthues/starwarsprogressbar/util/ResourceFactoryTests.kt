@@ -243,7 +243,7 @@ class ResourceFactoryTests {
     fun `createImageIconFromURL should return image icon created from provided url`() {
         // Arrange
         val size = 32
-        val imageResource = "icons/missing.png"
+        val imageResource = "icons/vehicles/missing.png"
 
         val url = Optional.ofNullable(createClassLoader().getResource(imageResource))
             .orElseGet { createClassLoader().getResource("/$imageResource") }
