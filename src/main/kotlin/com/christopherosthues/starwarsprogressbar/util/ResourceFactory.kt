@@ -13,14 +13,14 @@ internal fun createClassLoader(): ClassLoader = StarWarsResourceLoader.javaClass
 internal fun readTextFromUrl(url: URL): String = url.readText()
 
 internal fun parseFactionsFromJson(json: String): StarWarsFactions {
-    var loadedFactions = StarWarsFactions(listOf())
+    var loadedFactions = StarWarsFactions(listOf(), listOf())
     try {
         loadedFactions = decodeFromString(StarWarsFactions.serializer(), json)
     } catch (exception: Exception) {
         return loadedFactions
     }
 
-    return if (loadedFactions.factions != null) loadedFactions else StarWarsFactions(listOf())
+    return if (loadedFactions.factions != null) loadedFactions else StarWarsFactions(listOf(), listOf())
 }
 
 internal fun createScaledEmptyImageIcon(size: Int): ImageIcon = ImageIcon(createEmptyBufferedImage(size, size))

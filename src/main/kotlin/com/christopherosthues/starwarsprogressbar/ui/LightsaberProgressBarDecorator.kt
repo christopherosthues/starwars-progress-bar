@@ -13,6 +13,7 @@ import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE_NAMES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRESS_BAR_COLOR
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_VEHICLE_SELECTOR
+import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.selectors.VehicleSelector.selectVehicle
 import com.christopherosthues.starwarsprogressbar.ui.components.ColoredImageComponent
 import com.christopherosthues.starwarsprogressbar.util.StarWarsResourceLoader
@@ -25,24 +26,99 @@ import java.awt.geom.RoundRectangle2D
 import javax.swing.JComponent
 import javax.swing.JProgressBar
 
-internal class LightsaberProgressBarDecorator(private val starWarsState: () -> StarWarsState?) {
-    private var lightsaberIcon = ColoredImageComponent(StarWarsResourceLoader.getVehicleImage(vehicle.fileName))
+internal class LightsaberProgressBarDecorator(private val starWarsState: () -> StarWarsState?, private var lightsaber: Lightsaber) {
+    private var lightsaberIcon = ColoredImageComponent(StarWarsResourceLoader.getVehicleImage(lightsaber.fileName))
 
     private var velocity = getVelocity()
     private var position = 0
     private var numberOfPasses = 0
 
+    override fun paint(g: Graphics?, c: JComponent?) {
+//        val g2 = g as Graphics2D
+//        val width: Int = progressBar.width
+//        val height: Int = progressBar.height
+//
+//        // Enable anti-aliasing for smooth edges
+//        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON)
+//
+//
+//        // Define colors for the lightsaber effect
+//        val color1: Color = Color(50, 100, 255) // Blue (top)
+//        val color2: Color = Color(230, 240, 255) // Almost white (center)
+//        val color3: Color = Color(50, 100, 255) // Blue (bottom)
+//
+//        // Create a horizontal gradient for the glowing effect
+//        val gradient = GradientPaint(
+//            0f, (height / 2).toFloat(), color1,
+//            (width / 2).toFloat(), (height / 2).toFloat(), color2, true
+//        )
+//
+//        g2.paint = gradient
+//
+//        // Draw the rounded progress bar
+//        val arc = height // Make the edges round
+//        val progressWidth = (width * (progressBar.getPercentComplete())).toInt()
+//
+//        g2.fillRoundRect(0, 0, progressWidth, height, arc, arc)
+//
+//        // Optional: Add a glowing effect around the saber
+//        g2.color = Color(50, 100, 255, 80) // Transparent blue glow
+//        g2.fillRoundRect(0, 0, progressWidth, height, arc, arc)
+        val g2 = g as Graphics2D
+        val width: Int = progressBar.width
+        val height: Int = progressBar.height
+
+
+        // Enable anti-aliasing for smoother rendering
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON)
+
+        // Define colors for the vertical gradient
+        val colorTop = Color(50, 100, 255) // Blue (top)
+        val colorMiddle = Color(230, 240, 255) // Almost white (middle)
+        val colorBottom = Color(50, 100, 255) // Blue (bottom)
+
+
+        // Define LinearGradientPaint (Vertical Gradient)
+        val fractions = floatArrayOf(0.0f, 0.25f, 0.75f, 1.0f) // Positions: Top, Middle, Bottom
+        val colors = arrayOf(colorTop, colorMiddle, colorMiddle, colorBottom) // Corresponding colors
+        val gradient = LinearGradientPaint(
+            0f, 0f, 0f, height.toFloat(), fractions, colors
+        )
+
+        val color = g2.color
+
+        // Progress bar width based on current progress
+        val progressWidth = (width * progressBar.getPercentComplete()).toInt()
+
+        // Define arc radius (only for the right side)
+        val arc = height
+
+//        // Optional: Add a glowing effect around the saber
+//        g2.color = Color(50, 100, 255, 80) // Transparent blue glow
+//        g2.fillRoundRect(0, 0, progressWidth, height, arc, arc)
+
+        g2.color = color
+        g2.paint = gradient
+
+        // Draw the progress bar with a rounded right tip
+        g2.fillRoundRect(0, 0, progressWidth, height, arc, arc)
+
+        // Add a clipping mask to make the left side flat
+        g2.setClip(0, 0, progressWidth - arc / 2, height)
+        g2.fillRect(0, 0, progressWidth, height) // Force flat left edge
+    }
+
     internal fun update() {
-        vehicle = selectVehicle(
+        lightsaber = selectVehicle(
             starWarsState()?.vehiclesEnabled,
             false,
             starWarsState()?.vehicleSelector ?: DEFAULT_VEHICLE_SELECTOR,
         )
-        lightsaberIcon = ColoredImageComponent(StarWarsResourceLoader.getVehicleImage(vehicle.fileName))
+        lightsaberIcon = ColoredImageComponent(StarWarsResourceLoader.getVehicleImage(lightsaber.fileName))
     }
 
     private fun getVelocity(): Float =
-        if (starWarsState()?.sameVehicleVelocity ?: DEFAULT_SAME_VEHICLE_VELOCITY) 1f else vehicle.velocity
+        if (starWarsState()?.sameVehicleVelocity ?: DEFAULT_SAME_VEHICLE_VELOCITY) 1f else lightsaber.velocity
 
     internal fun getPreferredSize(c: JComponent?, parentWidth: Int): Dimension =
         Dimension(parentWidth, JBUIScale.scale(VEHICLE_PROGRESSBAR_HEIGHT))
@@ -136,7 +212,7 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
 
     private fun setToolTipText(progressBar: JProgressBar) {
         if (starWarsState()?.showToolTips ?: DEFAULT_SHOW_TOOLTIPS) {
-            val localizedName = StarWarsBundle.message(vehicle.localizationKey)
+            val localizedName = StarWarsBundle.message(lightsaber.localizationKey)
             if (progressBar.toolTipText != localizedName) {
                 progressBar.toolTipText = localizedName
             }
@@ -148,7 +224,7 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
     private fun setProgressBarText(progressBar: JProgressBar) {
         progressBar.isStringPainted = starWarsState()?.showVehicleNames ?: DEFAULT_SHOW_VEHICLE_NAMES
         if (starWarsState()?.showVehicleNames ?: DEFAULT_SHOW_VEHICLE_NAMES) {
-            val localizedName = StarWarsBundle.message(vehicle.localizationKey)
+            val localizedName = StarWarsBundle.message(lightsaber.localizationKey)
             if (progressBar.string != localizedName) {
                 progressBar.string = localizedName
             }
@@ -218,7 +294,7 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         }
     }
 
-    private fun getFillPaint(): Paint = vehicle.color
+    private fun getFillPaint(): Paint = lightsaber.color
 
     private fun drawIcon(amountFull: Int, graphics2D: Graphics2D, clip: Shape, component: JComponent) {
         val previousClip = graphics2D.clip
@@ -232,8 +308,8 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         } else {
             icon.foreground = null
         }
-        val x = amountFull + JBUIScale.scale(vehicle.xShift)
-        val y = vehicle.yShift
+        val x = amountFull + JBUIScale.scale(lightsaber.xShift)
+        val y = lightsaber.yShift
         icon.paint(graphics2D, x, y)
         graphics2D.clip = previousClip
         graphics2D.color = previousColor

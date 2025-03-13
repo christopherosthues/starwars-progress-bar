@@ -25,20 +25,18 @@ import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_VEHICLE_SELECTOR
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.selectors.VehicleSelector.selectVehicle
-import java.awt.Dimension
-import java.awt.Graphics
-import java.awt.Graphics2D
-import java.awt.Insets
+import java.awt.*
 import javax.swing.JComponent
 import javax.swing.SwingConstants
 import javax.swing.plaf.basic.BasicProgressBarUI
+
 
 internal class StarWarsProgressBarUI(
     starWarsState: () -> StarWarsState?,
     vehicle: StarWarsVehicle,
 ) : BasicProgressBarUI() {
     private val vehicleProgressBarDecorator = VehicleProgressBarDecorator(starWarsState, vehicle)
-    private val lightsaberProgressBarDecorator = LightsaberProgressBarDecorator()
+    private val lightsaberProgressBarDecorator = LightsaberProgressBarDecorator(starWarsState)
 
     constructor() : this(
         { StarWarsPersistentStateComponent.instance?.state },

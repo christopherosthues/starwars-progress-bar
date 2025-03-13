@@ -6,7 +6,7 @@
 
 ### Added
 
-[//]: # (- Lightsaber progress bar)
+- Lightsaber progress bar
 
 ### Changed
 

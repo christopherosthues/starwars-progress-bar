@@ -1,9 +1,194 @@
 {
     "lightsabers": [
         {
-            "id": "youngling_slayer_9000",
-            "color": "blue",
-            "velocity": 4
+            "id": "sith",
+            "persons": [
+                {
+                    "id": "asajj_ventress_second",
+                    "color": "red",
+                    "isShoto": false,
+                    "isDoubleBladed": false,
+                    "velocity": 2
+                },
+                {
+                    "id": "darth_krall",
+                    "color": "red",
+                    "isShoto": false,
+                    "isDoubleBladed": false,
+                    "velocity": 2
+                },
+                {
+                    "id": "darth_maul_first",
+                    "color": "red",
+                    "isShoto": false,
+                    "isDoubleBladed": true,
+                    "velocity": 2
+                },
+                {
+                    "id": "darth_maul_second",
+                    "color": "red",
+                    "isShoto": false,
+                    "isDoubleBladed": false,
+                    "velocity": 2
+                },
+                {
+                    "id": "darth_maul_third",
+                    "color": "red",
+                    "isShoto": false,
+                    "isDoubleBladed": false,
+                    "velocity": 2
+                },
+                {
+                    "id": "darth_sidious",
+                    "color": "red",
+                    "isShoto": false,
+                    "isDoubleBladed": false,
+                    "velocity": 2
+                },
+                {
+                    "id": "darth_vader_first",
+                    "color": "red",
+                    "isShoto": false,
+                    "isDoubleBladed": false,
+                    "velocity": 2
+                },
+                {
+                    "id": "darth_vader_second",
+                    "color": "red",
+                    "isShoto": false,
+                    "isDoubleBladed": false,
+                    "velocity": 2
+                },
+                {
+                    "id": "darth_tyranus",
+                    "color": "red",
+                    "isShoto": false,
+                    "isDoubleBladed": false,
+                    "velocity": 2
+                },
+                {
+                    "id": "the_acolyte",
+                    "color": "red",
+                    "isShoto": false,
+                    "isDoubleBladed": false,
+                    "velocity": 2
+                }
+            ]
+        },
+        {
+            "id": "jedi",
+            "persons": [
+                {
+                    "id": "ahsoka_tano_first",
+                    "color": "green",
+                    "isShoto": false,
+                    "isDoubleBladed": false,
+                    "velocity": 4
+                },
+                {
+                    "id": "ahsoka_tano_second",
+                    "color": "blue",
+                    "isShoto": false,
+                    "isDoubleBladed": false,
+                    "velocity": 4
+                },
+                {
+                    "id": "anakin_skywalker_first",
+                    "color": "blue",
+                    "isShoto": false,
+                    "isDoubleBladed": false,
+                    "velocity": 4
+                },
+                {
+                    "id": "anakin_skywalker_second",
+                    "color": "blue",
+                    "isShoto": false,
+                    "isDoubleBladed": false,
+                    "velocity": 4
+                },
+                {
+                    "id": "asajj_ventress_first",
+                    "color": "green",
+                    "isShoto": false,
+                    "isDoubleBladed": false,
+                    "velocity": 4
+                },
+                {
+                    "id": "luke_skywalker",
+                    "color": "green",
+                    "isShoto": false,
+                    "isDoubleBladed": false,
+                    "velocity": 4
+                },
+                {
+                    "id": "mace_windu",
+                    "color": "purple",
+                    "isShoto": false,
+                    "isDoubleBladed": false,
+                    "velocity": 4
+                },
+                {
+                    "id": "obi_wan_kenobi_first",
+                    "color": "blue",
+                    "isShoto": false,
+                    "isDoubleBladed": false,
+                    "velocity": 4
+                },
+                {
+                    "id": "obi_wan_kenobi_second",
+                    "color": "blue",
+                    "isShoto": false,
+                    "isDoubleBladed": false,
+                    "velocity": 4
+                },
+                {
+                    "id": "obi_wan_kenobi_third",
+                    "color": "blue",
+                    "isShoto": false,
+                    "isDoubleBladed": false,
+                    "velocity": 4
+                },
+                {
+                    "id": "qui_gon_jinn",
+                    "color": "green",
+                    "isShoto": false,
+                    "isDoubleBladed": false,
+                    "velocity": 4
+                },
+                {
+                    "id": "yoda",
+                    "color": "green",
+                    "isShoto": true,
+                    "isDoubleBladed": false,
+                    "velocity": 4
+                },
+                {
+                    "id": "yaddle",
+                    "color": "green",
+                    "isShoto": true,
+                    "isDoubleBladed": false,
+                    "velocity": 4
+                },
+                {
+                    "id": "youngling_slayer_9000",
+                    "color": "blue",
+                    "isShoto": false,
+                    "isDoubleBladed": false,
+                    "velocity": 4
+                }
+            ]
+        },
+        {
+            "id": "other",
+            "persons": [
+                {
+                    "id": "youngling_slayer_9000",
+                    "color": "blue",
+                    "isShoto": false,
+                    "isDoubleBladed": false,
+                    "velocity": 4
+                }
+            ]
         }
     ],
     "factions": [

@@ -6,9 +6,16 @@ import com.intellij.ui.JBColor
 import kotlinx.serialization.Serializable
 
 @Serializable
-internal class Lightsaber(val id: String,
+internal data class Lightsaber(val id: String,
     val bladeColor: String,
-    val velocity: Float) {
+    val velocity: Float,
+    val isShoto: Boolean,
+    val isDoubleBladed: Boolean) {
+    var factionId: String = ""
+
+    val lightsaberId: String
+        get() = if (factionId.isEmpty()) id else "$factionId.$id"
+
     val fileName: String
         get() = "lightsabers/$id"
 
