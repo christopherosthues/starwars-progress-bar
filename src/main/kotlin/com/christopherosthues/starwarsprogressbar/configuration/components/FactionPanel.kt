@@ -5,8 +5,8 @@ import com.christopherosthues.starwarsprogressbar.configuration.LANGUAGE_EVENT
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
 import com.christopherosthues.starwarsprogressbar.configuration.borders.TitledIconBorder
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
-import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicleFaction
-import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
+import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.ui.events.VehicleClickListener
 import com.christopherosthues.starwarsprogressbar.util.StarWarsResourceLoader
 import com.intellij.ui.roots.ScalableIconComponent
@@ -26,7 +26,10 @@ import javax.swing.JPanel
 private const val TOP_PADDING = 10
 private const val LEFT_PADDING = 5
 
-internal class FactionPanel(private val starWarsState: StarWarsState, private val faction: StarWarsVehicleFaction) : JPanel(GridBagLayout()) {
+internal class FactionPanel(
+    private val starWarsState: StarWarsState,
+    private val faction: StarWarsFaction<StarWarsVehicle>
+) : JPanel(GridBagLayout()) {
     private val selectVehiclesCheckbox = ThreeStateCheckBox(ThreeStateCheckBox.State.SELECTED)
     private val vehiclesCheckboxes: MutableMap<String, JCheckBox> = HashMap()
     private var vehicleRowCount: Int = 0
@@ -43,16 +46,16 @@ internal class FactionPanel(private val starWarsState: StarWarsState, private va
     }
 
     private fun initFactionPanel() {
-        val localizedName = StarWarsBundle.message(faction.localizationKey)
+        val localizedName = StarWarsBundle.message("${BundleConstants.VEHICLES_FACTION}${faction.id}")
         border = TitledIconBorder(localizedName, faction.id)
-        val vehiclesAvailable = faction.vehicles.any()
+        val vehiclesAvailable = faction.data.any()
         if (vehiclesAvailable) {
             addFactionCheckBox()
 
             val localizedNameComparator =
                 compareBy<StarWarsVehicle> { StarWarsBundle.message(it.localizationKey).lowercase() }
 
-            faction.vehicles.stream().sorted(localizedNameComparator).forEach { vehicle ->
+            faction.data.stream().sorted(localizedNameComparator).forEach { vehicle ->
                 addVehicleCheckBox(vehicle)
             }
 
@@ -79,8 +82,8 @@ internal class FactionPanel(private val starWarsState: StarWarsState, private va
     fun selectVehicles(isSelected: Boolean) {
         vehiclesCheckboxes.values.forEach { c: JCheckBox ->
             c.isSelected = isSelected
-            faction.vehicles.forEach {
-                starWarsState.vehiclesEnabled[it.vehicleId] = isSelected
+            faction.data.forEach {
+                starWarsState.vehiclesEnabled[it.entityId] = isSelected
             }
         }
     }
@@ -117,7 +120,7 @@ internal class FactionPanel(private val starWarsState: StarWarsState, private va
             } else if (it.stateChange == ItemEvent.DESELECTED) {
                 selectedVehiclesCount.decrementAndGet()
             }
-            starWarsState.vehiclesEnabled[vehicle.vehicleId] = checkBox.isSelected
+            starWarsState.vehiclesEnabled[vehicle.entityId] = checkBox.isSelected
 
             propertyChangeListeners.forEach { l ->
                 val propertyChangeEvent = PropertyChangeEvent(
@@ -142,13 +145,13 @@ internal class FactionPanel(private val starWarsState: StarWarsState, private va
             iconComponent,
             checkBox,
         )
-        vehiclesCheckboxes[vehicle.vehicleId] = checkBox
+        vehiclesCheckboxes[vehicle.entityId] = checkBox
         selectedVehiclesCount.incrementAndGet()
     }
 
     private fun updateSelectionButtons() {
         val selected = selectedVehiclesCount.get()
-        val numberOfVehicles = faction.vehicles.size
+        val numberOfVehicles = faction.data.size
 
         if (selected == numberOfVehicles) {
             selectVehiclesCheckbox.state = ThreeStateCheckBox.State.SELECTED

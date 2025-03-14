@@ -3,7 +3,7 @@ package com.christopherosthues.starwarsprogressbar.selectors
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
-import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.util.randomInt
 import com.intellij.idea.TestFor
 import io.mockk.every

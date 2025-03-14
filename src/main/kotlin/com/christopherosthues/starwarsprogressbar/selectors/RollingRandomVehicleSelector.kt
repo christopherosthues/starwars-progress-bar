@@ -1,7 +1,7 @@
 package com.christopherosthues.starwarsprogressbar.selectors
 
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
-import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.util.randomInt
 
 internal object RollingRandomVehicleSelector : IVehicleSelector {
@@ -12,15 +12,15 @@ internal object RollingRandomVehicleSelector : IVehicleSelector {
         var vehicle = StarWarsFactionHolder.missingVehicle
         synchronized(lock) {
             val vehicles = StarWarsFactionHolder.defaultVehicles.filter { vehicle ->
-                enabledVehicles.getOrDefault(vehicle.vehicleId, defaultEnabled) &&
-                    !displayedVehicles.contains(vehicle.vehicleId)
+                enabledVehicles.getOrDefault(vehicle.entityId, defaultEnabled) &&
+                    !displayedVehicles.contains(vehicle.entityId)
             }
 
             if (vehicles.isNotEmpty()) {
                 vehicle = vehicles[randomInt(vehicles.size)]
             }
 
-            displayedVehicles.add(vehicle.vehicleId)
+            displayedVehicles.add(vehicle.entityId)
 
             if (allVehiclesDisplayed(enabledVehicles, defaultEnabled)) {
                 displayedVehicles.clear()
@@ -35,7 +35,7 @@ internal object RollingRandomVehicleSelector : IVehicleSelector {
         defaultEnabled: Boolean,
     ): Boolean = displayedVehicles.containsAll(
         StarWarsFactionHolder.defaultVehicles.filter { v ->
-            enabledVehicles.getOrDefault(v.vehicleId, defaultEnabled)
-        }.map { v -> v.vehicleId },
+            enabledVehicles.getOrDefault(v.entityId, defaultEnabled)
+        }.map { v -> v.entityId },
     )
 }

@@ -1,7 +1,7 @@
 package com.christopherosthues.starwarsprogressbar.util
 
-import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicleFaction
-import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
+import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.intellij.ui.scale.JBUIScale
 import io.mockk.every
 import io.mockk.mockk
@@ -23,6 +23,7 @@ import javax.swing.ImageIcon
 
 class ResourceFactoryTests {
     //region createClassLoader tests
+    // TODO tests for lightsabers
 
     @Test
     fun `createClassLoader should create class loader of StarWarsResourceLoader class`() {
@@ -51,7 +52,7 @@ class ResourceFactoryTests {
         val result = parseFactionsFromJson("{\"factions\": []}")
 
         // Assert
-        assertEquals(listOf<StarWarsVehicleFaction>(), result.factions)
+        assertEquals(listOf<StarWarsFaction<StarWarsVehicle>>(), result.vehicles)
     }
 
     @Test
@@ -62,7 +63,7 @@ class ResourceFactoryTests {
         val result = parseFactionsFromJson("{}")
 
         // Assert
-        assertEquals(listOf<StarWarsVehicleFaction>(), result.factions)
+        assertEquals(listOf<StarWarsFaction<StarWarsVehicle>>(), result.vehicles)
     }
 
     @Test
@@ -73,7 +74,7 @@ class ResourceFactoryTests {
         val result = parseFactionsFromJson("")
 
         // Assert
-        assertEquals(listOf<StarWarsVehicleFaction>(), result.factions)
+        assertEquals(listOf<StarWarsFaction<StarWarsVehicle>>(), result.vehicles)
     }
 
     @Test
@@ -84,15 +85,15 @@ class ResourceFactoryTests {
         val result = parseFactionsFromJson("[]")
 
         // Assert
-        assertEquals(listOf<StarWarsVehicleFaction>(), result.factions)
+        assertEquals(listOf<StarWarsFaction<StarWarsVehicle>>(), result.vehicles)
     }
 
     @Test
     fun `parseFactionsFromJson should return correct factions`() {
         // Arrange
         val factions = listOf(
-            StarWarsVehicleFaction("faction1", listOf(StarWarsVehicle("vehicle1", "brown", -4, -6, 2.5f))),
-            StarWarsVehicleFaction(
+            StarWarsFaction("faction1", listOf(StarWarsVehicle("vehicle1", "brown", -4, -6, 2.5f))),
+            StarWarsFaction(
                 "faction2",
                 listOf(
                     StarWarsVehicle("vehicle2", "blue", -6, -6, 2.5f),
@@ -133,7 +134,7 @@ class ResourceFactoryTests {
         )
 
         // Assert
-        val resultFactions = result.factions
+        val resultFactions = result.vehicles
         assertAll(
             { assertEquals(factions, resultFactions) },
             { assertEquals(factions.size, resultFactions.size) },

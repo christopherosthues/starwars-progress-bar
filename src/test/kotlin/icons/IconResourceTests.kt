@@ -17,7 +17,7 @@ class IconResourceTests {
 
     @BeforeEach
     fun setup() {
-        StarWarsFactionHolder.updateFactions(StarWarsResourceLoader.loadFactions().factions)
+        StarWarsFactionHolder.updateFactions(StarWarsResourceLoader.loadFactions().vehicles)
     }
 
     //endregion
@@ -31,7 +31,7 @@ class IconResourceTests {
 
         // Act
         val iconPaths = starWarsFactions.map {
-            it.vehicles.map { vehicle ->
+            it.data.map { vehicle ->
                 val iconBasePath =
                     ".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}" +
                         "resources${File.separatorChar}icons/${vehicle.fileName}"
@@ -106,7 +106,7 @@ class IconResourceTests {
 
         // Act
         val iconPaths = starWarsFactions.map {
-            it.vehicles.map { vehicle ->
+            it.data.map { vehicle ->
                 val iconFilePath = vehicle.fileName.replace('/', File.separatorChar)
                 listOf("$iconFilePath.png", "${iconFilePath}_r.png")
             }.stream().flatMap { e -> e.stream() }.collect(toList())
@@ -147,7 +147,7 @@ class IconResourceTests {
 
         // Act
         val iconPaths = starWarsFactions.map {
-            it.vehicles.map { vehicle ->
+            it.data.map { vehicle ->
                 val iconFilePath = vehicle.fileName.replace('/', File.separatorChar)
                 listOf("$iconFilePath@2x.png", "${iconFilePath}_r@2x.png")
             }.stream().flatMap { e -> e.stream() }.collect(toList())

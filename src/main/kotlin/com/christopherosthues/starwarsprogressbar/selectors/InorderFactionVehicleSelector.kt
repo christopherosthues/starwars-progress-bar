@@ -3,7 +3,7 @@ package com.christopherosthues.starwarsprogressbar.selectors
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
-import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import java.util.concurrent.atomic.AtomicInteger
 
 internal object InorderFactionVehicleSelector : IVehicleSelector {
@@ -11,7 +11,7 @@ internal object InorderFactionVehicleSelector : IVehicleSelector {
 
     override fun selectVehicle(enabledVehicles: Map<String, Boolean>, defaultEnabled: Boolean): StarWarsVehicle {
         val vehicles = StarWarsFactionHolder.defaultVehicles.filter { vehicle ->
-            enabledVehicles.getOrDefault(vehicle.vehicleId, defaultEnabled)
+            enabledVehicles.getOrDefault(vehicle.entityId, defaultEnabled)
         }.sortedWith(
             compareBy(
                 { StarWarsBundle.message("${BundleConstants.VEHICLES_FACTION}${it.factionId}") },

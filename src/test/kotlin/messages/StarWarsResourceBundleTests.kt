@@ -150,11 +150,11 @@ class StarWarsResourceBundleTests {
 
         // Act
         val vehiclesLocalized: Stream<() -> Unit> = starWarsFactions.parallelStream().map {
-            it.vehicles.map { vehicle ->
+            it.data.map { vehicle ->
                 {
                     assertNotNull(
                         bundle[vehicle.localizationKey],
-                        "Vehicle ${vehicle.vehicleId} with localization key ${vehicle.localizationKey} has no translation",
+                        "Vehicle ${vehicle.entityId} with localization key ${vehicle.localizationKey} has no translation",
                     )
                 }
             }

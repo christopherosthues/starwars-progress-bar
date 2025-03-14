@@ -1,16 +1,12 @@
 package com.christopherosthues.starwarsprogressbar.models
 
-import com.christopherosthues.starwarsprogressbar.models.lightsabers.Lightsaber
-import com.christopherosthues.starwarsprogressbar.models.lightsabers.StarWarsLightsaberFaction
-import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicle
-import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicleFaction
 import com.christopherosthues.starwarsprogressbar.util.StarWarsResourceLoader.loadFactions
 
 internal object StarWarsFactionHolder {
-    lateinit var vehicleFactions: List<StarWarsVehicleFaction>
+    lateinit var vehicleFactions: List<StarWarsFaction<StarWarsVehicle>>
         private set
 
-    lateinit var defaultVehicleFactions: List<StarWarsVehicleFaction>
+    lateinit var defaultVehicleFactions: List<StarWarsFaction<StarWarsVehicle>>
         private set
 
     lateinit var missingVehicle: StarWarsVehicle
@@ -19,10 +15,10 @@ internal object StarWarsFactionHolder {
     lateinit var defaultVehicles: List<StarWarsVehicle>
         private set
 
-    lateinit var lightsaberFactions: List<StarWarsLightsaberFaction>
+    lateinit var lightsaberFactions: List<StarWarsFaction<Lightsaber>>
         private set
 
-    lateinit var defaultLightsaberFactions: List<StarWarsLightsaberFaction>
+    lateinit var defaultLightsaberFactions: List<StarWarsFaction<Lightsaber>>
         private set
 
     lateinit var missingLightsaber: Lightsaber
@@ -33,28 +29,28 @@ internal object StarWarsFactionHolder {
 
     init {
         val starWarsFactions = loadFactions()
-        updateFactions(starWarsFactions.factions)
+        updateFactions(starWarsFactions.vehicles)
         updateFactions(starWarsFactions.lightsabers)
     }
 
-    fun updateFactions(factions: List<StarWarsVehicleFaction>) {
+    fun updateFactions(factions: List<StarWarsFaction<StarWarsVehicle>>) {
         vehicleFactions = factions
         defaultVehicleFactions = factions.filter { it.id.isNotEmpty() }
         missingVehicle =
-            factions.firstOrNull { it.id.isEmpty() }?.vehicles?.firstOrNull() ?: StarWarsVehicle.missingVehicle
+            factions.firstOrNull { it.id.isEmpty() }?.data?.firstOrNull() ?: StarWarsVehicle.missingVehicle
         defaultVehicles = factions.filter { it.id.isNotEmpty() }.fold(mutableListOf()) { acc, starWarsFaction ->
-            acc.addAll(starWarsFaction.vehicles)
+            acc.addAll(starWarsFaction.data)
             acc
         }
     }
 
-    fun updateFactions(factions: List<StarWarsLightsaberFaction>) {
+    fun updateFactions(factions: List<StarWarsFaction<Lightsaber>>) {
         lightsaberFactions = factions
         defaultLightsaberFactions = factions.filter { it.id.isNotEmpty() }
         missingLightsaber =
-            factions.firstOrNull { it.id.isEmpty() }?.persons?.firstOrNull() ?: Lightsaber.missingLightsaber
+            factions.firstOrNull { it.id.isEmpty() }?.data?.firstOrNull() ?: Lightsaber.missingLightsaber
         defaultLightsabers = factions.filter { it.id.isNotEmpty() }.fold(mutableListOf()) { acc, starWarsFaction ->
-            acc.addAll(starWarsFaction.persons)
+            acc.addAll(starWarsFaction.data)
             acc
         }
     }

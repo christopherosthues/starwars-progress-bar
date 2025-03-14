@@ -1,4 +1,4 @@
-package com.christopherosthues.starwarsprogressbar.models.lightsabers
+package com.christopherosthues.starwarsprogressbar.models
 
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
 import com.christopherosthues.starwarsprogressbar.ui.LightsaberColor
@@ -6,23 +6,22 @@ import com.intellij.ui.JBColor
 import kotlinx.serialization.Serializable
 
 @Serializable
-internal data class Lightsaber(val id: String,
+internal data class Lightsaber(
+    override val id: String,
     val bladeColor: String,
-    val velocity: Float,
+    override val velocity: Float,
     val isShoto: Boolean,
-    val isDoubleBladed: Boolean) {
-    var factionId: String = ""
+    val isDoubleBladed: Boolean) : StarWarsEntity {
 
-    val lightsaberId: String
-        get() = if (factionId.isEmpty()) id else "$factionId.$id"
+    override var factionId: String = ""
 
-    val fileName: String
-        get() = "lightsabers/$id"
+    override val fileName: String
+        get() = "lightsabers/" + if (factionId.isEmpty()) id else "$factionId/$id"
 
-    val localizationKey: String
-        get() = "${BundleConstants.LIGHTSABERS}$id"
+    override val localizationKey: String
+        get() = "${BundleConstants.LIGHTSABERS}$entityId"
 
-    val color: JBColor
+    override val color: JBColor
         get() = LightsaberColor.colors[bladeColor] ?: LightsaberColor.Cyan
 
     companion object {

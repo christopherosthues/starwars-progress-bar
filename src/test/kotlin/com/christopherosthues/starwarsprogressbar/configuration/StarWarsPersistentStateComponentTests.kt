@@ -2,9 +2,10 @@ package com.christopherosthues.starwarsprogressbar.configuration
 
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_VEHICLE_SELECTOR
+import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
-import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicleFaction
-import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.models.Lightsaber
+import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.selectors.SelectionType
 import com.intellij.idea.TestFor
 import com.intellij.openapi.application.Application
@@ -33,12 +34,14 @@ import org.junit.jupiter.api.assertAll
 @TestFor(classes = [StarWarsPersistentStateComponent::class])
 class StarWarsPersistentStateComponentTests {
     //region Test lifecycle
+    // TODO: lightsabers
 
     @BeforeEach
     fun setup() {
         mockkObject(StarWarsFactionHolder)
 
-        every { StarWarsFactionHolder.updateFactions(any() as List<StarWarsVehicleFaction>) } just runs
+        every { StarWarsFactionHolder.updateFactions(any() as List<StarWarsFaction<StarWarsVehicle>>) } just runs
+        every { StarWarsFactionHolder.updateFactions(any() as List<StarWarsFaction<Lightsaber>>) } just runs
         every { StarWarsFactionHolder.vehicleFactions } returns mockk(relaxed = true)
         every { StarWarsFactionHolder.missingVehicle } returns mockk(relaxed = true)
         every { StarWarsFactionHolder.defaultVehicleFactions } returns mockk(relaxed = true)

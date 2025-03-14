@@ -81,7 +81,7 @@ internal class VehiclesPanel(private val starWarsState: StarWarsState) : JTitled
         StarWarsFactionHolder.defaultVehicleFactions.forEach { faction ->
             vehicleRowCount = 0
 
-            val vehiclesAvailable = faction.vehicles.any()
+            val vehiclesAvailable = faction.data.any()
             if (vehiclesAvailable) {
                 val factionPanel = FactionPanel(starWarsState, faction)
                 factionPanel.addPropertyChangeListener(FactionPanel::selectedVehiclesCount.name) {

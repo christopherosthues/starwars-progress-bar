@@ -20,7 +20,7 @@ internal fun parseFactionsFromJson(json: String): StarWarsFactions {
         return loadedFactions
     }
 
-    return if (loadedFactions.factions != null) loadedFactions else StarWarsFactions(listOf(), listOf())
+    return if (loadedFactions.vehicles != null) loadedFactions else StarWarsFactions(listOf(), listOf())
 }
 
 internal fun createScaledEmptyImageIcon(size: Int): ImageIcon = ImageIcon(createEmptyBufferedImage(size, size))

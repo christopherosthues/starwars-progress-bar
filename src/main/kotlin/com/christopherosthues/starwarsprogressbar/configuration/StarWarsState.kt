@@ -12,9 +12,9 @@ import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE_NAMES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRESS_BAR_COLOR
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_VEHICLE_SELECTOR
-import com.christopherosthues.starwarsprogressbar.models.lightsabers.Lightsaber
+import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
-import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.selectors.SelectionType
 import java.util.stream.Collectors
 
@@ -31,11 +31,11 @@ internal class StarWarsState {
 
     @JvmField
     var vehiclesEnabled: MutableMap<String, Boolean> =
-        StarWarsFactionHolder.defaultVehicles.stream().collect(Collectors.toMap(StarWarsVehicle::vehicleId) { true })
+        StarWarsFactionHolder.defaultVehicles.stream().collect(Collectors.toMap(StarWarsVehicle::entityId) { true })
 
     @JvmField
     var lightsabersEnabled: MutableMap<String, Boolean> =
-        StarWarsFactionHolder.defaultLightsabers.stream().collect(Collectors.toMap(Lightsaber::lightsaberId) { true })
+        StarWarsFactionHolder.defaultLightsabers.stream().collect(Collectors.toMap(Lightsaber::entityId) { true })
 
     var showVehicle: Boolean = DEFAULT_SHOW_VEHICLE
 

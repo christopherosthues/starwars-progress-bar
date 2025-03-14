@@ -1,7 +1,5 @@
 package com.christopherosthues.starwarsprogressbar.models
 
-import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicle
-import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicleFaction
 import com.intellij.idea.TestFor
 import io.mockk.every
 import io.mockk.mockkObject
@@ -17,6 +15,7 @@ import org.junit.jupiter.api.Test
 
 @TestFor(classes = [StarWarsFactionHolder::class])
 class StarWarsFactionHolderTests {
+    // TODO: Add tests for lightsabers
     //region Fields
 
     private val missingVehicle = StarWarsVehicle("missing", "missing", 0, 1, 2f)
@@ -34,7 +33,7 @@ class StarWarsFactionHolderTests {
 
     @AfterEach
     fun tearDown() {
-        StarWarsFactionHolder.updateFactions(listOf())
+        StarWarsFactionHolder.updateFactions(listOf<StarWarsFaction<StarWarsVehicle>>())
 
         unmockkAll()
     }
@@ -263,7 +262,7 @@ class StarWarsFactionHolderTests {
     fun `missing vehicle should return first vehicle if first faction with empty id has one vehicle`() {
         // Arrange
         val factions = FactionCreationHelper.createStarWarsFactionsWithEmptyIds()
-        val expectedVehicle = factions.first().vehicles.first()
+        val expectedVehicle = factions.first().data.first()
 
         // Act
         updateFactions(factions)
@@ -279,7 +278,7 @@ class StarWarsFactionHolderTests {
     fun `missing vehicle should return first vehicle if first faction with empty id has more than one vehicle`() {
         // Arrange
         val factions = FactionCreationHelper.createStarWarsFactionsWithEmptyIdContainingVehicles()
-        val expectedVehicle = factions[1].vehicles.first()
+        val expectedVehicle = factions[1].data.first()
 
         // Act
         updateFactions(factions)
@@ -296,7 +295,7 @@ class StarWarsFactionHolderTests {
         // Arrange
         val factions =
             FactionCreationHelper.createStarWarsFactionsWithMultipleFactionsWithEmptyIdAndContainingVehicles()
-        val expectedVehicle = factions[0].vehicles.first()
+        val expectedVehicle = factions[0].data.first()
 
         // Act
         updateFactions(factions)
@@ -376,8 +375,8 @@ class StarWarsFactionHolderTests {
         // Arrange
         val factions = FactionCreationHelper.createStarWarsFactionsWithEmptyIdContainingVehicles()
         val expectedVehicles = mutableListOf<StarWarsVehicle>()
-        expectedVehicles.addAll(factions.first().vehicles)
-        expectedVehicles.addAll(factions[2].vehicles)
+        expectedVehicles.addAll(factions.first().data)
+        expectedVehicles.addAll(factions[2].data)
 
         // Act
         updateFactions(factions)
@@ -392,8 +391,8 @@ class StarWarsFactionHolderTests {
         val factions =
             FactionCreationHelper.createStarWarsFactionsWithMultipleFactionsWithEmptyIdAndContainingVehicles()
         val expectedVehicles = mutableListOf<StarWarsVehicle>()
-        expectedVehicles.addAll(factions[1].vehicles)
-        expectedVehicles.addAll(factions[2].vehicles)
+        expectedVehicles.addAll(factions[1].data)
+        expectedVehicles.addAll(factions[2].data)
 
         // Act
         updateFactions(factions)
@@ -408,8 +407,8 @@ class StarWarsFactionHolderTests {
         val factions =
             FactionCreationHelper.createStarWarsFactionsWithMultipleFactionsWithEmptyIdAndOneFactionContainNoVehicles()
         val expectedVehicles = mutableListOf<StarWarsVehicle>()
-        expectedVehicles.addAll(factions[1].vehicles)
-        expectedVehicles.addAll(factions[2].vehicles)
+        expectedVehicles.addAll(factions[1].data)
+        expectedVehicles.addAll(factions[2].data)
 
         // Act
         updateFactions(factions)
@@ -418,7 +417,7 @@ class StarWarsFactionHolderTests {
         assertAll(
             { assertEquals(expectedVehicles, StarWarsFactionHolder.defaultVehicles) },
             {
-                expectedVehicles.addAll(factions[4].vehicles)
+                expectedVehicles.addAll(factions[4].data)
                 assertEquals(expectedVehicles, StarWarsFactionHolder.defaultVehicles)
             },
         )
@@ -429,7 +428,7 @@ class StarWarsFactionHolderTests {
         // Arrange
         val factions = FactionCreationHelper.createStarWarsFactions()
         val expectedVehicles = factions.fold(mutableListOf<StarWarsVehicle>()) { acc, starWarsFaction ->
-            acc.addAll(starWarsFaction.vehicles)
+            acc.addAll(starWarsFaction.data)
             acc
         }
 
@@ -444,7 +443,7 @@ class StarWarsFactionHolderTests {
 
     //region Helper methods
 
-    private fun updateFactions(factions: List<StarWarsVehicleFaction>) {
+    private fun updateFactions(factions: List<StarWarsFaction<StarWarsVehicle>>) {
         StarWarsFactionHolder.updateFactions(factions)
     }
 

@@ -2,7 +2,7 @@
     "lightsabers": [
         {
             "id": "sith",
-            "persons": [
+            "data": [
                 {
                     "id": "asajj_ventress_second",
                     "color": "red",
@@ -77,7 +77,7 @@
         },
         {
             "id": "jedi",
-            "persons": [
+            "data": [
                 {
                     "id": "ahsoka_tano_first",
                     "color": "green",
@@ -180,21 +180,26 @@
         },
         {
             "id": "other",
-            "persons": [
+            "data": [
+            ]
+        },
+        {
+            "id": "",
+            "data": [
                 {
-                    "id": "youngling_slayer_9000",
+                    "id": "missing",
                     "color": "blue",
                     "isShoto": false,
                     "isDoubleBladed": false,
-                    "velocity": 4
+                    "velocity": 2.5
                 }
             ]
         }
     ],
-    "factions": [
+    "vehicles": [
         {
             "id": "sith_empire",
-            "vehicles": [
+            "data": [
                 {
                     "id": "harrower_class_dreadnought",
                     "ionEngine": "blue",
@@ -206,7 +211,7 @@
         },
         {
             "id": "trade_federation",
-            "vehicles": [
+            "data": [
                 {
                     "id": "armored_assault_tank",
                     "ionEngine": "brown",
@@ -267,7 +272,7 @@
         },
         {
             "id": "jedi",
-            "vehicles": [
+            "data": [
                 {
                     "id": "adi_gallias_delta_7b_jedi_starfighter",
                     "ionEngine": "blue",
@@ -405,7 +410,7 @@
         },
         {
             "id": "galactic_republic",
-            "vehicles": [
+            "data": [
                 {
                     "id": "aa_9_coruscant_freighter",
                     "ionEngine": "blue",
@@ -634,7 +639,7 @@
         },
         {
             "id": "confederacy_of_independent_systems",
-            "vehicles": [
+            "data": [
                 {
                     "id": "armored_assault_tank",
                     "ionEngine": "brown",
@@ -877,7 +882,7 @@
         },
         {
             "id": "galactic_empire",
-            "vehicles": [
+            "data": [
                 {
                     "id": "arquitens_class_command_cruiser",
                     "ionEngine": "blue",
@@ -1106,7 +1111,7 @@
         },
         {
             "id": "rebel_alliance",
-            "vehicles": [
+            "data": [
                 {
                     "id": "a_wing",
                     "ionEngine": "yellow",
@@ -1272,7 +1277,7 @@
         },
         {
             "id": "first_order",
-            "vehicles": [
+            "data": [
                 {
                     "id": "first_order_tie_fighter",
                     "ionEngine": "blue",
@@ -1319,7 +1324,7 @@
         },
         {
             "id": "new_republic",
-            "vehicles": [
+            "data": [
                 {
                     "id": "starhawk_class_battleship",
                     "ionEngine": "blue",
@@ -1331,7 +1336,7 @@
         },
         {
             "id": "mandalorians",
-            "vehicles": [
+            "data": [
                 {
                     "id": "mandos_n_1_starfighter",
                     "ionEngine": "blue",
@@ -1350,7 +1355,7 @@
         },
         {
             "id": "bounty_hunters",
-            "vehicles": [
+            "data": [
                 {
                     "id": "boba_fetts_slave_one",
                     "ionEngine": "orange",
@@ -1383,7 +1388,7 @@
         },
         {
             "id": "scoundrels",
-            "vehicles": [
+            "data": [
                 {
                     "id": "acushnet",
                     "ionEngine": "white",
@@ -1444,7 +1449,7 @@
         },
         {
             "id": "podracer",
-            "vehicles": [
+            "data": [
                 {
                     "id": "aldar_beedos_podracer",
                     "ionEngine": "orange",
@@ -1575,7 +1580,7 @@
         },
         {
             "id": "",
-            "vehicles": [
+            "data": [
                 {
                     "id": "missing",
                     "ionEngine": "green",

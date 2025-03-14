@@ -1,7 +1,6 @@
 package com.christopherosthues.starwarsprogressbar.models
 
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
-import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.ui.IonEngineColor
 import com.intellij.idea.TestFor
 import com.intellij.ui.JBColor
@@ -109,7 +108,7 @@ class StarWarsVehicleTests {
         sut.factionId = factionId
 
         // Act
-        val result = sut.vehicleId
+        val result = sut.entityId
 
         // Assert
         val expectedVehicleId = "$factionId.$id"
@@ -123,7 +122,7 @@ class StarWarsVehicleTests {
         val sut = StarWarsVehicle(id, "a", 1, 2, 3f)
 
         // Act
-        val result = sut.vehicleId
+        val result = sut.entityId
 
         // Assert
         assertEquals(id, result)
@@ -201,7 +200,7 @@ class StarWarsVehicleTests {
         // Assert
         assertAll(
             { assertEquals("missing", result.id) },
-            { assertEquals("missing", result.vehicleId) },
+            { assertEquals("missing", result.entityId) },
             { assertEquals("green", result.ionEngine) },
             { assertEquals(-4, result.xShift) },
             { assertEquals(-6, result.yShift) },
