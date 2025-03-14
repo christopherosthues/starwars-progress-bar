@@ -966,7 +966,7 @@ internal class StarWarsResourceLoaderTests {
 
         private fun setupStarWarsFactionsWithOneFactionWithoutVehicles(): StarWarsFactions {
             val loadedFactions = mockk<StarWarsFactions>(relaxed = true)
-            every { loadedFactions.vehicles } returns listOf(StarWarsVehicleFaction("1", listOf()))
+            every { loadedFactions.vehicles } returns listOf(StarWarsFaction("1", listOf()))
 
             return loadedFactions
         }
