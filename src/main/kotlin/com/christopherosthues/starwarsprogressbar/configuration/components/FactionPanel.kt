@@ -5,8 +5,8 @@ import com.christopherosthues.starwarsprogressbar.configuration.LANGUAGE_EVENT
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
 import com.christopherosthues.starwarsprogressbar.configuration.borders.TitledIconBorder
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
-import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
-import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicleFaction
+import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.ui.events.VehicleClickListener
 import com.christopherosthues.starwarsprogressbar.util.StarWarsResourceLoader
 import com.intellij.ui.roots.ScalableIconComponent
@@ -26,7 +26,7 @@ import javax.swing.JPanel
 private const val TOP_PADDING = 10
 private const val LEFT_PADDING = 5
 
-internal class FactionPanel(private val starWarsState: StarWarsState, private val faction: StarWarsFaction) : JPanel(GridBagLayout()) {
+internal class FactionPanel(private val starWarsState: StarWarsState, private val faction: StarWarsVehicleFaction) : JPanel(GridBagLayout()) {
     private val selectVehiclesCheckbox = ThreeStateCheckBox(ThreeStateCheckBox.State.SELECTED)
     private val vehiclesCheckboxes: MutableMap<String, JCheckBox> = HashMap()
     private var vehicleRowCount: Int = 0

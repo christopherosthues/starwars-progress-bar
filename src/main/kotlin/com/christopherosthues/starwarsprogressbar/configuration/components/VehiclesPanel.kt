@@ -4,7 +4,7 @@ import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.LANGUAGE_EVENT
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
-import com.christopherosthues.starwarsprogressbar.models.FactionHolder
+import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 import com.christopherosthues.starwarsprogressbar.ui.events.VehicleClickListener
 import com.intellij.util.ui.JBUI
 import com.intellij.util.ui.ThreeStateCheckBox
@@ -78,7 +78,7 @@ internal class VehiclesPanel(private val starWarsState: StarWarsState) : JTitled
         factionCount = 0
         factionRowCount = 0
 
-        FactionHolder.defaultFactions.forEach { faction ->
+        StarWarsFactionHolder.defaultVehicleFactions.forEach { faction ->
             vehicleRowCount = 0
 
             val vehiclesAvailable = faction.vehicles.any()
@@ -118,7 +118,7 @@ internal class VehiclesPanel(private val starWarsState: StarWarsState) : JTitled
 
     private fun updateSelectionButtons() {
         val selected = selectedVehiclesCount
-        val numberOfVehicles = FactionHolder.defaultVehicles.size
+        val numberOfVehicles = StarWarsFactionHolder.defaultVehicles.size
 
         if (selected == numberOfVehicles) {
             selectedVehiclesCheckBox.state = ThreeStateCheckBox.State.SELECTED

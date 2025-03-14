@@ -3,7 +3,7 @@ package com.christopherosthues.starwarsprogressbar.configuration
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
 import com.christopherosthues.starwarsprogressbar.constants.PluginConstants
-import com.christopherosthues.starwarsprogressbar.models.FactionHolder
+import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 import com.christopherosthues.starwarsprogressbar.selectors.SelectionType
 import com.intellij.idea.TestFor
 import com.intellij.openapi.options.ConfigurationException
@@ -40,11 +40,11 @@ class StarWarsProgressConfigurableTests {
 
     @BeforeEach
     fun setup() {
-        mockkObject(FactionHolder)
+        mockkObject(StarWarsFactionHolder)
         mockkObject(StarWarsPersistentStateComponent)
         mockkStatic(::createStarWarsProgressConfigurationComponent)
 
-        every { FactionHolder.defaultVehicles } returns listOf()
+        every { StarWarsFactionHolder.defaultVehicles } returns listOf()
         starWarsProgressConfigurationComponentMock = mockk(relaxed = true)
         every { createStarWarsProgressConfigurationComponent() } returns starWarsProgressConfigurationComponentMock
     }

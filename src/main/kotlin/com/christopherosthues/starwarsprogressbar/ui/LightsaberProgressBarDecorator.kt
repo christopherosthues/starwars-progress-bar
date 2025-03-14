@@ -7,13 +7,12 @@ import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_CHANGE_VEHIC
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_DRAW_SILHOUETTES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SAME_VEHICLE_VELOCITY
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_FACTION_CRESTS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_TOOLTIPS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE_NAMES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRESS_BAR_COLOR
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_VEHICLE_SELECTOR
-import com.christopherosthues.starwarsprogressbar.models.Lightsaber
+import com.christopherosthues.starwarsprogressbar.models.lightsabers.Lightsaber
 import com.christopherosthues.starwarsprogressbar.selectors.VehicleSelector.selectVehicle
 import com.christopherosthues.starwarsprogressbar.ui.components.ColoredImageComponent
 import com.christopherosthues.starwarsprogressbar.util.StarWarsResourceLoader
@@ -33,80 +32,80 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
     private var position = 0
     private var numberOfPasses = 0
 
-    override fun paint(g: Graphics?, c: JComponent?) {
+//    override fun paint(g: Graphics?, c: JComponent?) {
+////        val g2 = g as Graphics2D
+////        val width: Int = progressBar.width
+////        val height: Int = progressBar.height
+////
+////        // Enable anti-aliasing for smooth edges
+////        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON)
+////
+////
+////        // Define colors for the lightsaber effect
+////        val color1: Color = Color(50, 100, 255) // Blue (top)
+////        val color2: Color = Color(230, 240, 255) // Almost white (center)
+////        val color3: Color = Color(50, 100, 255) // Blue (bottom)
+////
+////        // Create a horizontal gradient for the glowing effect
+////        val gradient = GradientPaint(
+////            0f, (height / 2).toFloat(), color1,
+////            (width / 2).toFloat(), (height / 2).toFloat(), color2, true
+////        )
+////
+////        g2.paint = gradient
+////
+////        // Draw the rounded progress bar
+////        val arc = height // Make the edges round
+////        val progressWidth = (width * (progressBar.getPercentComplete())).toInt()
+////
+////        g2.fillRoundRect(0, 0, progressWidth, height, arc, arc)
+////
+////        // Optional: Add a glowing effect around the saber
+////        g2.color = Color(50, 100, 255, 80) // Transparent blue glow
+////        g2.fillRoundRect(0, 0, progressWidth, height, arc, arc)
 //        val g2 = g as Graphics2D
 //        val width: Int = progressBar.width
 //        val height: Int = progressBar.height
 //
-//        // Enable anti-aliasing for smooth edges
+//
+//        // Enable anti-aliasing for smoother rendering
 //        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON)
 //
+//        // Define colors for the vertical gradient
+//        val colorTop = Color(50, 100, 255) // Blue (top)
+//        val colorMiddle = Color(230, 240, 255) // Almost white (middle)
+//        val colorBottom = Color(50, 100, 255) // Blue (bottom)
 //
-//        // Define colors for the lightsaber effect
-//        val color1: Color = Color(50, 100, 255) // Blue (top)
-//        val color2: Color = Color(230, 240, 255) // Almost white (center)
-//        val color3: Color = Color(50, 100, 255) // Blue (bottom)
 //
-//        // Create a horizontal gradient for the glowing effect
-//        val gradient = GradientPaint(
-//            0f, (height / 2).toFloat(), color1,
-//            (width / 2).toFloat(), (height / 2).toFloat(), color2, true
+//        // Define LinearGradientPaint (Vertical Gradient)
+//        val fractions = floatArrayOf(0.0f, 0.25f, 0.75f, 1.0f) // Positions: Top, Middle, Bottom
+//        val colors = arrayOf(colorTop, colorMiddle, colorMiddle, colorBottom) // Corresponding colors
+//        val gradient = LinearGradientPaint(
+//            0f, 0f, 0f, height.toFloat(), fractions, colors
 //        )
 //
+//        val color = g2.color
+//
+//        // Progress bar width based on current progress
+//        val progressWidth = (width * progressBar.getPercentComplete()).toInt()
+//
+//        // Define arc radius (only for the right side)
+//        val arc = height
+//
+////        // Optional: Add a glowing effect around the saber
+////        g2.color = Color(50, 100, 255, 80) // Transparent blue glow
+////        g2.fillRoundRect(0, 0, progressWidth, height, arc, arc)
+//
+//        g2.color = color
 //        g2.paint = gradient
 //
-//        // Draw the rounded progress bar
-//        val arc = height // Make the edges round
-//        val progressWidth = (width * (progressBar.getPercentComplete())).toInt()
-//
+//        // Draw the progress bar with a rounded right tip
 //        g2.fillRoundRect(0, 0, progressWidth, height, arc, arc)
 //
-//        // Optional: Add a glowing effect around the saber
-//        g2.color = Color(50, 100, 255, 80) // Transparent blue glow
-//        g2.fillRoundRect(0, 0, progressWidth, height, arc, arc)
-        val g2 = g as Graphics2D
-        val width: Int = progressBar.width
-        val height: Int = progressBar.height
-
-
-        // Enable anti-aliasing for smoother rendering
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON)
-
-        // Define colors for the vertical gradient
-        val colorTop = Color(50, 100, 255) // Blue (top)
-        val colorMiddle = Color(230, 240, 255) // Almost white (middle)
-        val colorBottom = Color(50, 100, 255) // Blue (bottom)
-
-
-        // Define LinearGradientPaint (Vertical Gradient)
-        val fractions = floatArrayOf(0.0f, 0.25f, 0.75f, 1.0f) // Positions: Top, Middle, Bottom
-        val colors = arrayOf(colorTop, colorMiddle, colorMiddle, colorBottom) // Corresponding colors
-        val gradient = LinearGradientPaint(
-            0f, 0f, 0f, height.toFloat(), fractions, colors
-        )
-
-        val color = g2.color
-
-        // Progress bar width based on current progress
-        val progressWidth = (width * progressBar.getPercentComplete()).toInt()
-
-        // Define arc radius (only for the right side)
-        val arc = height
-
-//        // Optional: Add a glowing effect around the saber
-//        g2.color = Color(50, 100, 255, 80) // Transparent blue glow
-//        g2.fillRoundRect(0, 0, progressWidth, height, arc, arc)
-
-        g2.color = color
-        g2.paint = gradient
-
-        // Draw the progress bar with a rounded right tip
-        g2.fillRoundRect(0, 0, progressWidth, height, arc, arc)
-
-        // Add a clipping mask to make the left side flat
-        g2.setClip(0, 0, progressWidth - arc / 2, height)
-        g2.fillRect(0, 0, progressWidth, height) // Force flat left edge
-    }
+//        // Add a clipping mask to make the left side flat
+//        g2.setClip(0, 0, progressWidth - arc / 2, height)
+//        g2.fillRect(0, 0, progressWidth, height) // Force flat left edge
+//    }
 
     internal fun update() {
         lightsaber = selectVehicle(

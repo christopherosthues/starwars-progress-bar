@@ -20,8 +20,9 @@
  */
 package com.christopherosthues.starwarsprogressbar.util
 
-import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
+import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicleFaction
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactions
+import com.christopherosthues.starwarsprogressbar.models.lightsabers.StarWarsLightsaberFaction
 import com.google.common.cache.Cache
 import com.google.common.cache.CacheBuilder
 import com.intellij.openapi.util.IconLoader
@@ -119,13 +120,22 @@ internal object StarWarsResourceLoader {
         val factions = parseFactionsFromJson(json)
 
         setFactionForVehicles(factions.factions)
+        setFactionForLightsabers(factions.lightsabers)
 
         return factions
     }
 
-    private fun setFactionForVehicles(factions: List<StarWarsFaction>) {
+    private fun setFactionForVehicles(factions: List<StarWarsVehicleFaction>) {
         factions.forEach { faction ->
             faction.vehicles.forEach {
+                it.factionId = faction.id
+            }
+        }
+    }
+
+    private fun setFactionForLightsabers(factions: List<StarWarsLightsaberFaction>) {
+        factions.forEach { faction ->
+            faction.persons.forEach {
                 it.factionId = faction.id
             }
         }

@@ -29,9 +29,9 @@ internal object BundleConstants {
     const val SELECTOR = CONFIGURATION + "selector"
     const val LANGUAGE = CONFIGURATION + "language"
 
-    const val FACTION = "faction."
-
     const val VEHICLES = "vehicles."
+    const val VEHICLES_FACTION = VEHICLES + "faction."
 
     const val LIGHTSABERS = "lightsabers."
+    const val LIGHTSABERS_FACTION = LIGHTSABERS + "faction."
 }

@@ -1,8 +1,8 @@
 package com.christopherosthues.starwarsprogressbar.selectors
 
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
-import com.christopherosthues.starwarsprogressbar.models.FactionHolder
-import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
+import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicle
 
 internal object VehicleSelector {
     fun selectVehicle(
@@ -13,7 +13,7 @@ internal object VehicleSelector {
         var currentEnabledVehicles = enabledVehicles
         if (currentEnabledVehicles == null) {
             val persistentStateComponent = StarWarsPersistentStateComponent.instance
-            val starWarsState = persistentStateComponent?.state ?: return FactionHolder.missingVehicle
+            val starWarsState = persistentStateComponent?.state ?: return StarWarsFactionHolder.missingVehicle
 
             currentEnabledVehicles = starWarsState.vehiclesEnabled
         }

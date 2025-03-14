@@ -2,24 +2,24 @@ package com.christopherosthues.starwarsprogressbar.selectors
 
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
-import com.christopherosthues.starwarsprogressbar.models.FactionHolder
-import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
+import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicle
 import java.util.concurrent.atomic.AtomicInteger
 
 internal object InorderFactionVehicleSelector : IVehicleSelector {
     private val index = AtomicInteger()
 
     override fun selectVehicle(enabledVehicles: Map<String, Boolean>, defaultEnabled: Boolean): StarWarsVehicle {
-        val vehicles = FactionHolder.defaultVehicles.filter { vehicle ->
+        val vehicles = StarWarsFactionHolder.defaultVehicles.filter { vehicle ->
             enabledVehicles.getOrDefault(vehicle.vehicleId, defaultEnabled)
         }.sortedWith(
             compareBy(
-                { StarWarsBundle.message("${BundleConstants.FACTION}${it.factionId}") },
+                { StarWarsBundle.message("${BundleConstants.VEHICLES_FACTION}${it.factionId}") },
                 { StarWarsBundle.message(it.localizationKey).lowercase() },
             ),
         )
 
-        var vehicle = FactionHolder.missingVehicle
+        var vehicle = StarWarsFactionHolder.missingVehicle
         if (vehicles.isNotEmpty()) {
             var vehicleIndex = getIndex(vehicles.size)
             if (vehicleIndex >= vehicles.size) {

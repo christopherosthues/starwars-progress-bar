@@ -1,7 +1,7 @@
 package com.christopherosthues.starwarsprogressbar.selectors
 
-import com.christopherosthues.starwarsprogressbar.models.FactionHolder
-import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
+import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.util.randomInt
 
 internal object RollingRandomVehicleSelector : IVehicleSelector {
@@ -9,9 +9,9 @@ internal object RollingRandomVehicleSelector : IVehicleSelector {
     private val lock = Any()
 
     override fun selectVehicle(enabledVehicles: Map<String, Boolean>, defaultEnabled: Boolean): StarWarsVehicle {
-        var vehicle = FactionHolder.missingVehicle
+        var vehicle = StarWarsFactionHolder.missingVehicle
         synchronized(lock) {
-            val vehicles = FactionHolder.defaultVehicles.filter { vehicle ->
+            val vehicles = StarWarsFactionHolder.defaultVehicles.filter { vehicle ->
                 enabledVehicles.getOrDefault(vehicle.vehicleId, defaultEnabled) &&
                     !displayedVehicles.contains(vehicle.vehicleId)
             }
@@ -34,7 +34,7 @@ internal object RollingRandomVehicleSelector : IVehicleSelector {
         enabledVehicles: Map<String, Boolean>,
         defaultEnabled: Boolean,
     ): Boolean = displayedVehicles.containsAll(
-        FactionHolder.defaultVehicles.filter { v ->
+        StarWarsFactionHolder.defaultVehicles.filter { v ->
             enabledVehicles.getOrDefault(v.vehicleId, defaultEnabled)
         }.map { v -> v.vehicleId },
     )

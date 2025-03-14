@@ -2,8 +2,8 @@ package com.christopherosthues.starwarsprogressbar.selectors
 
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
-import com.christopherosthues.starwarsprogressbar.models.FactionHolder
-import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
+import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicle
 import com.intellij.idea.TestFor
 import io.mockk.every
 import io.mockk.mockkObject
@@ -26,10 +26,10 @@ class ReverseOrderVehicleNameVehicleSelectorTests {
     @BeforeEach
     fun setup() {
         mockkStatic(StarWarsBundle::message)
-        mockkObject(FactionHolder)
+        mockkObject(StarWarsFactionHolder)
         mockkObject(StarWarsPersistentStateComponent)
 
-        every { FactionHolder.missingVehicle } returns missingVehicle
+        every { StarWarsFactionHolder.missingVehicle } returns missingVehicle
     }
 
     @AfterEach
@@ -47,7 +47,7 @@ class ReverseOrderVehicleNameVehicleSelectorTests {
         defaultEnabled: Boolean,
     ) {
         // Arrange
-        every { FactionHolder.defaultVehicles } returns listOf()
+        every { StarWarsFactionHolder.defaultVehicles } returns listOf()
 
         // Act
         val result = ReverseOrderVehicleNameVehicleSelector.selectVehicle(mapOf(), defaultEnabled)
@@ -62,7 +62,7 @@ class ReverseOrderVehicleNameVehicleSelectorTests {
         defaultEnabled: Boolean,
     ) {
         // Arrange
-        every { FactionHolder.defaultVehicles } returns listOf()
+        every { StarWarsFactionHolder.defaultVehicles } returns listOf()
 
         // Act
         val result = ReverseOrderVehicleNameVehicleSelector.selectVehicle(
@@ -80,7 +80,7 @@ class ReverseOrderVehicleNameVehicleSelectorTests {
         enabled: Boolean,
     ) {
         // Arrange
-        every { FactionHolder.defaultVehicles } returns listOf()
+        every { StarWarsFactionHolder.defaultVehicles } returns listOf()
 
         // Act
         val result =
@@ -93,7 +93,7 @@ class ReverseOrderVehicleNameVehicleSelectorTests {
     @Test
     fun `selectVehicle should return missing vehicle if provided enabled vehicles are empty and default vehicles are not empty and default enabled is false`() {
         // Arrange
-        every { FactionHolder.defaultVehicles } returns createStarWarsVehicles()
+        every { StarWarsFactionHolder.defaultVehicles } returns createStarWarsVehicles()
 
         // Act
         val result = ReverseOrderVehicleNameVehicleSelector.selectVehicle(mapOf(), false)
@@ -108,7 +108,7 @@ class ReverseOrderVehicleNameVehicleSelectorTests {
         defaultEnabled: Boolean,
     ) {
         // Arrange
-        every { FactionHolder.defaultVehicles } returns createStarWarsVehicles()
+        every { StarWarsFactionHolder.defaultVehicles } returns createStarWarsVehicles()
 
         // Act
         val result =
@@ -125,7 +125,7 @@ class ReverseOrderVehicleNameVehicleSelectorTests {
     fun `selectVehicle should return vehicles in sorted order`() {
         // Arrange
         val vehicles = createStarWarsVehicles().toMutableList()
-        every { FactionHolder.defaultVehicles } returns vehicles
+        every { StarWarsFactionHolder.defaultVehicles } returns vehicles
 
         // Act
         var result = mutableListOf<StarWarsVehicle>()

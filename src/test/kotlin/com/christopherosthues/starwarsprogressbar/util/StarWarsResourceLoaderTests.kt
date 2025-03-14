@@ -1,8 +1,8 @@
 package com.christopherosthues.starwarsprogressbar.util
 
-import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
+import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicleFaction
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactions
-import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicle
 import com.intellij.idea.TestFor
 import com.intellij.openapi.util.IconLoader
 import io.mockk.every
@@ -966,7 +966,7 @@ internal class StarWarsResourceLoaderTests {
 
         private fun setupStarWarsFactionsWithOneFactionWithoutVehicles(): StarWarsFactions {
             val loadedFactions = mockk<StarWarsFactions>(relaxed = true)
-            every { loadedFactions.factions } returns listOf(StarWarsFaction("1", listOf()))
+            every { loadedFactions.factions } returns listOf(StarWarsVehicleFaction("1", listOf()))
 
             return loadedFactions
         }
@@ -974,7 +974,7 @@ internal class StarWarsResourceLoaderTests {
         private fun setupStarWarsFactionsWithOneFactionWithVehicles(): StarWarsFactions {
             val loadedFactions = mockk<StarWarsFactions>(relaxed = true)
             every { loadedFactions.factions } returns listOf(
-                StarWarsFaction(
+                StarWarsVehicleFaction(
                     "1",
                     listOf(
                         StarWarsVehicle("1", "a", 1, 1, 1f),
@@ -990,7 +990,7 @@ internal class StarWarsResourceLoaderTests {
         private fun setupStarWarsFactions(): StarWarsFactions {
             val loadedFactions = mockk<StarWarsFactions>(relaxed = true)
             every { loadedFactions.factions } returns listOf(
-                StarWarsFaction(
+                StarWarsVehicleFaction(
                     "1",
                     listOf(
                         StarWarsVehicle("1", "a", 1, 1, 1f),
@@ -998,7 +998,7 @@ internal class StarWarsResourceLoaderTests {
                         StarWarsVehicle("3", "c", 3, 3, 3f),
                     ),
                 ),
-                StarWarsFaction(
+                StarWarsVehicleFaction(
                     "2",
                     listOf(
                         StarWarsVehicle("1", "a", 1, 1, 1f),
@@ -1006,7 +1006,7 @@ internal class StarWarsResourceLoaderTests {
                         StarWarsVehicle("3", "c", 3, 3, 3f),
                     ),
                 ),
-                StarWarsFaction(
+                StarWarsVehicleFaction(
                     "3",
                     listOf(
                         StarWarsVehicle("1", "a", 1, 1, 1f),

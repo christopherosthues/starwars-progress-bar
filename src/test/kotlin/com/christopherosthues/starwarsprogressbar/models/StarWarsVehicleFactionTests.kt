@@ -1,14 +1,16 @@
 package com.christopherosthues.starwarsprogressbar.models
 
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
+import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicleFaction
 import com.intellij.idea.TestFor
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertSame
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertAll
 
-@TestFor(classes = [StarWarsFaction::class])
-class StarWarsFactionTests {
+@TestFor(classes = [StarWarsVehicleFaction::class])
+class StarWarsVehicleFactionTests {
     @Test
     fun `constructor should set vehicles to provided list`() {
         // Arrange
@@ -18,7 +20,7 @@ class StarWarsFactionTests {
         )
 
         // Act
-        val sut = StarWarsFaction("1", vehicles)
+        val sut = StarWarsVehicleFaction("1", vehicles)
 
         // Assert
         assertAll(
@@ -31,13 +33,13 @@ class StarWarsFactionTests {
     fun `localizationKey should return correct key`() {
         // Arrange
         val id = "123456789"
-        val sut = StarWarsFaction(id, listOf())
+        val sut = StarWarsVehicleFaction(id, listOf())
 
         // Act
         val result = sut.localizationKey
 
         // Assert
-        val expectedLocalizationKey = "${BundleConstants.FACTION}$id"
+        val expectedLocalizationKey = "${BundleConstants.VEHICLES_FACTION}$id"
         assertEquals(expectedLocalizationKey, result)
     }
 }

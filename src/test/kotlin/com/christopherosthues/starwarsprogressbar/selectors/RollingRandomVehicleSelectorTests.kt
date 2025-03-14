@@ -2,8 +2,8 @@ package com.christopherosthues.starwarsprogressbar.selectors
 
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
-import com.christopherosthues.starwarsprogressbar.models.FactionHolder
-import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
+import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.util.randomInt
 import com.intellij.idea.TestFor
 import io.mockk.every
@@ -28,10 +28,10 @@ class RollingRandomVehicleSelectorTests {
     fun setup() {
         mockkStatic(StarWarsBundle::message)
         mockkStatic(::randomInt)
-        mockkObject(FactionHolder)
+        mockkObject(StarWarsFactionHolder)
         mockkObject(StarWarsPersistentStateComponent)
 
-        every { FactionHolder.missingVehicle } returns missingVehicle
+        every { StarWarsFactionHolder.missingVehicle } returns missingVehicle
     }
 
     @AfterEach
@@ -49,7 +49,7 @@ class RollingRandomVehicleSelectorTests {
         defaultEnabled: Boolean,
     ) {
         // Arrange
-        every { FactionHolder.defaultVehicles } returns listOf()
+        every { StarWarsFactionHolder.defaultVehicles } returns listOf()
 
         // Act
         val result = RollingRandomVehicleSelector.selectVehicle(mapOf(), defaultEnabled)
@@ -64,7 +64,7 @@ class RollingRandomVehicleSelectorTests {
         defaultEnabled: Boolean,
     ) {
         // Arrange
-        every { FactionHolder.defaultVehicles } returns listOf()
+        every { StarWarsFactionHolder.defaultVehicles } returns listOf()
 
         // Act
         val result = RollingRandomVehicleSelector.selectVehicle(
@@ -82,7 +82,7 @@ class RollingRandomVehicleSelectorTests {
         enabled: Boolean,
     ) {
         // Arrange
-        every { FactionHolder.defaultVehicles } returns listOf()
+        every { StarWarsFactionHolder.defaultVehicles } returns listOf()
 
         // Act
         val result =
@@ -98,7 +98,7 @@ class RollingRandomVehicleSelectorTests {
     @Test
     fun `selectVehicle should return missing vehicle if provided enabled vehicles are empty and default vehicles are not empty and default enabled is false`() {
         // Arrange
-        every { FactionHolder.defaultVehicles } returns createStarWarsVehicles()
+        every { StarWarsFactionHolder.defaultVehicles } returns createStarWarsVehicles()
 
         // Act
         val result = RollingRandomVehicleSelector.selectVehicle(mapOf(), false)
@@ -113,7 +113,7 @@ class RollingRandomVehicleSelectorTests {
         defaultEnabled: Boolean,
     ) {
         // Arrange
-        every { FactionHolder.defaultVehicles } returns createStarWarsVehicles()
+        every { StarWarsFactionHolder.defaultVehicles } returns createStarWarsVehicles()
 
         // Act
         val result =
@@ -130,7 +130,7 @@ class RollingRandomVehicleSelectorTests {
     fun `selectVehicle should return random vehicles`() {
         // Arrange
         val vehicles = createStarWarsVehicles().toMutableList()
-        every { FactionHolder.defaultVehicles } returns vehicles
+        every { StarWarsFactionHolder.defaultVehicles } returns vehicles
         every { randomInt(any()) } returns 0
 
         // Act

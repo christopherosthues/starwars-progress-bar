@@ -2,9 +2,9 @@ package com.christopherosthues.starwarsprogressbar.configuration
 
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_VEHICLE_SELECTOR
-import com.christopherosthues.starwarsprogressbar.models.FactionHolder
-import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
-import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
+import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicleFaction
+import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.selectors.SelectionType
 import com.intellij.idea.TestFor
 import com.intellij.openapi.application.Application
@@ -36,13 +36,13 @@ class StarWarsPersistentStateComponentTests {
 
     @BeforeEach
     fun setup() {
-        mockkObject(FactionHolder)
+        mockkObject(StarWarsFactionHolder)
 
-        every { FactionHolder.updateFactions(any() as List<StarWarsFaction>) } just runs
-        every { FactionHolder.factions } returns mockk(relaxed = true)
-        every { FactionHolder.missingVehicle } returns mockk(relaxed = true)
-        every { FactionHolder.defaultFactions } returns mockk(relaxed = true)
-        every { FactionHolder.defaultVehicles } returns listOf()
+        every { StarWarsFactionHolder.updateFactions(any() as List<StarWarsVehicleFaction>) } just runs
+        every { StarWarsFactionHolder.vehicleFactions } returns mockk(relaxed = true)
+        every { StarWarsFactionHolder.missingVehicle } returns mockk(relaxed = true)
+        every { StarWarsFactionHolder.defaultVehicleFactions } returns mockk(relaxed = true)
+        every { StarWarsFactionHolder.defaultVehicles } returns listOf()
     }
 
     fun tearDown() {
@@ -61,7 +61,7 @@ class StarWarsPersistentStateComponentTests {
             StarWarsVehicle("2", "green", 0, 0, 0f),
             StarWarsVehicle("3", "red", 0, 0, 0f),
         )
-        every { FactionHolder.defaultVehicles } returns vehicles
+        every { StarWarsFactionHolder.defaultVehicles } returns vehicles
         val sut = StarWarsPersistentStateComponent()
 
         // Act

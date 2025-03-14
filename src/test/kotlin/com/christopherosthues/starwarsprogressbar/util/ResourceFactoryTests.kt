@@ -1,7 +1,7 @@
 package com.christopherosthues.starwarsprogressbar.util
 
-import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
-import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicleFaction
+import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicle
 import com.intellij.ui.scale.JBUIScale
 import io.mockk.every
 import io.mockk.mockk
@@ -51,7 +51,7 @@ class ResourceFactoryTests {
         val result = parseFactionsFromJson("{\"factions\": []}")
 
         // Assert
-        assertEquals(listOf<StarWarsFaction>(), result.factions)
+        assertEquals(listOf<StarWarsVehicleFaction>(), result.factions)
     }
 
     @Test
@@ -62,7 +62,7 @@ class ResourceFactoryTests {
         val result = parseFactionsFromJson("{}")
 
         // Assert
-        assertEquals(listOf<StarWarsFaction>(), result.factions)
+        assertEquals(listOf<StarWarsVehicleFaction>(), result.factions)
     }
 
     @Test
@@ -73,7 +73,7 @@ class ResourceFactoryTests {
         val result = parseFactionsFromJson("")
 
         // Assert
-        assertEquals(listOf<StarWarsFaction>(), result.factions)
+        assertEquals(listOf<StarWarsVehicleFaction>(), result.factions)
     }
 
     @Test
@@ -84,15 +84,15 @@ class ResourceFactoryTests {
         val result = parseFactionsFromJson("[]")
 
         // Assert
-        assertEquals(listOf<StarWarsFaction>(), result.factions)
+        assertEquals(listOf<StarWarsVehicleFaction>(), result.factions)
     }
 
     @Test
     fun `parseFactionsFromJson should return correct factions`() {
         // Arrange
         val factions = listOf(
-            StarWarsFaction("faction1", listOf(StarWarsVehicle("vehicle1", "brown", -4, -6, 2.5f))),
-            StarWarsFaction(
+            StarWarsVehicleFaction("faction1", listOf(StarWarsVehicle("vehicle1", "brown", -4, -6, 2.5f))),
+            StarWarsVehicleFaction(
                 "faction2",
                 listOf(
                     StarWarsVehicle("vehicle2", "blue", -6, -6, 2.5f),

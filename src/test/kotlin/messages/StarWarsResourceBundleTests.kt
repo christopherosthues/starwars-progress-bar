@@ -1,7 +1,7 @@
 package messages
 
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
-import com.christopherosthues.starwarsprogressbar.models.FactionHolder
+import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.DisplayName
@@ -121,7 +121,7 @@ class StarWarsResourceBundleTests {
     @DisplayName("Check if all factions have a translation")
     fun `bundles should contain translations for all factions`(bundleFile: File) {
         // Arrange
-        val starWarsFactions = FactionHolder.factions
+        val starWarsFactions = StarWarsFactionHolder.vehicleFactions
         val bundle = Properties()
         bundle.load(bundleFile.inputStream())
 
@@ -144,7 +144,7 @@ class StarWarsResourceBundleTests {
     @DisplayName("Check if all vehicles have a translation")
     fun `bundles should contain translations for all vehicles`(bundleFile: File) {
         // Arrange
-        val starWarsFactions = FactionHolder.factions
+        val starWarsFactions = StarWarsFactionHolder.vehicleFactions
         val bundle = Properties()
         bundle.load(bundleFile.inputStream())
 

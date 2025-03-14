@@ -1,6 +1,6 @@
 package icons
 
-import com.christopherosthues.starwarsprogressbar.models.FactionHolder
+import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 import com.christopherosthues.starwarsprogressbar.util.StarWarsResourceLoader
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
@@ -17,7 +17,7 @@ class IconResourceTests {
 
     @BeforeEach
     fun setup() {
-        FactionHolder.updateFactions(StarWarsResourceLoader.loadFactions().factions)
+        StarWarsFactionHolder.updateFactions(StarWarsResourceLoader.loadFactions().factions)
     }
 
     //endregion
@@ -27,7 +27,7 @@ class IconResourceTests {
     @Test
     fun `all icon resources should exist`() {
         // Arrange
-        val starWarsFactions = FactionHolder.factions
+        val starWarsFactions = StarWarsFactionHolder.vehicleFactions
 
         // Act
         val iconPaths = starWarsFactions.map {
@@ -67,7 +67,7 @@ class IconResourceTests {
     @Test
     fun `all logo resources should exist`() {
         // Arrange
-        val starWarsFactions = FactionHolder.defaultFactions
+        val starWarsFactions = StarWarsFactionHolder.defaultVehicleFactions
 
         // Act
         val iconPaths = starWarsFactions.map {
@@ -87,7 +87,7 @@ class IconResourceTests {
     @Test
     fun `all icon resources should be used`() {
         // Arrange
-        val starWarsFactions = FactionHolder.factions
+        val starWarsFactions = StarWarsFactionHolder.vehicleFactions
         val iconBasePath =
             "${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources${File.separatorChar}icons"
 
@@ -128,7 +128,7 @@ class IconResourceTests {
     @Test
     fun `all 2x icon resources should be used`() {
         // Arrange
-        val starWarsFactions = FactionHolder.factions
+        val starWarsFactions = StarWarsFactionHolder.vehicleFactions
         val iconBasePath =
             "${File.separatorChar}icons"
 

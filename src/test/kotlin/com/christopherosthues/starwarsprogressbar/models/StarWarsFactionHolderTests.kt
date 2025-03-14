@@ -1,5 +1,7 @@
 package com.christopherosthues.starwarsprogressbar.models
 
+import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicleFaction
 import com.intellij.idea.TestFor
 import io.mockk.every
 import io.mockk.mockkObject
@@ -13,8 +15,8 @@ import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
-@TestFor(classes = [FactionHolder::class])
-class FactionHolderTests {
+@TestFor(classes = [StarWarsFactionHolder::class])
+class StarWarsFactionHolderTests {
     //region Fields
 
     private val missingVehicle = StarWarsVehicle("missing", "missing", 0, 1, 2f)
@@ -32,7 +34,7 @@ class FactionHolderTests {
 
     @AfterEach
     fun tearDown() {
-        FactionHolder.updateFactions(listOf())
+        StarWarsFactionHolder.updateFactions(listOf())
 
         unmockkAll()
     }
@@ -46,7 +48,7 @@ class FactionHolderTests {
         // Arrange
 
         // Act and Assert
-        assertTrue(FactionHolder.factions.isEmpty())
+        assertTrue(StarWarsFactionHolder.vehicleFactions.isEmpty())
     }
 
     @Test
@@ -54,7 +56,7 @@ class FactionHolderTests {
         // Arrange
 
         // Act and Assert
-        assertTrue(FactionHolder.defaultFactions.isEmpty())
+        assertTrue(StarWarsFactionHolder.defaultVehicleFactions.isEmpty())
     }
 
     @Test
@@ -62,7 +64,7 @@ class FactionHolderTests {
         // Arrange
 
         // Act and Assert
-        assertTrue(FactionHolder.defaultVehicles.isEmpty())
+        assertTrue(StarWarsFactionHolder.defaultVehicles.isEmpty())
     }
 
     @Test
@@ -85,7 +87,7 @@ class FactionHolderTests {
         updateFactions(listOf())
 
         // Assert
-        assertTrue(FactionHolder.factions.isEmpty())
+        assertTrue(StarWarsFactionHolder.vehicleFactions.isEmpty())
     }
 
     @Test
@@ -94,10 +96,10 @@ class FactionHolderTests {
         val factions = FactionCreationHelper.createStarWarsFactions()
 
         // Act
-        FactionHolder.updateFactions(factions)
+        StarWarsFactionHolder.updateFactions(factions)
 
         // Assert
-        assertEquals(factions, FactionHolder.factions)
+        assertEquals(factions, StarWarsFactionHolder.vehicleFactions)
     }
 
     //endregion
@@ -112,7 +114,7 @@ class FactionHolderTests {
         updateFactions(listOf())
 
         // Assert
-        assertTrue(FactionHolder.defaultFactions.isEmpty())
+        assertTrue(StarWarsFactionHolder.defaultVehicleFactions.isEmpty())
     }
 
     @Test
@@ -121,10 +123,10 @@ class FactionHolderTests {
         val factions = FactionCreationHelper.createStarWarsFactionsWithEmptyIdAndNoVehicles()
 
         // Act
-        FactionHolder.updateFactions(factions)
+        StarWarsFactionHolder.updateFactions(factions)
 
         // Assert
-        assertTrue(FactionHolder.defaultFactions.isEmpty())
+        assertTrue(StarWarsFactionHolder.defaultVehicleFactions.isEmpty())
     }
 
     @Test
@@ -133,10 +135,10 @@ class FactionHolderTests {
         val factions = FactionCreationHelper.createStarWarsFactionsWithEmptyIdsAndNoVehicles()
 
         // Act
-        FactionHolder.updateFactions(factions)
+        StarWarsFactionHolder.updateFactions(factions)
 
         // Assert
-        assertTrue(FactionHolder.defaultFactions.isEmpty())
+        assertTrue(StarWarsFactionHolder.defaultVehicleFactions.isEmpty())
     }
 
     @Test
@@ -145,10 +147,10 @@ class FactionHolderTests {
         val factions = FactionCreationHelper.createStarWarsFactionsWithEmptyIdsAndFirstHasNoVehicles()
 
         // Act
-        FactionHolder.updateFactions(factions)
+        StarWarsFactionHolder.updateFactions(factions)
 
         // Assert
-        assertTrue(FactionHolder.defaultFactions.isEmpty())
+        assertTrue(StarWarsFactionHolder.defaultVehicleFactions.isEmpty())
     }
 
     @Test
@@ -157,10 +159,10 @@ class FactionHolderTests {
         val factions = FactionCreationHelper.createStarWarsFactionsWithEmptyIds()
 
         // Act
-        FactionHolder.updateFactions(factions)
+        StarWarsFactionHolder.updateFactions(factions)
 
         // Assert
-        assertTrue(FactionHolder.defaultFactions.isEmpty())
+        assertTrue(StarWarsFactionHolder.defaultVehicleFactions.isEmpty())
     }
 
     @Test
@@ -170,10 +172,10 @@ class FactionHolderTests {
         val expectedFactions = factions.filter { it.id.isNotEmpty() }
 
         // Act
-        FactionHolder.updateFactions(factions)
+        StarWarsFactionHolder.updateFactions(factions)
 
         // Assert
-        val result = FactionHolder.defaultFactions
+        val result = StarWarsFactionHolder.defaultVehicleFactions
         assertAll(
             { assertTrue(result.isNotEmpty()) },
             { assertEquals(2, result.size) },
@@ -192,7 +194,7 @@ class FactionHolderTests {
         updateFactions(factions)
 
         // Assert
-        val result = FactionHolder.defaultFactions
+        val result = StarWarsFactionHolder.defaultVehicleFactions
         assertAll(
             { assertTrue(result.isNotEmpty()) },
             { assertEquals(2, result.size) },
@@ -210,7 +212,7 @@ class FactionHolderTests {
         updateFactions(factions)
 
         // Assert
-        val result = FactionHolder.defaultFactions
+        val result = StarWarsFactionHolder.defaultVehicleFactions
         assertAll(
             { assertTrue(result.isNotEmpty()) },
             { assertEquals(3, result.size) },
@@ -268,8 +270,8 @@ class FactionHolderTests {
 
         // Assert
         assertAll(
-            { assertDoesNotThrow { FactionHolder.missingVehicle } },
-            { assertEquals(expectedVehicle, FactionHolder.missingVehicle) },
+            { assertDoesNotThrow { StarWarsFactionHolder.missingVehicle } },
+            { assertEquals(expectedVehicle, StarWarsFactionHolder.missingVehicle) },
         )
     }
 
@@ -284,8 +286,8 @@ class FactionHolderTests {
 
         // Assert
         assertAll(
-            { assertDoesNotThrow { FactionHolder.missingVehicle } },
-            { assertEquals(expectedVehicle, FactionHolder.missingVehicle) },
+            { assertDoesNotThrow { StarWarsFactionHolder.missingVehicle } },
+            { assertEquals(expectedVehicle, StarWarsFactionHolder.missingVehicle) },
         )
     }
 
@@ -301,8 +303,8 @@ class FactionHolderTests {
 
         // Assert
         assertAll(
-            { assertDoesNotThrow { FactionHolder.missingVehicle } },
-            { assertEquals(expectedVehicle, FactionHolder.missingVehicle) },
+            { assertDoesNotThrow { StarWarsFactionHolder.missingVehicle } },
+            { assertEquals(expectedVehicle, StarWarsFactionHolder.missingVehicle) },
         )
     }
 
@@ -318,7 +320,7 @@ class FactionHolderTests {
         updateFactions(listOf())
 
         // Assert
-        assertTrue(FactionHolder.defaultVehicles.isEmpty())
+        assertTrue(StarWarsFactionHolder.defaultVehicles.isEmpty())
     }
 
     @Test
@@ -330,7 +332,7 @@ class FactionHolderTests {
         updateFactions(factions)
 
         // Assert
-        assertTrue(FactionHolder.defaultVehicles.isEmpty())
+        assertTrue(StarWarsFactionHolder.defaultVehicles.isEmpty())
     }
 
     @Test
@@ -342,7 +344,7 @@ class FactionHolderTests {
         updateFactions(factions)
 
         // Assert
-        assertTrue(FactionHolder.defaultVehicles.isEmpty())
+        assertTrue(StarWarsFactionHolder.defaultVehicles.isEmpty())
     }
 
     @Test
@@ -354,7 +356,7 @@ class FactionHolderTests {
         updateFactions(factions)
 
         // Assert
-        assertTrue(FactionHolder.defaultVehicles.isEmpty())
+        assertTrue(StarWarsFactionHolder.defaultVehicles.isEmpty())
     }
 
     @Test
@@ -366,7 +368,7 @@ class FactionHolderTests {
         updateFactions(factions)
 
         // Assert
-        assertTrue(FactionHolder.defaultVehicles.isEmpty())
+        assertTrue(StarWarsFactionHolder.defaultVehicles.isEmpty())
     }
 
     @Test
@@ -381,7 +383,7 @@ class FactionHolderTests {
         updateFactions(factions)
 
         // Assert
-        assertEquals(expectedVehicles, FactionHolder.defaultVehicles)
+        assertEquals(expectedVehicles, StarWarsFactionHolder.defaultVehicles)
     }
 
     @Test
@@ -397,7 +399,7 @@ class FactionHolderTests {
         updateFactions(factions)
 
         // Assert
-        assertEquals(expectedVehicles, FactionHolder.defaultVehicles)
+        assertEquals(expectedVehicles, StarWarsFactionHolder.defaultVehicles)
     }
 
     @Test
@@ -414,10 +416,10 @@ class FactionHolderTests {
 
         // Assert
         assertAll(
-            { assertEquals(expectedVehicles, FactionHolder.defaultVehicles) },
+            { assertEquals(expectedVehicles, StarWarsFactionHolder.defaultVehicles) },
             {
                 expectedVehicles.addAll(factions[4].vehicles)
-                assertEquals(expectedVehicles, FactionHolder.defaultVehicles)
+                assertEquals(expectedVehicles, StarWarsFactionHolder.defaultVehicles)
             },
         )
     }
@@ -435,19 +437,19 @@ class FactionHolderTests {
         updateFactions(factions)
 
         // Assert
-        assertEquals(expectedVehicles, FactionHolder.defaultVehicles)
+        assertEquals(expectedVehicles, StarWarsFactionHolder.defaultVehicles)
     }
 
     //endregion
 
     //region Helper methods
 
-    private fun updateFactions(factions: List<StarWarsFaction>) {
-        FactionHolder.updateFactions(factions)
+    private fun updateFactions(factions: List<StarWarsVehicleFaction>) {
+        StarWarsFactionHolder.updateFactions(factions)
     }
 
     private fun assertDefaultMissingVehicle() {
-        val missingVehicle = FactionHolder.missingVehicle
+        val missingVehicle = StarWarsFactionHolder.missingVehicle
 
         assertAll(
             { assertNotNull(missingVehicle) },

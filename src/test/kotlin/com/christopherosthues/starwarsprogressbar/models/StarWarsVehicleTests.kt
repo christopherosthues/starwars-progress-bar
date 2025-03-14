@@ -1,6 +1,7 @@
 package com.christopherosthues.starwarsprogressbar.models
 
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
+import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.ui.IonEngineColor
 import com.intellij.idea.TestFor
 import com.intellij.ui.JBColor

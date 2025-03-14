@@ -1,7 +1,7 @@
 package com.christopherosthues.starwarsprogressbar.configuration
 
-import com.christopherosthues.starwarsprogressbar.models.FactionHolder
-import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
+import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.util.StarWarsResourceLoader
 import io.mockk.every
 import io.mockk.mockk
@@ -18,13 +18,13 @@ class CreateStarWarsProgressConfigurationComponentTests {
     @BeforeEach
     fun setup() {
         mockkObject(StarWarsPersistentStateComponent)
-        mockkObject(FactionHolder)
+        mockkObject(StarWarsFactionHolder)
         mockkStatic(StarWarsResourceLoader::class)
 
         val starWarsPersistentStateComponentMock = mockk<StarWarsPersistentStateComponent>(relaxed = true)
         every { StarWarsPersistentStateComponent.instance } returns starWarsPersistentStateComponentMock
         every { starWarsPersistentStateComponentMock.state } returns null
-        every { FactionHolder.missingVehicle } returns StarWarsVehicle("missing", "green", 0, 0, 0f)
+        every { StarWarsFactionHolder.missingVehicle } returns StarWarsVehicle("missing", "green", 0, 0, 0f)
 
         every { StarWarsResourceLoader.getFactionLogo(any(), any()) } returns mockk {
             every { height } returns 10

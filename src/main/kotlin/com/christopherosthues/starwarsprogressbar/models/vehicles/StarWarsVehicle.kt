@@ -1,4 +1,4 @@
-package com.christopherosthues.starwarsprogressbar.models
+package com.christopherosthues.starwarsprogressbar.models.vehicles
 
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
 import com.christopherosthues.starwarsprogressbar.ui.IonEngineColor

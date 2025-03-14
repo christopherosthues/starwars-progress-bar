@@ -1,4 +1,4 @@
-package com.christopherosthues.starwarsprogressbar.models
+package com.christopherosthues.starwarsprogressbar.models.lightsabers
 
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
 import com.christopherosthues.starwarsprogressbar.ui.LightsaberColor
@@ -24,4 +24,8 @@ internal data class Lightsaber(val id: String,
 
     val color: JBColor
         get() = LightsaberColor.colors[bladeColor] ?: LightsaberColor.Cyan
+
+    companion object {
+        val missingLightsaber = Lightsaber("missing", "green", 2.5f, isShoto = false, isDoubleBladed = false)
+    }
 }

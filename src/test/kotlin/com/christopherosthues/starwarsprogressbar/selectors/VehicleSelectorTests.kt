@@ -2,9 +2,9 @@ package com.christopherosthues.starwarsprogressbar.selectors
 
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
-import com.christopherosthues.starwarsprogressbar.models.FactionHolder
-import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
-import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
+import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicleFaction
+import com.christopherosthues.starwarsprogressbar.models.vehicles.StarWarsVehicle
 import com.intellij.idea.TestFor
 import io.mockk.every
 import io.mockk.mockk
@@ -28,7 +28,7 @@ class VehicleSelectorTests {
 
     @BeforeEach
     fun setup() {
-        mockkObject(FactionHolder)
+        mockkObject(StarWarsFactionHolder)
         mockkObject(StarWarsPersistentStateComponent)
         mockkObject(InorderFactionVehicleSelector)
         mockkObject(InorderVehicleNameVehicleSelector)
@@ -38,7 +38,7 @@ class VehicleSelectorTests {
         mockkObject(RollingRandomVehicleSelector)
 
         setupStarWarsState(null)
-        every { FactionHolder.missingVehicle } returns missingVehicle
+        every { StarWarsFactionHolder.missingVehicle } returns missingVehicle
     }
 
     @AfterEach
@@ -53,13 +53,13 @@ class VehicleSelectorTests {
     @Test
     fun `selectVehicle should not update factions of faction holder if factions of faction holder are not empty`() {
         // Arrange
-        every { FactionHolder.factions } returns listOf(StarWarsFaction("1", listOf()))
+        every { StarWarsFactionHolder.vehicleFactions } returns listOf(StarWarsVehicleFaction("1", listOf()))
 
         // Act
         VehicleSelector.selectVehicle(null, false, SelectionType.RANDOM_ALL)
 
         // Assert
-        verify(exactly = 0) { FactionHolder.updateFactions(any()) }
+        verify(exactly = 0) { StarWarsFactionHolder.updateFactions(any()) }
         verify(exactly = 0) { InorderFactionVehicleSelector.selectVehicle(any(), any()) }
         verify(exactly = 0) { InorderVehicleNameVehicleSelector.selectVehicle(any(), any()) }
         verify(exactly = 0) { RandomVehicleSelector.selectVehicle(any(), any()) }
@@ -71,7 +71,7 @@ class VehicleSelectorTests {
     @Test
     fun `selectVehicle should return missing vehicle if persistent state component is null`() {
         // Arrange
-        every { FactionHolder.factions } returns listOf(StarWarsFaction("1", listOf()))
+        every { StarWarsFactionHolder.vehicleFactions } returns listOf(StarWarsVehicleFaction("1", listOf()))
         setupStarWarsState(null)
 
         // Act
@@ -79,7 +79,7 @@ class VehicleSelectorTests {
 
         // Assert
         assertEquals(missingVehicle, result)
-        verify(exactly = 0) { FactionHolder.updateFactions(any()) }
+        verify(exactly = 0) { StarWarsFactionHolder.updateFactions(any()) }
         verify(exactly = 0) { InorderFactionVehicleSelector.selectVehicle(any(), any()) }
         verify(exactly = 0) { InorderVehicleNameVehicleSelector.selectVehicle(any(), any()) }
         verify(exactly = 0) { RandomVehicleSelector.selectVehicle(any(), any()) }
@@ -91,7 +91,7 @@ class VehicleSelectorTests {
     @Test
     fun `selectVehicle should return missing vehicle if state is null`() {
         // Arrange
-        every { FactionHolder.factions } returns listOf(StarWarsFaction("1", listOf()))
+        every { StarWarsFactionHolder.vehicleFactions } returns listOf(StarWarsVehicleFaction("1", listOf()))
         setupStarWarsState(null)
 
         // Act
@@ -99,7 +99,7 @@ class VehicleSelectorTests {
 
         // Assert
         assertEquals(missingVehicle, result)
-        verify(exactly = 0) { FactionHolder.updateFactions(any()) }
+        verify(exactly = 0) { StarWarsFactionHolder.updateFactions(any()) }
         verify(exactly = 0) { InorderFactionVehicleSelector.selectVehicle(any(), any()) }
         verify(exactly = 0) { InorderVehicleNameVehicleSelector.selectVehicle(any(), any()) }
         verify(exactly = 0) { RandomVehicleSelector.selectVehicle(any(), any()) }
@@ -121,7 +121,7 @@ class VehicleSelectorTests {
     ) {
         // Arrange
         val vehicles = createStarWarsVehicles()
-        every { FactionHolder.defaultVehicles } returns vehicles
+        every { StarWarsFactionHolder.defaultVehicles } returns vehicles
         val enabledVehicles = mutableMapOf("1" to false, "2" to true, "3" to false)
         val defaultEnabled = false
         val starWarsState = StarWarsState().apply {
@@ -166,7 +166,7 @@ class VehicleSelectorTests {
     ) {
         // Arrange
         val vehicles = createStarWarsVehicles()
-        every { FactionHolder.defaultVehicles } returns vehicles
+        every { StarWarsFactionHolder.defaultVehicles } returns vehicles
         val enabledVehicles = mapOf("1" to false, "2" to true, "3" to false)
         val vehiclesEnabledState = mutableMapOf("1" to true, "2" to true, "3" to false)
         val defaultEnabled = true
