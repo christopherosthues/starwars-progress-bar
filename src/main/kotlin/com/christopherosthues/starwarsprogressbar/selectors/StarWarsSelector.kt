@@ -4,8 +4,8 @@ import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersiste
 import com.christopherosthues.starwarsprogressbar.models.StarWarsEntity
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 
-internal object VehicleSelector {
-    fun selectVehicle(
+internal object StarWarsSelector {
+    fun selectEntity(
         enabledVehicles: Map<String, Boolean>?,
         enabledLightsabers: Map<String, Boolean>?,
         defaultEnabled: Boolean,
@@ -36,6 +36,6 @@ internal object VehicleSelector {
             SelectionType.REVERSE_ORDER_NAME -> ReverseOrderNameSelector
         }
 
-        return selector.selectVehicle(currentEnabledVehicles, currentEnabledLightsabers, defaultEnabled)
+        return selector.selectEntity(currentEnabledVehicles, currentEnabledLightsabers, defaultEnabled)
     }
 }

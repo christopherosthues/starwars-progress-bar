@@ -96,7 +96,7 @@ internal class StarWarsProgressConfigurationComponent {
     private fun createVehicleSection(formBuilder: FormBuilder) {
         vehiclesPanel.addVehicleListener(object : VehicleClickListener {
             override fun vehicleClicked(vehicle: StarWarsVehicle) {
-                previewPanel.selectVehicle(vehicle)
+                previewPanel.selectEntity(vehicle)
             }
         })
         formBuilder.addComponent(vehiclesPanel)

@@ -1,7 +1,7 @@
 package com.christopherosthues.starwarsprogressbar.ui
 
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
-import com.christopherosthues.starwarsprogressbar.selectors.VehicleSelector
+import com.christopherosthues.starwarsprogressbar.selectors.StarWarsSelector
 import com.intellij.idea.TestFor
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.util.ui.JBEmptyBorder
@@ -32,7 +32,7 @@ class StarWarsProgressBarFactoryTests {
 
     @BeforeEach
     fun setup() {
-        mockkObject(VehicleSelector)
+        mockkObject(StarWarsSelector)
         mockkStatic(JBUI.Borders::class)
         mockkStatic(ApplicationManager::class)
         val starWarsPersistentStateComponent = mockk<StarWarsPersistentStateComponent>()
@@ -40,7 +40,7 @@ class StarWarsProgressBarFactoryTests {
         componentMock = mockk()
 
         justRun { componentMock.border = any() }
-        every { VehicleSelector.selectVehicle(any(), any(), any()) } returns mockk(relaxed = true)
+        every { StarWarsSelector.selectEntity(any(), any(), any()) } returns mockk(relaxed = true)
         every {
             ApplicationManager.getApplication().getService(StarWarsPersistentStateComponent::class.java)
         } returns starWarsPersistentStateComponent
@@ -80,6 +80,6 @@ class StarWarsProgressBarFactoryTests {
 
         // Assert
         assertTrue(result is StarWarsProgressBarUI)
-        verify(exactly = 1) { VehicleSelector.selectVehicle(any(), false, any()) }
+        verify(exactly = 1) { StarWarsSelector.selectEntity(any(), false, any()) }
     }
 }

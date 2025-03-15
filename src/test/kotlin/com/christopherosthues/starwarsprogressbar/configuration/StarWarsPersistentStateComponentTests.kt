@@ -40,8 +40,7 @@ class StarWarsPersistentStateComponentTests {
     fun setup() {
         mockkObject(StarWarsFactionHolder)
 
-        every { StarWarsFactionHolder.updateFactions(any() as List<StarWarsFaction<StarWarsVehicle>>) } just runs
-        every { StarWarsFactionHolder.updateFactions(any() as List<StarWarsFaction<Lightsaber>>) } just runs
+        every { StarWarsFactionHolder.updateFactions(any()) } just runs
         every { StarWarsFactionHolder.vehicleFactions } returns mockk(relaxed = true)
         every { StarWarsFactionHolder.missingVehicle } returns mockk(relaxed = true)
         every { StarWarsFactionHolder.defaultVehicleFactions } returns mockk(relaxed = true)

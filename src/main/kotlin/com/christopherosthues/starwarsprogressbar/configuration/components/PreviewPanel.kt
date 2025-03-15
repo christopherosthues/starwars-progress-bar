@@ -4,8 +4,9 @@ import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.LANGUAGE_EVENT
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
+import com.christopherosthues.starwarsprogressbar.models.StarWarsEntity
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
-import com.christopherosthues.starwarsprogressbar.selectors.VehicleSelector
+import com.christopherosthues.starwarsprogressbar.selectors.StarWarsSelector
 import com.christopherosthues.starwarsprogressbar.ui.StarWarsProgressBarUI
 import com.intellij.icons.AllIcons
 import com.intellij.openapi.ui.LabeledComponent
@@ -35,7 +36,7 @@ internal class PreviewPanel(
 
         val previewButton = JButton(AllIcons.Actions.Refresh)
         previewButton.addActionListener {
-            setProgressBarUI(starWarsState.vehiclesEnabled)
+            setProgressBarUI(starWarsState.vehiclesEnabled, starWarsState.lightsabersEnabled)
         }
         var gridBagConstraints = GridBagConstraints()
         gridBagConstraints.fill = GridBagConstraints.NONE
@@ -49,7 +50,7 @@ internal class PreviewPanel(
         indeterminateProgressBar = JProgressBar()
         indeterminateProgressBar.isIndeterminate = true
 
-        setProgressBarUI(null)
+        setProgressBarUI(null, null)
 
         determinateProgressBarContainer = LabeledComponent.create(
             determinateProgressBar,
@@ -72,34 +73,34 @@ internal class PreviewPanel(
         add(progressBarPanel, gridBagConstraints)
     }
 
-    private fun setProgressBarUI(enabledVehicles: Map<String, Boolean>?) {
+    private fun setProgressBarUI(enabledVehicles: Map<String, Boolean>?, enabledLightsabers: Map<String, Boolean>?) {
         setProgressBarUI(
-            selectVehicle(enabledVehicles),
-            selectVehicle(enabledVehicles),
+            selectEntity(enabledVehicles, enabledLightsabers),
+            selectEntity(enabledVehicles, enabledLightsabers),
         )
     }
 
-    private fun setProgressBarUI(determinateVehicle: StarWarsVehicle, indeterminateVehicle: StarWarsVehicle) {
+    private fun setProgressBarUI(determinateEntity: StarWarsEntity, indeterminateEntity: StarWarsEntity) {
         determinateProgressBar.setUI(
             StarWarsProgressBarUI(
                 { starWarsState },
-                determinateVehicle,
+                determinateEntity,
             ),
         )
 
         indeterminateProgressBar.setUI(
             StarWarsProgressBarUI(
                 { starWarsState },
-                indeterminateVehicle,
+                indeterminateEntity,
             ),
         )
     }
 
-    private fun selectVehicle(enabledVehicles: Map<String, Boolean>?): StarWarsVehicle =
-        VehicleSelector.selectVehicle(enabledVehicles, starWarsState.enableNewVehicles, starWarsState.vehicleSelector!!)
+    private fun selectEntity(enabledVehicles: Map<String, Boolean>?, enabledLightsabers: Map<String, Boolean>?): StarWarsEntity =
+        StarWarsSelector.selectEntity(enabledVehicles, enabledLightsabers, starWarsState.enableNewVehicles, starWarsState.vehicleSelector!!)
 
-    fun selectVehicle(vehicle: StarWarsVehicle) {
-        setProgressBarUI(vehicle, vehicle)
+    fun selectEntity(starWarsEntity: StarWarsEntity) {
+        setProgressBarUI(starWarsEntity, starWarsEntity)
     }
 
     fun repaintProgressBar() {

@@ -45,14 +45,14 @@ class RollingRandomSelectorTests {
 
     @ParameterizedTest
     @MethodSource("defaultEnabledValues")
-    fun `selectVehicle should return missing vehicle if provided enabled vehicles and default vehicles are empty`(
+    fun `selectEntity should return missing vehicle if provided enabled vehicles and default vehicles are empty`(
         defaultEnabled: Boolean,
     ) {
         // Arrange
         every { StarWarsFactionHolder.defaultVehicles } returns listOf()
 
         // Act
-        val result = RollingRandomSelector.selectVehicle(mapOf(), defaultEnabled)
+        val result = RollingRandomSelector.selectEntity(mapOf(), mapOf(), defaultEnabled)
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -60,14 +60,14 @@ class RollingRandomSelectorTests {
 
     @ParameterizedTest
     @MethodSource("defaultEnabledValues")
-    fun `selectVehicle should return missing vehicle if provided enabled vehicles are not empty and default vehicles are empty`(
+    fun `selectEntity should return missing vehicle if provided enabled vehicles are not empty and default vehicles are empty`(
         defaultEnabled: Boolean,
     ) {
         // Arrange
         every { StarWarsFactionHolder.defaultVehicles } returns listOf()
 
         // Act
-        val result = RollingRandomSelector.selectVehicle(
+        val result = RollingRandomSelector.selectEntity(
             mapOf("2.1" to true, "1.2" to false, "1.3" to true),
             defaultEnabled,
         )
@@ -78,7 +78,7 @@ class RollingRandomSelectorTests {
 
     @ParameterizedTest
     @ValueSource(booleans = [true, false])
-    fun `selectVehicle should return missing vehicle if provided enabled vehicles are not empty and default vehicles are empty and all values are true or false`(
+    fun `selectEntity should return missing vehicle if provided enabled vehicles are not empty and default vehicles are empty and all values are true or false`(
         enabled: Boolean,
     ) {
         // Arrange
@@ -86,7 +86,7 @@ class RollingRandomSelectorTests {
 
         // Act
         val result =
-            RollingRandomSelector.selectVehicle(
+            RollingRandomSelector.selectEntity(
                 mapOf("2.1" to enabled, "1.2" to enabled, "1.3" to enabled),
                 true,
             )
@@ -96,12 +96,12 @@ class RollingRandomSelectorTests {
     }
 
     @Test
-    fun `selectVehicle should return missing vehicle if provided enabled vehicles are empty and default vehicles are not empty and default enabled is false`() {
+    fun `selectEntity should return missing vehicle if provided enabled vehicles are empty and default vehicles are not empty and default enabled is false`() {
         // Arrange
         every { StarWarsFactionHolder.defaultVehicles } returns createStarWarsVehicles()
 
         // Act
-        val result = RollingRandomSelector.selectVehicle(mapOf(), false)
+        val result = RollingRandomSelector.selectEntity(mapOf(), false)
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -109,7 +109,7 @@ class RollingRandomSelectorTests {
 
     @ParameterizedTest
     @MethodSource("defaultEnabledValues")
-    fun `selectVehicle should return missing vehicle if provided enabled vehicles are all false and default vehicles are not empty`(
+    fun `selectEntity should return missing vehicle if provided enabled vehicles are all false and default vehicles are not empty`(
         defaultEnabled: Boolean,
     ) {
         // Arrange
@@ -117,7 +117,7 @@ class RollingRandomSelectorTests {
 
         // Act
         val result =
-            RollingRandomSelector.selectVehicle(
+            RollingRandomSelector.selectEntity(
                 mapOf("2.1" to false, "1.2" to false, "1.3" to false),
                 defaultEnabled,
             )
@@ -127,7 +127,7 @@ class RollingRandomSelectorTests {
     }
 
     @Test
-    fun `selectVehicle should return random vehicles`() {
+    fun `selectEntity should return random vehicles`() {
         // Arrange
         val vehicles = createStarWarsVehicles().toMutableList()
         every { StarWarsFactionHolder.defaultVehicles } returns vehicles
@@ -137,7 +137,7 @@ class RollingRandomSelectorTests {
         var result = mutableListOf<StarWarsVehicle>()
         for (i in 0 until (2 * vehicles.size)) {
             result.add(
-                RollingRandomSelector.selectVehicle(
+                RollingRandomSelector.selectEntity(
                     mapOf("2.1" to true, "1.2" to true, "1.3" to true),
                     true,
                 ),
@@ -164,7 +164,7 @@ class RollingRandomSelectorTests {
         result = mutableListOf()
         for (i in 0 until (2 * vehicles.size)) {
             result.add(
-                RollingRandomSelector.selectVehicle(
+                RollingRandomSelector.selectEntity(
                     mapOf("2.1" to true, "1.2" to true, "1.3" to true),
                     true,
                 ),
@@ -186,7 +186,7 @@ class RollingRandomSelectorTests {
         result = mutableListOf()
         for (i in 0 until (2 * vehicles.size)) {
             result.add(
-                RollingRandomSelector.selectVehicle(
+                RollingRandomSelector.selectEntity(
                     mapOf("2.1" to true, "1.2" to false, "1.3" to true),
                     true,
                 ),

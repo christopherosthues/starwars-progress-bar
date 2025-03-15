@@ -43,14 +43,14 @@ class InorderFactionSelectorTests {
 
     @ParameterizedTest
     @MethodSource("defaultEnabledValues")
-    fun `selectVehicle should return missing vehicle if provided enabled vehicles and default vehicles are empty`(
+    fun `selectEntity should return missing vehicle if provided enabled vehicles and default vehicles are empty`(
         defaultEnabled: Boolean,
     ) {
         // Arrange
         every { StarWarsFactionHolder.defaultVehicles } returns listOf()
 
         // Act
-        val result = InorderFactionSelector.selectVehicle(mapOf(), defaultEnabled)
+        val result = InorderFactionSelector.selectEntity(mapOf(), mapOf(), defaultEnabled)
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -58,14 +58,14 @@ class InorderFactionSelectorTests {
 
     @ParameterizedTest
     @MethodSource("defaultEnabledValues")
-    fun `selectVehicle should return missing vehicle if provided enabled vehicles are not empty and default vehicles are empty`(
+    fun `selectEntity should return missing vehicle if provided enabled vehicles are not empty and default vehicles are empty`(
         defaultEnabled: Boolean,
     ) {
         // Arrange
         every { StarWarsFactionHolder.defaultVehicles } returns listOf()
 
         // Act
-        val result = InorderFactionSelector.selectVehicle(
+        val result = InorderFactionSelector.selectEntity(
             mapOf("2.1" to true, "1.2" to false, "1.3" to true),
             defaultEnabled,
         )
@@ -76,7 +76,7 @@ class InorderFactionSelectorTests {
 
     @ParameterizedTest
     @ValueSource(booleans = [true, false])
-    fun `selectVehicle should return missing vehicle if provided enabled vehicles are not empty and default vehicles are empty and all values are true or false`(
+    fun `selectEntity should return missing vehicle if provided enabled vehicles are not empty and default vehicles are empty and all values are true or false`(
         enabled: Boolean,
     ) {
         // Arrange
@@ -84,7 +84,7 @@ class InorderFactionSelectorTests {
 
         // Act
         val result =
-            InorderFactionSelector.selectVehicle(
+            InorderFactionSelector.selectEntity(
                 mapOf("2.1" to enabled, "1.2" to enabled, "1.3" to enabled),
                 true,
             )
@@ -94,12 +94,12 @@ class InorderFactionSelectorTests {
     }
 
     @Test
-    fun `selectVehicle should return missing vehicle if provided enabled vehicles are empty and default vehicles are not empty and default enabled is false`() {
+    fun `selectEntity should return missing vehicle if provided enabled vehicles are empty and default vehicles are not empty and default enabled is false`() {
         // Arrange
         every { StarWarsFactionHolder.defaultVehicles } returns createStarWarsVehicles()
 
         // Act
-        val result = InorderFactionSelector.selectVehicle(mapOf(), false)
+        val result = InorderFactionSelector.selectEntity(mapOf(), false)
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -107,7 +107,7 @@ class InorderFactionSelectorTests {
 
     @ParameterizedTest
     @MethodSource("defaultEnabledValues")
-    fun `selectVehicle should return missing vehicle if provided enabled vehicles are all false and default vehicles are not empty`(
+    fun `selectEntity should return missing vehicle if provided enabled vehicles are all false and default vehicles are not empty`(
         defaultEnabled: Boolean,
     ) {
         // Arrange
@@ -115,7 +115,7 @@ class InorderFactionSelectorTests {
 
         // Act
         val result =
-            InorderFactionSelector.selectVehicle(
+            InorderFactionSelector.selectEntity(
                 mapOf("2.1" to false, "1.2" to false, "1.3" to false),
                 defaultEnabled,
             )
@@ -125,7 +125,7 @@ class InorderFactionSelectorTests {
     }
 
     @Test
-    fun `selectVehicle should return vehicles in sorted order`() {
+    fun `selectEntity should return vehicles in sorted order`() {
         // Arrange
         val vehicles = createStarWarsVehicles().toMutableList()
         vehicles[0].factionId = "2"
@@ -201,11 +201,11 @@ class InorderFactionSelectorTests {
             }
         }
         vehicles[0].factionId = "1"
-        InorderFactionSelector.selectVehicle(
+        InorderFactionSelector.selectEntity(
             mapOf("1.1" to true, "1.2" to true, "1.3" to true),
             true,
         )
-        InorderFactionSelector.selectVehicle(
+        InorderFactionSelector.selectEntity(
             mapOf("1.1" to true, "1.2" to true, "1.3" to true),
             true,
         )
@@ -298,7 +298,7 @@ class InorderFactionSelectorTests {
         val result = mutableListOf<StarWarsVehicle>()
         for (i in vehicles.indices) {
             result.add(
-                InorderFactionSelector.selectVehicle(
+                InorderFactionSelector.selectEntity(
                     enabledVehicles,
                     defaultEnabled,
                 ),

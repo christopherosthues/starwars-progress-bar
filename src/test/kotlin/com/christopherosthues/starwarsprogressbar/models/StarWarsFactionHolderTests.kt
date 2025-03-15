@@ -33,7 +33,7 @@ class StarWarsFactionHolderTests {
 
     @AfterEach
     fun tearDown() {
-        StarWarsFactionHolder.updateFactions(listOf<StarWarsFaction<StarWarsVehicle>>())
+        StarWarsFactionHolder.updateFactions(StarWarsFactions(listOf(), listOf()))
 
         unmockkAll()
     }
@@ -47,7 +47,10 @@ class StarWarsFactionHolderTests {
         // Arrange
 
         // Act and Assert
-        assertTrue(StarWarsFactionHolder.vehicleFactions.isEmpty())
+        assertAll(
+            { assertTrue(StarWarsFactionHolder.vehicleFactions.isEmpty()) },
+            { assertTrue(StarWarsFactionHolder.lightsaberFactions.isEmpty()) },
+        )
     }
 
     @Test
@@ -55,15 +58,21 @@ class StarWarsFactionHolderTests {
         // Arrange
 
         // Act and Assert
-        assertTrue(StarWarsFactionHolder.defaultVehicleFactions.isEmpty())
+        assertAll(
+            { assertTrue(StarWarsFactionHolder.defaultVehicleFactions.isEmpty()) },
+            { assertTrue(StarWarsFactionHolder.defaultLightsaberFactions.isEmpty()) },
+        )
     }
 
     @Test
-    fun `constructor should set default vehicles to empty list`() {
+    fun `constructor should set default vehicles and lightsabers to empty list`() {
         // Arrange
 
         // Act and Assert
-        assertTrue(StarWarsFactionHolder.defaultVehicles.isEmpty())
+        assertAll(
+            { assertTrue(StarWarsFactionHolder.defaultVehicles.isEmpty()) },
+            { assertTrue(StarWarsFactionHolder.defaultLightsabers.isEmpty()) },
+        )
     }
 
     @Test
@@ -83,22 +92,29 @@ class StarWarsFactionHolderTests {
         // Arrange
 
         // Act
-        updateFactions(listOf())
+        updateFactions(StarWarsFactions(listOf(), listOf()))
 
         // Assert
-        assertTrue(StarWarsFactionHolder.vehicleFactions.isEmpty())
+        assertAll(
+            { assertTrue(StarWarsFactionHolder.vehicleFactions.isEmpty()) },
+            { assertTrue(StarWarsFactionHolder.lightsaberFactions.isEmpty()) },
+        )
     }
 
     @Test
     fun `factions should return correct factions`() {
         // Arrange
-        val factions = FactionCreationHelper.createStarWarsFactions()
+        val factionsVehicles = FactionCreationHelper.createStarWarsFactionsVehicles()
+        val factionsLightsabers = FactionCreationHelper.createStarWarsFactionsLightsabers()
 
         // Act
-        StarWarsFactionHolder.updateFactions(factions)
+        StarWarsFactionHolder.updateFactions(StarWarsFactions(factionsLightsabers, factionsVehicles))
 
         // Assert
-        assertEquals(factions, StarWarsFactionHolder.vehicleFactions)
+        assertAll(
+            { assertEquals(factionsVehicles, StarWarsFactionHolder.vehicleFactions) },
+            { assertEquals(factionsLightsabers, StarWarsFactionHolder.lightsaberFactions) },
+        )
     }
 
     //endregion
@@ -110,112 +126,150 @@ class StarWarsFactionHolderTests {
         // Arrange
 
         // Act
-        updateFactions(listOf())
+        updateFactions(StarWarsFactions(listOf(), listOf()))
 
         // Assert
-        assertTrue(StarWarsFactionHolder.defaultVehicleFactions.isEmpty())
+        assertAll(
+            { assertTrue(StarWarsFactionHolder.defaultVehicleFactions.isEmpty()) },
+            { assertTrue(StarWarsFactionHolder.defaultLightsaberFactions.isEmpty()) },
+        )
     }
 
     @Test
     fun `default factions should return empty list if the ids of all factions are empty and factions contain only one element`() {
         // Arrange
-        val factions = FactionCreationHelper.createStarWarsFactionsWithEmptyIdAndNoVehicles()
+        val factionsVehicles = FactionCreationHelper.createStarWarsFactionsWithEmptyIdAndNoVehicles()
+        val factionsLightsabers = FactionCreationHelper.createStarWarsFactionsWithEmptyIdAndNoLightsabers()
 
         // Act
-        StarWarsFactionHolder.updateFactions(factions)
+        StarWarsFactionHolder.updateFactions(StarWarsFactions(factionsLightsabers, factionsVehicles))
 
         // Assert
-        assertTrue(StarWarsFactionHolder.defaultVehicleFactions.isEmpty())
+        assertAll(
+            { assertTrue(StarWarsFactionHolder.defaultVehicleFactions.isEmpty()) },
+            { assertTrue(StarWarsFactionHolder.defaultLightsaberFactions.isEmpty()) },
+        )
     }
 
     @Test
     fun `default factions should return empty list if the ids of all factions are empty and factions contain more than one element`() {
         // Arrange
-        val factions = FactionCreationHelper.createStarWarsFactionsWithEmptyIdsAndNoVehicles()
+        val factionsVehicles = FactionCreationHelper.createStarWarsFactionsWithEmptyIdsAndNoVehicles()
+        val factionsLightsabers = FactionCreationHelper.createStarWarsFactionsWithEmptyIdsAndNoLightsabers()
 
         // Act
-        StarWarsFactionHolder.updateFactions(factions)
+        StarWarsFactionHolder.updateFactions(StarWarsFactions(factionsLightsabers, factionsVehicles))
 
         // Assert
-        assertTrue(StarWarsFactionHolder.defaultVehicleFactions.isEmpty())
+        assertAll(
+            { assertTrue(StarWarsFactionHolder.defaultVehicleFactions.isEmpty()) },
+            { assertTrue(StarWarsFactionHolder.defaultLightsaberFactions.isEmpty()) },
+        )
     }
 
     @Test
-    fun `default factions should return empty list if the ids of all factions are empty and factions contain more than one element and first faction contains no vehicles`() {
+    fun `default factions should return empty list if the ids of all factions are empty and factions contain more than one element and first faction contains no entities`() {
         // Arrange
-        val factions = FactionCreationHelper.createStarWarsFactionsWithEmptyIdsAndFirstHasNoVehicles()
+        val factionsVehicles = FactionCreationHelper.createStarWarsFactionsWithEmptyIdsAndFirstHasNoVehicles()
+        val factionsLightsabers = FactionCreationHelper.createStarWarsFactionsWithEmptyIdsAndFirstHasNoLightsabers()
 
         // Act
-        StarWarsFactionHolder.updateFactions(factions)
+        StarWarsFactionHolder.updateFactions(StarWarsFactions(factionsLightsabers, factionsVehicles))
 
         // Assert
-        assertTrue(StarWarsFactionHolder.defaultVehicleFactions.isEmpty())
+        assertAll(
+            { assertTrue(StarWarsFactionHolder.defaultVehicleFactions.isEmpty()) },
+            { assertTrue(StarWarsFactionHolder.defaultLightsaberFactions.isEmpty()) },
+        )
     }
 
     @Test
-    fun `default factions should return empty list if the ids of all factions are empty and factions contain more than one element and all factions contain vehicles`() {
+    fun `default factions should return empty list if the ids of all factions are empty and factions contain more than one element and all factions contain entities`() {
         // Arrange
-        val factions = FactionCreationHelper.createStarWarsFactionsWithEmptyIds()
+        val factionsVehicles = FactionCreationHelper.createStarWarsFactionsVehiclesWithEmptyIds()
+        val factionsLightsabers = FactionCreationHelper.createStarWarsFactionsLightsabersWithEmptyIds()
 
         // Act
-        StarWarsFactionHolder.updateFactions(factions)
+        StarWarsFactionHolder.updateFactions(StarWarsFactions(factionsLightsabers, factionsVehicles))
 
         // Assert
-        assertTrue(StarWarsFactionHolder.defaultVehicleFactions.isEmpty())
+        assertAll(
+            { assertTrue(StarWarsFactionHolder.defaultVehicleFactions.isEmpty()) },
+            { assertTrue(StarWarsFactionHolder.defaultLightsaberFactions.isEmpty()) },
+        )
     }
 
     @Test
     fun `default factions should return all factions with non-empty ids`() {
         // Arrange
-        val factions = FactionCreationHelper.createStarWarsFactionsWithEmptyIdContainingVehicles()
-        val expectedFactions = factions.filter { it.id.isNotEmpty() }
+        val factionsVehicles = FactionCreationHelper.createStarWarsFactionsWithEmptyIdContainingVehicles()
+        val expectedFactionsVehicles = factionsVehicles.filter { it.id.isNotEmpty() }
+        val factionsLightsabers = FactionCreationHelper.createStarWarsFactionsWithEmptyIdContainingLightsabers()
+        val expectedFactionsLightsabers = factionsLightsabers.filter { it.id.isNotEmpty() }
 
         // Act
-        StarWarsFactionHolder.updateFactions(factions)
+        StarWarsFactionHolder.updateFactions(StarWarsFactions(factionsLightsabers, factionsVehicles))
 
         // Assert
-        val result = StarWarsFactionHolder.defaultVehicleFactions
+        val resultVehicles = StarWarsFactionHolder.defaultVehicleFactions
+        val resultLightsabers = StarWarsFactionHolder.defaultLightsaberFactions
         assertAll(
-            { assertTrue(result.isNotEmpty()) },
-            { assertEquals(2, result.size) },
-            { assertEquals(expectedFactions, result) },
+            { assertTrue(resultVehicles.isNotEmpty()) },
+            { assertEquals(2, resultVehicles.size) },
+            { assertEquals(expectedFactionsVehicles, resultVehicles) },
+            { assertTrue(resultLightsabers.isNotEmpty()) },
+            { assertEquals(2, resultLightsabers.size) },
+            { assertEquals(expectedFactionsLightsabers, resultLightsabers) },
         )
     }
 
     @Test
     fun `default factions should return all factions with non-empty ids if factions contain more than one faction with an empty id`() {
         // Arrange
-        val factions =
+        val factionsVehicles =
             FactionCreationHelper.createStarWarsFactionsWithMultipleFactionsWithEmptyIdAndContainingVehicles()
-        val expectedFactions = factions.filter { it.id.isNotEmpty() }
+        val expectedFactionsVehicles = factionsVehicles.filter { it.id.isNotEmpty() }
+        val factionsLightsabers =
+            FactionCreationHelper.createStarWarsFactionsWithMultipleFactionsWithEmptyIdAndContainingLightsabers()
+        val expectedFactionsLightsabers = factionsLightsabers.filter { it.id.isNotEmpty() }
 
         // Act
-        updateFactions(factions)
+        updateFactions(StarWarsFactions(factionsLightsabers, factionsVehicles))
 
         // Assert
-        val result = StarWarsFactionHolder.defaultVehicleFactions
+        val resultVehicles = StarWarsFactionHolder.defaultVehicleFactions
+        val resultLightsabers = StarWarsFactionHolder.defaultLightsaberFactions
         assertAll(
-            { assertTrue(result.isNotEmpty()) },
-            { assertEquals(2, result.size) },
-            { assertEquals(expectedFactions, result) },
+            { assertTrue(resultVehicles.isNotEmpty()) },
+            { assertEquals(2, resultVehicles.size) },
+            { assertEquals(expectedFactionsVehicles, resultVehicles) },
+            { assertTrue(resultLightsabers.isNotEmpty()) },
+            { assertEquals(2, resultLightsabers.size) },
+            { assertEquals(expectedFactionsLightsabers, resultLightsabers) },
         )
     }
 
     @Test
     fun `default factions should return all factions if no faction id is empty`() {
         // Arrange
-        val factions = FactionCreationHelper.createStarWarsFactions()
-        val expectedFactions = factions.filter { it.id.isNotEmpty() }
+        val factionsVehicles = FactionCreationHelper.createStarWarsFactionsVehicles()
+        val expectedFactionsVehicles = factionsVehicles.filter { it.id.isNotEmpty() }
+        val factionsLightsabers = FactionCreationHelper.createStarWarsFactionsLightsabers()
+        val expectedFactionsLightsabers = factionsVehicles.filter { it.id.isNotEmpty() }
 
         // Act
-        updateFactions(factions)
+        updateFactions(StarWarsFactions(factionsLightsabers, factionsVehicles))
 
         // Assert
-        val result = StarWarsFactionHolder.defaultVehicleFactions
+        val resultVehicles = StarWarsFactionHolder.defaultVehicleFactions
+        val resultLightsabers = StarWarsFactionHolder.defaultLightsaberFactions
         assertAll(
-            { assertTrue(result.isNotEmpty()) },
-            { assertEquals(3, result.size) },
-            { assertEquals(expectedFactions, result) },
+            { assertTrue(resultVehicles.isNotEmpty()) },
+            { assertEquals(3, resultVehicles.size) },
+            { assertEquals(expectedFactionsVehicles, resultVehicles) },
+            { assertTrue(resultLightsabers.isNotEmpty()) },
+            { assertEquals(3, resultLightsabers.size) },
+            { assertEquals(expectedFactionsLightsabers, resultLightsabers) },
         )
     }
 
@@ -228,7 +282,7 @@ class StarWarsFactionHolderTests {
         // Arrange
 
         // Act
-        updateFactions(listOf())
+        updateFactions(StarWarsFactions(listOf(), listOf()))
 
         // Assert
         assertDefaultMissingVehicle()
@@ -237,10 +291,11 @@ class StarWarsFactionHolderTests {
     @Test
     fun `missing vehicle should throw NoSuchElementException if all factions with empty id have no vehicles`() {
         // Arrange
-        val factions = FactionCreationHelper.createStarWarsFactionsWithEmptyIdsAndNoVehicles()
+        val factionsVehicles = FactionCreationHelper.createStarWarsFactionsWithEmptyIdsAndNoVehicles()
+        val factionsLightsabers = FactionCreationHelper.createStarWarsFactionsWithEmptyIdsAndNoLightsabers()
 
         // Act
-        updateFactions(factions)
+        updateFactions(StarWarsFactions(factionsLightsabers, factionsVehicles))
 
         // Assert
         assertDefaultMissingVehicle()
@@ -249,10 +304,11 @@ class StarWarsFactionHolderTests {
     @Test
     fun `missing vehicle should throw NoSuchElementException if first factions with empty id has no vehicles`() {
         // Arrange
-        val factions = FactionCreationHelper.createStarWarsFactionsWithEmptyIdsAndFirstHasNoVehicles()
+        val factionsVehicles = FactionCreationHelper.createStarWarsFactionsWithEmptyIdsAndFirstHasNoVehicles()
+        val factionsLightsabers = FactionCreationHelper.createStarWarsFactionsWithEmptyIdsAndFirstHasNoLightsabers()
 
         // Act
-        updateFactions(factions)
+        updateFactions(StarWarsFactions(factionsLightsabers, factionsVehicles))
 
         // Assert
         assertDefaultMissingVehicle()
@@ -261,11 +317,12 @@ class StarWarsFactionHolderTests {
     @Test
     fun `missing vehicle should return first vehicle if first faction with empty id has one vehicle`() {
         // Arrange
-        val factions = FactionCreationHelper.createStarWarsFactionsWithEmptyIds()
-        val expectedVehicle = factions.first().data.first()
+        val factionsVehicles = FactionCreationHelper.createStarWarsFactionsVehiclesWithEmptyIds()
+        val factionsLightsabers = FactionCreationHelper.createStarWarsFactionsLightsabersWithEmptyIds()
+        val expectedVehicle = factionsVehicles.first().data.first()
 
         // Act
-        updateFactions(factions)
+        updateFactions(StarWarsFactions(factionsLightsabers, factionsVehicles))
 
         // Assert
         assertAll(
@@ -277,11 +334,12 @@ class StarWarsFactionHolderTests {
     @Test
     fun `missing vehicle should return first vehicle if first faction with empty id has more than one vehicle`() {
         // Arrange
-        val factions = FactionCreationHelper.createStarWarsFactionsWithEmptyIdContainingVehicles()
-        val expectedVehicle = factions[1].data.first()
+        val factionsVehicles = FactionCreationHelper.createStarWarsFactionsWithEmptyIdContainingVehicles()
+        val factionsLightsabers = FactionCreationHelper.createStarWarsFactionsWithEmptyIdContainingLightsabers()
+        val expectedVehicle = factionsVehicles[1].data.first()
 
         // Act
-        updateFactions(factions)
+        updateFactions(StarWarsFactions(factionsLightsabers, factionsVehicles))
 
         // Assert
         assertAll(
@@ -293,12 +351,14 @@ class StarWarsFactionHolderTests {
     @Test
     fun `missing vehicle should return first vehicle if first faction with empty id has more than one vehicle and there are more than one factions with empty ids`() {
         // Arrange
-        val factions =
+        val factionsVehicles =
             FactionCreationHelper.createStarWarsFactionsWithMultipleFactionsWithEmptyIdAndContainingVehicles()
-        val expectedVehicle = factions[0].data.first()
+        val factionsLightsabers =
+            FactionCreationHelper.createStarWarsFactionsWithMultipleFactionsWithEmptyIdAndContainingLightsabers()
+        val expectedVehicle = factionsVehicles[0].data.first()
 
         // Act
-        updateFactions(factions)
+        updateFactions(StarWarsFactions(factionsLightsabers, factionsVehicles))
 
         // Assert
         assertAll(
@@ -312,138 +372,190 @@ class StarWarsFactionHolderTests {
     //region defaultVehicles tests
 
     @Test
-    fun `default vehicles should return empty list if factions are empty`() {
+    fun `default vehicles and lightsabers should return empty list if factions are empty`() {
         // Arrange
 
         // Act
-        updateFactions(listOf())
+        updateFactions(StarWarsFactions(listOf(), listOf()))
 
         // Assert
-        assertTrue(StarWarsFactionHolder.defaultVehicles.isEmpty())
+        assertAll(
+            { assertTrue(StarWarsFactionHolder.defaultVehicles.isEmpty()) },
+            { assertTrue(StarWarsFactionHolder.defaultLightsabers.isEmpty()) },
+        )
     }
 
     @Test
-    fun `default vehicles should return empty list if faction id is empty and faction contains no vehicles`() {
+    fun `default vehicles and lightsabers should return empty list if faction id is empty and faction contains no entities`() {
         // Arrange
-        val factions = FactionCreationHelper.createStarWarsFactionsWithEmptyIdAndNoVehicles()
+        val factionsVehicles = FactionCreationHelper.createStarWarsFactionsWithEmptyIdAndNoVehicles()
+        val factionsLightsabers = FactionCreationHelper.createStarWarsFactionsWithEmptyIdAndNoLightsabers()
 
         // Act
-        updateFactions(factions)
+        updateFactions(StarWarsFactions(factionsLightsabers, factionsVehicles))
 
         // Assert
-        assertTrue(StarWarsFactionHolder.defaultVehicles.isEmpty())
+        assertAll(
+            { assertTrue(StarWarsFactionHolder.defaultVehicles.isEmpty()) },
+            { assertTrue(StarWarsFactionHolder.defaultLightsabers.isEmpty()) },
+        )
     }
 
     @Test
-    fun `default vehicles should return empty list if all faction ids are empty and faction contain no vehicles`() {
+    fun `default vehicles and lightsabers should return empty list if all faction ids are empty and faction contain no entities`() {
         // Arrange
-        val factions = FactionCreationHelper.createStarWarsFactionsWithEmptyIdsAndNoVehicles()
+        val factionsVehicles = FactionCreationHelper.createStarWarsFactionsWithEmptyIdsAndNoVehicles()
+        val factionsLightsabers = FactionCreationHelper.createStarWarsFactionsWithEmptyIdsAndNoLightsabers()
 
         // Act
-        updateFactions(factions)
+        updateFactions(StarWarsFactions(factionsLightsabers, factionsVehicles))
 
         // Assert
-        assertTrue(StarWarsFactionHolder.defaultVehicles.isEmpty())
+        assertAll(
+            { assertTrue(StarWarsFactionHolder.defaultVehicles.isEmpty()) },
+            { assertTrue(StarWarsFactionHolder.defaultLightsabers.isEmpty()) },
+        )
     }
 
     @Test
-    fun `default vehicles should return empty list if all faction ids are empty and one faction contains no vehicles`() {
+    fun `default vehicles and lightsabers should return empty list if all faction ids are empty and one faction contains no entities`() {
         // Arrange
-        val factions = FactionCreationHelper.createStarWarsFactionsWithEmptyIdsAndFirstHasNoVehicles()
+        val factionsVehicles = FactionCreationHelper.createStarWarsFactionsWithEmptyIdsAndFirstHasNoVehicles()
+        val factionsLightsabers = FactionCreationHelper.createStarWarsFactionsWithEmptyIdsAndFirstHasNoLightsabers()
 
         // Act
-        updateFactions(factions)
+        updateFactions(StarWarsFactions(factionsLightsabers, factionsVehicles))
 
         // Assert
-        assertTrue(StarWarsFactionHolder.defaultVehicles.isEmpty())
+        assertAll(
+            { assertTrue(StarWarsFactionHolder.defaultVehicles.isEmpty()) },
+            { assertTrue(StarWarsFactionHolder.defaultLightsabers.isEmpty()) },
+        )
     }
 
     @Test
-    fun `default vehicles should return empty list if all faction ids are empty and all factions contain vehicles`() {
+    fun `default vehicles and lightsabers should return empty list if all faction ids are empty and all factions contain entities`() {
         // Arrange
-        val factions = FactionCreationHelper.createStarWarsFactionsWithEmptyIds()
+        val factionsVehicles = FactionCreationHelper.createStarWarsFactionsVehiclesWithEmptyIds()
+        val factionsLightsabers = FactionCreationHelper.createStarWarsFactionsLightsabersWithEmptyIds()
 
         // Act
-        updateFactions(factions)
+        updateFactions(StarWarsFactions(factionsLightsabers, factionsVehicles))
 
         // Assert
-        assertTrue(StarWarsFactionHolder.defaultVehicles.isEmpty())
+        assertAll(
+            { assertTrue(StarWarsFactionHolder.defaultVehicles.isEmpty()) },
+            { assertTrue(StarWarsFactionHolder.defaultLightsabers.isEmpty()) },
+        )
     }
 
     @Test
-    fun `default vehicles should return correct vehicles if one faction id is empty and all factions contain vehicles`() {
+    fun `default vehicles and lightsabers should return correct entities if one faction id is empty and all factions contain entities`() {
         // Arrange
-        val factions = FactionCreationHelper.createStarWarsFactionsWithEmptyIdContainingVehicles()
+        val factionsVehicles = FactionCreationHelper.createStarWarsFactionsWithEmptyIdContainingVehicles()
         val expectedVehicles = mutableListOf<StarWarsVehicle>()
-        expectedVehicles.addAll(factions.first().data)
-        expectedVehicles.addAll(factions[2].data)
+        expectedVehicles.addAll(factionsVehicles.first().data)
+        expectedVehicles.addAll(factionsVehicles[2].data)
+        val factionsLightsabers = FactionCreationHelper.createStarWarsFactionsWithEmptyIdContainingLightsabers()
+        val expectedLightsabers = mutableListOf<Lightsaber>()
+        expectedLightsabers.addAll(factionsLightsabers.first().data)
+        expectedLightsabers.addAll(factionsLightsabers[2].data)
 
         // Act
-        updateFactions(factions)
+        updateFactions(StarWarsFactions(factionsLightsabers, factionsVehicles))
 
         // Assert
-        assertEquals(expectedVehicles, StarWarsFactionHolder.defaultVehicles)
+        assertAll(
+            { assertEquals(expectedVehicles, StarWarsFactionHolder.defaultVehicles) },
+            { assertEquals(expectedLightsabers, StarWarsFactionHolder.defaultLightsabers) },
+        )
     }
 
     @Test
-    fun `default vehicles should return correct vehicles if more than one faction ids are empty and all factions contain vehicles`() {
+    fun `default vehicles and lightsabers should return correct entities if more than one faction ids are empty and all factions contain entities`() {
         // Arrange
-        val factions =
+        val factionsVehicles =
             FactionCreationHelper.createStarWarsFactionsWithMultipleFactionsWithEmptyIdAndContainingVehicles()
         val expectedVehicles = mutableListOf<StarWarsVehicle>()
-        expectedVehicles.addAll(factions[1].data)
-        expectedVehicles.addAll(factions[2].data)
+        expectedVehicles.addAll(factionsVehicles[1].data)
+        expectedVehicles.addAll(factionsVehicles[2].data)
+        val factionsLightsabers =
+            FactionCreationHelper.createStarWarsFactionsWithMultipleFactionsWithEmptyIdAndContainingLightsabers()
+        val expectedLightsabers = mutableListOf<Lightsaber>()
+        expectedLightsabers.addAll(factionsLightsabers.first().data)
+        expectedLightsabers.addAll(factionsLightsabers[2].data)
 
         // Act
-        updateFactions(factions)
+        updateFactions(StarWarsFactions(factionsLightsabers, factionsVehicles))
 
         // Assert
-        assertEquals(expectedVehicles, StarWarsFactionHolder.defaultVehicles)
+        assertAll(
+            { assertEquals(expectedVehicles, StarWarsFactionHolder.defaultVehicles) },
+            { assertEquals(expectedLightsabers, StarWarsFactionHolder.defaultLightsabers) },
+        )
     }
 
     @Test
-    fun `default vehicles should return correct vehicles if more than one faction ids are empty and not all factions contain vehicles`() {
+    fun `default vehicles and lightsabers should return correct entities if more than one faction ids are empty and not all factions contain entities`() {
         // Arrange
-        val factions =
+        val factionsVehicles =
             FactionCreationHelper.createStarWarsFactionsWithMultipleFactionsWithEmptyIdAndOneFactionContainNoVehicles()
         val expectedVehicles = mutableListOf<StarWarsVehicle>()
-        expectedVehicles.addAll(factions[1].data)
-        expectedVehicles.addAll(factions[2].data)
+        expectedVehicles.addAll(factionsVehicles[1].data)
+        expectedVehicles.addAll(factionsVehicles[2].data)
+        val factionsLightsabers =
+            FactionCreationHelper.createStarWarsFactionsWithMultipleFactionsWithEmptyIdAndOneFactionContainNoLightsabers()
+        val expectedLightsabers = mutableListOf<Lightsaber>()
+        expectedLightsabers.addAll(factionsLightsabers[1].data)
+        expectedLightsabers.addAll(factionsLightsabers[2].data)
 
         // Act
-        updateFactions(factions)
+        updateFactions(StarWarsFactions(factionsLightsabers, factionsVehicles))
 
         // Assert
         assertAll(
             { assertEquals(expectedVehicles, StarWarsFactionHolder.defaultVehicles) },
             {
-                expectedVehicles.addAll(factions[4].data)
+                expectedVehicles.addAll(factionsVehicles[4].data)
                 assertEquals(expectedVehicles, StarWarsFactionHolder.defaultVehicles)
+            },
+            { assertEquals(expectedLightsabers, StarWarsFactionHolder.defaultLightsabers) },
+            {
+                expectedLightsabers.addAll(factionsLightsabers[4].data)
+                assertEquals(expectedLightsabers, StarWarsFactionHolder.defaultLightsabers)
             },
         )
     }
 
     @Test
-    fun `default vehicles should return all vehicles if all factions contain vehicles and all faction ids are not empty`() {
+    fun `default vehicles and lightsabers should return all entities if all factions contain entities and all faction ids are not empty`() {
         // Arrange
-        val factions = FactionCreationHelper.createStarWarsFactions()
-        val expectedVehicles = factions.fold(mutableListOf<StarWarsVehicle>()) { acc, starWarsFaction ->
+        val factionsVehicles = FactionCreationHelper.createStarWarsFactionsVehicles()
+        val expectedVehicles = factionsVehicles.fold(mutableListOf<StarWarsVehicle>()) { acc, starWarsFaction ->
+            acc.addAll(starWarsFaction.data)
+            acc
+        }
+        val factionsLightsabers = FactionCreationHelper.createStarWarsFactionsLightsabers()
+        val expectedLightsabers = factionsLightsabers.fold(mutableListOf<Lightsaber>()) { acc, starWarsFaction ->
             acc.addAll(starWarsFaction.data)
             acc
         }
 
         // Act
-        updateFactions(factions)
+        updateFactions(StarWarsFactions(factionsLightsabers, factionsVehicles))
 
         // Assert
-        assertEquals(expectedVehicles, StarWarsFactionHolder.defaultVehicles)
+        assertAll(
+            { assertEquals(expectedVehicles, StarWarsFactionHolder.defaultVehicles) },
+            { assertEquals(expectedLightsabers, StarWarsFactionHolder.defaultLightsabers) },
+        )
     }
 
     //endregion
 
     //region Helper methods
 
-    private fun updateFactions(factions: List<StarWarsFaction<StarWarsVehicle>>) {
+    private fun updateFactions(factions: StarWarsFactions) {
         StarWarsFactionHolder.updateFactions(factions)
     }
 

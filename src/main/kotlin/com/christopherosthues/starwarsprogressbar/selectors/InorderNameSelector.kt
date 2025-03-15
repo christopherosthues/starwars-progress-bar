@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicInteger
 internal object InorderNameSelector : IStarWarsSelector {
     private val index = AtomicInteger()
 
-    override fun selectVehicle(
+    override fun selectEntity(
         enabledVehicles: Map<String, Boolean>,
         enabledLightsabers: Map<String, Boolean>,
         defaultEnabled: Boolean

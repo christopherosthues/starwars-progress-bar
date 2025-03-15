@@ -8,7 +8,7 @@ internal object RollingRandomSelector : IStarWarsSelector {
     private val displayedEntities = mutableSetOf<String>()
     private val lock = Any()
 
-    override fun selectVehicle(
+    override fun selectEntity(
         enabledVehicles: Map<String, Boolean>,
         enabledLightsabers: Map<String, Boolean>,
         defaultEnabled: Boolean

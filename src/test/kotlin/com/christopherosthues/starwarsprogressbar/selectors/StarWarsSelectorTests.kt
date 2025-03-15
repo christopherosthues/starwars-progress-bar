@@ -22,8 +22,8 @@ import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import java.util.stream.Stream
 
-@TestFor(classes = [VehicleSelector::class])
-class VehicleSelectorTests {
+@TestFor(classes = [StarWarsSelector::class])
+class StarWarsSelectorTests {
     //region Test lifecycle
 
     @BeforeEach
@@ -51,66 +51,66 @@ class VehicleSelectorTests {
     //region Tests
 
     @Test
-    fun `selectVehicle should not update factions of faction holder if factions of faction holder are not empty`() {
+    fun `selectEntity should not update factions of faction holder if factions of faction holder are not empty`() {
         // Arrange
         every { StarWarsFactionHolder.vehicleFactions } returns listOf(StarWarsFaction("1", listOf()))
 
         // Act
-        VehicleSelector.selectVehicle(null, false, SelectionType.RANDOM_ALL)
+        StarWarsSelector.selectEntity(null, null, false, SelectionType.RANDOM_ALL)
 
         // Assert
-        verify(exactly = 0) { StarWarsFactionHolder.updateFactions(any<List<StarWarsFaction<StarWarsVehicle>>>()) }
-        verify(exactly = 0) { InorderFactionSelector.selectVehicle(any(), any()) }
-        verify(exactly = 0) { InorderNameSelector.selectVehicle(any(), any()) }
-        verify(exactly = 0) { RandomSelector.selectVehicle(any(), any()) }
-        verify(exactly = 0) { ReverseOrderFactionSelector.selectVehicle(any(), any()) }
-        verify(exactly = 0) { ReverseOrderNameSelector.selectVehicle(any(), any()) }
-        verify(exactly = 0) { RollingRandomSelector.selectVehicle(any(), any()) }
+        verify(exactly = 0) { StarWarsFactionHolder.updateFactions(any()) }
+        verify(exactly = 0) { InorderFactionSelector.selectEntity(any(), any(), any()) }
+        verify(exactly = 0) { InorderNameSelector.selectEntity(any(), any(), any()) }
+        verify(exactly = 0) { RandomSelector.selectEntity(any(), any(), any()) }
+        verify(exactly = 0) { ReverseOrderFactionSelector.selectEntity(any(), any(), any()) }
+        verify(exactly = 0) { ReverseOrderNameSelector.selectEntity(any(), any(), any()) }
+        verify(exactly = 0) { RollingRandomSelector.selectEntity(any(), any(), any()) }
     }
 
     @Test
-    fun `selectVehicle should return missing vehicle if persistent state component is null`() {
+    fun `selectEntity should return missing vehicle if persistent state component is null`() {
         // Arrange
         every { StarWarsFactionHolder.vehicleFactions } returns listOf(StarWarsFaction("1", listOf()))
         setupStarWarsState(null)
 
         // Act
-        val result = VehicleSelector.selectVehicle(null, false, SelectionType.RANDOM_ALL)
+        val result = StarWarsSelector.selectEntity(null, null, false, SelectionType.RANDOM_ALL)
 
         // Assert
         assertEquals(missingVehicle, result)
-        verify(exactly = 0) { StarWarsFactionHolder.updateFactions(any<List<StarWarsFaction<StarWarsVehicle>>>()) }
-        verify(exactly = 0) { InorderFactionSelector.selectVehicle(any(), any()) }
-        verify(exactly = 0) { InorderNameSelector.selectVehicle(any(), any()) }
-        verify(exactly = 0) { RandomSelector.selectVehicle(any(), any()) }
-        verify(exactly = 0) { ReverseOrderFactionSelector.selectVehicle(any(), any()) }
-        verify(exactly = 0) { ReverseOrderNameSelector.selectVehicle(any(), any()) }
-        verify(exactly = 0) { RollingRandomSelector.selectVehicle(any(), any()) }
+        verify(exactly = 0) { StarWarsFactionHolder.updateFactions(any()) }
+        verify(exactly = 0) { InorderFactionSelector.selectEntity(any(), any(), any()) }
+        verify(exactly = 0) { InorderNameSelector.selectEntity(any(), any(), any()) }
+        verify(exactly = 0) { RandomSelector.selectEntity(any(), any(), any()) }
+        verify(exactly = 0) { ReverseOrderFactionSelector.selectEntity(any(), any(), any()) }
+        verify(exactly = 0) { ReverseOrderNameSelector.selectEntity(any(), any(), any()) }
+        verify(exactly = 0) { RollingRandomSelector.selectEntity(any(), any(), any()) }
     }
 
     @Test
-    fun `selectVehicle should return missing vehicle if state is null`() {
+    fun `selectEntity should return missing vehicle if state is null`() {
         // Arrange
         every { StarWarsFactionHolder.vehicleFactions } returns listOf(StarWarsFaction("1", listOf()))
         setupStarWarsState(null)
 
         // Act
-        val result = VehicleSelector.selectVehicle(null, false, SelectionType.RANDOM_ALL)
+        val result = StarWarsSelector.selectEntity(null, null, false, SelectionType.RANDOM_ALL)
 
         // Assert
         assertEquals(missingVehicle, result)
-        verify(exactly = 0) { StarWarsFactionHolder.updateFactions(any<List<StarWarsFaction<StarWarsVehicle>>>()) }
-        verify(exactly = 0) { InorderFactionSelector.selectVehicle(any(), any()) }
-        verify(exactly = 0) { InorderNameSelector.selectVehicle(any(), any()) }
-        verify(exactly = 0) { RandomSelector.selectVehicle(any(), any()) }
-        verify(exactly = 0) { ReverseOrderFactionSelector.selectVehicle(any(), any()) }
-        verify(exactly = 0) { ReverseOrderNameSelector.selectVehicle(any(), any()) }
-        verify(exactly = 0) { RollingRandomSelector.selectVehicle(any(), any()) }
+        verify(exactly = 0) { StarWarsFactionHolder.updateFactions(any()) }
+        verify(exactly = 0) { InorderFactionSelector.selectEntity(any(), any(), any()) }
+        verify(exactly = 0) { InorderNameSelector.selectEntity(any(), any(), any()) }
+        verify(exactly = 0) { RandomSelector.selectEntity(any(), any(), any()) }
+        verify(exactly = 0) { ReverseOrderFactionSelector.selectEntity(any(), any(), any()) }
+        verify(exactly = 0) { ReverseOrderNameSelector.selectEntity(any(), any(), any()) }
+        verify(exactly = 0) { RollingRandomSelector.selectEntity(any(), any(), any()) }
     }
 
     @ParameterizedTest
     @MethodSource("selectorValues")
-    fun `selectVehicle should return correct vehicle if default vehicles are not all enabled and provided enabled vehicles are null`(
+    fun `selectEntity should return correct vehicle if default vehicles are not all enabled and provided enabled vehicles are null`(
         selectionType: SelectionType,
         factionSelector: Int,
         vehicleSelector: Int,
@@ -129,15 +129,15 @@ class VehicleSelectorTests {
             enableNewVehicles = true
         }
         setupStarWarsState(starWarsState)
-        every { InorderFactionSelector.selectVehicle(any(), defaultEnabled) } returns vehicles[1]
-        every { InorderNameSelector.selectVehicle(any(), defaultEnabled) } returns vehicles[1]
-        every { RandomSelector.selectVehicle(any(), defaultEnabled) } returns vehicles[1]
-        every { ReverseOrderFactionSelector.selectVehicle(any(), defaultEnabled) } returns vehicles[1]
-        every { ReverseOrderNameSelector.selectVehicle(any(), defaultEnabled) } returns vehicles[1]
-        every { RollingRandomSelector.selectVehicle(any(), defaultEnabled) } returns vehicles[1]
+        every { InorderFactionSelector.selectEntity(any(), defaultEnabled) } returns vehicles[1]
+        every { InorderNameSelector.selectEntity(any(), defaultEnabled) } returns vehicles[1]
+        every { RandomSelector.selectEntity(any(), defaultEnabled) } returns vehicles[1]
+        every { ReverseOrderFactionSelector.selectEntity(any(), defaultEnabled) } returns vehicles[1]
+        every { ReverseOrderNameSelector.selectEntity(any(), defaultEnabled) } returns vehicles[1]
+        every { RollingRandomSelector.selectEntity(any(), defaultEnabled) } returns vehicles[1]
 
         // Act
-        val result = VehicleSelector.selectVehicle(null, defaultEnabled, selectionType)
+        val result = StarWarsSelector.selectEntity(null, defaultEnabled, selectionType)
 
         // Assert
         assertAll(
@@ -145,17 +145,17 @@ class VehicleSelectorTests {
             { assertNotEquals(missingVehicle, result) },
         )
 
-        verify(exactly = factionSelector) { InorderFactionSelector.selectVehicle(enabledVehicles, defaultEnabled) }
-        verify(exactly = vehicleSelector) { InorderNameSelector.selectVehicle(enabledVehicles, defaultEnabled) }
-        verify(exactly = randomSelector) { RandomSelector.selectVehicle(enabledVehicles, defaultEnabled) }
-        verify(exactly = reverseFactionSelector) { ReverseOrderFactionSelector.selectVehicle(enabledVehicles, defaultEnabled) }
-        verify(exactly = reverseVehicleSelector) { ReverseOrderNameSelector.selectVehicle(enabledVehicles, defaultEnabled) }
-        verify(exactly = rollingRandomSelector) { RollingRandomSelector.selectVehicle(enabledVehicles, defaultEnabled) }
+        verify(exactly = factionSelector) { InorderFactionSelector.selectEntity(enabledVehicles, defaultEnabled) }
+        verify(exactly = vehicleSelector) { InorderNameSelector.selectEntity(enabledVehicles, defaultEnabled) }
+        verify(exactly = randomSelector) { RandomSelector.selectEntity(enabledVehicles, defaultEnabled) }
+        verify(exactly = reverseFactionSelector) { ReverseOrderFactionSelector.selectEntity(enabledVehicles, defaultEnabled) }
+        verify(exactly = reverseVehicleSelector) { ReverseOrderNameSelector.selectEntity(enabledVehicles, defaultEnabled) }
+        verify(exactly = rollingRandomSelector) { RollingRandomSelector.selectEntity(enabledVehicles, defaultEnabled) }
     }
 
     @ParameterizedTest
     @MethodSource("selectorValues")
-    fun `selectVehicle should return correct vehicle if default vehicles are not all enabled and provided enabled vehicles are not null`(
+    fun `selectEntity should return correct vehicle if default vehicles are not all enabled and provided enabled vehicles are not null`(
         selectionType: SelectionType,
         factionSelector: Int,
         vehicleSelector: Int,
@@ -175,15 +175,15 @@ class VehicleSelectorTests {
             enableNewVehicles = true
         }
         setupStarWarsState(starWarsState)
-        every { InorderFactionSelector.selectVehicle(enabledVehicles, defaultEnabled) } returns vehicles[1]
-        every { InorderNameSelector.selectVehicle(enabledVehicles, defaultEnabled) } returns vehicles[1]
-        every { RandomSelector.selectVehicle(enabledVehicles, defaultEnabled) } returns vehicles[1]
-        every { ReverseOrderFactionSelector.selectVehicle(enabledVehicles, defaultEnabled) } returns vehicles[1]
-        every { ReverseOrderNameSelector.selectVehicle(enabledVehicles, defaultEnabled) } returns vehicles[1]
-        every { RollingRandomSelector.selectVehicle(enabledVehicles, defaultEnabled) } returns vehicles[1]
+        every { InorderFactionSelector.selectEntity(enabledVehicles, defaultEnabled) } returns vehicles[1]
+        every { InorderNameSelector.selectEntity(enabledVehicles, defaultEnabled) } returns vehicles[1]
+        every { RandomSelector.selectEntity(enabledVehicles, defaultEnabled) } returns vehicles[1]
+        every { ReverseOrderFactionSelector.selectEntity(enabledVehicles, defaultEnabled) } returns vehicles[1]
+        every { ReverseOrderNameSelector.selectEntity(enabledVehicles, defaultEnabled) } returns vehicles[1]
+        every { RollingRandomSelector.selectEntity(enabledVehicles, defaultEnabled) } returns vehicles[1]
 
         // Act
-        val result = VehicleSelector.selectVehicle(enabledVehicles, defaultEnabled, selectionType)
+        val result = StarWarsSelector.selectEntity(enabledVehicles, defaultEnabled, selectionType)
 
         // Assert
         assertAll(
@@ -191,12 +191,12 @@ class VehicleSelectorTests {
             { assertNotEquals(missingVehicle, result) },
         )
 
-        verify(exactly = factionSelector) { InorderFactionSelector.selectVehicle(enabledVehicles, defaultEnabled) }
-        verify(exactly = vehicleSelector) { InorderNameSelector.selectVehicle(enabledVehicles, defaultEnabled) }
-        verify(exactly = randomSelector) { RandomSelector.selectVehicle(enabledVehicles, defaultEnabled) }
-        verify(exactly = reverseFactionSelector) { ReverseOrderFactionSelector.selectVehicle(enabledVehicles, defaultEnabled) }
-        verify(exactly = reverseVehicleSelector) { ReverseOrderNameSelector.selectVehicle(enabledVehicles, defaultEnabled) }
-        verify(exactly = rollingRandomSelector) { RollingRandomSelector.selectVehicle(enabledVehicles, defaultEnabled) }
+        verify(exactly = factionSelector) { InorderFactionSelector.selectEntity(enabledVehicles, defaultEnabled) }
+        verify(exactly = vehicleSelector) { InorderNameSelector.selectEntity(enabledVehicles, defaultEnabled) }
+        verify(exactly = randomSelector) { RandomSelector.selectEntity(enabledVehicles, defaultEnabled) }
+        verify(exactly = reverseFactionSelector) { ReverseOrderFactionSelector.selectEntity(enabledVehicles, defaultEnabled) }
+        verify(exactly = reverseVehicleSelector) { ReverseOrderNameSelector.selectEntity(enabledVehicles, defaultEnabled) }
+        verify(exactly = rollingRandomSelector) { RollingRandomSelector.selectEntity(enabledVehicles, defaultEnabled) }
     }
 
     //endregion

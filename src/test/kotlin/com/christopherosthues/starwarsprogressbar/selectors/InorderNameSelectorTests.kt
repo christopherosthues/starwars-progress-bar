@@ -44,14 +44,14 @@ class InorderNameSelectorTests {
 
     @ParameterizedTest
     @MethodSource("defaultEnabledValues")
-    fun `selectVehicle should return missing vehicle if provided enabled vehicles and default vehicles are empty`(
+    fun `selectEntity should return missing vehicle if provided enabled vehicles and default vehicles are empty`(
         defaultEnabled: Boolean,
     ) {
         // Arrange
         every { StarWarsFactionHolder.defaultVehicles } returns listOf()
 
         // Act
-        val result = InorderNameSelector.selectVehicle(mapOf(), defaultEnabled)
+        val result = InorderNameSelector.selectEntity(mapOf(), mapOf(), defaultEnabled)
 
         // Assert
         assertEquals(missingVehicle, result)
@@ -59,14 +59,14 @@ class InorderNameSelectorTests {
 
     @ParameterizedTest
     @MethodSource("defaultEnabledValues")
-    fun `selectVehicle should return missing vehicle if provided enabled vehicles are not empty and default vehicles are empty`(
+    fun `selectEntity should return missing vehicle if provided enabled vehicles are not empty and default vehicles are empty`(
         defaultEnabled: Boolean,
     ) {
         // Arrange
         every { StarWarsFactionHolder.defaultVehicles } returns listOf()
 
         // Act
-        val result = InorderNameSelector.selectVehicle(
+        val result = InorderNameSelector.selectEntity(
             mapOf("1.1" to true, "1.2" to false, "1.3" to true),
             defaultEnabled,
         )
@@ -77,7 +77,7 @@ class InorderNameSelectorTests {
 
     @ParameterizedTest
     @ValueSource(booleans = [true, false])
-    fun `selectVehicle should return missing vehicle if provided enabled vehicles are not empty and default vehicles are empty and all values are true or false`(
+    fun `selectEntity should return missing vehicle if provided enabled vehicles are not empty and default vehicles are empty and all values are true or false`(
         enabled: Boolean,
     ) {
         // Arrange
@@ -85,19 +85,19 @@ class InorderNameSelectorTests {
 
         // Act
         val result =
-            InorderNameSelector.selectVehicle(mapOf("1.1" to enabled, "1.2" to enabled, "1.3" to enabled), true)
+            InorderNameSelector.selectEntity(mapOf("1.1" to enabled, "1.2" to enabled, "1.3" to enabled), true)
 
         // Assert
         assertEquals(missingVehicle, result)
     }
 
     @Test
-    fun `selectVehicle should return missing vehicle if provided enabled vehicles are empty and default vehicles are not empty and default enabled is false`() {
+    fun `selectEntity should return missing vehicle if provided enabled vehicles are empty and default vehicles are not empty and default enabled is false`() {
         // Arrange
         every { StarWarsFactionHolder.defaultVehicles } returns createStarWarsVehicles()
 
         // Act
-        val result = InorderNameSelector.selectVehicle(mapOf(), false)
+        val result = InorderNameSelector.selectEntity(mapOf(), false)
 
         // Assert
         assertEquals(missingVehicle, result)
@@ -105,7 +105,7 @@ class InorderNameSelectorTests {
 
     @ParameterizedTest
     @MethodSource("defaultEnabledValues")
-    fun `selectVehicle should return missing vehicle if provided enabled vehicles are all false and default vehicles are not empty`(
+    fun `selectEntity should return missing vehicle if provided enabled vehicles are all false and default vehicles are not empty`(
         defaultEnabled: Boolean,
     ) {
         // Arrange
@@ -113,7 +113,7 @@ class InorderNameSelectorTests {
 
         // Act
         val result =
-            InorderNameSelector.selectVehicle(
+            InorderNameSelector.selectEntity(
                 mapOf("1.1" to false, "1.2" to false, "1.3" to false),
                 defaultEnabled,
             )
@@ -123,7 +123,7 @@ class InorderNameSelectorTests {
     }
 
     @Test
-    fun `selectVehicle should return vehicles in sorted order`() {
+    fun `selectEntity should return vehicles in sorted order`() {
         // Arrange
         val vehicles = createStarWarsVehicles().toMutableList()
         every { StarWarsFactionHolder.defaultVehicles } returns vehicles
@@ -132,7 +132,7 @@ class InorderNameSelectorTests {
         var result = mutableListOf<StarWarsVehicle>()
         for (i in vehicles.indices) {
             result.add(
-                InorderNameSelector.selectVehicle(
+                InorderNameSelector.selectEntity(
                     mapOf("1.1" to true, "1.2" to true, "1.3" to true),
                     true,
                 ),
@@ -158,7 +158,7 @@ class InorderNameSelectorTests {
         result = mutableListOf()
         for (i in vehicles.indices) {
             result.add(
-                InorderNameSelector.selectVehicle(
+                InorderNameSelector.selectEntity(
                     mapOf("1.1" to true, "1.2" to true, "1.3" to true),
                     true,
                 ),
@@ -177,7 +177,7 @@ class InorderNameSelectorTests {
         result = mutableListOf()
         for (i in vehicles.indices) {
             result.add(
-                InorderNameSelector.selectVehicle(
+                InorderNameSelector.selectEntity(
                     mapOf("1.1" to true, "1.2" to false, "1.3" to true),
                     true,
                 ),
@@ -196,7 +196,7 @@ class InorderNameSelectorTests {
         result = mutableListOf()
         for (i in vehicles.indices) {
             result.add(
-                InorderNameSelector.selectVehicle(
+                InorderNameSelector.selectEntity(
                     mapOf("1.1" to true, "1.2" to false),
                     true,
                 ),
@@ -215,7 +215,7 @@ class InorderNameSelectorTests {
         result = mutableListOf()
         for (i in vehicles.indices) {
             result.add(
-                InorderNameSelector.selectVehicle(
+                InorderNameSelector.selectEntity(
                     mapOf("1.1" to true, "1.2" to false),
                     false,
                 ),

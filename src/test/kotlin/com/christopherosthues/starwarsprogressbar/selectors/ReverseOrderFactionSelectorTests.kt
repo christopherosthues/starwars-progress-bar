@@ -43,14 +43,14 @@ class ReverseOrderFactionSelectorTests {
 
     @ParameterizedTest
     @MethodSource("defaultEnabledValues")
-    fun `selectVehicle should return missing vehicle if provided enabled vehicles and default vehicles are empty`(
+    fun `selectEntity should return missing vehicle if provided enabled vehicles and default vehicles are empty`(
         defaultEnabled: Boolean,
     ) {
         // Arrange
         every { StarWarsFactionHolder.defaultVehicles } returns listOf()
 
         // Act
-        val result = ReverseOrderFactionSelector.selectVehicle(mapOf(), defaultEnabled)
+        val result = ReverseOrderFactionSelector.selectEntity(mapOf(), mapOf(), defaultEnabled)
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -58,14 +58,14 @@ class ReverseOrderFactionSelectorTests {
 
     @ParameterizedTest
     @MethodSource("defaultEnabledValues")
-    fun `selectVehicle should return missing vehicle if provided enabled vehicles are not empty and default vehicles are empty`(
+    fun `selectEntity should return missing vehicle if provided enabled vehicles are not empty and default vehicles are empty`(
         defaultEnabled: Boolean,
     ) {
         // Arrange
         every { StarWarsFactionHolder.defaultVehicles } returns listOf()
 
         // Act
-        val result = ReverseOrderFactionSelector.selectVehicle(
+        val result = ReverseOrderFactionSelector.selectEntity(
             mapOf("2.1" to true, "1.2" to false, "1.3" to true),
             defaultEnabled,
         )
@@ -76,7 +76,7 @@ class ReverseOrderFactionSelectorTests {
 
     @ParameterizedTest
     @ValueSource(booleans = [true, false])
-    fun `selectVehicle should return missing vehicle if provided enabled vehicles are not empty and default vehicles are empty and all values are true or false`(
+    fun `selectEntity should return missing vehicle if provided enabled vehicles are not empty and default vehicles are empty and all values are true or false`(
         enabled: Boolean,
     ) {
         // Arrange
@@ -84,7 +84,7 @@ class ReverseOrderFactionSelectorTests {
 
         // Act
         val result =
-            ReverseOrderFactionSelector.selectVehicle(
+            ReverseOrderFactionSelector.selectEntity(
                 mapOf(
                     "2.1" to enabled,
                     "1.2" to enabled,
@@ -98,12 +98,12 @@ class ReverseOrderFactionSelectorTests {
     }
 
     @Test
-    fun `selectVehicle should return missing vehicle if provided enabled vehicles are empty and default vehicles are not empty and default enabled is false`() {
+    fun `selectEntity should return missing vehicle if provided enabled vehicles are empty and default vehicles are not empty and default enabled is false`() {
         // Arrange
         every { StarWarsFactionHolder.defaultVehicles } returns createStarWarsVehicles()
 
         // Act
-        val result = ReverseOrderFactionSelector.selectVehicle(mapOf(), false)
+        val result = ReverseOrderFactionSelector.selectEntity(mapOf(), false)
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -111,7 +111,7 @@ class ReverseOrderFactionSelectorTests {
 
     @ParameterizedTest
     @MethodSource("defaultEnabledValues")
-    fun `selectVehicle should return missing vehicle if provided enabled vehicles are all false and default vehicles are not empty`(
+    fun `selectEntity should return missing vehicle if provided enabled vehicles are all false and default vehicles are not empty`(
         defaultEnabled: Boolean,
     ) {
         // Arrange
@@ -119,7 +119,7 @@ class ReverseOrderFactionSelectorTests {
 
         // Act
         val result =
-            ReverseOrderFactionSelector.selectVehicle(
+            ReverseOrderFactionSelector.selectEntity(
                 mapOf("2.1" to false, "1.2" to false, "1.3" to false),
                 defaultEnabled,
             )
@@ -129,7 +129,7 @@ class ReverseOrderFactionSelectorTests {
     }
 
     @Test
-    fun `selectVehicle should return vehicles in sorted order`() {
+    fun `selectEntity should return vehicles in sorted order`() {
         // Arrange
         val vehicles = createStarWarsVehicles().toMutableList()
         every { StarWarsFactionHolder.defaultVehicles } returns vehicles
@@ -204,11 +204,11 @@ class ReverseOrderFactionSelectorTests {
             }
         }
         vehicles[0].factionId = "1"
-        ReverseOrderFactionSelector.selectVehicle(
+        ReverseOrderFactionSelector.selectEntity(
             mapOf("1.1" to true, "1.2" to true, "1.3" to true),
             true,
         )
-        ReverseOrderFactionSelector.selectVehicle(
+        ReverseOrderFactionSelector.selectEntity(
             mapOf("1.1" to true, "1.2" to true, "1.3" to true),
             true,
         )
@@ -301,7 +301,7 @@ class ReverseOrderFactionSelectorTests {
         val result = mutableListOf<StarWarsVehicle>()
         for (i in vehicles.indices) {
             result.add(
-                ReverseOrderFactionSelector.selectVehicle(
+                ReverseOrderFactionSelector.selectEntity(
                     enabledVehicles,
                     defaultEnabled,
                 ),

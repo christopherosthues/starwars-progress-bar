@@ -29,27 +29,24 @@ internal object StarWarsFactionHolder {
 
     init {
         val starWarsFactions = loadFactions()
-        updateFactions(starWarsFactions.vehicles)
-        updateFactions(starWarsFactions.lightsabers)
+        updateFactions(starWarsFactions)
     }
 
-    fun updateFactions(factions: List<StarWarsFaction<StarWarsVehicle>>) {
-        vehicleFactions = factions
-        defaultVehicleFactions = factions.filter { it.id.isNotEmpty() }
+    fun updateFactions(factions: StarWarsFactions) {
+        vehicleFactions = factions.vehicles
+        defaultVehicleFactions = factions.vehicles.filter { it.id.isNotEmpty() }
         missingVehicle =
-            factions.firstOrNull { it.id.isEmpty() }?.data?.firstOrNull() ?: StarWarsVehicle.missingVehicle
-        defaultVehicles = factions.filter { it.id.isNotEmpty() }.fold(mutableListOf()) { acc, starWarsFaction ->
+            factions.vehicles.firstOrNull { it.id.isEmpty() }?.data?.firstOrNull() ?: StarWarsVehicle.missingVehicle
+        defaultVehicles = factions.vehicles.filter { it.id.isNotEmpty() }.fold(mutableListOf()) { acc, starWarsFaction ->
             acc.addAll(starWarsFaction.data)
             acc
         }
-    }
 
-    fun updateFactions(factions: List<StarWarsFaction<Lightsaber>>) {
-        lightsaberFactions = factions
-        defaultLightsaberFactions = factions.filter { it.id.isNotEmpty() }
+        lightsaberFactions = factions.lightsabers
+        defaultLightsaberFactions = factions.lightsabers.filter { it.id.isNotEmpty() }
         missingLightsaber =
-            factions.firstOrNull { it.id.isEmpty() }?.data?.firstOrNull() ?: Lightsaber.missingLightsaber
-        defaultLightsabers = factions.filter { it.id.isNotEmpty() }.fold(mutableListOf()) { acc, starWarsFaction ->
+            factions.lightsabers.firstOrNull { it.id.isEmpty() }?.data?.firstOrNull() ?: Lightsaber.missingLightsaber
+        defaultLightsabers = factions.lightsabers.filter { it.id.isNotEmpty() }.fold(mutableListOf()) { acc, starWarsFaction ->
             acc.addAll(starWarsFaction.data)
             acc
         }
