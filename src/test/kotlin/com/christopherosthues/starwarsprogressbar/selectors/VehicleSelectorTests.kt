@@ -30,12 +30,12 @@ class VehicleSelectorTests {
     fun setup() {
         mockkObject(StarWarsFactionHolder)
         mockkObject(StarWarsPersistentStateComponent)
-        mockkObject(InorderFactionVehicleSelector)
-        mockkObject(InorderVehicleNameVehicleSelector)
-        mockkObject(RandomVehicleSelector)
-        mockkObject(ReverseOrderFactionVehicleSelector)
-        mockkObject(ReverseOrderVehicleNameVehicleSelector)
-        mockkObject(RollingRandomVehicleSelector)
+        mockkObject(InorderFactionSelector)
+        mockkObject(InorderNameSelector)
+        mockkObject(RandomSelector)
+        mockkObject(ReverseOrderFactionSelector)
+        mockkObject(ReverseOrderNameSelector)
+        mockkObject(RollingRandomSelector)
 
         setupStarWarsState(null)
         every { StarWarsFactionHolder.missingVehicle } returns missingVehicle
@@ -60,12 +60,12 @@ class VehicleSelectorTests {
 
         // Assert
         verify(exactly = 0) { StarWarsFactionHolder.updateFactions(any<List<StarWarsFaction<StarWarsVehicle>>>()) }
-        verify(exactly = 0) { InorderFactionVehicleSelector.selectVehicle(any(), any()) }
-        verify(exactly = 0) { InorderVehicleNameVehicleSelector.selectVehicle(any(), any()) }
-        verify(exactly = 0) { RandomVehicleSelector.selectVehicle(any(), any()) }
-        verify(exactly = 0) { ReverseOrderFactionVehicleSelector.selectVehicle(any(), any()) }
-        verify(exactly = 0) { ReverseOrderVehicleNameVehicleSelector.selectVehicle(any(), any()) }
-        verify(exactly = 0) { RollingRandomVehicleSelector.selectVehicle(any(), any()) }
+        verify(exactly = 0) { InorderFactionSelector.selectVehicle(any(), any()) }
+        verify(exactly = 0) { InorderNameSelector.selectVehicle(any(), any()) }
+        verify(exactly = 0) { RandomSelector.selectVehicle(any(), any()) }
+        verify(exactly = 0) { ReverseOrderFactionSelector.selectVehicle(any(), any()) }
+        verify(exactly = 0) { ReverseOrderNameSelector.selectVehicle(any(), any()) }
+        verify(exactly = 0) { RollingRandomSelector.selectVehicle(any(), any()) }
     }
 
     @Test
@@ -80,12 +80,12 @@ class VehicleSelectorTests {
         // Assert
         assertEquals(missingVehicle, result)
         verify(exactly = 0) { StarWarsFactionHolder.updateFactions(any<List<StarWarsFaction<StarWarsVehicle>>>()) }
-        verify(exactly = 0) { InorderFactionVehicleSelector.selectVehicle(any(), any()) }
-        verify(exactly = 0) { InorderVehicleNameVehicleSelector.selectVehicle(any(), any()) }
-        verify(exactly = 0) { RandomVehicleSelector.selectVehicle(any(), any()) }
-        verify(exactly = 0) { ReverseOrderFactionVehicleSelector.selectVehicle(any(), any()) }
-        verify(exactly = 0) { ReverseOrderVehicleNameVehicleSelector.selectVehicle(any(), any()) }
-        verify(exactly = 0) { RollingRandomVehicleSelector.selectVehicle(any(), any()) }
+        verify(exactly = 0) { InorderFactionSelector.selectVehicle(any(), any()) }
+        verify(exactly = 0) { InorderNameSelector.selectVehicle(any(), any()) }
+        verify(exactly = 0) { RandomSelector.selectVehicle(any(), any()) }
+        verify(exactly = 0) { ReverseOrderFactionSelector.selectVehicle(any(), any()) }
+        verify(exactly = 0) { ReverseOrderNameSelector.selectVehicle(any(), any()) }
+        verify(exactly = 0) { RollingRandomSelector.selectVehicle(any(), any()) }
     }
 
     @Test
@@ -100,12 +100,12 @@ class VehicleSelectorTests {
         // Assert
         assertEquals(missingVehicle, result)
         verify(exactly = 0) { StarWarsFactionHolder.updateFactions(any<List<StarWarsFaction<StarWarsVehicle>>>()) }
-        verify(exactly = 0) { InorderFactionVehicleSelector.selectVehicle(any(), any()) }
-        verify(exactly = 0) { InorderVehicleNameVehicleSelector.selectVehicle(any(), any()) }
-        verify(exactly = 0) { RandomVehicleSelector.selectVehicle(any(), any()) }
-        verify(exactly = 0) { ReverseOrderFactionVehicleSelector.selectVehicle(any(), any()) }
-        verify(exactly = 0) { ReverseOrderVehicleNameVehicleSelector.selectVehicle(any(), any()) }
-        verify(exactly = 0) { RollingRandomVehicleSelector.selectVehicle(any(), any()) }
+        verify(exactly = 0) { InorderFactionSelector.selectVehicle(any(), any()) }
+        verify(exactly = 0) { InorderNameSelector.selectVehicle(any(), any()) }
+        verify(exactly = 0) { RandomSelector.selectVehicle(any(), any()) }
+        verify(exactly = 0) { ReverseOrderFactionSelector.selectVehicle(any(), any()) }
+        verify(exactly = 0) { ReverseOrderNameSelector.selectVehicle(any(), any()) }
+        verify(exactly = 0) { RollingRandomSelector.selectVehicle(any(), any()) }
     }
 
     @ParameterizedTest
@@ -129,12 +129,12 @@ class VehicleSelectorTests {
             enableNewVehicles = true
         }
         setupStarWarsState(starWarsState)
-        every { InorderFactionVehicleSelector.selectVehicle(any(), defaultEnabled) } returns vehicles[1]
-        every { InorderVehicleNameVehicleSelector.selectVehicle(any(), defaultEnabled) } returns vehicles[1]
-        every { RandomVehicleSelector.selectVehicle(any(), defaultEnabled) } returns vehicles[1]
-        every { ReverseOrderFactionVehicleSelector.selectVehicle(any(), defaultEnabled) } returns vehicles[1]
-        every { ReverseOrderVehicleNameVehicleSelector.selectVehicle(any(), defaultEnabled) } returns vehicles[1]
-        every { RollingRandomVehicleSelector.selectVehicle(any(), defaultEnabled) } returns vehicles[1]
+        every { InorderFactionSelector.selectVehicle(any(), defaultEnabled) } returns vehicles[1]
+        every { InorderNameSelector.selectVehicle(any(), defaultEnabled) } returns vehicles[1]
+        every { RandomSelector.selectVehicle(any(), defaultEnabled) } returns vehicles[1]
+        every { ReverseOrderFactionSelector.selectVehicle(any(), defaultEnabled) } returns vehicles[1]
+        every { ReverseOrderNameSelector.selectVehicle(any(), defaultEnabled) } returns vehicles[1]
+        every { RollingRandomSelector.selectVehicle(any(), defaultEnabled) } returns vehicles[1]
 
         // Act
         val result = VehicleSelector.selectVehicle(null, defaultEnabled, selectionType)
@@ -145,12 +145,12 @@ class VehicleSelectorTests {
             { assertNotEquals(missingVehicle, result) },
         )
 
-        verify(exactly = factionSelector) { InorderFactionVehicleSelector.selectVehicle(enabledVehicles, defaultEnabled) }
-        verify(exactly = vehicleSelector) { InorderVehicleNameVehicleSelector.selectVehicle(enabledVehicles, defaultEnabled) }
-        verify(exactly = randomSelector) { RandomVehicleSelector.selectVehicle(enabledVehicles, defaultEnabled) }
-        verify(exactly = reverseFactionSelector) { ReverseOrderFactionVehicleSelector.selectVehicle(enabledVehicles, defaultEnabled) }
-        verify(exactly = reverseVehicleSelector) { ReverseOrderVehicleNameVehicleSelector.selectVehicle(enabledVehicles, defaultEnabled) }
-        verify(exactly = rollingRandomSelector) { RollingRandomVehicleSelector.selectVehicle(enabledVehicles, defaultEnabled) }
+        verify(exactly = factionSelector) { InorderFactionSelector.selectVehicle(enabledVehicles, defaultEnabled) }
+        verify(exactly = vehicleSelector) { InorderNameSelector.selectVehicle(enabledVehicles, defaultEnabled) }
+        verify(exactly = randomSelector) { RandomSelector.selectVehicle(enabledVehicles, defaultEnabled) }
+        verify(exactly = reverseFactionSelector) { ReverseOrderFactionSelector.selectVehicle(enabledVehicles, defaultEnabled) }
+        verify(exactly = reverseVehicleSelector) { ReverseOrderNameSelector.selectVehicle(enabledVehicles, defaultEnabled) }
+        verify(exactly = rollingRandomSelector) { RollingRandomSelector.selectVehicle(enabledVehicles, defaultEnabled) }
     }
 
     @ParameterizedTest
@@ -175,12 +175,12 @@ class VehicleSelectorTests {
             enableNewVehicles = true
         }
         setupStarWarsState(starWarsState)
-        every { InorderFactionVehicleSelector.selectVehicle(enabledVehicles, defaultEnabled) } returns vehicles[1]
-        every { InorderVehicleNameVehicleSelector.selectVehicle(enabledVehicles, defaultEnabled) } returns vehicles[1]
-        every { RandomVehicleSelector.selectVehicle(enabledVehicles, defaultEnabled) } returns vehicles[1]
-        every { ReverseOrderFactionVehicleSelector.selectVehicle(enabledVehicles, defaultEnabled) } returns vehicles[1]
-        every { ReverseOrderVehicleNameVehicleSelector.selectVehicle(enabledVehicles, defaultEnabled) } returns vehicles[1]
-        every { RollingRandomVehicleSelector.selectVehicle(enabledVehicles, defaultEnabled) } returns vehicles[1]
+        every { InorderFactionSelector.selectVehicle(enabledVehicles, defaultEnabled) } returns vehicles[1]
+        every { InorderNameSelector.selectVehicle(enabledVehicles, defaultEnabled) } returns vehicles[1]
+        every { RandomSelector.selectVehicle(enabledVehicles, defaultEnabled) } returns vehicles[1]
+        every { ReverseOrderFactionSelector.selectVehicle(enabledVehicles, defaultEnabled) } returns vehicles[1]
+        every { ReverseOrderNameSelector.selectVehicle(enabledVehicles, defaultEnabled) } returns vehicles[1]
+        every { RollingRandomSelector.selectVehicle(enabledVehicles, defaultEnabled) } returns vehicles[1]
 
         // Act
         val result = VehicleSelector.selectVehicle(enabledVehicles, defaultEnabled, selectionType)
@@ -191,12 +191,12 @@ class VehicleSelectorTests {
             { assertNotEquals(missingVehicle, result) },
         )
 
-        verify(exactly = factionSelector) { InorderFactionVehicleSelector.selectVehicle(enabledVehicles, defaultEnabled) }
-        verify(exactly = vehicleSelector) { InorderVehicleNameVehicleSelector.selectVehicle(enabledVehicles, defaultEnabled) }
-        verify(exactly = randomSelector) { RandomVehicleSelector.selectVehicle(enabledVehicles, defaultEnabled) }
-        verify(exactly = reverseFactionSelector) { ReverseOrderFactionVehicleSelector.selectVehicle(enabledVehicles, defaultEnabled) }
-        verify(exactly = reverseVehicleSelector) { ReverseOrderVehicleNameVehicleSelector.selectVehicle(enabledVehicles, defaultEnabled) }
-        verify(exactly = rollingRandomSelector) { RollingRandomVehicleSelector.selectVehicle(enabledVehicles, defaultEnabled) }
+        verify(exactly = factionSelector) { InorderFactionSelector.selectVehicle(enabledVehicles, defaultEnabled) }
+        verify(exactly = vehicleSelector) { InorderNameSelector.selectVehicle(enabledVehicles, defaultEnabled) }
+        verify(exactly = randomSelector) { RandomSelector.selectVehicle(enabledVehicles, defaultEnabled) }
+        verify(exactly = reverseFactionSelector) { ReverseOrderFactionSelector.selectVehicle(enabledVehicles, defaultEnabled) }
+        verify(exactly = reverseVehicleSelector) { ReverseOrderNameSelector.selectVehicle(enabledVehicles, defaultEnabled) }
+        verify(exactly = rollingRandomSelector) { RollingRandomSelector.selectVehicle(enabledVehicles, defaultEnabled) }
     }
 
     //endregion
@@ -229,11 +229,11 @@ class VehicleSelectorTests {
         @JvmStatic
         fun selectorValues(): Stream<Arguments> = Stream.of(
             Arguments.of(SelectionType.INORDER_FACTION, 1, 0, 0, 0, 0, 0),
-            Arguments.of(SelectionType.INORDER_VEHICLE_NAME, 0, 1, 0, 0, 0, 0),
+            Arguments.of(SelectionType.INORDER_NAME, 0, 1, 0, 0, 0, 0),
             Arguments.of(SelectionType.RANDOM_ALL, 0, 0, 1, 0, 0, 0),
             Arguments.of(SelectionType.RANDOM_NOT_DISPLAYED, 0, 0, 0, 1, 0, 0),
             Arguments.of(SelectionType.REVERSE_ORDER_FACTION, 0, 0, 0, 0, 1, 0),
-            Arguments.of(SelectionType.REVERSE_ORDER_VEHICLE_NAME, 0, 0, 0, 0, 0, 1),
+            Arguments.of(SelectionType.REVERSE_ORDER_NAME, 0, 0, 0, 0, 0, 1),
         )
     }
 

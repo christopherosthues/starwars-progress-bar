@@ -20,8 +20,8 @@ import org.junit.jupiter.params.provider.MethodSource
 import org.junit.jupiter.params.provider.ValueSource
 import java.util.stream.Stream
 
-@TestFor(classes = [InorderVehicleNameVehicleSelector::class])
-class InorderVehicleNameVehicleSelectorTests {
+@TestFor(classes = [InorderNameSelector::class])
+class InorderNameSelectorTests {
     //region Test lifecycle
 
     @BeforeEach
@@ -51,7 +51,7 @@ class InorderVehicleNameVehicleSelectorTests {
         every { StarWarsFactionHolder.defaultVehicles } returns listOf()
 
         // Act
-        val result = InorderVehicleNameVehicleSelector.selectVehicle(mapOf(), defaultEnabled)
+        val result = InorderNameSelector.selectVehicle(mapOf(), defaultEnabled)
 
         // Assert
         assertEquals(missingVehicle, result)
@@ -66,7 +66,7 @@ class InorderVehicleNameVehicleSelectorTests {
         every { StarWarsFactionHolder.defaultVehicles } returns listOf()
 
         // Act
-        val result = InorderVehicleNameVehicleSelector.selectVehicle(
+        val result = InorderNameSelector.selectVehicle(
             mapOf("1.1" to true, "1.2" to false, "1.3" to true),
             defaultEnabled,
         )
@@ -85,7 +85,7 @@ class InorderVehicleNameVehicleSelectorTests {
 
         // Act
         val result =
-            InorderVehicleNameVehicleSelector.selectVehicle(mapOf("1.1" to enabled, "1.2" to enabled, "1.3" to enabled), true)
+            InorderNameSelector.selectVehicle(mapOf("1.1" to enabled, "1.2" to enabled, "1.3" to enabled), true)
 
         // Assert
         assertEquals(missingVehicle, result)
@@ -97,7 +97,7 @@ class InorderVehicleNameVehicleSelectorTests {
         every { StarWarsFactionHolder.defaultVehicles } returns createStarWarsVehicles()
 
         // Act
-        val result = InorderVehicleNameVehicleSelector.selectVehicle(mapOf(), false)
+        val result = InorderNameSelector.selectVehicle(mapOf(), false)
 
         // Assert
         assertEquals(missingVehicle, result)
@@ -113,7 +113,7 @@ class InorderVehicleNameVehicleSelectorTests {
 
         // Act
         val result =
-            InorderVehicleNameVehicleSelector.selectVehicle(
+            InorderNameSelector.selectVehicle(
                 mapOf("1.1" to false, "1.2" to false, "1.3" to false),
                 defaultEnabled,
             )
@@ -132,7 +132,7 @@ class InorderVehicleNameVehicleSelectorTests {
         var result = mutableListOf<StarWarsVehicle>()
         for (i in vehicles.indices) {
             result.add(
-                InorderVehicleNameVehicleSelector.selectVehicle(
+                InorderNameSelector.selectVehicle(
                     mapOf("1.1" to true, "1.2" to true, "1.3" to true),
                     true,
                 ),
@@ -158,7 +158,7 @@ class InorderVehicleNameVehicleSelectorTests {
         result = mutableListOf()
         for (i in vehicles.indices) {
             result.add(
-                InorderVehicleNameVehicleSelector.selectVehicle(
+                InorderNameSelector.selectVehicle(
                     mapOf("1.1" to true, "1.2" to true, "1.3" to true),
                     true,
                 ),
@@ -177,7 +177,7 @@ class InorderVehicleNameVehicleSelectorTests {
         result = mutableListOf()
         for (i in vehicles.indices) {
             result.add(
-                InorderVehicleNameVehicleSelector.selectVehicle(
+                InorderNameSelector.selectVehicle(
                     mapOf("1.1" to true, "1.2" to false, "1.3" to true),
                     true,
                 ),
@@ -196,7 +196,7 @@ class InorderVehicleNameVehicleSelectorTests {
         result = mutableListOf()
         for (i in vehicles.indices) {
             result.add(
-                InorderVehicleNameVehicleSelector.selectVehicle(
+                InorderNameSelector.selectVehicle(
                     mapOf("1.1" to true, "1.2" to false),
                     true,
                 ),
@@ -215,7 +215,7 @@ class InorderVehicleNameVehicleSelectorTests {
         result = mutableListOf()
         for (i in vehicles.indices) {
             result.add(
-                InorderVehicleNameVehicleSelector.selectVehicle(
+                InorderNameSelector.selectVehicle(
                     mapOf("1.1" to true, "1.2" to false),
                     false,
                 ),

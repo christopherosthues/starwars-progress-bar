@@ -1,16 +1,18 @@
 package com.christopherosthues.starwarsprogressbar.selectors
 
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
+import com.christopherosthues.starwarsprogressbar.models.StarWarsEntity
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
-import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 
 internal object VehicleSelector {
     fun selectVehicle(
         enabledVehicles: Map<String, Boolean>?,
+        enabledLightsabers: Map<String, Boolean>?,
         defaultEnabled: Boolean,
         selectionType: SelectionType,
-    ): StarWarsVehicle {
+    ): StarWarsEntity {
         var currentEnabledVehicles = enabledVehicles
+        var currentEnabledLightsabers = enabledLightsabers
         if (currentEnabledVehicles == null) {
             val persistentStateComponent = StarWarsPersistentStateComponent.instance
             val starWarsState = persistentStateComponent?.state ?: return StarWarsFactionHolder.missingVehicle
@@ -18,15 +20,22 @@ internal object VehicleSelector {
             currentEnabledVehicles = starWarsState.vehiclesEnabled
         }
 
-        val selector = when (selectionType) {
-            SelectionType.INORDER_FACTION -> InorderFactionVehicleSelector
-            SelectionType.INORDER_VEHICLE_NAME -> InorderVehicleNameVehicleSelector
-            SelectionType.RANDOM_ALL -> RandomVehicleSelector
-            SelectionType.RANDOM_NOT_DISPLAYED -> RollingRandomVehicleSelector
-            SelectionType.REVERSE_ORDER_FACTION -> ReverseOrderFactionVehicleSelector
-            SelectionType.REVERSE_ORDER_VEHICLE_NAME -> ReverseOrderVehicleNameVehicleSelector
+        if (currentEnabledLightsabers == null) {
+            val persistentStateComponent = StarWarsPersistentStateComponent.instance
+            val starWarsState = persistentStateComponent?.state ?: return StarWarsFactionHolder.missingVehicle
+
+            currentEnabledLightsabers = starWarsState.lightsabersEnabled
         }
 
-        return selector.selectVehicle(currentEnabledVehicles, defaultEnabled)
+        val selector = when (selectionType) {
+            SelectionType.INORDER_FACTION -> InorderFactionSelector
+            SelectionType.INORDER_NAME -> InorderNameSelector
+            SelectionType.RANDOM_ALL -> RandomSelector
+            SelectionType.RANDOM_NOT_DISPLAYED -> RollingRandomSelector
+            SelectionType.REVERSE_ORDER_FACTION -> ReverseOrderFactionSelector
+            SelectionType.REVERSE_ORDER_NAME -> ReverseOrderNameSelector
+        }
+
+        return selector.selectVehicle(currentEnabledVehicles, currentEnabledLightsabers, defaultEnabled)
     }
 }

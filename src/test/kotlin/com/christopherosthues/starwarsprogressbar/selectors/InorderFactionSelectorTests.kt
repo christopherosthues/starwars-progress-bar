@@ -19,8 +19,8 @@ import org.junit.jupiter.params.provider.MethodSource
 import org.junit.jupiter.params.provider.ValueSource
 import java.util.stream.Stream
 
-@TestFor(classes = [InorderFactionVehicleSelector::class])
-class InorderFactionVehicleSelectorTests {
+@TestFor(classes = [InorderFactionSelector::class])
+class InorderFactionSelectorTests {
     //region Test lifecycle
 
     @BeforeEach
@@ -50,7 +50,7 @@ class InorderFactionVehicleSelectorTests {
         every { StarWarsFactionHolder.defaultVehicles } returns listOf()
 
         // Act
-        val result = InorderFactionVehicleSelector.selectVehicle(mapOf(), defaultEnabled)
+        val result = InorderFactionSelector.selectVehicle(mapOf(), defaultEnabled)
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -65,7 +65,7 @@ class InorderFactionVehicleSelectorTests {
         every { StarWarsFactionHolder.defaultVehicles } returns listOf()
 
         // Act
-        val result = InorderFactionVehicleSelector.selectVehicle(
+        val result = InorderFactionSelector.selectVehicle(
             mapOf("2.1" to true, "1.2" to false, "1.3" to true),
             defaultEnabled,
         )
@@ -84,7 +84,7 @@ class InorderFactionVehicleSelectorTests {
 
         // Act
         val result =
-            InorderFactionVehicleSelector.selectVehicle(
+            InorderFactionSelector.selectVehicle(
                 mapOf("2.1" to enabled, "1.2" to enabled, "1.3" to enabled),
                 true,
             )
@@ -99,7 +99,7 @@ class InorderFactionVehicleSelectorTests {
         every { StarWarsFactionHolder.defaultVehicles } returns createStarWarsVehicles()
 
         // Act
-        val result = InorderFactionVehicleSelector.selectVehicle(mapOf(), false)
+        val result = InorderFactionSelector.selectVehicle(mapOf(), false)
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -115,7 +115,7 @@ class InorderFactionVehicleSelectorTests {
 
         // Act
         val result =
-            InorderFactionVehicleSelector.selectVehicle(
+            InorderFactionSelector.selectVehicle(
                 mapOf("2.1" to false, "1.2" to false, "1.3" to false),
                 defaultEnabled,
             )
@@ -201,11 +201,11 @@ class InorderFactionVehicleSelectorTests {
             }
         }
         vehicles[0].factionId = "1"
-        InorderFactionVehicleSelector.selectVehicle(
+        InorderFactionSelector.selectVehicle(
             mapOf("1.1" to true, "1.2" to true, "1.3" to true),
             true,
         )
-        InorderFactionVehicleSelector.selectVehicle(
+        InorderFactionSelector.selectVehicle(
             mapOf("1.1" to true, "1.2" to true, "1.3" to true),
             true,
         )
@@ -298,7 +298,7 @@ class InorderFactionVehicleSelectorTests {
         val result = mutableListOf<StarWarsVehicle>()
         for (i in vehicles.indices) {
             result.add(
-                InorderFactionVehicleSelector.selectVehicle(
+                InorderFactionSelector.selectVehicle(
                     enabledVehicles,
                     defaultEnabled,
                 ),

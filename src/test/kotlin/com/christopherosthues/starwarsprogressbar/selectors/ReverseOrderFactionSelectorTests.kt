@@ -19,8 +19,8 @@ import org.junit.jupiter.params.provider.MethodSource
 import org.junit.jupiter.params.provider.ValueSource
 import java.util.stream.Stream
 
-@TestFor(classes = [ReverseOrderFactionVehicleSelector::class])
-class ReverseOrderFactionVehicleSelectorTests {
+@TestFor(classes = [ReverseOrderFactionSelector::class])
+class ReverseOrderFactionSelectorTests {
     //region Test lifecycle
 
     @BeforeEach
@@ -50,7 +50,7 @@ class ReverseOrderFactionVehicleSelectorTests {
         every { StarWarsFactionHolder.defaultVehicles } returns listOf()
 
         // Act
-        val result = ReverseOrderFactionVehicleSelector.selectVehicle(mapOf(), defaultEnabled)
+        val result = ReverseOrderFactionSelector.selectVehicle(mapOf(), defaultEnabled)
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -65,7 +65,7 @@ class ReverseOrderFactionVehicleSelectorTests {
         every { StarWarsFactionHolder.defaultVehicles } returns listOf()
 
         // Act
-        val result = ReverseOrderFactionVehicleSelector.selectVehicle(
+        val result = ReverseOrderFactionSelector.selectVehicle(
             mapOf("2.1" to true, "1.2" to false, "1.3" to true),
             defaultEnabled,
         )
@@ -84,7 +84,7 @@ class ReverseOrderFactionVehicleSelectorTests {
 
         // Act
         val result =
-            ReverseOrderFactionVehicleSelector.selectVehicle(
+            ReverseOrderFactionSelector.selectVehicle(
                 mapOf(
                     "2.1" to enabled,
                     "1.2" to enabled,
@@ -103,7 +103,7 @@ class ReverseOrderFactionVehicleSelectorTests {
         every { StarWarsFactionHolder.defaultVehicles } returns createStarWarsVehicles()
 
         // Act
-        val result = ReverseOrderFactionVehicleSelector.selectVehicle(mapOf(), false)
+        val result = ReverseOrderFactionSelector.selectVehicle(mapOf(), false)
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -119,7 +119,7 @@ class ReverseOrderFactionVehicleSelectorTests {
 
         // Act
         val result =
-            ReverseOrderFactionVehicleSelector.selectVehicle(
+            ReverseOrderFactionSelector.selectVehicle(
                 mapOf("2.1" to false, "1.2" to false, "1.3" to false),
                 defaultEnabled,
             )
@@ -204,11 +204,11 @@ class ReverseOrderFactionVehicleSelectorTests {
             }
         }
         vehicles[0].factionId = "1"
-        ReverseOrderFactionVehicleSelector.selectVehicle(
+        ReverseOrderFactionSelector.selectVehicle(
             mapOf("1.1" to true, "1.2" to true, "1.3" to true),
             true,
         )
-        ReverseOrderFactionVehicleSelector.selectVehicle(
+        ReverseOrderFactionSelector.selectVehicle(
             mapOf("1.1" to true, "1.2" to true, "1.3" to true),
             true,
         )
@@ -301,7 +301,7 @@ class ReverseOrderFactionVehicleSelectorTests {
         val result = mutableListOf<StarWarsVehicle>()
         for (i in vehicles.indices) {
             result.add(
-                ReverseOrderFactionVehicleSelector.selectVehicle(
+                ReverseOrderFactionSelector.selectVehicle(
                     enabledVehicles,
                     defaultEnabled,
                 ),

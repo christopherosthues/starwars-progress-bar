@@ -21,8 +21,8 @@ import org.junit.jupiter.params.provider.MethodSource
 import org.junit.jupiter.params.provider.ValueSource
 import java.util.stream.Stream
 
-@TestFor(classes = [RandomVehicleSelector::class])
-class RandomVehicleSelectorTests {
+@TestFor(classes = [RandomSelector::class])
+class RandomSelectorTests {
     //region Test lifecycle
 
     @BeforeEach
@@ -52,7 +52,7 @@ class RandomVehicleSelectorTests {
         every { StarWarsFactionHolder.defaultVehicles } returns listOf()
 
         // Act
-        val result = RandomVehicleSelector.selectVehicle(mapOf(), defaultEnabled)
+        val result = RandomSelector.selectVehicle(mapOf(), defaultEnabled)
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -67,7 +67,7 @@ class RandomVehicleSelectorTests {
         every { StarWarsFactionHolder.defaultVehicles } returns listOf()
 
         // Act
-        val result = RandomVehicleSelector.selectVehicle(
+        val result = RandomSelector.selectVehicle(
             mapOf("2.1" to true, "1.2" to false, "1.3" to true),
             defaultEnabled,
         )
@@ -86,7 +86,7 @@ class RandomVehicleSelectorTests {
 
         // Act
         val result =
-            RandomVehicleSelector.selectVehicle(mapOf("2.1" to enabled, "1.2" to enabled, "1.3" to enabled), true)
+            RandomSelector.selectVehicle(mapOf("2.1" to enabled, "1.2" to enabled, "1.3" to enabled), true)
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -98,7 +98,7 @@ class RandomVehicleSelectorTests {
         every { StarWarsFactionHolder.defaultVehicles } returns createStarWarsVehicles()
 
         // Act
-        val result = RandomVehicleSelector.selectVehicle(mapOf(), false)
+        val result = RandomSelector.selectVehicle(mapOf(), false)
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -114,7 +114,7 @@ class RandomVehicleSelectorTests {
 
         // Act
         val result =
-            RandomVehicleSelector.selectVehicle(
+            RandomSelector.selectVehicle(
                 mapOf("2.1" to false, "1.2" to false, "1.3" to false),
                 defaultEnabled,
             )
@@ -135,7 +135,7 @@ class RandomVehicleSelectorTests {
         every { randomInt(any()) } returns index
 
         // Act
-        val result = RandomVehicleSelector.selectVehicle(mapOf(), true)
+        val result = RandomSelector.selectVehicle(mapOf(), true)
 
         // Assert
         Assertions.assertAll(
@@ -158,7 +158,7 @@ class RandomVehicleSelectorTests {
         every { randomInt(any()) } returns index
 
         // Act
-        val result = RandomVehicleSelector.selectVehicle(mapOf("2.1" to true, "1.2" to true, "1.3" to true), defaultEnabled)
+        val result = RandomSelector.selectVehicle(mapOf("2.1" to true, "1.2" to true, "1.3" to true), defaultEnabled)
 
         // Assert
         Assertions.assertAll(
@@ -180,7 +180,7 @@ class RandomVehicleSelectorTests {
         every { randomInt(any()) } returns index
 
         // Act
-        val result = RandomVehicleSelector.selectVehicle(mapOf("1.2" to true, "1.3" to true), false)
+        val result = RandomSelector.selectVehicle(mapOf("1.2" to true, "1.3" to true), false)
 
         // Assert
         Assertions.assertAll(
@@ -202,7 +202,7 @@ class RandomVehicleSelectorTests {
         every { randomInt(any()) } returns index
 
         // Act
-        val result = RandomVehicleSelector.selectVehicle(mapOf("1.2" to true, "1.3" to true), true)
+        val result = RandomSelector.selectVehicle(mapOf("1.2" to true, "1.3" to true), true)
 
         // Assert
         Assertions.assertAll(
@@ -224,7 +224,7 @@ class RandomVehicleSelectorTests {
         every { randomInt(any()) } returns index
 
         // Act
-        val result = RandomVehicleSelector.selectVehicle(mapOf("1.2" to true, "1.3" to true, "1.4" to true), true)
+        val result = RandomSelector.selectVehicle(mapOf("1.2" to true, "1.3" to true, "1.4" to true), true)
 
         // Assert
         Assertions.assertAll(
@@ -243,7 +243,7 @@ class RandomVehicleSelectorTests {
         every { randomInt(any()) } returns 0
 
         // Act
-        val result = RandomVehicleSelector.selectVehicle(mapOf("2.1" to false, "1.2" to true, "1.3" to false), true)
+        val result = RandomSelector.selectVehicle(mapOf("2.1" to false, "1.2" to true, "1.3" to false), true)
 
         // Assert
         Assertions.assertAll(

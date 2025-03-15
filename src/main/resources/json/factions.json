@@ -182,18 +182,6 @@
             "id": "other",
             "data": [
             ]
-        },
-        {
-            "id": "",
-            "data": [
-                {
-                    "id": "missing",
-                    "color": "blue",
-                    "isShoto": false,
-                    "isDoubleBladed": false,
-                    "velocity": 2.5
-                }
-            ]
         }
     ],
     "vehicles": [
