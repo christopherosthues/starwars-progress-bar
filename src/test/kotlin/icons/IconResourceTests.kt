@@ -308,17 +308,17 @@ class IconResourceTests {
     //region Helper methods
 
     private val iconWhitelist = listOf(
-        "scoundrels${File.separatorChar}lady_luck@2x.png",
-        "scoundrels${File.separatorChar}outrider@2x.png",
-        "scoundrels${File.separatorChar}outrider_r@2x.png",
-        "bounty_hunters${File.separatorChar}shadow_caster@2x.png",
-        "bounty_hunters${File.separatorChar}hounds_tooth_r@2x.png",
-        "mandalorians${File.separatorChar}fang_class_starfighter_r@2x.png",
-        "mandalorians${File.separatorChar}gauntlet_r@2x.png",
-        "scoundrels${File.separatorChar}nightbrother_r@2x.png",
-        "sith_empire${File.separatorChar}harrower_class_dreadnought_r_raw@2x.png",
-        "galactic_empire${File.separatorChar}at_pt_r@2x.png",
-        "galactic_empire${File.separatorChar}atpt.png",
+        "vehicles${File.separatorChar}scoundrels${File.separatorChar}lady_luck@2x.png",
+        "vehicles${File.separatorChar}scoundrels${File.separatorChar}outrider@2x.png",
+        "vehicles${File.separatorChar}scoundrels${File.separatorChar}outrider_r@2x.png",
+        "vehicles${File.separatorChar}bounty_hunters${File.separatorChar}shadow_caster@2x.png",
+        "vehicles${File.separatorChar}bounty_hunters${File.separatorChar}hounds_tooth_r@2x.png",
+        "vehicles${File.separatorChar}mandalorians${File.separatorChar}fang_class_starfighter_r@2x.png",
+        "vehicles${File.separatorChar}mandalorians${File.separatorChar}gauntlet_r@2x.png",
+        "vehicles${File.separatorChar}scoundrels${File.separatorChar}nightbrother_r@2x.png",
+        "vehicles${File.separatorChar}sith_empire${File.separatorChar}harrower_class_dreadnought_r_raw@2x.png",
+        "vehicles${File.separatorChar}galactic_empire${File.separatorChar}at_pt_r@2x.png",
+        "vehicles${File.separatorChar}galactic_empire${File.separatorChar}atpt.png",
     )
 
     private fun getFormattedImagesNotReferencedErrorMessage(imagesNotReferenced: List<String>): String {

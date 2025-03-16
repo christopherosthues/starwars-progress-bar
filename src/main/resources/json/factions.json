@@ -6,7 +6,7 @@
                 {
                     "type": "Lightsaber",
                     "id": "asajj_ventress_second",
-                    "color": "red",
+                    "bladeColor": "red",
                     "isShoto": false,
                     "isDoubleBladed": false,
                     "velocity": 2
@@ -14,7 +14,7 @@
                 {
                     "type": "Lightsaber",
                     "id": "darth_krall",
-                    "color": "red",
+                    "bladeColor": "red",
                     "isShoto": false,
                     "isDoubleBladed": false,
                     "velocity": 2
@@ -22,7 +22,7 @@
                 {
                     "type": "Lightsaber",
                     "id": "darth_maul_first",
-                    "color": "red",
+                    "bladeColor": "red",
                     "isShoto": false,
                     "isDoubleBladed": true,
                     "velocity": 2
@@ -30,7 +30,7 @@
                 {
                     "type": "Lightsaber",
                     "id": "darth_maul_second",
-                    "color": "red",
+                    "bladeColor": "red",
                     "isShoto": false,
                     "isDoubleBladed": false,
                     "velocity": 2
@@ -38,7 +38,7 @@
                 {
                     "type": "Lightsaber",
                     "id": "darth_maul_third",
-                    "color": "red",
+                    "bladeColor": "red",
                     "isShoto": false,
                     "isDoubleBladed": false,
                     "velocity": 2
@@ -46,7 +46,7 @@
                 {
                     "type": "Lightsaber",
                     "id": "darth_sidious",
-                    "color": "red",
+                    "bladeColor": "red",
                     "isShoto": false,
                     "isDoubleBladed": false,
                     "velocity": 2
@@ -54,7 +54,7 @@
                 {
                     "type": "Lightsaber",
                     "id": "darth_vader_first",
-                    "color": "red",
+                    "bladeColor": "red",
                     "isShoto": false,
                     "isDoubleBladed": false,
                     "velocity": 2
@@ -62,7 +62,7 @@
                 {
                     "type": "Lightsaber",
                     "id": "darth_vader_second",
-                    "color": "red",
+                    "bladeColor": "red",
                     "isShoto": false,
                     "isDoubleBladed": false,
                     "velocity": 2
@@ -70,7 +70,7 @@
                 {
                     "type": "Lightsaber",
                     "id": "darth_tyranus",
-                    "color": "red",
+                    "bladeColor": "red",
                     "isShoto": false,
                     "isDoubleBladed": false,
                     "velocity": 2
@@ -78,7 +78,7 @@
                 {
                     "type": "Lightsaber",
                     "id": "the_acolyte",
-                    "color": "red",
+                    "bladeColor": "red",
                     "isShoto": false,
                     "isDoubleBladed": false,
                     "velocity": 2
@@ -91,7 +91,7 @@
                 {
                     "type": "Lightsaber",
                     "id": "ahsoka_tano_first",
-                    "color": "green",
+                    "bladeColor": "green",
                     "isShoto": false,
                     "isDoubleBladed": false,
                     "velocity": 4
@@ -99,7 +99,7 @@
                 {
                     "type": "Lightsaber",
                     "id": "ahsoka_tano_second",
-                    "color": "blue",
+                    "bladeColor": "blue",
                     "isShoto": false,
                     "isDoubleBladed": false,
                     "velocity": 4
@@ -107,7 +107,7 @@
                 {
                     "type": "Lightsaber",
                     "id": "anakin_skywalker_first",
-                    "color": "blue",
+                    "bladeColor": "blue",
                     "isShoto": false,
                     "isDoubleBladed": false,
                     "velocity": 4
@@ -115,7 +115,7 @@
                 {
                     "type": "Lightsaber",
                     "id": "anakin_skywalker_second",
-                    "color": "blue",
+                    "bladeColor": "blue",
                     "isShoto": false,
                     "isDoubleBladed": false,
                     "velocity": 4
@@ -123,7 +123,7 @@
                 {
                     "type": "Lightsaber",
                     "id": "asajj_ventress_first",
-                    "color": "green",
+                    "bladeColor": "green",
                     "isShoto": false,
                     "isDoubleBladed": false,
                     "velocity": 4
@@ -131,7 +131,7 @@
                 {
                     "type": "Lightsaber",
                     "id": "luke_skywalker",
-                    "color": "green",
+                    "bladeColor": "green",
                     "isShoto": false,
                     "isDoubleBladed": false,
                     "velocity": 4
@@ -139,7 +139,7 @@
                 {
                     "type": "Lightsaber",
                     "id": "mace_windu",
-                    "color": "purple",
+                    "bladeColor": "purple",
                     "isShoto": false,
                     "isDoubleBladed": false,
                     "velocity": 4
@@ -147,7 +147,7 @@
                 {
                     "type": "Lightsaber",
                     "id": "obi_wan_kenobi_first",
-                    "color": "blue",
+                    "bladeColor": "blue",
                     "isShoto": false,
                     "isDoubleBladed": false,
                     "velocity": 4
@@ -155,7 +155,7 @@
                 {
                     "type": "Lightsaber",
                     "id": "obi_wan_kenobi_second",
-                    "color": "blue",
+                    "bladeColor": "blue",
                     "isShoto": false,
                     "isDoubleBladed": false,
                     "velocity": 4
@@ -163,7 +163,7 @@
                 {
                     "type": "Lightsaber",
                     "id": "obi_wan_kenobi_third",
-                    "color": "blue",
+                    "bladeColor": "blue",
                     "isShoto": false,
                     "isDoubleBladed": false,
                     "velocity": 4
@@ -171,7 +171,7 @@
                 {
                     "type": "Lightsaber",
                     "id": "qui_gon_jinn",
-                    "color": "green",
+                    "bladeColor": "green",
                     "isShoto": false,
                     "isDoubleBladed": false,
                     "velocity": 4
@@ -179,7 +179,7 @@
                 {
                     "type": "Lightsaber",
                     "id": "yoda",
-                    "color": "green",
+                    "bladeColor": "green",
                     "isShoto": true,
                     "isDoubleBladed": false,
                     "velocity": 4
@@ -187,7 +187,7 @@
                 {
                     "type": "Lightsaber",
                     "id": "yaddle",
-                    "color": "green",
+                    "bladeColor": "green",
                     "isShoto": true,
                     "isDoubleBladed": false,
                     "velocity": 4
@@ -195,7 +195,7 @@
                 {
                     "type": "Lightsaber",
                     "id": "youngling_slayer_9000",
-                    "color": "blue",
+                    "bladeColor": "blue",
                     "isShoto": false,
                     "isDoubleBladed": false,
                     "velocity": 4
