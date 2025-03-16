@@ -1,6 +1,7 @@
 package com.christopherosthues.starwarsprogressbar.util
 
-import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
+import com.christopherosthues.starwarsprogressbar.models.*
+import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.intellij.ui.scale.JBUIScale
 import io.mockk.every
@@ -8,6 +9,10 @@ import io.mockk.mockk
 import io.mockk.mockkStatic
 import io.mockk.unmockkAll
 import io.mockk.verify
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.modules.SerializersModule
+import kotlinx.serialization.modules.polymorphic
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertInstanceOf
 import org.junit.jupiter.api.Assertions.assertNotNull
@@ -91,7 +96,7 @@ class ResourceFactoryTests {
     @Test
     fun `parseFactionsFromJson should return correct factions`() {
         // Arrange
-        val factions = listOf(
+        val vehicleFactions = listOf(
             StarWarsFaction("faction1", listOf(StarWarsVehicle("vehicle1", "brown", -4, -6, 2.5f))),
             StarWarsFaction(
                 "faction2",
@@ -101,45 +106,110 @@ class ResourceFactoryTests {
                 ),
             ),
         )
+        val lightsaberFactions = listOf(
+            StarWarsFaction(
+                "faction3",
+                listOf(Lightsaber("lightsaber1", "brown", 2.5f, isShoto = false, isDoubleBladed = false))
+            ),
+            StarWarsFaction(
+                "faction2", listOf(
+                    Lightsaber("lightsaber2", "blue", 2.5f, isShoto = false, isDoubleBladed = true),
+                    Lightsaber("lightsaber3", "blue", 2.5f, isShoto = true, isDoubleBladed = false),
+                )
+            )
+        )
 
         // Act and Assert
-        val result = parseFactionsFromJson(
-            "{\"factions\": [{" +
-                " \"id\": \"faction1\",\n" +
-                "      \"vehicles\": [\n" +
-                "        {\n" +
-                "          \"id\": \"vehicle1\",\n" +
-                "          \"ionEngine\": \"brown\",\n" +
-                "          \"xShift\": -4,\n" +
-                "          \"yShift\": -6,\n" +
-                "          \"velocity\": 2.5\n" +
-                "        }]},{" +
-                "\"id\": \"faction2\",\n" +
-                "      \"vehicles\": [\n" +
-                "        {\n" +
-                "          \"id\": \"vehicle2\",\n" +
-                "          \"ionEngine\": \"blue\",\n" +
-                "          \"xShift\": -6,\n" +
-                "          \"yShift\": -6,\n" +
-                "          \"velocity\": 2.5\n" +
-                "        }," +
-                "        {\n" +
-                "          \"id\": \"vehicle3\",\n" +
-                "          \"ionEngine\": \"blue\",\n" +
-                "          \"xShift\": -6,\n" +
-                "          \"yShift\": -6,\n" +
-                "          \"velocity\": 2.5\n" +
-                "        }]}" +
-                "]}",
-        )
+        val json = """
+{
+    "lightsabers": [
+        {
+            "data": [
+                {
+                    "type": "Lightsaber",
+                    "id": "lightsaber1",
+                    "bladeColor": "brown",
+                    "velocity": 2.5,
+                    "isShoto": false,
+                    "isDoubleBladed": false
+                }
+            ],
+            "id": "faction3"
+        },
+        {
+            "data": [
+                {
+                    "type": "Lightsaber",
+                    "id": "lightsaber2",
+                    "bladeColor": "blue",
+                    "velocity": 2.5,
+                    "isShoto": false,
+                    "isDoubleBladed": true
+                },
+                {
+                    "type": "Lightsaber",
+                    "id": "lightsaber3",
+                    "bladeColor": "blue",
+                    "velocity": 2.5,
+                    "isShoto": true,
+                    "isDoubleBladed": false
+                }
+            ],
+            "id": "faction2"
+        }
+    ],
+    "vehicles": [
+        {
+            "data": [
+                {
+                    "type": "StarWarsVehicle",
+                    "id": "vehicle1",
+                    "ionEngine": "brown",
+                    "velocity": 2.5,
+                    "xShift": -4,
+                    "yShift": -6
+                }
+            ],
+            "id": "faction1"
+        },
+        {
+            "data": [
+                {
+                    "type": "StarWarsVehicle",
+                    "id": "vehicle2",
+                    "ionEngine": "blue",
+                    "velocity": 2.5,
+                    "xShift": -6,
+                    "yShift": -6
+                },
+                {
+                    "type": "StarWarsVehicle",
+                    "id": "vehicle3",
+                    "ionEngine": "blue",
+                    "velocity": 2.5,
+                    "xShift": -6,
+                    "yShift": -6
+                }
+            ],
+            "id": "faction2"
+        }
+    ]
+}
+    """
+        val result = parseFactionsFromJson(json)
 
         // Assert
         val resultFactions = result.vehicles
+        val resultLightsabers = result.lightsabers
         assertAll(
-            { assertEquals(factions, resultFactions) },
-            { assertEquals(factions.size, resultFactions.size) },
-            { assertEquals(factions[0], resultFactions[0]) },
-            { assertEquals(factions[1], resultFactions[1]) },
+            { assertEquals(vehicleFactions, resultFactions) },
+            { assertEquals(vehicleFactions.size, resultFactions.size) },
+            { assertEquals(vehicleFactions[0], resultFactions[0]) },
+            { assertEquals(vehicleFactions[1], resultFactions[1]) },
+            { assertEquals(lightsaberFactions, resultLightsabers) },
+            { assertEquals(lightsaberFactions.size, resultLightsabers.size) },
+            { assertEquals(lightsaberFactions[0], resultLightsabers[0]) },
+            { assertEquals(lightsaberFactions[1], resultLightsabers[1]) },
         )
     }
 

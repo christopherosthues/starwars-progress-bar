@@ -37,6 +37,7 @@ class InorderFactionSelectorTests {
     @AfterEach
     fun tearDown() {
         unmockkAll()
+        InorderFactionSelector.reset()
     }
 
     //endregion
@@ -594,9 +595,9 @@ class InorderFactionSelectorTests {
         val vehicles = createStarWarsVehicles().toMutableList()
         val lightsabers = createLightsabers().toMutableList()
         val entities: MutableList<StarWarsEntity> = (lightsabers + vehicles).toMutableList()
-        entities[0].factionId = "2"
-        entities[3].factionId = "4"
-        every { StarWarsFactionHolder.defaultVehicles } returns listOf()
+        entities[0].factionId = "4"
+        entities[3].factionId = "2"
+        every { StarWarsFactionHolder.defaultVehicles } returns vehicles
         every { StarWarsFactionHolder.defaultLightsabers } returns lightsabers
         every { StarWarsBundle.message(any()) } returnsArgument 0
 
@@ -713,9 +714,14 @@ class InorderFactionSelectorTests {
                 entities[2] = entities[1]
             }
         }
-        // TODO
-        entities[0].factionId = "1"
-        entities[3].factionId = "3"
+        entities[3] = entities[5].also {
+            entities[4] = entities[3].also {
+                entities[5] = entities[4]
+            }
+        }
+
+        entities[0].factionId = "3"
+        entities[3].factionId = "1"
         InorderFactionSelector.selectEntity(
             mapOf("1.1" to true, "1.2" to true, "1.3" to true),
             mapOf("3.1" to true, "3.2" to true, "3.3" to true),
@@ -737,16 +743,24 @@ class InorderFactionSelectorTests {
 
         // Assert
         Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
-            { Assertions.assertEquals(entities[0], result[0]) },
-            { Assertions.assertEquals(entities[1], result[1]) },
-            { Assertions.assertEquals(entities[2], result[2]) },
+            { Assertions.assertEquals(6, result.size) },
+            { Assertions.assertEquals(entities[4], result[0]) },
+            { Assertions.assertEquals(entities[5], result[1]) },
+            { Assertions.assertEquals(entities[0], result[2]) },
+            { Assertions.assertEquals(entities[1], result[3]) },
+            { Assertions.assertEquals(entities[2], result[4]) },
+            { Assertions.assertEquals(entities[3], result[5]) },
         )
 
         // Arrange
         entities[0] = entities[1].also {
             entities[1] = entities[2].also {
                 entities[2] = entities[0]
+            }
+        }
+        entities[3] = entities[4].also {
+            entities[4] = entities[5].also {
+                entities[5] = entities[3]
             }
         }
 
@@ -760,10 +774,13 @@ class InorderFactionSelectorTests {
 
         // Assert
         Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
-            { Assertions.assertEquals(entities[2], result[0]) },
-            { Assertions.assertEquals(entities[0], result[1]) },
-            { Assertions.assertEquals(entities[1], result[2]) },
+            { Assertions.assertEquals(6, result.size) },
+            { Assertions.assertEquals(entities[3], result[0]) },
+            { Assertions.assertEquals(entities[4], result[1]) },
+            { Assertions.assertEquals(entities[2], result[2]) },
+            { Assertions.assertEquals(entities[0], result[3]) },
+            { Assertions.assertEquals(entities[1], result[4]) },
+            { Assertions.assertEquals(entities[5], result[5]) },
         )
 
         // Act
@@ -776,10 +793,13 @@ class InorderFactionSelectorTests {
 
         // Assert
         Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
+            { Assertions.assertEquals(6, result.size) },
             { Assertions.assertEquals(entities[2], result[0]) },
             { Assertions.assertEquals(entities[1], result[1]) },
-            { Assertions.assertEquals(entities[2], result[2]) },
+            { Assertions.assertEquals(entities[5], result[2]) },
+            { Assertions.assertEquals(entities[4], result[3]) },
+            { Assertions.assertEquals(entities[2], result[4]) },
+            { Assertions.assertEquals(entities[1], result[5]) },
         )
 
         // Act
@@ -792,10 +812,13 @@ class InorderFactionSelectorTests {
 
         // Assert
         Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
-            { Assertions.assertEquals(entities[1], result[0]) },
-            { Assertions.assertEquals(entities[2], result[1]) },
-            { Assertions.assertEquals(entities[1], result[2]) },
+            { Assertions.assertEquals(6, result.size) },
+            { Assertions.assertEquals(entities[5], result[0]) },
+            { Assertions.assertEquals(entities[4], result[1]) },
+            { Assertions.assertEquals(entities[2], result[2]) },
+            { Assertions.assertEquals(entities[1], result[3]) },
+            { Assertions.assertEquals(entities[5], result[4]) },
+            { Assertions.assertEquals(entities[4], result[5]) },
         )
 
         // Act
@@ -808,10 +831,13 @@ class InorderFactionSelectorTests {
 
         // Assert
         Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
+            { Assertions.assertEquals(6, result.size) },
             { Assertions.assertEquals(entities[2], result[0]) },
-            { Assertions.assertEquals(entities[2], result[1]) },
+            { Assertions.assertEquals(entities[5], result[1]) },
             { Assertions.assertEquals(entities[2], result[2]) },
+            { Assertions.assertEquals(entities[5], result[3]) },
+            { Assertions.assertEquals(entities[2], result[4]) },
+            { Assertions.assertEquals(entities[5], result[5]) },
         )
     }
 

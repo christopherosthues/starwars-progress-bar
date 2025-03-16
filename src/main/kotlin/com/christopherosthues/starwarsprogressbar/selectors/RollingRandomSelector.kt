@@ -56,4 +56,11 @@ internal object RollingRandomSelector : IStarWarsSelector {
             )
         }).map { v -> v.entityId },
     )
+
+    /**
+     * For testing only
+     */
+    internal fun reset(){
+        displayedEntities.clear()
+    }
 }

@@ -1,8 +1,12 @@
 package com.christopherosthues.starwarsprogressbar.models
 
 import com.intellij.ui.JBColor
+import kotlinx.serialization.Polymorphic
+import kotlinx.serialization.Serializable
 
-interface StarWarsEntity {
+@Serializable
+@Polymorphic
+sealed interface StarWarsEntity {
     val id: String
     val entityId: String
         get() = if (factionId.isEmpty()) id else "$factionId.$id"

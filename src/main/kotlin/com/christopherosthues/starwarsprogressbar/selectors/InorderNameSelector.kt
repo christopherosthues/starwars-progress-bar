@@ -41,4 +41,11 @@ internal object InorderNameSelector : IStarWarsSelector {
 
         return entityIndex
     }
+
+    /**
+     * For testing only
+     */
+    internal fun reset(){
+        index.set(0)
+    }
 }

@@ -118,8 +118,8 @@ class StarWarsResourceBundleTests {
 
     @ParameterizedTest
     @MethodSource("bundleFileValues")
-    @DisplayName("Check if all factions have a translation")
-    fun `bundles should contain translations for all factions`(bundleFile: File) {
+    @DisplayName("Check if all vehicle factions have a translation")
+    fun `bundles should contain translations for all vehicle factions`(bundleFile: File) {
         // Arrange
         val starWarsFactions = StarWarsFactionHolder.vehicleFactions
         val bundle = Properties()
@@ -129,8 +129,31 @@ class StarWarsResourceBundleTests {
         val factionsLocalized = starWarsFactions.filter { it.id.isNotEmpty() }.map {
             {
                 assertNotNull(
-                    bundle[it.localizationKey],
-                    "Faction ${it.id} with localization key ${it.localizationKey} has no translation",
+                    bundle[BundleConstants.VEHICLES_FACTION + it.id],
+                    "Faction ${it.id} with localization key ${BundleConstants.VEHICLES_FACTION}${it.id} has no translation",
+                )
+            }
+        }
+
+        // Assert
+        assertAll(factionsLocalized)
+    }
+
+    @ParameterizedTest
+    @MethodSource("bundleFileValues")
+    @DisplayName("Check if all lightsaber factions have a translation")
+    fun `bundles should contain translations for all lightsaber factions`(bundleFile: File) {
+        // Arrange
+        val starWarsFactions = StarWarsFactionHolder.lightsaberFactions
+        val bundle = Properties()
+        bundle.load(bundleFile.inputStream())
+
+        // Act
+        val factionsLocalized = starWarsFactions.filter { it.id.isNotEmpty() }.map {
+            {
+                assertNotNull(
+                    bundle[BundleConstants.LIGHTSABERS_FACTION + it.id],
+                    "Faction ${it.id} with localization key ${BundleConstants.LIGHTSABERS_FACTION}${it.id} has no translation",
                 )
             }
         }
@@ -163,6 +186,32 @@ class StarWarsResourceBundleTests {
 
         // Assert
         assertAll(vehiclesLocalized)
+    }
+
+    @ParameterizedTest
+    @MethodSource("bundleFileValues")
+    @DisplayName("Check if all vehicles have a translation")
+    fun `bundles should contain translations for all lightsabers`(bundleFile: File) {
+        // Arrange
+        val starWarsFactions = StarWarsFactionHolder.lightsaberFactions
+        val bundle = Properties()
+        bundle.load(bundleFile.inputStream())
+
+        // Act
+        val lightsabersLocalized: Stream<() -> Unit> = starWarsFactions.parallelStream().map {
+            it.data.map { lightsaber ->
+                {
+                    assertNotNull(
+                        bundle[lightsaber.localizationKey],
+                        "Vehicle ${lightsaber.entityId} with localization key ${lightsaber.localizationKey} has no translation",
+                    )
+                }
+            }
+        }
+            .flatMap { it.stream() }
+
+        // Assert
+        assertAll(lightsabersLocalized)
     }
 
     //endregion

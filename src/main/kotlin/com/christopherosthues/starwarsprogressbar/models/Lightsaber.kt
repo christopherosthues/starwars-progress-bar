@@ -3,9 +3,11 @@ package com.christopherosthues.starwarsprogressbar.models
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
 import com.christopherosthues.starwarsprogressbar.ui.LightsaberColor
 import com.intellij.ui.JBColor
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
+@SerialName("Lightsaber")
 internal data class Lightsaber(
     override val id: String,
     val bladeColor: String,

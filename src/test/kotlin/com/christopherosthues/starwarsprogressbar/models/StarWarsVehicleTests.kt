@@ -82,7 +82,7 @@ class StarWarsVehicleTests {
         val result = sut.fileName
 
         // Assert
-        val expectedFileName = "$factionId/$id"
+        val expectedFileName = "vehicles/$factionId/$id"
         assertEquals(expectedFileName, result)
     }
 
@@ -96,7 +96,7 @@ class StarWarsVehicleTests {
         val result = sut.fileName
 
         // Assert
-        assertEquals(id, result)
+        assertEquals("vehicles/$id", result)
     }
 
     @Test

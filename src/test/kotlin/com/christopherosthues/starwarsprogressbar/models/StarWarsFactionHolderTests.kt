@@ -255,7 +255,7 @@ class StarWarsFactionHolderTests {
         val factionsVehicles = FactionCreationHelper.createStarWarsFactionsVehicles()
         val expectedFactionsVehicles = factionsVehicles.filter { it.id.isNotEmpty() }
         val factionsLightsabers = FactionCreationHelper.createStarWarsFactionsLightsabers()
-        val expectedFactionsLightsabers = factionsVehicles.filter { it.id.isNotEmpty() }
+        val expectedFactionsLightsabers = factionsLightsabers.filter { it.id.isNotEmpty() }
 
         // Act
         updateFactions(StarWarsFactions(factionsLightsabers, factionsVehicles))
@@ -482,7 +482,7 @@ class StarWarsFactionHolderTests {
         val factionsLightsabers =
             FactionCreationHelper.createStarWarsFactionsWithMultipleFactionsWithEmptyIdAndContainingLightsabers()
         val expectedLightsabers = mutableListOf<Lightsaber>()
-        expectedLightsabers.addAll(factionsLightsabers.first().data)
+        expectedLightsabers.addAll(factionsLightsabers[1].data)
         expectedLightsabers.addAll(factionsLightsabers[2].data)
 
         // Act

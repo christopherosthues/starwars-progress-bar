@@ -94,9 +94,9 @@ class StarWarsPersistentStateComponentTests {
                 val lightsabersEnabled = result!!.lightsabersEnabled
                 assertAll(
                     { assertEquals(3, lightsabersEnabled.count()) },
-                    { assertEquals(true, lightsabersEnabled["3"]) },
                     { assertEquals(true, lightsabersEnabled["4"]) },
                     { assertEquals(true, lightsabersEnabled["5"]) },
+                    { assertEquals(true, lightsabersEnabled["6"]) },
                 )
             },
             { assertTrue(result!!.showVehicle) },
