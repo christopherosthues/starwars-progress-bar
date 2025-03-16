@@ -17,7 +17,7 @@ class IconResourceTests {
 
     @BeforeEach
     fun setup() {
-        StarWarsFactionHolder.updateFactions(StarWarsResourceLoader.loadFactions().vehicles)
+        StarWarsFactionHolder.updateFactions(StarWarsResourceLoader.loadFactions())
     }
 
     //endregion
@@ -25,7 +25,7 @@ class IconResourceTests {
     //region Tests
 
     @Test
-    fun `all icon resources should exist`() {
+    fun `all vehicle icon resources should exist`() {
         // Arrange
         val starWarsFactions = StarWarsFactionHolder.vehicleFactions
 
@@ -34,8 +34,8 @@ class IconResourceTests {
             it.data.map { vehicle ->
                 val iconBasePath =
                     ".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}" +
-                        "resources${File.separatorChar}icons/${vehicle.fileName}"
-                val icon2xBasePath = ".${File.separatorChar}icons/${vehicle.fileName}"
+                        "resources${File.separatorChar}icons${File.separatorChar}${vehicle.fileName}"
+                val icon2xBasePath = ".${File.separatorChar}icons${File.separatorChar}${vehicle.fileName}"
                 listOf(
                     { assertTrue(File("$iconBasePath.png").exists(), "Icon $iconBasePath.png does not exist.") },
                     {
@@ -65,7 +65,7 @@ class IconResourceTests {
     }
 
     @Test
-    fun `all logo resources should exist`() {
+    fun `all vehicle logo resources should exist`() {
         // Arrange
         val starWarsFactions = StarWarsFactionHolder.defaultVehicleFactions
 
@@ -73,7 +73,8 @@ class IconResourceTests {
         val iconPaths = starWarsFactions.map {
             val iconBasePath =
                 ".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources" +
-                    "${File.separatorChar}icons${File.separatorChar}${it.id}${File.separatorChar}logo"
+                    "${File.separatorChar}icons${File.separatorChar}vehicles${File.separatorChar}" +
+                    "${it.id}${File.separatorChar}logo"
             listOf(
                 { assertTrue(File("$iconBasePath.png").exists(), "Icon $iconBasePath.png does not exist.") },
                 { assertTrue(File("$iconBasePath@2x.png").exists(), "Icon $iconBasePath@2x.png does not exist.") },
@@ -85,13 +86,13 @@ class IconResourceTests {
     }
 
     @Test
-    fun `all icon resources should be used`() {
+    fun `all vehicle icon resources should be used`() {
         // Arrange
         val starWarsFactions = StarWarsFactionHolder.vehicleFactions
         val iconBasePath =
             "${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources${File.separatorChar}icons"
 
-        val matcher = FileSystems.getDefault().getPathMatcher("glob:**/*\\.png")
+        val matcher = FileSystems.getDefault().getPathMatcher("glob:**/vehicles/**/*\\.png")
         val path = File(".$iconBasePath").toPath()
         val basePath = "$iconBasePath${File.separatorChar}"
         val imageFiles = Files.walk(path)
@@ -126,13 +127,12 @@ class IconResourceTests {
     }
 
     @Test
-    fun `all 2x icon resources should be used`() {
+    fun `all vehicle 2x icon resources should be used`() {
         // Arrange
         val starWarsFactions = StarWarsFactionHolder.vehicleFactions
-        val iconBasePath =
-            "${File.separatorChar}icons"
+        val iconBasePath = "${File.separatorChar}icons"
 
-        val matcher = FileSystems.getDefault().getPathMatcher("glob:**/*\\.png")
+        val matcher = FileSystems.getDefault().getPathMatcher("glob:**/vehicles/**/*\\.png")
         val path = File(".$iconBasePath").toPath()
         val basePath = "$iconBasePath${File.separatorChar}"
         val imageFiles = Files.walk(path)
@@ -149,6 +149,146 @@ class IconResourceTests {
         val iconPaths = starWarsFactions.map {
             it.data.map { vehicle ->
                 val iconFilePath = vehicle.fileName.replace('/', File.separatorChar)
+                listOf("$iconFilePath@2x.png", "${iconFilePath}_r@2x.png")
+            }.stream().flatMap { e -> e.stream() }.collect(toList())
+        }.stream().flatMap { it.stream() }.collect(toList())
+
+        // Assert
+        val imagesNotReferences = imageFiles.filter {
+            !iconPaths.contains(it) && !iconWhitelist.contains(it)
+        }
+        assertTrue(
+            imagesNotReferences.isEmpty(),
+            getFormattedImagesNotReferencedErrorMessage(imagesNotReferences),
+        )
+    }
+
+    @Test
+    fun `all lightsaber icon resources should exist`() {
+        // Arrange
+        val starWarsFactions = StarWarsFactionHolder.lightsaberFactions
+
+        // Act
+        val iconPaths = starWarsFactions.map {
+            it.data.map { lightsaber ->
+                val iconBasePath =
+                    ".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}" +
+                        "resources${File.separatorChar}icons${File.separatorChar}${lightsaber.fileName}"
+                val icon2xBasePath = ".${File.separatorChar}icons${File.separatorChar}${lightsaber.fileName}"
+                listOf(
+                    { assertTrue(File("$iconBasePath.png").exists(), "Icon $iconBasePath.png does not exist.") },
+                    {
+                        assertTrue(
+                            File("${iconBasePath}_r.png").exists(),
+                            "Icon ${iconBasePath}_r.png does not exist.",
+                        )
+                    },
+                    {
+                        assertTrue(
+                            File("$icon2xBasePath@2x.png").exists(),
+                            "Icon $icon2xBasePath@2x.png does not exist.",
+                        )
+                    },
+                    {
+                        assertTrue(
+                            File("${icon2xBasePath}_r@2x.png").exists(),
+                            "Icon ${icon2xBasePath}_r@2x.png does not exist.",
+                        )
+                    },
+                )
+            }.stream().flatMap { e -> e.stream() }.collect(toList())
+        }.stream().flatMap { it.stream() }.collect(toList())
+
+        // Assert
+        assertAll(iconPaths)
+    }
+
+    @Test
+    fun `all lightsaber logo resources should exist`() {
+        // Arrange
+        val starWarsFactions = StarWarsFactionHolder.defaultLightsaberFactions
+
+        // Act
+        val iconPaths = starWarsFactions.map {
+            val iconBasePath =
+                ".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources" +
+                    "${File.separatorChar}icons${File.separatorChar}lightsabers${File.separatorChar}" +
+                    "${it.id}${File.separatorChar}logo"
+            listOf(
+                { assertTrue(File("$iconBasePath.png").exists(), "Icon $iconBasePath.png does not exist.") },
+                { assertTrue(File("$iconBasePath@2x.png").exists(), "Icon $iconBasePath@2x.png does not exist.") },
+            )
+        }.stream().flatMap { it.stream() }.collect(toList())
+
+        // Assert
+        assertAll(iconPaths)
+    }
+
+    @Test
+    fun `all lightsaber icon resources should be used`() {
+        // Arrange
+        val starWarsFactions = StarWarsFactionHolder.lightsaberFactions
+        val iconBasePath =
+            "${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources" +
+                "${File.separatorChar}icons"
+
+        val matcher = FileSystems.getDefault().getPathMatcher("glob:**/lightsabers/**/*\\.png")
+        val path = File(".$iconBasePath").toPath()
+        val basePath = "$iconBasePath${File.separatorChar}"
+        val imageFiles = Files.walk(path)
+            .filter {
+                matcher.matches(it)
+            }
+            .collect(toList())
+            .map {
+                val imagePath = it.toAbsolutePath().absolutePathString()
+                imagePath.drop(imagePath.indexOf(basePath) + basePath.length)
+            }
+
+        // Act
+        val iconPaths = starWarsFactions.map {
+            it.data.map { lightsaber ->
+                val iconFilePath = lightsaber.fileName.replace('/', File.separatorChar)
+                listOf("$iconFilePath.png", "${iconFilePath}_r.png")
+            }.stream().flatMap { e -> e.stream() }.collect(toList())
+        }.stream().flatMap { it.stream() }.collect(toList())
+
+        // Assert
+        val imagesNotReferences = imageFiles.filter {
+            !iconPaths.contains(it) &&
+                !iconWhitelist.contains(it) &&
+                !it.endsWith("logo.png") &&
+                !it.endsWith("logo@2x.png")
+        }
+        assertTrue(
+            imagesNotReferences.isEmpty(),
+            getFormattedImagesNotReferencedErrorMessage(imagesNotReferences),
+        )
+    }
+
+    @Test
+    fun `all lightsaber 2x icon resources should be used`() {
+        // Arrange
+        val starWarsFactions = StarWarsFactionHolder.lightsaberFactions
+        val iconBasePath = "${File.separatorChar}icons"
+
+        val matcher = FileSystems.getDefault().getPathMatcher("glob:**/lightsabers/**/*\\.png")
+        val path = File(".$iconBasePath").toPath()
+        val basePath = "$iconBasePath${File.separatorChar}"
+        val imageFiles = Files.walk(path)
+            .filter {
+                matcher.matches(it)
+            }
+            .collect(toList())
+            .map {
+                val imagePath = it.toAbsolutePath().absolutePathString()
+                imagePath.drop(imagePath.indexOf(basePath) + basePath.length)
+            }
+
+        // Act
+        val iconPaths = starWarsFactions.map {
+            it.data.map { lightsaber ->
+                val iconFilePath = lightsaber.fileName.replace('/', File.separatorChar)
                 listOf("$iconFilePath@2x.png", "${iconFilePath}_r@2x.png")
             }.stream().flatMap { e -> e.stream() }.collect(toList())
         }.stream().flatMap { it.stream() }.collect(toList())
