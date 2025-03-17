@@ -296,7 +296,7 @@ class InorderFactionSelectorTests {
         every { StarWarsBundle.message(any()) } returnsArgument 0
 
         // Act
-        var result = selectMultipleVehicles(entities, mapOf("2.1" to true, "1.2" to true, "1.3" to true), mapOf(),true)
+        var result = selectMultipleEntities(entities, mapOf("2.1" to true, "1.2" to true, "1.3" to true), mapOf(),true)
 
         // Assert
         Assertions.assertAll(
@@ -314,7 +314,7 @@ class InorderFactionSelectorTests {
         }
 
         // Act
-        result = selectMultipleVehicles(entities, mapOf("2.1" to true, "1.2" to true, "1.3" to true), mapOf(), true)
+        result = selectMultipleEntities(entities, mapOf("2.1" to true, "1.2" to true, "1.3" to true), mapOf(), true)
 
         // Assert
         Assertions.assertAll(
@@ -325,7 +325,7 @@ class InorderFactionSelectorTests {
         )
 
         // Act
-        result = selectMultipleVehicles(entities, mapOf("2.1" to true, "1.2" to false, "1.3" to true), mapOf(), true)
+        result = selectMultipleEntities(entities, mapOf("2.1" to true, "1.2" to false, "1.3" to true), mapOf(), true)
 
         // Assert
         Assertions.assertAll(
@@ -336,7 +336,7 @@ class InorderFactionSelectorTests {
         )
 
         // Act
-        result = selectMultipleVehicles(entities, mapOf("2.1" to true, "1.2" to false), mapOf(), true)
+        result = selectMultipleEntities(entities, mapOf("2.1" to true, "1.2" to false), mapOf(), true)
 
         // Assert
         Assertions.assertAll(
@@ -347,7 +347,7 @@ class InorderFactionSelectorTests {
         )
 
         // Act
-        result = selectMultipleVehicles(entities, mapOf("2.1" to true, "1.2" to false), mapOf(), false)
+        result = selectMultipleEntities(entities, mapOf("2.1" to true, "1.2" to false), mapOf(), false)
 
         // Assert
         Assertions.assertAll(
@@ -374,7 +374,7 @@ class InorderFactionSelectorTests {
         )
 
         // Act
-        result = selectMultipleVehicles(entities, mapOf("1.1" to true, "1.2" to true, "1.3" to true), mapOf(), true)
+        result = selectMultipleEntities(entities, mapOf("1.1" to true, "1.2" to true, "1.3" to true), mapOf(), true)
 
         // Assert
         Assertions.assertAll(
@@ -392,7 +392,7 @@ class InorderFactionSelectorTests {
         }
 
         // Act
-        result = selectMultipleVehicles(entities, mapOf("1.1" to true, "1.2" to true, "1.3" to true), mapOf(), true)
+        result = selectMultipleEntities(entities, mapOf("1.1" to true, "1.2" to true, "1.3" to true), mapOf(), true)
 
         // Assert
         Assertions.assertAll(
@@ -403,7 +403,7 @@ class InorderFactionSelectorTests {
         )
 
         // Act
-        result = selectMultipleVehicles(entities, mapOf("1.1" to true, "1.2" to false, "1.3" to true), mapOf(), true)
+        result = selectMultipleEntities(entities, mapOf("1.1" to true, "1.2" to false, "1.3" to true), mapOf(), true)
 
         // Assert
         Assertions.assertAll(
@@ -414,7 +414,7 @@ class InorderFactionSelectorTests {
         )
 
         // Act
-        result = selectMultipleVehicles(entities, mapOf("1.1" to true, "1.2" to false), mapOf(), true)
+        result = selectMultipleEntities(entities, mapOf("1.1" to true, "1.2" to false), mapOf(), true)
 
         // Assert
         Assertions.assertAll(
@@ -425,7 +425,7 @@ class InorderFactionSelectorTests {
         )
 
         // Act
-        result = selectMultipleVehicles(entities, mapOf("1.1" to true, "1.2" to false), mapOf(), false)
+        result = selectMultipleEntities(entities, mapOf("1.1" to true, "1.2" to false), mapOf(), false)
 
         // Assert
         Assertions.assertAll(
@@ -447,7 +447,7 @@ class InorderFactionSelectorTests {
         every { StarWarsBundle.message(any()) } returnsArgument 0
 
         // Act
-        var result = selectMultipleVehicles(entities, mapOf(), mapOf("4.1" to true, "3.2" to true, "3.3" to true),true)
+        var result = selectMultipleEntities(entities, mapOf(), mapOf("4.1" to true, "3.2" to true, "3.3" to true),true)
 
         // Assert
         Assertions.assertAll(
@@ -465,7 +465,7 @@ class InorderFactionSelectorTests {
         }
 
         // Act
-        result = selectMultipleVehicles(entities, mapOf(), mapOf("4.1" to true, "3.2" to true, "3.3" to true), true)
+        result = selectMultipleEntities(entities, mapOf(), mapOf("4.1" to true, "3.2" to true, "3.3" to true), true)
 
         // Assert
         Assertions.assertAll(
@@ -476,7 +476,7 @@ class InorderFactionSelectorTests {
         )
 
         // Act
-        result = selectMultipleVehicles(entities, mapOf(), mapOf("4.1" to true, "3.2" to false, "3.3" to true), true)
+        result = selectMultipleEntities(entities, mapOf(), mapOf("4.1" to true, "3.2" to false, "3.3" to true), true)
 
         // Assert
         Assertions.assertAll(
@@ -487,7 +487,7 @@ class InorderFactionSelectorTests {
         )
 
         // Act
-        result = selectMultipleVehicles(entities, mapOf(), mapOf("4.1" to true, "3.2" to false), true)
+        result = selectMultipleEntities(entities, mapOf(), mapOf("4.1" to true, "3.2" to false), true)
 
         // Assert
         Assertions.assertAll(
@@ -498,7 +498,7 @@ class InorderFactionSelectorTests {
         )
 
         // Act
-        result = selectMultipleVehicles(entities, mapOf(), mapOf("4.1" to true, "3.2" to false), false)
+        result = selectMultipleEntities(entities, mapOf(), mapOf("4.1" to true, "3.2" to false), false)
 
         // Assert
         Assertions.assertAll(
@@ -527,7 +527,7 @@ class InorderFactionSelectorTests {
         )
 
         // Act
-        result = selectMultipleVehicles(entities, mapOf(), mapOf("3.1" to true, "3.2" to true, "3.3" to true), true)
+        result = selectMultipleEntities(entities, mapOf(), mapOf("3.1" to true, "3.2" to true, "3.3" to true), true)
 
         // Assert
         Assertions.assertAll(
@@ -545,7 +545,7 @@ class InorderFactionSelectorTests {
         }
 
         // Act
-        result = selectMultipleVehicles(entities, mapOf(), mapOf("3.1" to true, "3.2" to true, "3.3" to true), true)
+        result = selectMultipleEntities(entities, mapOf(), mapOf("3.1" to true, "3.2" to true, "3.3" to true), true)
 
         // Assert
         Assertions.assertAll(
@@ -556,7 +556,7 @@ class InorderFactionSelectorTests {
         )
 
         // Act
-        result = selectMultipleVehicles(entities, mapOf(), mapOf("3.1" to true, "3.2" to false, "3.3" to true), true)
+        result = selectMultipleEntities(entities, mapOf(), mapOf("3.1" to true, "3.2" to false, "3.3" to true), true)
 
         // Assert
         Assertions.assertAll(
@@ -567,7 +567,7 @@ class InorderFactionSelectorTests {
         )
 
         // Act
-        result = selectMultipleVehicles(entities, mapOf(), mapOf("3.1" to true, "3.2" to false), true)
+        result = selectMultipleEntities(entities, mapOf(), mapOf("3.1" to true, "3.2" to false), true)
 
         // Assert
         Assertions.assertAll(
@@ -578,7 +578,7 @@ class InorderFactionSelectorTests {
         )
 
         // Act
-        result = selectMultipleVehicles(entities, mapOf(), mapOf("3.1" to true, "3.2" to false), false)
+        result = selectMultipleEntities(entities, mapOf(), mapOf("3.1" to true, "3.2" to false), false)
 
         // Assert
         Assertions.assertAll(
@@ -602,7 +602,7 @@ class InorderFactionSelectorTests {
         every { StarWarsBundle.message(any()) } returnsArgument 0
 
         // Act
-        var result = selectMultipleVehicles(
+        var result = selectMultipleEntities(
             entities,
             mapOf("2.1" to true, "1.2" to true, "1.3" to true),
             mapOf("4.1" to true, "3.2" to true, "3.3" to true),
@@ -633,7 +633,7 @@ class InorderFactionSelectorTests {
         }
 
         // Act
-        result = selectMultipleVehicles(
+        result = selectMultipleEntities(
             entities,
             mapOf("2.1" to true, "1.2" to true, "1.3" to true),
             mapOf("4.1" to true, "3.2" to true, "3.3" to true),
@@ -652,7 +652,7 @@ class InorderFactionSelectorTests {
         )
 
         // Act
-        result = selectMultipleVehicles(
+        result = selectMultipleEntities(
             entities,
             mapOf("2.1" to true, "1.2" to false, "1.3" to true),
             mapOf("4.1" to true, "3.2" to false, "3.3" to true),
@@ -671,7 +671,7 @@ class InorderFactionSelectorTests {
         )
 
         // Act
-        result = selectMultipleVehicles(
+        result = selectMultipleEntities(
             entities,
             mapOf("2.1" to true, "1.2" to false),
             mapOf("4.1" to true, "3.2" to false),
@@ -690,7 +690,7 @@ class InorderFactionSelectorTests {
         )
 
         // Act
-        result = selectMultipleVehicles(
+        result = selectMultipleEntities(
             entities,
             mapOf("2.1" to true, "1.2" to false),
             mapOf("4.1" to true, "3.2" to false),
@@ -734,7 +734,7 @@ class InorderFactionSelectorTests {
         )
 
         // Act
-        result = selectMultipleVehicles(
+        result = selectMultipleEntities(
             entities,
             mapOf("1.1" to true, "1.2" to true, "1.3" to true),
             mapOf("3.1" to true, "3.2" to true, "3.3" to true),
@@ -765,7 +765,7 @@ class InorderFactionSelectorTests {
         }
 
         // Act
-        result = selectMultipleVehicles(
+        result = selectMultipleEntities(
             entities,
             mapOf("1.1" to true, "1.2" to true, "1.3" to true),
             mapOf("3.1" to true, "3.2" to true, "3.3" to true),
@@ -784,7 +784,7 @@ class InorderFactionSelectorTests {
         )
 
         // Act
-        result = selectMultipleVehicles(
+        result = selectMultipleEntities(
             entities,
             mapOf("1.1" to true, "1.2" to false, "1.3" to true),
             mapOf("3.1" to true, "3.2" to false, "3.3" to true),
@@ -803,7 +803,7 @@ class InorderFactionSelectorTests {
         )
 
         // Act
-        result = selectMultipleVehicles(
+        result = selectMultipleEntities(
             entities,
             mapOf("1.1" to true, "1.2" to false),
             mapOf("3.1" to true, "3.2" to false),
@@ -822,7 +822,7 @@ class InorderFactionSelectorTests {
         )
 
         // Act
-        result = selectMultipleVehicles(
+        result = selectMultipleEntities(
             entities,
             mapOf("1.1" to true, "1.2" to false),
             mapOf("3.1" to true, "3.2" to false),
@@ -871,7 +871,7 @@ class InorderFactionSelectorTests {
         return lightsabers
     }
 
-    private fun selectMultipleVehicles(
+    private fun selectMultipleEntities(
         entities: MutableList<StarWarsEntity>,
         enabledVehicles: Map<String, Boolean>,
         enabledLightsabers: Map<String, Boolean>,
