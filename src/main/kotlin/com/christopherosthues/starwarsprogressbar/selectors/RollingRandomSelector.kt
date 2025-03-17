@@ -32,8 +32,9 @@ internal object RollingRandomSelector : IStarWarsSelector {
                 if (allEntitiesDisplayed(enabledVehicles, enabledLightsabers, defaultEnabled)) {
                     displayedEntities.clear()
                 }
-            }
 
+                return entity
+            }
         }
 
         return StarWarsFactionHolder.missingVehicle
