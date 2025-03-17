@@ -190,7 +190,7 @@ class StarWarsResourceBundleTests {
 
     @ParameterizedTest
     @MethodSource("bundleFileValues")
-    @DisplayName("Check if all vehicles have a translation")
+    @DisplayName("Check if all lightsabers have a translation")
     fun `bundles should contain translations for all lightsabers`(bundleFile: File) {
         // Arrange
         val starWarsFactions = StarWarsFactionHolder.lightsaberFactions
@@ -229,7 +229,8 @@ class StarWarsResourceBundleTests {
     //region Test data
 
     private val whitelistedKeys = listOf(BundleConstants.PLUGIN_NAME)
-    private val bundleConstantMembersToIgnore = listOf("FACTION", "VEHICLES")
+    private val bundleConstantMembersToIgnore =
+        listOf("VEHICLES_FACTION", "VEHICLES", "LIGHTSABERS_FACTION", "LIGHTSABERS")
 
     //endregion
 
