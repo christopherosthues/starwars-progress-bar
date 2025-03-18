@@ -77,7 +77,7 @@
                 },
                 {
                     "type": "Lightsaber",
-                    "id": "the_acolyte",
+                    "id": "qimir",
                     "bladeColor": "red",
                     "isShoto": false,
                     "isDoubleBladed": false,
@@ -189,14 +189,6 @@
                     "id": "yaddle",
                     "bladeColor": "green",
                     "isShoto": true,
-                    "isDoubleBladed": false,
-                    "velocity": 4
-                },
-                {
-                    "type": "Lightsaber",
-                    "id": "youngling_slayer_9000",
-                    "bladeColor": "blue",
-                    "isShoto": false,
                     "isDoubleBladed": false,
                     "velocity": 4
                 }
