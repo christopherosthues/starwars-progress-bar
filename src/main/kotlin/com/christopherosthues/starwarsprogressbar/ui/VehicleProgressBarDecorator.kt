@@ -1,32 +1,18 @@
 package com.christopherosthues.starwarsprogressbar.ui
 
-import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_CHANGE_VEHICLE_AFTER_PASS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_DRAW_SILHOUETTES
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SAME_VEHICLE_VELOCITY
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_FACTION_CRESTS
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_TOOLTIPS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE_NAMES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRESS_BAR_COLOR
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_VEHICLE_SELECTOR
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
-import com.christopherosthues.starwarsprogressbar.selectors.StarWarsSelector.selectEntity
 import com.christopherosthues.starwarsprogressbar.ui.components.ColoredImageComponent
 import com.christopherosthues.starwarsprogressbar.util.StarWarsResourceLoader
 import com.intellij.ui.JBColor
 import com.intellij.ui.scale.JBUIScale
-import com.intellij.util.ui.GraphicsUtil
-import com.intellij.util.ui.UIUtil
 import java.awt.BasicStroke
 import java.awt.Color
-import java.awt.Component
-import java.awt.Dimension
-import java.awt.Graphics
 import java.awt.Graphics2D
-import java.awt.Insets
 import java.awt.LinearGradientPaint
 import java.awt.Paint
 import java.awt.Rectangle
@@ -52,8 +38,7 @@ internal class VehicleProgressBarDecorator(
         factionCrestIcon = ColoredImageComponent(StarWarsResourceLoader.getFactionLogo(vehicle.factionId, false))
     }
 
-    internal fun getPreferredSize(c: JComponent?, parentWidth: Int): Dimension =
-        Dimension(parentWidth, JBUIScale.scale(VEHICLE_PROGRESSBAR_HEIGHT))
+    internal fun getHeight(): Int = JBUIScale.scale(VEHICLE_PROGRESSBAR_HEIGHT)
 
     internal fun paintProgressBar(
         vehicle: StarWarsVehicle,
@@ -65,7 +50,6 @@ internal class VehicleProgressBarDecorator(
         velocity: Float,
         progressBar: JProgressBar,
     ) {
-        // TODO: investigate why progressbar text is not painted after changing theme/look and feel
         val rectangle2D = getRoundRectangle(width, height)
         drawProgress(vehicle, width, height, amountFull, velocity, graphics2D, rectangle2D, progressBar)
         drawFactionCrest(width, height, graphics2D, rectangle2D, c)

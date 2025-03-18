@@ -48,7 +48,7 @@ internal class StarWarsProgressBarUI(
     private var starWarsEntity: StarWarsEntity,
 ) : BasicProgressBarUI() {
     private val vehicleProgressBarDecorator = VehicleProgressBarDecorator(starWarsState)
-//    private val lightsaberProgressBarDecorator = LightsaberProgressBarDecorator(starWarsState)
+    private val lightsaberProgressBarDecorator = LightsaberProgressBarDecorator(starWarsState)
     private var velocity = 1f
     private var position = 0
     private var numberOfPasses = 0
@@ -82,15 +82,22 @@ internal class StarWarsProgressBarUI(
         val entity = starWarsEntity
         if (entity is StarWarsVehicle) {
             vehicleProgressBarDecorator.update(entity)
-        } else if (starWarsEntity is Lightsaber) {
-//            lightsaberProgressBarDecorator.update(entity)
+        } else if (entity is Lightsaber) {
+            lightsaberProgressBarDecorator.update(entity)
         }
     }
 
     override fun getBoxLength(availableLength: Int, otherDimension: Int): Int = availableLength
 
-    override fun getPreferredSize(c: JComponent?): Dimension =
-        vehicleProgressBarDecorator.getPreferredSize(c, super.getPreferredSize(c).width)
+    override fun getPreferredSize(c: JComponent?): Dimension {
+        var height = super.getPreferredSize(c).height
+        if (starWarsEntity is StarWarsVehicle) {
+            height = vehicleProgressBarDecorator.getHeight()
+        } else if (starWarsEntity is Lightsaber) {
+            height = lightsaberProgressBarDecorator.getHeight()
+        }
+        return Dimension(super.getPreferredSize(c).width, height)
+    }
 
     override fun paintIndeterminate(g: Graphics?, c: JComponent?) {
         paintProgressBar(g, c, false)
@@ -158,6 +165,7 @@ internal class StarWarsProgressBarUI(
                 super.paintIndeterminate(g, c)
             }
         } else {
+            // TODO: investigate why progressbar text is not painted after changing theme/look and feel
             setProgressBarText()
             setToolTipText()
 
@@ -186,7 +194,7 @@ internal class StarWarsProgressBarUI(
             if (entity is StarWarsVehicle) {
                 vehicleProgressBarDecorator.paintProgressBar(entity, graphics2D, c, width, height, amountFull, velocity, progressBar)
             } else if (entity is Lightsaber) {
-//                lightsaberProgressBarDecorator.paintProgressBar(entity)
+                lightsaberProgressBarDecorator.paintProgressBar(entity, graphics2D, c, width, height, amountFull, velocity, progressBar)
             }
 
             paintStringIfNeeded(graphics2D, c, height, border, barRectWidth, barRectHeight, amountFull)
