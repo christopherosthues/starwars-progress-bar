@@ -11,6 +11,6 @@ public class StarWarsProgressBarFactory extends BasicProgressBarUI {
     @SuppressWarnings( {"MethodOverridesStaticMethodOfSuperclass", "UnusedDeclaration"})
     public static ComponentUI createUI(final JComponent c) {
         c.setBorder(JBUI.Borders.empty().asUIResource());
-        return new StarWarsProgressBarUI(() -> null, new StarWarsVehicle("", "", 0, 0, 0));
+        return new StarWarsProgressBarUI();
     }
 }

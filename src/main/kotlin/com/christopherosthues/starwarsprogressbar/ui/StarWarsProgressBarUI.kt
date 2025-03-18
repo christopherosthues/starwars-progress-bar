@@ -20,83 +20,229 @@
  */
 package com.christopherosthues.starwarsprogressbar.ui
 
+import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
+import com.christopherosthues.starwarsprogressbar.constants.*
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_CHANGE_VEHICLE_AFTER_PASS
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_TOOLTIPS
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE_NAMES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_VEHICLE_SELECTOR
+import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.StarWarsEntity
+import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.selectors.StarWarsSelector.selectEntity
+import com.intellij.ui.scale.JBUIScale
+import com.intellij.util.ui.GraphicsUtil
+import com.intellij.util.ui.UIUtil
 import java.awt.*
 import javax.swing.JComponent
+import javax.swing.JProgressBar
 import javax.swing.SwingConstants
 import javax.swing.plaf.basic.BasicProgressBarUI
 
 
 internal class StarWarsProgressBarUI(
-    starWarsState: () -> StarWarsState?,
-    starWarsEntity: StarWarsEntity,
+    private val starWarsState: () -> StarWarsState?,
+    private var starWarsEntity: StarWarsEntity,
 ) : BasicProgressBarUI() {
-//    private val vehicleProgressBarDecorator = VehicleProgressBarDecorator(starWarsState, starWarsEntity)
+    private val vehicleProgressBarDecorator = VehicleProgressBarDecorator(starWarsState)
 //    private val lightsaberProgressBarDecorator = LightsaberProgressBarDecorator(starWarsState)
+    private var velocity = 1f
+    private var position = 0
+    private var numberOfPasses = 0
 
-//    constructor() : this(
-//        { StarWarsPersistentStateComponent.instance?.state },
-//        selectEntity(
-//            StarWarsPersistentStateComponent.instance?.state?.vehiclesEnabled,
-//            StarWarsPersistentStateComponent.instance?.state?.lightsabersEnabled,
-//            false,
-//            StarWarsPersistentStateComponent.instance?.state?.vehicleSelector
-//                ?: DEFAULT_VEHICLE_SELECTOR,
-//        ),
-//    )
-//
-//    private fun update() {
-//        vehicleProgressBarDecorator.update()
-//    }
-//
-//    override fun getBoxLength(availableLength: Int, otherDimension: Int): Int = availableLength
-//
-//    override fun getPreferredSize(c: JComponent?): Dimension =
-//        vehicleProgressBarDecorator.getPreferredSize(c, super.getPreferredSize(c).width)
-//
-//    override fun paintIndeterminate(g: Graphics?, c: JComponent?) {
-//        paintProgressBar(g, c, false)
-//        vehicleProgressBarDecorator.updatePositionAndVelocity(progressBar)
-//    }
-//
-//    override fun paintDeterminate(g: Graphics?, c: JComponent?) {
-//        vehicleProgressBarDecorator.resetPositionAndVelocity()
-//        paintProgressBar(g, c, true)
-//    }
-//
-//    private fun paintProgressBar(g: Graphics?, c: JComponent?, paintDeterminate: Boolean) {
-//        if (g == null || c == null) {
-//            return
-//        }
-//
-//        if (isUnsupported(g, c)) {
-//            if (paintDeterminate) {
-//                super.paintDeterminate(g, c)
-//            } else {
-//                super.paintIndeterminate(g, c)
-//            }
-//        } else {
-//            vehicleProgressBarDecorator.paintProgressBar(g, c, paintDeterminate, progressBar, this)
-//        }
-//    }
-//
-//    internal fun getAmountFull(barRectWidth: Int, barRectHeight: Int, border: Insets): Int = getAmountFull(border, barRectWidth, barRectHeight)
-//
-//    internal fun paintString(
-//        graphics2D: Graphics2D,
-//        border: Insets,
-//        barRectWidth: Int,
-//        barRectHeight: Int,
-//        amountFull: Int,
-//    ) {
-//        paintString(graphics2D, border.left, border.top, barRectWidth, barRectHeight, amountFull, border)
-//    }
-//
-//    private fun isUnsupported(graphics: Graphics, component: JComponent): Boolean = graphics !is Graphics2D ||
-//        progressBar.orientation != SwingConstants.HORIZONTAL ||
-//        !component.componentOrientation.isLeftToRight
+    constructor() : this(
+        { StarWarsPersistentStateComponent.instance?.state },
+        selectEntity(
+            StarWarsPersistentStateComponent.instance?.state?.vehiclesEnabled,
+            StarWarsPersistentStateComponent.instance?.state?.lightsabersEnabled,
+            false,
+            StarWarsPersistentStateComponent.instance?.state?.vehicleSelector
+                ?: DEFAULT_VEHICLE_SELECTOR,
+        ),
+    )
+
+    init {
+        velocity = getVelocity()
+        update()
+    }
+
+    private fun getVelocity(): Float =
+        if (starWarsState()?.sameVehicleVelocity ?: DEFAULT_SAME_VEHICLE_VELOCITY) 1f else starWarsEntity.velocity
+
+    private fun update() {
+        starWarsEntity = selectEntity(
+            starWarsState()?.vehiclesEnabled,
+            starWarsState()?.lightsabersEnabled,
+            false,
+            starWarsState()?.vehicleSelector ?: DEFAULT_VEHICLE_SELECTOR,
+        )
+        val entity = starWarsEntity
+        if (entity is StarWarsVehicle) {
+            vehicleProgressBarDecorator.update(entity)
+        } else if (starWarsEntity is Lightsaber) {
+//            lightsaberProgressBarDecorator.update(entity)
+        }
+    }
+
+    override fun getBoxLength(availableLength: Int, otherDimension: Int): Int = availableLength
+
+    override fun getPreferredSize(c: JComponent?): Dimension =
+        vehicleProgressBarDecorator.getPreferredSize(c, super.getPreferredSize(c).width)
+
+    override fun paintIndeterminate(g: Graphics?, c: JComponent?) {
+        paintProgressBar(g, c, false)
+        updatePositionAndVelocity(progressBar)
+    }
+
+    override fun paintDeterminate(g: Graphics?, c: JComponent?) {
+        resetPositionAndVelocity()
+        paintProgressBar(g, c, true)
+    }
+
+    internal fun updatePositionAndVelocity(progressBar: JProgressBar) {
+        val actualVelocity = velocity
+        val actualPosition: Int = position
+        if (velocity < 0) {
+            if (position <= 0) {
+                updateNumberOfPasses()
+                velocity = getVelocity()
+                position = 0
+            } else {
+                position = actualPosition + JBUIScale.scale(velocity).toInt()
+                velocity = actualVelocity - 0
+            }
+        } else if (velocity > 0) {
+            if (position >= progressBar.width) {
+                updateNumberOfPasses()
+                velocity = -getVelocity()
+                position = progressBar.width
+            } else {
+                position = actualPosition + JBUIScale.scale(velocity).toInt()
+                velocity = actualVelocity + 0
+            }
+        }
+    }
+
+    private fun updateNumberOfPasses() {
+        numberOfPasses++
+        if ((
+                starWarsState()?.changeVehicleAfterPass
+                    ?: DEFAULT_CHANGE_VEHICLE_AFTER_PASS
+                ) &&
+            numberOfPasses % (
+                starWarsState()?.numberOfPassesUntilVehicleChange
+                    ?: DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE
+                ) == 0
+        ) {
+            update()
+        }
+    }
+
+    internal fun resetPositionAndVelocity() {
+        velocity = getVelocity()
+        position = 0
+    }
+
+    private fun paintProgressBar(g: Graphics?, c: JComponent?, paintDeterminate: Boolean) {
+        if (g == null || c == null) {
+            return
+        }
+
+        if (isUnsupported(g, c)) {
+            if (paintDeterminate) {
+                super.paintDeterminate(g, c)
+            } else {
+                super.paintIndeterminate(g, c)
+            }
+        } else {
+            setProgressBarText()
+            setToolTipText()
+
+            val config = GraphicsUtil.setupAAPainting(g)
+
+            val graphics2D = g as Graphics2D
+            val border = progressBar.insets
+            val width = progressBar.width
+            var height = progressBar.preferredSize.height
+            if (isOdd(c.height - height)) {
+                height++
+            }
+            val barRectWidth = width - (border.right + border.left)
+            val barRectHeight = height - (border.top + border.bottom)
+            if (barRectWidth <= 0 || barRectHeight <= 0) {
+                return
+            }
+            val amountFull =
+                if (paintDeterminate) getAmountFull(barRectWidth, barRectHeight, border) else position
+            graphics2D.color = getBackgroundColor(c)
+            if (c.isOpaque) {
+                g.fillRect(0, 0, width, height)
+            }
+
+            val entity = starWarsEntity
+            if (entity is StarWarsVehicle) {
+                vehicleProgressBarDecorator.paintProgressBar(entity, graphics2D, c, width, height, amountFull, velocity, progressBar)
+            } else if (entity is Lightsaber) {
+//                lightsaberProgressBarDecorator.paintProgressBar(entity)
+            }
+
+            paintStringIfNeeded(graphics2D, c, height, border, barRectWidth, barRectHeight, amountFull)
+
+            config.restore()
+        }
+    }
+
+    private fun getAmountFull(barRectWidth: Int, barRectHeight: Int, border: Insets): Int = getAmountFull(border, barRectWidth, barRectHeight)
+
+    private fun setProgressBarText() {
+        progressBar.isStringPainted = starWarsState()?.showVehicleNames ?: DEFAULT_SHOW_VEHICLE_NAMES
+        if (starWarsState()?.showVehicleNames ?: DEFAULT_SHOW_VEHICLE_NAMES) {
+            val localizedName = StarWarsBundle.message(starWarsEntity.localizationKey)
+            if (progressBar.string != localizedName) {
+                progressBar.string = localizedName
+            }
+        } else if (!(starWarsState()?.showVehicleNames ?: DEFAULT_SHOW_VEHICLE_NAMES)) {
+            progressBar.string = ""
+        }
+    }
+
+    private fun setToolTipText() {
+        if (starWarsState()?.showToolTips ?: DEFAULT_SHOW_TOOLTIPS) {
+            val localizedName = StarWarsBundle.message(starWarsEntity.localizationKey)
+            if (progressBar.toolTipText != localizedName) {
+                progressBar.toolTipText = localizedName
+            }
+        } else if (!(starWarsState()?.showToolTips ?: DEFAULT_SHOW_TOOLTIPS)) {
+            progressBar.toolTipText = ""
+        }
+    }
+
+    private fun isOdd(value: Int): Boolean = value % 2 == 1
+
+    private fun getBackgroundColor(component: JComponent): Color {
+        val parent = component.parent
+        return if (parent != null) parent.background else UIUtil.getPanelBackground()
+    }
+
+    private fun paintStringIfNeeded(
+        graphics2D: Graphics2D,
+        component: Component,
+        height: Int,
+        border: Insets,
+        barRectWidth: Int,
+        barRectHeight: Int,
+        amountFull: Int,
+    ) {
+        if (progressBar.isStringPainted) {
+            graphics2D.translate(0, -(component.height - height) / 2)
+            paintString(graphics2D, border.left, border.top, barRectWidth, barRectHeight, amountFull, border)
+        }
+    }
+
+    private fun isUnsupported(graphics: Graphics, component: JComponent): Boolean = graphics !is Graphics2D ||
+        progressBar.orientation != SwingConstants.HORIZONTAL ||
+        !component.componentOrientation.isLeftToRight
 }
