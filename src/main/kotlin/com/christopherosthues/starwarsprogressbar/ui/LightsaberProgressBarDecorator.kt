@@ -18,7 +18,7 @@ import java.awt.geom.RoundRectangle2D
 import javax.swing.JComponent
 import javax.swing.JProgressBar
 
-private const val LIGHTSABER_PROGRESSBAR_HEIGHT = 10
+private const val LIGHTSABER_PROGRESSBAR_HEIGHT = 14
 
 internal class LightsaberProgressBarDecorator(private val starWarsState: () -> StarWarsState?) {
     private lateinit var lightsaberIcon: ColoredImageComponent
@@ -121,14 +121,15 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON)
 
         // Define colors for the vertical gradient
-        val colorTop = lightsaber.color.brighter().brighter()
+        val lightsaberColor = lightsaber.color.brighter().brighter()
+        val colorTop = lightsaberColor.brighter().brighter().brighter().brighter()
+        val colorNext = lightsaberColor.brighter().brighter().brighter().brighter().brighter().brighter()
         val colorMiddle = JBColor(Color.WHITE, Color.WHITE)
         val colorBottom = JBColor(Color(255, 255, 255, 80), Color(255, 255, 255, 80))
 
-
         // Define LinearGradientPaint (Vertical Gradient)
-        val fractions = floatArrayOf(0f, 0.1f, 0.25f, 0.33f, 0.66f, 0.75f, 0.9f, 1.0f) // Positions: Top, Middle, Bottom
-        val colors = arrayOf(colorBottom, lightsaber.color, colorTop, colorMiddle, colorMiddle, colorTop, lightsaber.color, colorBottom) // Corresponding colors
+        val fractions = floatArrayOf(0f, 0.1f, 0.25f, 0.3f, 0.33f, 0.66f, 0.7f, 0.75f, 0.9f, 1.0f) // Positions: Top, Middle, Bottom
+        val colors = arrayOf(colorBottom, lightsaberColor, colorTop, colorNext, colorMiddle, colorMiddle, colorNext, colorTop, lightsaberColor, colorBottom) // Corresponding colors
         val gradient = LinearGradientPaint(
             0f, 0f, 0f, height.toFloat(), fractions, colors
         )
@@ -146,11 +147,18 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         graphics2D.paint = gradient
 
         // Draw the progress bar with a rounded right tip
+        graphics2D.fillRoundRect(0, 3, amountFull, height - 6, arc, arc)
+
+        graphics2D.paint = JBColor(
+            Color(lightsaber.color.red, lightsaber.color.green, lightsaber.color.blue, 10),
+            Color(lightsaber.color.red, lightsaber.color.green, lightsaber.color.blue, 10)
+        )
+
         graphics2D.fillRoundRect(0, 0, amountFull, height, arc, arc)
 
-        // Add a clipping mask to make the left side flat
-        graphics2D.setClip(0, 0, amountFull - arc / 2, height)
-        graphics2D.fillRect(0, 0, amountFull, height) // Force flat left edge
+//        // Add a clipping mask to make the left side flat
+//        graphics2D.setClip(0, 0, amountFull - arc / 2, height)
+//        graphics2D.fillRect(0, 0, amountFull, height) // Force flat left edge
 
         graphics2D.paint = paint
         graphics2D.clip = clip

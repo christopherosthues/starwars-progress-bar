@@ -66,7 +66,7 @@ internal class StarWarsProgressBarUI(
 
     init {
         velocity = getVelocity()
-        update()
+        updateDecorator()
     }
 
     private fun getVelocity(): Float =
@@ -79,6 +79,10 @@ internal class StarWarsProgressBarUI(
             false,
             starWarsState()?.vehicleSelector ?: DEFAULT_VEHICLE_SELECTOR,
         )
+        updateDecorator()
+    }
+
+    private fun updateDecorator() {
         val entity = starWarsEntity
         if (entity is StarWarsVehicle) {
             vehicleProgressBarDecorator.update(entity)

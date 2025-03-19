@@ -64,9 +64,9 @@ internal object StarWarsResourceLoader {
     }
 
     @JvmStatic
-    fun getFactionLogo(factionName: String, largeIcon: Boolean): BufferedImage {
+    fun getFactionLogo(type: String, factionName: String, largeIcon: Boolean): BufferedImage {
         val iconSize = if (largeIcon) "@2x" else ""
-        val icon = getIconInternal("$factionName/logo$iconSize")
+        val icon = getIconInternal("$type/$factionName/logo$iconSize")
 
         return getVehicleImage(icon)
     }

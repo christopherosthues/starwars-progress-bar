@@ -26,7 +26,7 @@ class CreateStarWarsProgressConfigurationComponentTests {
         every { starWarsPersistentStateComponentMock.state } returns null
         every { StarWarsFactionHolder.missingVehicle } returns StarWarsVehicle("missing", "green", 0, 0, 0f)
 
-        every { StarWarsResourceLoader.getFactionLogo(any(), any()) } returns mockk {
+        every { StarWarsResourceLoader.getFactionLogo(any(), any(), any()) } returns mockk {
             every { height } returns 10
             every { width } returns 10
             every { colorModel } returns mockk {

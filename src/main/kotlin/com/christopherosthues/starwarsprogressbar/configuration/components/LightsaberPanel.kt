@@ -17,23 +17,23 @@ import javax.swing.JPanel
 private const val FACTION_PADDING = 5
 private const val SELECTION_PANEL_BOTTOM_PADDING = 10
 
-internal class VehiclesPanel(private val starWarsState: StarWarsState) : JTitledPanel(StarWarsBundle.message(BundleConstants.VEHICLES_TITLE)) {
-    private val selectedVehiclesCheckBox = ThreeStateCheckBox(ThreeStateCheckBox.State.SELECTED)
-    private val factionPanels: MutableList<VehicleFactionPanel> = mutableListOf()
+internal class LightsaberPanel(private val starWarsState: StarWarsState) : JTitledPanel(StarWarsBundle.message(BundleConstants.LIGHTSABERS_TITLE)) {
+    private val selectedLightsabersCheckBox = ThreeStateCheckBox(ThreeStateCheckBox.State.SELECTED)
+    private val factionPanels: MutableList<LightsaberFactionPanel> = mutableListOf()
 
-    private var vehicleRowCount: Int = 0
+    private var lightsaberRowCount: Int = 0
     private var factionRowCount: Int = 0
     private var factionCount: Int = 0
 
-    private val selectedVehiclesCount: Int
-        get() = factionPanels.sumOf { it.selectedVehiclesCount.get() }
+    private val selectedLightsabersCount: Int
+        get() = factionPanels.sumOf { it.selectedLightsabersCount.get() }
 
     init {
-        val vehiclesPanelLayout = BoxLayout(contentPanel, BoxLayout.Y_AXIS)
-        layout = vehiclesPanelLayout
+        val lightsabersPanelLayout = BoxLayout(contentPanel, BoxLayout.Y_AXIS)
+        layout = lightsabersPanelLayout
 
         createSelectionPanel()
-        createVehiclePanel()
+        createLightsaberPanel()
 
         updateSelectionButtons()
     }
@@ -50,44 +50,44 @@ internal class VehiclesPanel(private val starWarsState: StarWarsState) : JTitled
         val selectionPanel = JPanel(BorderLayout())
         selectionPanel.border = JBUI.Borders.emptyBottom(SELECTION_PANEL_BOTTOM_PADDING)
 
-        selectedVehiclesCheckBox.isThirdStateEnabled = false
-        selectedVehiclesCheckBox.addItemListener {
-            val isSelected = selectedVehiclesCheckBox.state == ThreeStateCheckBox.State.SELECTED
-            selectVehicles(isSelected)
+        selectedLightsabersCheckBox.isThirdStateEnabled = false
+        selectedLightsabersCheckBox.addItemListener {
+            val isSelected = selectedLightsabersCheckBox.state == ThreeStateCheckBox.State.SELECTED
+            selectLightsabers(isSelected)
         }
 
-        selectionPanel.add(selectedVehiclesCheckBox, BorderLayout.WEST)
+        selectionPanel.add(selectedLightsabersCheckBox, BorderLayout.WEST)
 
         add(selectionPanel)
     }
 
-    private fun selectVehicles(isSelected: Boolean) {
-        factionPanels.forEach { it.selectVehicles(isSelected) }
+    private fun selectLightsabers(isSelected: Boolean) {
+        factionPanels.forEach { it.selectLightsabers(isSelected) }
     }
 
-    private fun createVehiclePanel() {
-        val vehiclePanel = JPanel(GridBagLayout())
+    private fun createLightsaberPanel() {
+        val lightsaberPanel = JPanel(GridBagLayout())
         factionCount = 0
         factionRowCount = 0
 
-        StarWarsFactionHolder.defaultVehicleFactions.forEach { faction ->
-            vehicleRowCount = 0
+        StarWarsFactionHolder.defaultLightsaberFactions.forEach { faction ->
+            lightsaberRowCount = 0
 
-            val vehiclesAvailable = faction.data.any()
-            if (vehiclesAvailable) {
-                val factionPanel = VehicleFactionPanel(starWarsState, faction)
-                factionPanel.addPropertyChangeListener(VehicleFactionPanel::selectedVehiclesCount.name) {
+            val lightsabersAvailable = faction.data.any()
+            if (lightsabersAvailable) {
+                val factionPanel = LightsaberFactionPanel(starWarsState, faction)
+                factionPanel.addPropertyChangeListener(LightsaberFactionPanel::selectedLightsabersCount.name) {
                     updateSelectionButtons()
                 }
 
-                addFactionPanel(factionPanel, vehiclePanel)
+                addFactionPanel(factionPanel, lightsaberPanel)
             }
         }
 
-        add(vehiclePanel)
+        add(lightsaberPanel)
     }
 
-    private fun addFactionPanel(factionPanel: VehicleFactionPanel, vehiclePanel: JPanel) {
+    private fun addFactionPanel(factionPanel: LightsaberFactionPanel, lightsaberPanel: JPanel) {
         val isFactionCountEven = factionCount++ % 2 == 0
         val gridBagConstraints = GridBagConstraints()
         val leftPadding = if (isFactionCountEven) 0 else FACTION_PADDING
@@ -105,39 +105,39 @@ internal class VehiclesPanel(private val starWarsState: StarWarsState) : JTitled
         }
 
         factionPanels.add(factionPanel)
-        vehiclePanel.add(factionPanel, gridBagConstraints)
+        lightsaberPanel.add(factionPanel, gridBagConstraints)
     }
 
     private fun updateSelectionButtons() {
-        val selected = selectedVehiclesCount
-        val numberOfVehicles = StarWarsFactionHolder.defaultVehicles.size
+        val selected = selectedLightsabersCount
+        val numberOfLightsabers = StarWarsFactionHolder.defaultLightsabers.size
 
-        if (selected == numberOfVehicles) {
-            selectedVehiclesCheckBox.state = ThreeStateCheckBox.State.SELECTED
+        if (selected == numberOfLightsabers) {
+            selectedLightsabersCheckBox.state = ThreeStateCheckBox.State.SELECTED
         } else if (selected > 0) {
-            selectedVehiclesCheckBox.state = ThreeStateCheckBox.State.DONT_CARE
+            selectedLightsabersCheckBox.state = ThreeStateCheckBox.State.DONT_CARE
         } else {
-            selectedVehiclesCheckBox.state = ThreeStateCheckBox.State.NOT_SELECTED
+            selectedLightsabersCheckBox.state = ThreeStateCheckBox.State.NOT_SELECTED
         }
 
         val selectionText = StarWarsBundle.message(
-            if (selected == numberOfVehicles) {
+            if (selected == numberOfLightsabers) {
                 BundleConstants.DESELECT_ALL
             } else {
                 BundleConstants.SELECT_ALL
             },
         )
-        selectedVehiclesCheckBox.text = StarWarsBundle.message(
+        selectedLightsabersCheckBox.text = StarWarsBundle.message(
             BundleConstants.SELECTED,
             selected,
-            numberOfVehicles,
+            numberOfLightsabers,
             selectionText,
         )
     }
 
     fun addPropertyChangeListener(uiOptionsPanel: UiOptionsPanel) {
         uiOptionsPanel.addPropertyChangeListener(LANGUAGE_EVENT) {
-            title = StarWarsBundle.message(BundleConstants.VEHICLES_TITLE)
+            title = StarWarsBundle.message(BundleConstants.LIGHTSABERS_TITLE)
             updateSelectionButtons()
         }
         factionPanels.forEach {

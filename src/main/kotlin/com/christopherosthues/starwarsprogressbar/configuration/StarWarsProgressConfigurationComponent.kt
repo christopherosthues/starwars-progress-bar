@@ -1,10 +1,12 @@
 package com.christopherosthues.starwarsprogressbar.configuration
 
+import com.christopherosthues.starwarsprogressbar.configuration.components.LightsaberPanel
 import com.christopherosthues.starwarsprogressbar.configuration.components.PreviewPanel
 import com.christopherosthues.starwarsprogressbar.configuration.components.UiOptionsPanel
 import com.christopherosthues.starwarsprogressbar.configuration.components.VehiclesPanel
+import com.christopherosthues.starwarsprogressbar.models.StarWarsEntity
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
-import com.christopherosthues.starwarsprogressbar.ui.events.VehicleClickListener
+import com.christopherosthues.starwarsprogressbar.ui.events.StarWarsEntityClickListener
 import com.intellij.util.ui.FormBuilder
 import java.awt.BorderLayout
 import javax.swing.JPanel
@@ -20,6 +22,8 @@ internal class StarWarsProgressConfigurationComponent {
 
     private val vehiclesPanel = VehiclesPanel(starWarsState)
 
+    private val lightsabersPanel = LightsaberPanel(starWarsState)
+
     val panel: JPanel
         get() = mainPanel
 
@@ -33,6 +37,7 @@ internal class StarWarsProgressConfigurationComponent {
             uiOptionsPanel.updateUI(starWarsState)
 
             vehiclesPanel.updateUI(starWarsState)
+            lightsabersPanel.updateUI(starWarsState)
         }
     }
 
@@ -44,12 +49,15 @@ internal class StarWarsProgressConfigurationComponent {
 
         createUiOptionsSection(formBuilder)
 
+        createLightsaberSection(formBuilder)
+
         createVehicleSection(formBuilder)
 
         mainPanel.add(formBuilder.panel, BorderLayout.NORTH)
 
         previewPanel.addPropertyChangeListener(uiOptionsPanel)
         vehiclesPanel.addPropertyChangeListener(uiOptionsPanel)
+        lightsabersPanel.addPropertyChangeListener(uiOptionsPanel)
     }
 
     private fun createPreviewSection(formBuilder: FormBuilder) {
@@ -94,11 +102,22 @@ internal class StarWarsProgressConfigurationComponent {
     }
 
     private fun createVehicleSection(formBuilder: FormBuilder) {
-        vehiclesPanel.addVehicleListener(object : VehicleClickListener {
-            override fun vehicleClicked(vehicle: StarWarsVehicle) {
-                previewPanel.selectEntity(vehicle)
+        vehiclesPanel.addStarWarsEntityListener(object : StarWarsEntityClickListener {
+            override fun starWarsEntityClicked(starWarsEntity: StarWarsEntity) {
+                previewPanel.selectEntity(starWarsEntity)
             }
         })
         formBuilder.addComponent(vehiclesPanel)
     }
+
+    private fun createLightsaberSection(formBuilder: FormBuilder) {
+        lightsabersPanel.addStarWarsEntityListener(object : StarWarsEntityClickListener {
+            override fun starWarsEntityClicked(starWarsEntity: StarWarsEntity) {
+                previewPanel.selectEntity(starWarsEntity)
+            }
+        })
+        formBuilder.addComponent(lightsabersPanel)
+    }
+
+
 }

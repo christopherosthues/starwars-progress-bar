@@ -190,14 +190,14 @@ internal class StarWarsResourceLoaderTests {
         // Arrange
         val imageIconMock = setupIconImage()
         val factionName = "faction"
-        val resourceName = setupFactionResourceName(isLargeIcon, factionName)
+        val resourceName = setupFactionResourceName(isLargeIcon, factionName, "vehicles")
         val url = setupResourceUrl()
         val classLoaderMock = setupClassLoader(resourceName, url, "/$resourceName", null)
         val (bufferedImageMock, graphicsMock) = setupImageScaling()
         every { createImageIconFromURL(url) } returns imageIconMock
 
         // Act
-        val result = StarWarsResourceLoader.getFactionLogo(factionName, isLargeIcon)
+        val result = StarWarsResourceLoader.getFactionLogo("vehicles", factionName, isLargeIcon)
 
         // Assert
         verifyImage(classLoaderMock, resourceName, url)
@@ -210,19 +210,19 @@ internal class StarWarsResourceLoaderTests {
         // Arrange
         val imageIconMock = setupIconImage()
         val factionName = "faction_cached"
-        val resourceName = setupFactionResourceName(isLargeIcon, factionName)
+        val resourceName = setupFactionResourceName(isLargeIcon, factionName, "vehicles")
         val url = setupResourceUrl()
         val classLoaderMock = setupClassLoader(resourceName, url, "/$resourceName", null)
         val (bufferedImageMock, graphicsMock) = setupImageScaling()
         every { createImageIconFromURL(url) } returns imageIconMock
 
-        var result = StarWarsResourceLoader.getFactionLogo(factionName, isLargeIcon)
+        var result = StarWarsResourceLoader.getFactionLogo("vehicles", factionName, isLargeIcon)
 
         verifyImage(classLoaderMock, resourceName, url)
         verifyBufferedImagePainted(bufferedImageMock, result, imageIconMock, graphicsMock)
 
         // Act
-        result = StarWarsResourceLoader.getFactionLogo(factionName, isLargeIcon)
+        result = StarWarsResourceLoader.getFactionLogo("vehicles", factionName, isLargeIcon)
 
         // Assert
         assertAll(
@@ -240,14 +240,14 @@ internal class StarWarsResourceLoaderTests {
         // Arrange
         val imageIconMock = setupIconImage()
         val factionName = "faction2"
-        val resourceName = setupFactionResourceName(isLargeIcon, factionName)
+        val resourceName = setupFactionResourceName(isLargeIcon, factionName, "vehicles")
         val url = setupResourceUrl()
         val classLoaderMock = setupClassLoader(resourceName, null, "/$resourceName", url)
         val (bufferedImageMock, graphicsMock) = setupImageScaling()
         every { createImageIconFromURL(url) } returns imageIconMock
 
         // Act
-        val result = StarWarsResourceLoader.getFactionLogo(factionName, isLargeIcon)
+        val result = StarWarsResourceLoader.getFactionLogo("vehicles", factionName, isLargeIcon)
 
         // Assert
         verifyImageForSlashPath(classLoaderMock, resourceName, url)
@@ -260,14 +260,14 @@ internal class StarWarsResourceLoaderTests {
         // Arrange
         val imageIconMock = setupIconImage()
         val factionName = "faction3"
-        val resourceName = setupFactionResourceName(isLargeIcon, factionName)
+        val resourceName = setupFactionResourceName(isLargeIcon, factionName, "vehicles")
         val url = setupResourceUrl()
         val classLoaderMock = setupClassLoader(resourceName, null, "/$resourceName", null)
         val (bufferedImageMock, graphicsMock) = setupImageScaling()
         every { createEmptyImageIconFromBufferedImage(32) } returns imageIconMock
 
         // Act
-        val result = StarWarsResourceLoader.getFactionLogo(factionName, isLargeIcon)
+        val result = StarWarsResourceLoader.getFactionLogo("vehicles", factionName, isLargeIcon)
 
         // Assert
         verifyEmptyImageForMissingResource(classLoaderMock, resourceName, url)
@@ -280,14 +280,14 @@ internal class StarWarsResourceLoaderTests {
         // Arrange
         val imageIconMock = setupIconImage()
         val factionName = "faction4"
-        val resourceName = setupFactionResourceName(isLargeIcon, factionName)
+        val resourceName = setupFactionResourceName(isLargeIcon, factionName, "vehicles")
         val url = setupResourceUrl()
         val classLoaderMock = setupClassLoader(resourceName, null, "/$resourceName", null, true)
         val (bufferedImageMock, graphicsMock) = setupImageScaling()
         every { createEmptyImageIcon() } returns imageIconMock
 
         // Act
-        val result = StarWarsResourceLoader.getFactionLogo(factionName, isLargeIcon)
+        val result = StarWarsResourceLoader.getFactionLogo("vehicles", factionName, isLargeIcon)
 
         // Assert
         verifyEmptyImageAfterException(classLoaderMock, resourceName, url)
@@ -678,9 +678,9 @@ internal class StarWarsResourceLoaderTests {
         return imageIconMock
     }
 
-    private fun setupFactionResourceName(isLargeIcon: Boolean, factionName: String): String {
+    private fun setupFactionResourceName(isLargeIcon: Boolean, factionName: String, type: String): String {
         val largeIcon = if (isLargeIcon) "@2x" else ""
-        return "icons/$factionName/logo$largeIcon.png"
+        return "icons/$type/$factionName/logo$largeIcon.png"
     }
 
     private fun setupVehicleImageResourceName(vehicleName: String): String = "icons/$vehicleName.png"

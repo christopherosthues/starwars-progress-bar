@@ -16,9 +16,9 @@ import java.awt.Insets
 import javax.swing.JLabel
 import javax.swing.border.AbstractBorder
 
-internal class TitledIconBorder(title: String, iconName: String) : AbstractBorder() {
+internal class TitledIconBorder(title: String, iconName: String, type: String) : AbstractBorder() {
     private val label: JLabel = JLabel(title)
-    private val factionIcon = StarWarsResourceLoader.getFactionLogo(iconName, true)
+    private val factionIcon = StarWarsResourceLoader.getFactionLogo(type, iconName, true)
     private val icon = ColoredImageComponent(factionIcon)
 
     init {
