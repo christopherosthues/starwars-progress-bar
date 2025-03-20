@@ -17,7 +17,7 @@ import javax.swing.JPanel
 private const val FACTION_PADDING = 5
 private const val SELECTION_PANEL_BOTTOM_PADDING = 10
 
-internal class VehiclesPanel(private val starWarsState: StarWarsState) : JTitledPanel(StarWarsBundle.message(BundleConstants.VEHICLES_TITLE)) {
+internal class VehiclesPanel(private val starWarsState: StarWarsState) : JPanel() {//JTitledPanel(StarWarsBundle.message(BundleConstants.VEHICLES_TITLE)) {
     private val selectedVehiclesCheckBox = ThreeStateCheckBox(ThreeStateCheckBox.State.SELECTED)
     private val factionPanels: MutableList<VehicleFactionPanel> = mutableListOf()
 
@@ -29,7 +29,7 @@ internal class VehiclesPanel(private val starWarsState: StarWarsState) : JTitled
         get() = factionPanels.sumOf { it.selectedVehiclesCount.get() }
 
     init {
-        val vehiclesPanelLayout = BoxLayout(contentPanel, BoxLayout.Y_AXIS)
+        val vehiclesPanelLayout = BoxLayout(this, BoxLayout.Y_AXIS)
         layout = vehiclesPanelLayout
 
         createSelectionPanel()
@@ -137,7 +137,7 @@ internal class VehiclesPanel(private val starWarsState: StarWarsState) : JTitled
 
     fun addPropertyChangeListener(uiOptionsPanel: UiOptionsPanel) {
         uiOptionsPanel.addPropertyChangeListener(LANGUAGE_EVENT) {
-            title = StarWarsBundle.message(BundleConstants.VEHICLES_TITLE)
+//            title = StarWarsBundle.message(BundleConstants.VEHICLES_TITLE)
             updateSelectionButtons()
         }
         factionPanels.forEach {

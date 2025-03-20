@@ -17,7 +17,7 @@ import javax.swing.JPanel
 private const val FACTION_PADDING = 5
 private const val SELECTION_PANEL_BOTTOM_PADDING = 10
 
-internal class LightsaberPanel(private val starWarsState: StarWarsState) : JTitledPanel(StarWarsBundle.message(BundleConstants.LIGHTSABERS_TITLE)) {
+internal class LightsaberPanel(private val starWarsState: StarWarsState) : JPanel() {//JTitledPanel(StarWarsBundle.message(BundleConstants.LIGHTSABERS_TITLE)) {
     private val selectedLightsabersCheckBox = ThreeStateCheckBox(ThreeStateCheckBox.State.SELECTED)
     private val factionPanels: MutableList<LightsaberFactionPanel> = mutableListOf()
 
@@ -29,7 +29,7 @@ internal class LightsaberPanel(private val starWarsState: StarWarsState) : JTitl
         get() = factionPanels.sumOf { it.selectedLightsabersCount.get() }
 
     init {
-        val lightsabersPanelLayout = BoxLayout(contentPanel, BoxLayout.Y_AXIS)
+        val lightsabersPanelLayout = BoxLayout(this, BoxLayout.Y_AXIS)
         layout = lightsabersPanelLayout
 
         createSelectionPanel()
@@ -137,7 +137,7 @@ internal class LightsaberPanel(private val starWarsState: StarWarsState) : JTitl
 
     fun addPropertyChangeListener(uiOptionsPanel: UiOptionsPanel) {
         uiOptionsPanel.addPropertyChangeListener(LANGUAGE_EVENT) {
-            title = StarWarsBundle.message(BundleConstants.LIGHTSABERS_TITLE)
+//            title = StarWarsBundle.message(BundleConstants.LIGHTSABERS_TITLE)
             updateSelectionButtons()
         }
         factionPanels.forEach {
