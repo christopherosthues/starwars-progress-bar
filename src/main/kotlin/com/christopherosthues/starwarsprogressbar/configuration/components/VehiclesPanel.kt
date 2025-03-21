@@ -11,13 +11,12 @@ import com.intellij.util.ui.ThreeStateCheckBox
 import java.awt.BorderLayout
 import java.awt.GridBagConstraints
 import java.awt.GridBagLayout
-import javax.swing.BoxLayout
 import javax.swing.JPanel
 
 private const val FACTION_PADDING = 5
 private const val SELECTION_PANEL_BOTTOM_PADDING = 10
 
-internal class VehiclesPanel(private val starWarsState: StarWarsState) : JPanel() {//JTitledPanel(StarWarsBundle.message(BundleConstants.VEHICLES_TITLE)) {
+internal class VehiclesPanel(private val starWarsState: StarWarsState) : JPanel(GridBagLayout()) {
     private val selectedVehiclesCheckBox = ThreeStateCheckBox(ThreeStateCheckBox.State.SELECTED)
     private val factionPanels: MutableList<VehicleFactionPanel> = mutableListOf()
 
@@ -29,13 +28,22 @@ internal class VehiclesPanel(private val starWarsState: StarWarsState) : JPanel(
         get() = factionPanels.sumOf { it.selectedVehiclesCount.get() }
 
     init {
-        val vehiclesPanelLayout = BoxLayout(this, BoxLayout.Y_AXIS)
-        layout = vehiclesPanelLayout
-
         createSelectionPanel()
         createVehiclePanel()
 
         updateSelectionButtons()
+
+        val fillerPanel = JPanel()
+        val gridBagConstraints = GridBagConstraints()
+        gridBagConstraints.fill = GridBagConstraints.BOTH
+        gridBagConstraints.gridx = 0
+        gridBagConstraints.gridy = 2
+        gridBagConstraints.gridwidth = 1
+        gridBagConstraints.gridwidth = 1
+        gridBagConstraints.weightx = 1.0
+        gridBagConstraints.weighty = 1.0
+        gridBagConstraints.anchor = GridBagConstraints.SOUTH
+        add(fillerPanel, gridBagConstraints)
     }
 
     fun updateUI(starWarsState: StarWarsState) {
@@ -58,7 +66,14 @@ internal class VehiclesPanel(private val starWarsState: StarWarsState) : JPanel(
 
         selectionPanel.add(selectedVehiclesCheckBox, BorderLayout.WEST)
 
-        add(selectionPanel)
+        val gridBagConstraints = GridBagConstraints()
+        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL
+        gridBagConstraints.gridx = 0
+        gridBagConstraints.gridy = 0
+        gridBagConstraints.gridwidth = 1
+        gridBagConstraints.weightx = 1.0
+        gridBagConstraints.anchor = GridBagConstraints.NORTHWEST
+        add(selectionPanel, gridBagConstraints)
     }
 
     private fun selectVehicles(isSelected: Boolean) {
@@ -84,7 +99,14 @@ internal class VehiclesPanel(private val starWarsState: StarWarsState) : JPanel(
             }
         }
 
-        add(vehiclePanel)
+        val gridBagConstraints = GridBagConstraints()
+        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL
+        gridBagConstraints.gridx = 0
+        gridBagConstraints.gridy = 2
+        gridBagConstraints.gridwidth = 1
+        gridBagConstraints.weightx = 1.0
+        gridBagConstraints.anchor = GridBagConstraints.NORTHWEST
+        add(vehiclePanel, gridBagConstraints)
     }
 
     private fun addFactionPanel(factionPanel: VehicleFactionPanel, vehiclePanel: JPanel) {
