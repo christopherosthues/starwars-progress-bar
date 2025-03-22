@@ -4,84 +4,180 @@
             "id": "sith",
             "data": [
                 {
-                    "type": "Lightsaber",
+                    "type": "Lightsabers",
                     "id": "asajj_ventress_second",
-                    "bladeColor": "red",
-                    "isShoto": false,
-                    "isDoubleBladed": false,
-                    "velocity": 2
+                    "velocity": 2,
+                    "isJarKai": true,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "red",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "xShift": 0,
+                            "yShift": 0
+                        },
+                        {
+                            "id": 2,
+                            "bladeColor": "red",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "xShift": 0,
+                            "yShift": 0
+                        }
+                    ]
                 },
                 {
-                    "type": "Lightsaber",
+                    "type": "Lightsabers",
                     "id": "darth_krall",
-                    "bladeColor": "red",
-                    "isShoto": false,
-                    "isDoubleBladed": false,
-                    "velocity": 2
+                    "velocity": 2,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "red",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "xShift": 0,
+                            "yShift": 0
+                        }
+                    ]
                 },
                 {
-                    "type": "Lightsaber",
+                    "type": "Lightsabers",
                     "id": "darth_maul_first",
-                    "bladeColor": "red",
-                    "isShoto": false,
-                    "isDoubleBladed": true,
-                    "velocity": 2
+                    "velocity": 2,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "red",
+                            "isShoto": false,
+                            "isDoubleBladed": true,
+                            "xShift": 0,
+                            "yShift": 0
+                        }
+                    ]
                 },
                 {
-                    "type": "Lightsaber",
+                    "type": "Lightsabers",
                     "id": "darth_maul_second",
-                    "bladeColor": "red",
-                    "isShoto": false,
-                    "isDoubleBladed": false,
-                    "velocity": 2
+                    "velocity": 2,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "red",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "xShift": 0,
+                            "yShift": 0
+                        }
+                    ]
                 },
                 {
-                    "type": "Lightsaber",
+                    "type": "Lightsabers",
                     "id": "darth_maul_third",
-                    "bladeColor": "red",
-                    "isShoto": false,
-                    "isDoubleBladed": false,
-                    "velocity": 2
+                    "velocity": 2,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "red",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "xShift": 0,
+                            "yShift": 0
+                        }
+                    ]
                 },
                 {
-                    "type": "Lightsaber",
+                    "type": "Lightsabers",
                     "id": "darth_sidious",
-                    "bladeColor": "red",
-                    "isShoto": false,
-                    "isDoubleBladed": false,
-                    "velocity": 2
+                    "velocity": 2,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "red",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "xShift": 0,
+                            "yShift": 0
+                        }
+                    ]
                 },
                 {
-                    "type": "Lightsaber",
+                    "type": "Lightsabers",
                     "id": "darth_vader_first",
-                    "bladeColor": "red",
-                    "isShoto": false,
-                    "isDoubleBladed": false,
-                    "velocity": 2
+                    "velocity": 2,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "red",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "xShift": 0,
+                            "yShift": 0
+                        }
+                    ]
                 },
                 {
-                    "type": "Lightsaber",
+                    "type": "Lightsabers",
                     "id": "darth_vader_second",
-                    "bladeColor": "red",
-                    "isShoto": false,
-                    "isDoubleBladed": false,
-                    "velocity": 2
+                    "velocity": 2,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "red",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "xShift": 0,
+                            "yShift": 0
+                        }
+                    ]
                 },
                 {
-                    "type": "Lightsaber",
+                    "type": "Lightsabers",
                     "id": "darth_tyranus",
-                    "bladeColor": "red",
-                    "isShoto": false,
-                    "isDoubleBladed": false,
-                    "velocity": 2
+                    "velocity": 2,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "red",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "xShift": 0,
+                            "yShift": 0
+                        }
+                    ]
                 },
                 {
-                    "type": "Lightsaber",
+                    "type": "Lightsabers",
                     "id": "qimir",
-                    "bladeColor": "red",
-                    "isShoto": false,
-                    "isDoubleBladed": false,
-                    "velocity": 2
+                    "velocity": 2,
+                    "isJarKai": true,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "red",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "xShift": 0,
+                            "yShift": 0
+                        },
+                        {
+                            "id": 2,
+                            "bladeColor": "red",
+                            "isShoto": true,
+                            "isDoubleBladed": false,
+                            "xShift": 0,
+                            "yShift": 0
+                        }
+                    ]
                 }
             ]
         },
@@ -89,114 +185,346 @@
             "id": "jedi",
             "data": [
                 {
-                    "type": "Lightsaber",
+                    "type": "Lightsabers",
                     "id": "ahsoka_tano_first",
-                    "bladeColor": "green",
-                    "isShoto": false,
-                    "isDoubleBladed": false,
-                    "velocity": 4
+                    "velocity": 4,
+                    "isJarKai": true,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "green",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "xShift": 0,
+                            "yShift": 0
+                        },
+                        {
+                            "id": 2,
+                            "bladeColor": "green",
+                            "isShoto": true,
+                            "isDoubleBladed": false,
+                            "xShift": 0,
+                            "yShift": 0
+                        }
+                    ]
                 },
                 {
-                    "type": "Lightsaber",
+                    "type": "Lightsabers",
                     "id": "ahsoka_tano_second",
-                    "bladeColor": "blue",
-                    "isShoto": false,
-                    "isDoubleBladed": false,
-                    "velocity": 4
+                    "velocity": 4,
+                    "isJarKai": true,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "blue",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "xShift": 0,
+                            "yShift": 0
+                        },
+                        {
+                            "id": 2,
+                            "bladeColor": "blue",
+                            "isShoto": true,
+                            "isDoubleBladed": false,
+                            "xShift": 0,
+                            "yShift": 0
+                        }
+                    ]
                 },
                 {
-                    "type": "Lightsaber",
+                    "type": "Lightsabers",
                     "id": "anakin_skywalker_first",
-                    "bladeColor": "blue",
-                    "isShoto": false,
-                    "isDoubleBladed": false,
-                    "velocity": 4
+                    "velocity": 4,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "blue",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "xShift": 0,
+                            "yShift": 0
+                        }
+                    ]
                 },
                 {
-                    "type": "Lightsaber",
+                    "type": "Lightsabers",
                     "id": "anakin_skywalker_second",
-                    "bladeColor": "blue",
-                    "isShoto": false,
-                    "isDoubleBladed": false,
-                    "velocity": 4
+                    "velocity": 4,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "blue",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "xShift": 0,
+                            "yShift": 0
+                        }
+                    ]
                 },
                 {
-                    "type": "Lightsaber",
+                    "type": "Lightsabers",
                     "id": "asajj_ventress_first",
-                    "bladeColor": "green",
-                    "isShoto": false,
-                    "isDoubleBladed": false,
-                    "velocity": 4
+                    "velocity": 4,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "green",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "xShift": 0,
+                            "yShift": 0
+                        }
+                    ]
                 },
                 {
-                    "type": "Lightsaber",
+                    "type": "Lightsabers",
+                    "id": "count_dooku",
+                    "velocity": 4,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "blue",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "xShift": 0,
+                            "yShift": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "Lightsabers",
                     "id": "luke_skywalker",
-                    "bladeColor": "green",
-                    "isShoto": false,
-                    "isDoubleBladed": false,
-                    "velocity": 4
+                    "velocity": 4,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "green",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "xShift": 0,
+                            "yShift": 0
+                        }
+                    ]
                 },
                 {
-                    "type": "Lightsaber",
+                    "type": "Lightsabers",
                     "id": "mace_windu",
-                    "bladeColor": "purple",
-                    "isShoto": false,
-                    "isDoubleBladed": false,
-                    "velocity": 4
+                    "velocity": 4,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "purple",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "xShift": 0,
+                            "yShift": 0
+                        }
+                    ]
                 },
                 {
-                    "type": "Lightsaber",
+                    "type": "Lightsabers",
                     "id": "obi_wan_kenobi_first",
-                    "bladeColor": "blue",
-                    "isShoto": false,
-                    "isDoubleBladed": false,
-                    "velocity": 4
+                    "velocity": 4,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "blue",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "xShift": 0,
+                            "yShift": 0
+                        }
+                    ]
                 },
                 {
-                    "type": "Lightsaber",
+                    "type": "Lightsabers",
                     "id": "obi_wan_kenobi_second",
-                    "bladeColor": "blue",
-                    "isShoto": false,
-                    "isDoubleBladed": false,
-                    "velocity": 4
+                    "velocity": 4,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "blue",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "xShift": 0,
+                            "yShift": 0
+                        }
+                    ]
                 },
                 {
-                    "type": "Lightsaber",
+                    "type": "Lightsabers",
                     "id": "obi_wan_kenobi_third",
-                    "bladeColor": "blue",
-                    "isShoto": false,
-                    "isDoubleBladed": false,
-                    "velocity": 4
+                    "velocity": 4,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "blue",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "xShift": 0,
+                            "yShift": 0
+                        }
+                    ]
                 },
                 {
-                    "type": "Lightsaber",
+                    "type": "Lightsabers",
                     "id": "qui_gon_jinn",
-                    "bladeColor": "green",
-                    "isShoto": false,
-                    "isDoubleBladed": false,
-                    "velocity": 4
+                    "velocity": 4,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "green",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "xShift": 0,
+                            "yShift": 0
+                        }
+                    ]
                 },
                 {
-                    "type": "Lightsaber",
+                    "type": "Lightsabers",
                     "id": "yoda",
-                    "bladeColor": "green",
-                    "isShoto": true,
-                    "isDoubleBladed": false,
-                    "velocity": 4
+                    "velocity": 4,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "green",
+                            "isShoto": true,
+                            "isDoubleBladed": false,
+                            "xShift": 0,
+                            "yShift": 0
+                        }
+                    ]
                 },
                 {
-                    "type": "Lightsaber",
+                    "type": "Lightsabers",
                     "id": "yaddle",
-                    "bladeColor": "green",
-                    "isShoto": true,
-                    "isDoubleBladed": false,
-                    "velocity": 4
+                    "velocity": 4,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "green",
+                            "isShoto": true,
+                            "isDoubleBladed": false,
+                            "xShift": 0,
+                            "yShift": 0
+                        }
+                    ]
                 }
             ]
         },
         {
             "id": "other",
             "data": [
+                {
+                    "type": "Lightsabers",
+                    "id": "ahsoka_tano_third",
+                    "velocity": 4,
+                    "isJarKai": true,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "white",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "xShift": 0,
+                            "yShift": 0
+                        },
+                        {
+                            "id": 2,
+                            "bladeColor": "white",
+                            "isShoto": true,
+                            "isDoubleBladed": false,
+                            "xShift": 0,
+                            "yShift": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "Lightsabers",
+                    "id": "asajj_ventress_third",
+                    "velocity": 4,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "yellow",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "xShift": 0,
+                            "yShift": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "Lightsabers",
+                    "id": "asajj_ventress_fourth",
+                    "velocity": 4,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "yellow",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "xShift": 0,
+                            "yShift": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "Lightsabers",
+                    "id": "general_grievous",
+                    "velocity": 4,
+                    "isJarKai": true,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "blue",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "xShift": 0,
+                            "yShift": 0
+                        },
+                        {
+                            "id": 2,
+                            "bladeColor": "green",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "xShift": 0,
+                            "yShift": 0
+                        },
+                        {
+                            "id": 3,
+                            "bladeColor": "green",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "xShift": 0,
+                            "yShift": 0
+                        },
+                        {
+                            "id": 4,
+                            "bladeColor": "blue",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "xShift": 0,
+                            "yShift": 0
+                        }
+                    ]
+                }
             ]
         }
     ],

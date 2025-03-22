@@ -144,7 +144,7 @@ class StarWarsResourceBundleTests {
     @DisplayName("Check if all lightsaber factions have a translation")
     fun `bundles should contain translations for all lightsaber factions`(bundleFile: File) {
         // Arrange
-        val starWarsFactions = StarWarsFactionHolder.lightsaberFactions
+        val starWarsFactions = StarWarsFactionHolder.lightsabersFactions
         val bundle = Properties()
         bundle.load(bundleFile.inputStream())
 
@@ -193,7 +193,7 @@ class StarWarsResourceBundleTests {
     @DisplayName("Check if all lightsabers have a translation")
     fun `bundles should contain translations for all lightsabers`(bundleFile: File) {
         // Arrange
-        val starWarsFactions = StarWarsFactionHolder.lightsaberFactions
+        val starWarsFactions = StarWarsFactionHolder.lightsabersFactions
         val bundle = Properties()
         bundle.load(bundleFile.inputStream())
 

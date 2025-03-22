@@ -2,8 +2,9 @@ package com.christopherosthues.starwarsprogressbar.selectors
 
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
+import com.christopherosthues.starwarsprogressbar.models.*
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
-import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
+import com.christopherosthues.starwarsprogressbar.models.Lightsabers
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.intellij.idea.TestFor
@@ -55,7 +56,7 @@ class StarWarsSelectorTests {
     fun `selectEntity should not update factions of faction holder if factions of faction holder are not empty`() {
         // Arrange
         every { StarWarsFactionHolder.vehicleFactions } returns listOf(StarWarsFaction("1", listOf()))
-        every { StarWarsFactionHolder.lightsaberFactions } returns listOf(StarWarsFaction("2", listOf()))
+        every { StarWarsFactionHolder.lightsabersFactions } returns listOf(StarWarsFaction("2", listOf()))
 
         // Act
         StarWarsSelector.selectEntity(null, null, false, SelectionType.RANDOM_ALL)
@@ -74,7 +75,7 @@ class StarWarsSelectorTests {
     fun `selectEntity should return missing vehicle if persistent state component is null`() {
         // Arrange
         every { StarWarsFactionHolder.vehicleFactions } returns listOf(StarWarsFaction("1", listOf()))
-        every { StarWarsFactionHolder.lightsaberFactions } returns listOf(StarWarsFaction("2", listOf()))
+        every { StarWarsFactionHolder.lightsabersFactions } returns listOf(StarWarsFaction("2", listOf()))
         setupStarWarsState(null)
 
         // Act
@@ -95,7 +96,7 @@ class StarWarsSelectorTests {
     fun `selectEntity should return missing vehicle if state is null`() {
         // Arrange
         every { StarWarsFactionHolder.vehicleFactions } returns listOf(StarWarsFaction("1", listOf()))
-        every { StarWarsFactionHolder.lightsaberFactions } returns listOf(StarWarsFaction("2", listOf()))
+        every { StarWarsFactionHolder.lightsabersFactions } returns listOf(StarWarsFaction("2", listOf()))
         setupStarWarsState(null)
 
         // Act
@@ -525,9 +526,24 @@ class StarWarsSelectorTests {
     )
 
     private fun createLightsabers() = listOf(
-        Lightsaber("4", "a", 1f, isShoto = false, isDoubleBladed = false),
-        Lightsaber("5", "b", 2f, isShoto = true, isDoubleBladed = false),
-        Lightsaber("6", "c", 3f, isShoto = false, isDoubleBladed = true),
+        Lightsabers(
+            "4",
+            1f,
+            isJarKai = false,
+            listOf(Lightsaber(1, "a", isShoto = false, isDoubleBladed = false, xShift = 1, yShift = 1))
+        ),
+        Lightsabers(
+            "5",
+            2f,
+            isJarKai = false,
+            listOf(Lightsaber(1, "b", isShoto = true, isDoubleBladed = false, xShift = 2, yShift = 2))
+        ),
+        Lightsabers(
+            "6",
+            3f,
+            isJarKai = false,
+            listOf(Lightsaber(1, "c", isShoto = false, isDoubleBladed = true, xShift = 3, yShift = 3))
+        ),
     )
 
     //endregion

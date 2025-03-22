@@ -1,12 +1,11 @@
 package com.christopherosthues.starwarsprogressbar.util
 
-import com.christopherosthues.starwarsprogressbar.models.Lightsaber
+import com.christopherosthues.starwarsprogressbar.models.Lightsabers
 import com.christopherosthues.starwarsprogressbar.models.StarWarsEntity
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactions
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.intellij.util.ui.UIUtil
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.Json.Default.decodeFromString
 import kotlinx.serialization.modules.SerializersModule
 import kotlinx.serialization.modules.polymorphic
 import java.awt.Image
@@ -21,7 +20,7 @@ internal fun readTextFromUrl(url: URL): String = url.readText()
 internal fun parseFactionsFromJson(json: String): StarWarsFactions {
     val starWarsModule = SerializersModule {
         polymorphic(StarWarsEntity::class) {
-            subclass(Lightsaber::class, Lightsaber.serializer())
+            subclass(Lightsabers::class, Lightsabers.serializer())
             subclass(StarWarsVehicle::class, StarWarsVehicle.serializer())
         }
     }

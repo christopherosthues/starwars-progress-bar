@@ -145,143 +145,333 @@ internal object FactionCreationHelper {
     )
 
     @JvmStatic
-    fun createStarWarsFactionsWithEmptyIdAndNoLightsabers(): List<StarWarsFaction<Lightsaber>> =
+    fun createStarWarsFactionsWithEmptyIdAndNoLightsabers(): List<StarWarsFaction<Lightsabers>> =
         listOf(StarWarsFaction("", listOf()))
 
     @JvmStatic
-    fun createStarWarsFactionsWithEmptyIdsAndNoLightsabers(): List<StarWarsFaction<Lightsaber>> = listOf(
+    fun createStarWarsFactionsWithEmptyIdsAndNoLightsabers(): List<StarWarsFaction<Lightsabers>> = listOf(
         StarWarsFaction("", listOf()),
         StarWarsFaction("", listOf()),
         StarWarsFaction("", listOf()),
     )
 
     @JvmStatic
-    fun createStarWarsFactionsWithEmptyIdsAndFirstHasNoLightsabers(): List<StarWarsFaction<Lightsaber>> = listOf(
+    fun createStarWarsFactionsWithEmptyIdsAndFirstHasNoLightsabers(): List<StarWarsFaction<Lightsabers>> = listOf(
         StarWarsFaction("", listOf()),
-        StarWarsFaction("", listOf(Lightsaber("1", "blue", 3f, isShoto = false, isDoubleBladed = false))),
-        StarWarsFaction("", listOf(Lightsaber("2", "green", 6f, isShoto = true, isDoubleBladed = false))),
+        StarWarsFaction(
+            "",
+            listOf(
+                Lightsabers(
+                    "1",
+                    3f,
+                    isJarKai = false,
+                    listOf(Lightsaber(1, "blue", isShoto = false, isDoubleBladed = false, xShift = 1, yShift = 1))
+                )
+            )
+        ),
+        StarWarsFaction(
+            "",
+            listOf(
+                Lightsabers(
+                    "2",
+                    6f,
+                    isJarKai = false,
+                    listOf(Lightsaber(1, "green", isShoto = true, isDoubleBladed = false, xShift = 2, yShift = 2))
+                )
+            )
+        ),
     )
 
     @JvmStatic
-    fun createStarWarsFactionsLightsabersWithEmptyIds(): List<StarWarsFaction<Lightsaber>> = listOf(
-        StarWarsFaction("", listOf(Lightsaber("1", "blue", 3f, isShoto = false, isDoubleBladed = false))),
-        StarWarsFaction("", listOf(Lightsaber("2", "green", 6f, isShoto = true, isDoubleBladed = false))),
-        StarWarsFaction("", listOf(Lightsaber("3", "red", 9f, isShoto = false, isDoubleBladed = true))),
+    fun createStarWarsFactionsLightsabersWithEmptyIds(): List<StarWarsFaction<Lightsabers>> = listOf(
+        StarWarsFaction(
+            "",
+            listOf(
+                Lightsabers(
+                    "1",
+                    3f,
+                    isJarKai = false,
+                    listOf(Lightsaber(1, "blue", isShoto = false, isDoubleBladed = false, xShift = 1, yShift = 1))
+                )
+            )
+        ),
+        StarWarsFaction(
+            "",
+            listOf(
+                Lightsabers(
+                    "2",
+                    6f,
+                    isJarKai = false,
+                    listOf(Lightsaber(1, "green", isShoto = true, isDoubleBladed = false, xShift = 2, yShift = 2))
+                )
+            )
+        ),
+        StarWarsFaction(
+            "",
+            listOf(
+                Lightsabers(
+                    "3",
+                    9f,
+                    isJarKai = false,
+                    listOf(Lightsaber(1, "red", isShoto = false, isDoubleBladed = true, xShift = 3, yShift = 3))
+                )
+            )
+        ),
     )
 
     @JvmStatic
-    fun createStarWarsFactionsWithEmptyIdContainingLightsabers(): List<StarWarsFaction<Lightsaber>> = listOf(
+    fun createStarWarsFactionsWithEmptyIdContainingLightsabers(): List<StarWarsFaction<Lightsabers>> = listOf(
         StarWarsFaction(
             "1",
             listOf(
-                Lightsaber("1", "blue", 3f, isShoto = false, isDoubleBladed = false),
-                Lightsaber("2", "brown", 6f, isShoto = true, isDoubleBladed = false),
+                Lightsabers(
+                    "1",
+                    3f,
+                    isJarKai = false,
+                    listOf(Lightsaber(1, "blue", isShoto = false, isDoubleBladed = false, xShift = 1, yShift = 1))
+                ),
+                Lightsabers(
+                    "2",
+                    6f,
+                    isJarKai = false,
+                    listOf(Lightsaber(1, "brown", isShoto = true, isDoubleBladed = false, xShift = 2, yShift = 2))
+                ),
             ),
         ),
         StarWarsFaction(
             "",
             listOf(
-                Lightsaber("3", "green", 9f, isShoto = false, isDoubleBladed = true),
-                Lightsaber("4", "yellow", 12f, isShoto = false, isDoubleBladed = false),
+                Lightsabers(
+                    "3",
+                    9f,
+                    isJarKai = false,
+                    listOf(Lightsaber(1, "green", isShoto = false, isDoubleBladed = true, xShift = 3, yShift = 3))
+                ),
+                Lightsabers(
+                    "4",
+                    12f,
+                    isJarKai = false,
+                    listOf(Lightsaber(1, "yellow", isShoto = false, isDoubleBladed = false, xShift = 4, yShift = 4))
+                ),
             ),
         ),
         StarWarsFaction(
             "3",
             listOf(
-                Lightsaber("5", "red", 15f, isShoto = true, isDoubleBladed = false),
-                Lightsaber("6", "purple", 18f, isShoto = false, isDoubleBladed = true),
+                Lightsabers(
+                    "5",
+                    15f,
+                    isJarKai = false,
+                    listOf(Lightsaber(1, "red", isShoto = true, isDoubleBladed = false, xShift = 5, yShift = 5))
+                ),
+                Lightsabers(
+                    "6",
+                    18f,
+                    isJarKai = false,
+                    listOf(Lightsaber(1, "purple", isShoto = false, isDoubleBladed = true, xShift = 6, yShift = 6))
+                ),
             ),
         ),
     )
 
     @JvmStatic
-    fun createStarWarsFactionsWithMultipleFactionsWithEmptyIdAndContainingLightsabers(): List<StarWarsFaction<Lightsaber>> =
+    fun createStarWarsFactionsWithMultipleFactionsWithEmptyIdAndContainingLightsabers(): List<StarWarsFaction<Lightsabers>> =
         listOf(
             StarWarsFaction(
                 "",
                 listOf(
-                    Lightsaber("3", "green", 9f, isShoto = false, isDoubleBladed = true),
-                    Lightsaber("4", "yellow", 12f, isShoto = false, isDoubleBladed = false),
+                    Lightsabers(
+                        "3",
+                        9f,
+                        isJarKai = false,
+                        listOf(Lightsaber(1, "green", isShoto = false, isDoubleBladed = true, xShift = 2, yShift = 2))
+                    ),
+                    Lightsabers(
+                        "4",
+                        12f,
+                        isJarKai = false,
+                        listOf(Lightsaber(1, "yellow", isShoto = false, isDoubleBladed = false, xShift = 4, yShift = 4))
+                    ),
                 ),
             ),
             StarWarsFaction(
                 "2",
                 listOf(
-                    Lightsaber("1", "blue", 3f, isShoto = false, isDoubleBladed = false),
-                    Lightsaber("2", "brown", 6f, isShoto = true, isDoubleBladed = false),
+                    Lightsabers(
+                        "1",
+                        3f,
+                        isJarKai = false,
+                        listOf(Lightsaber(1, "blue", isShoto = false, isDoubleBladed = false, xShift = 1, yShift = 1))
+                    ),
+                    Lightsabers(
+                        "2",
+                        6f,
+                        isJarKai = false,
+                        listOf(Lightsaber(1, "brown", isShoto = true, isDoubleBladed = false, xShift = 2, yShift = 2))
+                    ),
                 ),
             ),
             StarWarsFaction(
                 "3",
                 listOf(
-                    Lightsaber("5", "red", 15f, isShoto = true, isDoubleBladed = false),
-                    Lightsaber("6", "purple", 18f, isShoto = false, isDoubleBladed = true),
+                    Lightsabers(
+                        "5",
+                        15f,
+                        isJarKai = false,
+                        listOf(Lightsaber(1, "red", isShoto = true, isDoubleBladed = false, xShift = 5, yShift = 5))
+                    ),
+                    Lightsabers(
+                        "6",
+                        18f,
+                        isJarKai = false,
+                        listOf(Lightsaber(1, "purple", isShoto = false, isDoubleBladed = true, xShift = 6, yShift = 6))
+                    ),
                 ),
             ),
             StarWarsFaction(
                 "",
                 listOf(
-                    Lightsaber("7", "green", 9f, isShoto = false, isDoubleBladed = true),
-                    Lightsaber("8", "yellow", 12f, isShoto = false, isDoubleBladed = false),
+                    Lightsabers(
+                        "7",
+                        9f,
+                        isJarKai = false,
+                        listOf(Lightsaber(1, "green", isShoto = false, isDoubleBladed = true, xShift = 7, yShift = 7))
+                    ),
+                    Lightsabers(
+                        "8",
+                        12f,
+                        isJarKai = false,
+                        listOf(Lightsaber(1, "yellow", isShoto = false, isDoubleBladed = false, xShift = 8, yShift = 8))
+                    ),
                 ),
             ),
         )
 
     @JvmStatic
-    fun createStarWarsFactionsWithMultipleFactionsWithEmptyIdAndOneFactionContainNoLightsabers(): List<StarWarsFaction<Lightsaber>> =
+    fun createStarWarsFactionsWithMultipleFactionsWithEmptyIdAndOneFactionContainNoLightsabers(): List<StarWarsFaction<Lightsabers>> =
         listOf(
             StarWarsFaction(
                 "",
                 listOf(
-                    Lightsaber("3", "green", 9f, isShoto = false, isDoubleBladed = true),
-                    Lightsaber("4", "yellow", 12f, isShoto = false, isDoubleBladed = false),
+                    Lightsabers(
+                        "3",
+                        9f,
+                        isJarKai = false,
+                        listOf(Lightsaber(1, "green", isShoto = false, isDoubleBladed = true, xShift = 3, yShift = 3))
+                    ),
+                    Lightsabers(
+                        "4",
+                        12f,
+                        isJarKai = false,
+                        listOf(Lightsaber(1, "yellow", isShoto = false, isDoubleBladed = false, xShift = 4, yShift = 4))
+                    ),
                 ),
             ),
             StarWarsFaction(
                 "2",
                 listOf(
-                    Lightsaber("1", "blue", 3f, isShoto = false, isDoubleBladed = false),
-                    Lightsaber("2", "brown", 6f, isShoto = true, isDoubleBladed = false),
+                    Lightsabers(
+                        "1",
+                        3f,
+                        isJarKai = false,
+                        listOf(Lightsaber(1, "blue", isShoto = false, isDoubleBladed = false, xShift = 1, yShift = 1))
+                    ),
+                    Lightsabers(
+                        "2",
+                        6f,
+                        isJarKai = false,
+                        listOf(Lightsaber(1, "brown", isShoto = true, isDoubleBladed = false, xShift = 2, yShift = 2))
+                    ),
                 ),
             ),
             StarWarsFaction(
                 "3",
                 listOf(
-                    Lightsaber("5", "red", 15f, isShoto = true, isDoubleBladed = false),
-                    Lightsaber("6", "purple", 18f, isShoto = false, isDoubleBladed = true),
+                    Lightsabers(
+                        "5",
+                        15f,
+                        isJarKai = false,
+                        listOf(Lightsaber(1, "red", isShoto = true, isDoubleBladed = false, xShift = 5, yShift = 5))
+                    ),
+                    Lightsabers(
+                        "6",
+                        18f,
+                        isJarKai = false,
+                        listOf(Lightsaber(1, "purple", isShoto = false, isDoubleBladed = true, xShift = 6, yShift = 6))
+                    ),
                 ),
             ),
             StarWarsFaction(
                 "",
                 listOf(
-                    Lightsaber("7", "green", 9f, isShoto = false, isDoubleBladed = true),
-                    Lightsaber("8", "yellow", 12f, isShoto = false, isDoubleBladed = false),
+                    Lightsabers(
+                        "7",
+                        9f,
+                        isJarKai = false,
+                        listOf(Lightsaber(1, "green", isShoto = false, isDoubleBladed = true, xShift = 7, yShift = 7))
+                    ),
+                    Lightsabers(
+                        "8",
+                        12f,
+                        isJarKai = false,
+                        listOf(Lightsaber(1, "yellow", isShoto = false, isDoubleBladed = false, xShift = 8, yShift = 8))
+                    ),
                 ),
             ),
             StarWarsFaction("5", listOf()),
         )
 
     @JvmStatic
-    fun createStarWarsFactionsLightsabers(): List<StarWarsFaction<Lightsaber>> = listOf(
+    fun createStarWarsFactionsLightsabers(): List<StarWarsFaction<Lightsabers>> = listOf(
         StarWarsFaction(
             "1",
             listOf(
-                Lightsaber("1", "blue", 3f, isShoto = false, isDoubleBladed = false),
-                Lightsaber("2", "brown", 6f, isShoto = true, isDoubleBladed = false),
+                Lightsabers(
+                    "1",
+                    3f,
+                    isJarKai = false,
+                    listOf(Lightsaber(1, "blue", isShoto = false, isDoubleBladed = false, xShift = 1, yShift = 1))
+                ),
+                Lightsabers(
+                    "2",
+                    6f,
+                    isJarKai = false,
+                    listOf(Lightsaber(1, "brown", isShoto = true, isDoubleBladed = false, xShift = 2, yShift = 2))
+                ),
             ),
         ),
         StarWarsFaction(
             "2",
             listOf(
-                Lightsaber("3", "green", 9f, isShoto = false, isDoubleBladed = true),
-                Lightsaber("4", "yellow", 12f, isShoto = false, isDoubleBladed = false),
+                Lightsabers(
+                    "3",
+                    9f,
+                    isJarKai = false,
+                    listOf(Lightsaber(1, "green", isShoto = false, isDoubleBladed = true, xShift = 3, yShift = 3))
+                ),
+                Lightsabers(
+                    "4",
+                    12f,
+                    isJarKai = false,
+                    listOf(Lightsaber(1, "yellow", isShoto = false, isDoubleBladed = false, xShift = 4, yShift = 4))
+                ),
             ),
         ),
         StarWarsFaction(
             "3",
             listOf(
-                Lightsaber("5", "red", 15f, isShoto = true, isDoubleBladed = false),
-                Lightsaber("6", "purple", 18f, isShoto = false, isDoubleBladed = true),
+                Lightsabers(
+                    "5",
+                    15f,
+                    isJarKai = false,
+                    listOf(Lightsaber(1, "red", isShoto = true, isDoubleBladed = false, xShift = 5, yShift = 5))
+                ),
+                Lightsabers(
+                    "6",
+                    18f,
+                    isJarKai = false,
+                    listOf(Lightsaber(1, "purple", isShoto = false, isDoubleBladed = true, xShift = 6, yShift = 6))
+                ),
             ),
         ),
     )

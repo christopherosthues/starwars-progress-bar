@@ -121,6 +121,7 @@ class StarWarsProgressConfigurableTests {
     @MethodSource("isNotModifiedValues")
     fun `isModified should return false if star wars state and component properties are all equal`(
         enabledVehicles: MutableMap<String, Boolean>,
+        enabledLightsabers: MutableMap<String, Boolean> = mutableMapOf(),
         showVehicle: Boolean,
         showVehicleNames: Boolean,
         showToolTips: Boolean,
@@ -136,6 +137,7 @@ class StarWarsProgressConfigurableTests {
         // Arrange
         setupStarWarsState(
             enabledVehicles,
+            enabledLightsabers,
             showVehicle,
             showVehicleNames,
             showToolTips,
@@ -150,6 +152,7 @@ class StarWarsProgressConfigurableTests {
         )
         setupComponentState(
             enabledVehicles,
+            enabledLightsabers,
             showVehicle,
             showVehicleNames,
             showToolTips,
@@ -199,6 +202,7 @@ class StarWarsProgressConfigurableTests {
         // Arrange
         setupStarWarsState(
             starWarsStateData.enabledVehicles,
+            starWarsStateData.enabledLightsabers,
             starWarsStateData.showVehicle,
             starWarsStateData.showVehicleNames,
             starWarsStateData.showToolTips,
@@ -214,6 +218,7 @@ class StarWarsProgressConfigurableTests {
         )
         setupComponentState(
             componentStateData.enabledVehicles,
+            componentStateData.enabledLightsabers,
             componentStateData.showVehicle,
             componentStateData.showVehicleNames,
             componentStateData.showToolTips,
@@ -259,6 +264,8 @@ class StarWarsProgressConfigurableTests {
         val starWarsStateMock = setupStarWarsPersistentStateComponentMock().state!!
         val enabledVehicles = mutableMapOf("1" to true, "2" to false)
         starWarsStateMock.vehiclesEnabled = enabledVehicles
+        val enabledLightsabers = mutableMapOf("1" to true, "2" to false)
+        starWarsStateMock.lightsabersEnabled = enabledLightsabers
         val sut = StarWarsProgressConfigurable()
 
         // Act
@@ -266,6 +273,7 @@ class StarWarsProgressConfigurableTests {
 
         // Assert
         assertEquals(enabledVehicles, starWarsStateMock.vehiclesEnabled)
+        assertEquals(enabledLightsabers, starWarsStateMock.lightsabersEnabled)
         verify(exactly = 0) { starWarsStateMock.showVehicle }
         verify(exactly = 0) { starWarsStateMock.showVehicleNames }
         verify(exactly = 0) { starWarsStateMock.showToolTips }
@@ -284,6 +292,7 @@ class StarWarsProgressConfigurableTests {
     @MethodSource("isNotModifiedValues")
     fun `apply should update star wars state`(
         enabledVehicles: MutableMap<String, Boolean> = mutableMapOf(),
+        enabledLightsabers: MutableMap<String, Boolean> = mutableMapOf(),
         showVehicle: Boolean = false,
         showVehicleNames: Boolean = false,
         showToolTips: Boolean = false,
@@ -301,6 +310,7 @@ class StarWarsProgressConfigurableTests {
         val starWarsStateMock = setupStarWarsPersistentStateComponentMock().state!!
         setupComponentState(
             enabledVehicles,
+            enabledLightsabers,
             showVehicle,
             showVehicleNames,
             showToolTips,
@@ -335,6 +345,7 @@ class StarWarsProgressConfigurableTests {
         verify(exactly = 1) { starWarsStateMock.language = language }
         verify(exactly = numberOfPassesSet) { starWarsStateMock.numberOfPassesUntilVehicleChange = numberOfPassesUntilVehicleChange }
         assertEquals(enabledVehicles, starWarsStateMock.vehiclesEnabled, StarWarsState::vehiclesEnabled.name)
+        assertEquals(enabledLightsabers, starWarsStateMock.lightsabersEnabled, StarWarsState::lightsabersEnabled.name)
     }
 
     //endregion
@@ -476,6 +487,7 @@ class StarWarsProgressConfigurableTests {
 
     private fun setupStarWarsState(
         enabledVehicles: MutableMap<String, Boolean> = mutableMapOf(),
+        enabledLightsabers: MutableMap<String, Boolean> = mutableMapOf(),
         showVehicle: Boolean = false,
         showVehicleNames: Boolean = false,
         showToolTips: Boolean = false,
@@ -491,6 +503,7 @@ class StarWarsProgressConfigurableTests {
     ): StarWarsState {
         val starWarsStateMock = mockk<StarWarsState>()
         starWarsStateMock.vehiclesEnabled = enabledVehicles
+        starWarsStateMock.lightsabersEnabled = enabledLightsabers
         every { starWarsStateMock.showVehicle } returns showVehicle
         every { starWarsStateMock.showVehicleNames } returns showVehicleNames
         every { starWarsStateMock.showToolTips } returns showToolTips
@@ -513,6 +526,7 @@ class StarWarsProgressConfigurableTests {
 
     private fun setupComponentState(
         enabledVehicles: MutableMap<String, Boolean> = mutableMapOf(),
+        enabledLightsabers: MutableMap<String, Boolean> = mutableMapOf(),
         showVehicle: Boolean = false,
         showVehicleNames: Boolean = false,
         showToolTips: Boolean = false,
@@ -528,6 +542,7 @@ class StarWarsProgressConfigurableTests {
     ) {
         val starWarsState = StarWarsState()
         starWarsState.vehiclesEnabled = enabledVehicles
+        starWarsState.lightsabersEnabled = enabledLightsabers
         starWarsState.showVehicle = showVehicle
         starWarsState.showVehicleNames = showVehicleNames
         starWarsState.showToolTips = showToolTips
@@ -549,6 +564,7 @@ class StarWarsProgressConfigurableTests {
 
     data class IsModifiedData(
         val enabledVehicles: MutableMap<String, Boolean> = mutableMapOf(),
+        val enabledLightsabers: MutableMap<String, Boolean> = mutableMapOf(),
         val showVehicle: Boolean = false,
         val showVehicleNames: Boolean = false,
         val showToolTips: Boolean = false,
@@ -566,8 +582,9 @@ class StarWarsProgressConfigurableTests {
     companion object {
         @JvmStatic
         fun isNotModifiedValues(): Stream<Arguments> = Stream.of(
-            Arguments.of(mapOf<String, Boolean>(), true, false, true, false, true, false, true, false, false, 2, SelectionType.RANDOM_ALL, Language.ENGLISH),
+            Arguments.of(mapOf<String, Boolean>(), mapOf<String, Boolean>(), true, false, true, false, true, false, true, false, false, 2, SelectionType.RANDOM_ALL, Language.ENGLISH),
             Arguments.of(
+                mapOf("1" to true, "2" to false),
                 mapOf("1" to true, "2" to false),
                 false,
                 true,
@@ -584,6 +601,7 @@ class StarWarsProgressConfigurableTests {
             ),
             Arguments.of(
                 mapOf("1" to true, "2" to false),
+                mapOf("1" to true, "2" to false),
                 false,
                 true,
                 false,
@@ -598,6 +616,7 @@ class StarWarsProgressConfigurableTests {
                 Language.GERMAN,
             ),
             Arguments.of(
+                mapOf("1" to true, "2" to false),
                 mapOf("1" to true, "2" to false),
                 false,
                 true,
@@ -618,6 +637,8 @@ class StarWarsProgressConfigurableTests {
         fun isModifiedValues(): Stream<Arguments> = Stream.of(
             Arguments.of(IsModifiedData(), IsModifiedData(mutableMapOf("1" to true, "2" to false))),
             Arguments.of(IsModifiedData(mutableMapOf("1" to true, "2" to false)), IsModifiedData()),
+            Arguments.of(IsModifiedData(), IsModifiedData(enabledLightsabers = mutableMapOf("1" to true, "2" to false))),
+            Arguments.of(IsModifiedData(enabledLightsabers = mutableMapOf("1" to true, "2" to false)), IsModifiedData()),
             Arguments.of(IsModifiedData(), IsModifiedData(showVehicle = true)),
             Arguments.of(IsModifiedData(showVehicle = true), IsModifiedData()),
             Arguments.of(IsModifiedData(), IsModifiedData(mutableMapOf(), showVehicle = true)),

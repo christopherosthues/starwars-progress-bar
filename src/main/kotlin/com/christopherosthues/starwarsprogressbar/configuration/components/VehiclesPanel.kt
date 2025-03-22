@@ -159,7 +159,6 @@ internal class VehiclesPanel(private val starWarsState: StarWarsState) : JPanel(
 
     fun addPropertyChangeListener(uiOptionsPanel: UiOptionsPanel) {
         uiOptionsPanel.addPropertyChangeListener(LANGUAGE_EVENT) {
-//            title = StarWarsBundle.message(BundleConstants.VEHICLES_TITLE)
             updateSelectionButtons()
         }
         factionPanels.forEach {

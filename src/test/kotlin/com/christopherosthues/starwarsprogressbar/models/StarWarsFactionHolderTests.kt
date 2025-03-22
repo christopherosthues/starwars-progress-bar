@@ -49,7 +49,7 @@ class StarWarsFactionHolderTests {
         // Act and Assert
         assertAll(
             { assertTrue(StarWarsFactionHolder.vehicleFactions.isEmpty()) },
-            { assertTrue(StarWarsFactionHolder.lightsaberFactions.isEmpty()) },
+            { assertTrue(StarWarsFactionHolder.lightsabersFactions.isEmpty()) },
         )
     }
 
@@ -60,7 +60,7 @@ class StarWarsFactionHolderTests {
         // Act and Assert
         assertAll(
             { assertTrue(StarWarsFactionHolder.defaultVehicleFactions.isEmpty()) },
-            { assertTrue(StarWarsFactionHolder.defaultLightsaberFactions.isEmpty()) },
+            { assertTrue(StarWarsFactionHolder.defaultLightsabersFactions.isEmpty()) },
         )
     }
 
@@ -97,7 +97,7 @@ class StarWarsFactionHolderTests {
         // Assert
         assertAll(
             { assertTrue(StarWarsFactionHolder.vehicleFactions.isEmpty()) },
-            { assertTrue(StarWarsFactionHolder.lightsaberFactions.isEmpty()) },
+            { assertTrue(StarWarsFactionHolder.lightsabersFactions.isEmpty()) },
         )
     }
 
@@ -113,7 +113,7 @@ class StarWarsFactionHolderTests {
         // Assert
         assertAll(
             { assertEquals(factionsVehicles, StarWarsFactionHolder.vehicleFactions) },
-            { assertEquals(factionsLightsabers, StarWarsFactionHolder.lightsaberFactions) },
+            { assertEquals(factionsLightsabers, StarWarsFactionHolder.lightsabersFactions) },
         )
     }
 
@@ -131,7 +131,7 @@ class StarWarsFactionHolderTests {
         // Assert
         assertAll(
             { assertTrue(StarWarsFactionHolder.defaultVehicleFactions.isEmpty()) },
-            { assertTrue(StarWarsFactionHolder.defaultLightsaberFactions.isEmpty()) },
+            { assertTrue(StarWarsFactionHolder.defaultLightsabersFactions.isEmpty()) },
         )
     }
 
@@ -147,7 +147,7 @@ class StarWarsFactionHolderTests {
         // Assert
         assertAll(
             { assertTrue(StarWarsFactionHolder.defaultVehicleFactions.isEmpty()) },
-            { assertTrue(StarWarsFactionHolder.defaultLightsaberFactions.isEmpty()) },
+            { assertTrue(StarWarsFactionHolder.defaultLightsabersFactions.isEmpty()) },
         )
     }
 
@@ -163,7 +163,7 @@ class StarWarsFactionHolderTests {
         // Assert
         assertAll(
             { assertTrue(StarWarsFactionHolder.defaultVehicleFactions.isEmpty()) },
-            { assertTrue(StarWarsFactionHolder.defaultLightsaberFactions.isEmpty()) },
+            { assertTrue(StarWarsFactionHolder.defaultLightsabersFactions.isEmpty()) },
         )
     }
 
@@ -179,7 +179,7 @@ class StarWarsFactionHolderTests {
         // Assert
         assertAll(
             { assertTrue(StarWarsFactionHolder.defaultVehicleFactions.isEmpty()) },
-            { assertTrue(StarWarsFactionHolder.defaultLightsaberFactions.isEmpty()) },
+            { assertTrue(StarWarsFactionHolder.defaultLightsabersFactions.isEmpty()) },
         )
     }
 
@@ -195,7 +195,7 @@ class StarWarsFactionHolderTests {
         // Assert
         assertAll(
             { assertTrue(StarWarsFactionHolder.defaultVehicleFactions.isEmpty()) },
-            { assertTrue(StarWarsFactionHolder.defaultLightsaberFactions.isEmpty()) },
+            { assertTrue(StarWarsFactionHolder.defaultLightsabersFactions.isEmpty()) },
         )
     }
 
@@ -212,7 +212,7 @@ class StarWarsFactionHolderTests {
 
         // Assert
         val resultVehicles = StarWarsFactionHolder.defaultVehicleFactions
-        val resultLightsabers = StarWarsFactionHolder.defaultLightsaberFactions
+        val resultLightsabers = StarWarsFactionHolder.defaultLightsabersFactions
         assertAll(
             { assertTrue(resultVehicles.isNotEmpty()) },
             { assertEquals(2, resultVehicles.size) },
@@ -238,7 +238,7 @@ class StarWarsFactionHolderTests {
 
         // Assert
         val resultVehicles = StarWarsFactionHolder.defaultVehicleFactions
-        val resultLightsabers = StarWarsFactionHolder.defaultLightsaberFactions
+        val resultLightsabers = StarWarsFactionHolder.defaultLightsabersFactions
         assertAll(
             { assertTrue(resultVehicles.isNotEmpty()) },
             { assertEquals(2, resultVehicles.size) },
@@ -262,7 +262,7 @@ class StarWarsFactionHolderTests {
 
         // Assert
         val resultVehicles = StarWarsFactionHolder.defaultVehicleFactions
-        val resultLightsabers = StarWarsFactionHolder.defaultLightsaberFactions
+        val resultLightsabers = StarWarsFactionHolder.defaultLightsabersFactions
         assertAll(
             { assertTrue(resultVehicles.isNotEmpty()) },
             { assertEquals(3, resultVehicles.size) },
@@ -457,7 +457,7 @@ class StarWarsFactionHolderTests {
         expectedVehicles.addAll(factionsVehicles.first().data)
         expectedVehicles.addAll(factionsVehicles[2].data)
         val factionsLightsabers = FactionCreationHelper.createStarWarsFactionsWithEmptyIdContainingLightsabers()
-        val expectedLightsabers = mutableListOf<Lightsaber>()
+        val expectedLightsabers = mutableListOf<Lightsabers>()
         expectedLightsabers.addAll(factionsLightsabers.first().data)
         expectedLightsabers.addAll(factionsLightsabers[2].data)
 
@@ -481,7 +481,7 @@ class StarWarsFactionHolderTests {
         expectedVehicles.addAll(factionsVehicles[2].data)
         val factionsLightsabers =
             FactionCreationHelper.createStarWarsFactionsWithMultipleFactionsWithEmptyIdAndContainingLightsabers()
-        val expectedLightsabers = mutableListOf<Lightsaber>()
+        val expectedLightsabers = mutableListOf<Lightsabers>()
         expectedLightsabers.addAll(factionsLightsabers[1].data)
         expectedLightsabers.addAll(factionsLightsabers[2].data)
 
@@ -505,7 +505,7 @@ class StarWarsFactionHolderTests {
         expectedVehicles.addAll(factionsVehicles[2].data)
         val factionsLightsabers =
             FactionCreationHelper.createStarWarsFactionsWithMultipleFactionsWithEmptyIdAndOneFactionContainNoLightsabers()
-        val expectedLightsabers = mutableListOf<Lightsaber>()
+        val expectedLightsabers = mutableListOf<Lightsabers>()
         expectedLightsabers.addAll(factionsLightsabers[1].data)
         expectedLightsabers.addAll(factionsLightsabers[2].data)
 
@@ -536,7 +536,7 @@ class StarWarsFactionHolderTests {
             acc
         }
         val factionsLightsabers = FactionCreationHelper.createStarWarsFactionsLightsabers()
-        val expectedLightsabers = factionsLightsabers.fold(mutableListOf<Lightsaber>()) { acc, starWarsFaction ->
+        val expectedLightsabers = factionsLightsabers.fold(mutableListOf<Lightsabers>()) { acc, starWarsFaction ->
             acc.addAll(starWarsFaction.data)
             acc
         }

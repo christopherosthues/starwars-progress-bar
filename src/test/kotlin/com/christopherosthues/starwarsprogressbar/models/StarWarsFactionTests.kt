@@ -30,8 +30,18 @@ class StarWarsFactionTests {
     fun `constructor should set lightsabers to provided list`() {
         // Arrange
         val lightsabers = listOf(
-            Lightsaber("1", "a", 3f, isShoto = false, isDoubleBladed = true),
-            Lightsaber("2", "b", 4f, isShoto = true, isDoubleBladed = false),
+            Lightsabers(
+                "1",
+                3f,
+                isJarKai = false,
+                listOf(Lightsaber(1, "a", isShoto = false, isDoubleBladed = true, xShift = 1, yShift = 1))
+            ),
+            Lightsabers(
+                "2",
+                4f,
+                isJarKai = false,
+                listOf(Lightsaber(1, "b", isShoto = true, isDoubleBladed = false, xShift = 2, yShift = 2))
+            ),
         )
 
         // Act

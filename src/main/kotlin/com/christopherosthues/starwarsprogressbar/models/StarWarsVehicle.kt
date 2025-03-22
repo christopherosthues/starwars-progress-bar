@@ -23,7 +23,7 @@ internal data class StarWarsVehicle(
     override val localizationKey: String
         get() = "${BundleConstants.VEHICLES}$entityId"
 
-    override val color: JBColor
+    val color: JBColor
         get() = IonEngineColor.colors[ionEngine] ?: IonEngineColor.BlueEngine
 
     companion object {

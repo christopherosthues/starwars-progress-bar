@@ -85,7 +85,7 @@ internal class LightsaberPanel(private val starWarsState: StarWarsState) : JPane
         factionCount = 0
         factionRowCount = 0
 
-        StarWarsFactionHolder.defaultLightsaberFactions.forEach { faction ->
+        StarWarsFactionHolder.defaultLightsabersFactions.forEach { faction ->
             lightsaberRowCount = 0
 
             val lightsabersAvailable = faction.data.any()
@@ -159,7 +159,6 @@ internal class LightsaberPanel(private val starWarsState: StarWarsState) : JPane
 
     fun addPropertyChangeListener(uiOptionsPanel: UiOptionsPanel) {
         uiOptionsPanel.addPropertyChangeListener(LANGUAGE_EVENT) {
-//            title = StarWarsBundle.message(BundleConstants.LIGHTSABERS_TITLE)
             updateSelectionButtons()
         }
         factionPanels.forEach {

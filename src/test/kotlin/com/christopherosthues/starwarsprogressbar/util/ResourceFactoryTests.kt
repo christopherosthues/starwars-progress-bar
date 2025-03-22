@@ -1,7 +1,7 @@
 package com.christopherosthues.starwarsprogressbar.util
 
 import com.christopherosthues.starwarsprogressbar.models.*
-import com.christopherosthues.starwarsprogressbar.models.Lightsaber
+import com.christopherosthues.starwarsprogressbar.models.Lightsabers
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.intellij.ui.scale.JBUIScale
 import io.mockk.every
@@ -9,10 +9,6 @@ import io.mockk.mockk
 import io.mockk.mockkStatic
 import io.mockk.unmockkAll
 import io.mockk.verify
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.modules.SerializersModule
-import kotlinx.serialization.modules.polymorphic
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertInstanceOf
 import org.junit.jupiter.api.Assertions.assertNotNull
@@ -54,7 +50,7 @@ class ResourceFactoryTests {
         // Arrange
 
         // Act
-        val result = parseFactionsFromJson("{\"factions\": []}")
+        val result = parseFactionsFromJson("{\"vehicles\": []}")
 
         // Assert
         assertEquals(listOf<StarWarsFaction<StarWarsVehicle>>(), result.vehicles)
@@ -106,15 +102,35 @@ class ResourceFactoryTests {
                 ),
             ),
         )
-        val lightsaberFactions = listOf(
+        val lightsabersFactions = listOf(
             StarWarsFaction(
                 "faction3",
-                listOf(Lightsaber("lightsaber1", "brown", 2.5f, isShoto = false, isDoubleBladed = false))
+                listOf(
+                    Lightsabers(
+                        "lightsaber1",
+                        2.5f,
+                        isJarKai = false,
+                        listOf(Lightsaber(1, "brown", isShoto = false, isDoubleBladed = false, xShift = 1, yShift = 1))
+                    )
+                )
             ),
             StarWarsFaction(
                 "faction2", listOf(
-                    Lightsaber("lightsaber2", "blue", 2.5f, isShoto = false, isDoubleBladed = true),
-                    Lightsaber("lightsaber3", "blue", 2.5f, isShoto = true, isDoubleBladed = false),
+                    Lightsabers(
+                        "lightsaber2",
+                        2.5f,
+                        isJarKai = false,
+                        listOf(Lightsaber(1, "blue", isShoto = false, isDoubleBladed = true, xShift = 2, yShift = 2))
+                    ),
+                    Lightsabers(
+                        "lightsaber3",
+                        2.5f,
+                        isJarKai = true,
+                        listOf(
+                            Lightsaber(1, "blue", isShoto = false, isDoubleBladed = false, xShift = 3, yShift = 3),
+                            Lightsaber(2, "green", isShoto = true, isDoubleBladed = false, xShift = 4, yShift = 4),
+                        )
+                    ),
                 )
             )
         )
@@ -126,12 +142,20 @@ class ResourceFactoryTests {
         {
             "data": [
                 {
-                    "type": "Lightsaber",
+                    "type": "Lightsabers",
                     "id": "lightsaber1",
-                    "bladeColor": "brown",
                     "velocity": 2.5,
-                    "isShoto": false,
-                    "isDoubleBladed": false
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "brown",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "xShift": 1,
+                            "yShift": 1
+                        }
+                    ]
                 }
             ],
             "id": "faction3"
@@ -139,20 +163,44 @@ class ResourceFactoryTests {
         {
             "data": [
                 {
-                    "type": "Lightsaber",
+                    "type": "Lightsabers",
                     "id": "lightsaber2",
-                    "bladeColor": "blue",
                     "velocity": 2.5,
-                    "isShoto": false,
-                    "isDoubleBladed": true
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "blue",
+                            "isShoto": false,
+                            "isDoubleBladed": true,
+                            "xShift": 2,
+                            "yShift": 2
+                        }
+                    ]
                 },
                 {
-                    "type": "Lightsaber",
+                    "type": "Lightsabers",
                     "id": "lightsaber3",
-                    "bladeColor": "blue",
                     "velocity": 2.5,
-                    "isShoto": true,
-                    "isDoubleBladed": false
+                    "isJarKai": true,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "blue",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "xShift": 3,
+                            "yShift": 3
+                        },
+                        {
+                            "id": 2,
+                            "bladeColor": "green",
+                            "isShoto": true,
+                            "isDoubleBladed": false,
+                            "xShift": 4,
+                            "yShift": 4
+                        }
+                    ]
                 }
             ],
             "id": "faction2"
@@ -206,10 +254,10 @@ class ResourceFactoryTests {
             { assertEquals(vehicleFactions.size, resultFactions.size) },
             { assertEquals(vehicleFactions[0], resultFactions[0]) },
             { assertEquals(vehicleFactions[1], resultFactions[1]) },
-            { assertEquals(lightsaberFactions, resultLightsabers) },
-            { assertEquals(lightsaberFactions.size, resultLightsabers.size) },
-            { assertEquals(lightsaberFactions[0], resultLightsabers[0]) },
-            { assertEquals(lightsaberFactions[1], resultLightsabers[1]) },
+            { assertEquals(lightsabersFactions, resultLightsabers) },
+            { assertEquals(lightsabersFactions.size, resultLightsabers.size) },
+            { assertEquals(lightsabersFactions[0], resultLightsabers[0]) },
+            { assertEquals(lightsabersFactions[1], resultLightsabers[1]) },
         )
     }
 

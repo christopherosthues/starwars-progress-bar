@@ -33,8 +33,8 @@ internal class VehicleProgressBarDecorator(
     private lateinit var factionCrestIcon: ColoredImageComponent
 
     internal fun update(vehicle: StarWarsVehicle) {
-        forwardIcon = ColoredImageComponent(StarWarsResourceLoader.getVehicleImage(vehicle.fileName))
-        backwardIcon = ColoredImageComponent(StarWarsResourceLoader.getReversedVehicleImage(vehicle.fileName))
+        forwardIcon = ColoredImageComponent(StarWarsResourceLoader.getImage(vehicle.fileName))
+        backwardIcon = ColoredImageComponent(StarWarsResourceLoader.getReversedImage(vehicle.fileName))
         factionCrestIcon = ColoredImageComponent(StarWarsResourceLoader.getFactionLogo("vehicles", vehicle.factionId, false))
     }
 

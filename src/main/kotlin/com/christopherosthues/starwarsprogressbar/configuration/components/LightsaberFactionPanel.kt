@@ -5,7 +5,7 @@ import com.christopherosthues.starwarsprogressbar.configuration.LANGUAGE_EVENT
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
 import com.christopherosthues.starwarsprogressbar.configuration.borders.TitledIconBorder
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
-import com.christopherosthues.starwarsprogressbar.models.Lightsaber
+import com.christopherosthues.starwarsprogressbar.models.Lightsabers
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
 import com.christopherosthues.starwarsprogressbar.ui.events.StarWarsEntityClickListener
 import com.christopherosthues.starwarsprogressbar.util.StarWarsResourceLoader
@@ -28,7 +28,7 @@ private const val LEFT_PADDING = 5
 
 internal class LightsaberFactionPanel(
     private val starWarsState: StarWarsState,
-    private val faction: StarWarsFaction<Lightsaber>
+    private val faction: StarWarsFaction<Lightsabers>
 ) : JPanel(GridBagLayout()) {
     private val selectLightsabersCheckbox = ThreeStateCheckBox(ThreeStateCheckBox.State.SELECTED)
     private val lightsabersCheckboxes: MutableMap<String, JCheckBox> = HashMap()
@@ -49,7 +49,7 @@ internal class LightsaberFactionPanel(
             addFactionCheckBox()
 
             val localizedNameComparator =
-                compareBy<Lightsaber> { StarWarsBundle.message(it.localizationKey).lowercase() }
+                compareBy<Lightsabers> { StarWarsBundle.message(it.localizationKey).lowercase() }
 
             faction.data.stream().sorted(localizedNameComparator).forEach { lightsaber ->
                 addLightsaberCheckBox(lightsaber)
@@ -106,8 +106,8 @@ internal class LightsaberFactionPanel(
         add(selectLightsabersCheckbox, gridBagConstraints)
     }
 
-    private fun addLightsaberCheckBox(lightsaber: Lightsaber) {
-        val localizedName = StarWarsBundle.message(lightsaber.localizationKey)
+    private fun addLightsaberCheckBox(lightsabers: Lightsabers) {
+        val localizedName = StarWarsBundle.message(lightsabers.localizationKey)
         val checkBox = JCheckBox(localizedName, true)
         checkBox.addItemListener {
             val oldValue = selectedLightsabersCount.get()
@@ -116,7 +116,7 @@ internal class LightsaberFactionPanel(
             } else if (it.stateChange == ItemEvent.DESELECTED) {
                 selectedLightsabersCount.decrementAndGet()
             }
-            starWarsState.lightsabersEnabled[lightsaber.entityId] = checkBox.isSelected
+            starWarsState.lightsabersEnabled[lightsabers.entityId] = checkBox.isSelected
 
             propertyChangeListeners.forEach { l ->
                 val propertyChangeEvent = PropertyChangeEvent(
@@ -131,17 +131,17 @@ internal class LightsaberFactionPanel(
             updateSelectionButtons()
         }
 
-        val iconComponent = ScalableIconComponent(StarWarsResourceLoader.getIcon(lightsaber.fileName))
+        val iconComponent = ScalableIconComponent(StarWarsResourceLoader.getIcon(lightsabers.fileName))
         iconComponent.addMouseListener(object : MouseAdapter() {
             override fun mousePressed(e: MouseEvent?) {
-                lightsaberClickListener?.starWarsEntityClicked(lightsaber)
+                lightsaberClickListener?.starWarsEntityClicked(lightsabers)
             }
         })
         addLabeledComponent(
             iconComponent,
             checkBox,
         )
-        lightsabersCheckboxes[lightsaber.entityId] = checkBox
+        lightsabersCheckboxes[lightsabers.entityId] = checkBox
         selectedLightsabersCount.incrementAndGet()
     }
 

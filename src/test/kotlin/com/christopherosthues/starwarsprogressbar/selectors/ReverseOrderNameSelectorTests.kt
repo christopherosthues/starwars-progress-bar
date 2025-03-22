@@ -2,8 +2,9 @@ package com.christopherosthues.starwarsprogressbar.selectors
 
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
+import com.christopherosthues.starwarsprogressbar.models.*
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
-import com.christopherosthues.starwarsprogressbar.models.StarWarsEntity
+import com.christopherosthues.starwarsprogressbar.models.Lightsabers
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.intellij.idea.TestFor
@@ -671,11 +672,26 @@ class ReverseOrderNameSelectorTests {
         return vehicles
     }
 
-    private fun createLightsabers(): List<Lightsaber> {
+    private fun createLightsabers(): List<Lightsabers> {
         val lightsabers = listOf(
-            Lightsaber("1", "a", 4f, isShoto = false, isDoubleBladed = false).apply { factionId = "3" },
-            Lightsaber("2", "b", 5f, isShoto = true, isDoubleBladed = false).apply { factionId = "3" },
-            Lightsaber("3", "c", 6f, isShoto = false, isDoubleBladed = true).apply { factionId = "3" },
+            Lightsabers(
+                "1",
+                4f,
+                isJarKai = false,
+                listOf(Lightsaber(1, "a", isShoto = false, isDoubleBladed = false, xShift = 1, yShift = 1))
+            ).apply { factionId = "3" },
+            Lightsabers(
+                "2",
+                5f,
+                isJarKai = false,
+                listOf(Lightsaber(1, "b", isShoto = true, isDoubleBladed = false, xShift = 2, yShift = 2))
+            ).apply { factionId = "3" },
+            Lightsabers(
+                "3",
+                6f,
+                isJarKai = false,
+                listOf(Lightsaber(1, "c", isShoto = false, isDoubleBladed = true, xShift = 3, yShift = 3))
+            ).apply { factionId = "3" },
         )
         for (lightsaber in lightsabers) {
             every { StarWarsBundle.message(lightsaber.localizationKey) } returns lightsaber.id

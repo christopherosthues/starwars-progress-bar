@@ -2,9 +2,9 @@ package com.christopherosthues.starwarsprogressbar.configuration
 
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_VEHICLE_SELECTOR
-import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
-import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
+import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
+import com.christopherosthues.starwarsprogressbar.models.Lightsabers
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.selectors.SelectionType
 import com.intellij.idea.TestFor
@@ -41,11 +41,11 @@ class StarWarsPersistentStateComponentTests {
 
         every { StarWarsFactionHolder.updateFactions(any()) } just runs
         every { StarWarsFactionHolder.vehicleFactions } returns mockk(relaxed = true)
-        every { StarWarsFactionHolder.lightsaberFactions } returns mockk(relaxed = true)
+        every { StarWarsFactionHolder.lightsabersFactions } returns mockk(relaxed = true)
         every { StarWarsFactionHolder.missingVehicle } returns mockk(relaxed = true)
         every { StarWarsFactionHolder.defaultVehicleFactions } returns mockk(relaxed = true)
         every { StarWarsFactionHolder.defaultVehicles } returns listOf()
-        every { StarWarsFactionHolder.defaultLightsaberFactions } returns mockk(relaxed = true)
+        every { StarWarsFactionHolder.defaultLightsabersFactions } returns mockk(relaxed = true)
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
     }
 
@@ -67,9 +67,9 @@ class StarWarsPersistentStateComponentTests {
         )
         every { StarWarsFactionHolder.defaultVehicles } returns vehicles
         val lightsabers = listOf(
-            Lightsaber("4", "blue", 0f, isShoto = false, isDoubleBladed = false),
-            Lightsaber("5", "green", 0f, isShoto = true, isDoubleBladed = false),
-            Lightsaber("6", "red", 0f, isShoto = false, isDoubleBladed = true),
+            Lightsabers("4", 0f, isJarKai = false, listOf(Lightsaber(1, "blue", isShoto = false, isDoubleBladed = false, xShift = 0, yShift = 0))),
+            Lightsabers("5", 0f, isJarKai = false, listOf(Lightsaber(1, "green", isShoto = true, isDoubleBladed = false, xShift = 1, yShift = 1))),
+            Lightsabers("6", 0f, isJarKai = false, listOf(Lightsaber(1, "red", isShoto = false, isDoubleBladed = true, xShift = 2, yShift = 2))),
         )
         every { StarWarsFactionHolder.defaultVehicles } returns vehicles
         every { StarWarsFactionHolder.defaultLightsabers } returns lightsabers

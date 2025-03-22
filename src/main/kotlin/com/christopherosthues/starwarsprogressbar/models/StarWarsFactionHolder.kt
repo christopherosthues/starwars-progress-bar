@@ -15,16 +15,13 @@ internal object StarWarsFactionHolder {
     lateinit var defaultVehicles: List<StarWarsVehicle>
         private set
 
-    lateinit var lightsaberFactions: List<StarWarsFaction<Lightsaber>>
+    lateinit var lightsabersFactions: List<StarWarsFaction<Lightsabers>>
         private set
 
-    lateinit var defaultLightsaberFactions: List<StarWarsFaction<Lightsaber>>
+    lateinit var defaultLightsabersFactions: List<StarWarsFaction<Lightsabers>>
         private set
 
-    lateinit var missingLightsaber: Lightsaber
-        private set
-
-    lateinit var defaultLightsabers: List<Lightsaber>
+    lateinit var defaultLightsabers: List<Lightsabers>
         private set
 
     init {
@@ -42,10 +39,8 @@ internal object StarWarsFactionHolder {
             acc
         }
 
-        lightsaberFactions = factions.lightsabers
-        defaultLightsaberFactions = factions.lightsabers.filter { it.id.isNotEmpty() }
-        missingLightsaber =
-            factions.lightsabers.firstOrNull { it.id.isEmpty() }?.data?.firstOrNull() ?: Lightsaber.missingLightsaber
+        lightsabersFactions = factions.lightsabers
+        defaultLightsabersFactions = factions.lightsabers.filter { it.id.isNotEmpty() }
         defaultLightsabers = factions.lightsabers.filter { it.id.isNotEmpty() }.fold(mutableListOf()) { acc, starWarsFaction ->
             acc.addAll(starWarsFaction.data)
             acc

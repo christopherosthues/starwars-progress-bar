@@ -29,7 +29,7 @@ import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PA
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_TOOLTIPS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE_NAMES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_VEHICLE_SELECTOR
-import com.christopherosthues.starwarsprogressbar.models.Lightsaber
+import com.christopherosthues.starwarsprogressbar.models.Lightsabers
 import com.christopherosthues.starwarsprogressbar.models.StarWarsEntity
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.selectors.StarWarsSelector.selectEntity
@@ -86,7 +86,7 @@ internal class StarWarsProgressBarUI(
         val entity = starWarsEntity
         if (entity is StarWarsVehicle) {
             vehicleProgressBarDecorator.update(entity)
-        } else if (entity is Lightsaber) {
+        } else if (entity is Lightsabers) {
             lightsaberProgressBarDecorator.update(entity)
         }
     }
@@ -97,7 +97,7 @@ internal class StarWarsProgressBarUI(
         var height = super.getPreferredSize(c).height
         if (starWarsEntity is StarWarsVehicle) {
             height = vehicleProgressBarDecorator.getHeight()
-        } else if (starWarsEntity is Lightsaber) {
+        } else if (starWarsEntity is Lightsabers) {
             height = lightsaberProgressBarDecorator.getHeight()
         }
         return Dimension(super.getPreferredSize(c).width, height)
@@ -197,7 +197,7 @@ internal class StarWarsProgressBarUI(
             val entity = starWarsEntity
             if (entity is StarWarsVehicle) {
                 vehicleProgressBarDecorator.paintProgressBar(entity, graphics2D, c, width, height, amountFull, velocity, progressBar)
-            } else if (entity is Lightsaber) {
+            } else if (entity is Lightsabers) {
                 lightsaberProgressBarDecorator.paintProgressBar(entity, graphics2D, c, width, height, amountFull, velocity, progressBar)
             }
 

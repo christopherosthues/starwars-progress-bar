@@ -3,6 +3,7 @@ package com.christopherosthues.starwarsprogressbar.selectors
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
+import com.christopherosthues.starwarsprogressbar.models.Lightsabers
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.util.randomInt
@@ -504,7 +505,7 @@ class RandomSelectorTests {
         mockkStatic(::randomInt)
         val vehicles = createStarWarsVehicles()
         every { StarWarsFactionHolder.defaultVehicles } returns vehicles
-        every { StarWarsFactionHolder.defaultLightsaberFactions } returns listOf()
+        every { StarWarsFactionHolder.defaultLightsabersFactions } returns listOf()
         every { randomInt(any()) } returns index
 
         // Act
@@ -729,11 +730,26 @@ class RandomSelectorTests {
         return vehicles
     }
 
-    private fun createLightsabers(): List<Lightsaber> {
+    private fun createLightsabers(): List<Lightsabers> {
         val lightsabers = listOf(
-            Lightsaber("1", "d", 4f, isShoto = false, isDoubleBladed = false).apply { factionId = "4" },
-            Lightsaber("2", "e", 5f, isShoto = true, isDoubleBladed = false).apply { factionId = "3" },
-            Lightsaber("3", "f", 6f, isShoto = false, isDoubleBladed = true).apply { factionId = "3" },
+            Lightsabers(
+                "1",
+                4f,
+                isJarKai = false,
+                listOf(Lightsaber(1, "d", isShoto = false, isDoubleBladed = false, xShift = 1, yShift = 1))
+            ).apply { factionId = "4" },
+            Lightsabers(
+                "2",
+                5f,
+                isJarKai = false,
+                listOf(Lightsaber(1, "e", isShoto = true, isDoubleBladed = false, xShift = 2, yShift = 2))
+            ).apply { factionId = "3" },
+            Lightsabers(
+                "3",
+                6f,
+                isJarKai = false,
+                listOf(Lightsaber(1, "f", isShoto = false, isDoubleBladed = true, xShift = 3, yShift = 3))
+            ).apply { factionId = "3" },
         )
         for (lightsaber in lightsabers) {
             every { StarWarsBundle.message(lightsaber.localizationKey) } returns lightsaber.id
