@@ -162,7 +162,14 @@ internal class VehicleProgressBarDecorator(
 
     private fun getFillPaint(vehicle: StarWarsVehicle): Paint = vehicle.color
 
-    private fun drawIcon(vehicle: StarWarsVehicle, amountFull: Int, velocity: Float, graphics2D: Graphics2D, clip: Shape, component: JComponent) {
+    private fun drawIcon(
+        vehicle: StarWarsVehicle,
+        amountFull: Int,
+        velocity: Float,
+        graphics2D: Graphics2D,
+        clip: Shape,
+        component: JComponent
+    ) {
         val previousClip = graphics2D.clip
         val previousColor = graphics2D.color
         graphics2D.clip = clip
