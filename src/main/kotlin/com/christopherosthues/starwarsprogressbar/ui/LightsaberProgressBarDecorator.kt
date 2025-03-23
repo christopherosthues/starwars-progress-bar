@@ -21,7 +21,6 @@ import javax.swing.JProgressBar
 import kotlin.math.roundToInt
 
 private const val LIGHTSABER_PROGRESSBAR_HEIGHT = 20
-private const val LIGHTSABER_BLADE_HEIGHT = 8
 
 internal class LightsaberProgressBarDecorator(private val starWarsState: () -> StarWarsState?) {
     private var lightsaberIcons: MutableList<ColoredImageComponent> = mutableListOf()
@@ -103,9 +102,9 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
 
     internal fun update(lightsabers: Lightsabers) {
         lightsaberIcons.clear()
-        lightsabers.lightsabers.indices.forEach {
+        lightsabers.lightsabers.forEach {
             if (lightsabers.isJarKai) {
-                lightsaberIcons.add(ColoredImageComponent(StarWarsResourceLoader.getImage(lightsabers.fileName + "_${it + 1}")))
+                lightsaberIcons.add(ColoredImageComponent(StarWarsResourceLoader.getImage(lightsabers.fileName + "_${it.id}")))
             } else {
                 lightsaberIcons.add(ColoredImageComponent(StarWarsResourceLoader.getImage(lightsabers.fileName)))
             }
@@ -138,7 +137,6 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         amountFull: Int
     ) {
         val lightsaber = lightsabers.lightsabers[index]
-        val lightsaberIcon = lightsaberIcons[index]
         val paint = graphics2D.paint
         val clip = graphics2D.clip
         val color = graphics2D.color
@@ -146,9 +144,32 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         // Enable anti-aliasing for smoother rendering
         graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON)
 
+        // TODO: double bladed
+        // TODO: Jar'Kai
+        if (lightsaber.isDoubleBladed) {
+            drawDoubleBladedLightsaber(graphics2D, lightsaber, index, width, height, amountFull)
+        } else {
+            drawSingleBladedLightsaber(graphics2D, lightsaber, index, width, height, amountFull)
+        }
+
+
+        graphics2D.color = color
+        graphics2D.paint = paint
+        graphics2D.clip = clip
+    }
+
+    private fun drawSingleBladedLightsaber(
+        graphics2D: Graphics2D,
+        lightsaber: Lightsaber,
+        index: Int,
+        width: Int,
+        height: Int,
+        amountFull: Int
+    ) {
+        val lightsaberIcon = lightsaberIcons[index]
         val iconWidth = lightsaberIcon.width
-        val y = JBUIScale.scale(height.toFloat()) / 2 - JBUIScale.scale(LIGHTSABER_BLADE_HEIGHT.toFloat()) / 2
-        var lightsaberBladeWidth = width - iconWidth
+//        val y = JBUIScale.scale(height.toFloat()) / 2 - JBUIScale.scale(LIGHTSABER_BLADE_HEIGHT.toFloat()) / 2
+        var lightsaberBladeWidth = width - iconWidth - JBUIScale.scale(lightsaber.xShift)
         if (lightsaberBladeWidth < 0) {
             lightsaberBladeWidth = 0
         }
@@ -174,16 +195,19 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
 //        val colorMiddle = Color(230, 240, 255) // Almost white (middle)
 //        val colorBottom = Color(50, 100, 255) // Blue (bottom)
 
+        val bladeY = JBUIScale.scale(lightsaber.yShift + lightsaber.yBlade)
+        val bladeX = if (lightsaber.id.isOdd()) JBUIScale.scale(lightsaber.xShift) + iconWidth else width - JBUIScale.scale(lightsaber.xShift) - iconWidth - full
+        val bladeSize = JBUIScale.scale(lightsaber.bladeSize)
 
         // Define LinearGradientPaint (Vertical Gradient)
         val fractions = floatArrayOf(0.0f, 0.2f, 0.4f, 0.6f, 0.8f, 1.0f) // Positions: Top, Middle, Bottom
         val colors = arrayOf(lightsaberColor.brighter().brighter(), lightsaberColor, colorMiddle, colorMiddle, lightsaberColor, lightsaberColor.brighter().brighter()) // Corresponding colors
         val gradient = LinearGradientPaint(
-            0f, y, 0f, y + LIGHTSABER_BLADE_HEIGHT.toFloat(), fractions, colors
+            0f, bladeY.toFloat(), 0f, bladeY + bladeSize.toFloat(), fractions, colors
         )
 
         // Define arc radius (only for the right side)
-        val arc = LIGHTSABER_BLADE_HEIGHT
+        val arc = bladeSize
 
 //        // Optional: Add a glowing effect around the saber
 //        graphics2D.color = Color(50, 100, 255, 80) // Transparent blue glow
@@ -194,12 +218,12 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
             Color(lightsaber.color.red, lightsaber.color.green, lightsaber.color.blue, 50)
         )
 
-        graphics2D.fillRoundRect(iconWidth, y.roundToInt() - 3, full.roundToInt(), LIGHTSABER_BLADE_HEIGHT + 6 , arc, arc)
+        graphics2D.fillRoundRect(bladeX.toInt(), bladeY - JBUIScale.scale(3), full.roundToInt(), bladeSize + JBUIScale.scale(6) , arc, arc)
 
         graphics2D.paint = gradient
 
         // Draw the progress bar with a rounded right tip
-        graphics2D.fillRoundRect(iconWidth, y.roundToInt(), full.roundToInt(), LIGHTSABER_BLADE_HEIGHT , arc, arc)
+        graphics2D.fillRoundRect(bladeX.toInt(), bladeY, full.roundToInt(), bladeSize , arc, arc)
 
 //        graphics2D.paint = paint
 //        graphics2D.clip = clip
@@ -209,43 +233,62 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
 //        graphics2D.fillRect(0, 0, amountFull, height) // Force flat left edge
 //
 //        lightsaberIcon.foreground = null
-        lightsaberIcon.paint(graphics2D, 0, 0)
-
-        graphics2D.color = color
-        graphics2D.paint = paint
-        graphics2D.clip = clip
+        val hiltX = if (lightsaber.id.isOdd()) JBUIScale.scale(lightsaber.xShift) else width - JBUIScale.scale(lightsaber.xShift) - iconWidth
+        val hiltY = JBUIScale.scale(lightsaber.yShift)
+        lightsaberIcon.paint(graphics2D, hiltX, hiltY)
     }
 
-    private fun drawProgress(
-        vehicle: StarWarsVehicle,
+    private fun drawDoubleBladedLightsaber(
+        graphics2D: Graphics2D,
+        lightsaber: Lightsaber,
+        index: Int,
         width: Int,
         height: Int,
-        progress: Int,
-        velocity: Float,
-        graphics2D: Graphics2D,
-        rectangle2D: RoundRectangle2D,
-        progressBar: JProgressBar,
+        amountFull: Int
     ) {
-        val paint = graphics2D.paint
-        val clip = graphics2D.clip
-        val movingRight = velocity >= 0
-        graphics2D.paint = getFillPaint(vehicle)
-        graphics2D.clip =
-            if (movingRight) Rectangle(progress, height) else Rectangle(progress, 0, progressBar.width, height)
-        graphics2D.fill(rectangle2D)
-        graphics2D.paint = paint
-        graphics2D.clip = clip
-    }
+        val lightsaberIcon = lightsaberIcons[index]
+        val iconWidth = lightsaberIcon.width
+        var lightsaberBladeWidth = width - iconWidth
+        if (lightsaberBladeWidth < 0) {
+            lightsaberBladeWidth = 0
+        }
+        val ratio = lightsaberBladeWidth.toFloat() / width
+        val full = amountFull * ratio * (if (lightsaber.isShoto) 0.5f else 1f)
 
-    private fun getFillPaint(vehicle: StarWarsVehicle): Paint = vehicle.color
+        // Define colors for the vertical gradient
+        val lightsaberColor = lightsaber.color
 
-    private fun drawBorder(rectangle2D: RoundRectangle2D, graphics2D: Graphics2D, progressBar: JProgressBar) {
-        val color = graphics2D.color
-        val stroke = graphics2D.stroke
-        graphics2D.color = progressBar.foreground
-        graphics2D.stroke = BasicStroke(2f)
-        graphics2D.draw(rectangle2D)
-        graphics2D.color = color
-        graphics2D.stroke = stroke
+        val colorMiddle = JBColor(Color.WHITE, Color.WHITE)
+
+        val bladeY = JBUIScale.scale(lightsaber.yShift + lightsaber.yBlade)
+        val bladeX = if (lightsaber.id.isOdd()) JBUIScale.scale(lightsaber.xShift) + iconWidth else width - JBUIScale.scale(lightsaber.xShift) - iconWidth - full
+        val bladeSize = JBUIScale.scale(lightsaber.bladeSize)
+
+        // Define LinearGradientPaint (Vertical Gradient)
+        val fractions = floatArrayOf(0.0f, 0.2f, 0.4f, 0.6f, 0.8f, 1.0f) // Positions: Top, Middle, Bottom
+        val colors = arrayOf(lightsaberColor.brighter().brighter(), lightsaberColor, colorMiddle, colorMiddle, lightsaberColor, lightsaberColor.brighter().brighter()) // Corresponding colors
+        val gradient = LinearGradientPaint(
+            0f, bladeY.toFloat(), 0f, bladeY + bladeSize.toFloat(), fractions, colors
+        )
+
+        // Define arc radius (only for the right side)
+        val arc = bladeSize
+
+        graphics2D.paint = JBColor(
+            Color(lightsaber.color.red, lightsaber.color.green, lightsaber.color.blue, 50),
+            Color(lightsaber.color.red, lightsaber.color.green, lightsaber.color.blue, 50)
+        )
+
+        graphics2D.fillRoundRect(bladeX.toInt(), bladeY - JBUIScale.scale(3), full.roundToInt(), bladeSize + JBUIScale.scale(6) , arc, arc)
+
+        graphics2D.paint = gradient
+
+        // Draw the progress bar with a rounded right tip
+        graphics2D.fillRoundRect(bladeX.toInt(), bladeY, full.roundToInt(), bladeSize , arc, arc)
+//
+//        lightsaberIcon.foreground = null
+        val hiltX = if (lightsaber.id.isOdd()) JBUIScale.scale(lightsaber.xShift) else width - JBUIScale.scale(lightsaber.xShift) - iconWidth
+        val hiltY = JBUIScale.scale(lightsaber.yShift)
+        lightsaberIcon.paint(graphics2D, hiltX, hiltY)
     }
 }

@@ -10,6 +10,7 @@ import com.christopherosthues.starwarsprogressbar.ui.components.ColoredImageComp
 import com.christopherosthues.starwarsprogressbar.util.StarWarsResourceLoader
 import com.intellij.ui.JBColor
 import com.intellij.ui.scale.JBUIScale
+import com.intellij.util.ui.JBUI
 import java.awt.BasicStroke
 import java.awt.Color
 import java.awt.Graphics2D
@@ -180,7 +181,7 @@ internal class VehicleProgressBarDecorator(
             } else {
                 JBUIScale.scale(-icon.preferredSize.width - vehicle.xShift)
             }
-        val y = vehicle.yShift
+        val y = JBUIScale.scale(vehicle.yShift)
         icon.paint(graphics2D, x, y)
         graphics2D.clip = previousClip
         graphics2D.color = previousColor

@@ -179,8 +179,8 @@ internal class StarWarsProgressBarUI(
             val border = progressBar.insets
             val width = progressBar.width
             var height = progressBar.preferredSize.height
-            if (isOdd(c.height - height)) {
-                height++
+            if ((c.height - height).isOdd()) {
+                height += JBUIScale.scale(1)
             }
             val barRectWidth = width - (border.right + border.left)
             val barRectHeight = height - (border.top + border.bottom)
@@ -231,8 +231,6 @@ internal class StarWarsProgressBarUI(
             progressBar.toolTipText = ""
         }
     }
-
-    private fun isOdd(value: Int): Boolean = value % 2 == 1
 
     private fun getBackgroundColor(component: JComponent): Color {
         val parent = component.parent
