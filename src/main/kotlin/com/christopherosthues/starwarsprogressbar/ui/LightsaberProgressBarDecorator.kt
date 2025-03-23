@@ -116,12 +116,9 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
     internal fun paintProgressBar(
         lightsabers: Lightsabers,
         graphics2D: Graphics2D,
-        c: JComponent,
         width: Int,
         height: Int,
         amountFull: Int,
-        velocity: Float,
-        progressBar: JProgressBar,
     ) {
         lightsabers.lightsabers.indices.forEach {
             drawLightsaber(graphics2D, lightsabers, it, width, height, amountFull)
@@ -144,14 +141,12 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         // Enable anti-aliasing for smoother rendering
         graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON)
 
-        // TODO: double bladed
         // TODO: Jar'Kai
         if (lightsaber.isDoubleBladed) {
-            drawDoubleBladedLightsaber(graphics2D, lightsaber, index, width, height, amountFull)
+            drawDoubleBladedLightsaber(graphics2D, lightsaber, index, width, amountFull)
         } else {
-            drawSingleBladedLightsaber(graphics2D, lightsaber, index, width, height, amountFull)
+            drawSingleBladedLightsaber(graphics2D, lightsaber, index, width, amountFull)
         }
-
 
         graphics2D.color = color
         graphics2D.paint = paint
@@ -163,9 +158,9 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         lightsaber: Lightsaber,
         index: Int,
         width: Int,
-        height: Int,
         amountFull: Int
     ) {
+        // TODO: if hilt bigger then single blade -> draw only blade
         val lightsaberIcon = lightsaberIcons[index]
         val iconWidth = lightsaberIcon.width
         var lightsaberBladeWidth = width - iconWidth - JBUIScale.scale(lightsaber.xShift)
@@ -213,9 +208,10 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         lightsaber: Lightsaber,
         index: Int,
         width: Int,
-        height: Int,
         amountFull: Int
     ) {
+        // TODO: if hilt bigger then one full blade -> draw single bladed
+        // TODO: if hilt bigger then single blade -> draw only blade
         val lightsaberIcon = lightsaberIcons[index]
         val iconWidth = lightsaberIcon.width
         var lightsaberBladeWidth = width - iconWidth
