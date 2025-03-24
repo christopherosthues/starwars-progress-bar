@@ -197,7 +197,7 @@
                             "isShoto": true,
                             "isDoubleBladed": false,
                             "xShift": 0,
-                            "yShift": 0,
+                            "yShift": 10,
                             "bladeSize": 8,
                             "yBlade": 0
                         }
@@ -230,7 +230,7 @@
                             "isShoto": true,
                             "isDoubleBladed": false,
                             "xShift": 0,
-                            "yShift": 0,
+                            "yShift": 10,
                             "bladeSize": 8,
                             "yBlade": 0
                         }
@@ -258,7 +258,7 @@
                             "isShoto": true,
                             "isDoubleBladed": false,
                             "xShift": 0,
-                            "yShift": 0,
+                            "yShift": 10,
                             "bladeSize": 8,
                             "yBlade": 0
                         }
@@ -535,7 +535,7 @@
                             "isShoto": true,
                             "isDoubleBladed": false,
                             "xShift": 0,
-                            "yShift": 0,
+                            "yShift": 10,
                             "bladeSize": 8,
                             "yBlade": 0
                         }
