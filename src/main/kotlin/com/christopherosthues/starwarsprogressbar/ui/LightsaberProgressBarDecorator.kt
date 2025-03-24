@@ -1,23 +1,19 @@
 package com.christopherosthues.starwarsprogressbar.ui
 
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRESS_BAR_COLOR
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
-import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.ui.components.ColoredImageComponent
 import com.christopherosthues.starwarsprogressbar.util.StarWarsResourceLoader
 import com.intellij.ui.JBColor
 import com.intellij.ui.scale.JBUIScale
-import java.awt.BasicStroke
 import java.awt.Color
 import java.awt.Graphics2D
 import java.awt.LinearGradientPaint
 import java.awt.Paint
-import java.awt.Rectangle
 import java.awt.RenderingHints
-import java.awt.geom.RoundRectangle2D
-import javax.swing.JComponent
-import javax.swing.JProgressBar
 import kotlin.math.roundToInt
 
 private const val LIGHTSABER_PROGRESSBAR_HEIGHT = 20
@@ -141,7 +137,6 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         // Enable anti-aliasing for smoother rendering
         graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON)
 
-        // TODO: Jar'Kai
         if (lightsaber.isDoubleBladed) {
             drawDoubleBladedLightsaber(graphics2D, lightsaber, index, width, amountFull)
         } else {
@@ -160,47 +155,115 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         width: Int,
         amountFull: Int
     ) {
-        // TODO: if hilt bigger then single blade -> draw only blade
         val lightsaberIcon = lightsaberIcons[index]
         val iconWidth = lightsaberIcon.width
-        var lightsaberBladeWidth = width - iconWidth - JBUIScale.scale(lightsaber.xShift)
-        if (lightsaberBladeWidth < 0) {
-            lightsaberBladeWidth = 0
-        }
-        val ratio = lightsaberBladeWidth.toFloat() / width
-        val full = amountFull * ratio * (if (lightsaber.isShoto) 0.5f else 1f)
 
+        val drawHilt = shouldDrawSingleBladedLightsaberHilt(width, iconWidth)
+
+        if (drawHilt) {
+            var lightsaberBladeWidth = width - iconWidth - JBUIScale.scale(lightsaber.xShift)
+            if (lightsaberBladeWidth < 0) {
+                lightsaberBladeWidth = 0
+            }
+            val ratio = lightsaberBladeWidth.toFloat() / width
+            val full = amountFull * ratio * (if (lightsaber.isShoto) 0.5f else 1f)
+            drawSingleBladedLightsaberWithHilt(graphics2D, lightsaber, lightsaberIcon, iconWidth, width, full)
+        } else {
+            drawLightsaberWithoutHilt(graphics2D, lightsaber, width, amountFull)
+        }
+    }
+
+    private fun shouldDrawSingleBladedLightsaberHilt(width: Int, iconWidth: Int): Boolean {
+        return (starWarsState()?.showVehicle ?: DEFAULT_SHOW_VEHICLE) && width - iconWidth >= iconWidth
+    }
+
+    private fun drawSingleBladedLightsaberWithHilt(
+        graphics2D: Graphics2D,
+        lightsaber: Lightsaber,
+        lightsaberIcon: ColoredImageComponent,
+        iconWidth: Int,
+        width: Int,
+        full: Float
+    ) {
+        val bladeX = if (lightsaber.id.isOdd()) JBUIScale.scale(lightsaber.xShift) + iconWidth else width - JBUIScale.scale(
+            lightsaber.xShift
+        ) - iconWidth - full.roundToInt()
+        val bladeY = JBUIScale.scale(lightsaber.yShift + lightsaber.yBlade)
+        val bladeHeight = JBUIScale.scale(lightsaber.bladeSize)
+        val bladeWidth = full.roundToInt()
+
+        drawBlade(graphics2D, lightsaber, bladeX, bladeY, bladeWidth, bladeHeight)
+
+        val hiltX =
+            if (lightsaber.id.isOdd()) JBUIScale.scale(lightsaber.xShift) else width - JBUIScale.scale(lightsaber.xShift) - iconWidth
+        val hiltY = JBUIScale.scale(lightsaber.yShift)
+        lightsaberIcon.paint(graphics2D, hiltX, hiltY)
+    }
+
+    private fun drawLightsaberWithoutHilt(graphics2D: Graphics2D, lightsaber: Lightsaber, width: Int, amountFull: Int) {
+        val bladeX = if (lightsaber.id.isOdd()) 0 else width
+        val bladeY = JBUIScale.scale(lightsaber.yShift + lightsaber.yBlade)
+        val bladeHeight = JBUIScale.scale(lightsaber.bladeSize)
+        val bladeWidth = amountFull
+
+        drawBlade(graphics2D, lightsaber, bladeX, bladeY, bladeWidth, bladeHeight)
+    }
+
+    private fun drawBlade(
+        graphics2D: Graphics2D,
+        lightsaber: Lightsaber,
+        bladeX: Int,
+        bladeY: Int,
+        bladeWidth: Int,
+        bladeHeight: Int,
+    ) {
         // Define colors for the vertical gradient
+        val bladePaint = bladePaint(lightsaber, bladeY, bladeHeight)
+
+        val arc = bladeHeight
+
+        graphics2D.paint = bladeGlow(lightsaber)
+
+        graphics2D.fillRoundRect(bladeX, bladeY - JBUIScale.scale(3), bladeWidth, bladeHeight + JBUIScale.scale(6) , arc, arc)
+
+        graphics2D.paint = bladePaint
+
+        graphics2D.fillRoundRect(bladeX, bladeY, bladeWidth, bladeHeight , arc, arc)
+    }
+
+    private fun bladeGlow(lightsaber: Lightsaber): Paint {
         val lightsaberColor = lightsaber.color
+
+        if (starWarsState()?.solidProgressBarColor ?: DEFAULT_SOLID_PROGRESS_BAR_COLOR) {
+            return lightsaberColor
+        }
+
+        return JBColor(
+            Color(lightsaberColor.red, lightsaberColor.green, lightsaberColor.blue, 50),
+            Color(lightsaberColor.red, lightsaberColor.green, lightsaberColor.blue, 50)
+        )
+    }
+
+    private fun bladePaint(lightsaber: Lightsaber, bladeY: Int, bladeHeight: Int): Paint {
+        val lightsaberColor = lightsaber.color
+
+        if (starWarsState()?.solidProgressBarColor ?: DEFAULT_SOLID_PROGRESS_BAR_COLOR) {
+            return lightsaberColor
+        }
 
         val colorMiddle = JBColor(Color.WHITE, Color.WHITE)
 
-        val bladeY = JBUIScale.scale(lightsaber.yShift + lightsaber.yBlade)
-        val bladeX = if (lightsaber.id.isOdd()) JBUIScale.scale(lightsaber.xShift) + iconWidth else width - JBUIScale.scale(lightsaber.xShift) - iconWidth - full
-        val bladeSize = JBUIScale.scale(lightsaber.bladeSize)
-
         val fractions = floatArrayOf(0.0f, 0.2f, 0.4f, 0.6f, 0.8f, 1.0f)
-        val colors = arrayOf(lightsaberColor.brighter().brighter(), lightsaberColor, colorMiddle, colorMiddle, lightsaberColor, lightsaberColor.brighter().brighter())
-        val gradient = LinearGradientPaint(
-            0f, bladeY.toFloat(), 0f, bladeY + bladeSize.toFloat(), fractions, colors
+        val colors = arrayOf(
+            lightsaberColor.brighter().brighter(),
+            lightsaberColor,
+            colorMiddle,
+            colorMiddle,
+            lightsaberColor,
+            lightsaberColor.brighter().brighter()
         )
-
-        val arc = bladeSize
-
-        graphics2D.paint = JBColor(
-            Color(lightsaber.color.red, lightsaber.color.green, lightsaber.color.blue, 50),
-            Color(lightsaber.color.red, lightsaber.color.green, lightsaber.color.blue, 50)
-        )
-
-        graphics2D.fillRoundRect(bladeX.toInt(), bladeY - JBUIScale.scale(3), full.roundToInt(), bladeSize + JBUIScale.scale(6) , arc, arc)
-
-        graphics2D.paint = gradient
-
-        graphics2D.fillRoundRect(bladeX.toInt(), bladeY, full.roundToInt(), bladeSize , arc, arc)
-
-        val hiltX = if (lightsaber.id.isOdd()) JBUIScale.scale(lightsaber.xShift) else width - JBUIScale.scale(lightsaber.xShift) - iconWidth
-        val hiltY = JBUIScale.scale(lightsaber.yShift)
-        lightsaberIcon.paint(graphics2D, hiltX, hiltY)
+        val gradient = LinearGradientPaint(0f, bladeY.toFloat(), 0f, bladeY + bladeHeight.toFloat(), fractions, colors)
+        return gradient
     }
 
     private fun drawDoubleBladedLightsaber(
@@ -210,56 +273,47 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         width: Int,
         amountFull: Int
     ) {
-        // TODO: if hilt bigger then one full blade -> draw single bladed
-        // TODO: if hilt bigger then single blade -> draw only blade
         val lightsaberIcon = lightsaberIcons[index]
         val iconWidth = lightsaberIcon.width
-        var lightsaberBladeWidth = width - iconWidth
-        if (lightsaberBladeWidth < 0) {
-            lightsaberBladeWidth = 0
+
+        val shouldDrawBothBlades = shouldDrawBothBlades(width, iconWidth)
+
+        if (shouldDrawBothBlades) {
+            var lightsaberBladeWidth = width - iconWidth - JBUIScale.scale(lightsaber.xShift) // TODO: compute biggest icon single bladed
+            if (lightsaberBladeWidth < 0) {
+                lightsaberBladeWidth = 0
+            }
+            val ratio = lightsaberBladeWidth.toFloat() / width
+            val fullSingleBlade = amountFull * ratio * (if (lightsaber.isShoto) 0.5f else 1f)
+            val full = fullSingleBlade / 2
+            drawDoubleBladedLightsaberWithHilt(graphics2D, lightsaber, lightsaberIcon, iconWidth, width, full)
+        } else {
+            drawSingleBladedLightsaber(graphics2D, lightsaber, index, width, amountFull)
         }
-        val ratio = lightsaberBladeWidth.toFloat() / width
-        val full = amountFull * ratio * (if (lightsaber.isShoto) 0.5f else 1f) / 2
+    }
 
-        val lightsaberColor = lightsaber.color
+    private fun shouldDrawBothBlades(width: Int, iconWidth: Int): Boolean {
+        return (starWarsState()?.showVehicle ?: DEFAULT_SHOW_VEHICLE) && (width - iconWidth) / 2 >= iconWidth
+    }
 
-        val colorMiddle = JBColor(Color.WHITE, Color.WHITE)
-
+    private fun drawDoubleBladedLightsaberWithHilt(
+        graphics2D: Graphics2D,
+        lightsaber: Lightsaber,
+        lightsaberIcon: ColoredImageComponent,
+        iconWidth: Int,
+        width: Int,
+        full: Float
+    ) {
         val bladeY = JBUIScale.scale(lightsaber.yShift + lightsaber.yBlade)
         val bladeSize = JBUIScale.scale(lightsaber.bladeSize)
-
-        val fractions = floatArrayOf(0.0f, 0.2f, 0.4f, 0.6f, 0.8f, 1.0f)
-        val colors = arrayOf(lightsaberColor.brighter().brighter(), lightsaberColor, colorMiddle, colorMiddle, lightsaberColor, lightsaberColor.brighter().brighter()) // Corresponding colors
-        val gradient = LinearGradientPaint(
-            0f, bladeY.toFloat(), 0f, bladeY + bladeSize.toFloat(), fractions, colors
-        )
-
-        val arc = bladeSize
-
         val hiltX = (width - iconWidth + JBUIScale.scale(lightsaber.xShift)) / 2
         var bladeX = hiltX - full.toInt()
 
-        graphics2D.paint = JBColor(
-            Color(lightsaber.color.red, lightsaber.color.green, lightsaber.color.blue, 50),
-            Color(lightsaber.color.red, lightsaber.color.green, lightsaber.color.blue, 50)
-        )
-        graphics2D.fillRoundRect(bladeX, bladeY - JBUIScale.scale(3), full.roundToInt(), bladeSize + JBUIScale.scale(6) , arc, arc)
-
-        graphics2D.paint = gradient
-
-        graphics2D.fillRoundRect(bladeX, bladeY, full.roundToInt(), bladeSize , arc, arc)
+        drawBlade(graphics2D, lightsaber, bladeX, bladeY, full.roundToInt(), bladeSize)
 
         bladeX = hiltX + iconWidth
 
-        graphics2D.paint = JBColor(
-            Color(lightsaber.color.red, lightsaber.color.green, lightsaber.color.blue, 50),
-            Color(lightsaber.color.red, lightsaber.color.green, lightsaber.color.blue, 50)
-        )
-        graphics2D.fillRoundRect(bladeX, bladeY - JBUIScale.scale(3), full.roundToInt(), bladeSize + JBUIScale.scale(6) , arc, arc)
-
-        graphics2D.paint = gradient
-
-        graphics2D.fillRoundRect(bladeX, bladeY, full.roundToInt(), bladeSize , arc, arc)
+        drawBlade(graphics2D, lightsaber, bladeX, bladeY, full.roundToInt(), bladeSize)
 
         val hiltY = JBUIScale.scale(lightsaber.yShift)
         lightsaberIcon.paint(graphics2D, hiltX, hiltY)
