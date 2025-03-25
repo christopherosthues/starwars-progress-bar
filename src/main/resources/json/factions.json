@@ -14,7 +14,6 @@
                             "bladeColor": "red",
                             "isShoto": false,
                             "isDoubleBladed": false,
-                            "xShift": 0,
                             "yShift": 0,
                             "bladeSize": 8,
                             "yBlade": 0
@@ -24,7 +23,6 @@
                             "bladeColor": "red",
                             "isShoto": false,
                             "isDoubleBladed": false,
-                            "xShift": 0,
                             "yShift": 10,
                             "bladeSize": 8,
                             "yBlade": 0
@@ -42,7 +40,6 @@
                             "bladeColor": "red",
                             "isShoto": false,
                             "isDoubleBladed": false,
-                            "xShift": 0,
                             "yShift": 0,
                             "bladeSize": 8,
                             "yBlade": 0
@@ -60,7 +57,6 @@
                             "bladeColor": "red",
                             "isShoto": false,
                             "isDoubleBladed": true,
-                            "xShift": 0,
                             "yShift": 0,
                             "bladeSize": 8,
                             "yBlade": 0
@@ -78,7 +74,6 @@
                             "bladeColor": "red",
                             "isShoto": false,
                             "isDoubleBladed": false,
-                            "xShift": 0,
                             "yShift": 0,
                             "bladeSize": 8,
                             "yBlade": 0
@@ -96,7 +91,6 @@
                             "bladeColor": "red",
                             "isShoto": false,
                             "isDoubleBladed": false,
-                            "xShift": 0,
                             "yShift": 0,
                             "bladeSize": 8,
                             "yBlade": 0
@@ -114,7 +108,6 @@
                             "bladeColor": "red",
                             "isShoto": false,
                             "isDoubleBladed": false,
-                            "xShift": 0,
                             "yShift": 0,
                             "bladeSize": 8,
                             "yBlade": 0
@@ -132,7 +125,6 @@
                             "bladeColor": "red",
                             "isShoto": false,
                             "isDoubleBladed": false,
-                            "xShift": 0,
                             "yShift": 0,
                             "bladeSize": 8,
                             "yBlade": 0
@@ -150,7 +142,6 @@
                             "bladeColor": "red",
                             "isShoto": false,
                             "isDoubleBladed": false,
-                            "xShift": 0,
                             "yShift": 0,
                             "bladeSize": 8,
                             "yBlade": 0
@@ -168,7 +159,6 @@
                             "bladeColor": "red",
                             "isShoto": false,
                             "isDoubleBladed": false,
-                            "xShift": 0,
                             "yShift": 0,
                             "bladeSize": 8,
                             "yBlade": 0
@@ -186,7 +176,6 @@
                             "bladeColor": "red",
                             "isShoto": false,
                             "isDoubleBladed": false,
-                            "xShift": 0,
                             "yShift": 0,
                             "bladeSize": 8,
                             "yBlade": 0
@@ -196,7 +185,6 @@
                             "bladeColor": "red",
                             "isShoto": true,
                             "isDoubleBladed": false,
-                            "xShift": 0,
                             "yShift": 10,
                             "bladeSize": 8,
                             "yBlade": 0
@@ -219,7 +207,6 @@
                             "bladeColor": "green",
                             "isShoto": false,
                             "isDoubleBladed": false,
-                            "xShift": 0,
                             "yShift": 0,
                             "bladeSize": 8,
                             "yBlade": 0
@@ -229,7 +216,6 @@
                             "bladeColor": "green",
                             "isShoto": true,
                             "isDoubleBladed": false,
-                            "xShift": 0,
                             "yShift": 10,
                             "bladeSize": 8,
                             "yBlade": 0
@@ -247,7 +233,6 @@
                             "bladeColor": "blue",
                             "isShoto": false,
                             "isDoubleBladed": false,
-                            "xShift": 0,
                             "yShift": 0,
                             "bladeSize": 8,
                             "yBlade": 0
@@ -257,7 +242,6 @@
                             "bladeColor": "blue",
                             "isShoto": true,
                             "isDoubleBladed": false,
-                            "xShift": 0,
                             "yShift": 10,
                             "bladeSize": 8,
                             "yBlade": 0
@@ -275,7 +259,6 @@
                             "bladeColor": "blue",
                             "isShoto": false,
                             "isDoubleBladed": false,
-                            "xShift": 0,
                             "yShift": 0,
                             "bladeSize": 8,
                             "yBlade": 0
@@ -293,7 +276,6 @@
                             "bladeColor": "blue",
                             "isShoto": false,
                             "isDoubleBladed": false,
-                            "xShift": 0,
                             "yShift": 0,
                             "bladeSize": 8,
                             "yBlade": 0
@@ -311,7 +293,6 @@
                             "bladeColor": "green",
                             "isShoto": false,
                             "isDoubleBladed": false,
-                            "xShift": 0,
                             "yShift": 0,
                             "bladeSize": 8,
                             "yBlade": 0
@@ -329,7 +310,6 @@
                             "bladeColor": "blue",
                             "isShoto": false,
                             "isDoubleBladed": false,
-                            "xShift": 0,
                             "yShift": 0,
                             "bladeSize": 8,
                             "yBlade": 0
@@ -347,7 +327,6 @@
                             "bladeColor": "green",
                             "isShoto": false,
                             "isDoubleBladed": true,
-                            "xShift": 0,
                             "yShift": 0,
                             "bladeSize": 8,
                             "yBlade": 0
@@ -357,7 +336,6 @@
                             "bladeColor": "blue",
                             "isShoto": false,
                             "isDoubleBladed": true,
-                            "xShift": 0,
                             "yShift": 10,
                             "bladeSize": 8,
                             "yBlade": 0
@@ -375,7 +353,6 @@
                             "bladeColor": "green",
                             "isShoto": false,
                             "isDoubleBladed": false,
-                            "xShift": 0,
                             "yShift": 0,
                             "bladeSize": 8,
                             "yBlade": 0
@@ -393,7 +370,6 @@
                             "bladeColor": "purple",
                             "isShoto": false,
                             "isDoubleBladed": false,
-                            "xShift": 0,
                             "yShift": 0,
                             "bladeSize": 8,
                             "yBlade": 0
@@ -411,7 +387,6 @@
                             "bladeColor": "blue",
                             "isShoto": false,
                             "isDoubleBladed": false,
-                            "xShift": 0,
                             "yShift": 0,
                             "bladeSize": 8,
                             "yBlade": 0
@@ -429,7 +404,6 @@
                             "bladeColor": "blue",
                             "isShoto": false,
                             "isDoubleBladed": false,
-                            "xShift": 0,
                             "yShift": 0,
                             "bladeSize": 8,
                             "yBlade": 0
@@ -447,7 +421,6 @@
                             "bladeColor": "blue",
                             "isShoto": false,
                             "isDoubleBladed": false,
-                            "xShift": 0,
                             "yShift": 0,
                             "bladeSize": 8,
                             "yBlade": 0
@@ -465,7 +438,6 @@
                             "bladeColor": "green",
                             "isShoto": false,
                             "isDoubleBladed": false,
-                            "xShift": 0,
                             "yShift": 0,
                             "bladeSize": 8,
                             "yBlade": 0
@@ -483,7 +455,6 @@
                             "bladeColor": "green",
                             "isShoto": true,
                             "isDoubleBladed": false,
-                            "xShift": 0,
                             "yShift": 0,
                             "bladeSize": 8,
                             "yBlade": 0
@@ -501,7 +472,6 @@
                             "bladeColor": "green",
                             "isShoto": true,
                             "isDoubleBladed": false,
-                            "xShift": 0,
                             "yShift": 0,
                             "bladeSize": 8,
                             "yBlade": 0
@@ -511,7 +481,7 @@
             ]
         },
         {
-            "id": "other",
+            "id": "others",
             "data": [
                 {
                     "type": "Lightsabers",
@@ -524,7 +494,6 @@
                             "bladeColor": "white",
                             "isShoto": false,
                             "isDoubleBladed": false,
-                            "xShift": 0,
                             "yShift": 0,
                             "bladeSize": 8,
                             "yBlade": 0
@@ -534,7 +503,6 @@
                             "bladeColor": "white",
                             "isShoto": true,
                             "isDoubleBladed": false,
-                            "xShift": 0,
                             "yShift": 10,
                             "bladeSize": 8,
                             "yBlade": 0
@@ -552,7 +520,6 @@
                             "bladeColor": "yellow",
                             "isShoto": false,
                             "isDoubleBladed": false,
-                            "xShift": 0,
                             "yShift": 0,
                             "bladeSize": 8,
                             "yBlade": 0
@@ -570,7 +537,6 @@
                             "bladeColor": "yellow",
                             "isShoto": false,
                             "isDoubleBladed": false,
-                            "xShift": 0,
                             "yShift": 0,
                             "bladeSize": 8,
                             "yBlade": 0
@@ -588,7 +554,6 @@
                             "bladeColor": "blue",
                             "isShoto": false,
                             "isDoubleBladed": false,
-                            "xShift": 0,
                             "yShift": 0,
                             "bladeSize": 4,
                             "yBlade": 0
@@ -598,7 +563,6 @@
                             "bladeColor": "green",
                             "isShoto": false,
                             "isDoubleBladed": false,
-                            "xShift": 0,
                             "yShift": 5,
                             "bladeSize": 4,
                             "yBlade": 0
@@ -608,7 +572,6 @@
                             "bladeColor": "green",
                             "isShoto": false,
                             "isDoubleBladed": false,
-                            "xShift": 0,
                             "yShift": 10,
                             "bladeSize": 4,
                             "yBlade": 0
@@ -618,7 +581,6 @@
                             "bladeColor": "blue",
                             "isShoto": false,
                             "isDoubleBladed": false,
-                            "xShift": 0,
                             "yShift": 15,
                             "bladeSize": 4,
                             "yBlade": 0

@@ -10,7 +10,6 @@ internal data class Lightsaber(
     val bladeColor: String,
     val isShoto: Boolean,
     val isDoubleBladed: Boolean,
-    val xShift: Int,
     val yShift: Int,
     val bladeSize: Int,
     val yBlade: Int

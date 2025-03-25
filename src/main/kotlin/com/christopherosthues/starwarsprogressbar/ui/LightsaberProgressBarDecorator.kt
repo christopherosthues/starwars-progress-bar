@@ -14,6 +14,7 @@ import java.awt.Graphics2D
 import java.awt.LinearGradientPaint
 import java.awt.Paint
 import java.awt.RenderingHints
+import kotlin.math.max
 import kotlin.math.roundToInt
 
 private const val LIGHTSABER_PROGRESSBAR_HEIGHT = 20
@@ -116,8 +117,50 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         height: Int,
         amountFull: Int,
     ) {
+        var maxRightIconWidth = 0
+        var maxLeftIconWidth = 0
         lightsabers.lightsabers.indices.forEach {
-            drawLightsaber(graphics2D, lightsabers, it, width, height, amountFull)
+            val lightsaberIcon = lightsaberIcons[it]
+            val iconWidth = lightsaberIcon.width
+            if (it.isEven()) {
+                maxLeftIconWidth = max(maxLeftIconWidth, iconWidth)
+            } else {
+                maxRightIconWidth = max(maxRightIconWidth, iconWidth)
+            }
+        }
+
+        val singleBladeLength = width - maxLeftIconWidth - maxRightIconWidth
+        val shouldDrawSingleLightsaberWithHilt =
+            (starWarsState()?.showVehicle ?: DEFAULT_SHOW_VEHICLE) && width - max(
+                maxLeftIconWidth,
+                maxRightIconWidth
+            ) >= max(maxLeftIconWidth, maxRightIconWidth)
+        val shouldDrawDoubleBladedLightsaberWithHilt =
+            (starWarsState()?.showVehicle ?: DEFAULT_SHOW_VEHICLE) && (width - max(
+                maxLeftIconWidth,
+                maxRightIconWidth
+            )) / 2 >= max(maxLeftIconWidth, maxRightIconWidth)
+        val ratio = singleBladeLength.toFloat() / width
+        val scaledAmountFull = amountFull * ratio
+        val scaledAmountFullDoubleBladed = scaledAmountFull / 2
+        val leftBladeX = maxLeftIconWidth
+        val rightBladeX = width - maxRightIconWidth
+
+        lightsabers.lightsabers.indices.forEach {
+            drawLightsaber(
+                graphics2D,
+                lightsabers,
+                it,
+                width,
+                height,
+                amountFull,
+                shouldDrawSingleLightsaberWithHilt,
+                shouldDrawDoubleBladedLightsaberWithHilt,
+                scaledAmountFull,
+                scaledAmountFullDoubleBladed,
+                leftBladeX,
+                rightBladeX
+            )
         }
     }
 
@@ -127,9 +170,16 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         index: Int,
         width: Int,
         height: Int,
-        amountFull: Int
+        amountFull: Int,
+        shouldDrawSingleLightsaberWithHilt: Boolean,
+        shouldDrawDoubleBladedLightsaberWithHilt: Boolean,
+        amountFullSingleBladed: Float,
+        amountFullDoubleBladed: Float,
+        leftBladeX: Int,
+        rightBladeX: Int
     ) {
         val lightsaber = lightsabers.lightsabers[index]
+        val lightsaberIcon = lightsaberIcons[index]
         val paint = graphics2D.paint
         val clip = graphics2D.clip
         val color = graphics2D.color
@@ -137,10 +187,12 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         // Enable anti-aliasing for smoother rendering
         graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON)
 
-        if (lightsaber.isDoubleBladed) {
-            drawDoubleBladedLightsaber(graphics2D, lightsaber, index, width, amountFull)
+        if (lightsaber.isDoubleBladed && shouldDrawDoubleBladedLightsaberWithHilt) {
+            drawDoubleBladedLightsaberWithHilt(graphics2D, lightsaber, lightsaberIcon, lightsaberIcon.width, width, amountFullDoubleBladed)
+        } else if (shouldDrawSingleLightsaberWithHilt) {
+            drawSingleBladedLightsaberWithHilt(graphics2D, lightsaber, lightsaberIcon, leftBladeX, rightBladeX, amountFullSingleBladed)
         } else {
-            drawSingleBladedLightsaber(graphics2D, lightsaber, index, width, amountFull)
+            drawLightsaberWithoutHilt(graphics2D, lightsaber, width, amountFull)
         }
 
         graphics2D.color = color
@@ -148,54 +200,23 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         graphics2D.clip = clip
     }
 
-    private fun drawSingleBladedLightsaber(
-        graphics2D: Graphics2D,
-        lightsaber: Lightsaber,
-        index: Int,
-        width: Int,
-        amountFull: Int
-    ) {
-        val lightsaberIcon = lightsaberIcons[index]
-        val iconWidth = lightsaberIcon.width
-
-        val drawHilt = shouldDrawSingleBladedLightsaberHilt(width, iconWidth)
-
-        if (drawHilt) {
-            var lightsaberBladeWidth = width - iconWidth - JBUIScale.scale(lightsaber.xShift)
-            if (lightsaberBladeWidth < 0) {
-                lightsaberBladeWidth = 0
-            }
-            val ratio = lightsaberBladeWidth.toFloat() / width
-            val full = amountFull * ratio * (if (lightsaber.isShoto) 0.5f else 1f)
-            drawSingleBladedLightsaberWithHilt(graphics2D, lightsaber, lightsaberIcon, iconWidth, width, full)
-        } else {
-            drawLightsaberWithoutHilt(graphics2D, lightsaber, width, amountFull)
-        }
-    }
-
-    private fun shouldDrawSingleBladedLightsaberHilt(width: Int, iconWidth: Int): Boolean {
-        return (starWarsState()?.showVehicle ?: DEFAULT_SHOW_VEHICLE) && width - iconWidth >= iconWidth
-    }
-
     private fun drawSingleBladedLightsaberWithHilt(
         graphics2D: Graphics2D,
         lightsaber: Lightsaber,
         lightsaberIcon: ColoredImageComponent,
-        iconWidth: Int,
-        width: Int,
+        leftBladeX: Int,
+        rightBladeX: Int,
         full: Float
     ) {
-        val bladeX = if (lightsaber.id.isOdd()) JBUIScale.scale(lightsaber.xShift) + iconWidth else width - JBUIScale.scale(
-            lightsaber.xShift
-        ) - iconWidth - full.roundToInt()
+        val amountFull = if (lightsaber.isShoto) full / 2 else full
+        val bladeX = if (lightsaber.id.isOdd()) leftBladeX else rightBladeX - amountFull.roundToInt()
         val bladeY = JBUIScale.scale(lightsaber.yShift + lightsaber.yBlade)
         val bladeHeight = JBUIScale.scale(lightsaber.bladeSize)
-        val bladeWidth = full.roundToInt()
+        val bladeWidth = amountFull.roundToInt()
 
         drawBlade(graphics2D, lightsaber, bladeX, bladeY, bladeWidth, bladeHeight)
 
-        val hiltX =
-            if (lightsaber.id.isOdd()) JBUIScale.scale(lightsaber.xShift) else width - JBUIScale.scale(lightsaber.xShift) - iconWidth
+        val hiltX = if (lightsaber.id.isOdd()) 0 else rightBladeX
         val hiltY = JBUIScale.scale(lightsaber.yShift)
         lightsaberIcon.paint(graphics2D, hiltX, hiltY)
     }
@@ -266,36 +287,6 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         return gradient
     }
 
-    private fun drawDoubleBladedLightsaber(
-        graphics2D: Graphics2D,
-        lightsaber: Lightsaber,
-        index: Int,
-        width: Int,
-        amountFull: Int
-    ) {
-        val lightsaberIcon = lightsaberIcons[index]
-        val iconWidth = lightsaberIcon.width
-
-        val shouldDrawBothBlades = shouldDrawBothBlades(width, iconWidth)
-
-        if (shouldDrawBothBlades) {
-            var lightsaberBladeWidth = width - iconWidth - JBUIScale.scale(lightsaber.xShift) // TODO: compute biggest icon single bladed
-            if (lightsaberBladeWidth < 0) {
-                lightsaberBladeWidth = 0
-            }
-            val ratio = lightsaberBladeWidth.toFloat() / width
-            val fullSingleBlade = amountFull * ratio * (if (lightsaber.isShoto) 0.5f else 1f)
-            val full = fullSingleBlade / 2
-            drawDoubleBladedLightsaberWithHilt(graphics2D, lightsaber, lightsaberIcon, iconWidth, width, full)
-        } else {
-            drawSingleBladedLightsaber(graphics2D, lightsaber, index, width, amountFull)
-        }
-    }
-
-    private fun shouldDrawBothBlades(width: Int, iconWidth: Int): Boolean {
-        return (starWarsState()?.showVehicle ?: DEFAULT_SHOW_VEHICLE) && (width - iconWidth) / 2 >= iconWidth
-    }
-
     private fun drawDoubleBladedLightsaberWithHilt(
         graphics2D: Graphics2D,
         lightsaber: Lightsaber,
@@ -306,7 +297,7 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
     ) {
         val bladeY = JBUIScale.scale(lightsaber.yShift + lightsaber.yBlade)
         val bladeSize = JBUIScale.scale(lightsaber.bladeSize)
-        val hiltX = (width - iconWidth + JBUIScale.scale(lightsaber.xShift)) / 2
+        val hiltX = (width - iconWidth) / 2
         var bladeX = hiltX - full.toInt()
 
         drawBlade(graphics2D, lightsaber, bladeX, bladeY, full.roundToInt(), bladeSize)

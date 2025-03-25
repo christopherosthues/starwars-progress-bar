@@ -1,14 +1,12 @@
 package com.christopherosthues.starwarsprogressbar.configuration
 
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
-import com.christopherosthues.starwarsprogressbar.configuration.LANGUAGE_EVENT
 import com.christopherosthues.starwarsprogressbar.configuration.components.LightsaberPanel
 import com.christopherosthues.starwarsprogressbar.configuration.components.PreviewPanel
 import com.christopherosthues.starwarsprogressbar.configuration.components.UiOptionsPanel
 import com.christopherosthues.starwarsprogressbar.configuration.components.VehiclesPanel
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
 import com.christopherosthues.starwarsprogressbar.models.StarWarsEntity
-import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.ui.events.StarWarsEntityClickListener
 import com.intellij.ui.components.JBTabbedPane
 import com.intellij.util.ui.FormBuilder
@@ -121,7 +119,6 @@ internal class StarWarsProgressConfigurationComponent {
                 previewPanel.selectEntity(starWarsEntity)
             }
         })
-//        formBuilder.addComponent(vehiclesPanel)
     }
 
     private fun createLightsaberSection(formBuilder: FormBuilder) {
@@ -130,6 +127,5 @@ internal class StarWarsProgressConfigurationComponent {
                 previewPanel.selectEntity(starWarsEntity)
             }
         })
-//        formBuilder.addComponent(lightsabersPanel)
     }
 }

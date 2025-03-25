@@ -60,8 +60,8 @@ internal class StarWarsProgressConfigurable : SearchableConfigurable {
             throw ConfigurationException("The configuration state cannot be null!")
         } else if (component != null) {
             // TODO: add tests for lightsabers
-            starWarsState.vehiclesEnabled = component.starWarsState.vehiclesEnabled
-            starWarsState.lightsabersEnabled = component.starWarsState.lightsabersEnabled
+            starWarsState.vehiclesEnabled = component.starWarsState.vehiclesEnabled.toMutableMap()
+            starWarsState.lightsabersEnabled = component.starWarsState.lightsabersEnabled.toMutableMap()
             starWarsState.showVehicle = component.starWarsState.showVehicle
             starWarsState.showVehicleNames = component.starWarsState.showVehicleNames
             starWarsState.showToolTips = component.starWarsState.showToolTips

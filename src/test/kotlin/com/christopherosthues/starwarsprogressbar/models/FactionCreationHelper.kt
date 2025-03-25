@@ -165,7 +165,7 @@ internal object FactionCreationHelper {
                     "1",
                     3f,
                     isJarKai = false,
-                    listOf(Lightsaber(1, "blue", isShoto = false, isDoubleBladed = false, xShift = 1, yShift = 1))
+                    listOf(Lightsaber(1, "blue", isShoto = false, isDoubleBladed = false, yShift = 1))
                 )
             )
         ),
@@ -176,7 +176,7 @@ internal object FactionCreationHelper {
                     "2",
                     6f,
                     isJarKai = false,
-                    listOf(Lightsaber(1, "green", isShoto = true, isDoubleBladed = false, xShift = 2, yShift = 2))
+                    listOf(Lightsaber(1, "green", isShoto = true, isDoubleBladed = false, yShift = 2))
                 )
             )
         ),
@@ -191,7 +191,7 @@ internal object FactionCreationHelper {
                     "1",
                     3f,
                     isJarKai = false,
-                    listOf(Lightsaber(1, "blue", isShoto = false, isDoubleBladed = false, xShift = 1, yShift = 1))
+                    listOf(Lightsaber(1, "blue", isShoto = false, isDoubleBladed = false, yShift = 1))
                 )
             )
         ),
@@ -202,7 +202,7 @@ internal object FactionCreationHelper {
                     "2",
                     6f,
                     isJarKai = false,
-                    listOf(Lightsaber(1, "green", isShoto = true, isDoubleBladed = false, xShift = 2, yShift = 2))
+                    listOf(Lightsaber(1, "green", isShoto = true, isDoubleBladed = false, yShift = 2))
                 )
             )
         ),
@@ -213,7 +213,7 @@ internal object FactionCreationHelper {
                     "3",
                     9f,
                     isJarKai = false,
-                    listOf(Lightsaber(1, "red", isShoto = false, isDoubleBladed = true, xShift = 3, yShift = 3))
+                    listOf(Lightsaber(1, "red", isShoto = false, isDoubleBladed = true, yShift = 3))
                 )
             )
         ),
@@ -228,13 +228,13 @@ internal object FactionCreationHelper {
                     "1",
                     3f,
                     isJarKai = false,
-                    listOf(Lightsaber(1, "blue", isShoto = false, isDoubleBladed = false, xShift = 1, yShift = 1))
+                    listOf(Lightsaber(1, "blue", isShoto = false, isDoubleBladed = false, yShift = 1))
                 ),
                 Lightsabers(
                     "2",
                     6f,
                     isJarKai = false,
-                    listOf(Lightsaber(1, "brown", isShoto = true, isDoubleBladed = false, xShift = 2, yShift = 2))
+                    listOf(Lightsaber(1, "brown", isShoto = true, isDoubleBladed = false, yShift = 2))
                 ),
             ),
         ),
@@ -245,13 +245,13 @@ internal object FactionCreationHelper {
                     "3",
                     9f,
                     isJarKai = false,
-                    listOf(Lightsaber(1, "green", isShoto = false, isDoubleBladed = true, xShift = 3, yShift = 3))
+                    listOf(Lightsaber(1, "green", isShoto = false, isDoubleBladed = true, yShift = 3))
                 ),
                 Lightsabers(
                     "4",
                     12f,
                     isJarKai = false,
-                    listOf(Lightsaber(1, "yellow", isShoto = false, isDoubleBladed = false, xShift = 4, yShift = 4))
+                    listOf(Lightsaber(1, "yellow", isShoto = false, isDoubleBladed = false, yShift = 4))
                 ),
             ),
         ),
@@ -262,13 +262,13 @@ internal object FactionCreationHelper {
                     "5",
                     15f,
                     isJarKai = false,
-                    listOf(Lightsaber(1, "red", isShoto = true, isDoubleBladed = false, xShift = 5, yShift = 5))
+                    listOf(Lightsaber(1, "red", isShoto = true, isDoubleBladed = false, yShift = 5))
                 ),
                 Lightsabers(
                     "6",
                     18f,
                     isJarKai = false,
-                    listOf(Lightsaber(1, "purple", isShoto = false, isDoubleBladed = true, xShift = 6, yShift = 6))
+                    listOf(Lightsaber(1, "purple", isShoto = false, isDoubleBladed = true, yShift = 6))
                 ),
             ),
         ),
@@ -284,13 +284,13 @@ internal object FactionCreationHelper {
                         "3",
                         9f,
                         isJarKai = false,
-                        listOf(Lightsaber(1, "green", isShoto = false, isDoubleBladed = true, xShift = 2, yShift = 2))
+                        listOf(Lightsaber(1, "green", isShoto = false, isDoubleBladed = true, yShift = 2))
                     ),
                     Lightsabers(
                         "4",
                         12f,
                         isJarKai = false,
-                        listOf(Lightsaber(1, "yellow", isShoto = false, isDoubleBladed = false, xShift = 4, yShift = 4))
+                        listOf(Lightsaber(1, "yellow", isShoto = false, isDoubleBladed = false, yShift = 4))
                     ),
                 ),
             ),
@@ -301,13 +301,13 @@ internal object FactionCreationHelper {
                         "1",
                         3f,
                         isJarKai = false,
-                        listOf(Lightsaber(1, "blue", isShoto = false, isDoubleBladed = false, xShift = 1, yShift = 1))
+                        listOf(Lightsaber(1, "blue", isShoto = false, isDoubleBladed = false, yShift = 1))
                     ),
                     Lightsabers(
                         "2",
                         6f,
                         isJarKai = false,
-                        listOf(Lightsaber(1, "brown", isShoto = true, isDoubleBladed = false, xShift = 2, yShift = 2))
+                        listOf(Lightsaber(1, "brown", isShoto = true, isDoubleBladed = false, yShift = 2))
                     ),
                 ),
             ),
@@ -318,13 +318,13 @@ internal object FactionCreationHelper {
                         "5",
                         15f,
                         isJarKai = false,
-                        listOf(Lightsaber(1, "red", isShoto = true, isDoubleBladed = false, xShift = 5, yShift = 5))
+                        listOf(Lightsaber(1, "red", isShoto = true, isDoubleBladed = false, yShift = 5))
                     ),
                     Lightsabers(
                         "6",
                         18f,
                         isJarKai = false,
-                        listOf(Lightsaber(1, "purple", isShoto = false, isDoubleBladed = true, xShift = 6, yShift = 6))
+                        listOf(Lightsaber(1, "purple", isShoto = false, isDoubleBladed = true, yShift = 6))
                     ),
                 ),
             ),
@@ -335,13 +335,13 @@ internal object FactionCreationHelper {
                         "7",
                         9f,
                         isJarKai = false,
-                        listOf(Lightsaber(1, "green", isShoto = false, isDoubleBladed = true, xShift = 7, yShift = 7))
+                        listOf(Lightsaber(1, "green", isShoto = false, isDoubleBladed = true, yShift = 7))
                     ),
                     Lightsabers(
                         "8",
                         12f,
                         isJarKai = false,
-                        listOf(Lightsaber(1, "yellow", isShoto = false, isDoubleBladed = false, xShift = 8, yShift = 8))
+                        listOf(Lightsaber(1, "yellow", isShoto = false, isDoubleBladed = false, yShift = 8))
                     ),
                 ),
             ),
@@ -357,13 +357,13 @@ internal object FactionCreationHelper {
                         "3",
                         9f,
                         isJarKai = false,
-                        listOf(Lightsaber(1, "green", isShoto = false, isDoubleBladed = true, xShift = 3, yShift = 3))
+                        listOf(Lightsaber(1, "green", isShoto = false, isDoubleBladed = true, yShift = 3))
                     ),
                     Lightsabers(
                         "4",
                         12f,
                         isJarKai = false,
-                        listOf(Lightsaber(1, "yellow", isShoto = false, isDoubleBladed = false, xShift = 4, yShift = 4))
+                        listOf(Lightsaber(1, "yellow", isShoto = false, isDoubleBladed = false, yShift = 4))
                     ),
                 ),
             ),
@@ -374,13 +374,13 @@ internal object FactionCreationHelper {
                         "1",
                         3f,
                         isJarKai = false,
-                        listOf(Lightsaber(1, "blue", isShoto = false, isDoubleBladed = false, xShift = 1, yShift = 1))
+                        listOf(Lightsaber(1, "blue", isShoto = false, isDoubleBladed = false, yShift = 1))
                     ),
                     Lightsabers(
                         "2",
                         6f,
                         isJarKai = false,
-                        listOf(Lightsaber(1, "brown", isShoto = true, isDoubleBladed = false, xShift = 2, yShift = 2))
+                        listOf(Lightsaber(1, "brown", isShoto = true, isDoubleBladed = false, yShift = 2))
                     ),
                 ),
             ),
@@ -391,13 +391,13 @@ internal object FactionCreationHelper {
                         "5",
                         15f,
                         isJarKai = false,
-                        listOf(Lightsaber(1, "red", isShoto = true, isDoubleBladed = false, xShift = 5, yShift = 5))
+                        listOf(Lightsaber(1, "red", isShoto = true, isDoubleBladed = false, yShift = 5))
                     ),
                     Lightsabers(
                         "6",
                         18f,
                         isJarKai = false,
-                        listOf(Lightsaber(1, "purple", isShoto = false, isDoubleBladed = true, xShift = 6, yShift = 6))
+                        listOf(Lightsaber(1, "purple", isShoto = false, isDoubleBladed = true, yShift = 6))
                     ),
                 ),
             ),
@@ -408,13 +408,13 @@ internal object FactionCreationHelper {
                         "7",
                         9f,
                         isJarKai = false,
-                        listOf(Lightsaber(1, "green", isShoto = false, isDoubleBladed = true, xShift = 7, yShift = 7))
+                        listOf(Lightsaber(1, "green", isShoto = false, isDoubleBladed = true, yShift = 7))
                     ),
                     Lightsabers(
                         "8",
                         12f,
                         isJarKai = false,
-                        listOf(Lightsaber(1, "yellow", isShoto = false, isDoubleBladed = false, xShift = 8, yShift = 8))
+                        listOf(Lightsaber(1, "yellow", isShoto = false, isDoubleBladed = false, yShift = 8))
                     ),
                 ),
             ),
@@ -430,13 +430,13 @@ internal object FactionCreationHelper {
                     "1",
                     3f,
                     isJarKai = false,
-                    listOf(Lightsaber(1, "blue", isShoto = false, isDoubleBladed = false, xShift = 1, yShift = 1))
+                    listOf(Lightsaber(1, "blue", isShoto = false, isDoubleBladed = false, yShift = 1))
                 ),
                 Lightsabers(
                     "2",
                     6f,
                     isJarKai = false,
-                    listOf(Lightsaber(1, "brown", isShoto = true, isDoubleBladed = false, xShift = 2, yShift = 2))
+                    listOf(Lightsaber(1, "brown", isShoto = true, isDoubleBladed = false, yShift = 2))
                 ),
             ),
         ),
@@ -447,13 +447,13 @@ internal object FactionCreationHelper {
                     "3",
                     9f,
                     isJarKai = false,
-                    listOf(Lightsaber(1, "green", isShoto = false, isDoubleBladed = true, xShift = 3, yShift = 3))
+                    listOf(Lightsaber(1, "green", isShoto = false, isDoubleBladed = true, yShift = 3))
                 ),
                 Lightsabers(
                     "4",
                     12f,
                     isJarKai = false,
-                    listOf(Lightsaber(1, "yellow", isShoto = false, isDoubleBladed = false, xShift = 4, yShift = 4))
+                    listOf(Lightsaber(1, "yellow", isShoto = false, isDoubleBladed = false, yShift = 4))
                 ),
             ),
         ),
@@ -464,13 +464,13 @@ internal object FactionCreationHelper {
                     "5",
                     15f,
                     isJarKai = false,
-                    listOf(Lightsaber(1, "red", isShoto = true, isDoubleBladed = false, xShift = 5, yShift = 5))
+                    listOf(Lightsaber(1, "red", isShoto = true, isDoubleBladed = false, yShift = 5))
                 ),
                 Lightsabers(
                     "6",
                     18f,
                     isJarKai = false,
-                    listOf(Lightsaber(1, "purple", isShoto = false, isDoubleBladed = true, xShift = 6, yShift = 6))
+                    listOf(Lightsaber(1, "purple", isShoto = false, isDoubleBladed = true, yShift = 6))
                 ),
             ),
         ),
