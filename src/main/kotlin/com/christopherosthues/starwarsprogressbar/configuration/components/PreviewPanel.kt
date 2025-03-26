@@ -10,14 +10,12 @@ import com.christopherosthues.starwarsprogressbar.selectors.StarWarsSelector
 import com.christopherosthues.starwarsprogressbar.ui.StarWarsProgressBarUI
 import com.intellij.icons.AllIcons
 import com.intellij.openapi.ui.LabeledComponent
+import com.intellij.ui.components.JBSlider
 import java.awt.BorderLayout
 import java.awt.GridBagConstraints
 import java.awt.GridBagLayout
 import java.awt.GridLayout
-import javax.swing.JButton
-import javax.swing.JComponent
-import javax.swing.JPanel
-import javax.swing.JProgressBar
+import javax.swing.*
 
 private const val HORIZONTAL_GAP = 10
 
@@ -31,7 +29,7 @@ internal class PreviewPanel(
     private var indeterminateProgressBar: JProgressBar
 
     init {
-        val progressBarPanel = JPanel(GridLayout(1, 2, HORIZONTAL_GAP, 0))
+        val progressBarPanel = JPanel(GridLayout(2, 2, HORIZONTAL_GAP, 0))
         layout = GridBagLayout()
 
         val previewButton = JButton(AllIcons.Actions.Refresh)
@@ -43,9 +41,9 @@ internal class PreviewPanel(
         gridBagConstraints.anchor = GridBagConstraints.EAST
         add(previewButton, gridBagConstraints)
 
-        determinateProgressBar = JProgressBar(0, 2)
+        determinateProgressBar = JProgressBar(0, 100)
         determinateProgressBar.isIndeterminate = false
-        determinateProgressBar.value = 1
+        determinateProgressBar.value = 50
 
         indeterminateProgressBar = JProgressBar()
         indeterminateProgressBar.isIndeterminate = true
@@ -64,6 +62,13 @@ internal class PreviewPanel(
             BorderLayout.NORTH,
         )
         progressBarPanel.add(indeterminateProgressBarContainer)
+
+        val determinateSlider = JBSlider(0, 100, 50)
+        determinateSlider.addChangeListener {
+            determinateProgressBar.value = determinateSlider.value
+        }
+
+        progressBarPanel.add(determinateSlider)
 
         gridBagConstraints = GridBagConstraints()
         gridBagConstraints.gridy = 1
