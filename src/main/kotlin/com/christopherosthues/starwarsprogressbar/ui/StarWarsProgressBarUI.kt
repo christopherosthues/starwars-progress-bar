@@ -113,7 +113,7 @@ internal class StarWarsProgressBarUI(
         paintProgressBar(g, c, true)
     }
 
-    internal fun updatePositionAndVelocity(progressBar: JProgressBar) {
+    private fun updatePositionAndVelocity(progressBar: JProgressBar) {
         val actualVelocity = velocity
         val actualPosition: Int = position
         if (velocity < 0) {

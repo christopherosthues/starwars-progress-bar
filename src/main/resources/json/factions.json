@@ -16,6 +16,7 @@
                             "isDoubleBladed": false,
                             "yShift": 0,
                             "bladeSize": 8,
+                            "xBlade": 0,
                             "yBlade": 0
                         },
                         {
@@ -25,6 +26,7 @@
                             "isDoubleBladed": false,
                             "yShift": 10,
                             "bladeSize": 8,
+                            "xBlade": 0,
                             "yBlade": 0
                         }
                     ]
@@ -42,6 +44,7 @@
                             "isDoubleBladed": false,
                             "yShift": 0,
                             "bladeSize": 8,
+                            "xBlade": 0,
                             "yBlade": 0
                         }
                     ]
@@ -59,6 +62,7 @@
                             "isDoubleBladed": true,
                             "yShift": 0,
                             "bladeSize": 8,
+                            "xBlade": 0,
                             "yBlade": 0
                         }
                     ]
@@ -76,6 +80,7 @@
                             "isDoubleBladed": false,
                             "yShift": 0,
                             "bladeSize": 8,
+                            "xBlade": 0,
                             "yBlade": 0
                         }
                     ]
@@ -93,6 +98,7 @@
                             "isDoubleBladed": false,
                             "yShift": 0,
                             "bladeSize": 8,
+                            "xBlade": 0,
                             "yBlade": 0
                         }
                     ]
@@ -110,6 +116,7 @@
                             "isDoubleBladed": false,
                             "yShift": 0,
                             "bladeSize": 8,
+                            "xBlade": 0,
                             "yBlade": 0
                         }
                     ]
@@ -127,6 +134,7 @@
                             "isDoubleBladed": false,
                             "yShift": 0,
                             "bladeSize": 8,
+                            "xBlade": 0,
                             "yBlade": 0
                         }
                     ]
@@ -144,6 +152,7 @@
                             "isDoubleBladed": false,
                             "yShift": 0,
                             "bladeSize": 8,
+                            "xBlade": 0,
                             "yBlade": 0
                         }
                     ]
@@ -161,6 +170,7 @@
                             "isDoubleBladed": false,
                             "yShift": 0,
                             "bladeSize": 8,
+                            "xBlade": 0,
                             "yBlade": 0
                         }
                     ]
@@ -178,6 +188,7 @@
                             "isDoubleBladed": false,
                             "yShift": 0,
                             "bladeSize": 8,
+                            "xBlade": 0,
                             "yBlade": 0
                         },
                         {
@@ -187,6 +198,7 @@
                             "isDoubleBladed": false,
                             "yShift": 10,
                             "bladeSize": 8,
+                            "xBlade": 0,
                             "yBlade": 0
                         }
                     ]
@@ -209,15 +221,17 @@
                             "isDoubleBladed": false,
                             "yShift": 0,
                             "bladeSize": 8,
-                            "yBlade": 0
+                            "xBlade": -3,
+                            "yBlade": 1
                         },
                         {
                             "id": 2,
                             "bladeColor": "green",
                             "isShoto": true,
                             "isDoubleBladed": false,
-                            "yShift": 10,
-                            "bladeSize": 8,
+                            "yShift": 11,
+                            "bladeSize": 7,
+                            "xBlade": 3,
                             "yBlade": 0
                         }
                     ]
@@ -235,15 +249,17 @@
                             "isDoubleBladed": false,
                             "yShift": 0,
                             "bladeSize": 8,
-                            "yBlade": 0
+                            "xBlade": -3,
+                            "yBlade": 1
                         },
                         {
                             "id": 2,
                             "bladeColor": "blue",
                             "isShoto": true,
                             "isDoubleBladed": false,
-                            "yShift": 10,
-                            "bladeSize": 8,
+                            "yShift": 11,
+                            "bladeSize": 7,
+                            "xBlade": 3,
                             "yBlade": 0
                         }
                     ]
@@ -261,6 +277,7 @@
                             "isDoubleBladed": false,
                             "yShift": 0,
                             "bladeSize": 8,
+                            "xBlade": 0,
                             "yBlade": 0
                         }
                     ]
@@ -278,6 +295,7 @@
                             "isDoubleBladed": false,
                             "yShift": 0,
                             "bladeSize": 8,
+                            "xBlade": 0,
                             "yBlade": 0
                         }
                     ]
@@ -295,6 +313,7 @@
                             "isDoubleBladed": false,
                             "yShift": 0,
                             "bladeSize": 8,
+                            "xBlade": 0,
                             "yBlade": 0
                         }
                     ]
@@ -312,6 +331,7 @@
                             "isDoubleBladed": false,
                             "yShift": 0,
                             "bladeSize": 8,
+                            "xBlade": 0,
                             "yBlade": 0
                         }
                     ]
@@ -329,6 +349,7 @@
                             "isDoubleBladed": true,
                             "yShift": 0,
                             "bladeSize": 8,
+                            "xBlade": 0,
                             "yBlade": 0
                         },
                         {
@@ -338,6 +359,7 @@
                             "isDoubleBladed": true,
                             "yShift": 10,
                             "bladeSize": 8,
+                            "xBlade": 0,
                             "yBlade": 0
                         }
                     ]
@@ -355,6 +377,7 @@
                             "isDoubleBladed": false,
                             "yShift": 0,
                             "bladeSize": 8,
+                            "xBlade": 0,
                             "yBlade": 0
                         }
                     ]
@@ -372,6 +395,7 @@
                             "isDoubleBladed": false,
                             "yShift": 0,
                             "bladeSize": 8,
+                            "xBlade": 0,
                             "yBlade": 0
                         }
                     ]
@@ -389,6 +413,7 @@
                             "isDoubleBladed": false,
                             "yShift": 0,
                             "bladeSize": 8,
+                            "xBlade": 0,
                             "yBlade": 0
                         }
                     ]
@@ -406,6 +431,7 @@
                             "isDoubleBladed": false,
                             "yShift": 0,
                             "bladeSize": 8,
+                            "xBlade": 0,
                             "yBlade": 0
                         }
                     ]
@@ -423,6 +449,7 @@
                             "isDoubleBladed": false,
                             "yShift": 0,
                             "bladeSize": 8,
+                            "xBlade": 0,
                             "yBlade": 0
                         }
                     ]
@@ -440,6 +467,7 @@
                             "isDoubleBladed": false,
                             "yShift": 0,
                             "bladeSize": 8,
+                            "xBlade": 0,
                             "yBlade": 0
                         }
                     ]
@@ -457,6 +485,7 @@
                             "isDoubleBladed": false,
                             "yShift": 0,
                             "bladeSize": 8,
+                            "xBlade": 0,
                             "yBlade": 0
                         }
                     ]
@@ -474,6 +503,7 @@
                             "isDoubleBladed": false,
                             "yShift": 0,
                             "bladeSize": 8,
+                            "xBlade": 0,
                             "yBlade": 0
                         }
                     ]
@@ -496,6 +526,7 @@
                             "isDoubleBladed": false,
                             "yShift": 0,
                             "bladeSize": 8,
+                            "xBlade": 0,
                             "yBlade": 0
                         },
                         {
@@ -505,6 +536,7 @@
                             "isDoubleBladed": false,
                             "yShift": 10,
                             "bladeSize": 8,
+                            "xBlade": 0,
                             "yBlade": 0
                         }
                     ]
@@ -522,6 +554,7 @@
                             "isDoubleBladed": false,
                             "yShift": 0,
                             "bladeSize": 8,
+                            "xBlade": 0,
                             "yBlade": 0
                         }
                     ]
@@ -539,6 +572,7 @@
                             "isDoubleBladed": false,
                             "yShift": 0,
                             "bladeSize": 8,
+                            "xBlade": 0,
                             "yBlade": 0
                         }
                     ]
@@ -556,6 +590,7 @@
                             "isDoubleBladed": false,
                             "yShift": 0,
                             "bladeSize": 4,
+                            "xBlade": 0,
                             "yBlade": 0
                         },
                         {
@@ -565,6 +600,7 @@
                             "isDoubleBladed": false,
                             "yShift": 5,
                             "bladeSize": 4,
+                            "xBlade": 0,
                             "yBlade": 0
                         },
                         {
@@ -574,6 +610,7 @@
                             "isDoubleBladed": false,
                             "yShift": 10,
                             "bladeSize": 4,
+                            "xBlade": 0,
                             "yBlade": 0
                         },
                         {
@@ -583,6 +620,7 @@
                             "isDoubleBladed": false,
                             "yShift": 15,
                             "bladeSize": 4,
+                            "xBlade": 0,
                             "yBlade": 0
                         }
                     ]

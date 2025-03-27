@@ -12,6 +12,7 @@ internal data class Lightsaber(
     val isDoubleBladed: Boolean,
     val yShift: Int,
     val bladeSize: Int,
+    val xBlade: Int,
     val yBlade: Int
 ) {
     val color: JBColor

@@ -131,7 +131,8 @@ internal class LightsaberFactionPanel(
             updateSelectionButtons()
         }
 
-        val iconComponent = ScalableIconComponent(StarWarsResourceLoader.getIcon(lightsabers.fileName))
+        val fileName = if (lightsabers.isJarKai) lightsabers.fileName + "_1" else lightsabers.fileName
+        val iconComponent = ScalableIconComponent(StarWarsResourceLoader.getIcon(fileName))
         iconComponent.addMouseListener(object : MouseAdapter() {
             override fun mousePressed(e: MouseEvent?) {
                 lightsaberClickListener?.starWarsEntityClicked(lightsabers)
