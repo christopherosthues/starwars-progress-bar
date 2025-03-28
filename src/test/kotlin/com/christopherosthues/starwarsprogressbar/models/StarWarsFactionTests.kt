@@ -1,6 +1,5 @@
 package com.christopherosthues.starwarsprogressbar.models
 
-import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
 import com.intellij.idea.TestFor
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertSame
@@ -22,22 +21,36 @@ class StarWarsFactionTests {
 
         // Assert
         assertAll(
-            { assertEquals(vehicles, sut.vehicles) },
-            { assertSame(vehicles, sut.vehicles) },
+            { assertEquals(vehicles, sut.data) },
+            { assertSame(vehicles, sut.data) },
         )
     }
 
     @Test
-    fun `localizationKey should return correct key`() {
+    fun `constructor should set lightsabers to provided list`() {
         // Arrange
-        val id = "123456789"
-        val sut = StarWarsFaction(id, listOf())
+        val lightsabers = listOf(
+            Lightsabers(
+                "1",
+                3f,
+                isJarKai = false,
+                listOf(Lightsaber(1, "a", isShoto = false, isDoubleBladed = true, yShift = 1))
+            ),
+            Lightsabers(
+                "2",
+                4f,
+                isJarKai = false,
+                listOf(Lightsaber(1, "b", isShoto = true, isDoubleBladed = false, yShift = 2))
+            ),
+        )
 
         // Act
-        val result = sut.localizationKey
+        val sut = StarWarsFaction("1", lightsabers)
 
         // Assert
-        val expectedLocalizationKey = "${BundleConstants.FACTION}$id"
-        assertEquals(expectedLocalizationKey, result)
+        assertAll(
+            { assertEquals(lightsabers, sut.data) },
+            { assertSame(lightsabers, sut.data) },
+        )
     }
 }

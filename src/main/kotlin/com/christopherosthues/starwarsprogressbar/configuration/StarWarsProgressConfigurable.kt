@@ -27,7 +27,9 @@ internal class StarWarsProgressConfigurable : SearchableConfigurable {
         val comp = component
         return comp != null &&
             (
+                // TODO: add test for lightsabers
                 starWarsState.vehiclesEnabled != comp.starWarsState.vehiclesEnabled ||
+                    starWarsState.lightsabersEnabled != comp.starWarsState.lightsabersEnabled ||
                     starWarsState.showVehicle != comp.starWarsState.showVehicle ||
                     starWarsState.showVehicleNames != comp.starWarsState.showVehicleNames ||
                     starWarsState.showToolTips != comp.starWarsState.showToolTips ||
@@ -57,7 +59,9 @@ internal class StarWarsProgressConfigurable : SearchableConfigurable {
         if (starWarsState == null) {
             throw ConfigurationException("The configuration state cannot be null!")
         } else if (component != null) {
-            starWarsState.vehiclesEnabled = component.starWarsState.vehiclesEnabled
+            // TODO: add tests for lightsabers
+            starWarsState.vehiclesEnabled = component.starWarsState.vehiclesEnabled.toMutableMap()
+            starWarsState.lightsabersEnabled = component.starWarsState.lightsabersEnabled.toMutableMap()
             starWarsState.showVehicle = component.starWarsState.showVehicle
             starWarsState.showVehicleNames = component.starWarsState.showVehicleNames
             starWarsState.showToolTips = component.starWarsState.showToolTips

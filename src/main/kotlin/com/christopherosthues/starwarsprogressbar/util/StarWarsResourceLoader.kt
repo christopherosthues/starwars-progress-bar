@@ -22,6 +22,8 @@ package com.christopherosthues.starwarsprogressbar.util
 
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactions
+import com.christopherosthues.starwarsprogressbar.models.Lightsabers
+import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.google.common.cache.Cache
 import com.google.common.cache.CacheBuilder
 import com.intellij.openapi.util.IconLoader
@@ -37,7 +39,7 @@ internal object StarWarsResourceLoader {
     private const val MAXIMUM_CACHE_SIZE = 100L
     private const val SCALED_ICON_SIZE = 16
     private const val ICON_SIZE = 32
-    private const val EMPTY_FACTIONS_JSON_DATA = "{\"factions\": []}"
+    private const val EMPTY_FACTIONS_JSON_DATA = "{\"lightsabers\": [],\"vehicles\": []}"
 
     private val cache: Cache<String, Icon> = CacheBuilder.newBuilder().maximumSize(MAXIMUM_CACHE_SIZE).build()
 
@@ -62,14 +64,14 @@ internal object StarWarsResourceLoader {
     }
 
     @JvmStatic
-    fun getFactionLogo(factionName: String, largeIcon: Boolean): BufferedImage {
+    fun getFactionLogo(type: String, factionName: String, largeIcon: Boolean): BufferedImage {
         val iconSize = if (largeIcon) "@2x" else ""
-        val icon = getIconInternal("$factionName/logo$iconSize")
+        val icon = getIconInternal("$type/$factionName/logo$iconSize")
 
-        return getVehicleImage(icon)
+        return getImage(icon)
     }
 
-    private fun getVehicleImage(icon: Icon): BufferedImage {
+    private fun getImage(icon: Icon): BufferedImage {
         val iconWidth = icon.iconWidth
         val iconHeight = icon.iconHeight
 
@@ -82,10 +84,10 @@ internal object StarWarsResourceLoader {
     }
 
     @JvmStatic
-    fun getVehicleImage(name: String): BufferedImage = getVehicleImage(getIconInternal(name))
+    fun getImage(name: String): BufferedImage = getImage(getIconInternal(name))
 
     @JvmStatic
-    fun getReversedVehicleImage(name: String): BufferedImage = getVehicleImage(getIconInternal(name + "_r"))
+    fun getReversedImage(name: String): BufferedImage = getImage(getIconInternal(name + "_r"))
 
     @JvmStatic
     fun getIcon(name: String): Icon = getIconInternal(name)
@@ -118,14 +120,23 @@ internal object StarWarsResourceLoader {
             .orElseGet { EMPTY_FACTIONS_JSON_DATA }
         val factions = parseFactionsFromJson(json)
 
-        setFactionForVehicles(factions.factions)
+        setFactionForVehicles(factions.vehicles)
+        setFactionForLightsabers(factions.lightsabers)
 
         return factions
     }
 
-    private fun setFactionForVehicles(factions: List<StarWarsFaction>) {
+    private fun setFactionForVehicles(factions: List<StarWarsFaction<StarWarsVehicle>>) {
         factions.forEach { faction ->
-            faction.vehicles.forEach {
+            faction.data.forEach {
+                it.factionId = faction.id
+            }
+        }
+    }
+
+    private fun setFactionForLightsabers(factions: List<StarWarsFaction<Lightsabers>>) {
+        factions.forEach { faction ->
+            faction.data.forEach {
                 it.factionId = faction.id
             }
         }

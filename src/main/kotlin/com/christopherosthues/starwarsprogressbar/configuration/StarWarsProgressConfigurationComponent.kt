@@ -1,10 +1,14 @@
 package com.christopherosthues.starwarsprogressbar.configuration
 
+import com.christopherosthues.starwarsprogressbar.StarWarsBundle
+import com.christopherosthues.starwarsprogressbar.configuration.components.LightsaberPanel
 import com.christopherosthues.starwarsprogressbar.configuration.components.PreviewPanel
 import com.christopherosthues.starwarsprogressbar.configuration.components.UiOptionsPanel
 import com.christopherosthues.starwarsprogressbar.configuration.components.VehiclesPanel
-import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
-import com.christopherosthues.starwarsprogressbar.ui.events.VehicleClickListener
+import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
+import com.christopherosthues.starwarsprogressbar.models.StarWarsEntity
+import com.christopherosthues.starwarsprogressbar.ui.events.StarWarsEntityClickListener
+import com.intellij.ui.components.JBTabbedPane
 import com.intellij.util.ui.FormBuilder
 import java.awt.BorderLayout
 import javax.swing.JPanel
@@ -20,6 +24,10 @@ internal class StarWarsProgressConfigurationComponent {
 
     private val vehiclesPanel = VehiclesPanel(starWarsState)
 
+    private val lightsabersPanel = LightsaberPanel(starWarsState)
+
+    private val tabbedPane = JBTabbedPane()
+
     val panel: JPanel
         get() = mainPanel
 
@@ -33,6 +41,7 @@ internal class StarWarsProgressConfigurationComponent {
             uiOptionsPanel.updateUI(starWarsState)
 
             vehiclesPanel.updateUI(starWarsState)
+            lightsabersPanel.updateUI(starWarsState)
         }
     }
 
@@ -44,12 +53,19 @@ internal class StarWarsProgressConfigurationComponent {
 
         createUiOptionsSection(formBuilder)
 
+        tabbedPane.addTab(StarWarsBundle.message(BundleConstants.VEHICLES_TITLE), vehiclesPanel)
+        tabbedPane.addTab(StarWarsBundle.message(BundleConstants.LIGHTSABERS_TITLE), lightsabersPanel)
+        formBuilder.addComponent(tabbedPane)
+
+        createLightsaberSection(formBuilder)
+
         createVehicleSection(formBuilder)
 
         mainPanel.add(formBuilder.panel, BorderLayout.NORTH)
 
         previewPanel.addPropertyChangeListener(uiOptionsPanel)
         vehiclesPanel.addPropertyChangeListener(uiOptionsPanel)
+        lightsabersPanel.addPropertyChangeListener(uiOptionsPanel)
     }
 
     private fun createPreviewSection(formBuilder: FormBuilder) {
@@ -69,6 +85,10 @@ internal class StarWarsProgressConfigurationComponent {
             ) {
                 repaintProgressBar()
             }
+        }
+        uiOptionsPanel.addPropertyChangeListener(LANGUAGE_EVENT) {
+            tabbedPane.setTitleAt(0, StarWarsBundle.message(BundleConstants.VEHICLES_TITLE))
+            tabbedPane.setTitleAt(1, StarWarsBundle.message(BundleConstants.LIGHTSABERS_TITLE))
         }
 
         formBuilder.addComponent(uiOptionsPanel)
@@ -94,11 +114,18 @@ internal class StarWarsProgressConfigurationComponent {
     }
 
     private fun createVehicleSection(formBuilder: FormBuilder) {
-        vehiclesPanel.addVehicleListener(object : VehicleClickListener {
-            override fun vehicleClicked(vehicle: StarWarsVehicle) {
-                previewPanel.selectVehicle(vehicle)
+        vehiclesPanel.addStarWarsEntityListener(object : StarWarsEntityClickListener {
+            override fun starWarsEntityClicked(starWarsEntity: StarWarsEntity) {
+                previewPanel.selectEntity(starWarsEntity)
             }
         })
-        formBuilder.addComponent(vehiclesPanel)
+    }
+
+    private fun createLightsaberSection(formBuilder: FormBuilder) {
+        lightsabersPanel.addStarWarsEntityListener(object : StarWarsEntityClickListener {
+            override fun starWarsEntityClicked(starWarsEntity: StarWarsEntity) {
+                previewPanel.selectEntity(starWarsEntity)
+            }
+        })
     }
 }

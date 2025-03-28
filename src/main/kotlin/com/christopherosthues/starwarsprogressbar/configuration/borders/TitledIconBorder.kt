@@ -10,15 +10,16 @@ import com.christopherosthues.starwarsprogressbar.ui.shapes.BorderShape
 import com.christopherosthues.starwarsprogressbar.ui.shapes.IconShape
 import com.christopherosthues.starwarsprogressbar.ui.shapes.LabelShape
 import com.christopherosthues.starwarsprogressbar.util.StarWarsResourceLoader
+import com.intellij.util.ui.JBUI
 import java.awt.Component
 import java.awt.Graphics
 import java.awt.Insets
 import javax.swing.JLabel
 import javax.swing.border.AbstractBorder
 
-internal class TitledIconBorder(title: String, iconName: String) : AbstractBorder() {
+internal class TitledIconBorder(title: String, iconName: String, type: String) : AbstractBorder() {
     private val label: JLabel = JLabel(title)
-    private val factionIcon = StarWarsResourceLoader.getFactionLogo(iconName, true)
+    private val factionIcon = StarWarsResourceLoader.getFactionLogo(type, iconName, true)
     private val icon = ColoredImageComponent(factionIcon)
 
     init {
@@ -43,7 +44,7 @@ internal class TitledIconBorder(title: String, iconName: String) : AbstractBorde
         updateLabel(c)
 
         val size = icon.preferredSize
-        val insets = Insets(BASE_MARGIN + (BASE_MARGIN - size.height) / 2, BASE_MARGIN, BASE_MARGIN, BASE_MARGIN)
+        val insets = JBUI.insets(BASE_MARGIN + (BASE_MARGIN - size.height) / 2, BASE_MARGIN, BASE_MARGIN, BASE_MARGIN)
 
         val baseline = icon.getBaseline(size.width, size.height)
 
@@ -55,11 +56,11 @@ internal class TitledIconBorder(title: String, iconName: String) : AbstractBorde
 
     override fun paintBorder(c: Component, g: Graphics, x: Int, y: Int, width: Int, height: Int) {
         updateLabel(c)
-        val insets = Insets(
+        val insets = JBUI.insets(
             BASE_MARGIN + BASE_MARGIN / 2 - icon.preferredSize.height / 2,
             BASE_MARGIN + LEFT_RIGHT_BORDER_MARGIN,
             BASE_MARGIN,
-            BASE_MARGIN + LEFT_RIGHT_BORDER_MARGIN,
+            BASE_MARGIN + LEFT_RIGHT_BORDER_MARGIN
         )
 
         val borderShape = BorderShape(x, y, width, height, BASE_MARGIN, insets.top)

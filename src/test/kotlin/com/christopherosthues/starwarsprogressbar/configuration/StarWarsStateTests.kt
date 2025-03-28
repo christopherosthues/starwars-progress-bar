@@ -11,7 +11,7 @@ import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE_NAMES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRESS_BAR_COLOR
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_VEHICLE_SELECTOR
-import com.christopherosthues.starwarsprogressbar.models.FactionHolder
+import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.selectors.SelectionType
 import com.intellij.idea.TestFor
@@ -33,9 +33,9 @@ class StarWarsStateTests {
 
     @BeforeEach
     fun setup() {
-        mockkObject(FactionHolder)
+        mockkObject(StarWarsFactionHolder)
 
-        every { FactionHolder.defaultVehicles } returns listOf()
+        every { StarWarsFactionHolder.defaultVehicles } returns listOf()
     }
 
     @AfterEach
@@ -175,7 +175,7 @@ class StarWarsStateTests {
     }
 
     private fun setupDefaultVehicles() {
-        every { FactionHolder.defaultVehicles } returns listOf(
+        every { StarWarsFactionHolder.defaultVehicles } returns listOf(
             StarWarsVehicle("1", "a", 2, 3, 4f),
             StarWarsVehicle("2", "b", 3, 4, 5f),
             StarWarsVehicle("3", "c", 4, 5, 6f),

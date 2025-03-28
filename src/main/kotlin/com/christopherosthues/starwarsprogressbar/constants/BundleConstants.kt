@@ -23,13 +23,16 @@ internal object BundleConstants {
     const val DRAW_SILHOUETTES = CONFIGURATION + "drawSilhouettes"
     const val CHANGE_VEHICLE_AFTER_PASS = CONFIGURATION + "changeVehicleAfterPass"
     const val VEHICLES_TITLE = CONFIGURATION + "vehicles"
+    const val LIGHTSABERS_TITLE = CONFIGURATION + "lightsabers"
     const val SELECT_ALL = CONFIGURATION + "selectAll"
     const val DESELECT_ALL = CONFIGURATION + "deselectAll"
     const val SELECTED = CONFIGURATION + "selected"
     const val SELECTOR = CONFIGURATION + "selector"
     const val LANGUAGE = CONFIGURATION + "language"
 
-    const val FACTION = "faction."
-
     const val VEHICLES = "vehicles."
+    const val VEHICLES_FACTION = VEHICLES + "faction."
+
+    const val LIGHTSABERS = "lightsabers."
+    const val LIGHTSABERS_FACTION = LIGHTSABERS + "faction."
 }

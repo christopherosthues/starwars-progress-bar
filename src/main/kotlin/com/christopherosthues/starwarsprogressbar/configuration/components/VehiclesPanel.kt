@@ -4,54 +4,54 @@ import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.LANGUAGE_EVENT
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
-import com.christopherosthues.starwarsprogressbar.models.FactionHolder
-import com.christopherosthues.starwarsprogressbar.ui.events.VehicleClickListener
+import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
+import com.christopherosthues.starwarsprogressbar.ui.events.StarWarsEntityClickListener
 import com.intellij.util.ui.JBUI
 import com.intellij.util.ui.ThreeStateCheckBox
 import java.awt.BorderLayout
 import java.awt.GridBagConstraints
 import java.awt.GridBagLayout
-import javax.swing.BoxLayout
 import javax.swing.JPanel
 
 private const val FACTION_PADDING = 5
 private const val SELECTION_PANEL_BOTTOM_PADDING = 10
 
-internal class VehiclesPanel(private val starWarsState: StarWarsState) : JTitledPanel(StarWarsBundle.message(BundleConstants.VEHICLES_TITLE)) {
+internal class VehiclesPanel(private val starWarsState: StarWarsState) : JPanel(GridBagLayout()) {
     private val selectedVehiclesCheckBox = ThreeStateCheckBox(ThreeStateCheckBox.State.SELECTED)
-    private val factionPanels: MutableList<FactionPanel> = mutableListOf()
+    private val factionPanels: MutableList<VehicleFactionPanel> = mutableListOf()
 
     private var vehicleRowCount: Int = 0
     private var factionRowCount: Int = 0
     private var factionCount: Int = 0
 
-//    val enabledVehicles: Map<String, Boolean>
-//        get() = factionPanels.map { it.enabledVehicles }.fold(hashMapOf()) { acc, map ->
-//            map.forEach {
-//                acc.merge(it.key, it.value) { new, _ -> new }
-//            }
-//            acc
-//        }
-
     private val selectedVehiclesCount: Int
         get() = factionPanels.sumOf { it.selectedVehiclesCount.get() }
 
     init {
-        val vehiclesPanelLayout = BoxLayout(contentPanel, BoxLayout.Y_AXIS)
-        layout = vehiclesPanelLayout
-
         createSelectionPanel()
         createVehiclePanel()
 
         updateSelectionButtons()
+
+        val fillerPanel = JPanel()
+        val gridBagConstraints = GridBagConstraints()
+        gridBagConstraints.fill = GridBagConstraints.BOTH
+        gridBagConstraints.gridx = 0
+        gridBagConstraints.gridy = 2
+        gridBagConstraints.gridwidth = 1
+        gridBagConstraints.gridwidth = 1
+        gridBagConstraints.weightx = 1.0
+        gridBagConstraints.weighty = 1.0
+        gridBagConstraints.anchor = GridBagConstraints.SOUTH
+        add(fillerPanel, gridBagConstraints)
     }
 
     fun updateUI(starWarsState: StarWarsState) {
         factionPanels.forEach { it.updateUI(starWarsState) }
     }
 
-    fun addVehicleListener(listener: VehicleClickListener) {
-        factionPanels.forEach { it.addVehicleListener(listener) }
+    fun addStarWarsEntityListener(listener: StarWarsEntityClickListener) {
+        factionPanels.forEach { it.addStarWarsEntityListener(listener) }
     }
 
     private fun createSelectionPanel() {
@@ -66,7 +66,14 @@ internal class VehiclesPanel(private val starWarsState: StarWarsState) : JTitled
 
         selectionPanel.add(selectedVehiclesCheckBox, BorderLayout.WEST)
 
-        add(selectionPanel)
+        val gridBagConstraints = GridBagConstraints()
+        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL
+        gridBagConstraints.gridx = 0
+        gridBagConstraints.gridy = 0
+        gridBagConstraints.gridwidth = 1
+        gridBagConstraints.weightx = 1.0
+        gridBagConstraints.anchor = GridBagConstraints.NORTHWEST
+        add(selectionPanel, gridBagConstraints)
     }
 
     private fun selectVehicles(isSelected: Boolean) {
@@ -78,13 +85,13 @@ internal class VehiclesPanel(private val starWarsState: StarWarsState) : JTitled
         factionCount = 0
         factionRowCount = 0
 
-        FactionHolder.defaultFactions.forEach { faction ->
+        StarWarsFactionHolder.defaultVehicleFactions.forEach { faction ->
             vehicleRowCount = 0
 
-            val vehiclesAvailable = faction.vehicles.any()
+            val vehiclesAvailable = faction.data.any()
             if (vehiclesAvailable) {
-                val factionPanel = FactionPanel(starWarsState, faction)
-                factionPanel.addPropertyChangeListener(FactionPanel::selectedVehiclesCount.name) {
+                val factionPanel = VehicleFactionPanel(starWarsState, faction)
+                factionPanel.addPropertyChangeListener(VehicleFactionPanel::selectedVehiclesCount.name) {
                     updateSelectionButtons()
                 }
 
@@ -92,10 +99,17 @@ internal class VehiclesPanel(private val starWarsState: StarWarsState) : JTitled
             }
         }
 
-        add(vehiclePanel)
+        val gridBagConstraints = GridBagConstraints()
+        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL
+        gridBagConstraints.gridx = 0
+        gridBagConstraints.gridy = 2
+        gridBagConstraints.gridwidth = 1
+        gridBagConstraints.weightx = 1.0
+        gridBagConstraints.anchor = GridBagConstraints.NORTHWEST
+        add(vehiclePanel, gridBagConstraints)
     }
 
-    private fun addFactionPanel(factionPanel: FactionPanel, vehiclePanel: JPanel) {
+    private fun addFactionPanel(factionPanel: VehicleFactionPanel, vehiclePanel: JPanel) {
         val isFactionCountEven = factionCount++ % 2 == 0
         val gridBagConstraints = GridBagConstraints()
         val leftPadding = if (isFactionCountEven) 0 else FACTION_PADDING
@@ -118,7 +132,7 @@ internal class VehiclesPanel(private val starWarsState: StarWarsState) : JTitled
 
     private fun updateSelectionButtons() {
         val selected = selectedVehiclesCount
-        val numberOfVehicles = FactionHolder.defaultVehicles.size
+        val numberOfVehicles = StarWarsFactionHolder.defaultVehicles.size
 
         if (selected == numberOfVehicles) {
             selectedVehiclesCheckBox.state = ThreeStateCheckBox.State.SELECTED
@@ -145,7 +159,6 @@ internal class VehiclesPanel(private val starWarsState: StarWarsState) : JTitled
 
     fun addPropertyChangeListener(uiOptionsPanel: UiOptionsPanel) {
         uiOptionsPanel.addPropertyChangeListener(LANGUAGE_EVENT) {
-            title = StarWarsBundle.message(BundleConstants.VEHICLES_TITLE)
             updateSelectionButtons()
         }
         factionPanels.forEach {

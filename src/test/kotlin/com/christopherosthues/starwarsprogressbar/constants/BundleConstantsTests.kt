@@ -59,12 +59,15 @@ class BundleConstantsTests {
             Arguments.of("configuration.drawSilhouettes", BundleConstants.DRAW_SILHOUETTES),
             Arguments.of("configuration.changeVehicleAfterPass", BundleConstants.CHANGE_VEHICLE_AFTER_PASS),
             Arguments.of("configuration.vehicles", BundleConstants.VEHICLES_TITLE),
+            Arguments.of("configuration.lightsabers", BundleConstants.LIGHTSABERS_TITLE),
             Arguments.of("configuration.selectAll", BundleConstants.SELECT_ALL),
             Arguments.of("configuration.deselectAll", BundleConstants.DESELECT_ALL),
             Arguments.of("configuration.selected", BundleConstants.SELECTED),
             Arguments.of("configuration.selector", BundleConstants.SELECTOR),
-            Arguments.of("faction.", BundleConstants.FACTION),
+            Arguments.of("vehicles.faction.", BundleConstants.VEHICLES_FACTION),
             Arguments.of("vehicles.", BundleConstants.VEHICLES),
+            Arguments.of("lightsabers.faction.", BundleConstants.LIGHTSABERS_FACTION),
+            Arguments.of("lightsabers.", BundleConstants.LIGHTSABERS),
         )
     }
 

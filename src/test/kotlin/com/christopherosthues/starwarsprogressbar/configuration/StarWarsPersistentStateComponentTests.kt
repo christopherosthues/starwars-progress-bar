@@ -2,8 +2,9 @@ package com.christopherosthues.starwarsprogressbar.configuration
 
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_VEHICLE_SELECTOR
-import com.christopherosthues.starwarsprogressbar.models.FactionHolder
-import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
+import com.christopherosthues.starwarsprogressbar.models.Lightsaber
+import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
+import com.christopherosthues.starwarsprogressbar.models.Lightsabers
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.selectors.SelectionType
 import com.intellij.idea.TestFor
@@ -36,13 +37,16 @@ class StarWarsPersistentStateComponentTests {
 
     @BeforeEach
     fun setup() {
-        mockkObject(FactionHolder)
+        mockkObject(StarWarsFactionHolder)
 
-        every { FactionHolder.updateFactions(any() as List<StarWarsFaction>) } just runs
-        every { FactionHolder.factions } returns mockk(relaxed = true)
-        every { FactionHolder.missingVehicle } returns mockk(relaxed = true)
-        every { FactionHolder.defaultFactions } returns mockk(relaxed = true)
-        every { FactionHolder.defaultVehicles } returns listOf()
+        every { StarWarsFactionHolder.updateFactions(any()) } just runs
+        every { StarWarsFactionHolder.vehicleFactions } returns mockk(relaxed = true)
+        every { StarWarsFactionHolder.lightsabersFactions } returns mockk(relaxed = true)
+        every { StarWarsFactionHolder.missingVehicle } returns mockk(relaxed = true)
+        every { StarWarsFactionHolder.defaultVehicleFactions } returns mockk(relaxed = true)
+        every { StarWarsFactionHolder.defaultVehicles } returns listOf()
+        every { StarWarsFactionHolder.defaultLightsabersFactions } returns mockk(relaxed = true)
+        every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
     }
 
     fun tearDown() {
@@ -61,7 +65,14 @@ class StarWarsPersistentStateComponentTests {
             StarWarsVehicle("2", "green", 0, 0, 0f),
             StarWarsVehicle("3", "red", 0, 0, 0f),
         )
-        every { FactionHolder.defaultVehicles } returns vehicles
+        every { StarWarsFactionHolder.defaultVehicles } returns vehicles
+        val lightsabers = listOf(
+            Lightsabers("4", 0f, isJarKai = false, listOf(Lightsaber(1, "blue", isShoto = false, isDoubleBladed = false, yShift = 0))),
+            Lightsabers("5", 0f, isJarKai = false, listOf(Lightsaber(1, "green", isShoto = true, isDoubleBladed = false, yShift = 1))),
+            Lightsabers("6", 0f, isJarKai = false, listOf(Lightsaber(1, "red", isShoto = false, isDoubleBladed = true, yShift = 2))),
+        )
+        every { StarWarsFactionHolder.defaultVehicles } returns vehicles
+        every { StarWarsFactionHolder.defaultLightsabers } returns lightsabers
         val sut = StarWarsPersistentStateComponent()
 
         // Act
@@ -77,6 +88,15 @@ class StarWarsPersistentStateComponentTests {
                     { assertEquals(true, vehiclesEnabled["1"]) },
                     { assertEquals(true, vehiclesEnabled["2"]) },
                     { assertEquals(true, vehiclesEnabled["3"]) },
+                )
+            },
+            {
+                val lightsabersEnabled = result!!.lightsabersEnabled
+                assertAll(
+                    { assertEquals(3, lightsabersEnabled.count()) },
+                    { assertEquals(true, lightsabersEnabled["4"]) },
+                    { assertEquals(true, lightsabersEnabled["5"]) },
+                    { assertEquals(true, lightsabersEnabled["6"]) },
                 )
             },
             { assertTrue(result!!.showVehicle) },
@@ -98,10 +118,12 @@ class StarWarsPersistentStateComponentTests {
     fun `loadState should return copy state`() {
         // Arrange
         val sut = StarWarsPersistentStateComponent()
-        val expectedVersion = "1.0.0"
+        val expectedVersion = "2.0.0"
         val expectedVehiclesEnabled = mutableMapOf("1" to false, "2" to true, "3" to false, "4" to false, "5" to true)
+        val expectedLightsabersEnabled = mutableMapOf("6" to false, "7" to true, "8" to false, "9" to false, "10" to true)
         val starWarsState = StarWarsState().apply {
             vehiclesEnabled = expectedVehiclesEnabled
+            lightsabersEnabled = expectedLightsabersEnabled
             showVehicle = false
             showVehicleNames = true
             showToolTips = false
@@ -132,6 +154,7 @@ class StarWarsPersistentStateComponentTests {
             { assertNotNull(result) },
             { assertNotSame(starWarsState, result) },
             { assertEquals(starWarsState.vehiclesEnabled, result!!.vehiclesEnabled) },
+            { assertEquals(starWarsState.lightsabersEnabled, result!!.lightsabersEnabled) },
             { assertEquals(starWarsState.showVehicle, result!!.showVehicle) },
             { assertEquals(starWarsState.showVehicleNames, result!!.showVehicleNames) },
             { assertEquals(starWarsState.showToolTips, result!!.showToolTips) },
@@ -146,6 +169,7 @@ class StarWarsPersistentStateComponentTests {
             { assertEquals(starWarsState.vehicleSelector, result!!.vehicleSelector) },
 
             { assertEquals(expectedVehiclesEnabled, result!!.vehiclesEnabled) },
+            { assertEquals(expectedLightsabersEnabled, result!!.lightsabersEnabled) },
             { assertFalse(result!!.showVehicle) },
             { assertTrue(result!!.showVehicleNames) },
             { assertFalse(result!!.showToolTips) },
@@ -217,6 +241,7 @@ class StarWarsPersistentStateComponentTests {
         assertAll(
             { assertNotNull(starWarsState) },
             { assertTrue(starWarsState!!.vehiclesEnabled.isEmpty()) },
+            { assertTrue(starWarsState!!.lightsabersEnabled.isEmpty()) },
             { assertTrue(starWarsState!!.showVehicle) },
             { assertFalse(starWarsState!!.showVehicleNames) },
             { assertTrue(starWarsState!!.showToolTips) },

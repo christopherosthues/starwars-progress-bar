@@ -3,26 +3,25 @@ package com.christopherosthues.starwarsprogressbar.models
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
 import com.christopherosthues.starwarsprogressbar.ui.IonEngineColor
 import com.intellij.ui.JBColor
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
+@SerialName("StarWarsVehicle")
 internal data class StarWarsVehicle(
-    val id: String,
+    override val id: String,
     val ionEngine: String,
     val xShift: Int,
     val yShift: Int,
-    val velocity: Float,
-) {
-    var factionId: String = ""
+    override val velocity: Float,
+) : StarWarsEntity {
+    override var factionId: String = ""
 
-    val vehicleId: String
-        get() = if (factionId.isEmpty()) id else "$factionId.$id"
+    override val fileName: String
+        get() = "vehicles/" + if (factionId.isEmpty()) id else "$factionId/$id"
 
-    val fileName: String
-        get() = if (factionId.isEmpty()) id else "$factionId/$id"
-
-    val localizationKey: String
-        get() = "${BundleConstants.VEHICLES}$vehicleId"
+    override val localizationKey: String
+        get() = "${BundleConstants.VEHICLES}$entityId"
 
     val color: JBColor
         get() = IonEngineColor.colors[ionEngine] ?: IonEngineColor.BlueEngine
