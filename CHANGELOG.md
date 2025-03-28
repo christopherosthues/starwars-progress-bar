@@ -7,6 +7,7 @@
 ### Added
 
 - Lightsaber progress bar
+- Lightsaber's of Ahsoka Tano, Obi-Wan Kenobi, Qui-Gon Jinn, Yoda
 
 ### Changed
 
