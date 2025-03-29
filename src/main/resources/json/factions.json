@@ -33,24 +33,6 @@
                 },
                 {
                     "type": "Lightsabers",
-                    "id": "darth_krall",
-                    "velocity": 2,
-                    "isJarKai": false,
-                    "lightsabers": [
-                        {
-                            "id": 1,
-                            "bladeColor": "red",
-                            "isShoto": false,
-                            "isDoubleBladed": false,
-                            "yShift": 0,
-                            "bladeSize": 8,
-                            "xBlade": 0,
-                            "yBlade": 0
-                        }
-                    ]
-                },
-                {
-                    "type": "Lightsabers",
                     "id": "darth_maul_first",
                     "velocity": 2,
                     "isJarKai": false,
@@ -106,24 +88,6 @@
                 {
                     "type": "Lightsabers",
                     "id": "darth_sidious",
-                    "velocity": 2,
-                    "isJarKai": false,
-                    "lightsabers": [
-                        {
-                            "id": 1,
-                            "bladeColor": "red",
-                            "isShoto": false,
-                            "isDoubleBladed": false,
-                            "yShift": 0,
-                            "bladeSize": 8,
-                            "xBlade": 0,
-                            "yBlade": 0
-                        }
-                    ]
-                },
-                {
-                    "type": "Lightsabers",
-                    "id": "darth_vader_first",
                     "velocity": 2,
                     "isJarKai": false,
                     "lightsabers": [
