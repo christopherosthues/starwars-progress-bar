@@ -375,10 +375,10 @@
                             "bladeColor": "green",
                             "isShoto": false,
                             "isDoubleBladed": false,
-                            "yShift": 0,
+                            "yShift": 5,
                             "bladeSize": 8,
                             "xBlade": 0,
-                            "yBlade": 0
+                            "yBlade": 2
                         }
                     ]
                 },
