@@ -260,19 +260,6 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         graphics2D.fillRoundRect(bladeX, bladeY, bladeWidth, bladeHeight , arc, arc)
     }
 
-    private fun bladeGlow(lightsaber: Lightsaber): Paint {
-        val lightsaberColor = lightsaber.color
-
-        if (starWarsState()?.solidProgressBarColor ?: DEFAULT_SOLID_PROGRESS_BAR_COLOR) {
-            return lightsaberColor
-        }
-
-        return JBColor(
-            Color(lightsaberColor.red, lightsaberColor.green, lightsaberColor.blue, 50),
-            Color(lightsaberColor.red, lightsaberColor.green, lightsaberColor.blue, 50)
-        )
-    }
-
     private fun bladePaint(lightsaber: Lightsaber, bladeY: Int, bladeHeight: Int): Paint {
         val lightsaberColor = lightsaber.color
 
@@ -293,6 +280,19 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         )
         val gradient = LinearGradientPaint(0f, bladeY.toFloat(), 0f, bladeY + bladeHeight.toFloat(), fractions, colors)
         return gradient
+    }
+
+    private fun bladeGlow(lightsaber: Lightsaber): Paint {
+        val transparent = JBColor(Color(0, 0, 0, 0), Color(0, 0, 0, 0))
+        if (starWarsState()?.solidProgressBarColor ?: DEFAULT_SOLID_PROGRESS_BAR_COLOR) {
+            return transparent
+        }
+
+        val lightsaberColor = lightsaber.color
+        return JBColor(
+            Color(lightsaberColor.red, lightsaberColor.green, lightsaberColor.blue, 50),
+            Color(lightsaberColor.red, lightsaberColor.green, lightsaberColor.blue, 50)
+        )
     }
 
     private fun drawDoubleBladedLightsaberWithHilt(
