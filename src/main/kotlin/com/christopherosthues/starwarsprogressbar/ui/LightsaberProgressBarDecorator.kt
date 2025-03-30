@@ -1,6 +1,7 @@
 package com.christopherosthues.starwarsprogressbar.ui
 
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_DRAW_SILHOUETTES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRESS_BAR_COLOR
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
@@ -14,6 +15,7 @@ import java.awt.Graphics2D
 import java.awt.LinearGradientPaint
 import java.awt.Paint
 import java.awt.RenderingHints
+import javax.swing.JComponent
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.roundToInt
@@ -114,6 +116,7 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
     internal fun paintProgressBar(
         lightsabers: Lightsabers,
         graphics2D: Graphics2D,
+        component: JComponent,
         width: Int,
         height: Int,
         amountFull: Int,
@@ -152,6 +155,7 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         lightsabers.lightsabers.indices.forEach {
             drawLightsaber(
                 graphics2D,
+                component,
                 lightsabers,
                 it,
                 width,
@@ -169,6 +173,7 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
 
     private fun drawLightsaber(
         graphics2D: Graphics2D,
+        component: JComponent,
         lightsabers: Lightsabers,
         index: Int,
         width: Int,
@@ -191,9 +196,9 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON)
 
         if (lightsaber.isDoubleBladed && shouldDrawDoubleBladedLightsaberWithHilt) {
-            drawDoubleBladedLightsaberWithHilt(graphics2D, lightsaber, lightsaberIcon, width, amountFullDoubleBladed, amountFull, onlyDoubleBladed)
+            drawDoubleBladedLightsaberWithHilt(graphics2D, component, lightsaber, lightsaberIcon, width, amountFullDoubleBladed, amountFull, onlyDoubleBladed)
         } else if (shouldDrawSingleLightsaberWithHilt) {
-            drawSingleBladedLightsaberWithHilt(graphics2D, lightsaber, lightsaberIcon, width, amountFull, leftBladeX, rightBladeX)
+            drawSingleBladedLightsaberWithHilt(graphics2D, component, lightsaber, lightsaberIcon, width, amountFull, leftBladeX, rightBladeX)
         } else {
             drawLightsaberWithoutHilt(graphics2D, lightsaber, width, amountFull)
         }
@@ -205,6 +210,7 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
 
     private fun drawSingleBladedLightsaberWithHilt(
         graphics2D: Graphics2D,
+        component: JComponent,
         lightsaber: Lightsaber,
         lightsaberIcon: ColoredImageComponent,
         width: Int,
@@ -226,6 +232,23 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
 
         val hiltX = if (lightsaber.id.isOdd()) 0 else rightBladeX
         val hiltY = JBUIScale.scale(lightsaber.yShift)
+        drawHilt(graphics2D, component, lightsaberIcon, hiltX, hiltY)
+    }
+
+    private fun drawHilt(
+        graphics2D: Graphics2D,
+        component: JComponent,
+        lightsaberIcon: ColoredImageComponent,
+        hiltX: Int,
+        hiltY: Int
+    ) {
+        if (starWarsState()?.drawSilhouettes ?: DEFAULT_DRAW_SILHOUETTES) {
+            graphics2D.color = component.foreground
+            lightsaberIcon.foreground = component.foreground
+        } else {
+            lightsaberIcon.foreground = null
+        }
+
         lightsaberIcon.paint(graphics2D, hiltX, hiltY)
     }
 
@@ -297,6 +320,7 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
 
     private fun drawDoubleBladedLightsaberWithHilt(
         graphics2D: Graphics2D,
+        component: JComponent,
         lightsaber: Lightsaber,
         lightsaberIcon: ColoredImageComponent,
         width: Int,
@@ -326,6 +350,6 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         drawBlade(graphics2D, lightsaber, bladeX, bladeY, bladeWidth.roundToInt(), bladeSize)
 
         val hiltY = JBUIScale.scale(lightsaber.yShift)
-        lightsaberIcon.paint(graphics2D, hiltX, hiltY)
+        drawHilt(graphics2D, component, lightsaberIcon, hiltX, hiltY)
     }
 }
