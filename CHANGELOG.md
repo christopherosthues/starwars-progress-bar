@@ -7,7 +7,8 @@
 ### Added
 
 - Lightsaber progress bar
-- Lightsaber's of Ahsoka Tano, Obi-Wan Kenobi, Qui-Gon Jinn, Yoda
+- Jedi Lightsabers of Ahsoka Tano, Anakin Skywalker, Luke Skywalker, Obi-Wan Kenobi, Qui-Gon Jinn, Quinlan Vos and Yoda
+- Sith Lightsabers of Darth Maul, Darth Sidious, Dart Tyranus and Darth Vader
 
 ### Changed
 
