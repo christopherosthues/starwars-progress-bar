@@ -196,7 +196,16 @@ internal class StarWarsProgressBarUI(
 
             val entity = starWarsEntity
             if (entity is StarWarsVehicle) {
-                vehicleProgressBarDecorator.paintProgressBar(entity, graphics2D, c, width, height, amountFull, velocity, progressBar)
+                vehicleProgressBarDecorator.paintProgressBar(
+                    entity,
+                    graphics2D,
+                    c,
+                    width,
+                    height,
+                    amountFull,
+                    velocity,
+                    progressBar
+                )
             } else if (entity is Lightsabers) {
                 lightsaberProgressBarDecorator.paintProgressBar(entity, graphics2D, c, width, height, amountFull)
             }
@@ -207,7 +216,8 @@ internal class StarWarsProgressBarUI(
         }
     }
 
-    private fun getAmountFull(barRectWidth: Int, barRectHeight: Int, border: Insets): Int = getAmountFull(border, barRectWidth, barRectHeight)
+    private fun getAmountFull(barRectWidth: Int, barRectHeight: Int, border: Insets): Int =
+        getAmountFull(border, barRectWidth, barRectHeight)
 
     private fun setProgressBarText() {
         progressBar.isStringPainted = starWarsState()?.showVehicleNames ?: DEFAULT_SHOW_VEHICLE_NAMES
