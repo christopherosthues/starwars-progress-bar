@@ -35,7 +35,8 @@ internal class VehicleProgressBarDecorator(
     internal fun update(vehicle: StarWarsVehicle) {
         forwardIcon = ColoredImageComponent(StarWarsResourceLoader.getImage(vehicle.fileName))
         backwardIcon = ColoredImageComponent(StarWarsResourceLoader.getReversedImage(vehicle.fileName))
-        factionCrestIcon = ColoredImageComponent(StarWarsResourceLoader.getFactionLogo("vehicles", vehicle.factionId, false))
+        factionCrestIcon =
+            ColoredImageComponent(StarWarsResourceLoader.getFactionLogo("vehicles", vehicle.factionId, false))
     }
 
     internal fun getHeight(): Int = JBUIScale.scale(VEHICLE_PROGRESSBAR_HEIGHT)
@@ -79,19 +80,21 @@ internal class VehicleProgressBarDecorator(
             graphics2D.clip = clip
             graphics2D.color = component.foreground
 
-            var x = FACTION_CREST_X_POSITION
-            val y = (height.toDouble() + JBUIScale.scale(-factionCrestIcon.preferredSize.height)) / 2
+            var x = JBUIScale.scale(FACTION_CREST_X_POSITION.toFloat()).toDouble()
+            val y = (height.toDouble() - JBUIScale.scale(factionCrestIcon.preferredSize.height)) / 2
 
             factionCrestIcon.foreground = component.foreground
             // left crest
             factionCrestIcon.paint(graphics2D, x.toInt(), y.toInt())
 
             // middle crest
-            x = width.toDouble() / 2 + JBUIScale.scale(-factionCrestIcon.preferredSize.width / 2)
+            x = (width.toDouble() - JBUIScale.scale(factionCrestIcon.preferredSize.width)) / 2
             factionCrestIcon.paint(graphics2D, x.toInt(), y.toInt())
 
             // right crest
-            x = width.toDouble() + JBUIScale.scale(-factionCrestIcon.preferredSize.width) - 2
+            x = width.toDouble() - JBUIScale.scale(factionCrestIcon.preferredSize.width) - JBUIScale.scale(
+                FACTION_CREST_X_POSITION.toFloat()
+            )
             factionCrestIcon.paint(graphics2D, x.toInt(), y.toInt())
 
             graphics2D.clip = previousClip

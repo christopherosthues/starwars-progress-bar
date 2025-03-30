@@ -2,6 +2,7 @@ package com.christopherosthues.starwarsprogressbar.ui
 
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_DRAW_SILHOUETTES
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_FACTION_CRESTS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_ICON
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRESS_BAR_COLOR
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
@@ -10,20 +11,18 @@ import com.christopherosthues.starwarsprogressbar.ui.components.ColoredImageComp
 import com.christopherosthues.starwarsprogressbar.util.StarWarsResourceLoader
 import com.intellij.ui.JBColor
 import com.intellij.ui.scale.JBUIScale
-import java.awt.Color
-import java.awt.Graphics2D
-import java.awt.LinearGradientPaint
-import java.awt.Paint
-import java.awt.RenderingHints
+import java.awt.*
 import javax.swing.JComponent
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.roundToInt
 
 private const val LIGHTSABER_PROGRESSBAR_HEIGHT = 20
+private const val FACTION_CREST_X_POSITION = 4.0
 
 internal class LightsaberProgressBarDecorator(private val starWarsState: () -> StarWarsState?) {
     private var lightsaberIcons: MutableList<ColoredImageComponent> = mutableListOf()
+    private lateinit var factionCrestIcon: ColoredImageComponent
 
 //    override fun paint(g: Graphics?, c: JComponent?) {
 ////        val g2 = g as Graphics2D
@@ -109,6 +108,8 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
                 lightsaberIcons.add(ColoredImageComponent(StarWarsResourceLoader.getImage(lightsabers.fileName)))
             }
         }
+        factionCrestIcon =
+            ColoredImageComponent(StarWarsResourceLoader.getFactionLogo("lightsabers", lightsabers.factionId, false))
     }
 
     internal fun getHeight(): Int = JBUIScale.scale(LIGHTSABER_PROGRESSBAR_HEIGHT)
@@ -196,11 +197,29 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON)
 
         if (lightsaber.isDoubleBladed && shouldDrawDoubleBladedLightsaberWithHilt) {
-            drawDoubleBladedLightsaberWithHilt(graphics2D, component, lightsaber, lightsaberIcon, width, amountFullDoubleBladed, amountFull, onlyDoubleBladed)
+            drawDoubleBladedLightsaberWithHilt(
+                graphics2D,
+                component,
+                lightsaber,
+                lightsaberIcon,
+                width,
+                amountFullDoubleBladed,
+                amountFull,
+                onlyDoubleBladed
+            )
         } else if (shouldDrawSingleLightsaberWithHilt) {
-            drawSingleBladedLightsaberWithHilt(graphics2D, component, lightsaber, lightsaberIcon, width, amountFull, leftBladeX, rightBladeX)
+            drawSingleBladedLightsaberWithHilt(
+                graphics2D,
+                component,
+                lightsaber,
+                lightsaberIcon,
+                width,
+                amountFull,
+                leftBladeX,
+                rightBladeX
+            )
         } else {
-            drawLightsaberWithoutHilt(graphics2D, lightsaber, width, amountFull)
+            drawLightsaberWithoutHilt(graphics2D, component, lightsaber, width, height, amountFull)
         }
 
         graphics2D.color = color
@@ -223,7 +242,8 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         val full = amountFull * ratio
 
         val scaledAmountFull = if (lightsaber.isShoto) full / 2 else full
-        val bladeX = lightsaber.xBlade + if (lightsaber.id.isOdd()) leftBladeX else rightBladeX - scaledAmountFull.roundToInt()
+        val bladeX =
+            lightsaber.xBlade + if (lightsaber.id.isOdd()) leftBladeX else rightBladeX - scaledAmountFull.roundToInt()
         val bladeY = JBUIScale.scale(lightsaber.yShift + lightsaber.yBlade)
         val bladeHeight = JBUIScale.scale(lightsaber.bladeSize)
         val bladeWidth = scaledAmountFull.roundToInt()
@@ -252,13 +272,22 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         lightsaberIcon.paint(graphics2D, hiltX, hiltY)
     }
 
-    private fun drawLightsaberWithoutHilt(graphics2D: Graphics2D, lightsaber: Lightsaber, width: Int, amountFull: Int) {
+    private fun drawLightsaberWithoutHilt(
+        graphics2D: Graphics2D,
+        component: JComponent,
+        lightsaber: Lightsaber,
+        width: Int,
+        height: Int,
+        amountFull: Int
+    ) {
         val bladeX = if (lightsaber.id.isOdd()) 0 else width
         val bladeY = JBUIScale.scale(lightsaber.yShift + lightsaber.yBlade)
         val bladeHeight = JBUIScale.scale(lightsaber.bladeSize)
         val bladeWidth = amountFull
 
         drawBlade(graphics2D, lightsaber, bladeX, bladeY, bladeWidth, bladeHeight)
+
+        drawFactionCrest(width, height, graphics2D, component)
     }
 
     private fun drawBlade(
@@ -276,11 +305,46 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
 
         graphics2D.paint = bladeGlow(lightsaber)
 
-        graphics2D.fillRoundRect(bladeX, bladeY - JBUIScale.scale(3), bladeWidth, bladeHeight + JBUIScale.scale(6) , arc, arc)
+        graphics2D.fillRoundRect(
+            bladeX,
+            bladeY - JBUIScale.scale(3),
+            bladeWidth,
+            bladeHeight + JBUIScale.scale(6),
+            arc,
+            arc
+        )
 
         graphics2D.paint = bladePaint
 
-        graphics2D.fillRoundRect(bladeX, bladeY, bladeWidth, bladeHeight , arc, arc)
+        graphics2D.fillRoundRect(bladeX, bladeY, bladeWidth, bladeHeight, arc, arc)
+    }
+
+    private fun drawFactionCrest(width: Int, height: Int, graphics2D: Graphics2D, component: JComponent) {
+        if (starWarsState()?.showFactionCrests ?: DEFAULT_SHOW_FACTION_CRESTS) {
+            val previousClip = graphics2D.clip
+            val previousColor = graphics2D.color
+            graphics2D.color = component.foreground
+
+            var x = JBUIScale.scale(FACTION_CREST_X_POSITION.toFloat()).toDouble()
+            val y = (height.toDouble() - JBUIScale.scale(factionCrestIcon.preferredSize.height)) / 2
+
+            factionCrestIcon.foreground = component.foreground
+            // left crest
+            factionCrestIcon.paint(graphics2D, x.toInt(), y.toInt())
+
+            // middle crest
+            x = (width.toDouble() - JBUIScale.scale(factionCrestIcon.preferredSize.width)) / 2
+            factionCrestIcon.paint(graphics2D, x.toInt(), y.toInt())
+
+            // right crest
+            x = width.toDouble() - JBUIScale.scale(factionCrestIcon.preferredSize.width) - JBUIScale.scale(
+                FACTION_CREST_X_POSITION.toFloat()
+            )
+            factionCrestIcon.paint(graphics2D, x.toInt(), y.toInt())
+
+            graphics2D.clip = previousClip
+            graphics2D.color = previousColor
+        }
     }
 
     private fun bladePaint(lightsaber: Lightsaber, bladeY: Int, bladeHeight: Int): Paint {
