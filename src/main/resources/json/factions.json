@@ -17,17 +17,17 @@
                             "yShift": 0,
                             "bladeSize": 8,
                             "xBlade": 0,
-                            "yBlade": 0
+                            "yBlade": 1
                         },
                         {
                             "id": 2,
                             "bladeColor": "red",
                             "isShoto": false,
                             "isDoubleBladed": false,
-                            "yShift": 10,
+                            "yShift": 0,
                             "bladeSize": 8,
                             "xBlade": 0,
-                            "yBlade": 0
+                            "yBlade": 12
                         }
                     ]
                 },
