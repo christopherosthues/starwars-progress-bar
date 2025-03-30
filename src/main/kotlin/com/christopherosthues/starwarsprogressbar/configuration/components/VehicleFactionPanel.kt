@@ -70,7 +70,7 @@ internal class VehicleFactionPanel(
         }
         vehiclesCheckboxes.forEach { (vehicleName, checkbox) ->
             if (!starWarsState.vehiclesEnabled.containsKey(vehicleName)) {
-                checkbox.isSelected = starWarsState.enableNewVehicles
+                checkbox.isSelected = starWarsState.enableNew
             }
         }
     }

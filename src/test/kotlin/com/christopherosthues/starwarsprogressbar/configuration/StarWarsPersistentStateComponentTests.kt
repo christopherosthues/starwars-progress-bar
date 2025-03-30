@@ -1,7 +1,7 @@
 package com.christopherosthues.starwarsprogressbar.configuration
 
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_VEHICLE_SELECTOR
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SELECTOR
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
@@ -99,17 +99,17 @@ class StarWarsPersistentStateComponentTests {
                     { assertEquals(true, lightsabersEnabled["6"]) },
                 )
             },
-            { assertTrue(result!!.showVehicle) },
-            { assertFalse(result!!.showVehicleNames) },
+            { assertTrue(result!!.showIcon) },
+            { assertFalse(result!!.showNames) },
             { assertTrue(result!!.showToolTips) },
             { assertFalse(result!!.showFactionCrests) },
-            { assertFalse(result!!.sameVehicleVelocity) },
-            { assertTrue(result!!.enableNewVehicles) },
+            { assertFalse(result!!.sameVelocity) },
+            { assertTrue(result!!.enableNew) },
             { assertFalse(result!!.solidProgressBarColor) },
             { assertFalse(result!!.drawSilhouettes) },
-            { assertFalse(result!!.changeVehicleAfterPass) },
-            { assertEquals(DEFAULT_VEHICLE_SELECTOR, result!!.vehicleSelector) },
-            { assertEquals(DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE, result!!.numberOfPassesUntilVehicleChange) },
+            { assertFalse(result!!.changeAfterPass) },
+            { assertEquals(DEFAULT_SELECTOR, result!!.selector) },
+            { assertEquals(DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE, result!!.numberOfPassesUntilChange) },
             { assertEquals("", result!!.version) },
         )
     }
@@ -124,18 +124,18 @@ class StarWarsPersistentStateComponentTests {
         val starWarsState = StarWarsState().apply {
             vehiclesEnabled = expectedVehiclesEnabled
             lightsabersEnabled = expectedLightsabersEnabled
-            showVehicle = false
-            showVehicleNames = true
+            showIcon = false
+            showNames = true
             showToolTips = false
             showFactionCrests = true
-            sameVehicleVelocity = true
-            enableNewVehicles = false
+            sameVelocity = true
+            enableNew = false
             solidProgressBarColor = true
             drawSilhouettes = true
-            changeVehicleAfterPass = true
-            numberOfPassesUntilVehicleChange = 3
+            changeAfterPass = true
+            numberOfPassesUntilChange = 3
             version = expectedVersion
-            vehicleSelector = SelectionType.INORDER_FACTION
+            selector = SelectionType.INORDER_FACTION
         }
 
         mockkStatic(XmlSerializerUtil::class)
@@ -155,32 +155,32 @@ class StarWarsPersistentStateComponentTests {
             { assertNotSame(starWarsState, result) },
             { assertEquals(starWarsState.vehiclesEnabled, result!!.vehiclesEnabled) },
             { assertEquals(starWarsState.lightsabersEnabled, result!!.lightsabersEnabled) },
-            { assertEquals(starWarsState.showVehicle, result!!.showVehicle) },
-            { assertEquals(starWarsState.showVehicleNames, result!!.showVehicleNames) },
+            { assertEquals(starWarsState.showIcon, result!!.showIcon) },
+            { assertEquals(starWarsState.showNames, result!!.showNames) },
             { assertEquals(starWarsState.showToolTips, result!!.showToolTips) },
             { assertEquals(starWarsState.showFactionCrests, result!!.showFactionCrests) },
-            { assertEquals(starWarsState.sameVehicleVelocity, result!!.sameVehicleVelocity) },
-            { assertEquals(starWarsState.enableNewVehicles, result!!.enableNewVehicles) },
+            { assertEquals(starWarsState.sameVelocity, result!!.sameVelocity) },
+            { assertEquals(starWarsState.enableNew, result!!.enableNew) },
             { assertEquals(starWarsState.solidProgressBarColor, result!!.solidProgressBarColor) },
             { assertEquals(starWarsState.drawSilhouettes, result!!.drawSilhouettes) },
-            { assertEquals(starWarsState.changeVehicleAfterPass, result!!.changeVehicleAfterPass) },
-            { assertEquals(starWarsState.numberOfPassesUntilVehicleChange, result!!.numberOfPassesUntilVehicleChange) },
+            { assertEquals(starWarsState.changeAfterPass, result!!.changeAfterPass) },
+            { assertEquals(starWarsState.numberOfPassesUntilChange, result!!.numberOfPassesUntilChange) },
             { assertEquals(starWarsState.version, result!!.version) },
-            { assertEquals(starWarsState.vehicleSelector, result!!.vehicleSelector) },
+            { assertEquals(starWarsState.selector, result!!.selector) },
 
             { assertEquals(expectedVehiclesEnabled, result!!.vehiclesEnabled) },
             { assertEquals(expectedLightsabersEnabled, result!!.lightsabersEnabled) },
-            { assertFalse(result!!.showVehicle) },
-            { assertTrue(result!!.showVehicleNames) },
+            { assertFalse(result!!.showIcon) },
+            { assertTrue(result!!.showNames) },
             { assertFalse(result!!.showToolTips) },
             { assertTrue(result!!.showFactionCrests) },
-            { assertTrue(result!!.sameVehicleVelocity) },
-            { assertFalse(result!!.enableNewVehicles) },
+            { assertTrue(result!!.sameVelocity) },
+            { assertFalse(result!!.enableNew) },
             { assertTrue(result!!.solidProgressBarColor) },
             { assertTrue(result!!.drawSilhouettes) },
-            { assertTrue(result!!.changeVehicleAfterPass) },
-            { assertEquals(SelectionType.INORDER_FACTION, result!!.vehicleSelector) },
-            { assertEquals(3, result!!.numberOfPassesUntilVehicleChange) },
+            { assertTrue(result!!.changeAfterPass) },
+            { assertEquals(SelectionType.INORDER_FACTION, result!!.selector) },
+            { assertEquals(3, result!!.numberOfPassesUntilChange) },
             { assertEquals(expectedVersion, result!!.version) },
         )
 
@@ -242,17 +242,17 @@ class StarWarsPersistentStateComponentTests {
             { assertNotNull(starWarsState) },
             { assertTrue(starWarsState!!.vehiclesEnabled.isEmpty()) },
             { assertTrue(starWarsState!!.lightsabersEnabled.isEmpty()) },
-            { assertTrue(starWarsState!!.showVehicle) },
-            { assertFalse(starWarsState!!.showVehicleNames) },
+            { assertTrue(starWarsState!!.showIcon) },
+            { assertFalse(starWarsState!!.showNames) },
             { assertTrue(starWarsState!!.showToolTips) },
             { assertFalse(starWarsState!!.showFactionCrests) },
-            { assertFalse(starWarsState!!.sameVehicleVelocity) },
-            { assertTrue(starWarsState!!.enableNewVehicles) },
+            { assertFalse(starWarsState!!.sameVelocity) },
+            { assertTrue(starWarsState!!.enableNew) },
             { assertFalse(starWarsState!!.solidProgressBarColor) },
             { assertFalse(starWarsState!!.drawSilhouettes) },
-            { assertFalse(starWarsState!!.changeVehicleAfterPass) },
-            { assertEquals(DEFAULT_VEHICLE_SELECTOR, starWarsState!!.vehicleSelector) },
-            { assertEquals(DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE, starWarsState!!.numberOfPassesUntilVehicleChange) },
+            { assertFalse(starWarsState!!.changeAfterPass) },
+            { assertEquals(DEFAULT_SELECTOR, starWarsState!!.selector) },
+            { assertEquals(DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE, starWarsState!!.numberOfPassesUntilChange) },
             { assertEquals("", starWarsState!!.version) },
         )
     }

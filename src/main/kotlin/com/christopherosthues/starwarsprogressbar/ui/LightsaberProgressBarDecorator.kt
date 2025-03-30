@@ -2,7 +2,7 @@ package com.christopherosthues.starwarsprogressbar.ui
 
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_DRAW_SILHOUETTES
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_ICON
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRESS_BAR_COLOR
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
@@ -136,12 +136,12 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         }
 
         val shouldDrawSingleLightsaberWithHilt =
-            (starWarsState()?.showVehicle ?: DEFAULT_SHOW_VEHICLE) && width - max(
+            (starWarsState()?.showIcon ?: DEFAULT_SHOW_ICON) && width - max(
                 maxLeftIconWidth,
                 maxRightIconWidth
             ) >= max(maxLeftIconWidth, maxRightIconWidth)
         val shouldDrawDoubleBladedLightsaberWithHilt =
-            (starWarsState()?.showVehicle ?: DEFAULT_SHOW_VEHICLE) && (width - max(
+            (starWarsState()?.showIcon ?: DEFAULT_SHOW_ICON) && (width - max(
                 maxLeftIconWidth,
                 maxRightIconWidth
             )) / 2 >= max(maxLeftIconWidth, maxRightIconWidth)

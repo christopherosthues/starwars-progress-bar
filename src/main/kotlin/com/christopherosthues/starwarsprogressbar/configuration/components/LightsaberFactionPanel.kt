@@ -70,7 +70,7 @@ internal class LightsaberFactionPanel(
         }
         lightsabersCheckboxes.forEach { (lightsaberName, checkbox) ->
             if (!starWarsState.lightsabersEnabled.containsKey(lightsaberName)) {
-                checkbox.isSelected = starWarsState.enableNewVehicles
+                checkbox.isSelected = starWarsState.enableNew
             }
         }
     }

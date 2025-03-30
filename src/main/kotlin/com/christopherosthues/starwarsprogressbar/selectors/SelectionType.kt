@@ -4,8 +4,8 @@ import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
 
 enum class SelectionType(val localizationKey: String) {
-    INORDER_NAME("inorder_vehicle_name"),
-    REVERSE_ORDER_NAME("reverse_order_vehicle_name"),
+    INORDER_NAME("inorder_name"),
+    REVERSE_ORDER_NAME("reverse_order_name"),
     INORDER_FACTION("inorder_faction"),
     REVERSE_ORDER_FACTION("reverse_order_faction"),
     RANDOM_ALL("random_all"),

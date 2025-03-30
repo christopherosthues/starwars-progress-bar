@@ -5,7 +5,6 @@ import com.christopherosthues.starwarsprogressbar.configuration.LANGUAGE_EVENT
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
 import com.christopherosthues.starwarsprogressbar.models.StarWarsEntity
-import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.selectors.StarWarsSelector
 import com.christopherosthues.starwarsprogressbar.ui.StarWarsProgressBarUI
 import com.intellij.icons.AllIcons
@@ -102,7 +101,7 @@ internal class PreviewPanel(
     }
 
     private fun selectEntity(enabledVehicles: Map<String, Boolean>?, enabledLightsabers: Map<String, Boolean>?): StarWarsEntity =
-        StarWarsSelector.selectEntity(enabledVehicles, enabledLightsabers, starWarsState.enableNewVehicles, starWarsState.vehicleSelector!!)
+        StarWarsSelector.selectEntity(enabledVehicles, enabledLightsabers, starWarsState.enableNew, starWarsState.selector!!)
 
     fun selectEntity(starWarsEntity: StarWarsEntity) {
         setProgressBarUI(starWarsEntity, starWarsEntity)

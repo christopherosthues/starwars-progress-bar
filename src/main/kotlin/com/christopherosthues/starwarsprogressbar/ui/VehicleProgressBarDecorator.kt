@@ -3,14 +3,13 @@ package com.christopherosthues.starwarsprogressbar.ui
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_DRAW_SILHOUETTES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_FACTION_CRESTS
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_ICON
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRESS_BAR_COLOR
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.ui.components.ColoredImageComponent
 import com.christopherosthues.starwarsprogressbar.util.StarWarsResourceLoader
 import com.intellij.ui.JBColor
 import com.intellij.ui.scale.JBUIScale
-import com.intellij.util.ui.JBUI
 import java.awt.BasicStroke
 import java.awt.Color
 import java.awt.Graphics2D
@@ -54,7 +53,7 @@ internal class VehicleProgressBarDecorator(
         val rectangle2D = getRoundRectangle(width, height)
         drawProgress(vehicle, width, height, amountFull, velocity, graphics2D, rectangle2D, progressBar)
         drawFactionCrest(width, height, graphics2D, rectangle2D, c)
-        if (starWarsState()?.showVehicle ?: DEFAULT_SHOW_VEHICLE) {
+        if (starWarsState()?.showIcon ?: DEFAULT_SHOW_ICON) {
             drawIcon(vehicle, amountFull, velocity, graphics2D, rectangle2D, c)
         }
         drawBorder(rectangle2D, graphics2D, progressBar)

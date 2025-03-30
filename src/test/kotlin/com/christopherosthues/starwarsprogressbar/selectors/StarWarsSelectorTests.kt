@@ -134,7 +134,7 @@ class StarWarsSelectorTests {
         val starWarsState = StarWarsState().apply {
             vehiclesEnabled = enabledVehicles
             lightsabersEnabled = enabledLightsabers
-            enableNewVehicles = true
+            enableNew = true
         }
         setupStarWarsState(starWarsState)
         every { InorderFactionSelector.selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
@@ -182,7 +182,7 @@ class StarWarsSelectorTests {
         val starWarsState = StarWarsState().apply {
             vehiclesEnabled = enabledVehicles
             lightsabersEnabled = enabledLightsabers
-            enableNewVehicles = true
+            enableNew = true
         }
         setupStarWarsState(starWarsState)
         every { InorderFactionSelector.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
@@ -231,7 +231,7 @@ class StarWarsSelectorTests {
         val starWarsState = StarWarsState().apply {
             vehiclesEnabled = enabledVehicles
             lightsabersEnabled = enabledLightsabers
-            enableNewVehicles = true
+            enableNew = true
         }
         setupStarWarsState(starWarsState)
         every { InorderFactionSelector.selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
@@ -280,7 +280,7 @@ class StarWarsSelectorTests {
         val starWarsState = StarWarsState().apply {
             vehiclesEnabled = enabledVehicles
             lightsabersEnabled = enabledLightsabers
-            enableNewVehicles = true
+            enableNew = true
         }
         setupStarWarsState(starWarsState)
         every { InorderFactionSelector.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
@@ -330,7 +330,7 @@ class StarWarsSelectorTests {
         val starWarsState = StarWarsState().apply {
             vehiclesEnabled = vehiclesEnabledState
             lightsabersEnabled = lightsabersEnabledState
-            enableNewVehicles = true
+            enableNew = true
         }
         setupStarWarsState(starWarsState)
         every { InorderFactionSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) } returns vehicles[1]
@@ -380,7 +380,7 @@ class StarWarsSelectorTests {
         val starWarsState = StarWarsState().apply {
             vehiclesEnabled = vehiclesEnabledState
             lightsabersEnabled = lightsabersEnabledState
-            enableNewVehicles = true
+            enableNew = true
         }
         setupStarWarsState(starWarsState)
         every { InorderFactionSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) } returns lightsabers[1]
@@ -431,7 +431,7 @@ class StarWarsSelectorTests {
         val starWarsState = StarWarsState().apply {
             vehiclesEnabled = vehiclesEnabledState
             lightsabersEnabled = lightsabersEnabledState
-            enableNewVehicles = true
+            enableNew = true
         }
         setupStarWarsState(starWarsState)
         every { InorderFactionSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) } returns vehicles[1]
@@ -482,7 +482,7 @@ class StarWarsSelectorTests {
         val starWarsState = StarWarsState().apply {
             vehiclesEnabled = vehiclesEnabledState
             lightsabersEnabled = lightsabersEnabledState
-            enableNewVehicles = true
+            enableNew = true
         }
         setupStarWarsState(starWarsState)
         every { InorderFactionSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) } returns lightsabers[1]

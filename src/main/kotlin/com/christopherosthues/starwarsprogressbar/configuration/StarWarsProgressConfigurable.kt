@@ -30,15 +30,15 @@ internal class StarWarsProgressConfigurable : SearchableConfigurable {
                 // TODO: add test for lightsabers
                 starWarsState.vehiclesEnabled != comp.starWarsState.vehiclesEnabled ||
                     starWarsState.lightsabersEnabled != comp.starWarsState.lightsabersEnabled ||
-                    starWarsState.showVehicle != comp.starWarsState.showVehicle ||
-                    starWarsState.showVehicleNames != comp.starWarsState.showVehicleNames ||
+                    starWarsState.showIcon != comp.starWarsState.showIcon ||
+                    starWarsState.showNames != comp.starWarsState.showNames ||
                     starWarsState.showToolTips != comp.starWarsState.showToolTips ||
                     starWarsState.showFactionCrests != comp.starWarsState.showFactionCrests ||
-                    starWarsState.sameVehicleVelocity != comp.starWarsState.sameVehicleVelocity ||
-                    starWarsState.enableNewVehicles != comp.starWarsState.enableNewVehicles ||
+                    starWarsState.sameVelocity != comp.starWarsState.sameVelocity ||
+                    starWarsState.enableNew != comp.starWarsState.enableNew ||
                     starWarsState.solidProgressBarColor != comp.starWarsState.solidProgressBarColor ||
                     starWarsState.drawSilhouettes != comp.starWarsState.drawSilhouettes ||
-                    starWarsState.vehicleSelector != comp.starWarsState.vehicleSelector ||
+                    starWarsState.selector != comp.starWarsState.selector ||
                     starWarsState.language != comp.starWarsState.language ||
                     isVehiclePassesModified(starWarsState, comp)
                 )
@@ -47,10 +47,10 @@ internal class StarWarsProgressConfigurable : SearchableConfigurable {
     private fun isVehiclePassesModified(
         starWarsState: StarWarsState,
         component: StarWarsProgressConfigurationComponent,
-    ): Boolean = starWarsState.changeVehicleAfterPass != component.starWarsState.changeVehicleAfterPass ||
+    ): Boolean = starWarsState.changeAfterPass != component.starWarsState.changeAfterPass ||
         (
-            starWarsState.numberOfPassesUntilVehicleChange != component.starWarsState.numberOfPassesUntilVehicleChange &&
-                component.starWarsState.changeVehicleAfterPass
+            starWarsState.numberOfPassesUntilChange != component.starWarsState.numberOfPassesUntilChange &&
+                component.starWarsState.changeAfterPass
             )
 
     override fun apply() {
@@ -62,19 +62,19 @@ internal class StarWarsProgressConfigurable : SearchableConfigurable {
             // TODO: add tests for lightsabers
             starWarsState.vehiclesEnabled = component.starWarsState.vehiclesEnabled.toMutableMap()
             starWarsState.lightsabersEnabled = component.starWarsState.lightsabersEnabled.toMutableMap()
-            starWarsState.showVehicle = component.starWarsState.showVehicle
-            starWarsState.showVehicleNames = component.starWarsState.showVehicleNames
+            starWarsState.showIcon = component.starWarsState.showIcon
+            starWarsState.showNames = component.starWarsState.showNames
             starWarsState.showToolTips = component.starWarsState.showToolTips
             starWarsState.showFactionCrests = component.starWarsState.showFactionCrests
-            starWarsState.sameVehicleVelocity = component.starWarsState.sameVehicleVelocity
-            starWarsState.enableNewVehicles = component.starWarsState.enableNewVehicles
+            starWarsState.sameVelocity = component.starWarsState.sameVelocity
+            starWarsState.enableNew = component.starWarsState.enableNew
             starWarsState.solidProgressBarColor = component.starWarsState.solidProgressBarColor
             starWarsState.drawSilhouettes = component.starWarsState.drawSilhouettes
-            starWarsState.changeVehicleAfterPass = component.starWarsState.changeVehicleAfterPass
-            starWarsState.vehicleSelector = component.starWarsState.vehicleSelector
+            starWarsState.changeAfterPass = component.starWarsState.changeAfterPass
+            starWarsState.selector = component.starWarsState.selector
             starWarsState.language = component.starWarsState.language
-            if (component.starWarsState.changeVehicleAfterPass) {
-                starWarsState.numberOfPassesUntilVehicleChange = component.starWarsState.numberOfPassesUntilVehicleChange
+            if (component.starWarsState.changeAfterPass) {
+                starWarsState.numberOfPassesUntilChange = component.starWarsState.numberOfPassesUntilChange
             }
         }
     }

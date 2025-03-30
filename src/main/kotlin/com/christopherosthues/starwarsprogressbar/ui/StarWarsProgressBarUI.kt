@@ -24,11 +24,11 @@ import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
 import com.christopherosthues.starwarsprogressbar.constants.*
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_CHANGE_VEHICLE_AFTER_PASS
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_CHANGE_AFTER_PASS
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_TOOLTIPS
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE_NAMES
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_VEHICLE_SELECTOR
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_NAMES
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SELECTOR
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
 import com.christopherosthues.starwarsprogressbar.models.StarWarsEntity
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
@@ -59,8 +59,8 @@ internal class StarWarsProgressBarUI(
             StarWarsPersistentStateComponent.instance?.state?.vehiclesEnabled,
             StarWarsPersistentStateComponent.instance?.state?.lightsabersEnabled,
             false,
-            StarWarsPersistentStateComponent.instance?.state?.vehicleSelector
-                ?: DEFAULT_VEHICLE_SELECTOR,
+            StarWarsPersistentStateComponent.instance?.state?.selector
+                ?: DEFAULT_SELECTOR,
         ),
     )
 
@@ -70,14 +70,14 @@ internal class StarWarsProgressBarUI(
     }
 
     private fun getVelocity(): Float =
-        if (starWarsState()?.sameVehicleVelocity ?: DEFAULT_SAME_VEHICLE_VELOCITY) 1f else starWarsEntity.velocity
+        if (starWarsState()?.sameVelocity ?: DEFAULT_SAME_VELOCITY) 1f else starWarsEntity.velocity
 
     private fun update() {
         starWarsEntity = selectEntity(
             starWarsState()?.vehiclesEnabled,
             starWarsState()?.lightsabersEnabled,
             false,
-            starWarsState()?.vehicleSelector ?: DEFAULT_VEHICLE_SELECTOR,
+            starWarsState()?.selector ?: DEFAULT_SELECTOR,
         )
         updateDecorator()
     }
@@ -140,12 +140,12 @@ internal class StarWarsProgressBarUI(
     private fun updateNumberOfPasses() {
         numberOfPasses++
         if ((
-                starWarsState()?.changeVehicleAfterPass
-                    ?: DEFAULT_CHANGE_VEHICLE_AFTER_PASS
+                starWarsState()?.changeAfterPass
+                    ?: DEFAULT_CHANGE_AFTER_PASS
                 ) &&
             numberOfPasses % (
-                starWarsState()?.numberOfPassesUntilVehicleChange
-                    ?: DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE
+                starWarsState()?.numberOfPassesUntilChange
+                    ?: DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE
                 ) == 0
         ) {
             update()
@@ -220,13 +220,13 @@ internal class StarWarsProgressBarUI(
         getAmountFull(border, barRectWidth, barRectHeight)
 
     private fun setProgressBarText() {
-        progressBar.isStringPainted = starWarsState()?.showVehicleNames ?: DEFAULT_SHOW_VEHICLE_NAMES
-        if (starWarsState()?.showVehicleNames ?: DEFAULT_SHOW_VEHICLE_NAMES) {
+        progressBar.isStringPainted = starWarsState()?.showNames ?: DEFAULT_SHOW_NAMES
+        if (starWarsState()?.showNames ?: DEFAULT_SHOW_NAMES) {
             val localizedName = StarWarsBundle.message(starWarsEntity.localizationKey)
             if (progressBar.string != localizedName) {
                 progressBar.string = localizedName
             }
-        } else if (!(starWarsState()?.showVehicleNames ?: DEFAULT_SHOW_VEHICLE_NAMES)) {
+        } else if (!(starWarsState()?.showNames ?: DEFAULT_SHOW_NAMES)) {
             progressBar.string = ""
         }
     }

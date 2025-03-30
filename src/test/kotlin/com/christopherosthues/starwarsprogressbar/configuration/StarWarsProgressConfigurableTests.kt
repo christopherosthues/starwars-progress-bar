@@ -274,17 +274,17 @@ class StarWarsProgressConfigurableTests {
         // Assert
         assertEquals(enabledVehicles, starWarsStateMock.vehiclesEnabled)
         assertEquals(enabledLightsabers, starWarsStateMock.lightsabersEnabled)
-        verify(exactly = 0) { starWarsStateMock.showVehicle }
-        verify(exactly = 0) { starWarsStateMock.showVehicleNames }
+        verify(exactly = 0) { starWarsStateMock.showIcon }
+        verify(exactly = 0) { starWarsStateMock.showNames }
         verify(exactly = 0) { starWarsStateMock.showToolTips }
         verify(exactly = 0) { starWarsStateMock.showFactionCrests }
-        verify(exactly = 0) { starWarsStateMock.sameVehicleVelocity }
-        verify(exactly = 0) { starWarsStateMock.enableNewVehicles }
+        verify(exactly = 0) { starWarsStateMock.sameVelocity }
+        verify(exactly = 0) { starWarsStateMock.enableNew }
         verify(exactly = 0) { starWarsStateMock.solidProgressBarColor }
         verify(exactly = 0) { starWarsStateMock.drawSilhouettes }
-        verify(exactly = 0) { starWarsStateMock.changeVehicleAfterPass }
-        verify(exactly = 0) { starWarsStateMock.numberOfPassesUntilVehicleChange }
-        verify(exactly = 0) { starWarsStateMock.vehicleSelector }
+        verify(exactly = 0) { starWarsStateMock.changeAfterPass }
+        verify(exactly = 0) { starWarsStateMock.numberOfPassesUntilChange }
+        verify(exactly = 0) { starWarsStateMock.selector }
         verify(exactly = 0) { starWarsStateMock.language }
     }
 
@@ -332,18 +332,18 @@ class StarWarsProgressConfigurableTests {
 
         // Assert
         val numberOfPassesSet = if (changeVehicleAfterPass) 1 else 0
-        verify(exactly = 1) { starWarsStateMock.showVehicle = showVehicle }
-        verify(exactly = 1) { starWarsStateMock.showVehicleNames = showVehicleNames }
+        verify(exactly = 1) { starWarsStateMock.showIcon = showVehicle }
+        verify(exactly = 1) { starWarsStateMock.showNames = showVehicleNames }
         verify(exactly = 1) { starWarsStateMock.showToolTips = showToolTips }
         verify(exactly = 1) { starWarsStateMock.showFactionCrests = showFactionCrests }
-        verify(exactly = 1) { starWarsStateMock.sameVehicleVelocity = sameVehicleVelocity }
-        verify(exactly = 1) { starWarsStateMock.enableNewVehicles = enableNewVehicles }
+        verify(exactly = 1) { starWarsStateMock.sameVelocity = sameVehicleVelocity }
+        verify(exactly = 1) { starWarsStateMock.enableNew = enableNewVehicles }
         verify(exactly = 1) { starWarsStateMock.solidProgressBarColor = solidProgressBarColor }
         verify(exactly = 1) { starWarsStateMock.drawSilhouettes = drawSilhouettes }
-        verify(exactly = 1) { starWarsStateMock.changeVehicleAfterPass = changeVehicleAfterPass }
-        verify(exactly = 1) { starWarsStateMock.vehicleSelector = vehicleSelector }
+        verify(exactly = 1) { starWarsStateMock.changeAfterPass = changeVehicleAfterPass }
+        verify(exactly = 1) { starWarsStateMock.selector = vehicleSelector }
         verify(exactly = 1) { starWarsStateMock.language = language }
-        verify(exactly = numberOfPassesSet) { starWarsStateMock.numberOfPassesUntilVehicleChange = numberOfPassesUntilVehicleChange }
+        verify(exactly = numberOfPassesSet) { starWarsStateMock.numberOfPassesUntilChange = numberOfPassesUntilVehicleChange }
         assertEquals(enabledVehicles, starWarsStateMock.vehiclesEnabled, StarWarsState::vehiclesEnabled.name)
         assertEquals(enabledLightsabers, starWarsStateMock.lightsabersEnabled, StarWarsState::lightsabersEnabled.name)
     }
@@ -504,17 +504,17 @@ class StarWarsProgressConfigurableTests {
         val starWarsStateMock = mockk<StarWarsState>()
         starWarsStateMock.vehiclesEnabled = enabledVehicles
         starWarsStateMock.lightsabersEnabled = enabledLightsabers
-        every { starWarsStateMock.showVehicle } returns showVehicle
-        every { starWarsStateMock.showVehicleNames } returns showVehicleNames
+        every { starWarsStateMock.showIcon } returns showVehicle
+        every { starWarsStateMock.showNames } returns showVehicleNames
         every { starWarsStateMock.showToolTips } returns showToolTips
         every { starWarsStateMock.showFactionCrests } returns showFactionCrests
-        every { starWarsStateMock.sameVehicleVelocity } returns sameVehicleVelocity
-        every { starWarsStateMock.enableNewVehicles } returns enableNewVehicles
+        every { starWarsStateMock.sameVelocity } returns sameVehicleVelocity
+        every { starWarsStateMock.enableNew } returns enableNewVehicles
         every { starWarsStateMock.solidProgressBarColor } returns solidProgressBarColor
         every { starWarsStateMock.drawSilhouettes } returns drawSilhouettes
-        every { starWarsStateMock.changeVehicleAfterPass } returns changeVehicleAfterPass
-        every { starWarsStateMock.numberOfPassesUntilVehicleChange } returns numberOfPassesUntilVehicleChange
-        every { starWarsStateMock.vehicleSelector } returns vehicleSelector
+        every { starWarsStateMock.changeAfterPass } returns changeVehicleAfterPass
+        every { starWarsStateMock.numberOfPassesUntilChange } returns numberOfPassesUntilVehicleChange
+        every { starWarsStateMock.selector } returns vehicleSelector
         every { starWarsStateMock.version } returns ""
         every { starWarsStateMock.language } returns language
         val starWarsPersistentStateComponentMock = mockk<StarWarsPersistentStateComponent>(relaxed = true)
@@ -543,17 +543,17 @@ class StarWarsProgressConfigurableTests {
         val starWarsState = StarWarsState()
         starWarsState.vehiclesEnabled = enabledVehicles
         starWarsState.lightsabersEnabled = enabledLightsabers
-        starWarsState.showVehicle = showVehicle
-        starWarsState.showVehicleNames = showVehicleNames
+        starWarsState.showIcon = showVehicle
+        starWarsState.showNames = showVehicleNames
         starWarsState.showToolTips = showToolTips
         starWarsState.showFactionCrests = showFactionCrests
-        starWarsState.sameVehicleVelocity = sameVehicleVelocity
-        starWarsState.enableNewVehicles = enableNewVehicles
+        starWarsState.sameVelocity = sameVehicleVelocity
+        starWarsState.enableNew = enableNewVehicles
         starWarsState.solidProgressBarColor = solidProgressBarColor
         starWarsState.drawSilhouettes = drawSilhouettes
-        starWarsState.changeVehicleAfterPass = changeVehicleAfterPass
-        starWarsState.numberOfPassesUntilVehicleChange = numberOfPassesUntilVehicleChange
-        starWarsState.vehicleSelector = vehicleSelector
+        starWarsState.changeAfterPass = changeVehicleAfterPass
+        starWarsState.numberOfPassesUntilChange = numberOfPassesUntilVehicleChange
+        starWarsState.selector = vehicleSelector
         starWarsState.language = language
         every { starWarsProgressConfigurationComponentMock.starWarsState } returns starWarsState
     }
