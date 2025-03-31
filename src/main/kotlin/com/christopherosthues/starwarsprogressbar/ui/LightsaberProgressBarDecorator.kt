@@ -22,6 +22,7 @@ private const val FACTION_CREST_X_POSITION = 4.0
 
 internal class LightsaberProgressBarDecorator(private val starWarsState: () -> StarWarsState?) {
     private var lightsaberIcons: MutableList<ColoredImageComponent> = mutableListOf()
+    private var lightsaberDrawings: MutableList<LightsaberDrawing> = mutableListOf()
     private lateinit var factionCrestIcon: ColoredImageComponent
 
 //    override fun paint(g: Graphics?, c: JComponent?) {
@@ -99,17 +100,74 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
 //        g2.fillRect(0, 0, progressWidth, height) // Force flat left edge
 //    }
 
-    internal fun update(lightsabers: Lightsabers) {
+    private enum class DrawState {
+        SingleBladed,
+        DoubleBladed,
+        NoBlade
+    }
+
+    private data class LightsaberDrawing(var state: DrawState, var maxBladeWidth: Int = 0)
+
+    internal fun update(lightsabers: Lightsabers, width: Int) {
         lightsaberIcons.clear()
+        lightsaberDrawings.clear()
         lightsabers.lightsabers.forEach {
             if (lightsabers.isJarKai) {
                 lightsaberIcons.add(ColoredImageComponent(StarWarsResourceLoader.getImage(lightsabers.fileName + "_${it.id}")))
             } else {
                 lightsaberIcons.add(ColoredImageComponent(StarWarsResourceLoader.getImage(lightsabers.fileName)))
             }
+
+            lightsaberDrawings.add(LightsaberDrawing(getDrawingState(it)))
         }
         factionCrestIcon =
             ColoredImageComponent(StarWarsResourceLoader.getFactionLogo("lightsabers", lightsabers.factionId, false))
+
+        computeLightsaberDrawings(lightsabers, width)
+    }
+
+    private fun getDrawingState(lightsaber: Lightsaber): DrawState {
+        if (lightsaber.isDoubleBladed) {
+            return DrawState.DoubleBladed
+        }
+
+        return DrawState.SingleBladed
+    }
+
+    private fun computeLightsaberDrawings(lightsabers: Lightsabers, width: Int) {
+        var maxRightIconWidthSingle = 0
+        var maxLeftIconWidthSingle = 0
+        var maxRightIconWidth = 0
+        var maxLeftIconWidth = 0
+        var onlyDoubleBladed = true
+        lightsabers.lightsabers.forEachIndexed { index, lightsaber ->
+            val lightsaberIcon = lightsaberIcons[index]
+            val iconWidth = lightsaberIcon.width
+            if (index.isEven()) {
+                maxLeftIconWidth = max(maxLeftIconWidth, iconWidth)
+                if (!lightsaber.isDoubleBladed) {
+                    maxLeftIconWidthSingle = max(maxLeftIconWidthSingle, iconWidth)
+                }
+            } else {
+                maxRightIconWidth = max(maxRightIconWidth, iconWidth)
+                if (!lightsaber.isDoubleBladed) {
+                    maxRightIconWidthSingle = max(maxRightIconWidthSingle, iconWidth)
+                }
+            }
+            onlyDoubleBladed = onlyDoubleBladed && lightsabers.lightsabers[index].isDoubleBladed
+        }
+
+        val singleBladeLength = width - maxLeftIconWidthSingle - maxRightIconWidthSingle
+        val singleLeftBladeX = maxLeftIconWidthSingle
+        val singleRightBladeX = width - maxRightIconWidthSingle
+
+
+        val allBladeLength = width - maxLeftIconWidth - maxRightIconWidth
+        val allLeftBladeX = maxLeftIconWidth
+        val allRightBladeX = width - maxRightIconWidth
+
+        // TODO: first for single bladed jar kai without double blades
+        // TODO: then length of double bladed based on single blades -> if at least one single bladed start over till all drawing is computed
     }
 
     internal fun getHeight(): Int = JBUIScale.scale(LIGHTSABER_PROGRESSBAR_HEIGHT)
@@ -122,22 +180,24 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         height: Int,
         amountFull: Int,
     ) {
+        var maxRightIconWidthSingle = 0
+        var maxLeftIconWidthSingle = 0
         var maxRightIconWidth = 0
         var maxLeftIconWidth = 0
         var onlyDoubleBladed = true
-        lightsabers.lightsabers.indices.forEach {
-            val lightsaberIcon = lightsaberIcons[it]
+        lightsabers.lightsabers.forEachIndexed { index, lightsaber ->
+            val lightsaberIcon = lightsaberIcons[index]
             val iconWidth = lightsaberIcon.width
-            if (it.isEven()) {
+            if (index.isEven()) {
                 maxLeftIconWidth = max(maxLeftIconWidth, iconWidth)
+                if (!lightsaber.isDoubleBladed) {
+                    maxLeftIconWidthSingle = max(maxLeftIconWidthSingle, iconWidth)
+                }
             } else {
                 maxRightIconWidth = max(maxRightIconWidth, iconWidth)
             }
-            onlyDoubleBladed = onlyDoubleBladed && lightsabers.lightsabers[it].isDoubleBladed
+            onlyDoubleBladed = onlyDoubleBladed && lightsaber.isDoubleBladed
         }
-
-        // TODO: first for single bladed jar kai without double blades
-        // TODO: then length of double bladed based on single blades -> if at least one single bladed start over till all drawing is computed
 
         val shouldDrawSingleLightsaberWithHilt =
             (starWarsState()?.showIcon ?: DEFAULT_SHOW_ICON) && width - max(

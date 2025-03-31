@@ -87,7 +87,7 @@ internal class StarWarsProgressBarUI(
         if (entity is StarWarsVehicle) {
             vehicleProgressBarDecorator.update(entity)
         } else if (entity is Lightsabers) {
-            lightsaberProgressBarDecorator.update(entity)
+            lightsaberProgressBarDecorator.update(entity, progressBar.width)
         }
     }
 
