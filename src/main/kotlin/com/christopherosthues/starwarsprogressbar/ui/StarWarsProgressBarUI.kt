@@ -207,7 +207,13 @@ internal class StarWarsProgressBarUI(
                     progressBar
                 )
             } else if (entity is Lightsabers) {
-                lightsaberProgressBarDecorator.paintProgressBar(entity, graphics2D, c, width, height, amountFull)
+                lightsaberProgressBarDecorator.paintProgressBar(
+                    entity,
+                    graphics2D,
+                    c,
+                    width,
+                    height,
+                    amountFull)
             }
 
             paintStringIfNeeded(graphics2D, c, height, border, barRectWidth, barRectHeight, amountFull)

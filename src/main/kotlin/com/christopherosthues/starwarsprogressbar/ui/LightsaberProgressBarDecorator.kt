@@ -136,6 +136,9 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
             onlyDoubleBladed = onlyDoubleBladed && lightsabers.lightsabers[it].isDoubleBladed
         }
 
+        // TODO: first for single bladed jar kai without double blades
+        // TODO: then length of double bladed based on single blades -> if at least one single bladed start over till all drawing is computed
+
         val shouldDrawSingleLightsaberWithHilt =
             (starWarsState()?.showIcon ?: DEFAULT_SHOW_ICON) && width - max(
                 maxLeftIconWidth,
@@ -170,6 +173,8 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
                 onlyDoubleBladed
             )
         }
+
+        drawFactionCrest(width, height, graphics2D, component)
     }
 
     private fun drawLightsaber(
@@ -286,8 +291,6 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         val bladeWidth = amountFull
 
         drawBlade(graphics2D, lightsaber, bladeX, bladeY, bladeWidth, bladeHeight)
-
-        drawFactionCrest(width, height, graphics2D, component)
     }
 
     private fun drawBlade(
