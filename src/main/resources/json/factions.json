@@ -313,8 +313,8 @@
                             "isDoubleBladed": true,
                             "yShift": 0,
                             "bladeSize": 8,
-                            "xBlade": 0,
-                            "yBlade": 0
+                            "xBlade": 1,
+                            "yBlade": 1
                         },
                         {
                             "id": 2,
@@ -323,8 +323,8 @@
                             "isDoubleBladed": true,
                             "yShift": 10,
                             "bladeSize": 8,
-                            "xBlade": 0,
-                            "yBlade": 0
+                            "xBlade": 1,
+                            "yBlade": 1
                         }
                     ]
                 },
