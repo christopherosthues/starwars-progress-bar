@@ -179,11 +179,13 @@ class IconResourceTests {
                 if (lightsaber.isJarKai) {
                     List(lightsaber.lightsabers.size) { index: Int ->
                         listOf(
-                            { assertTrue(File("${iconBasePath}_$index.png").exists(), "Icon ${iconBasePath}_$index.png does not exist.") },
+                            { assertTrue(File("${iconBasePath}_${lightsaber.lightsabers[index].id}.png").exists(),
+                                "Icon ${iconBasePath}_${lightsaber.lightsabers[index].id}.png does not exist.")
+                            },
                             {
                                 assertTrue(
-                                    File("${icon2xBasePath}_$index@2x.png").exists(),
-                                    "Icon ${icon2xBasePath}_$index@2x.png does not exist.",
+                                    File("${icon2xBasePath}_${lightsaber.lightsabers[index].id}@2x.png").exists(),
+                                    "Icon ${icon2xBasePath}_${lightsaber.lightsabers[index].id}@2x.png does not exist.",
                                 )
                             },
                         )
@@ -252,7 +254,18 @@ class IconResourceTests {
         val iconPaths = starWarsFactions.map {
             it.data.map { lightsaber ->
                 val iconFilePath = lightsaber.fileName.replace('/', File.separatorChar)
-                listOf("$iconFilePath.png", "${iconFilePath}_r.png")
+
+                if (lightsaber.isJarKai) {
+                    List(lightsaber.lightsabers.size) { index: Int ->
+                        listOf(
+                            "${iconFilePath}_${lightsaber.lightsabers[index].id}.png",
+                        )
+                    }.flatten()
+                } else {
+                    listOf(
+                        "$iconFilePath.png"
+                    )
+                }
             }.stream().flatMap { e -> e.stream() }.collect(toList())
         }.stream().flatMap { it.stream() }.collect(toList())
 
@@ -292,7 +305,19 @@ class IconResourceTests {
         val iconPaths = starWarsFactions.map {
             it.data.map { lightsaber ->
                 val iconFilePath = lightsaber.fileName.replace('/', File.separatorChar)
-                listOf("$iconFilePath@2x.png", "${iconFilePath}_r@2x.png")
+                if (lightsaber.isJarKai) {
+                    List(lightsaber.lightsabers.size) { index: Int ->
+                        listOf(
+                            "${iconBasePath}_${lightsaber.lightsabers[index].id}.png",
+                            "${iconFilePath}_${lightsaber.lightsabers[index].id}@2x.png"
+                        )
+                    }.flatten()
+                } else {
+                    listOf(
+                        "$iconBasePath.png",
+                        "$iconFilePath@2x.png"
+                    )
+                }
             }.stream().flatMap { e -> e.stream() }.collect(toList())
         }.stream().flatMap { it.stream() }.collect(toList())
 

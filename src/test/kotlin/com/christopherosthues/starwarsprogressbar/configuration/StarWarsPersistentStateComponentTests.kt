@@ -67,9 +67,9 @@ class StarWarsPersistentStateComponentTests {
         )
         every { StarWarsFactionHolder.defaultVehicles } returns vehicles
         val lightsabers = listOf(
-            Lightsabers("4", 0f, isJarKai = false, listOf(Lightsaber(1, "blue", isShoto = false, isDoubleBladed = false, yShift = 0))),
-            Lightsabers("5", 0f, isJarKai = false, listOf(Lightsaber(1, "green", isShoto = true, isDoubleBladed = false, yShift = 1))),
-            Lightsabers("6", 0f, isJarKai = false, listOf(Lightsaber(1, "red", isShoto = false, isDoubleBladed = true, yShift = 2))),
+            Lightsabers("4", 0f, isJarKai = false, listOf(Lightsaber(1, "blue", isShoto = false, isDoubleBladed = false, yShift = 0, bladeSize = 8, xBlade = 0, yBlade = 0))),
+            Lightsabers("5", 0f, isJarKai = false, listOf(Lightsaber(1, "green", isShoto = true, isDoubleBladed = false, yShift = 1, bladeSize = 8, xBlade = 0, yBlade = 0))),
+            Lightsabers("6", 0f, isJarKai = false, listOf(Lightsaber(1, "red", isShoto = false, isDoubleBladed = true, yShift = 2, bladeSize = 8, xBlade = 0, yBlade = 0))),
         )
         every { StarWarsFactionHolder.defaultVehicles } returns vehicles
         every { StarWarsFactionHolder.defaultLightsabers } returns lightsabers

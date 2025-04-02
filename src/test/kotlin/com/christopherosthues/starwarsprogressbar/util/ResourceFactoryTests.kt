@@ -110,7 +110,7 @@ class ResourceFactoryTests {
                         "lightsaber1",
                         2.5f,
                         isJarKai = false,
-                        listOf(Lightsaber(1, "brown", isShoto = false, isDoubleBladed = false, yShift = 1))
+                        listOf(Lightsaber(1, "brown", isShoto = false, isDoubleBladed = false, yShift = 1, bladeSize = 8, xBlade = 0, yBlade = 0))
                     )
                 )
             ),
@@ -120,15 +120,15 @@ class ResourceFactoryTests {
                         "lightsaber2",
                         2.5f,
                         isJarKai = false,
-                        listOf(Lightsaber(1, "blue", isShoto = false, isDoubleBladed = true, yShift = 2))
+                        listOf(Lightsaber(1, "blue", isShoto = false, isDoubleBladed = true, yShift = 2, bladeSize = 8, xBlade = 0, yBlade = 0))
                     ),
                     Lightsabers(
                         "lightsaber3",
                         2.5f,
                         isJarKai = true,
                         listOf(
-                            Lightsaber(1, "blue", isShoto = false, isDoubleBladed = false, yShift = 3),
-                            Lightsaber(2, "green", isShoto = true, isDoubleBladed = false, yShift = 4),
+                            Lightsaber(1, "blue", isShoto = false, isDoubleBladed = false, yShift = 3, bladeSize = 8, xBlade = 0, yBlade = 0),
+                            Lightsaber(2, "green", isShoto = true, isDoubleBladed = false, yShift = 4, bladeSize = 8, xBlade = 0, yBlade = 0),
                         )
                     ),
                 )
@@ -152,8 +152,10 @@ class ResourceFactoryTests {
                             "bladeColor": "brown",
                             "isShoto": false,
                             "isDoubleBladed": false,
-                            "xShift": 1,
-                            "yShift": 1
+                            "yShift": 1,
+                            "bladeSize": 8,
+                            "xBlade": 0,
+                            "yBlade": 0
                         }
                     ]
                 }
@@ -173,8 +175,10 @@ class ResourceFactoryTests {
                             "bladeColor": "blue",
                             "isShoto": false,
                             "isDoubleBladed": true,
-                            "xShift": 2,
-                            "yShift": 2
+                            "yShift": 2,
+                            "bladeSize": 8,
+                            "xBlade": 0,
+                            "yBlade": 0
                         }
                     ]
                 },
@@ -189,16 +193,20 @@ class ResourceFactoryTests {
                             "bladeColor": "blue",
                             "isShoto": false,
                             "isDoubleBladed": false,
-                            "xShift": 3,
-                            "yShift": 3
+                            "yShift": 3,
+                            "bladeSize": 8,
+                            "xBlade": 0,
+                            "yBlade": 0
                         },
                         {
                             "id": 2,
                             "bladeColor": "green",
                             "isShoto": true,
                             "isDoubleBladed": false,
-                            "xShift": 4,
-                            "yShift": 4
+                            "yShift": 4,
+                            "bladeSize": 8,
+                            "xBlade": 0,
+                            "yBlade": 0
                         }
                     ]
                 }

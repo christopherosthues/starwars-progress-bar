@@ -865,19 +865,19 @@ class InorderFactionSelectorTests {
                 "1",
                 4f,
                 isJarKai = false,
-                listOf(Lightsaber(1, "a", isShoto = false, isDoubleBladed = false, yShift = 1))
+                listOf(Lightsaber(1, "a", isShoto = false, isDoubleBladed = false, yShift = 1, bladeSize = 8, xBlade = 0, yBlade = 0))
             ).apply { factionId = "4" },
             Lightsabers(
                 "2",
                 5f,
                 isJarKai = false,
-                listOf(Lightsaber(1, "b", isShoto = true, isDoubleBladed = false, yShift = 2))
+                listOf(Lightsaber(1, "b", isShoto = true, isDoubleBladed = false, yShift = 2, bladeSize = 8, xBlade = 0, yBlade = 0))
             ).apply { factionId = "3" },
             Lightsabers(
                 "3",
                 6f,
                 isJarKai = false,
-                listOf(Lightsaber(1, "c", isShoto = false, isDoubleBladed = true, yShift = 3))
+                listOf(Lightsaber(1, "c", isShoto = false, isDoubleBladed = true, yShift = 3, bladeSize = 8, xBlade = 0, yBlade = 0))
             ).apply { factionId = "3" },
         )
         for (lightsaber in lightsabers) {
