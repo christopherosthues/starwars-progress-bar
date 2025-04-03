@@ -9,6 +9,7 @@
 - Lightsaber progress bar
 - Jedi Lightsabers of Ahsoka Tano, Anakin Skywalker, Luke Skywalker, Obi-Wan Kenobi, Pong Krell, Qui-Gon Jinn, Quinlan Vos and Yoda
 - Sith Lightsabers of Darth Maul, Darth Sidious, Dart Tyranus and Darth Vader
+- Ahsoka Tano's white lightsabers
 
 ### Changed
 
