@@ -77,11 +77,11 @@
                             "id": 1,
                             "bladeColor": "red",
                             "isShoto": false,
-                            "isDoubleBladed": false,
-                            "yShift": 0,
+                            "isDoubleBladed": true,
+                            "yShift": 5,
                             "bladeSize": 8,
                             "xBlade": 0,
-                            "yBlade": 0
+                            "yBlade": 1
                         }
                     ]
                 },
