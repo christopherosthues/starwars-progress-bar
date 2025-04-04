@@ -87,6 +87,24 @@
                 },
                 {
                     "type": "Lightsabers",
+                    "id": "savage_opress",
+                    "velocity": 2,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "red",
+                            "isShoto": false,
+                            "isDoubleBladed": true,
+                            "yShift": 5,
+                            "bladeSize": 6,
+                            "xBlade": 9,
+                            "yBlade": 1
+                        }
+                    ]
+                },
+                {
+                    "type": "Lightsabers",
                     "id": "darth_sidious",
                     "velocity": 2,
                     "isJarKai": false,
