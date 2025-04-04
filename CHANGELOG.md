@@ -13,9 +13,9 @@
 
 ### Changed
 
+- BREAKING: Renamed some settings to match new progress bar design
 - BREAKING: Updated to Java 21
 - BREAKING: Updated supported IDEA versions to 2024.2+
-- BREAKING: Renamed some settings to match new progress bar design
 
 ### Removed
 

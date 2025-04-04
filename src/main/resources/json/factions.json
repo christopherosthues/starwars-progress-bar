@@ -107,17 +107,27 @@
                     "type": "Lightsabers",
                     "id": "darth_sidious",
                     "velocity": 2,
-                    "isJarKai": false,
+                    "isJarKai": true,
                     "lightsabers": [
                         {
                             "id": 1,
                             "bladeColor": "red",
                             "isShoto": false,
                             "isDoubleBladed": false,
-                            "yShift": 5,
+                            "yShift": 0,
                             "bladeSize": 7,
                             "xBlade": 0,
                             "yBlade": 1
+                        },
+                        {
+                            "id": 2,
+                            "bladeColor": "red",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "yShift": 10,
+                            "bladeSize": 7,
+                            "xBlade": 0,
+                            "yBlade": 2
                         }
                     ]
                 },
