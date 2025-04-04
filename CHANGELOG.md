@@ -22,6 +22,7 @@
 ### Fixed
 
 - Corrected German translation of TIE Striker
+- Display of apostrophes
 
 ## [1.12.0] - 2024-09-17
 
