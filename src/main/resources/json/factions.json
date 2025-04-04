@@ -166,34 +166,6 @@
                             "yBlade": 0
                         }
                     ]
-                },
-                {
-                    "type": "Lightsabers",
-                    "id": "qimir",
-                    "velocity": 2,
-                    "isJarKai": true,
-                    "lightsabers": [
-                        {
-                            "id": 1,
-                            "bladeColor": "red",
-                            "isShoto": false,
-                            "isDoubleBladed": false,
-                            "yShift": 0,
-                            "bladeSize": 8,
-                            "xBlade": 0,
-                            "yBlade": 0
-                        },
-                        {
-                            "id": 2,
-                            "bladeColor": "red",
-                            "isShoto": true,
-                            "isDoubleBladed": false,
-                            "yShift": 10,
-                            "bladeSize": 8,
-                            "xBlade": 0,
-                            "yBlade": 0
-                        }
-                    ]
                 }
             ]
         },
@@ -283,24 +255,6 @@
                         {
                             "id": 1,
                             "bladeColor": "blue",
-                            "isShoto": false,
-                            "isDoubleBladed": false,
-                            "yShift": 0,
-                            "bladeSize": 8,
-                            "xBlade": 0,
-                            "yBlade": 0
-                        }
-                    ]
-                },
-                {
-                    "type": "Lightsabers",
-                    "id": "asajj_ventress_first",
-                    "velocity": 4,
-                    "isJarKai": false,
-                    "lightsabers": [
-                        {
-                            "id": 1,
-                            "bladeColor": "green",
                             "isShoto": false,
                             "isDoubleBladed": false,
                             "yShift": 0,
@@ -499,24 +453,6 @@
                             "yBlade": 0
                         }
                     ]
-                },
-                {
-                    "type": "Lightsabers",
-                    "id": "yaddle",
-                    "velocity": 4,
-                    "isJarKai": false,
-                    "lightsabers": [
-                        {
-                            "id": 1,
-                            "bladeColor": "green",
-                            "isShoto": true,
-                            "isDoubleBladed": false,
-                            "yShift": 0,
-                            "bladeSize": 8,
-                            "xBlade": 0,
-                            "yBlade": 0
-                        }
-                    ]
                 }
             ]
         },
@@ -548,90 +484,6 @@
                             "bladeSize": 6,
                             "xBlade": 0,
                             "yBlade": 7
-                        }
-                    ]
-                },
-                {
-                    "type": "Lightsabers",
-                    "id": "asajj_ventress_third",
-                    "velocity": 4,
-                    "isJarKai": false,
-                    "lightsabers": [
-                        {
-                            "id": 1,
-                            "bladeColor": "yellow",
-                            "isShoto": false,
-                            "isDoubleBladed": false,
-                            "yShift": 0,
-                            "bladeSize": 8,
-                            "xBlade": 0,
-                            "yBlade": 0
-                        }
-                    ]
-                },
-                {
-                    "type": "Lightsabers",
-                    "id": "asajj_ventress_fourth",
-                    "velocity": 4,
-                    "isJarKai": false,
-                    "lightsabers": [
-                        {
-                            "id": 1,
-                            "bladeColor": "yellow",
-                            "isShoto": false,
-                            "isDoubleBladed": false,
-                            "yShift": 0,
-                            "bladeSize": 8,
-                            "xBlade": 0,
-                            "yBlade": 0
-                        }
-                    ]
-                },
-                {
-                    "type": "Lightsabers",
-                    "id": "general_grievous",
-                    "velocity": 4,
-                    "isJarKai": true,
-                    "lightsabers": [
-                        {
-                            "id": 1,
-                            "bladeColor": "blue",
-                            "isShoto": false,
-                            "isDoubleBladed": false,
-                            "yShift": 0,
-                            "bladeSize": 4,
-                            "xBlade": 0,
-                            "yBlade": 0
-                        },
-                        {
-                            "id": 2,
-                            "bladeColor": "green",
-                            "isShoto": false,
-                            "isDoubleBladed": false,
-                            "yShift": 5,
-                            "bladeSize": 4,
-                            "xBlade": 0,
-                            "yBlade": 0
-                        },
-                        {
-                            "id": 3,
-                            "bladeColor": "green",
-                            "isShoto": false,
-                            "isDoubleBladed": false,
-                            "yShift": 10,
-                            "bladeSize": 4,
-                            "xBlade": 0,
-                            "yBlade": 0
-                        },
-                        {
-                            "id": 4,
-                            "bladeColor": "blue",
-                            "isShoto": false,
-                            "isDoubleBladed": false,
-                            "yShift": 15,
-                            "bladeSize": 4,
-                            "xBlade": 0,
-                            "yBlade": 0
                         }
                     ]
                 }
