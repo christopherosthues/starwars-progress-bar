@@ -226,7 +226,7 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "lightBlue",
+                            "bladeColor": "blue",
                             "isShoto": false,
                             "isDoubleBladed": false,
                             "yShift": 0,
@@ -236,7 +236,7 @@
                         },
                         {
                             "id": 2,
-                            "bladeColor": "lightBlue",
+                            "bladeColor": "blue",
                             "isShoto": true,
                             "isDoubleBladed": false,
                             "yShift": 11,
