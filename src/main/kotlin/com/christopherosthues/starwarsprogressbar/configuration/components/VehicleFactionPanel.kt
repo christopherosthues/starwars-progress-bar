@@ -229,7 +229,8 @@ internal class VehicleFactionPanel(
             selectedVehiclesCount.set(0)
             initFactionPanel()
             vehiclesCheckboxes.forEach {
-                it.value.isSelected = enabledVehicles[it.key]!!
+                val enabled = enabledVehicles[it.key] ?: starWarsState.enableNew
+                it.value.isSelected = enabled
             }
         }
     }

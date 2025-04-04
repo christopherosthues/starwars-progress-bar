@@ -230,7 +230,8 @@ internal class LightsaberFactionPanel(
             selectedLightsabersCount.set(0)
             initFactionPanel()
             lightsabersCheckboxes.forEach {
-                it.value.isSelected = enabledLightsabers[it.key]!!
+                val enabled = enabledLightsabers[it.key] ?: starWarsState.enableNew
+                it.value.isSelected = enabled
             }
         }
     }
