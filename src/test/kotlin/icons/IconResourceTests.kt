@@ -1,6 +1,5 @@
 package icons
 
-import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 import com.christopherosthues.starwarsprogressbar.util.StarWarsResourceLoader
 import org.junit.jupiter.api.Assertions.assertTrue
@@ -179,8 +178,11 @@ class IconResourceTests {
                 if (lightsaber.isJarKai) {
                     List(lightsaber.lightsabers.size) { index: Int ->
                         listOf(
-                            { assertTrue(File("${iconBasePath}_${lightsaber.lightsabers[index].id}.png").exists(),
-                                "Icon ${iconBasePath}_${lightsaber.lightsabers[index].id}.png does not exist.")
+                            {
+                                assertTrue(
+                                    File("${iconBasePath}_${lightsaber.lightsabers[index].id}.png").exists(),
+                                    "Icon ${iconBasePath}_${lightsaber.lightsabers[index].id}.png does not exist.",
+                                )
                             },
                             {
                                 assertTrue(
@@ -263,7 +265,7 @@ class IconResourceTests {
                     }.flatten()
                 } else {
                     listOf(
-                        "$iconFilePath.png"
+                        "$iconFilePath.png",
                     )
                 }
             }.stream().flatMap { e -> e.stream() }.collect(toList())
@@ -309,13 +311,13 @@ class IconResourceTests {
                     List(lightsaber.lightsabers.size) { index: Int ->
                         listOf(
                             "${iconBasePath}_${lightsaber.lightsabers[index].id}.png",
-                            "${iconFilePath}_${lightsaber.lightsabers[index].id}@2x.png"
+                            "${iconFilePath}_${lightsaber.lightsabers[index].id}@2x.png",
                         )
                     }.flatten()
                 } else {
                     listOf(
                         "$iconBasePath.png",
-                        "$iconFilePath@2x.png"
+                        "$iconFilePath@2x.png",
                     )
                 }
             }.stream().flatMap { e -> e.stream() }.collect(toList())

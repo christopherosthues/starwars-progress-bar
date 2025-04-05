@@ -2,9 +2,9 @@ package com.christopherosthues.starwarsprogressbar.selectors
 
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
-import com.christopherosthues.starwarsprogressbar.models.*
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
+import com.christopherosthues.starwarsprogressbar.models.StarWarsEntity
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.util.randomInt
@@ -583,19 +583,19 @@ class RollingRandomSelectorTests {
                 "1",
                 4f,
                 isJarKai = false,
-                listOf(Lightsaber(1, "d", isShoto = false, isDoubleBladed = false, yShift = 1, bladeSize = 8, xBlade = 0, yBlade = 0))
+                listOf(Lightsaber(1, "d", isShoto = false, isDoubleBladed = false, yShift = 1, bladeSize = 8, xBlade = 0, yBlade = 0)),
             ).apply { factionId = "4" },
             Lightsabers(
                 "2",
                 5f,
                 isJarKai = false,
-                listOf(Lightsaber(1, "e", isShoto = true, isDoubleBladed = false, yShift = 2, bladeSize = 8, xBlade = 0, yBlade = 0))
+                listOf(Lightsaber(1, "e", isShoto = true, isDoubleBladed = false, yShift = 2, bladeSize = 8, xBlade = 0, yBlade = 0)),
             ).apply { factionId = "3" },
             Lightsabers(
                 "3",
                 6f,
                 isJarKai = false,
-                listOf(Lightsaber(1, "f", isShoto = false, isDoubleBladed = true, yShift = 3, bladeSize = 8, xBlade = 0, yBlade = 0))
+                listOf(Lightsaber(1, "f", isShoto = false, isDoubleBladed = true, yShift = 3, bladeSize = 8, xBlade = 0, yBlade = 0)),
             ).apply { factionId = "3" },
         )
         for (lightsaber in lightsabers) {

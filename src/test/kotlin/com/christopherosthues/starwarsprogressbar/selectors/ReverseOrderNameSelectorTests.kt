@@ -2,9 +2,9 @@ package com.christopherosthues.starwarsprogressbar.selectors
 
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
-import com.christopherosthues.starwarsprogressbar.models.*
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
+import com.christopherosthues.starwarsprogressbar.models.StarWarsEntity
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.intellij.idea.TestFor
@@ -55,7 +55,7 @@ class ReverseOrderNameSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         // Act
-        val result = ReverseOrderNameSelector.selectEntity(mapOf(), mapOf(),  defaultEnabled)
+        val result = ReverseOrderNameSelector.selectEntity(mapOf(), mapOf(), defaultEnabled)
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -135,13 +135,12 @@ class ReverseOrderNameSelectorTests {
             ReverseOrderNameSelector.selectEntity(
                 mapOf("1.1" to enabled, "1.2" to enabled, "1.3" to enabled),
                 mapOf(),
-                true
+                true,
             )
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
     }
-
 
     @ParameterizedTest
     @ValueSource(booleans = [true, false])
@@ -157,13 +156,12 @@ class ReverseOrderNameSelectorTests {
             ReverseOrderNameSelector.selectEntity(
                 mapOf(),
                 mapOf("3.1" to enabled, "3.2" to enabled, "3.3" to enabled),
-                true
+                true,
             )
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
     }
-
 
     @ParameterizedTest
     @ValueSource(booleans = [true, false])
@@ -179,7 +177,7 @@ class ReverseOrderNameSelectorTests {
             ReverseOrderNameSelector.selectEntity(
                 mapOf("1.1" to enabled, "1.2" to enabled, "1.3" to enabled),
                 mapOf("3.1" to enabled, "3.2" to enabled, "3.3" to enabled),
-                true
+                true,
             )
 
         // Assert
@@ -678,19 +676,19 @@ class ReverseOrderNameSelectorTests {
                 "1",
                 4f,
                 isJarKai = false,
-                listOf(Lightsaber(1, "a", isShoto = false, isDoubleBladed = false, yShift = 1, bladeSize = 8, xBlade = 0, yBlade = 0))
+                listOf(Lightsaber(1, "a", isShoto = false, isDoubleBladed = false, yShift = 1, bladeSize = 8, xBlade = 0, yBlade = 0)),
             ).apply { factionId = "3" },
             Lightsabers(
                 "2",
                 5f,
                 isJarKai = false,
-                listOf(Lightsaber(1, "b", isShoto = true, isDoubleBladed = false, yShift = 2, bladeSize = 8, xBlade = 0, yBlade = 0))
+                listOf(Lightsaber(1, "b", isShoto = true, isDoubleBladed = false, yShift = 2, bladeSize = 8, xBlade = 0, yBlade = 0)),
             ).apply { factionId = "3" },
             Lightsabers(
                 "3",
                 6f,
                 isJarKai = false,
-                listOf(Lightsaber(1, "c", isShoto = false, isDoubleBladed = true, yShift = 3, bladeSize = 8, xBlade = 0, yBlade = 0))
+                listOf(Lightsaber(1, "c", isShoto = false, isDoubleBladed = true, yShift = 3, bladeSize = 8, xBlade = 0, yBlade = 0)),
             ).apply { factionId = "3" },
         )
         for (lightsaber in lightsabers) {

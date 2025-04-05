@@ -9,7 +9,7 @@ import org.junit.jupiter.api.assertAll
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.MethodSource
 import java.io.File
-import java.util.*
+import java.util.Properties
 import java.util.stream.Stream
 import kotlin.reflect.KVisibility
 import kotlin.reflect.full.memberProperties

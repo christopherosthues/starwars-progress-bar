@@ -34,13 +34,13 @@ class StarWarsFactionTests {
                 "1",
                 3f,
                 isJarKai = false,
-                listOf(Lightsaber(1, "a", isShoto = false, isDoubleBladed = true, yShift = 1, bladeSize = 8, xBlade = 0, yBlade = 0))
+                listOf(Lightsaber(1, "a", isShoto = false, isDoubleBladed = true, yShift = 1, bladeSize = 8, xBlade = 0, yBlade = 0)),
             ),
             Lightsabers(
                 "2",
                 4f,
                 isJarKai = false,
-                listOf(Lightsaber(1, "b", isShoto = true, isDoubleBladed = false, yShift = 2, bladeSize = 8, xBlade = 0, yBlade = 0))
+                listOf(Lightsaber(1, "b", isShoto = true, isDoubleBladed = false, yShift = 2, bladeSize = 8, xBlade = 0, yBlade = 0)),
             ),
         )
 

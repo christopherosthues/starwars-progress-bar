@@ -414,7 +414,7 @@ class RandomSelectorTests {
         val result = RandomSelector.selectEntity(
             mapOf("2.1" to true, "1.2" to true, "1.3" to true),
             mapOf("4.1" to true, "3.2" to true, "3.3" to true),
-            defaultEnabled
+            defaultEnabled,
         )
 
         // Assert
@@ -474,7 +474,7 @@ class RandomSelectorTests {
     @MethodSource("indexAndExpectedIndexValues")
     fun `selectEntity should return correct vehicle and lightsaber if provided enabled vehicles and lightsabers do not contain all default vehicles and lightsabers and default enabled is false`(
         index: Int,
-        expectedIndex: Int
+        expectedIndex: Int,
     ) {
         // Arrange
         mockkStatic(::randomInt)
@@ -632,7 +632,7 @@ class RandomSelectorTests {
         val result = RandomSelector.selectEntity(
             mapOf("1.2" to true, "1.3" to true, "1.4" to true),
             mapOf("3.2" to true, "3.3" to true, "3.4" to true),
-            true
+            true,
         )
 
         // Assert
@@ -687,7 +687,7 @@ class RandomSelectorTests {
     @MethodSource("indexAndExpectedIndexNotAllEnabledValues")
     fun `selectEntity should return correct vehicle and lightsaber if default vehicles and lightsabers are not all enabled`(
         index: Int,
-        expectedIndex: Int
+        expectedIndex: Int,
     ) {
         // Arrange
         mockkStatic(::randomInt)
@@ -702,7 +702,7 @@ class RandomSelectorTests {
         val result = RandomSelector.selectEntity(
             mapOf("2.1" to false, "1.2" to true, "1.3" to false),
             mapOf("4.1" to false, "3.2" to true, "3.3" to false),
-            true
+            true,
         )
 
         // Assert
@@ -736,19 +736,19 @@ class RandomSelectorTests {
                 "1",
                 4f,
                 isJarKai = false,
-                listOf(Lightsaber(1, "d", isShoto = false, isDoubleBladed = false, yShift = 1, bladeSize = 8, xBlade = 0, yBlade = 0))
+                listOf(Lightsaber(1, "d", isShoto = false, isDoubleBladed = false, yShift = 1, bladeSize = 8, xBlade = 0, yBlade = 0)),
             ).apply { factionId = "4" },
             Lightsabers(
                 "2",
                 5f,
                 isJarKai = false,
-                listOf(Lightsaber(1, "e", isShoto = true, isDoubleBladed = false, yShift = 2, bladeSize = 8, xBlade = 0, yBlade = 0))
+                listOf(Lightsaber(1, "e", isShoto = true, isDoubleBladed = false, yShift = 2, bladeSize = 8, xBlade = 0, yBlade = 0)),
             ).apply { factionId = "3" },
             Lightsabers(
                 "3",
                 6f,
                 isJarKai = false,
-                listOf(Lightsaber(1, "f", isShoto = false, isDoubleBladed = true, yShift = 3, bladeSize = 8, xBlade = 0, yBlade = 0))
+                listOf(Lightsaber(1, "f", isShoto = false, isDoubleBladed = true, yShift = 3, bladeSize = 8, xBlade = 0, yBlade = 0)),
             ).apply { factionId = "3" },
         )
         for (lightsaber in lightsabers) {

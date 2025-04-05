@@ -1,7 +1,8 @@
 package com.christopherosthues.starwarsprogressbar.util
 
-import com.christopherosthues.starwarsprogressbar.models.*
+import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
+import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.intellij.ui.scale.JBUIScale
 import io.mockk.every
@@ -19,12 +20,11 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertAll
 import java.awt.GraphicsConfiguration
 import java.awt.image.BufferedImage
-import java.util.*
+import java.util.Optional
 import javax.swing.ImageIcon
 
 class ResourceFactoryTests {
     //region createClassLoader tests
-    // TODO tests for lightsabers
 
     @Test
     fun `createClassLoader should create class loader of StarWarsResourceLoader class`() {
@@ -110,17 +110,18 @@ class ResourceFactoryTests {
                         "lightsaber1",
                         2.5f,
                         isJarKai = false,
-                        listOf(Lightsaber(1, "brown", isShoto = false, isDoubleBladed = false, yShift = 1, bladeSize = 8, xBlade = 0, yBlade = 0))
-                    )
-                )
+                        listOf(Lightsaber(1, "brown", isShoto = false, isDoubleBladed = false, yShift = 1, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                    ),
+                ),
             ),
             StarWarsFaction(
-                "faction2", listOf(
+                "faction2",
+                listOf(
                     Lightsabers(
                         "lightsaber2",
                         2.5f,
                         isJarKai = false,
-                        listOf(Lightsaber(1, "blue", isShoto = false, isDoubleBladed = true, yShift = 2, bladeSize = 8, xBlade = 0, yBlade = 0))
+                        listOf(Lightsaber(1, "blue", isShoto = false, isDoubleBladed = true, yShift = 2, bladeSize = 8, xBlade = 0, yBlade = 0)),
                     ),
                     Lightsabers(
                         "lightsaber3",
@@ -129,10 +130,10 @@ class ResourceFactoryTests {
                         listOf(
                             Lightsaber(1, "blue", isShoto = false, isDoubleBladed = false, yShift = 3, bladeSize = 8, xBlade = 0, yBlade = 0),
                             Lightsaber(2, "green", isShoto = true, isDoubleBladed = false, yShift = 4, bladeSize = 8, xBlade = 0, yBlade = 0),
-                        )
+                        ),
                     ),
-                )
-            )
+                ),
+            ),
         )
 
         // Act and Assert

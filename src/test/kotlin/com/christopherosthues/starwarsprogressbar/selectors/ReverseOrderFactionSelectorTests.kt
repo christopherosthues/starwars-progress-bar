@@ -2,9 +2,9 @@ package com.christopherosthues.starwarsprogressbar.selectors
 
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
-import com.christopherosthues.starwarsprogressbar.models.*
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
+import com.christopherosthues.starwarsprogressbar.models.StarWarsEntity
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.intellij.idea.TestFor
@@ -621,7 +621,7 @@ class ReverseOrderFactionSelectorTests {
             entities,
             mapOf("2.1" to true, "1.2" to true, "1.3" to true),
             mapOf("4.1" to true, "3.2" to true, "3.3" to true),
-            true
+            true,
         )
 
         // Assert
@@ -652,7 +652,7 @@ class ReverseOrderFactionSelectorTests {
             entities,
             mapOf("2.1" to true, "1.2" to true, "1.3" to true),
             mapOf("4.1" to true, "3.2" to true, "3.3" to true),
-            true
+            true,
         )
 
         // Assert
@@ -671,7 +671,7 @@ class ReverseOrderFactionSelectorTests {
             entities,
             mapOf("2.1" to true, "1.2" to false, "1.3" to true),
             mapOf("4.1" to true, "3.2" to false, "3.3" to true),
-            true
+            true,
         )
 
         // Assert
@@ -690,7 +690,7 @@ class ReverseOrderFactionSelectorTests {
             entities,
             mapOf("2.1" to true, "1.2" to false),
             mapOf("4.1" to true, "3.2" to false),
-            true
+            true,
         )
 
         // Assert
@@ -709,7 +709,7 @@ class ReverseOrderFactionSelectorTests {
             entities,
             mapOf("2.1" to true, "1.2" to false),
             mapOf("4.1" to true, "3.2" to false),
-            false
+            false,
         )
 
         // Assert
@@ -752,7 +752,7 @@ class ReverseOrderFactionSelectorTests {
             entities,
             mapOf("1.1" to true, "1.2" to true, "1.3" to true),
             mapOf("3.1" to true, "3.2" to true, "3.3" to true),
-            true
+            true,
         )
 
         // Assert
@@ -783,7 +783,7 @@ class ReverseOrderFactionSelectorTests {
             entities,
             mapOf("1.1" to true, "1.2" to true, "1.3" to true),
             mapOf("3.1" to true, "3.2" to true, "3.3" to true),
-            true
+            true,
         )
 
         // Assert
@@ -802,7 +802,7 @@ class ReverseOrderFactionSelectorTests {
             entities,
             mapOf("1.1" to true, "1.2" to false, "1.3" to true),
             mapOf("3.1" to true, "3.2" to false, "3.3" to true),
-            true
+            true,
         )
 
         // Assert
@@ -821,7 +821,7 @@ class ReverseOrderFactionSelectorTests {
             entities,
             mapOf("1.1" to true, "1.2" to false),
             mapOf("3.1" to true, "3.2" to false),
-            true
+            true,
         )
 
         // Assert
@@ -840,7 +840,7 @@ class ReverseOrderFactionSelectorTests {
             entities,
             mapOf("1.1" to true, "1.2" to false),
             mapOf("3.1" to true, "3.2" to false),
-            false
+            false,
         )
 
         // Assert
@@ -878,19 +878,19 @@ class ReverseOrderFactionSelectorTests {
                 "1",
                 4f,
                 isJarKai = false,
-                listOf(Lightsaber(1, "a", isShoto = false, isDoubleBladed = false, yShift = 1, bladeSize = 8, xBlade = 0, yBlade = 0))
+                listOf(Lightsaber(1, "a", isShoto = false, isDoubleBladed = false, yShift = 1, bladeSize = 8, xBlade = 0, yBlade = 0)),
             ).apply { factionId = "4" },
             Lightsabers(
                 "2",
                 5f,
                 isJarKai = false,
-                listOf(Lightsaber(1, "b", isShoto = true, isDoubleBladed = false, yShift = 2, bladeSize = 8, xBlade = 0, yBlade = 0))
+                listOf(Lightsaber(1, "b", isShoto = true, isDoubleBladed = false, yShift = 2, bladeSize = 8, xBlade = 0, yBlade = 0)),
             ).apply { factionId = "3" },
             Lightsabers(
                 "3",
                 6f,
                 isJarKai = false,
-                listOf(Lightsaber(1, "c", isShoto = false, isDoubleBladed = true, yShift = 3, bladeSize = 8, xBlade = 0, yBlade = 0))
+                listOf(Lightsaber(1, "c", isShoto = false, isDoubleBladed = true, yShift = 3, bladeSize = 8, xBlade = 0, yBlade = 0)),
             ).apply { factionId = "3" },
         )
         for (lightsaber in lightsabers) {

@@ -3,8 +3,8 @@ package com.christopherosthues.starwarsprogressbar.configuration
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SELECTOR
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
-import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
+import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.selectors.SelectionType
 import com.intellij.idea.TestFor
