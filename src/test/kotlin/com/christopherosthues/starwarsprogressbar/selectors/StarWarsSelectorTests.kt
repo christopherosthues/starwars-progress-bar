@@ -153,12 +153,48 @@ class StarWarsSelectorTests {
             { assertNotEquals(missingVehicle, result) },
         )
 
-        verify(exactly = factionSelector) { InorderFactionSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = vehicleSelector) { InorderNameSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = randomSelector) { RandomSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = reverseFactionSelector) { ReverseOrderFactionSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = reverseVehicleSelector) { ReverseOrderNameSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = rollingRandomSelector) { RollingRandomSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
+        verify(exactly = factionSelector) {
+            InorderFactionSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = vehicleSelector) {
+            InorderNameSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = randomSelector) {
+            RandomSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = reverseFactionSelector) {
+            ReverseOrderFactionSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = reverseVehicleSelector) {
+            ReverseOrderNameSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = rollingRandomSelector) {
+            RollingRandomSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
     }
 
     @ParameterizedTest
@@ -201,12 +237,48 @@ class StarWarsSelectorTests {
             { assertNotEquals(missingVehicle, result) },
         )
 
-        verify(exactly = factionSelector) { InorderFactionSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = vehicleSelector) { InorderNameSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = randomSelector) { RandomSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = reverseFactionSelector) { ReverseOrderFactionSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = reverseVehicleSelector) { ReverseOrderNameSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = rollingRandomSelector) { RollingRandomSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
+        verify(exactly = factionSelector) {
+            InorderFactionSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = vehicleSelector) {
+            InorderNameSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = randomSelector) {
+            RandomSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = reverseFactionSelector) {
+            ReverseOrderFactionSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = reverseVehicleSelector) {
+            ReverseOrderNameSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = rollingRandomSelector) {
+            RollingRandomSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
     }
 
     @ParameterizedTest
@@ -250,12 +322,48 @@ class StarWarsSelectorTests {
             { assertNotEquals(missingVehicle, result) },
         )
 
-        verify(exactly = factionSelector) { InorderFactionSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = vehicleSelector) { InorderNameSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = randomSelector) { RandomSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = reverseFactionSelector) { ReverseOrderFactionSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = reverseVehicleSelector) { ReverseOrderNameSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = rollingRandomSelector) { RollingRandomSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
+        verify(exactly = factionSelector) {
+            InorderFactionSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = vehicleSelector) {
+            InorderNameSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = randomSelector) {
+            RandomSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = reverseFactionSelector) {
+            ReverseOrderFactionSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = reverseVehicleSelector) {
+            ReverseOrderNameSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = rollingRandomSelector) {
+            RollingRandomSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
     }
 
     @ParameterizedTest
@@ -299,12 +407,48 @@ class StarWarsSelectorTests {
             { assertNotEquals(missingVehicle, result) },
         )
 
-        verify(exactly = factionSelector) { InorderFactionSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = vehicleSelector) { InorderNameSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = randomSelector) { RandomSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = reverseFactionSelector) { ReverseOrderFactionSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = reverseVehicleSelector) { ReverseOrderNameSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = rollingRandomSelector) { RollingRandomSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
+        verify(exactly = factionSelector) {
+            InorderFactionSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = vehicleSelector) {
+            InorderNameSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = randomSelector) {
+            RandomSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = reverseFactionSelector) {
+            ReverseOrderFactionSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = reverseVehicleSelector) {
+            ReverseOrderNameSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = rollingRandomSelector) {
+            RollingRandomSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
     }
 
     @ParameterizedTest
@@ -333,12 +477,42 @@ class StarWarsSelectorTests {
             enableNew = true
         }
         setupStarWarsState(starWarsState)
-        every { InorderFactionSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) } returns vehicles[1]
-        every { InorderNameSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) } returns vehicles[1]
+        every {
+            InorderFactionSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        } returns vehicles[1]
+        every {
+            InorderNameSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        } returns vehicles[1]
         every { RandomSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) } returns vehicles[1]
-        every { ReverseOrderFactionSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) } returns vehicles[1]
-        every { ReverseOrderNameSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) } returns vehicles[1]
-        every { RollingRandomSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) } returns vehicles[1]
+        every {
+            ReverseOrderFactionSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        } returns vehicles[1]
+        every {
+            ReverseOrderNameSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        } returns vehicles[1]
+        every {
+            RollingRandomSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        } returns vehicles[1]
 
         // Act
         val result = StarWarsSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled, selectionType)
@@ -349,12 +523,48 @@ class StarWarsSelectorTests {
             { assertNotEquals(missingVehicle, result) },
         )
 
-        verify(exactly = factionSelector) { InorderFactionSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = vehicleSelector) { InorderNameSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = randomSelector) { RandomSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = reverseFactionSelector) { ReverseOrderFactionSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = reverseVehicleSelector) { ReverseOrderNameSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = rollingRandomSelector) { RollingRandomSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
+        verify(exactly = factionSelector) {
+            InorderFactionSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = vehicleSelector) {
+            InorderNameSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = randomSelector) {
+            RandomSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = reverseFactionSelector) {
+            ReverseOrderFactionSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = reverseVehicleSelector) {
+            ReverseOrderNameSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = rollingRandomSelector) {
+            RollingRandomSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
     }
 
     @ParameterizedTest
@@ -383,12 +593,48 @@ class StarWarsSelectorTests {
             enableNew = true
         }
         setupStarWarsState(starWarsState)
-        every { InorderFactionSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) } returns lightsabers[1]
-        every { InorderNameSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) } returns lightsabers[1]
-        every { RandomSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) } returns lightsabers[1]
-        every { ReverseOrderFactionSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) } returns lightsabers[1]
-        every { ReverseOrderNameSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) } returns lightsabers[1]
-        every { RollingRandomSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) } returns lightsabers[1]
+        every {
+            InorderFactionSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        } returns lightsabers[1]
+        every {
+            InorderNameSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        } returns lightsabers[1]
+        every {
+            RandomSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        } returns lightsabers[1]
+        every {
+            ReverseOrderFactionSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        } returns lightsabers[1]
+        every {
+            ReverseOrderNameSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        } returns lightsabers[1]
+        every {
+            RollingRandomSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        } returns lightsabers[1]
 
         // Act
         val result = StarWarsSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled, selectionType)
@@ -399,12 +645,48 @@ class StarWarsSelectorTests {
             { assertNotEquals(missingVehicle, result) },
         )
 
-        verify(exactly = factionSelector) { InorderFactionSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = vehicleSelector) { InorderNameSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = randomSelector) { RandomSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = reverseFactionSelector) { ReverseOrderFactionSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = reverseVehicleSelector) { ReverseOrderNameSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = rollingRandomSelector) { RollingRandomSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
+        verify(exactly = factionSelector) {
+            InorderFactionSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = vehicleSelector) {
+            InorderNameSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = randomSelector) {
+            RandomSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = reverseFactionSelector) {
+            ReverseOrderFactionSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = reverseVehicleSelector) {
+            ReverseOrderNameSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = rollingRandomSelector) {
+            RollingRandomSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
     }
 
     @ParameterizedTest
@@ -434,12 +716,42 @@ class StarWarsSelectorTests {
             enableNew = true
         }
         setupStarWarsState(starWarsState)
-        every { InorderFactionSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) } returns vehicles[1]
-        every { InorderNameSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) } returns vehicles[1]
+        every {
+            InorderFactionSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        } returns vehicles[1]
+        every {
+            InorderNameSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        } returns vehicles[1]
         every { RandomSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) } returns vehicles[1]
-        every { ReverseOrderFactionSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) } returns vehicles[1]
-        every { ReverseOrderNameSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) } returns vehicles[1]
-        every { RollingRandomSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) } returns vehicles[1]
+        every {
+            ReverseOrderFactionSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        } returns vehicles[1]
+        every {
+            ReverseOrderNameSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        } returns vehicles[1]
+        every {
+            RollingRandomSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        } returns vehicles[1]
 
         // Act
         val result = StarWarsSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled, selectionType)
@@ -450,12 +762,48 @@ class StarWarsSelectorTests {
             { assertNotEquals(missingVehicle, result) },
         )
 
-        verify(exactly = factionSelector) { InorderFactionSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = vehicleSelector) { InorderNameSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = randomSelector) { RandomSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = reverseFactionSelector) { ReverseOrderFactionSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = reverseVehicleSelector) { ReverseOrderNameSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = rollingRandomSelector) { RollingRandomSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
+        verify(exactly = factionSelector) {
+            InorderFactionSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = vehicleSelector) {
+            InorderNameSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = randomSelector) {
+            RandomSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = reverseFactionSelector) {
+            ReverseOrderFactionSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = reverseVehicleSelector) {
+            ReverseOrderNameSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = rollingRandomSelector) {
+            RollingRandomSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
     }
 
     @ParameterizedTest
@@ -485,12 +833,48 @@ class StarWarsSelectorTests {
             enableNew = true
         }
         setupStarWarsState(starWarsState)
-        every { InorderFactionSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) } returns lightsabers[1]
-        every { InorderNameSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) } returns lightsabers[1]
-        every { RandomSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) } returns lightsabers[1]
-        every { ReverseOrderFactionSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) } returns lightsabers[1]
-        every { ReverseOrderNameSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) } returns lightsabers[1]
-        every { RollingRandomSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) } returns lightsabers[1]
+        every {
+            InorderFactionSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        } returns lightsabers[1]
+        every {
+            InorderNameSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        } returns lightsabers[1]
+        every {
+            RandomSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        } returns lightsabers[1]
+        every {
+            ReverseOrderFactionSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        } returns lightsabers[1]
+        every {
+            ReverseOrderNameSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        } returns lightsabers[1]
+        every {
+            RollingRandomSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        } returns lightsabers[1]
 
         // Act
         val result = StarWarsSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled, selectionType)
@@ -501,12 +885,48 @@ class StarWarsSelectorTests {
             { assertNotEquals(missingVehicle, result) },
         )
 
-        verify(exactly = factionSelector) { InorderFactionSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = vehicleSelector) { InorderNameSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = randomSelector) { RandomSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = reverseFactionSelector) { ReverseOrderFactionSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = reverseVehicleSelector) { ReverseOrderNameSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
-        verify(exactly = rollingRandomSelector) { RollingRandomSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) }
+        verify(exactly = factionSelector) {
+            InorderFactionSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = vehicleSelector) {
+            InorderNameSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = randomSelector) {
+            RandomSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = reverseFactionSelector) {
+            ReverseOrderFactionSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = reverseVehicleSelector) {
+            ReverseOrderNameSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
+        verify(exactly = rollingRandomSelector) {
+            RollingRandomSelector.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        }
     }
 
     //endregion
@@ -530,19 +950,52 @@ class StarWarsSelectorTests {
             "4",
             1f,
             isJarKai = false,
-            listOf(Lightsaber(1, "a", isShoto = false, isDoubleBladed = false, yShift = 1, bladeSize = 8, xBlade = 0, yBlade = 0)),
+            listOf(
+                Lightsaber(
+                    1,
+                    "a",
+                    isShoto = false,
+                    isDoubleBladed = false,
+                    yShift = 1,
+                    bladeSize = 8,
+                    xBlade = 0,
+                    yBlade = 0,
+                ),
+            ),
         ),
         Lightsabers(
             "5",
             2f,
             isJarKai = false,
-            listOf(Lightsaber(1, "b", isShoto = true, isDoubleBladed = false, yShift = 2, bladeSize = 8, xBlade = 0, yBlade = 0)),
+            listOf(
+                Lightsaber(
+                    1,
+                    "b",
+                    isShoto = true,
+                    isDoubleBladed = false,
+                    yShift = 2,
+                    bladeSize = 8,
+                    xBlade = 0,
+                    yBlade = 0,
+                ),
+            ),
         ),
         Lightsabers(
             "6",
             3f,
             isJarKai = false,
-            listOf(Lightsaber(1, "c", isShoto = false, isDoubleBladed = true, yShift = 3, bladeSize = 8, xBlade = 0, yBlade = 0)),
+            listOf(
+                Lightsaber(
+                    1,
+                    "c",
+                    isShoto = false,
+                    isDoubleBladed = true,
+                    yShift = 3,
+                    bladeSize = 8,
+                    xBlade = 0,
+                    yBlade = 0,
+                ),
+            ),
         ),
     )
 

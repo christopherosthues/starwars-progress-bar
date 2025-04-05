@@ -907,7 +907,7 @@ class ReverseOrderFactionSelectorTests {
         defaultEnabled: Boolean,
     ): List<StarWarsEntity> {
         val result = mutableListOf<StarWarsEntity>()
-        for (i in vehicles.indices) {
+        repeat(vehicles.indices.count()) {
             result.add(
                 ReverseOrderFactionSelector.selectEntity(
                     enabledVehicles,

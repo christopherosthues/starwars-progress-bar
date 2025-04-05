@@ -34,16 +34,18 @@ internal object StarWarsFactionHolder {
         defaultVehicleFactions = factions.vehicles.filter { it.id.isNotEmpty() }
         missingVehicle =
             factions.vehicles.firstOrNull { it.id.isEmpty() }?.data?.firstOrNull() ?: StarWarsVehicle.missingVehicle
-        defaultVehicles = factions.vehicles.filter { it.id.isNotEmpty() }.fold(mutableListOf()) { acc, starWarsFaction ->
-            acc.addAll(starWarsFaction.data)
-            acc
-        }
+        defaultVehicles =
+            factions.vehicles.filter { it.id.isNotEmpty() }.fold(mutableListOf()) { acc, starWarsFaction ->
+                acc.addAll(starWarsFaction.data)
+                acc
+            }
 
         lightsabersFactions = factions.lightsabers
         defaultLightsabersFactions = factions.lightsabers.filter { it.id.isNotEmpty() }
-        defaultLightsabers = factions.lightsabers.filter { it.id.isNotEmpty() }.fold(mutableListOf()) { acc, starWarsFaction ->
-            acc.addAll(starWarsFaction.data)
-            acc
-        }
+        defaultLightsabers =
+            factions.lightsabers.filter { it.id.isNotEmpty() }.fold(mutableListOf()) { acc, starWarsFaction ->
+                acc.addAll(starWarsFaction.data)
+                acc
+            }
     }
 }

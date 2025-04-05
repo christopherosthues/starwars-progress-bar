@@ -103,8 +103,16 @@ internal class PreviewPanel(
         )
     }
 
-    private fun selectEntity(enabledVehicles: Map<String, Boolean>?, enabledLightsabers: Map<String, Boolean>?): StarWarsEntity =
-        StarWarsSelector.selectEntity(enabledVehicles, enabledLightsabers, starWarsState.enableNew, starWarsState.selector!!)
+    private fun selectEntity(
+        enabledVehicles: Map<String, Boolean>?,
+        enabledLightsabers: Map<String, Boolean>?,
+    ): StarWarsEntity =
+        StarWarsSelector.selectEntity(
+            enabledVehicles,
+            enabledLightsabers,
+            starWarsState.enableNew,
+            starWarsState.selector!!,
+        )
 
     fun selectEntity(starWarsEntity: StarWarsEntity) {
         setProgressBarUI(starWarsEntity, starWarsEntity)

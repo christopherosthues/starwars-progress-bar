@@ -896,7 +896,7 @@ class InorderFactionSelectorTests {
         defaultEnabled: Boolean,
     ): List<StarWarsEntity> {
         val result = mutableListOf<StarWarsEntity>()
-        for (i in entities.indices) {
+        repeat(entities.indices.count()) {
             result.add(
                 InorderFactionSelector.selectEntity(
                     enabledVehicles,

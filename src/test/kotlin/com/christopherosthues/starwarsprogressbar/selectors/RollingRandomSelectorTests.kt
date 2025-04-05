@@ -298,7 +298,7 @@ class RollingRandomSelectorTests {
 
         // Act
         var result = mutableListOf<StarWarsEntity>()
-        for (i in 0 until (2 * vehicles.size)) {
+        repeat((0 until (2 * vehicles.size)).count()) {
             result.add(
                 RollingRandomSelector.selectEntity(
                     mapOf("2.1" to true, "1.2" to true, "1.3" to true),
@@ -326,7 +326,7 @@ class RollingRandomSelectorTests {
 
         // Act
         result = mutableListOf()
-        for (i in 0 until (2 * vehicles.size)) {
+        repeat((0 until (2 * vehicles.size)).count()) {
             result.add(
                 RollingRandomSelector.selectEntity(
                     mapOf("2.1" to true, "1.2" to true, "1.3" to true),
@@ -349,7 +349,7 @@ class RollingRandomSelectorTests {
 
         // Act
         result = mutableListOf()
-        for (i in 0 until (2 * vehicles.size)) {
+        repeat((0 until (2 * vehicles.size)).count()) {
             result.add(
                 RollingRandomSelector.selectEntity(
                     mapOf("2.1" to true, "1.2" to false, "1.3" to true),
@@ -381,7 +381,7 @@ class RollingRandomSelectorTests {
 
         // Act
         var result = mutableListOf<StarWarsEntity>()
-        for (i in 0 until (2 * lightsabers.size)) {
+        repeat((0 until (2 * lightsabers.size)).count()) {
             result.add(
                 RollingRandomSelector.selectEntity(
                     mapOf(),
@@ -409,7 +409,7 @@ class RollingRandomSelectorTests {
 
         // Act
         result = mutableListOf()
-        for (i in 0 until (2 * lightsabers.size)) {
+        repeat((0 until (2 * lightsabers.size)).count()) {
             result.add(
                 RollingRandomSelector.selectEntity(
                     mapOf(),
@@ -432,7 +432,7 @@ class RollingRandomSelectorTests {
 
         // Act
         result = mutableListOf()
-        for (i in 0 until (2 * lightsabers.size)) {
+        repeat((0 until (2 * lightsabers.size)).count()) {
             result.add(
                 RollingRandomSelector.selectEntity(
                     mapOf(),
@@ -466,7 +466,7 @@ class RollingRandomSelectorTests {
 
         // Act
         var result = mutableListOf<StarWarsEntity>()
-        for (i in 0 until (2 * entities.size)) {
+        repeat((0 until (2 * entities.size)).count()) {
             result.add(
                 RollingRandomSelector.selectEntity(
                     mapOf("2.1" to true, "1.2" to true, "1.3" to true),
@@ -503,7 +503,7 @@ class RollingRandomSelectorTests {
 
         // Act
         result = mutableListOf()
-        for (i in 0 until (2 * entities.size)) {
+        repeat((0 until (2 * entities.size)).count()) {
             result.add(
                 RollingRandomSelector.selectEntity(
                     mapOf("2.1" to true, "1.2" to true, "1.3" to true),
@@ -532,7 +532,7 @@ class RollingRandomSelectorTests {
 
         // Act
         result = mutableListOf()
-        for (i in 0 until (2 * entities.size)) {
+        repeat((0 until (2 * entities.size)).count()) {
             result.add(
                 RollingRandomSelector.selectEntity(
                     mapOf("2.1" to true, "1.2" to false, "1.3" to true),

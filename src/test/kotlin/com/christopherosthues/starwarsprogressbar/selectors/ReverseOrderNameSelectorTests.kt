@@ -295,7 +295,7 @@ class ReverseOrderNameSelectorTests {
 
         // Act
         var result = mutableListOf<StarWarsEntity>()
-        for (i in vehicles.indices) {
+        repeat(vehicles.indices.count()) {
             result.add(
                 ReverseOrderNameSelector.selectEntity(
                     mapOf("1.1" to true, "1.2" to true, "1.3" to true),
@@ -322,7 +322,7 @@ class ReverseOrderNameSelectorTests {
 
         // Act
         result = mutableListOf()
-        for (i in vehicles.indices) {
+        repeat(vehicles.indices.count()) {
             result.add(
                 ReverseOrderNameSelector.selectEntity(
                     mapOf("1.1" to true, "1.2" to true, "1.3" to true),
@@ -342,7 +342,7 @@ class ReverseOrderNameSelectorTests {
 
         // Act
         result = mutableListOf()
-        for (i in vehicles.indices) {
+        repeat(vehicles.indices.count()) {
             result.add(
                 ReverseOrderNameSelector.selectEntity(
                     mapOf("1.1" to true, "1.2" to false, "1.3" to true),
@@ -362,7 +362,7 @@ class ReverseOrderNameSelectorTests {
 
         // Act
         result = mutableListOf()
-        for (i in vehicles.indices) {
+        repeat(vehicles.indices.count()) {
             result.add(
                 ReverseOrderNameSelector.selectEntity(
                     mapOf("1.1" to true, "1.2" to false),
@@ -382,7 +382,7 @@ class ReverseOrderNameSelectorTests {
 
         // Act
         result = mutableListOf()
-        for (i in vehicles.indices) {
+        repeat(vehicles.indices.count()) {
             result.add(
                 ReverseOrderNameSelector.selectEntity(
                     mapOf("1.1" to true, "1.2" to false),
@@ -410,7 +410,7 @@ class ReverseOrderNameSelectorTests {
 
         // Act
         var result = mutableListOf<StarWarsEntity>()
-        for (i in lightsabers.indices) {
+        repeat(lightsabers.indices.count()) {
             result.add(
                 ReverseOrderNameSelector.selectEntity(
                     mapOf(),
@@ -437,7 +437,7 @@ class ReverseOrderNameSelectorTests {
 
         // Act
         result = mutableListOf()
-        for (i in lightsabers.indices) {
+        repeat(lightsabers.indices.count()) {
             result.add(
                 ReverseOrderNameSelector.selectEntity(
                     mapOf(),
@@ -457,7 +457,7 @@ class ReverseOrderNameSelectorTests {
 
         // Act
         result = mutableListOf()
-        for (i in lightsabers.indices) {
+        repeat(lightsabers.indices.count()) {
             result.add(
                 ReverseOrderNameSelector.selectEntity(
                     mapOf(),
@@ -477,7 +477,7 @@ class ReverseOrderNameSelectorTests {
 
         // Act
         result = mutableListOf()
-        for (i in lightsabers.indices) {
+        repeat(lightsabers.indices.count()) {
             result.add(
                 ReverseOrderNameSelector.selectEntity(
                     mapOf(),
@@ -497,7 +497,7 @@ class ReverseOrderNameSelectorTests {
 
         // Act
         result = mutableListOf()
-        for (i in lightsabers.indices) {
+        repeat(lightsabers.indices.count()) {
             result.add(
                 ReverseOrderNameSelector.selectEntity(
                     mapOf(),
@@ -527,7 +527,7 @@ class ReverseOrderNameSelectorTests {
 
         // Act
         var result = mutableListOf<StarWarsEntity>()
-        for (i in entities.indices) {
+        repeat(entities.indices.count()) {
             result.add(
                 ReverseOrderNameSelector.selectEntity(
                     mapOf("1.1" to true, "1.2" to true, "1.3" to true),
@@ -562,7 +562,7 @@ class ReverseOrderNameSelectorTests {
 
         // Act
         result = mutableListOf()
-        for (i in entities.indices) {
+        repeat(entities.indices.count()) {
             result.add(
                 ReverseOrderNameSelector.selectEntity(
                     mapOf("1.1" to true, "1.2" to true, "1.3" to true),
@@ -585,7 +585,7 @@ class ReverseOrderNameSelectorTests {
 
         // Act
         result = mutableListOf()
-        for (i in entities.indices) {
+        repeat(entities.indices.count()) {
             result.add(
                 ReverseOrderNameSelector.selectEntity(
                     mapOf("1.1" to true, "1.2" to false, "1.3" to true),
@@ -608,7 +608,7 @@ class ReverseOrderNameSelectorTests {
 
         // Act
         result = mutableListOf()
-        for (i in entities.indices) {
+        repeat(entities.indices.count()) {
             result.add(
                 ReverseOrderNameSelector.selectEntity(
                     mapOf("1.1" to true, "1.2" to false),
@@ -631,7 +631,7 @@ class ReverseOrderNameSelectorTests {
 
         // Act
         result = mutableListOf()
-        for (i in entities.indices) {
+        repeat(entities.indices.count()) {
             result.add(
                 ReverseOrderNameSelector.selectEntity(
                     mapOf("1.1" to true, "1.2" to false),

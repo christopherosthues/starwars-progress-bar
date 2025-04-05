@@ -57,9 +57,9 @@ internal class StarWarsProgressConfigurationComponent {
         tabbedPane.addTab(StarWarsBundle.message(BundleConstants.LIGHTSABERS_TITLE), lightsabersPanel)
         formBuilder.addComponent(tabbedPane)
 
-        createLightsaberSection(formBuilder)
+        createLightsaberSection()
 
-        createVehicleSection(formBuilder)
+        createVehicleSection()
 
         mainPanel.add(formBuilder.panel, BorderLayout.NORTH)
 
@@ -113,7 +113,7 @@ internal class StarWarsProgressConfigurationComponent {
         previewPanel.repaintProgressBar()
     }
 
-    private fun createVehicleSection(formBuilder: FormBuilder) {
+    private fun createVehicleSection() {
         vehiclesPanel.addStarWarsEntityListener(object : StarWarsEntityClickListener {
             override fun starWarsEntityClicked(starWarsEntity: StarWarsEntity) {
                 previewPanel.selectEntity(starWarsEntity)
@@ -121,7 +121,7 @@ internal class StarWarsProgressConfigurationComponent {
         })
     }
 
-    private fun createLightsaberSection(formBuilder: FormBuilder) {
+    private fun createLightsaberSection() {
         lightsabersPanel.addStarWarsEntityListener(object : StarWarsEntityClickListener {
             override fun starWarsEntityClicked(starWarsEntity: StarWarsEntity) {
                 previewPanel.selectEntity(starWarsEntity)

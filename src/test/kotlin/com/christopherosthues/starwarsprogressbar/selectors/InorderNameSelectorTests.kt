@@ -288,7 +288,7 @@ class InorderNameSelectorTests {
 
         // Act
         var result = mutableListOf<StarWarsEntity>()
-        for (i in vehicles.indices) {
+        repeat(vehicles.indices.count()) {
             result.add(
                 InorderNameSelector.selectEntity(
                     mapOf("1.1" to true, "1.2" to true, "1.3" to true),
@@ -315,7 +315,7 @@ class InorderNameSelectorTests {
 
         // Act
         result = mutableListOf()
-        for (i in vehicles.indices) {
+        repeat(vehicles.indices.count()) {
             result.add(
                 InorderNameSelector.selectEntity(
                     mapOf("1.1" to true, "1.2" to true, "1.3" to true),
@@ -335,7 +335,7 @@ class InorderNameSelectorTests {
 
         // Act
         result = mutableListOf()
-        for (i in vehicles.indices) {
+        repeat(vehicles.indices.count()) {
             result.add(
                 InorderNameSelector.selectEntity(
                     mapOf("1.1" to true, "1.2" to false, "1.3" to true),
@@ -355,7 +355,7 @@ class InorderNameSelectorTests {
 
         // Act
         result = mutableListOf()
-        for (i in vehicles.indices) {
+        repeat(vehicles.indices.count()) {
             result.add(
                 InorderNameSelector.selectEntity(
                     mapOf("1.1" to true, "1.2" to false),
@@ -375,7 +375,7 @@ class InorderNameSelectorTests {
 
         // Act
         result = mutableListOf()
-        for (i in vehicles.indices) {
+        repeat(vehicles.indices.count()) {
             result.add(
                 InorderNameSelector.selectEntity(
                     mapOf("1.1" to true, "1.2" to false),
@@ -403,7 +403,7 @@ class InorderNameSelectorTests {
 
         // Act
         var result = mutableListOf<StarWarsEntity>()
-        for (i in lightsabers.indices) {
+        repeat(lightsabers.indices.count()) {
             result.add(
                 InorderNameSelector.selectEntity(
                     mapOf(),
@@ -430,7 +430,7 @@ class InorderNameSelectorTests {
 
         // Act
         result = mutableListOf()
-        for (i in lightsabers.indices) {
+        repeat(lightsabers.indices.count()) {
             result.add(
                 InorderNameSelector.selectEntity(
                     mapOf(),
@@ -450,7 +450,7 @@ class InorderNameSelectorTests {
 
         // Act
         result = mutableListOf()
-        for (i in lightsabers.indices) {
+        repeat(lightsabers.indices.count()) {
             result.add(
                 InorderNameSelector.selectEntity(
                     mapOf(),
@@ -470,7 +470,7 @@ class InorderNameSelectorTests {
 
         // Act
         result = mutableListOf()
-        for (i in lightsabers.indices) {
+        repeat(lightsabers.indices.count()) {
             result.add(
                 InorderNameSelector.selectEntity(
                     mapOf(),
@@ -490,7 +490,7 @@ class InorderNameSelectorTests {
 
         // Act
         result = mutableListOf()
-        for (i in lightsabers.indices) {
+        repeat(lightsabers.indices.count()) {
             result.add(
                 InorderNameSelector.selectEntity(
                     mapOf(),
@@ -520,7 +520,7 @@ class InorderNameSelectorTests {
 
         // Act
         var result = mutableListOf<StarWarsEntity>()
-        for (i in entities.indices) {
+        repeat(entities.indices.count()) {
             result.add(
                 InorderNameSelector.selectEntity(
                     mapOf("1.1" to true, "1.2" to true, "1.3" to true),
@@ -555,7 +555,7 @@ class InorderNameSelectorTests {
 
         // Act
         result = mutableListOf()
-        for (i in entities.indices) {
+        repeat(entities.indices.count()) {
             result.add(
                 InorderNameSelector.selectEntity(
                     mapOf("1.1" to true, "1.2" to true, "1.3" to true),
@@ -578,7 +578,7 @@ class InorderNameSelectorTests {
 
         // Act
         result = mutableListOf()
-        for (i in entities.indices) {
+        repeat(entities.indices.count()) {
             result.add(
                 InorderNameSelector.selectEntity(
                     mapOf("1.1" to true, "1.2" to false, "1.3" to true),
@@ -601,7 +601,7 @@ class InorderNameSelectorTests {
 
         // Act
         result = mutableListOf()
-        for (i in entities.indices) {
+        repeat(entities.indices.count()) {
             result.add(
                 InorderNameSelector.selectEntity(
                     mapOf("1.1" to true, "1.2" to false),
@@ -624,7 +624,7 @@ class InorderNameSelectorTests {
 
         // Act
         result = mutableListOf()
-        for (i in entities.indices) {
+        repeat(entities.indices.count()) {
             result.add(
                 InorderNameSelector.selectEntity(
                     mapOf("1.1" to true, "1.2" to false),
