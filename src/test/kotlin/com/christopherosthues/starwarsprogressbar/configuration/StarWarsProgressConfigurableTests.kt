@@ -255,7 +255,7 @@ class StarWarsProgressConfigurableTests {
 
         // Act and Assert
         val thrownException = assertThrows(ConfigurationException::class.java) { sut.apply() }
-        assertEquals("The configuration state cannot be null!", thrownException.message)
+        assertEquals("The configuration state cannot be null!", thrownException.localizedMessage)
     }
 
     @Test
