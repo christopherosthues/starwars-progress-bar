@@ -347,6 +347,13 @@ class IconResourceTests {
         "vehicles${File.separatorChar}sith_empire${File.separatorChar}harrower_class_dreadnought_r_raw@2x.png",
         "vehicles${File.separatorChar}galactic_empire${File.separatorChar}at_pt_r@2x.png",
         "vehicles${File.separatorChar}galactic_empire${File.separatorChar}atpt.png",
+        "lightsabers${File.separatorChar}jedi${File.separatorChar}pong_krell_01@2x.png",
+        "lightsabers${File.separatorChar}jedi${File.separatorChar}pong_krell_3@2x.png",
+        "lightsabers${File.separatorChar}jedi${File.separatorChar}pong_krell_4@2x.png",
+        "lightsabers${File.separatorChar}sith${File.separatorChar}asajj_ventress_second_0@2x.png",
+        "lightsabers${File.separatorChar}jedi${File.separatorChar}pong_krell_3.png",
+        "lightsabers${File.separatorChar}jedi${File.separatorChar}pong_krell_4.png",
+        "lightsabers${File.separatorChar}sith${File.separatorChar}asajj_ventress_second_0@2x.png",
     )
 
     private fun getFormattedImagesNotReferencedErrorMessage(imagesNotReferenced: List<String>): String {
