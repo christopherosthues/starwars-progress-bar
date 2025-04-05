@@ -257,10 +257,10 @@
                             "bladeColor": "blue",
                             "isShoto": false,
                             "isDoubleBladed": false,
-                            "yShift": 0,
+                            "yShift": 5,
                             "bladeSize": 8,
-                            "xBlade": 0,
-                            "yBlade": 0
+                            "xBlade": -1,
+                            "yBlade": 2
                         }
                     ]
                 },
