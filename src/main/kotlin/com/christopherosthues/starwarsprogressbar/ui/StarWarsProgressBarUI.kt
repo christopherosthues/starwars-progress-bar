@@ -23,12 +23,12 @@ package com.christopherosthues.starwarsprogressbar.ui
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
-import com.christopherosthues.starwarsprogressbar.constants.*
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_CHANGE_AFTER_PASS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_TOOLTIPS
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_NAMES
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SAME_VELOCITY
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SELECTOR
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_NAMES
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_TOOLTIPS
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
 import com.christopherosthues.starwarsprogressbar.models.StarWarsEntity
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
@@ -36,12 +36,16 @@ import com.christopherosthues.starwarsprogressbar.selectors.StarWarsSelector.sel
 import com.intellij.ui.scale.JBUIScale
 import com.intellij.util.ui.GraphicsUtil
 import com.intellij.util.ui.UIUtil
-import java.awt.*
+import java.awt.Color
+import java.awt.Component
+import java.awt.Dimension
+import java.awt.Graphics
+import java.awt.Graphics2D
+import java.awt.Insets
 import javax.swing.JComponent
 import javax.swing.JProgressBar
 import javax.swing.SwingConstants
 import javax.swing.plaf.basic.BasicProgressBarUI
-
 
 internal class StarWarsProgressBarUI(
     private val starWarsState: () -> StarWarsState?,
@@ -204,7 +208,7 @@ internal class StarWarsProgressBarUI(
                     height,
                     amountFull,
                     velocity,
-                    progressBar
+                    progressBar,
                 )
             } else if (entity is Lightsabers) {
                 lightsaberProgressBarDecorator.paintProgressBar(
@@ -213,7 +217,8 @@ internal class StarWarsProgressBarUI(
                     c,
                     width,
                     height,
-                    amountFull)
+                    amountFull,
+                )
             }
 
             paintStringIfNeeded(graphics2D, c, height, border, barRectWidth, barRectHeight, amountFull)

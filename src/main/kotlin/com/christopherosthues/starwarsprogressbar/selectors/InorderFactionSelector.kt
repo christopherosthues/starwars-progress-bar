@@ -13,7 +13,7 @@ internal object InorderFactionSelector : IStarWarsSelector {
     override fun selectEntity(
         enabledVehicles: Map<String, Boolean>,
         enabledLightsabers: Map<String, Boolean>,
-        defaultEnabled: Boolean
+        defaultEnabled: Boolean,
     ): StarWarsEntity {
         val vehicles = StarWarsFactionHolder.defaultVehicles.filter { vehicle ->
             enabledVehicles.getOrDefault(vehicle.entityId, defaultEnabled)
@@ -31,7 +31,7 @@ internal object InorderFactionSelector : IStarWarsSelector {
                         }
                     },
                     { StarWarsBundle.message(it.localizationKey).lowercase() },
-                )
+                ),
             )
 
         if (entities.isNotEmpty()) {
@@ -58,7 +58,7 @@ internal object InorderFactionSelector : IStarWarsSelector {
     /**
      * For testing only
      */
-    internal fun reset(){
+    internal fun reset() {
         index.set(0)
     }
 }

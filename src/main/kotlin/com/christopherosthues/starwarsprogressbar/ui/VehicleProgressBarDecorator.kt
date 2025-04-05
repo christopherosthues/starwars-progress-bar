@@ -93,7 +93,7 @@ internal class VehicleProgressBarDecorator(
 
             // right crest
             x = width.toDouble() - JBUIScale.scale(factionCrestIcon.preferredSize.width) - JBUIScale.scale(
-                FACTION_CREST_X_POSITION.toFloat()
+                FACTION_CREST_X_POSITION.toFloat(),
             )
             factionCrestIcon.paint(graphics2D, x.toInt(), y.toInt())
 
@@ -170,7 +170,7 @@ internal class VehicleProgressBarDecorator(
         velocity: Float,
         graphics2D: Graphics2D,
         clip: Shape,
-        component: JComponent
+        component: JComponent,
     ) {
         val previousClip = graphics2D.clip
         val previousColor = graphics2D.color

@@ -60,7 +60,7 @@ internal class TitledIconBorder(title: String, iconName: String, type: String) :
             BASE_MARGIN + BASE_MARGIN / 2 - icon.preferredSize.height / 2,
             BASE_MARGIN + LEFT_RIGHT_BORDER_MARGIN,
             BASE_MARGIN,
-            BASE_MARGIN + LEFT_RIGHT_BORDER_MARGIN
+            BASE_MARGIN + LEFT_RIGHT_BORDER_MARGIN,
         )
 
         val borderShape = BorderShape(x, y, width, height, BASE_MARGIN, insets.top)

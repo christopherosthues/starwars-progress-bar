@@ -11,7 +11,7 @@ internal object RollingRandomSelector : IStarWarsSelector {
     override fun selectEntity(
         enabledVehicles: Map<String, Boolean>,
         enabledLightsabers: Map<String, Boolean>,
-        defaultEnabled: Boolean
+        defaultEnabled: Boolean,
     ): StarWarsEntity {
         synchronized(lock) {
             val vehicles = StarWarsFactionHolder.defaultVehicles.filter { vehicle ->
@@ -45,23 +45,25 @@ internal object RollingRandomSelector : IStarWarsSelector {
         enabledLightsabers: Map<String, Boolean>,
         defaultEnabled: Boolean,
     ): Boolean = displayedEntities.containsAll(
-        (StarWarsFactionHolder.defaultVehicles.filter { v ->
-            enabledVehicles.getOrDefault(
-                v.entityId,
-                defaultEnabled
-            )
-        } + StarWarsFactionHolder.defaultLightsabers.filter { v ->
-            enabledLightsabers.getOrDefault(
-                v.entityId,
-                defaultEnabled
-            )
-        }).map { v -> v.entityId },
+        (
+            StarWarsFactionHolder.defaultVehicles.filter { v ->
+                enabledVehicles.getOrDefault(
+                    v.entityId,
+                    defaultEnabled,
+                )
+            } + StarWarsFactionHolder.defaultLightsabers.filter { v ->
+                enabledLightsabers.getOrDefault(
+                    v.entityId,
+                    defaultEnabled,
+                )
+            }
+            ).map { v -> v.entityId },
     )
 
     /**
      * For testing only
      */
-    internal fun reset(){
+    internal fun reset() {
         displayedEntities.clear()
     }
 }

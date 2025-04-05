@@ -10,7 +10,11 @@ import com.christopherosthues.starwarsprogressbar.ui.components.ColoredImageComp
 import com.christopherosthues.starwarsprogressbar.util.StarWarsResourceLoader
 import com.intellij.ui.JBColor
 import com.intellij.ui.scale.JBUIScale
-import java.awt.*
+import java.awt.Color
+import java.awt.Graphics2D
+import java.awt.LinearGradientPaint
+import java.awt.Paint
+import java.awt.RenderingHints
 import javax.swing.JComponent
 import kotlin.math.abs
 import kotlin.math.max
@@ -28,7 +32,7 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
     private enum class DrawState {
         SingleBladed,
         DoubleBladed,
-        NoBlade
+        NoBlade,
     }
 
     private data class LightsaberDrawing(var state: DrawState, var bladeX: Int = 0, var secondBladeX: Int = 0, var maxBladeWidth: Int = 0)
@@ -126,7 +130,7 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
                 it,
                 width,
                 height,
-                amountFull
+                amountFull,
             )
         }
 
@@ -140,7 +144,7 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         index: Int,
         width: Int,
         height: Int,
-        amountFull: Int
+        amountFull: Int,
     ) {
         val lightsaber = lightsabers.lightsabers[index]
         val lightsaberIcon = lightsaberIcons[index]
@@ -161,7 +165,7 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
                     lightsaberDrawing,
                     lightsaberIcon,
                     width,
-                    amountFull
+                    amountFull,
                 )
             }
             DrawState.SingleBladed -> {
@@ -172,7 +176,7 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
                     lightsaberDrawing,
                     lightsaberIcon,
                     width,
-                    amountFull
+                    amountFull,
                 )
             }
             else -> {
@@ -221,7 +225,7 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         component: JComponent,
         lightsaberIcon: ColoredImageComponent,
         hiltX: Int,
-        hiltY: Int
+        hiltY: Int,
     ) {
         if (starWarsState()?.drawSilhouettes ?: DEFAULT_DRAW_SILHOUETTES) {
             graphics2D.color = component.foreground
@@ -238,7 +242,7 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         lightsaber: Lightsaber,
         width: Int,
         height: Int,
-        amountFull: Int
+        amountFull: Int,
     ) {
         val bladeX = if (lightsaber.id.isOdd()) 0 else width
         val bladeY = JBUIScale.scale(lightsaber.yShift + lightsaber.yBlade)
@@ -283,7 +287,7 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
             bladeWidth,
             bladeHeight + JBUIScale.scale(6),
             arc,
-            arc
+            arc,
         )
 
         graphics2D.paint = bladePaint
@@ -310,7 +314,7 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
 
             // right crest
             x = width.toDouble() - JBUIScale.scale(factionCrestIcon.preferredSize.width) - JBUIScale.scale(
-                FACTION_CREST_X_POSITION.toFloat()
+                FACTION_CREST_X_POSITION.toFloat(),
             )
             factionCrestIcon.paint(graphics2D, x.toInt(), y.toInt())
 
@@ -335,7 +339,7 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
             colorMiddle,
             colorMiddle,
             lightsaberColor,
-            lightsaberColor.brighter().brighter()
+            lightsaberColor.brighter().brighter(),
         )
         val gradient = LinearGradientPaint(0f, bladeY.toFloat(), 0f, bladeY + bladeHeight.toFloat(), fractions, colors)
         return gradient
@@ -350,7 +354,7 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         val lightsaberColor = lightsaber.color
         return JBColor(
             Color(lightsaberColor.red, lightsaberColor.green, lightsaberColor.blue, 50),
-            Color(lightsaberColor.red, lightsaberColor.green, lightsaberColor.blue, 50)
+            Color(lightsaberColor.red, lightsaberColor.green, lightsaberColor.blue, 50),
         )
     }
 
@@ -361,7 +365,7 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         lightsaberDrawing: LightsaberDrawing,
         lightsaberIcon: ColoredImageComponent,
         width: Int,
-        amountFull: Int
+        amountFull: Int,
     ) {
         val singleBladeLength = lightsaberDrawing.maxBladeWidth + abs(JBUIScale.scale(lightsaber.xBlade))
         val ratio = singleBladeLength.toFloat() / width

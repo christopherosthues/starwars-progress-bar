@@ -28,7 +28,7 @@ private const val LEFT_PADDING = 5
 
 internal class VehicleFactionPanel(
     private val starWarsState: StarWarsState,
-    private val faction: StarWarsFaction<StarWarsVehicle>
+    private val faction: StarWarsFaction<StarWarsVehicle>,
 ) : JPanel(GridBagLayout()) {
     private val selectVehiclesCheckbox = ThreeStateCheckBox(ThreeStateCheckBox.State.SELECTED)
     private val vehiclesCheckboxes: MutableMap<String, JCheckBox> = HashMap()

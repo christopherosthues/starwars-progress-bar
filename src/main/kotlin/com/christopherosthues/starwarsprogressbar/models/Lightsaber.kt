@@ -13,7 +13,7 @@ internal data class Lightsaber(
     val yShift: Int,
     val bladeSize: Int,
     val xBlade: Int,
-    val yBlade: Int
+    val yBlade: Int,
 ) {
     val color: JBColor
         get() = LightsaberColor.colors[bladeColor] ?: LightsaberColor.Cyan

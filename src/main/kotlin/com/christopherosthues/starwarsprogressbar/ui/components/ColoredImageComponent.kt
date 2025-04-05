@@ -23,13 +23,9 @@ internal class ColoredImageComponent(private var image: BufferedImage) : JCompon
         paint(g, 0, 0)
     }
 
-    override fun getWidth(): Int {
-        return image.width
-    }
+    override fun getWidth(): Int = image.width
 
-    override fun getHeight(): Int {
-        return image.height
-    }
+    override fun getHeight(): Int = image.height
 
     fun paint(g: Graphics, x: Int, y: Int) {
         val graphics2d = g.create()

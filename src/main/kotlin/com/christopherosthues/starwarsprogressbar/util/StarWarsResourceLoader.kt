@@ -20,9 +20,9 @@
  */
 package com.christopherosthues.starwarsprogressbar.util
 
+import com.christopherosthues.starwarsprogressbar.models.Lightsabers
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactions
-import com.christopherosthues.starwarsprogressbar.models.Lightsabers
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.google.common.cache.Cache
 import com.google.common.cache.CacheBuilder
