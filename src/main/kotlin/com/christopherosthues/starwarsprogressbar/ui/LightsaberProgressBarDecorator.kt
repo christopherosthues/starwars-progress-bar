@@ -3,6 +3,7 @@ package com.christopherosthues.starwarsprogressbar.ui
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_DRAW_SILHOUETTES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_FACTION_CRESTS
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_ICON
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRESS_BAR_COLOR
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
@@ -160,34 +161,38 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         // Enable anti-aliasing for smoother rendering
         graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON)
 
-        val lightsaberDrawing = lightsaberDrawings[index]
-        when (lightsaberDrawing.state) {
-            DrawState.DoubleBladed -> {
-                drawDoubleBladedLightsaberWithHilt(
-                    graphics2D,
-                    component,
-                    lightsaber,
-                    lightsaberDrawing,
-                    lightsaberIcon,
-                    width,
-                    amountFull,
-                )
-            }
+        if (!(starWarsState()?.showIcon ?: DEFAULT_SHOW_ICON)) {
+            drawLightsaberWithoutHilt(graphics2D, lightsaber, width, amountFull)
+        } else {
+            val lightsaberDrawing = lightsaberDrawings[index]
+            when (lightsaberDrawing.state) {
+                DrawState.DoubleBladed -> {
+                    drawDoubleBladedLightsaberWithHilt(
+                        graphics2D,
+                        component,
+                        lightsaber,
+                        lightsaberDrawing,
+                        lightsaberIcon,
+                        width,
+                        amountFull,
+                    )
+                }
 
-            DrawState.SingleBladed -> {
-                drawSingleBladedLightsaberWithHilt(
-                    graphics2D,
-                    component,
-                    lightsaber,
-                    lightsaberDrawing,
-                    lightsaberIcon,
-                    width,
-                    amountFull,
-                )
-            }
+                DrawState.SingleBladed -> {
+                    drawSingleBladedLightsaberWithHilt(
+                        graphics2D,
+                        component,
+                        lightsaber,
+                        lightsaberDrawing,
+                        lightsaberIcon,
+                        width,
+                        amountFull,
+                    )
+                }
 
-            else -> {
-                drawLightsaberWithoutHilt(graphics2D, lightsaber, width, amountFull)
+                else -> {
+                    drawLightsaberWithoutHilt(graphics2D, lightsaber, width, amountFull)
+                }
             }
         }
 
