@@ -470,20 +470,20 @@
                             "bladeColor": "white",
                             "isShoto": false,
                             "isDoubleBladed": false,
-                            "yShift": 0,
+                            "yShift": 2,
                             "bladeSize": 6,
                             "xBlade": 0,
-                            "yBlade": 2
+                            "yBlade": 0
                         },
                         {
                             "id": 2,
                             "bladeColor": "white",
                             "isShoto": true,
                             "isDoubleBladed": false,
-                            "yShift": 5,
+                            "yShift": 10,
                             "bladeSize": 6,
                             "xBlade": 0,
-                            "yBlade": 7
+                            "yBlade": 2
                         }
                     ]
                 }
