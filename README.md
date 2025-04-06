@@ -8,25 +8,31 @@
 [template]: https://github.com/JetBrains/intellij-platform-plugin-template
 
 <!-- Plugin description -->
-This is the Star Wars Progress Bar for IJ based IDEs. It replaces the progress bar with random vehicles from Star Wars.
+Take your development experience to a galaxy far, far away with the Star Wars Progress Bar! This plugin replaces the
+ordinary progress bar with thrilling visuals from the Star Wars universe. As you code, watch as iconic vehicles like the
+Millennium Falcon, X-Wing, and AT-AT march across your screen. But that's not all — Star Wars Progress Bar also includes
+dynamic lightsaber animations, bringing the energy and excitement of the Force into your workflow. Whether you're
+piloting a starship or wielding a lightsaber, this plugin adds an epic touch to every coding session. May the code be
+with you!
 
 <h3>Features</h3>
 <ul>
-  <li>Support of over 150 vehicles from the Star Wars movies, TV series, books and comics from the canon and legends</li>
+  <li>Support of over 150 vehicles and more than 20 lightsabers from the Star Wars movies, TV series, books and comics from the canon and legends</li>
   <li>Configurable via the settings (<kbd>Settings/Preferences</kbd> > <kbd>Appearance &amp; Behavior</kbd> > <kbd>Star Wars Progress Bar</kbd>)</li>
   <ul>
-    <li>Selection of specific vehicles</li>
+    <li>Selection of specific vehicles and lightsabers</li>
     <li>Selection of entire factions </li>
-    <li>Show/hide vehicle in progress bar</li>
-    <li>Display vehicle name in progress bar tooltip</li>
-    <li>Display vehicle name in progress bar</li>
+    <li>Show/hide icon in progress bar</li>
+    <li>Display name in progress bar tooltip</li>
+    <li>Display name in progress bar</li>
     <li>Display faction crest in progress bar</li>
     <li>Display solid or semi-transparent progress bar</li>
-    <li>Display only the silhouette of the vehicle in progress bar</li>
-    <li>Automatically change vehicle after a custom defined number of passes for indeterminate progress bars</li>
-    <li>Different velocities for different vehicles</li>
-    <li>Preview vehicles by clicking on their icon</li>
+    <li>Display only the silhouette of the icon in progress bar</li>
+    <li>Automatically change icon after a custom defined number of passes for indeterminate progress bars</li>
+    <li>Different velocities for different vehicles and lightsabers</li>
+    <li>Preview vehicles and lightsabers by clicking on their icon</li>
   </ul>
+  <li>Lightsaber icons are only displayed if there is enough space inside the progress bar. Otherwise, only the blade is drawn.</li>
 </ul>
 
 <h3>Additional information</h3>
