@@ -6,6 +6,16 @@
 
 ### Added
 
+### Changed
+
+### Removed
+
+### Fixed
+
+## [2.0.0] - 2025-04-06
+
+### Added
+
 - Lightsaber progress bar
 - Jedi Lightsabers of Ahsoka Tano, Anakin Skywalker, Luke Skywalker, Obi-Wan Kenobi, Pong Krell, Qui-Gon Jinn, Quinlan Vos and Yoda
 - Sith Lightsabers of Asajj Ventress, Darth Maul, Darth Sidious, Dart Tyranus, Darth Vader and Savage Opress
@@ -16,8 +26,6 @@
 - BREAKING: Updated to Java 21
 - BREAKING: Updated supported IDEA versions to 2024.2+
 - Renamed some settings to match new progress bar design
-
-### Removed
 
 ### Fixed
 
@@ -233,7 +241,8 @@
 - Initial release
 - Progress bar with vehicles from Star Wars
 
-[Unreleased]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.12.0...HEAD
+[Unreleased]: https://github.com/christopherosthues/starwars-progress-bar/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.12.0...v2.0.0
 [1.12.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.11.2...v1.12.0
 [1.11.2]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.11.1...v1.11.2
 [1.11.1]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.11.0...v1.11.1
