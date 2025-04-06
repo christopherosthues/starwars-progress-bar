@@ -64,12 +64,12 @@ internal fun createEmptyTranslucentBufferedImage(width: Int, height: Int): Buffe
 
 internal fun createEmptyBufferedImage(width: Int, height: Int): BufferedImage {
     var imageWidth = width
-    if (width < 0) {
-        imageWidth = 0
+    if (width <= 0) {
+        imageWidth = 1
     }
     var imageHeight = height
-    if (height < 0) {
-        imageHeight = 0
+    if (height <= 0) {
+        imageHeight = 1
     }
     return BufferedImage(imageWidth, imageHeight, BufferedImage.TYPE_INT_ARGB)
 }
