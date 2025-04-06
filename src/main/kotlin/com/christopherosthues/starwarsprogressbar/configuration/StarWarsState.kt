@@ -69,6 +69,27 @@ internal class StarWarsState {
 
     var version: String = ""
 
+    @Deprecated("Use showIcon instead")
+    var showVehicle: Boolean = DEFAULT_SHOW_ICON
+
+    @Deprecated("Use showNames instead")
+    var showVehicleNames: Boolean = DEFAULT_SHOW_NAMES
+
+    @Deprecated("Use sameVelocity instead")
+    var sameVehicleVelocity: Boolean = DEFAULT_SAME_VELOCITY
+
+    @Deprecated("Use enableNew instead")
+    var enableNewVehicles: Boolean = DEFAULT_ENABLE_NEW
+
+    @Deprecated("Use changeAfterPass instead")
+    var changeVehicleAfterPass: Boolean = DEFAULT_CHANGE_AFTER_PASS
+
+    @Deprecated("Use numberOfPassesUntilChange instead")
+    var numberOfPassesUntilVehicleChange: Int = DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE
+
+    @Deprecated("Use selectorOrdinal instead")
+    var vehicleSelectorOrdinal: Int = DEFAULT_SELECTOR.ordinal
+
     fun copy(starWarsState: StarWarsState) {
         language = starWarsState.language
         vehiclesEnabled.clear()
