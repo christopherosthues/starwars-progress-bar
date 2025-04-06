@@ -6,6 +6,28 @@
 
 ### Added
 
+- Lightsaber progress bar
+- Jedi Lightsabers of Ahsoka Tano, Anakin Skywalker, Luke Skywalker, Obi-Wan Kenobi, Pong Krell, Qui-Gon Jinn, Quinlan Vos and Yoda
+- Sith Lightsabers of Asajj Ventress, Darth Maul, Darth Sidious, Dart Tyranus, Darth Vader and Savage Opress
+- Ahsoka Tano's white lightsabers
+
+### Changed
+
+- BREAKING: Updated to Java 21
+- BREAKING: Updated supported IDEA versions to 2024.2+
+- Renamed some settings to match new progress bar design
+
+### Removed
+
+### Fixed
+
+- Corrected German translation of TIE Striker
+- Display of apostrophes
+
+## [1.12.0] - 2024-09-17
+
+### Added
+
 - New faction Sith Empire
 - Harrower-class dreadnought to Sith Empire
 - Selection of language in settings
@@ -211,7 +233,8 @@
 - Initial release
 - Progress bar with vehicles from Star Wars
 
-[Unreleased]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.11.2...HEAD
+[Unreleased]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.12.0...HEAD
+[1.12.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.11.2...v1.12.0
 [1.11.2]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.11.1...v1.11.2
 [1.11.1]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.11.0...v1.11.1
 [1.11.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.10.0...v1.11.0

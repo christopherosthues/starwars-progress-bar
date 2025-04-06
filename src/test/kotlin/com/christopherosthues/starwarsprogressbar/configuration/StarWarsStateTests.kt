@@ -1,17 +1,17 @@
 package com.christopherosthues.starwarsprogressbar.configuration
 
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_CHANGE_VEHICLE_AFTER_PASS
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_CHANGE_AFTER_PASS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_DRAW_SILHOUETTES
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENABLE_NEW_VEHICLES
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SAME_VEHICLE_VELOCITY
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENABLE_NEW
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SAME_VELOCITY
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SELECTOR
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_FACTION_CRESTS
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_ICON
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_NAMES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_TOOLTIPS
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE_NAMES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRESS_BAR_COLOR
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_VEHICLE_SELECTOR
-import com.christopherosthues.starwarsprogressbar.models.FactionHolder
+import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.selectors.SelectionType
 import com.intellij.idea.TestFor
@@ -33,9 +33,9 @@ class StarWarsStateTests {
 
     @BeforeEach
     fun setup() {
-        mockkObject(FactionHolder)
+        mockkObject(StarWarsFactionHolder)
 
-        every { FactionHolder.defaultVehicles } returns listOf()
+        every { StarWarsFactionHolder.defaultVehicles } returns listOf()
     }
 
     @AfterEach
@@ -89,33 +89,33 @@ class StarWarsStateTests {
         assertDefaultValues(sut)
 
         // Act
-        sut.vehiclesEnabled = mapOf("1" to false, "2" to true)
-        sut.showVehicle = showVehicle
-        sut.showVehicleNames = showVehicleNames
+        sut.vehiclesEnabled = mutableMapOf("1" to false, "2" to true)
+        sut.showIcon = showVehicle
+        sut.showNames = showVehicleNames
         sut.showToolTips = showToolTips
         sut.showFactionCrests = showFactionCrests
-        sut.sameVehicleVelocity = sameVehicleVelocity
-        sut.enableNewVehicles = enableNewVehicles
+        sut.sameVelocity = sameVehicleVelocity
+        sut.enableNew = enableNewVehicles
         sut.solidProgressBarColor = solidProgressBarColor
         sut.drawSilhouettes = drawSilhouettes
-        sut.changeVehicleAfterPass = changeVehicleAfterPass
-        sut.numberOfPassesUntilVehicleChange = numberOfPassesUntilVehicleChange
-        sut.vehicleSelector = vehicleSelector
+        sut.changeAfterPass = changeVehicleAfterPass
+        sut.numberOfPassesUntilChange = numberOfPassesUntilVehicleChange
+        sut.selector = vehicleSelector
         sut.version = version
 
         // Assert
         assertAll(
-            { assertEquals(showVehicle, sut.showVehicle) },
-            { assertEquals(showVehicleNames, sut.showVehicleNames) },
+            { assertEquals(showVehicle, sut.showIcon) },
+            { assertEquals(showVehicleNames, sut.showNames) },
             { assertEquals(showToolTips, sut.showToolTips) },
             { assertEquals(showFactionCrests, sut.showFactionCrests) },
-            { assertEquals(sameVehicleVelocity, sut.sameVehicleVelocity) },
-            { assertEquals(enableNewVehicles, sut.enableNewVehicles) },
+            { assertEquals(sameVehicleVelocity, sut.sameVelocity) },
+            { assertEquals(enableNewVehicles, sut.enableNew) },
             { assertEquals(solidProgressBarColor, sut.solidProgressBarColor) },
             { assertEquals(drawSilhouettes, sut.drawSilhouettes) },
-            { assertEquals(changeVehicleAfterPass, sut.changeVehicleAfterPass) },
-            { assertEquals(numberOfPassesUntilVehicleChange, sut.numberOfPassesUntilVehicleChange) },
-            { assertEquals(vehicleSelector, sut.vehicleSelector) },
+            { assertEquals(changeVehicleAfterPass, sut.changeAfterPass) },
+            { assertEquals(numberOfPassesUntilVehicleChange, sut.numberOfPassesUntilChange) },
+            { assertEquals(vehicleSelector, sut.selector) },
             { assertEquals(version, sut.version) },
             { assertTrue(sut.vehiclesEnabled.isNotEmpty()) },
             { assertEquals(2, sut.vehiclesEnabled.size) },
@@ -133,7 +133,7 @@ class StarWarsStateTests {
         assertVehiclesEnabled(sut.vehiclesEnabled)
 
         // Act
-        sut.vehiclesEnabled = mapOf("1" to false, "2" to true)
+        sut.vehiclesEnabled = mutableMapOf("1" to false, "2" to true)
 
         // Assert
         assertAll(
@@ -150,17 +150,17 @@ class StarWarsStateTests {
 
     private fun assertDefaultValues(sut: StarWarsState) {
         assertAll(
-            { assertEquals(DEFAULT_SHOW_VEHICLE_NAMES, sut.showVehicleNames) },
-            { assertEquals(DEFAULT_SHOW_VEHICLE, sut.showVehicle) },
+            { assertEquals(DEFAULT_SHOW_NAMES, sut.showNames) },
+            { assertEquals(DEFAULT_SHOW_ICON, sut.showIcon) },
             { assertEquals(DEFAULT_SHOW_TOOLTIPS, sut.showToolTips) },
             { assertEquals(DEFAULT_SHOW_FACTION_CRESTS, sut.showFactionCrests) },
-            { assertEquals(DEFAULT_SAME_VEHICLE_VELOCITY, sut.sameVehicleVelocity) },
-            { assertEquals(DEFAULT_ENABLE_NEW_VEHICLES, sut.enableNewVehicles) },
+            { assertEquals(DEFAULT_SAME_VELOCITY, sut.sameVelocity) },
+            { assertEquals(DEFAULT_ENABLE_NEW, sut.enableNew) },
             { assertEquals(DEFAULT_SOLID_PROGRESS_BAR_COLOR, sut.solidProgressBarColor) },
             { assertEquals(DEFAULT_DRAW_SILHOUETTES, sut.drawSilhouettes) },
-            { assertEquals(DEFAULT_CHANGE_VEHICLE_AFTER_PASS, sut.changeVehicleAfterPass) },
-            { assertEquals(DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE, sut.numberOfPassesUntilVehicleChange) },
-            { assertEquals(DEFAULT_VEHICLE_SELECTOR, sut.vehicleSelector) },
+            { assertEquals(DEFAULT_CHANGE_AFTER_PASS, sut.changeAfterPass) },
+            { assertEquals(DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE, sut.numberOfPassesUntilChange) },
+            { assertEquals(DEFAULT_SELECTOR, sut.selector) },
             { assertEquals("", sut.version) },
             { assertTrue(sut.vehiclesEnabled.isEmpty()) },
         )
@@ -175,7 +175,7 @@ class StarWarsStateTests {
     }
 
     private fun setupDefaultVehicles() {
-        every { FactionHolder.defaultVehicles } returns listOf(
+        every { StarWarsFactionHolder.defaultVehicles } returns listOf(
             StarWarsVehicle("1", "a", 2, 3, 4f),
             StarWarsVehicle("2", "b", 3, 4, 5f),
             StarWarsVehicle("3", "c", 4, 5, 6f),

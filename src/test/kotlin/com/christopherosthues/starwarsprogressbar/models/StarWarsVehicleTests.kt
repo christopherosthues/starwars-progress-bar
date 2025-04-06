@@ -82,7 +82,7 @@ class StarWarsVehicleTests {
         val result = sut.fileName
 
         // Assert
-        val expectedFileName = "$factionId/$id"
+        val expectedFileName = "vehicles/$factionId/$id"
         assertEquals(expectedFileName, result)
     }
 
@@ -96,7 +96,7 @@ class StarWarsVehicleTests {
         val result = sut.fileName
 
         // Assert
-        assertEquals(id, result)
+        assertEquals("vehicles/$id", result)
     }
 
     @Test
@@ -108,7 +108,7 @@ class StarWarsVehicleTests {
         sut.factionId = factionId
 
         // Act
-        val result = sut.vehicleId
+        val result = sut.entityId
 
         // Assert
         val expectedVehicleId = "$factionId.$id"
@@ -122,7 +122,7 @@ class StarWarsVehicleTests {
         val sut = StarWarsVehicle(id, "a", 1, 2, 3f)
 
         // Act
-        val result = sut.vehicleId
+        val result = sut.entityId
 
         // Assert
         assertEquals(id, result)
@@ -200,7 +200,7 @@ class StarWarsVehicleTests {
         // Assert
         assertAll(
             { assertEquals("missing", result.id) },
-            { assertEquals("missing", result.vehicleId) },
+            { assertEquals("missing", result.entityId) },
             { assertEquals("green", result.ionEngine) },
             { assertEquals(-4, result.xShift) },
             { assertEquals(-6, result.yShift) },

@@ -4,7 +4,8 @@ import com.intellij.AbstractBundle
 import org.jetbrains.annotations.NonNls
 import org.jetbrains.annotations.PropertyKey
 import java.text.MessageFormat
-import java.util.*
+import java.util.Locale
+import java.util.ResourceBundle
 
 @NonNls
 private const val BUNDLE = "messages.StarWarsBundle"

@@ -1,21 +1,33 @@
 package com.christopherosthues.starwarsprogressbar.configuration.components
 
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
+import com.christopherosthues.starwarsprogressbar.configuration.CHANGE_VEHICLE_AFTER_PASS_EVENT
+import com.christopherosthues.starwarsprogressbar.configuration.DRAW_SILHOUETTES_EVENT
+import com.christopherosthues.starwarsprogressbar.configuration.ENABLE_NEW_VEHICLES_EVENT
+import com.christopherosthues.starwarsprogressbar.configuration.LANGUAGE_EVENT
 import com.christopherosthues.starwarsprogressbar.configuration.Language
+import com.christopherosthues.starwarsprogressbar.configuration.NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE_EVENT
+import com.christopherosthues.starwarsprogressbar.configuration.SAME_VELOCITY_EVENT
+import com.christopherosthues.starwarsprogressbar.configuration.SHOW_FACTION_CRESTS_EVENT
+import com.christopherosthues.starwarsprogressbar.configuration.SHOW_TOOL_TIPS_EVENT
+import com.christopherosthues.starwarsprogressbar.configuration.SHOW_VEHICLE_EVENT
+import com.christopherosthues.starwarsprogressbar.configuration.SHOW_VEHICLE_NAMES_EVENT
+import com.christopherosthues.starwarsprogressbar.configuration.SOLID_PROGRESS_BAR_COLOR_EVENT
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
+import com.christopherosthues.starwarsprogressbar.configuration.VEHICLE_SELECTOR_EVENT
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_CHANGE_VEHICLE_AFTER_PASS
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_CHANGE_AFTER_PASS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_DRAW_SILHOUETTES
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENABLE_NEW_VEHICLES
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENABLE_NEW
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_LANGUAGE
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SAME_VEHICLE_VELOCITY
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SAME_VELOCITY
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SELECTOR
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_FACTION_CRESTS
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_ICON
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_NAMES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_TOOLTIPS
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE_NAMES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRESS_BAR_COLOR
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_VEHICLE_SELECTOR
 import com.christopherosthues.starwarsprogressbar.selectors.SelectionType
 import com.intellij.openapi.ui.ComboBox
 import com.intellij.ui.JBIntSpinner
@@ -33,82 +45,46 @@ private const val MINIMUM_NUMBER_OF_PASSES = 1
 private const val MAXIMUM_NUMBER_OF_PASSES = 20
 private const val HORIZONTAL_GAP = 8
 
-internal class UiOptionsPanel : JTitledPanel(StarWarsBundle.message(BundleConstants.UI_OPTIONS)) {
-    private val showVehicleNameCheckBox =
-        JBCheckBox(StarWarsBundle.message(BundleConstants.SHOW_VEHICLE_NAME), DEFAULT_SHOW_VEHICLE_NAMES)
+internal class UiOptionsPanel(starWarsState: StarWarsState) : JTitledPanel(StarWarsBundle.message(BundleConstants.UI_OPTIONS)) {
+    private val showNameCheckBox =
+        JBCheckBox(StarWarsBundle.message(BundleConstants.SHOW_NAME), DEFAULT_SHOW_NAMES)
     private val showToolTipsCheckBox =
         JBCheckBox(StarWarsBundle.message(BundleConstants.SHOW_TOOL_TIPS), DEFAULT_SHOW_TOOLTIPS)
     private val showFactionCrestsCheckBox =
         JBCheckBox(StarWarsBundle.message(BundleConstants.SHOW_FACTION_CRESTS), DEFAULT_SHOW_FACTION_CRESTS)
-    private val sameVehicleVelocityCheckBox = JBCheckBox(
-        StarWarsBundle.message(BundleConstants.SAME_VEHICLE_VELOCITY),
-        DEFAULT_SAME_VEHICLE_VELOCITY,
+    private val sameVelocityCheckBox = JBCheckBox(
+        StarWarsBundle.message(BundleConstants.SAME_VELOCITY),
+        DEFAULT_SAME_VELOCITY,
     )
-    private val enableNewVehiclesCheckBox = JBCheckBox(
-        StarWarsBundle.message(BundleConstants.ENABLE_NEW_VEHICLES),
-        DEFAULT_ENABLE_NEW_VEHICLES,
+    private val enableNewCheckBox = JBCheckBox(
+        StarWarsBundle.message(BundleConstants.ENABLE_NEW),
+        DEFAULT_ENABLE_NEW,
     )
     private val solidProgressBarColorCheckBox = JBCheckBox(
         StarWarsBundle.message(BundleConstants.SOLID_PROGRESS_BAR_COLOR),
         DEFAULT_SOLID_PROGRESS_BAR_COLOR,
     )
-    private val showVehicleCheckBox = JBCheckBox(
-        StarWarsBundle.message(BundleConstants.SHOW_VEHICLE),
-        DEFAULT_SHOW_VEHICLE,
+    private val showIconCheckBox = JBCheckBox(
+        StarWarsBundle.message(BundleConstants.SHOW_ICON),
+        DEFAULT_SHOW_ICON,
     )
     private val drawSilhouettesCheckBox = JBCheckBox(
         StarWarsBundle.message(BundleConstants.DRAW_SILHOUETTES),
         DEFAULT_DRAW_SILHOUETTES,
     )
-    private val changeVehicleAfterPassCheckBox = JBCheckBox(
-        StarWarsBundle.message(BundleConstants.CHANGE_VEHICLE_AFTER_PASS),
-        DEFAULT_CHANGE_VEHICLE_AFTER_PASS,
+    private val changeAfterPassCheckBox = JBCheckBox(
+        StarWarsBundle.message(BundleConstants.CHANGE_AFTER_PASS),
+        DEFAULT_CHANGE_AFTER_PASS,
     )
-    private val numberOfPassesUntilVehicleChangeSpinner =
-        JBIntSpinner(DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE, MINIMUM_NUMBER_OF_PASSES, MAXIMUM_NUMBER_OF_PASSES)
+    private val numberOfPassesUntilChangeSpinner =
+        JBIntSpinner(DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE, MINIMUM_NUMBER_OF_PASSES, MAXIMUM_NUMBER_OF_PASSES)
 
     private val selectionLabel = JLabel(StarWarsBundle.message(BundleConstants.SELECTOR))
-    private val vehicleSelectorComboBox = ComboBox(SelectionType.entries.toTypedArray())
+    private val selectorComboBox = ComboBox(SelectionType.entries.toTypedArray())
     private val languageLabel = JLabel(StarWarsBundle.message(BundleConstants.LANGUAGE))
     private val languageComboBox = ComboBox(arrayOf(Language.ENGLISH, Language.GERMAN, Language.SPANISH))
 
     private var oldLanguage: Language? = null
-
-    val language: Language
-        get() = languageComboBox.selectedItem as Language? ?: DEFAULT_LANGUAGE
-
-    val showVehicle: Boolean
-        get() = showVehicleCheckBox.isSelected
-
-    val showVehicleNames: Boolean
-        get() = showVehicleNameCheckBox.isSelected
-
-    val showToolTips: Boolean
-        get() = showToolTipsCheckBox.isSelected
-
-    val showFactionCrests: Boolean
-        get() = showFactionCrestsCheckBox.isSelected
-
-    val sameVehicleVelocity: Boolean
-        get() = sameVehicleVelocityCheckBox.isSelected
-
-    val enableNewVehicles: Boolean
-        get() = enableNewVehiclesCheckBox.isSelected
-
-    val solidProgressBarColor: Boolean
-        get() = solidProgressBarColorCheckBox.isSelected
-
-    val drawSilhouettes: Boolean
-        get() = drawSilhouettesCheckBox.isSelected
-
-    val changeVehicleAfterPass: Boolean
-        get() = changeVehicleAfterPassCheckBox.isSelected
-
-    val numberOfPassesUntilVehicleChange: Int
-        get() = numberOfPassesUntilVehicleChangeSpinner.number
-
-    val vehicleSelector: SelectionType
-        get() = vehicleSelectorComboBox.selectedItem as SelectionType? ?: DEFAULT_VEHICLE_SELECTOR
 
     init {
 
@@ -118,9 +94,10 @@ internal class UiOptionsPanel : JTitledPanel(StarWarsBundle.message(BundleConsta
             }
             if (it.stateChange == ItemEvent.SELECTED) {
                 val newLanguage = it.item as Language? ?: DEFAULT_LANGUAGE
+                starWarsState.language = newLanguage
                 StarWarsBundle.setLocale(newLanguage.toLocale())
                 firePropertyChange(
-                    this::language.name,
+                    LANGUAGE_EVENT,
                     oldLanguage,
                     newLanguage,
                 )
@@ -128,84 +105,117 @@ internal class UiOptionsPanel : JTitledPanel(StarWarsBundle.message(BundleConsta
         }
         layout = GridLayout(NUMBER_OF_ROWS, 2, GAP, GAP)
 
-        showVehicleCheckBox.addItemListener {
+        showIconCheckBox.addItemListener {
+            val oldValue = starWarsState.showIcon
+            val newValue = showIconCheckBox.isSelected
             firePropertyChange(
-                this::showVehicle.name,
-                !showVehicle,
-                showVehicle,
+                SHOW_VEHICLE_EVENT,
+                oldValue,
+                newValue,
             )
+            starWarsState.showIcon = newValue
         }
-        showVehicleNameCheckBox.addItemListener {
+        showNameCheckBox.addItemListener {
+            val oldValue = starWarsState.showNames
+            val newValue = showNameCheckBox.isSelected
             firePropertyChange(
-                this::showVehicleNames.name,
-                !showVehicleNames,
-                showVehicleNames,
+                SHOW_VEHICLE_NAMES_EVENT,
+                oldValue,
+                newValue,
             )
+            starWarsState.showNames = newValue
         }
         showToolTipsCheckBox.addItemListener {
+            val oldValue = starWarsState.showToolTips
+            val newValue = showToolTipsCheckBox.isSelected
             firePropertyChange(
-                this::showToolTips.name,
-                !showToolTips,
-                showToolTips,
+                SHOW_TOOL_TIPS_EVENT,
+                oldValue,
+                newValue,
             )
+            starWarsState.showToolTips = newValue
         }
         showFactionCrestsCheckBox.addItemListener {
+            val oldValue = starWarsState.showNames
+            val newValue = showFactionCrestsCheckBox.isSelected
             firePropertyChange(
-                this::showFactionCrests.name,
-                !showFactionCrests,
-                showFactionCrests,
+                SHOW_FACTION_CRESTS_EVENT,
+                oldValue,
+                newValue,
             )
+            starWarsState.showFactionCrests = newValue
         }
-        sameVehicleVelocityCheckBox.addItemListener {
+        sameVelocityCheckBox.addItemListener {
+            val oldValue = starWarsState.showNames
+            val newValue = sameVelocityCheckBox.isSelected
             firePropertyChange(
-                this::sameVehicleVelocity.name,
-                !sameVehicleVelocity,
-                sameVehicleVelocity,
+                SAME_VELOCITY_EVENT,
+                oldValue,
+                newValue,
             )
+            starWarsState.sameVelocity = newValue
         }
-        enableNewVehiclesCheckBox.addItemListener {
+        enableNewCheckBox.addItemListener {
+            val oldValue = starWarsState.enableNew
+            val newValue = enableNewCheckBox.isSelected
             firePropertyChange(
-                this::enableNewVehicles.name,
-                !enableNewVehicles,
-                enableNewVehicles,
+                ENABLE_NEW_VEHICLES_EVENT,
+                oldValue,
+                newValue,
             )
+            starWarsState.enableNew = newValue
         }
         solidProgressBarColorCheckBox.addItemListener {
+            val oldValue = starWarsState.solidProgressBarColor
+            val newValue = solidProgressBarColorCheckBox.isSelected
             firePropertyChange(
-                this::solidProgressBarColor.name,
-                !solidProgressBarColor,
-                solidProgressBarColor,
+                SOLID_PROGRESS_BAR_COLOR_EVENT,
+                oldValue,
+                newValue,
             )
+            starWarsState.solidProgressBarColor = newValue
         }
         drawSilhouettesCheckBox.addItemListener {
+            val oldValue = starWarsState.drawSilhouettes
+            val newValue = drawSilhouettesCheckBox.isSelected
             firePropertyChange(
-                this::drawSilhouettes.name,
-                !drawSilhouettes,
-                drawSilhouettes,
+                DRAW_SILHOUETTES_EVENT,
+                oldValue,
+                newValue,
             )
+            starWarsState.drawSilhouettes = newValue
         }
-        changeVehicleAfterPassCheckBox.addItemListener {
-            numberOfPassesUntilVehicleChangeSpinner.isEnabled = changeVehicleAfterPass
+        changeAfterPassCheckBox.addItemListener {
+            val oldValue = starWarsState.changeAfterPass
+            val newValue = changeAfterPassCheckBox.isSelected
+            numberOfPassesUntilChangeSpinner.isEnabled = newValue
             firePropertyChange(
-                this::changeVehicleAfterPass.name,
-                !changeVehicleAfterPass,
-                changeVehicleAfterPass,
+                CHANGE_VEHICLE_AFTER_PASS_EVENT,
+                oldValue,
+                newValue,
             )
+            starWarsState.changeAfterPass = newValue
         }
-        numberOfPassesUntilVehicleChangeSpinner.addChangeListener {
+        numberOfPassesUntilChangeSpinner.addChangeListener {
+            val oldValue = starWarsState.numberOfPassesUntilChange
+            val newValue = numberOfPassesUntilChangeSpinner.number
             firePropertyChange(
-                this::numberOfPassesUntilVehicleChange.name,
-                numberOfPassesUntilVehicleChange,
-                numberOfPassesUntilVehicleChange,
+                NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE_EVENT,
+                oldValue,
+                newValue,
             )
+            starWarsState.numberOfPassesUntilChange = newValue
         }
-        numberOfPassesUntilVehicleChangeSpinner.isEnabled = changeVehicleAfterPass
-        vehicleSelectorComboBox.addItemListener {
+        numberOfPassesUntilChangeSpinner.isEnabled = changeAfterPassCheckBox.isSelected
+        selectorComboBox.addItemListener {
+            val oldValue = starWarsState.selector
+            val newValue = selectorComboBox.selectedItem as SelectionType? ?: DEFAULT_SELECTOR
             firePropertyChange(
-                this::vehicleSelector.name,
-                vehicleSelector,
-                vehicleSelector,
+                VEHICLE_SELECTOR_EVENT,
+                oldValue,
+                newValue,
             )
+            starWarsState.selector = newValue
         }
 
         val languagePanel = JPanel(FlowLayout(FlowLayout.LEFT, HORIZONTAL_GAP, 0))
@@ -213,19 +223,19 @@ internal class UiOptionsPanel : JTitledPanel(StarWarsBundle.message(BundleConsta
         languagePanel.add(languageComboBox)
 
         val passesPanel = JPanel(FlowLayout(FlowLayout.LEFT, 0, 0))
-        passesPanel.add(changeVehicleAfterPassCheckBox)
-        passesPanel.add(numberOfPassesUntilVehicleChangeSpinner)
+        passesPanel.add(changeAfterPassCheckBox)
+        passesPanel.add(numberOfPassesUntilChangeSpinner)
 
         val selectionPanel = JPanel(FlowLayout(FlowLayout.LEFT, HORIZONTAL_GAP, 0))
         selectionPanel.add(selectionLabel)
-        selectionPanel.add(vehicleSelectorComboBox)
+        selectionPanel.add(selectorComboBox)
 
         add(languagePanel)
         add(JPanel())
-        add(showVehicleCheckBox)
-        add(sameVehicleVelocityCheckBox)
-        add(showVehicleNameCheckBox)
-        add(enableNewVehiclesCheckBox)
+        add(showIconCheckBox)
+        add(sameVelocityCheckBox)
+        add(showNameCheckBox)
+        add(enableNewCheckBox)
         add(showToolTipsCheckBox)
         add(solidProgressBarColorCheckBox)
         add(showFactionCrestsCheckBox)
@@ -234,17 +244,17 @@ internal class UiOptionsPanel : JTitledPanel(StarWarsBundle.message(BundleConsta
         add(selectionPanel)
 
         addPropertyChangeListener {
-            if (it.propertyName == this::language.name) {
+            if (it.propertyName == LANGUAGE_EVENT) {
                 title = StarWarsBundle.message(BundleConstants.UI_OPTIONS)
-                showVehicleNameCheckBox.text = StarWarsBundle.message(BundleConstants.SHOW_VEHICLE_NAME)
+                showNameCheckBox.text = StarWarsBundle.message(BundleConstants.SHOW_NAME)
                 showToolTipsCheckBox.text = StarWarsBundle.message(BundleConstants.SHOW_TOOL_TIPS)
                 showFactionCrestsCheckBox.text = StarWarsBundle.message(BundleConstants.SHOW_FACTION_CRESTS)
-                sameVehicleVelocityCheckBox.text = StarWarsBundle.message(BundleConstants.SAME_VEHICLE_VELOCITY)
-                enableNewVehiclesCheckBox.text = StarWarsBundle.message(BundleConstants.ENABLE_NEW_VEHICLES)
+                sameVelocityCheckBox.text = StarWarsBundle.message(BundleConstants.SAME_VELOCITY)
+                enableNewCheckBox.text = StarWarsBundle.message(BundleConstants.ENABLE_NEW)
                 solidProgressBarColorCheckBox.text = StarWarsBundle.message(BundleConstants.SOLID_PROGRESS_BAR_COLOR)
-                showVehicleCheckBox.text = StarWarsBundle.message(BundleConstants.SHOW_VEHICLE)
+                showIconCheckBox.text = StarWarsBundle.message(BundleConstants.SHOW_ICON)
                 drawSilhouettesCheckBox.text = StarWarsBundle.message(BundleConstants.DRAW_SILHOUETTES)
-                changeVehicleAfterPassCheckBox.text = StarWarsBundle.message(BundleConstants.CHANGE_VEHICLE_AFTER_PASS)
+                changeAfterPassCheckBox.text = StarWarsBundle.message(BundleConstants.CHANGE_AFTER_PASS)
                 selectionLabel.text = StarWarsBundle.message(BundleConstants.SELECTOR)
                 languageLabel.text = StarWarsBundle.message(BundleConstants.LANGUAGE)
             }
@@ -253,21 +263,22 @@ internal class UiOptionsPanel : JTitledPanel(StarWarsBundle.message(BundleConsta
 
     fun updateUI(starWarsState: StarWarsState) {
         languageComboBox.item = starWarsState.language
-        showVehicleNameCheckBox.isSelected = starWarsState.showVehicleNames
-        showVehicleCheckBox.isSelected = starWarsState.showVehicle
+        showNameCheckBox.isSelected = starWarsState.showNames
+        showIconCheckBox.isSelected = starWarsState.showIcon
         showToolTipsCheckBox.isSelected = starWarsState.showToolTips
         showFactionCrestsCheckBox.isSelected = starWarsState.showFactionCrests
-        sameVehicleVelocityCheckBox.isSelected = starWarsState.sameVehicleVelocity
-        enableNewVehiclesCheckBox.isSelected = starWarsState.enableNewVehicles
+        sameVelocityCheckBox.isSelected = starWarsState.sameVelocity
+        enableNewCheckBox.isSelected = starWarsState.enableNew
         solidProgressBarColorCheckBox.isSelected = starWarsState.solidProgressBarColor
         drawSilhouettesCheckBox.isSelected = starWarsState.drawSilhouettes
-        changeVehicleAfterPassCheckBox.isSelected = starWarsState.changeVehicleAfterPass
-        numberOfPassesUntilVehicleChangeSpinner.value = starWarsState.numberOfPassesUntilVehicleChange
-        vehicleSelectorComboBox.item = starWarsState.vehicleSelector
+        changeAfterPassCheckBox.isSelected = starWarsState.changeAfterPass
+        numberOfPassesUntilChangeSpinner.value = starWarsState.numberOfPassesUntilChange
+        selectorComboBox.item = starWarsState.selector
 
+        val language = languageComboBox.selectedItem as Language? ?: DEFAULT_LANGUAGE
         StarWarsBundle.setLocale(language.toLocale())
         firePropertyChange(
-            this::language.name,
+            LANGUAGE_EVENT,
             oldLanguage,
             language,
         )

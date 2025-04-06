@@ -1,5 +1,7 @@
 package com.christopherosthues.starwarsprogressbar.util
 
+import com.christopherosthues.starwarsprogressbar.models.Lightsaber
+import com.christopherosthues.starwarsprogressbar.models.Lightsabers
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.intellij.ui.scale.JBUIScale
@@ -18,7 +20,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertAll
 import java.awt.GraphicsConfiguration
 import java.awt.image.BufferedImage
-import java.util.*
+import java.util.Optional
 import javax.swing.ImageIcon
 
 class ResourceFactoryTests {
@@ -48,10 +50,10 @@ class ResourceFactoryTests {
         // Arrange
 
         // Act
-        val result = parseFactionsFromJson("{\"factions\": []}")
+        val result = parseFactionsFromJson("{\"vehicles\": []}")
 
         // Assert
-        assertEquals(listOf<StarWarsFaction>(), result.factions)
+        assertEquals(listOf<StarWarsFaction<StarWarsVehicle>>(), result.vehicles)
     }
 
     @Test
@@ -62,7 +64,7 @@ class ResourceFactoryTests {
         val result = parseFactionsFromJson("{}")
 
         // Assert
-        assertEquals(listOf<StarWarsFaction>(), result.factions)
+        assertEquals(listOf<StarWarsFaction<StarWarsVehicle>>(), result.vehicles)
     }
 
     @Test
@@ -73,7 +75,7 @@ class ResourceFactoryTests {
         val result = parseFactionsFromJson("")
 
         // Assert
-        assertEquals(listOf<StarWarsFaction>(), result.factions)
+        assertEquals(listOf<StarWarsFaction<StarWarsVehicle>>(), result.vehicles)
     }
 
     @Test
@@ -84,13 +86,13 @@ class ResourceFactoryTests {
         val result = parseFactionsFromJson("[]")
 
         // Assert
-        assertEquals(listOf<StarWarsFaction>(), result.factions)
+        assertEquals(listOf<StarWarsFaction<StarWarsVehicle>>(), result.vehicles)
     }
 
     @Test
     fun `parseFactionsFromJson should return correct factions`() {
         // Arrange
-        val factions = listOf(
+        val vehicleFactions = listOf(
             StarWarsFaction("faction1", listOf(StarWarsVehicle("vehicle1", "brown", -4, -6, 2.5f))),
             StarWarsFaction(
                 "faction2",
@@ -100,45 +102,171 @@ class ResourceFactoryTests {
                 ),
             ),
         )
-
-        // Act and Assert
-        val result = parseFactionsFromJson(
-            "{\"factions\": [{" +
-                " \"id\": \"faction1\",\n" +
-                "      \"vehicles\": [\n" +
-                "        {\n" +
-                "          \"id\": \"vehicle1\",\n" +
-                "          \"ionEngine\": \"brown\",\n" +
-                "          \"xShift\": -4,\n" +
-                "          \"yShift\": -6,\n" +
-                "          \"velocity\": 2.5\n" +
-                "        }]},{" +
-                "\"id\": \"faction2\",\n" +
-                "      \"vehicles\": [\n" +
-                "        {\n" +
-                "          \"id\": \"vehicle2\",\n" +
-                "          \"ionEngine\": \"blue\",\n" +
-                "          \"xShift\": -6,\n" +
-                "          \"yShift\": -6,\n" +
-                "          \"velocity\": 2.5\n" +
-                "        }," +
-                "        {\n" +
-                "          \"id\": \"vehicle3\",\n" +
-                "          \"ionEngine\": \"blue\",\n" +
-                "          \"xShift\": -6,\n" +
-                "          \"yShift\": -6,\n" +
-                "          \"velocity\": 2.5\n" +
-                "        }]}" +
-                "]}",
+        val lightsabersFactions = listOf(
+            StarWarsFaction(
+                "faction3",
+                listOf(
+                    Lightsabers(
+                        "lightsaber1",
+                        2.5f,
+                        isJarKai = false,
+                        listOf(Lightsaber(1, "brown", isShoto = false, isDoubleBladed = false, yShift = 1, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                    ),
+                ),
+            ),
+            StarWarsFaction(
+                "faction2",
+                listOf(
+                    Lightsabers(
+                        "lightsaber2",
+                        2.5f,
+                        isJarKai = false,
+                        listOf(Lightsaber(1, "blue", isShoto = false, isDoubleBladed = true, yShift = 2, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                    ),
+                    Lightsabers(
+                        "lightsaber3",
+                        2.5f,
+                        isJarKai = true,
+                        listOf(
+                            Lightsaber(1, "blue", isShoto = false, isDoubleBladed = false, yShift = 3, bladeSize = 8, xBlade = 0, yBlade = 0),
+                            Lightsaber(2, "green", isShoto = true, isDoubleBladed = false, yShift = 4, bladeSize = 8, xBlade = 0, yBlade = 0),
+                        ),
+                    ),
+                ),
+            ),
         )
 
+        // Act and Assert
+        val json = """
+{
+    "lightsabers": [
+        {
+            "data": [
+                {
+                    "type": "Lightsabers",
+                    "id": "lightsaber1",
+                    "velocity": 2.5,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "brown",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "yShift": 1,
+                            "bladeSize": 8,
+                            "xBlade": 0,
+                            "yBlade": 0
+                        }
+                    ]
+                }
+            ],
+            "id": "faction3"
+        },
+        {
+            "data": [
+                {
+                    "type": "Lightsabers",
+                    "id": "lightsaber2",
+                    "velocity": 2.5,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "blue",
+                            "isShoto": false,
+                            "isDoubleBladed": true,
+                            "yShift": 2,
+                            "bladeSize": 8,
+                            "xBlade": 0,
+                            "yBlade": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "Lightsabers",
+                    "id": "lightsaber3",
+                    "velocity": 2.5,
+                    "isJarKai": true,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "blue",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "yShift": 3,
+                            "bladeSize": 8,
+                            "xBlade": 0,
+                            "yBlade": 0
+                        },
+                        {
+                            "id": 2,
+                            "bladeColor": "green",
+                            "isShoto": true,
+                            "isDoubleBladed": false,
+                            "yShift": 4,
+                            "bladeSize": 8,
+                            "xBlade": 0,
+                            "yBlade": 0
+                        }
+                    ]
+                }
+            ],
+            "id": "faction2"
+        }
+    ],
+    "vehicles": [
+        {
+            "data": [
+                {
+                    "type": "StarWarsVehicle",
+                    "id": "vehicle1",
+                    "ionEngine": "brown",
+                    "velocity": 2.5,
+                    "xShift": -4,
+                    "yShift": -6
+                }
+            ],
+            "id": "faction1"
+        },
+        {
+            "data": [
+                {
+                    "type": "StarWarsVehicle",
+                    "id": "vehicle2",
+                    "ionEngine": "blue",
+                    "velocity": 2.5,
+                    "xShift": -6,
+                    "yShift": -6
+                },
+                {
+                    "type": "StarWarsVehicle",
+                    "id": "vehicle3",
+                    "ionEngine": "blue",
+                    "velocity": 2.5,
+                    "xShift": -6,
+                    "yShift": -6
+                }
+            ],
+            "id": "faction2"
+        }
+    ]
+}
+    """
+        val result = parseFactionsFromJson(json)
+
         // Assert
-        val resultFactions = result.factions
+        val resultFactions = result.vehicles
+        val resultLightsabers = result.lightsabers
         assertAll(
-            { assertEquals(factions, resultFactions) },
-            { assertEquals(factions.size, resultFactions.size) },
-            { assertEquals(factions[0], resultFactions[0]) },
-            { assertEquals(factions[1], resultFactions[1]) },
+            { assertEquals(vehicleFactions, resultFactions) },
+            { assertEquals(vehicleFactions.size, resultFactions.size) },
+            { assertEquals(vehicleFactions[0], resultFactions[0]) },
+            { assertEquals(vehicleFactions[1], resultFactions[1]) },
+            { assertEquals(lightsabersFactions, resultLightsabers) },
+            { assertEquals(lightsabersFactions.size, resultLightsabers.size) },
+            { assertEquals(lightsabersFactions[0], resultLightsabers[0]) },
+            { assertEquals(lightsabersFactions[1], resultLightsabers[1]) },
         )
     }
 
@@ -243,7 +371,7 @@ class ResourceFactoryTests {
     fun `createImageIconFromURL should return image icon created from provided url`() {
         // Arrange
         val size = 32
-        val imageResource = "icons/missing.png"
+        val imageResource = "icons/vehicles/missing.png"
 
         val url = Optional.ofNullable(createClassLoader().getResource(imageResource))
             .orElseGet { createClassLoader().getResource("/$imageResource") }

@@ -1,18 +1,19 @@
 package com.christopherosthues.starwarsprogressbar.configuration
 
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_CHANGE_VEHICLE_AFTER_PASS
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_CHANGE_AFTER_PASS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_DRAW_SILHOUETTES
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENABLE_NEW_VEHICLES
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENABLE_NEW
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_LANGUAGE
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SAME_VEHICLE_VELOCITY
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SAME_VELOCITY
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SELECTOR
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_FACTION_CRESTS
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_ICON
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_NAMES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_TOOLTIPS
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_VEHICLE_NAMES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRESS_BAR_COLOR
-import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_VEHICLE_SELECTOR
-import com.christopherosthues.starwarsprogressbar.models.FactionHolder
+import com.christopherosthues.starwarsprogressbar.models.Lightsabers
+import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.selectors.SelectionType
 import java.util.stream.Collectors
@@ -29,38 +30,83 @@ internal class StarWarsState {
         }
 
     @JvmField
-    var vehiclesEnabled: Map<String, Boolean> =
-        FactionHolder.defaultVehicles.stream().collect(Collectors.toMap(StarWarsVehicle::vehicleId) { true })
+    var vehiclesEnabled: MutableMap<String, Boolean> =
+        StarWarsFactionHolder.defaultVehicles.stream().collect(Collectors.toMap(StarWarsVehicle::entityId) { true })
 
-    var showVehicle: Boolean = DEFAULT_SHOW_VEHICLE
+    @JvmField
+    var lightsabersEnabled: MutableMap<String, Boolean> =
+        StarWarsFactionHolder.defaultLightsabers.stream().collect(Collectors.toMap(Lightsabers::entityId) { true })
 
-    var showVehicleNames: Boolean = DEFAULT_SHOW_VEHICLE_NAMES
+    var showIcon: Boolean = DEFAULT_SHOW_ICON
+
+    var showNames: Boolean = DEFAULT_SHOW_NAMES
 
     var showToolTips: Boolean = DEFAULT_SHOW_TOOLTIPS
 
     var showFactionCrests: Boolean = DEFAULT_SHOW_FACTION_CRESTS
 
-    var sameVehicleVelocity: Boolean = DEFAULT_SAME_VEHICLE_VELOCITY
+    var sameVelocity: Boolean = DEFAULT_SAME_VELOCITY
 
-    var enableNewVehicles: Boolean = DEFAULT_ENABLE_NEW_VEHICLES
+    var enableNew: Boolean = DEFAULT_ENABLE_NEW
 
     var solidProgressBarColor: Boolean = DEFAULT_SOLID_PROGRESS_BAR_COLOR
 
     var drawSilhouettes: Boolean = DEFAULT_DRAW_SILHOUETTES
 
-    var changeVehicleAfterPass: Boolean = DEFAULT_CHANGE_VEHICLE_AFTER_PASS
+    var changeAfterPass: Boolean = DEFAULT_CHANGE_AFTER_PASS
 
-    var numberOfPassesUntilVehicleChange: Int = DEFAULT_NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE
+    var numberOfPassesUntilChange: Int = DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE
 
-    var vehicleSelectorOrdinal: Int = DEFAULT_VEHICLE_SELECTOR.ordinal
+    var selectorOrdinal: Int = DEFAULT_SELECTOR.ordinal
 
-    internal var vehicleSelector: SelectionType?
-        get() = vehicleSelectorOrdinal.let {
-            SelectionType.entries.getOrNull(it) ?: DEFAULT_VEHICLE_SELECTOR
+    internal var selector: SelectionType?
+        get() = selectorOrdinal.let {
+            SelectionType.entries.getOrNull(it) ?: DEFAULT_SELECTOR
         }
         set(value) {
-            vehicleSelectorOrdinal = value?.ordinal ?: DEFAULT_VEHICLE_SELECTOR.ordinal
+            selectorOrdinal = value?.ordinal ?: DEFAULT_SELECTOR.ordinal
         }
 
     var version: String = ""
+
+    @Deprecated("Use showIcon instead")
+    var showVehicle: Boolean = DEFAULT_SHOW_ICON
+
+    @Deprecated("Use showNames instead")
+    var showVehicleNames: Boolean = DEFAULT_SHOW_NAMES
+
+    @Deprecated("Use sameVelocity instead")
+    var sameVehicleVelocity: Boolean = DEFAULT_SAME_VELOCITY
+
+    @Deprecated("Use enableNew instead")
+    var enableNewVehicles: Boolean = DEFAULT_ENABLE_NEW
+
+    @Deprecated("Use changeAfterPass instead")
+    var changeVehicleAfterPass: Boolean = DEFAULT_CHANGE_AFTER_PASS
+
+    @Deprecated("Use numberOfPassesUntilChange instead")
+    var numberOfPassesUntilVehicleChange: Int = DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE
+
+    @Deprecated("Use selectorOrdinal instead")
+    var vehicleSelectorOrdinal: Int = DEFAULT_SELECTOR.ordinal
+
+    fun copy(starWarsState: StarWarsState) {
+        language = starWarsState.language
+        vehiclesEnabled.clear()
+        vehiclesEnabled.putAll(starWarsState.vehiclesEnabled)
+        lightsabersEnabled.clear()
+        lightsabersEnabled.putAll(starWarsState.lightsabersEnabled)
+        showIcon = starWarsState.showIcon
+        showNames = starWarsState.showNames
+        showToolTips = starWarsState.showToolTips
+        showFactionCrests = starWarsState.showFactionCrests
+        sameVelocity = starWarsState.sameVelocity
+        enableNew = starWarsState.enableNew
+        solidProgressBarColor = starWarsState.solidProgressBarColor
+        drawSilhouettes = starWarsState.drawSilhouettes
+        changeAfterPass = starWarsState.changeAfterPass
+        numberOfPassesUntilChange = starWarsState.numberOfPassesUntilChange
+        selector = starWarsState.selector
+        version = starWarsState.version
+    }
 }

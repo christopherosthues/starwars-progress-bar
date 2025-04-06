@@ -27,6 +27,7 @@ import io.mockk.mockkObject
 import io.mockk.mockkStatic
 import io.mockk.unmockkAll
 import io.mockk.verify
+import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
@@ -83,7 +84,7 @@ class PluginUpdatedActivityTests {
     //region Tests
 
     @Test
-    fun `runActivity should retrieve correct plugin id`() {
+    fun `execute should retrieve correct plugin id`() {
         // Arrange
         val pluginIdMock = mockk<PluginId>(relaxed = true)
         every { PluginId.getId(PluginConstants.PLUGIN_ID) } returns pluginIdMock
@@ -91,7 +92,7 @@ class PluginUpdatedActivityTests {
         val sut = PluginUpdatedActivity()
 
         // Act
-        sut.runActivity(mockk())
+        runBlocking { sut.execute(mockk()) }
 
         // Assert
         verify(exactly = 1) { PluginId.getId(PluginConstants.PLUGIN_ID) }
@@ -99,7 +100,7 @@ class PluginUpdatedActivityTests {
     }
 
     @Test
-    fun `runActivity should not display notification if plugin descriptor is null`() {
+    fun `execute should not display notification if plugin descriptor is null`() {
         // Arrange
         val pluginIdMock = mockk<PluginId>(relaxed = true)
         val starWarsStateMock = mockk<StarWarsState>(relaxed = true)
@@ -109,7 +110,7 @@ class PluginUpdatedActivityTests {
         val sut = PluginUpdatedActivity()
 
         // Act
-        sut.runActivity(mockk())
+        runBlocking { sut.execute(mockk()) }
 
         // Assert
         verify(exactly = 0) { starWarsStateMock.version }
@@ -118,7 +119,7 @@ class PluginUpdatedActivityTests {
     }
 
     @Test
-    fun `runActivity should not display notification if star wars persistent state component is null`() {
+    fun `execute should not display notification if star wars persistent state component is null`() {
         // Arrange
         val pluginIdMock = mockk<PluginId>(relaxed = true)
         val pluginDescriptorMock = mockk<IdeaPluginDescriptor>(relaxed = true)
@@ -128,7 +129,7 @@ class PluginUpdatedActivityTests {
         val sut = PluginUpdatedActivity()
 
         // Act
-        sut.runActivity(mockk())
+        runBlocking { sut.execute(mockk()) }
 
         // Assert
         verify(exactly = 0) { pluginDescriptorMock.version }
@@ -137,7 +138,7 @@ class PluginUpdatedActivityTests {
     }
 
     @Test
-    fun `runActivity should not display notification if star wars state is null`() {
+    fun `execute should not display notification if star wars state is null`() {
         // Arrange
         val pluginIdMock = mockk<PluginId>(relaxed = true)
         val pluginDescriptorMock = mockk<IdeaPluginDescriptor>(relaxed = true)
@@ -147,7 +148,7 @@ class PluginUpdatedActivityTests {
         val sut = PluginUpdatedActivity()
 
         // Act
-        sut.runActivity(mockk())
+        runBlocking { sut.execute(mockk()) }
 
         // Assert
         verify(exactly = 0) { pluginDescriptorMock.version }
@@ -156,13 +157,13 @@ class PluginUpdatedActivityTests {
     }
 
     @Test
-    fun `runActivity should not display notification if stored version and installed version are equal`() {
+    fun `execute should not display notification if stored version and installed version are equal`() {
         // Arrange
         val (pluginDescriptorMock, starWarsStateMock) = setupPluginDescriptorAndStarWarsState(storedEqualVersion)
         val sut = PluginUpdatedActivity()
 
         // Act
-        sut.runActivity(mockk())
+        runBlocking { sut.execute(mockk()) }
 
         // Assert
         verify(exactly = 1) { pluginDescriptorMock.version }
@@ -172,14 +173,14 @@ class PluginUpdatedActivityTests {
     }
 
     @Test
-    fun `runActivity should store installed version if stored version and installed version are different`() {
+    fun `execute should store installed version if stored version and installed version are different`() {
         // Arrange
         val (pluginDescriptorMock, starWarsStateMock) = setupPluginDescriptorAndStarWarsState()
         every { DoNotAskService.canShowNotification() } returns false
         val sut = PluginUpdatedActivity()
 
         // Act
-        sut.runActivity(mockk())
+        runBlocking { sut.execute(mockk()) }
 
         // Assert
         verify(exactly = 1) { pluginDescriptorMock.version }
@@ -188,14 +189,14 @@ class PluginUpdatedActivityTests {
     }
 
     @Test
-    fun `runActivity should not display notification if notification should not be displayed`() {
+    fun `execute should not display notification if notification should not be displayed`() {
         // Arrange
         setupPluginDescriptorAndStarWarsState()
         every { DoNotAskService.canShowNotification() } returns false
         val sut = PluginUpdatedActivity()
 
         // Act
-        sut.runActivity(mockk())
+        runBlocking { sut.execute(mockk()) }
 
         // Assert
         verify(exactly = 1) { DoNotAskService.canShowNotification() }
@@ -203,7 +204,7 @@ class PluginUpdatedActivityTests {
     }
 
     @Test
-    fun `runActivity should retrieve correct notification group`() {
+    fun `execute should retrieve correct notification group`() {
         // Arrange
         setupPluginDescriptorAndStarWarsState()
         val (notificationManagerMock, _, _) = setupNotification()
@@ -211,7 +212,7 @@ class PluginUpdatedActivityTests {
         val sut = PluginUpdatedActivity()
 
         // Act
-        sut.runActivity(mockk())
+        runBlocking { sut.execute(mockk()) }
 
         // Assert
         verify(exactly = 1) { NotificationGroupManager.getInstance() }
@@ -219,7 +220,7 @@ class PluginUpdatedActivityTests {
     }
 
     @Test
-    fun `runActivity should create correct notification`() {
+    fun `execute should create correct notification`() {
         // Arrange
         setupPluginDescriptorAndStarWarsState()
         val (_, notificationGroupMock, _) = setupNotification()
@@ -227,7 +228,7 @@ class PluginUpdatedActivityTests {
         val sut = PluginUpdatedActivity()
 
         // Act
-        sut.runActivity(mockk())
+        runBlocking { sut.execute(mockk()) }
 
         // Assert
         verify(exactly = 1) {
@@ -240,7 +241,7 @@ class PluginUpdatedActivityTests {
     }
 
     @Test
-    fun `runActivity should create correct notification with correct icon`() {
+    fun `execute should create correct notification with correct icon`() {
         // Arrange
         setupPluginDescriptorAndStarWarsState()
         val (_, _, notificationMock) = setupNotification()
@@ -249,7 +250,7 @@ class PluginUpdatedActivityTests {
         val sut = PluginUpdatedActivity()
 
         // Act
-        sut.runActivity(mockk())
+        runBlocking { sut.execute(mockk()) }
 
         // Assert
         verify(exactly = 1) { StarWarsResourceLoader.getPluginIcon() }
@@ -257,7 +258,7 @@ class PluginUpdatedActivityTests {
     }
 
     @Test
-    fun `runActivity should create correct notification with two actions`() {
+    fun `execute should create correct notification with two actions`() {
         // Arrange
         setupPluginDescriptorAndStarWarsState()
         val (_, _, notificationMock) = setupNotification()
@@ -266,7 +267,7 @@ class PluginUpdatedActivityTests {
         val sut = PluginUpdatedActivity()
 
         // Act
-        sut.runActivity(mockk())
+        runBlocking { sut.execute(mockk()) }
 
         // Assert
         verify(exactly = 2) { notificationMock.addAction(any()) }
@@ -275,7 +276,7 @@ class PluginUpdatedActivityTests {
     }
 
     @Test
-    fun `runActivity should display correct notification`() {
+    fun `execute should display correct notification`() {
         // Arrange
         setupPluginDescriptorAndStarWarsState()
         val (_, _, notificationMock) = setupNotification()
@@ -285,14 +286,14 @@ class PluginUpdatedActivityTests {
         val projectMock = mockk<Project>()
 
         // Act
-        sut.runActivity(projectMock)
+        runBlocking { sut.execute(projectMock) }
 
         // Assert
         verify(exactly = 1) { notificationMock.notify(projectMock) }
     }
 
     @Test
-    fun `runActivity should create correct notification actions and first action should open settings`() {
+    fun `execute should create correct notification actions and first action should open settings`() {
         // Arrange
         setupPluginDescriptorAndStarWarsState()
         val (_, _, notificationMock) = setupNotification()
@@ -308,7 +309,7 @@ class PluginUpdatedActivityTests {
         val actionEventMock = mockk<AnActionEvent>(relaxed = true)
 
         // Act
-        sut.runActivity(projectMock)
+        runBlocking { sut.execute(projectMock) }
 
         // Assert
         assertAll(
@@ -329,7 +330,7 @@ class PluginUpdatedActivityTests {
     }
 
     @Test
-    fun `runActivity should create notification actions and second action should store do not ask and hide balloon`() {
+    fun `execute should create notification actions and second action should store do not ask and hide balloon`() {
         // Arrange
         setupPluginDescriptorAndStarWarsState()
         val (_, _, notificationMock) = setupNotification()
@@ -343,7 +344,7 @@ class PluginUpdatedActivityTests {
         val actionEventMock = mockk<AnActionEvent>(relaxed = true)
 
         // Act
-        sut.runActivity(projectMock)
+        runBlocking { sut.execute(projectMock) }
 
         // Assert
         assertAll(

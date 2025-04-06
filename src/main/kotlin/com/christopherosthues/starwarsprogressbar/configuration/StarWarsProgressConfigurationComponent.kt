@@ -1,14 +1,16 @@
 package com.christopherosthues.starwarsprogressbar.configuration
 
+import com.christopherosthues.starwarsprogressbar.StarWarsBundle
+import com.christopherosthues.starwarsprogressbar.configuration.components.LightsaberPanel
 import com.christopherosthues.starwarsprogressbar.configuration.components.PreviewPanel
 import com.christopherosthues.starwarsprogressbar.configuration.components.UiOptionsPanel
 import com.christopherosthues.starwarsprogressbar.configuration.components.VehiclesPanel
-import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
-import com.christopherosthues.starwarsprogressbar.selectors.SelectionType
-import com.christopherosthues.starwarsprogressbar.ui.events.VehicleClickListener
+import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
+import com.christopherosthues.starwarsprogressbar.models.StarWarsEntity
+import com.christopherosthues.starwarsprogressbar.ui.events.StarWarsEntityClickListener
+import com.intellij.ui.components.JBTabbedPane
 import com.intellij.util.ui.FormBuilder
 import java.awt.BorderLayout
-import java.util.*
 import javax.swing.JPanel
 
 internal class StarWarsProgressConfigurationComponent {
@@ -16,51 +18,18 @@ internal class StarWarsProgressConfigurationComponent {
 
     private lateinit var previewPanel: PreviewPanel
 
-    private val uiOptionsPanel = UiOptionsPanel()
+    val starWarsState: StarWarsState = StarWarsState()
 
-    private val vehiclesPanel = VehiclesPanel()
+    private val uiOptionsPanel = UiOptionsPanel(starWarsState)
+
+    private val vehiclesPanel = VehiclesPanel(starWarsState)
+
+    private val lightsabersPanel = LightsaberPanel(starWarsState)
+
+    private val tabbedPane = JBTabbedPane()
 
     val panel: JPanel
         get() = mainPanel
-
-    val enabledVehicles: Map<String, Boolean>
-        get() = vehiclesPanel.enabledVehicles
-
-    val showVehicle: Boolean
-        get() = uiOptionsPanel.showVehicle
-
-    val showVehicleNames: Boolean
-        get() = uiOptionsPanel.showVehicleNames
-
-    val showToolTips: Boolean
-        get() = uiOptionsPanel.showToolTips
-
-    val showFactionCrests: Boolean
-        get() = uiOptionsPanel.showFactionCrests
-
-    val sameVehicleVelocity: Boolean
-        get() = uiOptionsPanel.sameVehicleVelocity
-
-    val enableNewVehicles: Boolean
-        get() = uiOptionsPanel.enableNewVehicles
-
-    val solidProgressBarColor: Boolean
-        get() = uiOptionsPanel.solidProgressBarColor
-
-    val drawSilhouettes: Boolean
-        get() = uiOptionsPanel.drawSilhouettes
-
-    val changeVehicleAfterPass: Boolean
-        get() = uiOptionsPanel.changeVehicleAfterPass
-
-    val numberOfPassesUntilVehicleChange: Int
-        get() = uiOptionsPanel.numberOfPassesUntilVehicleChange
-
-    val vehicleSelector: SelectionType
-        get() = uiOptionsPanel.vehicleSelector
-
-    val language: Language
-        get() = uiOptionsPanel.language
 
     init {
         createUI()
@@ -68,9 +37,11 @@ internal class StarWarsProgressConfigurationComponent {
 
     fun updateUI(starWarsState: StarWarsState?) {
         if (starWarsState != null) {
+            this.starWarsState.copy(starWarsState)
             uiOptionsPanel.updateUI(starWarsState)
 
             vehiclesPanel.updateUI(starWarsState)
+            lightsabersPanel.updateUI(starWarsState)
         }
     }
 
@@ -82,28 +53,24 @@ internal class StarWarsProgressConfigurationComponent {
 
         createUiOptionsSection(formBuilder)
 
-        createVehicleSection(formBuilder)
+        tabbedPane.addTab(StarWarsBundle.message(BundleConstants.VEHICLES_TITLE), vehiclesPanel)
+        tabbedPane.addTab(StarWarsBundle.message(BundleConstants.LIGHTSABERS_TITLE), lightsabersPanel)
+        formBuilder.addComponent(tabbedPane)
+
+        createLightsaberSection()
+
+        createVehicleSection()
 
         mainPanel.add(formBuilder.panel, BorderLayout.NORTH)
 
         previewPanel.addPropertyChangeListener(uiOptionsPanel)
         vehiclesPanel.addPropertyChangeListener(uiOptionsPanel)
+        lightsabersPanel.addPropertyChangeListener(uiOptionsPanel)
     }
 
     private fun createPreviewSection(formBuilder: FormBuilder) {
         previewPanel = PreviewPanel(
-            this::showVehicle,
-            this::showVehicleNames,
-            this::showToolTips,
-            this::showFactionCrests,
-            this::sameVehicleVelocity,
-            this::enableNewVehicles,
-            this::solidProgressBarColor,
-            this::drawSilhouettes,
-            this::changeVehicleAfterPass,
-            this::numberOfPassesUntilVehicleChange,
-            this::enabledVehicles,
-            this::vehicleSelector,
+            starWarsState,
         )
 
         formBuilder.addComponent(previewPanel)
@@ -114,40 +81,51 @@ internal class StarWarsProgressConfigurationComponent {
             if (isProgressBarTextEvent(it.propertyName) ||
                 isProgressBarDrawEvent(it.propertyName) ||
                 isVehicleChangeEvent(it.propertyName) ||
-                it.propertyName == UiOptionsPanel::vehicleSelector.name
+                it.propertyName == VEHICLE_SELECTOR_EVENT
             ) {
                 repaintProgressBar()
             }
+        }
+        uiOptionsPanel.addPropertyChangeListener(LANGUAGE_EVENT) {
+            tabbedPane.setTitleAt(0, StarWarsBundle.message(BundleConstants.VEHICLES_TITLE))
+            tabbedPane.setTitleAt(1, StarWarsBundle.message(BundleConstants.LIGHTSABERS_TITLE))
         }
 
         formBuilder.addComponent(uiOptionsPanel)
     }
 
     private fun isProgressBarTextEvent(propertyName: String): Boolean =
-        propertyName == UiOptionsPanel::showVehicleNames.name ||
-            propertyName == UiOptionsPanel::showToolTips.name
+        propertyName == SHOW_VEHICLE_NAMES_EVENT ||
+            propertyName == SHOW_TOOL_TIPS_EVENT
 
     private fun isProgressBarDrawEvent(propertyName: String): Boolean =
-        propertyName == UiOptionsPanel::showFactionCrests.name ||
-            propertyName == UiOptionsPanel::sameVehicleVelocity.name ||
-            propertyName == UiOptionsPanel::solidProgressBarColor.name ||
-            propertyName == UiOptionsPanel::showVehicle.name ||
-            propertyName == UiOptionsPanel::drawSilhouettes.name
+        propertyName == SHOW_FACTION_CRESTS_EVENT ||
+            propertyName == SAME_VELOCITY_EVENT ||
+            propertyName == SOLID_PROGRESS_BAR_COLOR_EVENT ||
+            propertyName == SHOW_VEHICLE_EVENT ||
+            propertyName == DRAW_SILHOUETTES_EVENT
 
     private fun isVehicleChangeEvent(propertyName: String): Boolean =
-        propertyName == UiOptionsPanel::changeVehicleAfterPass.name ||
-            propertyName == UiOptionsPanel::numberOfPassesUntilVehicleChange.name
+        propertyName == CHANGE_VEHICLE_AFTER_PASS_EVENT ||
+            propertyName == NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE_EVENT
 
     private fun repaintProgressBar() {
         previewPanel.repaintProgressBar()
     }
 
-    private fun createVehicleSection(formBuilder: FormBuilder) {
-        vehiclesPanel.addVehicleListener(object : VehicleClickListener {
-            override fun vehicleClicked(vehicle: StarWarsVehicle) {
-                previewPanel.selectVehicle(vehicle)
+    private fun createVehicleSection() {
+        vehiclesPanel.addStarWarsEntityListener(object : StarWarsEntityClickListener {
+            override fun starWarsEntityClicked(starWarsEntity: StarWarsEntity) {
+                previewPanel.selectEntity(starWarsEntity)
             }
         })
-        formBuilder.addComponent(vehiclesPanel)
+    }
+
+    private fun createLightsaberSection() {
+        lightsabersPanel.addStarWarsEntityListener(object : StarWarsEntityClickListener {
+            override fun starWarsEntityClicked(starWarsEntity: StarWarsEntity) {
+                previewPanel.selectEntity(starWarsEntity)
+            }
+        })
     }
 }

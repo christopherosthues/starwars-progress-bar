@@ -16,16 +16,21 @@ import com.intellij.openapi.extensions.PluginId
 import com.intellij.openapi.options.ShowSettingsUtil
 import com.intellij.openapi.project.DumbAwareAction
 import com.intellij.openapi.project.Project
-import com.intellij.openapi.startup.StartupActivity.DumbAware
+import com.intellij.openapi.startup.ProjectActivity
+import com.intellij.util.text.SemVer
 
-class PluginUpdatedActivity : DumbAware {
-    override fun runActivity(project: Project) {
+class PluginUpdatedActivity : ProjectActivity {
+    override suspend fun execute(project: Project) {
         val pluginDescriptor = PluginManagerCore.getPlugin(PluginId.getId(PluginConstants.PLUGIN_ID))
         val starWarsState = StarWarsPersistentStateComponent.instance?.state
         if (pluginDescriptor != null && starWarsState != null) {
             val installedVersion = pluginDescriptor.version
-            val storedVersion = starWarsState.version
-            if (!installedVersion.equals(storedVersion)) {
+            val installedSemanticVersion = SemVer.parseFromText(installedVersion)
+            val storedSemanticVersion = SemVer.parseFromText(starWarsState.version)
+            if (storedSemanticVersion == null ||
+                installedSemanticVersion != null &&
+                installedSemanticVersion > storedSemanticVersion
+            ) {
                 starWarsState.version = installedVersion
 
                 displayUpdateNotification(project, installedVersion)
