@@ -24,6 +24,7 @@ import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_CHANGE_AFTER_PASS
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENABLE_NEW
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SAME_VELOCITY
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SELECTOR
@@ -62,7 +63,7 @@ internal class StarWarsProgressBarUI(
         selectEntity(
             StarWarsPersistentStateComponent.instance?.state?.vehiclesEnabled,
             StarWarsPersistentStateComponent.instance?.state?.lightsabersEnabled,
-            false,
+            StarWarsPersistentStateComponent.instance?.state?.enableNew ?: DEFAULT_ENABLE_NEW,
             StarWarsPersistentStateComponent.instance?.state?.selector
                 ?: DEFAULT_SELECTOR,
         ),
@@ -80,7 +81,7 @@ internal class StarWarsProgressBarUI(
         starWarsEntity = selectEntity(
             starWarsState()?.vehiclesEnabled,
             starWarsState()?.lightsabersEnabled,
-            false,
+            starWarsState()?.enableNew ?: DEFAULT_ENABLE_NEW,
             starWarsState()?.selector ?: DEFAULT_SELECTOR,
         )
         updateDecorator()

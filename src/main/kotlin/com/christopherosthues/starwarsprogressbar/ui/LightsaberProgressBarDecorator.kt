@@ -102,8 +102,7 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
                     lightsaberDrawings[index].state = DrawState.NoBlade
                 }
             } else {
-                val singleIconWidth = if (lightsaber.id.isOdd()) maxLeftIconWidthSingle else maxRightIconWidthSingle
-                if (singleBladeLength - singleIconWidth >= iconWidth) {
+                if (singleBladeLength >= iconWidth) {
                     lightsaberDrawings[index].bladeX =
                         if (lightsaber.id.isOdd()) singleLeftBladeX else singleRightBladeX
                     lightsaberDrawings[index].maxBladeWidth = singleBladeLength
@@ -257,12 +256,14 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         width: Int,
         amountFull: Int,
     ) {
-        val bladeX = if (lightsaber.id.isOdd()) 0 else width
+        val maxBladeWidth = if (lightsaber.isShoto) width / 2 else width
+        val bladeWidth = if (lightsaber.isShoto) amountFull / 2 else amountFull
+        val bladeX = if (lightsaber.id.isOdd()) 0 else width - bladeWidth
         val bladeY = JBUIScale.scale(lightsaber.yShift + lightsaber.yBlade)
         val bladeHeight = JBUIScale.scale(lightsaber.bladeSize)
-        val bladeWidth = amountFull
+        val borderX = if (lightsaber.id.isOdd()) 0 else width - maxBladeWidth
 
-        drawBorder(graphics2D, lightsaber, width, 0, bladeY)
+        drawBorder(graphics2D, lightsaber, maxBladeWidth, borderX, bladeY)
         drawBlade(graphics2D, lightsaber, bladeX, bladeY, bladeWidth, bladeHeight)
     }
 
