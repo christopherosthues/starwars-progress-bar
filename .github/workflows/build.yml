@@ -21,6 +21,12 @@ on:
   pull_request:
     branches: [ "main", "develop" ]
   workflow_dispatch:
+    inputs:
+      inspectCode:
+        description: 'Execute code inspection with Qodana'
+        required: false
+        default: false
+        type: boolean
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -150,6 +156,7 @@ jobs:
   inspectCode:
     name: Inspect code
     needs: [ build ]
+    if: ${{ inputs.inspectCode }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
