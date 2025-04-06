@@ -63,5 +63,13 @@ internal fun createEmptyTranslucentBufferedImage(width: Int, height: Int): Buffe
     UIUtil.createImage(null, width, height, BufferedImage.TRANSLUCENT)
 
 internal fun createEmptyBufferedImage(width: Int, height: Int): BufferedImage {
-    return BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB)
+    var imageWidth = width
+    if (width <= 0) {
+        imageWidth = 1
+    }
+    var imageHeight = height
+    if (height <= 0) {
+        imageHeight = 1
+    }
+    return BufferedImage(imageWidth, imageHeight, BufferedImage.TYPE_INT_ARGB)
 }
