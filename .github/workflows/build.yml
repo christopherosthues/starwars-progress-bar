@@ -112,6 +112,8 @@ jobs:
       # Check out the current repository
       - name: Fetch Sources
         uses: actions/checkout@v4
+        with:
+            lfs: true
 
       # Setup Java environment for the next steps
       - name: Setup Java
@@ -169,6 +171,8 @@ jobs:
       # Check out the current repository
       - name: Fetch Sources
         uses: actions/checkout@v4
+        with:
+            lfs: true
 
       # Set up Java environment for the next steps
       - name: Setup Java
