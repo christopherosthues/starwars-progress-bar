@@ -62,5 +62,14 @@ internal fun createEmptyImageIcon(): ImageIcon = ImageIcon()
 internal fun createEmptyTranslucentBufferedImage(width: Int, height: Int): BufferedImage =
     UIUtil.createImage(null, width, height, BufferedImage.TRANSLUCENT)
 
-internal fun createEmptyBufferedImage(width: Int, height: Int): BufferedImage =
-    BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB)
+internal fun createEmptyBufferedImage(width: Int, height: Int): BufferedImage {
+    var imageWidth = width
+    if (width < 0) {
+        imageWidth = 0
+    }
+    var imageHeight = height
+    if (height < 0) {
+        imageHeight = 0
+    }
+    return BufferedImage(imageWidth, imageHeight, BufferedImage.TYPE_INT_ARGB)
+}
