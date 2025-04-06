@@ -17,7 +17,6 @@ import com.intellij.openapi.options.ShowSettingsUtil
 import com.intellij.openapi.project.DumbAwareAction
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.startup.ProjectActivity
-import com.intellij.openapi.startup.StartupActivity.DumbAware
 import com.intellij.util.text.SemVer
 
 class PluginUpdatedActivity : ProjectActivity {
@@ -28,8 +27,10 @@ class PluginUpdatedActivity : ProjectActivity {
             val installedVersion = pluginDescriptor.version
             val installedSemanticVersion = SemVer.parseFromText(installedVersion)
             val storedSemanticVersion = SemVer.parseFromText(starWarsState.version)
-            if (storedSemanticVersion == null || installedSemanticVersion != null &&
-                installedSemanticVersion > storedSemanticVersion) {
+            if (storedSemanticVersion == null ||
+                installedSemanticVersion != null &&
+                installedSemanticVersion > storedSemanticVersion
+            ) {
                 starWarsState.version = installedVersion
 
                 displayUpdateNotification(project, installedVersion)
