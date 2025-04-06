@@ -2,7 +2,6 @@ import org.jetbrains.changelog.Changelog
 import org.jetbrains.changelog.markdownToHTML
 import org.jetbrains.intellij.platform.gradle.TestFrameworkType
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 import kotlin.collections.listOf
@@ -56,7 +55,7 @@ java {
     }
 }
 
-tasks.withType<KotlinJvmCompile>() {
+tasks.withType<KotlinJvmCompile> {
     compilerOptions {
         jvmTarget.set(JvmTarget.JVM_21)
     }
