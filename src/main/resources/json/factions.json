@@ -105,6 +105,24 @@
                 },
                 {
                     "type": "Lightsabers",
+                    "id": "second_sister",
+                    "velocity": 2,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "red",
+                            "isShoto": false,
+                            "isDoubleBladed": true,
+                            "yShift": 0,
+                            "bladeSize": 6,
+                            "xBlade": 1,
+                            "yBlade": 7
+                        }
+                    ]
+                },
+                {
+                    "type": "Lightsabers",
                     "id": "savage_opress",
                     "velocity": 2,
                     "isJarKai": false,
