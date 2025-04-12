@@ -384,6 +384,24 @@
                 },
                 {
                     "type": "Lightsabers",
+                    "id": "tera_sinube",
+                    "velocity": 4,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "lightBlue",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "yShift": 0,
+                            "bladeSize": 6,
+                            "xBlade": 0,
+                            "yBlade": 6
+                        }
+                    ]
+                },
+                {
+                    "type": "Lightsabers",
                     "id": "mace_windu",
                     "velocity": 4,
                     "isJarKai": false,
