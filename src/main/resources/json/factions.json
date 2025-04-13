@@ -87,6 +87,24 @@
                 },
                 {
                     "type": "Lightsabers",
+                    "id": "darth_maul_fourth",
+                    "velocity": 2,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "red",
+                            "isShoto": false,
+                            "isDoubleBladed": true,
+                            "yShift": 0,
+                            "bladeSize": 5,
+                            "xBlade": 0,
+                            "yBlade": 12
+                        }
+                    ]
+                },
+                {
+                    "type": "Lightsabers",
                     "id": "grand_inquisitor",
                     "velocity": 2,
                     "isJarKai": false,
