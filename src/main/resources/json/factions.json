@@ -474,6 +474,24 @@
                 },
                 {
                     "type": "Lightsabers",
+                    "id": "kanan_jarrus",
+                    "velocity": 4,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "blue",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "yShift": 5,
+                            "bladeSize": 8,
+                            "xBlade": -3,
+                            "yBlade": 1
+                        }
+                    ]
+                },
+                {
+                    "type": "Lightsabers",
                     "id": "mace_windu",
                     "velocity": 4,
                     "isJarKai": false,
