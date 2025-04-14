@@ -5,7 +5,7 @@
 ## [Unreleased]
 
 ### Added
-- Jedi lightsabers of Avar Kriss, Kit Fisto, Leia Organa, Plo Koon, Stellan Gios and Tera Sinube
+- Jedi lightsabers of Aayla Secura, Avar Kriss, Kit Fisto, Leia Organa, Plo Koon, Stellan Gios and Tera Sinube
 - Sith lightsabers of Inquisitors (Grand Inquisitor, Second Sister, Fifth Brother, Eighth Brother, Ninth Sister) and Darth Maul
 - Taron Malicos' lightsabers
 
