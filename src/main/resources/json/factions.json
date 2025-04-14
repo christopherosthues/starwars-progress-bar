@@ -582,6 +582,24 @@
                 },
                 {
                     "type": "Lightsabers",
+                    "id": "avar_kriss",
+                    "velocity": 4,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "green",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "yShift": 0,
+                            "bladeSize": 6,
+                            "xBlade": -1,
+                            "yBlade": 7
+                        }
+                    ]
+                },
+                {
+                    "type": "Lightsabers",
                     "id": "quinlan_vos",
                     "velocity": 4,
                     "isJarKai": false,
