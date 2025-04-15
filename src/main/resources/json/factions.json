@@ -726,6 +726,24 @@
                 },
                 {
                     "type": "Lightsabers",
+                    "id": "jocasta_nu",
+                    "velocity": 4,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "blue",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "yShift": 5,
+                            "bladeSize": 8,
+                            "xBlade": 0,
+                            "yBlade": 1
+                        }
+                    ]
+                },
+                {
+                    "type": "Lightsabers",
                     "id": "yoda",
                     "velocity": 4,
                     "isJarKai": false,
