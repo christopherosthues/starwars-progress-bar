@@ -16,9 +16,11 @@ internal object LightsaberColor {
     val Purple: JBColor = JBColor(Color(220, 70, 250), Color(220, 70, 250))
     val White: JBColor = JBColor(Color(255, 255, 255), Color(255, 255, 255))
     val Red: JBColor = JBColor(Color(240, 10, 10), Color(240, 10, 10))
+    val RedOrange: JBColor = JBColor(Color(240, 70, 10), Color(240, 70, 10))
 
     val colors = mapOf(
         "red" to Red,
+        "redOrange" to RedOrange,
         "cyan" to Cyan,
         "lightBlue" to LightBlue,
         "blue" to Blue,

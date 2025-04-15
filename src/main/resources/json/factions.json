@@ -783,7 +783,7 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "red",
+                            "bladeColor": "redOrange",
                             "isShoto": false,
                             "isDoubleBladed": false,
                             "yShift": 5,
