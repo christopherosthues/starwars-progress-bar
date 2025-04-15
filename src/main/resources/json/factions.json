@@ -813,6 +813,24 @@
                 },
                 {
                     "type": "Lightsabers",
+                    "id": "shin_hati",
+                    "velocity": 4,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "redOrange",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "yShift": 5,
+                            "bladeSize": 8,
+                            "xBlade": -2,
+                            "yBlade": 1
+                        }
+                    ]
+                },
+                {
+                    "type": "Lightsabers",
                     "id": "taron_malicos",
                     "velocity": 3,
                     "isJarKai": true,
