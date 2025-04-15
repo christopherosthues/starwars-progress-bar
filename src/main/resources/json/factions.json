@@ -690,6 +690,24 @@
                 },
                 {
                     "type": "Lightsabers",
+                    "id": "luminara_unduli",
+                    "velocity": 4,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "bladeColor": "green",
+                            "isShoto": false,
+                            "isDoubleBladed": false,
+                            "yShift": 5,
+                            "bladeSize": 8,
+                            "xBlade": 0,
+                            "yBlade": 1
+                        }
+                    ]
+                },
+                {
+                    "type": "Lightsabers",
                     "id": "quinlan_vos",
                     "velocity": 4,
                     "isJarKai": false,
