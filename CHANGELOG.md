@@ -8,6 +8,7 @@
 - Jedi lightsabers of Aayla Secura, Avar Kriss, Kanan Jarrus, Ki-Adi Mundi, Kit Fisto, Leia Organa, Luminara Unduli, Plo Koon, Stellan Gios and Tera Sinube
 - Sith lightsabers of Inquisitors (Grand Inquisitor, Second Sister, Fifth Brother, Eighth Brother, Ninth Sister) and Darth Maul
 - Taron Malicos' lightsabers
+- Baylan Skoll's lightsaber
 
 ### Changed
 
