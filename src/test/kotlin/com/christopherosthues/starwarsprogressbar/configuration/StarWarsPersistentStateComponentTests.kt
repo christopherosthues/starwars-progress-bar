@@ -2,6 +2,8 @@ package com.christopherosthues.starwarsprogressbar.configuration
 
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SELECTOR
+import com.christopherosthues.starwarsprogressbar.models.*
+import com.christopherosthues.starwarsprogressbar.models.Blade
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
@@ -67,9 +69,48 @@ class StarWarsPersistentStateComponentTests {
         )
         every { StarWarsFactionHolder.defaultVehicles } returns vehicles
         val lightsabers = listOf(
-            Lightsabers("4", 0f, isJarKai = false, listOf(Lightsaber(1, "blue", isShoto = false, isDoubleBladed = false, yShift = 0, bladeSize = 8, xBlade = 0, yBlade = 0))),
-            Lightsabers("5", 0f, isJarKai = false, listOf(Lightsaber(1, "green", isShoto = true, isDoubleBladed = false, yShift = 1, bladeSize = 8, xBlade = 0, yBlade = 0))),
-            Lightsabers("6", 0f, isJarKai = false, listOf(Lightsaber(1, "red", isShoto = false, isDoubleBladed = true, yShift = 2, bladeSize = 8, xBlade = 0, yBlade = 0))),
+            Lightsabers(
+                "4",
+                0f,
+                isJarKai = false,
+                listOf(
+                    Lightsaber(
+                        1,
+                        isDoubleBladed = false,
+                        yShift = 0,
+                        listOf(Blade("blue", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0))
+                    )
+                )
+            ),
+            Lightsabers(
+                "5",
+                0f,
+                isJarKai = false,
+                listOf(
+                    Lightsaber(
+                        1,
+                        isDoubleBladed = false,
+                        yShift = 1,
+                        listOf(Blade("green", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0))
+                    )
+                )
+            ),
+            Lightsabers(
+                "6",
+                0f,
+                isJarKai = false,
+                listOf(
+                    Lightsaber(
+                        1,
+                        isDoubleBladed = true,
+                        yShift = 2,
+                        listOf(
+                            Blade("red", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
+                            Blade("red", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)
+                        )
+                    )
+                )
+            ),
         )
         every { StarWarsFactionHolder.defaultVehicles } returns vehicles
         every { StarWarsFactionHolder.defaultLightsabers } returns lightsabers
@@ -120,7 +161,8 @@ class StarWarsPersistentStateComponentTests {
         val sut = StarWarsPersistentStateComponent()
         val expectedVersion = "2.0.0"
         val expectedVehiclesEnabled = mutableMapOf("1" to false, "2" to true, "3" to false, "4" to false, "5" to true)
-        val expectedLightsabersEnabled = mutableMapOf("6" to false, "7" to true, "8" to false, "9" to false, "10" to true)
+        val expectedLightsabersEnabled =
+            mutableMapOf("6" to false, "7" to true, "8" to false, "9" to false, "10" to true)
         val starWarsState = StarWarsState().apply {
             vehiclesEnabled = expectedVehiclesEnabled
             lightsabersEnabled = expectedLightsabersEnabled

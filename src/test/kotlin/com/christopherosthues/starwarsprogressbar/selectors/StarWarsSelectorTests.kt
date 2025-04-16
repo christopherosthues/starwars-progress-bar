@@ -2,9 +2,10 @@ package com.christopherosthues.starwarsprogressbar.selectors
 
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
+import com.christopherosthues.starwarsprogressbar.models.*
+import com.christopherosthues.starwarsprogressbar.models.Blade
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
-import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.intellij.idea.TestFor
@@ -953,13 +954,17 @@ class StarWarsSelectorTests {
             listOf(
                 Lightsaber(
                     1,
-                    "a",
-                    isShoto = false,
                     isDoubleBladed = false,
                     yShift = 1,
-                    bladeSize = 8,
-                    xBlade = 0,
-                    yBlade = 0,
+                    listOf(
+                        Blade(
+                            "a",
+                            isShoto = false,
+                            bladeSize = 8,
+                            xBlade = 0,
+                            yBlade = 0,
+                        )
+                    )
                 ),
             ),
         ),
@@ -970,13 +975,17 @@ class StarWarsSelectorTests {
             listOf(
                 Lightsaber(
                     1,
-                    "b",
-                    isShoto = true,
                     isDoubleBladed = false,
                     yShift = 2,
-                    bladeSize = 8,
-                    xBlade = 0,
-                    yBlade = 0,
+                    listOf(
+                        Blade(
+                            "b",
+                            isShoto = true,
+                            bladeSize = 8,
+                            xBlade = 0,
+                            yBlade = 0,
+                        )
+                    )
                 ),
             ),
         ),
@@ -987,13 +996,17 @@ class StarWarsSelectorTests {
             listOf(
                 Lightsaber(
                     1,
-                    "c",
-                    isShoto = false,
                     isDoubleBladed = true,
                     yShift = 3,
-                    bladeSize = 8,
-                    xBlade = 0,
-                    yBlade = 0,
+                    listOf(
+                        Blade(
+                            "c",
+                            isShoto = false,
+                            bladeSize = 8,
+                            xBlade = 0,
+                            yBlade = 0,
+                        )
+                    )
                 ),
             ),
         ),

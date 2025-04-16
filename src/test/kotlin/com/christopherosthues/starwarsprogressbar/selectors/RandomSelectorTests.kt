@@ -2,6 +2,8 @@ package com.christopherosthues.starwarsprogressbar.selectors
 
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
+import com.christopherosthues.starwarsprogressbar.models.*
+import com.christopherosthues.starwarsprogressbar.models.Blade
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
@@ -166,7 +168,11 @@ class RandomSelectorTests {
 
         // Act
         val result =
-            RandomSelector.selectEntity(mapOf("2.1" to enabled, "1.2" to enabled, "1.3" to enabled), mapOf("4.1" to enabled, "3.2" to enabled, "3.3" to enabled), true)
+            RandomSelector.selectEntity(
+                mapOf("2.1" to enabled, "1.2" to enabled, "1.3" to enabled),
+                mapOf("4.1" to enabled, "3.2" to enabled, "3.3" to enabled),
+                true
+            )
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -486,7 +492,8 @@ class RandomSelectorTests {
         val entities = vehicles + lightsabers
 
         // Act
-        val result = RandomSelector.selectEntity(mapOf("1.2" to true, "1.3" to true), mapOf("3.2" to true, "3.3" to true), false)
+        val result =
+            RandomSelector.selectEntity(mapOf("1.2" to true, "1.3" to true), mapOf("3.2" to true, "3.3" to true), false)
 
         // Assert
         Assertions.assertAll(
@@ -505,7 +512,7 @@ class RandomSelectorTests {
         mockkStatic(::randomInt)
         val vehicles = createStarWarsVehicles()
         every { StarWarsFactionHolder.defaultVehicles } returns vehicles
-        every { StarWarsFactionHolder.defaultLightsabersFactions } returns listOf()
+        every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
         every { randomInt(any()) } returns index
 
         // Act
@@ -736,19 +743,43 @@ class RandomSelectorTests {
                 "1",
                 4f,
                 isJarKai = false,
-                listOf(Lightsaber(1, "d", isShoto = false, isDoubleBladed = false, yShift = 1, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                listOf(
+                    Lightsaber(
+                        1,
+                        isDoubleBladed = false,
+                        yShift = 1,
+                        listOf(Blade("d", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0))
+                    )
+                ),
             ).apply { factionId = "4" },
             Lightsabers(
                 "2",
                 5f,
                 isJarKai = false,
-                listOf(Lightsaber(1, "e", isShoto = true, isDoubleBladed = false, yShift = 2, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                listOf(
+                    Lightsaber(
+                        1,
+                        isDoubleBladed = false,
+                        yShift = 2,
+                        listOf(Blade("e", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0))
+                    )
+                ),
             ).apply { factionId = "3" },
             Lightsabers(
                 "3",
                 6f,
                 isJarKai = false,
-                listOf(Lightsaber(1, "f", isShoto = false, isDoubleBladed = true, yShift = 3, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                listOf(
+                    Lightsaber(
+                        1,
+                        isDoubleBladed = true,
+                        yShift = 3,
+                        listOf(
+                            Blade("f", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
+                            Blade("f", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)
+                        )
+                    )
+                ),
             ).apply { factionId = "3" },
         )
         for (lightsaber in lightsabers) {
