@@ -5,6 +5,7 @@ import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_DRAW_SILHOUE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_FACTION_CRESTS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_ICON
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRESS_BAR_COLOR
+import com.christopherosthues.starwarsprogressbar.models.Blade
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
 import com.christopherosthues.starwarsprogressbar.ui.components.ColoredImageComponent
@@ -209,24 +210,25 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         width: Int,
         amountFull: Int,
     ) {
-        val singleBladeLength = lightsaberDrawing.maxBladeWidth + abs(JBUIScale.scale(lightsaber.xBlade))
+        val blade = lightsaber.blades[0]
+        val singleBladeLength = lightsaberDrawing.maxBladeWidth + abs(JBUIScale.scale(blade.xBlade))
         val ratio = singleBladeLength.toFloat() / width
         val full = amountFull * ratio
 
-        val scaledAmountFull = if (lightsaber.isShoto) full / 2 else full
+        val scaledAmountFull = if (blade.isShoto) full / 2 else full
         val bladeX =
-            JBUIScale.scale(lightsaber.xBlade) + if (lightsaber.id.isOdd()) lightsaberDrawing.bladeX else lightsaberDrawing.bladeX - scaledAmountFull.roundToInt()
-        val bladeY = JBUIScale.scale(lightsaber.yShift + lightsaber.yBlade)
-        val bladeHeight = JBUIScale.scale(lightsaber.bladeSize)
+            JBUIScale.scale(blade.xBlade) + if (lightsaber.id.isOdd()) lightsaberDrawing.bladeX else lightsaberDrawing.bladeX - scaledAmountFull.roundToInt()
+        val bladeY = JBUIScale.scale(lightsaber.yShift + blade.yBlade)
+        val bladeHeight = JBUIScale.scale(blade.bladeSize)
         val bladeWidth = scaledAmountFull.roundToInt()
 
         var maxBladeWidth =
-            lightsaberDrawing.maxBladeWidth.toFloat() + abs(JBUIScale.scale(lightsaber.xBlade)).toFloat()
-        maxBladeWidth = if (lightsaber.isShoto) maxBladeWidth / 2 else maxBladeWidth
+            lightsaberDrawing.maxBladeWidth.toFloat() + abs(JBUIScale.scale(blade.xBlade)).toFloat()
+        maxBladeWidth = if (blade.isShoto) maxBladeWidth / 2 else maxBladeWidth
         val borderX =
-            JBUIScale.scale(lightsaber.xBlade) + if (lightsaber.id.isOdd()) lightsaberDrawing.bladeX else lightsaberDrawing.bladeX - maxBladeWidth.roundToInt()
-        drawBorder(graphics2D, lightsaber, maxBladeWidth.roundToInt(), borderX, bladeY)
-        drawBlade(graphics2D, lightsaber, bladeX, bladeY, bladeWidth, bladeHeight)
+            JBUIScale.scale(blade.xBlade) + if (lightsaber.id.isOdd()) lightsaberDrawing.bladeX else lightsaberDrawing.bladeX - maxBladeWidth.roundToInt()
+        drawBorder(graphics2D, maxBladeWidth.roundToInt(), borderX, bladeY, bladeHeight)
+        drawBlade(graphics2D, blade, bladeX, bladeY, bladeWidth, bladeHeight)
 
         val hiltX = if (lightsaber.id.isOdd()) 0 else lightsaberDrawing.bladeX
         val hiltY = JBUIScale.scale(lightsaber.yShift)
@@ -256,33 +258,33 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         width: Int,
         amountFull: Int,
     ) {
-        val maxBladeWidth = if (lightsaber.isShoto) width / 2 else width
-        val bladeWidth = if (lightsaber.isShoto) amountFull / 2 else amountFull
+        val blade = lightsaber.blades[0]
+        val maxBladeWidth = if (blade.isShoto) width / 2 else width
+        val bladeWidth = if (blade.isShoto) amountFull / 2 else amountFull
         val bladeX = if (lightsaber.id.isOdd()) 0 else width - bladeWidth
-        val bladeY = JBUIScale.scale(lightsaber.yShift + lightsaber.yBlade)
-        val bladeHeight = JBUIScale.scale(lightsaber.bladeSize)
+        val bladeY = JBUIScale.scale(lightsaber.yShift + blade.yBlade)
+        val bladeHeight = JBUIScale.scale(blade.bladeSize)
         val borderX = if (lightsaber.id.isOdd()) 0 else width - maxBladeWidth
 
-        drawBorder(graphics2D, lightsaber, maxBladeWidth, borderX, bladeY)
-        drawBlade(graphics2D, lightsaber, bladeX, bladeY, bladeWidth, bladeHeight)
+        drawBorder(graphics2D, maxBladeWidth, borderX, bladeY, bladeHeight)
+        drawBlade(graphics2D, blade, bladeX, bladeY, bladeWidth, bladeHeight)
     }
 
     private fun drawBorder(
         graphics2D: Graphics2D,
-        lightsaber: Lightsaber,
         bladeWidth: Int,
         bladeX: Int,
         bladeY: Int,
+        bladeSize: Int,
     ) {
-        val arc = lightsaber.bladeSize
         graphics2D.paint = JBColor(Color.LIGHT_GRAY, Color.DARK_GRAY)
 
-        graphics2D.fillRoundRect(bladeX, bladeY, bladeWidth, lightsaber.bladeSize, arc, arc)
+        graphics2D.fillRoundRect(bladeX, bladeY, bladeWidth, bladeSize, bladeSize, bladeSize)
     }
 
     private fun drawBlade(
         graphics2D: Graphics2D,
-        lightsaber: Lightsaber,
+        blade: Blade,
         bladeX: Int,
         bladeY: Int,
         bladeWidth: Int,
@@ -291,9 +293,9 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         val arc = bladeHeight
 
         // Define colors for the vertical gradient
-        val bladePaint = bladePaint(lightsaber, bladeY, bladeHeight)
+        val bladePaint = bladePaint(blade, bladeY, bladeHeight)
 
-        graphics2D.paint = bladeGlow(lightsaber)
+        graphics2D.paint = bladeGlow(blade)
 
         graphics2D.fillRoundRect(
             bladeX,
@@ -337,38 +339,38 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         }
     }
 
-    private fun bladePaint(lightsaber: Lightsaber, bladeY: Int, bladeHeight: Int): Paint {
-        val lightsaberColor = lightsaber.color
+    private fun bladePaint(blade: Blade, bladeY: Int, bladeHeight: Int): Paint {
+        val bladeColor = blade.color
 
         if (starWarsState()?.solidProgressBarColor ?: DEFAULT_SOLID_PROGRESS_BAR_COLOR) {
-            return lightsaberColor
+            return bladeColor
         }
 
         val colorMiddle = JBColor(Color.WHITE, Color.WHITE)
 
         val fractions = floatArrayOf(0.0f, 0.2f, 0.4f, 0.6f, 0.8f, 1.0f)
         val colors = arrayOf(
-            lightsaberColor.brighter().brighter(),
-            lightsaberColor,
+            bladeColor.brighter().brighter(),
+            bladeColor,
             colorMiddle,
             colorMiddle,
-            lightsaberColor,
-            lightsaberColor.brighter().brighter(),
+            bladeColor,
+            bladeColor.brighter().brighter(),
         )
         val gradient = LinearGradientPaint(0f, bladeY.toFloat(), 0f, bladeY + bladeHeight.toFloat(), fractions, colors)
         return gradient
     }
 
-    private fun bladeGlow(lightsaber: Lightsaber): Paint {
+    private fun bladeGlow(blade: Blade): Paint {
         val transparent = JBColor(Color(0, 0, 0, 0), Color(0, 0, 0, 0))
         if (starWarsState()?.solidProgressBarColor ?: DEFAULT_SOLID_PROGRESS_BAR_COLOR) {
             return transparent
         }
 
-        val lightsaberColor = lightsaber.color
+        val bladeColor = blade.color
         return JBColor(
-            Color(lightsaberColor.red, lightsaberColor.green, lightsaberColor.blue, 50),
-            Color(lightsaberColor.red, lightsaberColor.green, lightsaberColor.blue, 50),
+            Color(bladeColor.red, bladeColor.green, bladeColor.blue, 50),
+            Color(bladeColor.red, bladeColor.green, bladeColor.blue, 50),
         )
     }
 
@@ -381,27 +383,40 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         width: Int,
         amountFull: Int,
     ) {
-        val singleBladeLength = lightsaberDrawing.maxBladeWidth + abs(JBUIScale.scale(lightsaber.xBlade))
-        val ratio = singleBladeLength.toFloat() / width
-        var bladeWidth = amountFull * ratio / 2
-        bladeWidth = if (lightsaber.isShoto) bladeWidth / 2 else bladeWidth
+        val leftBlade = lightsaber.blades[0]
+        val rightBlade = lightsaber.blades[1]
+        val leftBladeLength =
+            lightsaberDrawing.maxBladeWidth + abs(JBUIScale.scale(leftBlade.xBlade))
+        val leftRatio = leftBladeLength.toFloat() / width
+        var leftBladeWidth = amountFull * leftRatio / 2
+        leftBladeWidth = if (leftBlade.isShoto) leftBladeWidth / 2 else leftBladeWidth
 
         var bladeX =
-            JBUIScale.scale(lightsaber.xBlade) + lightsaberDrawing.bladeX - bladeWidth.roundToInt()
-        val bladeY = JBUIScale.scale(lightsaber.yShift + lightsaber.yBlade)
-        val bladeHeight = JBUIScale.scale(lightsaber.bladeSize)
+            JBUIScale.scale(leftBlade.xBlade) + lightsaberDrawing.bladeX - leftBladeWidth.roundToInt()
+        var bladeY = JBUIScale.scale(lightsaber.yShift + leftBlade.yBlade)
+        val leftBladeHeight = JBUIScale.scale(leftBlade.bladeSize)
 
-        var maxBladeWidth =
-            lightsaberDrawing.maxBladeWidth.toFloat() + abs(JBUIScale.scale(lightsaber.xBlade)).toFloat()
-        maxBladeWidth = if (lightsaber.isShoto) maxBladeWidth / 4 else maxBladeWidth / 2
-        var borderX = JBUIScale.scale(lightsaber.xBlade) + lightsaberDrawing.bladeX - maxBladeWidth.roundToInt()
-        drawBorder(graphics2D, lightsaber, maxBladeWidth.roundToInt(), borderX, bladeY)
-        drawBlade(graphics2D, lightsaber, bladeX, bladeY, bladeWidth.roundToInt(), bladeHeight)
+        var maxLeftBladeWidth =
+            lightsaberDrawing.maxBladeWidth.toFloat() + abs(JBUIScale.scale(leftBlade.xBlade)).toFloat()
+        maxLeftBladeWidth = if (leftBlade.isShoto) maxLeftBladeWidth / 4 else maxLeftBladeWidth / 2
+        var borderX = JBUIScale.scale(leftBlade.xBlade) + lightsaberDrawing.bladeX - maxLeftBladeWidth.roundToInt()
+        drawBorder(graphics2D, maxLeftBladeWidth.roundToInt(), borderX, bladeY, leftBladeHeight)
+        drawBlade(graphics2D, leftBlade, bladeX, bladeY, leftBladeWidth.roundToInt(), leftBladeHeight)
 
-        bladeX = lightsaberDrawing.secondBladeX - JBUIScale.scale(lightsaber.xBlade)
-        borderX = lightsaberDrawing.secondBladeX - JBUIScale.scale(lightsaber.xBlade)
-        drawBorder(graphics2D, lightsaber, maxBladeWidth.roundToInt(), borderX, bladeY)
-        drawBlade(graphics2D, lightsaber, bladeX, bladeY, bladeWidth.roundToInt(), bladeHeight)
+        val rightBladeLength =
+            lightsaberDrawing.maxBladeWidth + abs(JBUIScale.scale(rightBlade.xBlade))
+        val rightRatio = rightBladeLength.toFloat() / width
+        var rightBladeWidth = amountFull * rightRatio / 2
+        rightBladeWidth = if (rightBlade.isShoto) rightBladeWidth / 2 else rightBladeWidth
+        bladeX = lightsaberDrawing.secondBladeX + JBUIScale.scale(rightBlade.xBlade)
+        bladeY = JBUIScale.scale(lightsaber.yShift + rightBlade.yBlade)
+        borderX = lightsaberDrawing.secondBladeX + JBUIScale.scale(rightBlade.xBlade)
+        val rightBladeHeight = JBUIScale.scale(rightBlade.bladeSize)
+        var maxRightBladeWidth =
+            lightsaberDrawing.maxBladeWidth.toFloat() + abs(JBUIScale.scale(rightBlade.xBlade)).toFloat()
+        maxRightBladeWidth = if (rightBlade.isShoto) maxRightBladeWidth / 4 else maxRightBladeWidth / 2
+        drawBorder(graphics2D, maxRightBladeWidth.roundToInt(), borderX, bladeY, rightBladeHeight)
+        drawBlade(graphics2D, rightBlade, bladeX, bladeY, rightBladeWidth.roundToInt(), rightBladeHeight)
 
         val hiltY = JBUIScale.scale(lightsaber.yShift)
         drawHilt(graphics2D, component, lightsaberIcon, lightsaberDrawing.bladeX, hiltY)
