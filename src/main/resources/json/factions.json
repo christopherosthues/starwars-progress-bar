@@ -141,7 +141,7 @@
                                     "bladeColor": "red",
                                     "isShoto": false,
                                     "bladeSize": 5,
-                                    "xBlade": 0,
+                                    "xBlade": -6,
                                     "yBlade": 12
                                 }
                             ]
@@ -156,13 +156,24 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "red",
-                            "isShoto": false,
                             "isDoubleBladed": true,
                             "yShift": 0,
-                            "bladeSize": 6,
-                            "xBlade": 1,
-                            "yBlade": 7
+                            "blades": [
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "bladeSize": 6,
+                                    "xBlade": 1,
+                                    "yBlade": 7
+                                },
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "bladeSize": 6,
+                                    "xBlade": -1,
+                                    "yBlade": 7
+                                }
+                            ]
                         }
                     ]
                 },
@@ -174,13 +185,24 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "red",
-                            "isShoto": false,
                             "isDoubleBladed": true,
                             "yShift": 0,
-                            "bladeSize": 6,
-                            "xBlade": 1,
-                            "yBlade": 7
+                            "blades": [
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "bladeSize": 6,
+                                    "xBlade": 1,
+                                    "yBlade": 7
+                                },
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "bladeSize": 6,
+                                    "xBlade": -1,
+                                    "yBlade": 7
+                                }
+                            ]
                         }
                     ]
                 },
@@ -192,13 +214,24 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "red",
-                            "isShoto": false,
                             "isDoubleBladed": true,
                             "yShift": 0,
-                            "bladeSize": 6,
-                            "xBlade": 1,
-                            "yBlade": 7
+                            "blades": [
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "bladeSize": 6,
+                                    "xBlade": 1,
+                                    "yBlade": 7
+                                },
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "bladeSize": 6,
+                                    "xBlade": -1,
+                                    "yBlade": 7
+                                }
+                            ]
                         }
                     ]
                 },
@@ -210,13 +243,24 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "red",
-                            "isShoto": false,
                             "isDoubleBladed": true,
                             "yShift": 0,
-                            "bladeSize": 6,
-                            "xBlade": 1,
-                            "yBlade": 7
+                            "blades": [
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "bladeSize": 6,
+                                    "xBlade": 1,
+                                    "yBlade": 7
+                                },
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "bladeSize": 6,
+                                    "xBlade": -1,
+                                    "yBlade": 7
+                                }
+                            ]
                         }
                     ]
                 },
@@ -228,13 +272,24 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "red",
-                            "isShoto": false,
                             "isDoubleBladed": true,
                             "yShift": 0,
-                            "bladeSize": 6,
-                            "xBlade": 1,
-                            "yBlade": 7
+                            "blades": [
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "bladeSize": 6,
+                                    "xBlade": 1,
+                                    "yBlade": 7
+                                },
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "bladeSize": 6,
+                                    "xBlade": -1,
+                                    "yBlade": 7
+                                }
+                            ]
                         }
                     ]
                 },
@@ -246,13 +301,24 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "red",
-                            "isShoto": false,
                             "isDoubleBladed": true,
                             "yShift": 5,
-                            "bladeSize": 6,
-                            "xBlade": 9,
-                            "yBlade": 1
+                            "blades": [
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "bladeSize": 6,
+                                    "xBlade": 9,
+                                    "yBlade": 1
+                                },
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "bladeSize": 6,
+                                    "xBlade": -9,
+                                    "yBlade": 1
+                                }
+                            ]
                         }
                     ]
                 },
@@ -264,23 +330,31 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "red",
-                            "isShoto": false,
                             "isDoubleBladed": false,
                             "yShift": 0,
-                            "bladeSize": 7,
-                            "xBlade": 0,
-                            "yBlade": 1
+                            "blades": [
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "bladeSize": 7,
+                                    "xBlade": 0,
+                                    "yBlade": 1
+                                }
+                            ]
                         },
                         {
                             "id": 2,
-                            "bladeColor": "red",
-                            "isShoto": false,
                             "isDoubleBladed": false,
                             "yShift": 10,
-                            "bladeSize": 7,
-                            "xBlade": 0,
-                            "yBlade": 2
+                            "blades": [
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "bladeSize": 7,
+                                    "xBlade": 0,
+                                    "yBlade": 2
+                                }
+                            ]
                         }
                     ]
                 },
@@ -292,13 +366,17 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "red",
-                            "isShoto": false,
                             "isDoubleBladed": false,
                             "yShift": 5,
-                            "bladeSize": 8,
-                            "xBlade": -3,
-                            "yBlade": 1
+                            "blades": [
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "bladeSize": 8,
+                                    "xBlade": -3,
+                                    "yBlade": 1
+                                }
+                            ]
                         }
                     ]
                 },
@@ -310,13 +388,17 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "red",
-                            "isShoto": false,
                             "isDoubleBladed": false,
                             "yShift": 0,
-                            "bladeSize": 6,
-                            "xBlade": -10,
-                            "yBlade": 0
+                            "blades": [
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "bladeSize": 6,
+                                    "xBlade": -10,
+                                    "yBlade": 0
+                                }
+                            ]
                         }
                     ]
                 }
@@ -333,23 +415,31 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "green",
-                            "isShoto": false,
                             "isDoubleBladed": false,
                             "yShift": 0,
-                            "bladeSize": 8,
-                            "xBlade": -3,
-                            "yBlade": 1
+                            "blades": [
+                                {
+                                    "bladeColor": "green",
+                                    "isShoto": false,
+                                    "bladeSize": 8,
+                                    "xBlade": -3,
+                                    "yBlade": 1
+                                }
+                            ]
                         },
                         {
                             "id": 2,
-                            "bladeColor": "lightGreen",
-                            "isShoto": true,
                             "isDoubleBladed": false,
                             "yShift": 11,
-                            "bladeSize": 7,
-                            "xBlade": 3,
-                            "yBlade": 0
+                            "blades": [
+                                {
+                                    "bladeColor": "lightGreen",
+                                    "isShoto": true,
+                                    "bladeSize": 7,
+                                    "xBlade": 3,
+                                    "yBlade": 0
+                                }
+                            ]
                         }
                     ]
                 },
@@ -361,23 +451,31 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "blue",
-                            "isShoto": false,
                             "isDoubleBladed": false,
                             "yShift": 0,
-                            "bladeSize": 8,
-                            "xBlade": -3,
-                            "yBlade": 1
+                            "blades": [
+                                {
+                                    "bladeColor": "blue",
+                                    "isShoto": false,
+                                    "bladeSize": 8,
+                                    "xBlade": -3,
+                                    "yBlade": 1
+                                }
+                            ]
                         },
                         {
                             "id": 2,
-                            "bladeColor": "blue",
-                            "isShoto": true,
                             "isDoubleBladed": false,
                             "yShift": 11,
-                            "bladeSize": 7,
-                            "xBlade": 3,
-                            "yBlade": 0
+                            "blades": [
+                                {
+                                    "bladeColor": "blue",
+                                    "isShoto": true,
+                                    "bladeSize": 7,
+                                    "xBlade": 3,
+                                    "yBlade": 0
+                                }
+                            ]
                         }
                     ]
                 },
@@ -389,13 +487,17 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "blue",
-                            "isShoto": false,
                             "isDoubleBladed": false,
                             "yShift": 5,
-                            "bladeSize": 8,
-                            "xBlade": -3,
-                            "yBlade": 1
+                            "blades": [
+                                {
+                                    "bladeColor": "blue",
+                                    "isShoto": false,
+                                    "bladeSize": 8,
+                                    "xBlade": -3,
+                                    "yBlade": 1
+                                }
+                            ]
                         }
                     ]
                 },
@@ -407,13 +509,17 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "blue",
-                            "isShoto": false,
                             "isDoubleBladed": false,
                             "yShift": 5,
-                            "bladeSize": 8,
-                            "xBlade": -1,
-                            "yBlade": 2
+                            "blades": [
+                                {
+                                    "bladeColor": "blue",
+                                    "isShoto": false,
+                                    "bladeSize": 8,
+                                    "xBlade": -1,
+                                    "yBlade": 2
+                                }
+                            ]
                         }
                     ]
                 },
@@ -425,13 +531,17 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "blue",
-                            "isShoto": false,
                             "isDoubleBladed": false,
                             "yShift": 0,
-                            "bladeSize": 6,
-                            "xBlade": -10,
-                            "yBlade": 0
+                            "blades": [
+                                {
+                                    "bladeColor": "blue",
+                                    "isShoto": false,
+                                    "bladeSize": 6,
+                                    "xBlade": -10,
+                                    "yBlade": 0
+                                }
+                            ]
                         }
                     ]
                 },
@@ -443,23 +553,45 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "green",
-                            "isShoto": false,
                             "isDoubleBladed": true,
                             "yShift": 0,
-                            "bladeSize": 8,
-                            "xBlade": 1,
-                            "yBlade": 1
+                            "blades": [
+                                {
+                                    "bladeColor": "green",
+                                    "isShoto": false,
+                                    "bladeSize": 8,
+                                    "xBlade": 1,
+                                    "yBlade": 1
+                                },
+                                {
+                                    "bladeColor": "green",
+                                    "isShoto": false,
+                                    "bladeSize": 8,
+                                    "xBlade": -1,
+                                    "yBlade": 1
+                                }
+                            ]
                         },
                         {
                             "id": 2,
-                            "bladeColor": "blue",
-                            "isShoto": false,
                             "isDoubleBladed": true,
                             "yShift": 10,
-                            "bladeSize": 8,
-                            "xBlade": 1,
-                            "yBlade": 1
+                            "blades": [
+                                {
+                                    "bladeColor": "blue",
+                                    "isShoto": false,
+                                    "bladeSize": 8,
+                                    "xBlade": 1,
+                                    "yBlade": 1
+                                },
+                                {
+                                    "bladeColor": "blue",
+                                    "isShoto": false,
+                                    "bladeSize": 8,
+                                    "xBlade": -1,
+                                    "yBlade": 1
+                                }
+                            ]
                         }
                     ]
                 },
@@ -471,13 +603,17 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "green",
-                            "isShoto": false,
                             "isDoubleBladed": false,
                             "yShift": 5,
-                            "bladeSize": 8,
-                            "xBlade": 0,
-                            "yBlade": 2
+                            "blades": [
+                                {
+                                    "bladeColor": "green",
+                                    "isShoto": false,
+                                    "bladeSize": 8,
+                                    "xBlade": 0,
+                                    "yBlade": 2
+                                }
+                            ]
                         }
                     ]
                 },
@@ -489,13 +625,17 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "lightBlue",
-                            "isShoto": false,
                             "isDoubleBladed": false,
                             "yShift": 0,
-                            "bladeSize": 6,
-                            "xBlade": 0,
-                            "yBlade": 6
+                            "blades": [
+                                {
+                                    "bladeColor": "lightBlue",
+                                    "isShoto": false,
+                                    "bladeSize": 6,
+                                    "xBlade": 0,
+                                    "yBlade": 6
+                                }
+                            ]
                         }
                     ]
                 },
@@ -507,13 +647,17 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "green",
-                            "isShoto": false,
                             "isDoubleBladed": false,
                             "yShift": 0,
-                            "bladeSize": 8,
-                            "xBlade": 0,
-                            "yBlade": 1
+                            "blades": [
+                                {
+                                    "bladeColor": "green",
+                                    "isShoto": false,
+                                    "bladeSize": 8,
+                                    "xBlade": 0,
+                                    "yBlade": 1
+                                }
+                            ]
                         }
                     ]
                 },
@@ -525,13 +669,17 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "blue",
-                            "isShoto": false,
                             "isDoubleBladed": false,
                             "yShift": 5,
-                            "bladeSize": 8,
-                            "xBlade": -3,
-                            "yBlade": 1
+                            "blades": [
+                                {
+                                    "bladeColor": "blue",
+                                    "isShoto": false,
+                                    "bladeSize": 8,
+                                    "xBlade": -3,
+                                    "yBlade": 1
+                                }
+                            ]
                         }
                     ]
                 },
@@ -543,13 +691,17 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "purple",
-                            "isShoto": false,
                             "isDoubleBladed": false,
                             "yShift": 5,
-                            "bladeSize": 8,
-                            "xBlade": 0,
-                            "yBlade": 1
+                            "blades": [
+                                {
+                                    "bladeColor": "purple",
+                                    "isShoto": false,
+                                    "bladeSize": 8,
+                                    "xBlade": 0,
+                                    "yBlade": 1
+                                }
+                            ]
                         }
                     ]
                 },
@@ -561,13 +713,17 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "blue",
-                            "isShoto": false,
                             "isDoubleBladed": false,
                             "yShift": 5,
-                            "bladeSize": 8,
-                            "xBlade": 0,
-                            "yBlade": 1
+                            "blades": [
+                                {
+                                    "bladeColor": "blue",
+                                    "isShoto": false,
+                                    "bladeSize": 8,
+                                    "xBlade": 0,
+                                    "yBlade": 1
+                                }
+                            ]
                         }
                     ]
                 },
@@ -579,13 +735,17 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "blue",
-                            "isShoto": false,
                             "isDoubleBladed": false,
                             "yShift": 5,
-                            "bladeSize": 8,
-                            "xBlade": 0,
-                            "yBlade": 1
+                            "blades": [
+                                {
+                                    "bladeColor": "blue",
+                                    "isShoto": false,
+                                    "bladeSize": 8,
+                                    "xBlade": 0,
+                                    "yBlade": 1
+                                }
+                            ]
                         }
                     ]
                 },
@@ -597,13 +757,17 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "blue",
-                            "isShoto": false,
                             "isDoubleBladed": false,
                             "yShift": 5,
-                            "bladeSize": 8,
-                            "xBlade": 0,
-                            "yBlade": 1
+                            "blades": [
+                                {
+                                    "bladeColor": "blue",
+                                    "isShoto": false,
+                                    "bladeSize": 8,
+                                    "xBlade": 0,
+                                    "yBlade": 1
+                                }
+                            ]
                         }
                     ]
                 },
@@ -615,13 +779,17 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "green",
-                            "isShoto": false,
                             "isDoubleBladed": false,
                             "yShift": 5,
-                            "bladeSize": 8,
-                            "xBlade": 0,
-                            "yBlade": 1
+                            "blades": [
+                                {
+                                    "bladeColor": "green",
+                                    "isShoto": false,
+                                    "bladeSize": 8,
+                                    "xBlade": 0,
+                                    "yBlade": 1
+                                }
+                            ]
                         }
                     ]
                 },
@@ -633,13 +801,17 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "blue",
-                            "isShoto": false,
                             "isDoubleBladed": false,
                             "yShift": 0,
-                            "bladeSize": 8,
-                            "xBlade": 0,
-                            "yBlade": 6
+                            "blades": [
+                                {
+                                    "bladeColor": "blue",
+                                    "isShoto": false,
+                                    "bladeSize": 8,
+                                    "xBlade": 0,
+                                    "yBlade": 6
+                                }
+                            ]
                         }
                     ]
                 },
@@ -651,13 +823,17 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "green",
-                            "isShoto": false,
                             "isDoubleBladed": false,
                             "yShift": 0,
-                            "bladeSize": 6,
-                            "xBlade": -1,
-                            "yBlade": 7
+                            "blades": [
+                                {
+                                    "bladeColor": "green",
+                                    "isShoto": false,
+                                    "bladeSize": 6,
+                                    "xBlade": -1,
+                                    "yBlade": 7
+                                }
+                            ]
                         }
                     ]
                 },
@@ -669,13 +845,17 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "blue",
-                            "isShoto": false,
                             "isDoubleBladed": false,
                             "yShift": 5,
-                            "bladeSize": 8,
-                            "xBlade": 0,
-                            "yBlade": 1
+                            "blades": [
+                                {
+                                    "bladeColor": "blue",
+                                    "isShoto": false,
+                                    "bladeSize": 8,
+                                    "xBlade": 0,
+                                    "yBlade": 1
+                                }
+                            ]
                         }
                     ]
                 },
@@ -687,13 +867,17 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "blue",
-                            "isShoto": false,
                             "isDoubleBladed": false,
                             "yShift": 5,
-                            "bladeSize": 8,
-                            "xBlade": 0,
-                            "yBlade": 1
+                            "blades": [
+                                {
+                                    "bladeColor": "blue",
+                                    "isShoto": false,
+                                    "bladeSize": 8,
+                                    "xBlade": 0,
+                                    "yBlade": 1
+                                }
+                            ]
                         }
                     ]
                 },
@@ -705,13 +889,17 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "blue",
-                            "isShoto": false,
                             "isDoubleBladed": false,
                             "yShift": 5,
-                            "bladeSize": 8,
-                            "xBlade": 0,
-                            "yBlade": 1
+                            "blades": [
+                                {
+                                    "bladeColor": "blue",
+                                    "isShoto": false,
+                                    "bladeSize": 8,
+                                    "xBlade": 0,
+                                    "yBlade": 1
+                                }
+                            ]
                         }
                     ]
                 },
@@ -723,13 +911,17 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "blue",
-                            "isShoto": false,
                             "isDoubleBladed": false,
                             "yShift": 5,
-                            "bladeSize": 8,
-                            "xBlade": 0,
-                            "yBlade": 1
+                            "blades": [
+                                {
+                                    "bladeColor": "blue",
+                                    "isShoto": false,
+                                    "bladeSize": 8,
+                                    "xBlade": 0,
+                                    "yBlade": 1
+                                }
+                            ]
                         }
                     ]
                 },
@@ -741,13 +933,17 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "green",
-                            "isShoto": false,
                             "isDoubleBladed": false,
                             "yShift": 5,
-                            "bladeSize": 8,
-                            "xBlade": 0,
-                            "yBlade": 1
+                            "blades": [
+                                {
+                                    "bladeColor": "green",
+                                    "isShoto": false,
+                                    "bladeSize": 8,
+                                    "xBlade": 0,
+                                    "yBlade": 1
+                                }
+                            ]
                         }
                     ]
                 },
@@ -759,13 +955,17 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "green",
-                            "isShoto": false,
                             "isDoubleBladed": false,
                             "yShift": 5,
-                            "bladeSize": 8,
-                            "xBlade": 0,
-                            "yBlade": 1
+                            "blades": [
+                                {
+                                    "bladeColor": "green",
+                                    "isShoto": false,
+                                    "bladeSize": 8,
+                                    "xBlade": 0,
+                                    "yBlade": 1
+                                }
+                            ]
                         }
                     ]
                 },
@@ -777,13 +977,17 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "blue",
-                            "isShoto": false,
                             "isDoubleBladed": false,
                             "yShift": 5,
-                            "bladeSize": 8,
-                            "xBlade": 0,
-                            "yBlade": 1
+                            "blades": [
+                                {
+                                    "bladeColor": "blue",
+                                    "isShoto": false,
+                                    "bladeSize": 8,
+                                    "xBlade": 0,
+                                    "yBlade": 1
+                                }
+                            ]
                         }
                     ]
                 },
@@ -795,13 +999,17 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "green",
-                            "isShoto": true,
                             "isDoubleBladed": false,
                             "yShift": 5,
-                            "bladeSize": 8,
-                            "xBlade": -4,
-                            "yBlade": 0
+                            "blades": [
+                                {
+                                    "bladeColor": "green",
+                                    "isShoto": true,
+                                    "bladeSize": 8,
+                                    "xBlade": -4,
+                                    "yBlade": 0
+                                }
+                            ]
                         }
                     ]
                 }
@@ -818,23 +1026,31 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "white",
-                            "isShoto": false,
                             "isDoubleBladed": false,
                             "yShift": 2,
-                            "bladeSize": 6,
-                            "xBlade": 0,
-                            "yBlade": 0
+                            "blades": [
+                                {
+                                    "bladeColor": "white",
+                                    "isShoto": false,
+                                    "bladeSize": 6,
+                                    "xBlade": 0,
+                                    "yBlade": 0
+                                }
+                            ]
                         },
                         {
                             "id": 2,
-                            "bladeColor": "white",
-                            "isShoto": true,
                             "isDoubleBladed": false,
                             "yShift": 10,
-                            "bladeSize": 6,
-                            "xBlade": 0,
-                            "yBlade": 2
+                            "blades": [
+                                {
+                                    "bladeColor": "white",
+                                    "isShoto": true,
+                                    "bladeSize": 6,
+                                    "xBlade": 0,
+                                    "yBlade": 2
+                                }
+                            ]
                         }
                     ]
                 },
@@ -846,13 +1062,17 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "redOrange",
-                            "isShoto": false,
                             "isDoubleBladed": false,
                             "yShift": 5,
-                            "bladeSize": 8,
-                            "xBlade": -2,
-                            "yBlade": 1
+                            "blades": [
+                                {
+                                    "bladeColor": "redOrange",
+                                    "isShoto": false,
+                                    "bladeSize": 8,
+                                    "xBlade": -2,
+                                    "yBlade": 1
+                                }
+                            ]
                         }
                     ]
                 },
@@ -864,13 +1084,17 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "redOrange",
-                            "isShoto": false,
                             "isDoubleBladed": false,
                             "yShift": 5,
-                            "bladeSize": 8,
-                            "xBlade": -2,
-                            "yBlade": 1
+                            "blades": [
+                                {
+                                    "bladeColor": "redOrange",
+                                    "isShoto": false,
+                                    "bladeSize": 8,
+                                    "xBlade": -2,
+                                    "yBlade": 1
+                                }
+                            ]
                         }
                     ]
                 },
@@ -882,23 +1106,31 @@
                     "lightsabers": [
                         {
                             "id": 1,
-                            "bladeColor": "red",
-                            "isShoto": false,
                             "isDoubleBladed": false,
                             "yShift": 0,
-                            "bladeSize": 8,
-                            "xBlade": -2,
-                            "yBlade": 1
+                            "blades": [
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "bladeSize": 8,
+                                    "xBlade": -2,
+                                    "yBlade": 1
+                                }
+                            ]
                         },
                         {
                             "id": 2,
-                            "bladeColor": "red",
-                            "isShoto": false,
                             "isDoubleBladed": false,
                             "yShift": 10,
-                            "bladeSize": 8,
-                            "xBlade": 2,
-                            "yBlade": 1
+                            "blades": [
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "bladeSize": 8,
+                                    "xBlade": 2,
+                                    "yBlade": 1
+                                }
+                            ]
                         }
                     ]
                 }
