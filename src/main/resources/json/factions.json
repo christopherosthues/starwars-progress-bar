@@ -591,6 +591,28 @@
                 },
                 {
                     "type": "Lightsabers",
+                    "id": "ezra_bridger_second",
+                    "velocity": 4,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "isDoubleBladed": false,
+                            "yShift": 0,
+                            "blades": [
+                                {
+                                    "bladeColor": "green",
+                                    "isShoto": false,
+                                    "bladeSize": 6,
+                                    "xBlade": -2,
+                                    "yBlade": 3
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Lightsabers",
                     "id": "count_dooku",
                     "velocity": 4,
                     "isJarKai": false,
