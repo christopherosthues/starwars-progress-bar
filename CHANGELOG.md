@@ -24,7 +24,8 @@
 ### Added
 
 - Lightsaber progress bar
-- Jedi Lightsabers of Ahsoka Tano, Anakin Skywalker, Luke Skywalker, Obi-Wan Kenobi, Pong Krell, Qui-Gon Jinn, Quinlan Vos and Yoda
+- Jedi Lightsabers of Ahsoka Tano, Anakin Skywalker, Luke Skywalker, Obi-Wan Kenobi, Pong Krell, Qui-Gon Jinn, Quinlan
+  Vos and Yoda
 - Sith Lightsabers of Asajj Ventress, Darth Maul, Darth Sidious, Dart Tyranus, Darth Vader and Savage Opress
 - Ahsoka Tano's white lightsabers
 
@@ -75,7 +76,8 @@
 
 ### Added
 
-- Different selection modes for vehicles (inorder, reverse order (faction, vehicle names), all random, random vehicles that were not displayed)
+- Different selection modes for vehicles (inorder, reverse order (faction, vehicle names), all random, random vehicles
+  that were not displayed)
 - Razor Crest to Mandalorians
 - AT-TE and LAAT/c to Galactic Republic
 - AT-DP, AT-DP Arc Cannon Prototype and Class four container transport to Galactic Empire
@@ -84,7 +86,8 @@
 
 ### Changed
 
-- Updated AT-ACT, Interdictor-class Star Destroyer, Mining Guild TIE Fighter, Phoenix Nest, Quasar Fire-class cruiser carrier, T-65 X-Wing starfighter and U-Wing
+- Updated AT-ACT, Interdictor-class Star Destroyer, Mining Guild TIE Fighter, Phoenix Nest, Quasar Fire-class cruiser
+  carrier, T-65 X-Wing starfighter and U-Wing
 
 ### Fixed
 
@@ -143,7 +146,8 @@
 ### Added
 
 - Ghost, Phantom, Phantom II and Prototype B6 to Rebel Alliance faction
-- Aldar Beedo's, Ark "Bumpy" Roose's, Clegg Holdfast's, Dud Bolt's, Ebe Endocott's, Mawhonic's, Neva Kee's, Ody Mandrell's and Ratts Tyerell's podracers
+- Aldar Beedo's, Ark "Bumpy" Roose's, Clegg Holdfast's, Dud Bolt's, Ebe Endocott's, Mawhonic's, Neva Kee's, Ody
+  Mandrell's and Ratts Tyerell's podracers
 - Platoon Attack Craft and Punworcca 116-class interstellar sloop to CIS faction
 - AT-ACT, Victory I-class Star Destroyer, Onager-class Star Destroyer and TIE Striker to Galactic Empire faction
 - Barriss Offee's, Kit Fisto's, Luminara Unduli's, Mace Windu's and Saesee Tiin's Delta-7b to Jedi faction
@@ -151,7 +155,8 @@
 
 ### Changed
 
-- Corrected progressbar color for A-Wing, Boba Fett's Slave One, Jango Fett's Slave One, Nebulon-B Frigate, Obi-Wan Kenobi's Delta-7 Aethersprite, Soulless One, TIE Advanced x1, TIE Avenger, TIE Bomber, TIE Fighter and TIE Interceptor
+- Corrected progressbar color for A-Wing, Boba Fett's Slave One, Jango Fett's Slave One, Nebulon-B Frigate, Obi-Wan
+  Kenobi's Delta-7 Aethersprite, Soulless One, TIE Advanced x1, TIE Avenger, TIE Bomber, TIE Fighter and TIE Interceptor
 - Reworked Darth Vader's TIE Advanced X1
 
 ### Fixed
