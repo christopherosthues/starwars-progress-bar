@@ -1125,6 +1125,28 @@
                 },
                 {
                     "type": "Lightsabers",
+                    "id": "rey",
+                    "velocity": 4,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "isDoubleBladed": false,
+                            "yShift": 5,
+                            "blades": [
+                                {
+                                    "bladeColor": "yellow",
+                                    "isShoto": false,
+                                    "bladeSize": 7,
+                                    "xBlade": -2,
+                                    "yBlade": 2
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Lightsabers",
                     "id": "yoda",
                     "velocity": 4,
                     "isJarKai": false,
