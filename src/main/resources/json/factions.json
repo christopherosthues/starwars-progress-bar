@@ -1188,6 +1188,28 @@
                 },
                 {
                     "type": "Lightsabers",
+                    "id": "sabine_wren",
+                    "velocity": 4,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "isDoubleBladed": false,
+                            "yShift": 5,
+                            "blades": [
+                                {
+                                    "bladeColor": "green",
+                                    "isShoto": false,
+                                    "bladeSize": 8,
+                                    "xBlade": -7,
+                                    "yBlade": 1
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Lightsabers",
                     "id": "baylan_skoll",
                     "velocity": 4,
                     "isJarKai": false,

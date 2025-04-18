@@ -12,6 +12,7 @@
   Darth Maul
 - Taron Malicos' lightsabers
 - Baylan Skoll's lightsaber and Shin Hati's lightsaber
+- Sabine Wren's lightsaber
 
 ### Changed
 
