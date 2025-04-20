@@ -356,6 +356,20 @@ class IconResourceTests {
         "lightsabers${File.separatorChar}jedi${File.separatorChar}pong_krell_3.png",
         "lightsabers${File.separatorChar}jedi${File.separatorChar}pong_krell_4.png",
         "lightsabers${File.separatorChar}sith${File.separatorChar}asajj_ventress_second_0@2x.png",
+        "lightsabers${File.separatorChar}others${File.separatorChar}general_grievous_4.png",
+        "lightsabers${File.separatorChar}sith${File.separatorChar}eighth_brother_2.png",
+        "lightsabers${File.separatorChar}sith${File.separatorChar}fifth_brother_2.png",
+        "lightsabers${File.separatorChar}sith${File.separatorChar}first_brother_2.png",
+        "lightsabers${File.separatorChar}sith${File.separatorChar}grand_inquisitor_2.png",
+        "lightsabers${File.separatorChar}sith${File.separatorChar}ninth_sister_2.png",
+        "lightsabers${File.separatorChar}sith${File.separatorChar}second_sister_2.png",
+        "lightsabers${File.separatorChar}others${File.separatorChar}general_grievous_4@2x.png",
+        "lightsabers${File.separatorChar}sith${File.separatorChar}eighth_brother_2@2x.png",
+        "lightsabers${File.separatorChar}sith${File.separatorChar}fifth_brother_2@2x.png",
+        "lightsabers${File.separatorChar}sith${File.separatorChar}first_brother_2@2x.png",
+        "lightsabers${File.separatorChar}sith${File.separatorChar}grand_inquisitor_2@2x.png",
+        "lightsabers${File.separatorChar}sith${File.separatorChar}ninth_sister_2@2x.png",
+        "lightsabers${File.separatorChar}sith${File.separatorChar}second_sister_2@2x.png",
     )
 
     private fun getFormattedImagesNotReferencedErrorMessage(imagesNotReferenced: List<String>): String {
