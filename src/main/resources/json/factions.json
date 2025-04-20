@@ -179,6 +179,35 @@
                 },
                 {
                     "type": "Lightsabers",
+                    "id": "first_brother",
+                    "velocity": 3,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "isDoubleBladed": true,
+                            "yShift": 0,
+                            "blades": [
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "bladeSize": 4,
+                                    "xBlade": 4,
+                                    "yBlade": 8
+                                },
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "bladeSize": 4,
+                                    "xBlade": -4,
+                                    "yBlade": 8
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Lightsabers",
                     "id": "second_sister",
                     "velocity": 2,
                     "isJarKai": false,
