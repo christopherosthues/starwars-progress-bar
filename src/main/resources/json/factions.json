@@ -642,7 +642,7 @@
                         {
                             "id": 1,
                             "isDoubleBladed": false,
-                            "yShift": 0,
+                            "yShift": 5,
                             "blades": [
                                 {
                                     "bladeColor": "green",
@@ -650,6 +650,28 @@
                                     "bladeSize": 6,
                                     "xBlade": -2,
                                     "yBlade": 3
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Lightsabers",
+                    "id": "ezra_bridger_third",
+                    "velocity": 4,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "isDoubleBladed": false,
+                            "yShift": 5,
+                            "blades": [
+                                {
+                                    "bladeColor": "blue",
+                                    "isShoto": false,
+                                    "bladeSize": 8,
+                                    "xBlade": -3,
+                                    "yBlade": 1
                                 }
                             ]
                         }
