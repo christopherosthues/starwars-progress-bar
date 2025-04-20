@@ -6,7 +6,7 @@
                 {
                     "type": "Lightsabers",
                     "id": "asajj_ventress_second",
-                    "velocity": 2,
+                    "velocity": 3,
                     "isJarKai": true,
                     "lightsabers": [
                         {
@@ -42,7 +42,7 @@
                 {
                     "type": "Lightsabers",
                     "id": "darth_maul_first",
-                    "velocity": 2,
+                    "velocity": 3,
                     "isJarKai": false,
                     "lightsabers": [
                         {
@@ -71,7 +71,7 @@
                 {
                     "type": "Lightsabers",
                     "id": "darth_maul_second",
-                    "velocity": 2,
+                    "velocity": 3,
                     "isJarKai": false,
                     "lightsabers": [
                         {
@@ -93,7 +93,7 @@
                 {
                     "type": "Lightsabers",
                     "id": "darth_maul_third",
-                    "velocity": 2,
+                    "velocity": 3,
                     "isJarKai": false,
                     "lightsabers": [
                         {
@@ -122,7 +122,7 @@
                 {
                     "type": "Lightsabers",
                     "id": "darth_maul_fourth",
-                    "velocity": 2,
+                    "velocity": 3,
                     "isJarKai": false,
                     "lightsabers": [
                         {
@@ -151,7 +151,7 @@
                 {
                     "type": "Lightsabers",
                     "id": "grand_inquisitor",
-                    "velocity": 2,
+                    "velocity": 3,
                     "isJarKai": false,
                     "lightsabers": [
                         {
@@ -162,16 +162,16 @@
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
-                                    "bladeSize": 6,
+                                    "bladeSize": 4,
                                     "xBlade": 1,
-                                    "yBlade": 7
+                                    "yBlade": 8
                                 },
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
-                                    "bladeSize": 6,
+                                    "bladeSize": 4,
                                     "xBlade": -1,
-                                    "yBlade": 7
+                                    "yBlade": 8
                                 }
                             ]
                         }
@@ -209,7 +209,7 @@
                 {
                     "type": "Lightsabers",
                     "id": "second_sister",
-                    "velocity": 2,
+                    "velocity": 3,
                     "isJarKai": false,
                     "lightsabers": [
                         {
@@ -220,16 +220,16 @@
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
-                                    "bladeSize": 6,
+                                    "bladeSize": 4,
                                     "xBlade": 1,
-                                    "yBlade": 7
+                                    "yBlade": 8
                                 },
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
-                                    "bladeSize": 6,
+                                    "bladeSize": 4,
                                     "xBlade": -1,
-                                    "yBlade": 7
+                                    "yBlade": 8
                                 }
                             ]
                         }
@@ -238,7 +238,7 @@
                 {
                     "type": "Lightsabers",
                     "id": "eighth_brother",
-                    "velocity": 2,
+                    "velocity": 3,
                     "isJarKai": false,
                     "lightsabers": [
                         {
@@ -249,16 +249,16 @@
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
-                                    "bladeSize": 6,
+                                    "bladeSize": 4,
                                     "xBlade": 1,
-                                    "yBlade": 7
+                                    "yBlade": 8
                                 },
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
-                                    "bladeSize": 6,
+                                    "bladeSize": 4,
                                     "xBlade": -1,
-                                    "yBlade": 7
+                                    "yBlade": 8
                                 }
                             ]
                         }
@@ -267,7 +267,7 @@
                 {
                     "type": "Lightsabers",
                     "id": "fifth_brother",
-                    "velocity": 2,
+                    "velocity": 3,
                     "isJarKai": false,
                     "lightsabers": [
                         {
@@ -278,16 +278,16 @@
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
-                                    "bladeSize": 6,
+                                    "bladeSize": 4,
                                     "xBlade": 1,
-                                    "yBlade": 7
+                                    "yBlade": 8
                                 },
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
-                                    "bladeSize": 6,
+                                    "bladeSize": 4,
                                     "xBlade": -1,
-                                    "yBlade": 7
+                                    "yBlade": 8
                                 }
                             ]
                         }
@@ -296,7 +296,7 @@
                 {
                     "type": "Lightsabers",
                     "id": "ninth_sister",
-                    "velocity": 2,
+                    "velocity": 3,
                     "isJarKai": false,
                     "lightsabers": [
                         {
@@ -307,16 +307,16 @@
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
-                                    "bladeSize": 6,
+                                    "bladeSize": 4,
                                     "xBlade": 1,
-                                    "yBlade": 7
+                                    "yBlade": 8
                                 },
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
-                                    "bladeSize": 6,
+                                    "bladeSize": 4,
                                     "xBlade": -1,
-                                    "yBlade": 7
+                                    "yBlade": 8
                                 }
                             ]
                         }
@@ -325,7 +325,7 @@
                 {
                     "type": "Lightsabers",
                     "id": "savage_opress",
-                    "velocity": 2,
+                    "velocity": 3,
                     "isJarKai": false,
                     "lightsabers": [
                         {
@@ -354,7 +354,7 @@
                 {
                     "type": "Lightsabers",
                     "id": "darth_sidious",
-                    "velocity": 2,
+                    "velocity": 3,
                     "isJarKai": true,
                     "lightsabers": [
                         {
@@ -390,7 +390,7 @@
                 {
                     "type": "Lightsabers",
                     "id": "darth_vader_second",
-                    "velocity": 2,
+                    "velocity": 3,
                     "isJarKai": false,
                     "lightsabers": [
                         {
@@ -412,7 +412,7 @@
                 {
                     "type": "Lightsabers",
                     "id": "darth_tyranus",
-                    "velocity": 2,
+                    "velocity": 3,
                     "isJarKai": false,
                     "lightsabers": [
                         {
@@ -1226,7 +1226,7 @@
                 {
                     "type": "Lightsabers",
                     "id": "ahsoka_tano_third",
-                    "velocity": 4,
+                    "velocity": 3,
                     "isJarKai": true,
                     "lightsabers": [
                         {
@@ -1284,7 +1284,7 @@
                 {
                     "type": "Lightsabers",
                     "id": "baylan_skoll",
-                    "velocity": 4,
+                    "velocity": 3,
                     "isJarKai": false,
                     "lightsabers": [
                         {
@@ -1306,7 +1306,7 @@
                 {
                     "type": "Lightsabers",
                     "id": "shin_hati",
-                    "velocity": 4,
+                    "velocity": 3,
                     "isJarKai": false,
                     "lightsabers": [
                         {
