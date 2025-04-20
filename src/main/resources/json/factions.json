@@ -831,7 +831,7 @@
                         {
                             "id": 1,
                             "isDoubleBladed": false,
-                            "yShift": 0,
+                            "yShift": 5,
                             "blades": [
                                 {
                                     "bladeColor": "green",
