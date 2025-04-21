@@ -846,6 +846,28 @@
                 },
                 {
                     "type": "Lightsabers",
+                    "id": "depa_billaba",
+                    "velocity": 4,
+                    "isJarKai": false,
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "isDoubleBladed": false,
+                            "yShift": 5,
+                            "blades": [
+                                {
+                                    "bladeColor": "blue",
+                                    "isShoto": false,
+                                    "bladeSize": 8,
+                                    "xBlade": 0,
+                                    "yBlade": 1
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Lightsabers",
                     "id": "kanan_jarrus",
                     "velocity": 4,
                     "isJarKai": false,

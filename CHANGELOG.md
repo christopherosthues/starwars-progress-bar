@@ -6,8 +6,9 @@
 
 ### Added
 
-- Jedi lightsabers of Aayla Secura, Asajj Ventress, Avar Kriss, Barriss Offee, Ezra Bridger, Jocasta Nu, Kanan Jarrus,
-  Ki-Adi Mundi, Kit Fisto, Ky Narec, Leia Organa, Luminara Unduli, Plo Koon, Rey, Shaak Ti, Stellan Gios and Tera Sinube
+- Jedi lightsabers of Aayla Secura, Asajj Ventress, Avar Kriss, Barriss Offee, Depa Billaba, Ezra Bridger, Jocasta Nu,
+  Kanan Jarrus, Ki-Adi Mundi, Kit Fisto, Ky Narec, Leia Organa, Luminara Unduli, Plo Koon, Rey, Shaak Ti, Stellan Gios
+  and Tera Sinube
 - Sith lightsabers of Inquisitors (Grand Inquisitor, First Brother, Second Sister, Fifth Brother, Eighth Brother, Ninth Sister) and
   Darth Maul
 - Taron Malicos' lightsabers
