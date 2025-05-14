@@ -2,7 +2,6 @@ package com.christopherosthues.starwarsprogressbar.configuration
 
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SELECTOR
-import com.christopherosthues.starwarsprogressbar.models.*
 import com.christopherosthues.starwarsprogressbar.models.Blade
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
@@ -78,9 +77,9 @@ class StarWarsPersistentStateComponentTests {
                         1,
                         isDoubleBladed = false,
                         yShift = 0,
-                        listOf(Blade("blue", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0))
-                    )
-                )
+                        listOf(Blade("blue", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                    ),
+                ),
             ),
             Lightsabers(
                 "5",
@@ -91,9 +90,9 @@ class StarWarsPersistentStateComponentTests {
                         1,
                         isDoubleBladed = false,
                         yShift = 1,
-                        listOf(Blade("green", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0))
-                    )
-                )
+                        listOf(Blade("green", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                    ),
+                ),
             ),
             Lightsabers(
                 "6",
@@ -106,10 +105,10 @@ class StarWarsPersistentStateComponentTests {
                         yShift = 2,
                         listOf(
                             Blade("red", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
-                            Blade("red", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)
-                        )
-                    )
-                )
+                            Blade("red", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
+                        ),
+                    ),
+                ),
             ),
         )
         every { StarWarsFactionHolder.defaultVehicles } returns vehicles

@@ -2,7 +2,6 @@ package com.christopherosthues.starwarsprogressbar.selectors
 
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
-import com.christopherosthues.starwarsprogressbar.models.*
 import com.christopherosthues.starwarsprogressbar.models.Blade
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
@@ -171,7 +170,7 @@ class RandomSelectorTests {
             RandomSelector.selectEntity(
                 mapOf("2.1" to enabled, "1.2" to enabled, "1.3" to enabled),
                 mapOf("4.1" to enabled, "3.2" to enabled, "3.3" to enabled),
-                true
+                true,
             )
 
         // Assert
@@ -748,8 +747,8 @@ class RandomSelectorTests {
                         1,
                         isDoubleBladed = false,
                         yShift = 1,
-                        listOf(Blade("d", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0))
-                    )
+                        listOf(Blade("d", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                    ),
                 ),
             ).apply { factionId = "4" },
             Lightsabers(
@@ -761,8 +760,8 @@ class RandomSelectorTests {
                         1,
                         isDoubleBladed = false,
                         yShift = 2,
-                        listOf(Blade("e", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0))
-                    )
+                        listOf(Blade("e", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                    ),
                 ),
             ).apply { factionId = "3" },
             Lightsabers(
@@ -776,9 +775,9 @@ class RandomSelectorTests {
                         yShift = 3,
                         listOf(
                             Blade("f", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
-                            Blade("f", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)
-                        )
-                    )
+                            Blade("f", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
+                        ),
+                    ),
                 ),
             ).apply { factionId = "3" },
         )

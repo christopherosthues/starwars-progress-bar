@@ -41,9 +41,9 @@ class StarWarsFactionTests {
                         yShift = 1,
                         listOf(
                             Blade("a", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
-                            Blade("a", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)
-                        )
-                    )
+                            Blade("a", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
+                        ),
+                    ),
                 ),
             ),
             Lightsabers(
@@ -55,8 +55,8 @@ class StarWarsFactionTests {
                         1,
                         isDoubleBladed = false,
                         yShift = 2,
-                        listOf(Blade("b", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0))
-                    )
+                        listOf(Blade("b", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                    ),
                 ),
             ),
         )

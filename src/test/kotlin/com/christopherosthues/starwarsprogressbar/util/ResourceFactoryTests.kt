@@ -1,9 +1,9 @@
 package com.christopherosthues.starwarsprogressbar.util
 
-import com.christopherosthues.starwarsprogressbar.models.*
 import com.christopherosthues.starwarsprogressbar.models.Blade
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
+import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.intellij.ui.scale.JBUIScale
 import io.mockk.every
@@ -116,8 +116,8 @@ class ResourceFactoryTests {
                                 1,
                                 isDoubleBladed = false,
                                 yShift = 1,
-                                listOf(Blade("brown", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0))
-                            )
+                                listOf(Blade("brown", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                            ),
                         ),
                     ),
                 ),
@@ -136,9 +136,9 @@ class ResourceFactoryTests {
                                 yShift = 2,
                                 listOf(
                                     Blade("blue", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
-                                    Blade("blue", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)
-                                )
-                            )
+                                    Blade("blue", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
+                                ),
+                            ),
                         ),
                     ),
                     Lightsabers(
@@ -150,13 +150,13 @@ class ResourceFactoryTests {
                                 1,
                                 isDoubleBladed = false,
                                 yShift = 3,
-                                listOf(Blade("blue", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0))
+                                listOf(Blade("blue", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)),
                             ),
                             Lightsaber(
                                 2,
                                 isDoubleBladed = false,
                                 yShift = 4,
-                                listOf(Blade("green", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0))
+                                listOf(Blade("green", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0)),
                             ),
                         ),
                     ),

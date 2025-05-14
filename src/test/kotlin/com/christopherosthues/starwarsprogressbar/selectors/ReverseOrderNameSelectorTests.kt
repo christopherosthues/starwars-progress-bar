@@ -2,10 +2,10 @@ package com.christopherosthues.starwarsprogressbar.selectors
 
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
-import com.christopherosthues.starwarsprogressbar.models.*
 import com.christopherosthues.starwarsprogressbar.models.Blade
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
+import com.christopherosthues.starwarsprogressbar.models.StarWarsEntity
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.intellij.idea.TestFor
@@ -682,8 +682,8 @@ class ReverseOrderNameSelectorTests {
                         1,
                         isDoubleBladed = false,
                         yShift = 1,
-                        listOf(Blade("a", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0))
-                    )
+                        listOf(Blade("a", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                    ),
                 ),
             ).apply { factionId = "3" },
             Lightsabers(
@@ -695,8 +695,8 @@ class ReverseOrderNameSelectorTests {
                         1,
                         isDoubleBladed = false,
                         yShift = 2,
-                        listOf(Blade("b", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0))
-                    )
+                        listOf(Blade("b", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                    ),
                 ),
             ).apply { factionId = "3" },
             Lightsabers(
@@ -710,9 +710,9 @@ class ReverseOrderNameSelectorTests {
                         yShift = 3,
                         listOf(
                             Blade("c", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
-                            Blade("c", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)
-                        )
-                    )
+                            Blade("c", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
+                        ),
+                    ),
                 ),
             ).apply { factionId = "3" },
         )

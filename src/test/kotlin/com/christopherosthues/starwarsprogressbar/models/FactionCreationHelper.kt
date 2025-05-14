@@ -170,8 +170,8 @@ internal object FactionCreationHelper {
                             1,
                             isDoubleBladed = false,
                             yShift = 1,
-                            listOf(Blade("blue", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0))
-                        )
+                            listOf(Blade("blue", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                        ),
                     ),
                 ),
             ),
@@ -188,8 +188,8 @@ internal object FactionCreationHelper {
                             1,
                             isDoubleBladed = false,
                             yShift = 2,
-                            listOf(Blade("green", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0))
-                        )
+                            listOf(Blade("green", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                        ),
                     ),
                 ),
             ),
@@ -210,8 +210,8 @@ internal object FactionCreationHelper {
                             1,
                             isDoubleBladed = false,
                             yShift = 1,
-                            listOf(Blade("blue", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0))
-                        )
+                            listOf(Blade("blue", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                        ),
                     ),
                 ),
             ),
@@ -228,8 +228,8 @@ internal object FactionCreationHelper {
                             1,
                             isDoubleBladed = false,
                             yShift = 2,
-                            listOf(Blade("green", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0))
-                        )
+                            listOf(Blade("green", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                        ),
                     ),
                 ),
             ),
@@ -248,9 +248,9 @@ internal object FactionCreationHelper {
                             yShift = 3,
                             listOf(
                                 Blade("red", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
-                                Blade("red", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)
-                            )
-                        )
+                                Blade("red", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
+                            ),
+                        ),
                     ),
                 ),
             ),
@@ -271,8 +271,8 @@ internal object FactionCreationHelper {
                             1,
                             isDoubleBladed = false,
                             yShift = 1,
-                            listOf(Blade("blue", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0))
-                        )
+                            listOf(Blade("blue", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                        ),
                     ),
                 ),
                 Lightsabers(
@@ -284,8 +284,8 @@ internal object FactionCreationHelper {
                             1,
                             isDoubleBladed = false,
                             yShift = 2,
-                            listOf(Blade("brown", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0))
-                        )
+                            listOf(Blade("brown", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                        ),
                     ),
                 ),
             ),
@@ -304,9 +304,9 @@ internal object FactionCreationHelper {
                             yShift = 3,
                             listOf(
                                 Blade("green", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
-                                Blade("green", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)
-                            )
-                        )
+                                Blade("green", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
+                            ),
+                        ),
                     ),
                 ),
                 Lightsabers(
@@ -318,8 +318,8 @@ internal object FactionCreationHelper {
                             1,
                             isDoubleBladed = false,
                             yShift = 4,
-                            listOf(Blade("yellow", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0))
-                        )
+                            listOf(Blade("yellow", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                        ),
                     ),
                 ),
             ),
@@ -336,8 +336,8 @@ internal object FactionCreationHelper {
                             1,
                             isDoubleBladed = false,
                             yShift = 5,
-                            listOf(Blade("red", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0))
-                        )
+                            listOf(Blade("red", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                        ),
                     ),
                 ),
                 Lightsabers(
@@ -351,9 +351,9 @@ internal object FactionCreationHelper {
                             yShift = 6,
                             listOf(
                                 Blade("purple", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
-                                Blade("purple", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)
-                            )
-                        )
+                                Blade("purple", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
+                            ),
+                        ),
                     ),
                 ),
             ),
@@ -377,9 +377,9 @@ internal object FactionCreationHelper {
                                 yShift = 2,
                                 listOf(
                                     Blade("green", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
-                                    Blade("green", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)
-                                )
-                            )
+                                    Blade("green", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
+                                ),
+                            ),
                         ),
                     ),
                     Lightsabers(
@@ -391,8 +391,8 @@ internal object FactionCreationHelper {
                                 1,
                                 isDoubleBladed = false,
                                 yShift = 4,
-                                listOf(Blade("yellow", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0))
-                            )
+                                listOf(Blade("yellow", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                            ),
                         ),
                     ),
                 ),
@@ -409,8 +409,8 @@ internal object FactionCreationHelper {
                                 1,
                                 isDoubleBladed = false,
                                 yShift = 1,
-                                listOf(Blade("blue", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0))
-                            )
+                                listOf(Blade("blue", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                            ),
                         ),
                     ),
                     Lightsabers(
@@ -422,8 +422,8 @@ internal object FactionCreationHelper {
                                 1,
                                 isDoubleBladed = false,
                                 yShift = 2,
-                                listOf(Blade("brown", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0))
-                            )
+                                listOf(Blade("brown", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                            ),
                         ),
                     ),
                 ),
@@ -440,8 +440,8 @@ internal object FactionCreationHelper {
                                 1,
                                 isDoubleBladed = false,
                                 yShift = 5,
-                                listOf(Blade("red", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0))
-                            )
+                                listOf(Blade("red", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                            ),
                         ),
                     ),
                     Lightsabers(
@@ -455,9 +455,9 @@ internal object FactionCreationHelper {
                                 yShift = 6,
                                 listOf(
                                     Blade("purple", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
-                                    Blade("purple", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)
-                                )
-                            )
+                                    Blade("purple", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
+                                ),
+                            ),
                         ),
                     ),
                 ),
@@ -476,9 +476,9 @@ internal object FactionCreationHelper {
                                 yShift = 7,
                                 listOf(
                                     Blade("green", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
-                                    Blade("green", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)
-                                )
-                            )
+                                    Blade("green", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
+                                ),
+                            ),
                         ),
                     ),
                     Lightsabers(
@@ -490,8 +490,8 @@ internal object FactionCreationHelper {
                                 1,
                                 isDoubleBladed = false,
                                 yShift = 8,
-                                listOf(Blade("yellow", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0))
-                            )
+                                listOf(Blade("yellow", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                            ),
                         ),
                     ),
                 ),
@@ -515,9 +515,9 @@ internal object FactionCreationHelper {
                                 yShift = 3,
                                 listOf(
                                     Blade("green", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
-                                    Blade("green", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)
-                                )
-                            )
+                                    Blade("green", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
+                                ),
+                            ),
                         ),
                     ),
                     Lightsabers(
@@ -529,8 +529,8 @@ internal object FactionCreationHelper {
                                 1,
                                 isDoubleBladed = false,
                                 yShift = 4,
-                                listOf(Blade("yellow", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0))
-                            )
+                                listOf(Blade("yellow", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                            ),
                         ),
                     ),
                 ),
@@ -547,8 +547,8 @@ internal object FactionCreationHelper {
                                 1,
                                 isDoubleBladed = false,
                                 yShift = 1,
-                                listOf(Blade("blue", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0))
-                            )
+                                listOf(Blade("blue", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                            ),
                         ),
                     ),
                     Lightsabers(
@@ -560,8 +560,8 @@ internal object FactionCreationHelper {
                                 1,
                                 isDoubleBladed = false,
                                 yShift = 2,
-                                listOf(Blade("brown", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0))
-                            )
+                                listOf(Blade("brown", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                            ),
                         ),
                     ),
                 ),
@@ -578,8 +578,8 @@ internal object FactionCreationHelper {
                                 1,
                                 isDoubleBladed = false,
                                 yShift = 5,
-                                listOf(Blade("red", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0))
-                            )
+                                listOf(Blade("red", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                            ),
                         ),
                     ),
                     Lightsabers(
@@ -593,9 +593,9 @@ internal object FactionCreationHelper {
                                 yShift = 6,
                                 listOf(
                                     Blade("purple", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
-                                    Blade("purple", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)
-                                )
-                            )
+                                    Blade("purple", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
+                                ),
+                            ),
                         ),
                     ),
                 ),
@@ -614,9 +614,9 @@ internal object FactionCreationHelper {
                                 yShift = 7,
                                 listOf(
                                     Blade("green", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
-                                    Blade("green", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)
-                                )
-                            )
+                                    Blade("green", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
+                                ),
+                            ),
                         ),
                     ),
                     Lightsabers(
@@ -628,8 +628,8 @@ internal object FactionCreationHelper {
                                 1,
                                 isDoubleBladed = false,
                                 yShift = 8,
-                                listOf(Blade("yellow", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0))
-                            )
+                                listOf(Blade("yellow", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                            ),
                         ),
                     ),
                 ),
@@ -651,8 +651,8 @@ internal object FactionCreationHelper {
                             1,
                             isDoubleBladed = false,
                             yShift = 1,
-                            listOf(Blade("blue", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0))
-                        )
+                            listOf(Blade("blue", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                        ),
                     ),
                 ),
                 Lightsabers(
@@ -664,8 +664,8 @@ internal object FactionCreationHelper {
                             1,
                             isDoubleBladed = false,
                             yShift = 2,
-                            listOf(Blade("brown", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0))
-                        )
+                            listOf(Blade("brown", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                        ),
                     ),
                 ),
             ),
@@ -684,9 +684,9 @@ internal object FactionCreationHelper {
                             yShift = 3,
                             listOf(
                                 Blade("green", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
-                                Blade("green", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)
-                            )
-                        )
+                                Blade("green", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
+                            ),
+                        ),
                     ),
                 ),
                 Lightsabers(
@@ -698,8 +698,8 @@ internal object FactionCreationHelper {
                             1,
                             isDoubleBladed = false,
                             yShift = 4,
-                            listOf(Blade("yellow", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0))
-                        )
+                            listOf(Blade("yellow", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                        ),
                     ),
                 ),
             ),
@@ -716,8 +716,8 @@ internal object FactionCreationHelper {
                             1,
                             isDoubleBladed = false,
                             yShift = 5,
-                            listOf(Blade("red", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0))
-                        )
+                            listOf(Blade("red", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                        ),
                     ),
                 ),
                 Lightsabers(
@@ -731,9 +731,9 @@ internal object FactionCreationHelper {
                             yShift = 6,
                             listOf(
                                 Blade("purple", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
-                                Blade("purple", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)
-                            )
-                        )
+                                Blade("purple", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
+                            ),
+                        ),
                     ),
                 ),
             ),

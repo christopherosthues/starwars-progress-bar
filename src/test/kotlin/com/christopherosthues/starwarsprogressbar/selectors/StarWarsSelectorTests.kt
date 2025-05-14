@@ -2,10 +2,10 @@ package com.christopherosthues.starwarsprogressbar.selectors
 
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
-import com.christopherosthues.starwarsprogressbar.models.*
 import com.christopherosthues.starwarsprogressbar.models.Blade
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
+import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.intellij.idea.TestFor
@@ -963,8 +963,8 @@ class StarWarsSelectorTests {
                             bladeSize = 8,
                             xBlade = 0,
                             yBlade = 0,
-                        )
-                    )
+                        ),
+                    ),
                 ),
             ),
         ),
@@ -984,8 +984,8 @@ class StarWarsSelectorTests {
                             bladeSize = 8,
                             xBlade = 0,
                             yBlade = 0,
-                        )
-                    )
+                        ),
+                    ),
                 ),
             ),
         ),
@@ -1005,8 +1005,8 @@ class StarWarsSelectorTests {
                             bladeSize = 8,
                             xBlade = 0,
                             yBlade = 0,
-                        )
-                    )
+                        ),
+                    ),
                 ),
             ),
         ),
