@@ -6,6 +6,16 @@
 
 ### Added
 
+### Changed
+
+### Removed
+
+### Fixed
+
+## [2.1.0] - 2025-05-14
+
+### Added
+
 - Jedi lightsabers of Aayla Secura, Asajj Ventress, Avar Kriss, Barriss Offee, Depa Billaba, Ezra Bridger, Jocasta Nu,
   Kanan Jarrus, Ki-Adi Mundi, Kit Fisto, Ky Narec, Leia Organa, Luminara Unduli, Plo Koon, Rey, Shaak Ti, Stellan Gios
   and Tera Sinube
@@ -14,12 +24,6 @@
 - Taron Malicos' lightsabers
 - Baylan Skoll's lightsaber and Shin Hati's lightsaber
 - Sabine Wren's lightsaber
-
-### Changed
-
-### Removed
-
-### Fixed
 
 ## [2.0.0] - 2025-04-06
 
@@ -255,7 +259,8 @@
 - Initial release
 - Progress bar with vehicles from Star Wars
 
-[Unreleased]: https://github.com/christopherosthues/starwars-progress-bar/compare/v2.0.0...HEAD
+[Unreleased]: https://github.com/christopherosthues/starwars-progress-bar/compare/v2.1.0...HEAD
+[2.1.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.12.0...v2.0.0
 [1.12.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.11.2...v1.12.0
 [1.11.2]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.11.1...v1.11.2
