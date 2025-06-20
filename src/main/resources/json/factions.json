@@ -2790,6 +2790,14 @@
                 },
                 {
                     "type": "Vehicle",
+                    "id": "nightbrother",
+                    "ionEngine": "yellow",
+                    "xShift": -9,
+                    "yShift": -6,
+                    "velocity": 3
+                },
+                {
+                    "type": "Vehicle",
                     "id": "sandcrawler",
                     "ionEngine": "brown",
                     "xShift": -5,

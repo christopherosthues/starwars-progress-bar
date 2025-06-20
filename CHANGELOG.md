@@ -7,6 +7,7 @@
 ### Added
 
 - Gauntlet starfighter to mandalorians
+- Darth Maul's Nightbrother to scoundrels
 
 ### Changed
 
