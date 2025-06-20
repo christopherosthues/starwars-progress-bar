@@ -6,6 +6,8 @@
 
 ### Added
 
+- Gauntlet starfighter to mandalorians
+
 ### Changed
 
 ### Removed
