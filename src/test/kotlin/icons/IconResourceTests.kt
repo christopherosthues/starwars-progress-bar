@@ -344,8 +344,6 @@ class IconResourceTests {
         "vehicles${File.separatorChar}bounty_hunters${File.separatorChar}shadow_caster@2x.png",
         "vehicles${File.separatorChar}bounty_hunters${File.separatorChar}hounds_tooth_r@2x.png",
         "vehicles${File.separatorChar}mandalorians${File.separatorChar}fang_class_starfighter_r@2x.png",
-        "vehicles${File.separatorChar}mandalorians${File.separatorChar}gauntlet_r@2x.png",
-        "vehicles${File.separatorChar}scoundrels${File.separatorChar}nightbrother_r@2x.png",
         "vehicles${File.separatorChar}sith_empire${File.separatorChar}harrower_class_dreadnought_r_raw@2x.png",
         "vehicles${File.separatorChar}galactic_empire${File.separatorChar}at_pt_r@2x.png",
         "vehicles${File.separatorChar}galactic_empire${File.separatorChar}atpt.png",

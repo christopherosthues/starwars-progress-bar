@@ -2742,6 +2742,14 @@
                     "xShift": 0,
                     "yShift": -6,
                     "velocity": 3.5
+                },
+                {
+                    "type": "Vehicle",
+                    "id": "shadow_caster",
+                    "ionEngine": "blue",
+                    "xShift": 0,
+                    "yShift": -6,
+                    "velocity": 4
                 }
             ]
         },
