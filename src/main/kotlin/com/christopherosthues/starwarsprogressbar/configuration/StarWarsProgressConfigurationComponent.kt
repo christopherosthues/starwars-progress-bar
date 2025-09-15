@@ -81,6 +81,8 @@ internal class StarWarsProgressConfigurationComponent {
             if (isProgressBarTextEvent(it.propertyName) ||
                 isProgressBarDrawEvent(it.propertyName) ||
                 isVehicleChangeEvent(it.propertyName) ||
+                it.propertyName == DETERMINATE_ENTITY_SELECTOR_EVENT ||
+                it.propertyName == INDETERMINATE_ENTITY_SELECTOR_EVENT ||
                 it.propertyName == VEHICLE_SELECTOR_EVENT
             ) {
                 repaintProgressBar()

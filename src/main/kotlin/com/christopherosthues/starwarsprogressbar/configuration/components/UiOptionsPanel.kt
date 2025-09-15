@@ -2,8 +2,10 @@ package com.christopherosthues.starwarsprogressbar.configuration.components
 
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.CHANGE_VEHICLE_AFTER_PASS_EVENT
+import com.christopherosthues.starwarsprogressbar.configuration.DETERMINATE_ENTITY_SELECTOR_EVENT
 import com.christopherosthues.starwarsprogressbar.configuration.DRAW_SILHOUETTES_EVENT
 import com.christopherosthues.starwarsprogressbar.configuration.ENABLE_NEW_VEHICLES_EVENT
+import com.christopherosthues.starwarsprogressbar.configuration.INDETERMINATE_ENTITY_SELECTOR_EVENT
 import com.christopherosthues.starwarsprogressbar.configuration.LANGUAGE_EVENT
 import com.christopherosthues.starwarsprogressbar.configuration.Language
 import com.christopherosthues.starwarsprogressbar.configuration.NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE_EVENT
@@ -19,6 +21,7 @@ import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_CHANGE_AFTER_PASS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_DRAW_SILHOUETTES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENABLE_NEW
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENTITY_SELECTOR
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_LANGUAGE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SAME_VELOCITY
@@ -28,6 +31,7 @@ import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_ICON
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_NAMES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_TOOLTIPS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRESS_BAR_COLOR
+import com.christopherosthues.starwarsprogressbar.selectors.EntitySelectionType
 import com.christopherosthues.starwarsprogressbar.selectors.SelectionType
 import com.intellij.openapi.ui.ComboBox
 import com.intellij.ui.JBIntSpinner
@@ -40,7 +44,7 @@ import javax.swing.JPanel
 
 private const val GAP = 5
 
-private const val NUMBER_OF_ROWS = 6
+private const val NUMBER_OF_ROWS = 8 // erhöht wegen zusätzlicher Zeilen
 private const val MINIMUM_NUMBER_OF_PASSES = 1
 private const val MAXIMUM_NUMBER_OF_PASSES = 20
 private const val HORIZONTAL_GAP = 8
@@ -83,6 +87,10 @@ internal class UiOptionsPanel(starWarsState: StarWarsState) : JTitledPanel(StarW
     private val selectorComboBox = ComboBox(SelectionType.entries.toTypedArray())
     private val languageLabel = JLabel(StarWarsBundle.message(BundleConstants.LANGUAGE))
     private val languageComboBox = ComboBox(arrayOf(Language.ENGLISH, Language.GERMAN, Language.SPANISH))
+    private val determinateEntitySelectorLabel = JLabel("Determinate Entity Selector") // TODO ggf. übersetzen
+    private val determinateEntitySelectorComboBox = ComboBox(EntitySelectionType.entries.toTypedArray())
+    private val indeterminateEntitySelectorLabel = JLabel("Indeterminate Entity Selector") // TODO ggf. übersetzen
+    private val indeterminateEntitySelectorComboBox = ComboBox(EntitySelectionType.entries.toTypedArray())
 
     private var oldLanguage: Language? = null
 
@@ -217,6 +225,18 @@ internal class UiOptionsPanel(starWarsState: StarWarsState) : JTitledPanel(StarW
             )
             starWarsState.selector = newValue
         }
+        determinateEntitySelectorComboBox.addItemListener {
+            val oldValue = starWarsState.determinateEntitySelector
+            val newValue = determinateEntitySelectorComboBox.selectedItem as EntitySelectionType? ?: DEFAULT_ENTITY_SELECTOR
+            firePropertyChange(DETERMINATE_ENTITY_SELECTOR_EVENT, oldValue, newValue)
+            starWarsState.determinateEntitySelector = newValue
+        }
+        indeterminateEntitySelectorComboBox.addItemListener {
+            val oldValue = starWarsState.indeterminateEntitySelector
+            val newValue = indeterminateEntitySelectorComboBox.selectedItem as EntitySelectionType? ?: DEFAULT_ENTITY_SELECTOR
+            firePropertyChange(INDETERMINATE_ENTITY_SELECTOR_EVENT, oldValue, newValue)
+            starWarsState.indeterminateEntitySelector = newValue
+        }
 
         val languagePanel = JPanel(FlowLayout(FlowLayout.LEFT, HORIZONTAL_GAP, 0))
         languagePanel.add(languageLabel)
@@ -230,6 +250,13 @@ internal class UiOptionsPanel(starWarsState: StarWarsState) : JTitledPanel(StarW
         selectionPanel.add(selectionLabel)
         selectionPanel.add(selectorComboBox)
 
+        val determinatePanel = JPanel(FlowLayout(FlowLayout.LEFT, HORIZONTAL_GAP, 0))
+        determinatePanel.add(determinateEntitySelectorLabel)
+        determinatePanel.add(determinateEntitySelectorComboBox)
+        val indeterminatePanel = JPanel(FlowLayout(FlowLayout.LEFT, HORIZONTAL_GAP, 0))
+        indeterminatePanel.add(indeterminateEntitySelectorLabel)
+        indeterminatePanel.add(indeterminateEntitySelectorComboBox)
+
         add(languagePanel)
         add(JPanel())
         add(showIconCheckBox)
@@ -242,6 +269,8 @@ internal class UiOptionsPanel(starWarsState: StarWarsState) : JTitledPanel(StarW
         add(drawSilhouettesCheckBox)
         add(passesPanel)
         add(selectionPanel)
+        add(determinatePanel)
+        add(indeterminatePanel)
 
         addPropertyChangeListener {
             if (it.propertyName == LANGUAGE_EVENT) {
@@ -257,6 +286,8 @@ internal class UiOptionsPanel(starWarsState: StarWarsState) : JTitledPanel(StarW
                 changeAfterPassCheckBox.text = StarWarsBundle.message(BundleConstants.CHANGE_AFTER_PASS)
                 selectionLabel.text = StarWarsBundle.message(BundleConstants.SELECTOR)
                 languageLabel.text = StarWarsBundle.message(BundleConstants.LANGUAGE)
+                determinateEntitySelectorLabel.text = "Determinate Entity Selector" // TODO ggf. übersetzen
+                indeterminateEntitySelectorLabel.text = "Indeterminate Entity Selector" // TODO ggf. übersetzen
             }
         }
     }
@@ -274,6 +305,8 @@ internal class UiOptionsPanel(starWarsState: StarWarsState) : JTitledPanel(StarW
         changeAfterPassCheckBox.isSelected = starWarsState.changeAfterPass
         numberOfPassesUntilChangeSpinner.value = starWarsState.numberOfPassesUntilChange
         selectorComboBox.item = starWarsState.selector
+        determinateEntitySelectorComboBox.item = starWarsState.determinateEntitySelector
+        indeterminateEntitySelectorComboBox.item = starWarsState.indeterminateEntitySelector
 
         val language = languageComboBox.selectedItem as Language? ?: DEFAULT_LANGUAGE
         StarWarsBundle.setLocale(language.toLocale())

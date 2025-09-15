@@ -3,6 +3,7 @@ package com.christopherosthues.starwarsprogressbar.configuration
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_CHANGE_AFTER_PASS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_DRAW_SILHOUETTES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENABLE_NEW
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENTITY_SELECTOR
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_LANGUAGE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SAME_VELOCITY
@@ -15,6 +16,7 @@ import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRE
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.selectors.EntitySelectionType
 import com.christopherosthues.starwarsprogressbar.selectors.SelectionType
 import java.util.stream.Collectors
 
@@ -67,6 +69,26 @@ internal class StarWarsState {
             selectorOrdinal = value?.ordinal ?: DEFAULT_SELECTOR.ordinal
         }
 
+    var determinateEntitySelectorOrdinal: Int = DEFAULT_ENTITY_SELECTOR.ordinal
+
+    internal var determinateEntitySelector: EntitySelectionType?
+        get() = determinateEntitySelectorOrdinal.let {
+            EntitySelectionType.entries.getOrNull(it) ?: DEFAULT_ENTITY_SELECTOR
+        }
+        set(value) {
+            determinateEntitySelectorOrdinal = value?.ordinal ?: DEFAULT_ENTITY_SELECTOR.ordinal
+        }
+
+    var indeterminateEntitySelectorOrdinal: Int = DEFAULT_ENTITY_SELECTOR.ordinal
+
+    internal var indeterminateEntitySelector: EntitySelectionType?
+        get() = indeterminateEntitySelectorOrdinal.let {
+            EntitySelectionType.entries.getOrNull(it) ?: DEFAULT_ENTITY_SELECTOR
+        }
+        set(value) {
+            indeterminateEntitySelectorOrdinal = value?.ordinal ?: DEFAULT_ENTITY_SELECTOR.ordinal
+        }
+
     var version: String = ""
 
     @Deprecated("Use showIcon instead")
@@ -107,6 +129,8 @@ internal class StarWarsState {
         changeAfterPass = starWarsState.changeAfterPass
         numberOfPassesUntilChange = starWarsState.numberOfPassesUntilChange
         selector = starWarsState.selector
+        determinateEntitySelector = starWarsState.determinateEntitySelector
+        indeterminateEntitySelector = starWarsState.indeterminateEntitySelector
         version = starWarsState.version
     }
 }

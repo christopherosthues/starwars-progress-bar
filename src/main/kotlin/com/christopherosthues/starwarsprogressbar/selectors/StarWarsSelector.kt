@@ -10,6 +10,9 @@ internal object StarWarsSelector {
         enabledLightsabers: Map<String, Boolean>?,
         defaultEnabled: Boolean,
         selectionType: SelectionType,
+        isIndeterminate: Boolean,
+        determinateEntitySelectionType: EntitySelectionType,
+        indeterminateEntitySelectionType: EntitySelectionType,
     ): StarWarsEntity {
         var currentEnabledVehicles = enabledVehicles
         var currentEnabledLightsabers = enabledLightsabers
@@ -27,6 +30,25 @@ internal object StarWarsSelector {
             currentEnabledLightsabers = starWarsState.lightsabersEnabled
         }
 
+        if (isIndeterminate) {
+            when (indeterminateEntitySelectionType) {
+                EntitySelectionType.VEHICLES -> currentEnabledLightsabers = currentEnabledLightsabers.keys.associateWith { false }
+                EntitySelectionType.LIGHTSABERS -> currentEnabledVehicles = currentEnabledVehicles.keys.associateWith { false }
+                EntitySelectionType.ALL -> {
+                    // do nothing, both are enabled
+                }
+            }
+        } else {
+            when (determinateEntitySelectionType) {
+                EntitySelectionType.VEHICLES -> currentEnabledLightsabers = currentEnabledLightsabers.keys.associateWith { false }
+                EntitySelectionType.LIGHTSABERS -> currentEnabledVehicles = currentEnabledVehicles.keys.associateWith { false }
+                EntitySelectionType.ALL -> {
+                    // do nothing, both are enabled
+                }
+            }
+        }
+
+        // TODO: have to split the selectors for determinate and indeterminate
         val selector = when (selectionType) {
             SelectionType.INORDER_FACTION -> InorderFactionSelector
             SelectionType.INORDER_NAME -> InorderNameSelector

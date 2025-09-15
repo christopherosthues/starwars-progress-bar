@@ -25,6 +25,7 @@ import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersiste
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_CHANGE_AFTER_PASS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENABLE_NEW
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENTITY_SELECTOR
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SAME_VELOCITY
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SELECTOR
@@ -66,6 +67,9 @@ internal class StarWarsProgressBarUI(
             StarWarsPersistentStateComponent.instance?.state?.enableNew ?: DEFAULT_ENABLE_NEW,
             StarWarsPersistentStateComponent.instance?.state?.selector
                 ?: DEFAULT_SELECTOR,
+            false,
+            StarWarsPersistentStateComponent.instance?.state?.determinateEntitySelector ?: DEFAULT_ENTITY_SELECTOR,
+            StarWarsPersistentStateComponent.instance?.state?.indeterminateEntitySelector ?: DEFAULT_ENTITY_SELECTOR,
         ),
     )
 
@@ -83,6 +87,9 @@ internal class StarWarsProgressBarUI(
             starWarsState()?.lightsabersEnabled,
             starWarsState()?.enableNew ?: DEFAULT_ENABLE_NEW,
             starWarsState()?.selector ?: DEFAULT_SELECTOR,
+            progressBar?.isIndeterminate ?: false,
+            starWarsState()?.determinateEntitySelector ?: DEFAULT_ENTITY_SELECTOR,
+            starWarsState()?.indeterminateEntitySelector ?: DEFAULT_ENTITY_SELECTOR,
         )
         updateDecorator()
     }

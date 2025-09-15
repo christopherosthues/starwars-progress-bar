@@ -28,6 +28,7 @@ internal object BundleConstants {
     const val DESELECT_ALL = CONFIGURATION + "deselectAll"
     const val SELECTED = CONFIGURATION + "selected"
     const val SELECTOR = CONFIGURATION + "selector"
+    const val ENTITY_SELECTOR = CONFIGURATION + "entity.selector"
     const val LANGUAGE = CONFIGURATION + "language"
 
     const val VEHICLES = "vehicles."

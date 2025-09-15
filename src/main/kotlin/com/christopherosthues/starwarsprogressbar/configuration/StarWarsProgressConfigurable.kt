@@ -40,6 +40,8 @@ internal class StarWarsProgressConfigurable : SearchableConfigurable {
                     starWarsState.drawSilhouettes != comp.starWarsState.drawSilhouettes ||
                     starWarsState.selector != comp.starWarsState.selector ||
                     starWarsState.language != comp.starWarsState.language ||
+                    starWarsState.determinateEntitySelector != comp.starWarsState.determinateEntitySelector ||
+                    starWarsState.indeterminateEntitySelector != comp.starWarsState.indeterminateEntitySelector ||
                     isVehiclePassesModified(starWarsState, comp)
                 )
     }
@@ -72,6 +74,8 @@ internal class StarWarsProgressConfigurable : SearchableConfigurable {
             starWarsState.changeAfterPass = component.starWarsState.changeAfterPass
             starWarsState.selector = component.starWarsState.selector
             starWarsState.language = component.starWarsState.language
+            starWarsState.determinateEntitySelector = component.starWarsState.determinateEntitySelector
+            starWarsState.indeterminateEntitySelector = component.starWarsState.indeterminateEntitySelector
             if (component.starWarsState.changeAfterPass) {
                 starWarsState.numberOfPassesUntilChange = component.starWarsState.numberOfPassesUntilChange
             }
