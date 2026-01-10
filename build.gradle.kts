@@ -87,10 +87,16 @@ tasks.test {
     }
 }
 
-tasks.register("installGitHooks", Copy::class) {
+tasks.register<Copy>("installGitHooks") {
     from(file("$rootDir/scripts/pre-commit"))
     into(file("$rootDir/.git/hooks"))
-    fileMode = 0b0111101101
+
+    doLast {
+        val hookFile = file("$rootDir/.git/hooks/pre-commit")
+        if (hookFile.exists()) {
+            hookFile.setExecutable(true)
+        }
+    }
 }
 
 tasks.named("build") {
