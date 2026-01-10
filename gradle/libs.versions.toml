@@ -15,7 +15,7 @@ kover = "0.9.4"
 ktlint = "1.8.0"
 ktlintPlugin = "14.0.1"
 mockk = "1.14.7"
-qodana = "2025.2.1"
+qodana = "2025.3.1"
 serialization = "1.9.10"
 
 [libraries]
