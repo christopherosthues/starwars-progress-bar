@@ -3,9 +3,11 @@ package com.christopherosthues.starwarsprogressbar.configuration.components
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.CHANGE_VEHICLE_AFTER_PASS_EVENT
 import com.christopherosthues.starwarsprogressbar.configuration.DETERMINATE_ENTITY_SELECTOR_EVENT
+import com.christopherosthues.starwarsprogressbar.configuration.DETERMINATE_ORDER_SELECTOR_EVENT
 import com.christopherosthues.starwarsprogressbar.configuration.DRAW_SILHOUETTES_EVENT
 import com.christopherosthues.starwarsprogressbar.configuration.ENABLE_NEW_VEHICLES_EVENT
 import com.christopherosthues.starwarsprogressbar.configuration.INDETERMINATE_ENTITY_SELECTOR_EVENT
+import com.christopherosthues.starwarsprogressbar.configuration.INDETERMINATE_ORDER_SELECTOR_EVENT
 import com.christopherosthues.starwarsprogressbar.configuration.LANGUAGE_EVENT
 import com.christopherosthues.starwarsprogressbar.configuration.Language
 import com.christopherosthues.starwarsprogressbar.configuration.NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE_EVENT
@@ -16,7 +18,6 @@ import com.christopherosthues.starwarsprogressbar.configuration.SHOW_VEHICLE_EVE
 import com.christopherosthues.starwarsprogressbar.configuration.SHOW_VEHICLE_NAMES_EVENT
 import com.christopherosthues.starwarsprogressbar.configuration.SOLID_PROGRESS_BAR_COLOR_EVENT
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
-import com.christopherosthues.starwarsprogressbar.configuration.VEHICLE_SELECTOR_EVENT
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_CHANGE_AFTER_PASS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_DRAW_SILHOUETTES
@@ -83,8 +84,10 @@ internal class UiOptionsPanel(starWarsState: StarWarsState) : JTitledPanel(StarW
     private val numberOfPassesUntilChangeSpinner =
         JBIntSpinner(DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE, MINIMUM_NUMBER_OF_PASSES, MAXIMUM_NUMBER_OF_PASSES)
 
-    private val selectionLabel = JLabel(StarWarsBundle.message(BundleConstants.ORDER_SELECTOR))
-    private val selectorComboBox = ComboBox(SelectionType.entries.toTypedArray())
+    private val determinateSelectorLabel = JLabel(StarWarsBundle.message(BundleConstants.ORDER_SELECTOR))
+    private val determinateSelectorComboBox = ComboBox(SelectionType.entries.toTypedArray())
+    private val indeterminateSelectorLabel = JLabel(StarWarsBundle.message(BundleConstants.ORDER_SELECTOR))
+    private val indeterminateOrderSelectorComboBox = ComboBox(SelectionType.entries.toTypedArray())
     private val languageLabel = JLabel(StarWarsBundle.message(BundleConstants.LANGUAGE))
     private val languageComboBox = ComboBox(arrayOf(Language.ENGLISH, Language.GERMAN, Language.SPANISH))
     private val determinateEntitySelectorLabel = JLabel(StarWarsBundle.message(BundleConstants.ENTITY_SELECTOR))
@@ -215,15 +218,25 @@ internal class UiOptionsPanel(starWarsState: StarWarsState) : JTitledPanel(StarW
             starWarsState.numberOfPassesUntilChange = newValue
         }
         numberOfPassesUntilChangeSpinner.isEnabled = changeAfterPassCheckBox.isSelected
-        selectorComboBox.addItemListener {
-            val oldValue = starWarsState.selector
-            val newValue = selectorComboBox.selectedItem as SelectionType? ?: DEFAULT_SELECTOR
+        determinateSelectorComboBox.addItemListener {
+            val oldValue = starWarsState.determinateOrderSelector
+            val newValue = determinateSelectorComboBox.selectedItem as SelectionType? ?: DEFAULT_SELECTOR
             firePropertyChange(
-                VEHICLE_SELECTOR_EVENT,
+                DETERMINATE_ORDER_SELECTOR_EVENT,
                 oldValue,
                 newValue,
             )
-            starWarsState.selector = newValue
+            starWarsState.determinateOrderSelector = newValue
+        }
+        indeterminateOrderSelectorComboBox.addItemListener {
+            val oldValue = starWarsState.indeterminateOrderSelector
+            val newValue = indeterminateOrderSelectorComboBox.selectedItem as SelectionType? ?: DEFAULT_SELECTOR
+            firePropertyChange(
+                INDETERMINATE_ORDER_SELECTOR_EVENT,
+                oldValue,
+                newValue,
+            )
+            starWarsState.indeterminateOrderSelector = newValue
         }
         determinateEntitySelectorComboBox.addItemListener {
             val oldValue = starWarsState.determinateEntitySelector
@@ -246,9 +259,13 @@ internal class UiOptionsPanel(starWarsState: StarWarsState) : JTitledPanel(StarW
         passesPanel.add(changeAfterPassCheckBox)
         passesPanel.add(numberOfPassesUntilChangeSpinner)
 
-        val selectionPanel = JPanel(FlowLayout(FlowLayout.LEFT, HORIZONTAL_GAP, 0))
-        selectionPanel.add(selectionLabel)
-        selectionPanel.add(selectorComboBox)
+        // show determinate and indeterminate selector combo boxes
+        val determinatePanelForSelection = JPanel(FlowLayout(FlowLayout.LEFT, HORIZONTAL_GAP, 0))
+        determinatePanelForSelection.add(determinateSelectorLabel)
+        determinatePanelForSelection.add(determinateSelectorComboBox)
+        val indeterminatePanelForSelection = JPanel(FlowLayout(FlowLayout.LEFT, HORIZONTAL_GAP, 0))
+        indeterminatePanelForSelection.add(indeterminateSelectorLabel)
+        indeterminatePanelForSelection.add(indeterminateOrderSelectorComboBox)
 
         val determinatePanel = JPanel(FlowLayout(FlowLayout.LEFT, HORIZONTAL_GAP, 0))
         determinatePanel.add(determinateEntitySelectorLabel)
@@ -268,7 +285,8 @@ internal class UiOptionsPanel(starWarsState: StarWarsState) : JTitledPanel(StarW
         add(showFactionCrestsCheckBox)
         add(drawSilhouettesCheckBox)
         add(passesPanel)
-        add(selectionPanel)
+        add(determinatePanelForSelection)
+        add(indeterminatePanelForSelection)
         add(determinatePanel)
         add(indeterminatePanel)
 
@@ -284,7 +302,8 @@ internal class UiOptionsPanel(starWarsState: StarWarsState) : JTitledPanel(StarW
                 showIconCheckBox.text = StarWarsBundle.message(BundleConstants.SHOW_ICON)
                 drawSilhouettesCheckBox.text = StarWarsBundle.message(BundleConstants.DRAW_SILHOUETTES)
                 changeAfterPassCheckBox.text = StarWarsBundle.message(BundleConstants.CHANGE_AFTER_PASS)
-                selectionLabel.text = StarWarsBundle.message(BundleConstants.ORDER_SELECTOR)
+                determinateSelectorLabel.text = StarWarsBundle.message(BundleConstants.ORDER_SELECTOR)
+                indeterminateSelectorLabel.text = StarWarsBundle.message(BundleConstants.ORDER_SELECTOR)
                 languageLabel.text = StarWarsBundle.message(BundleConstants.LANGUAGE)
                 determinateEntitySelectorLabel.text = StarWarsBundle.message(BundleConstants.ENTITY_SELECTOR)
                 indeterminateEntitySelectorLabel.text = StarWarsBundle.message(BundleConstants.ENTITY_SELECTOR)
@@ -304,7 +323,8 @@ internal class UiOptionsPanel(starWarsState: StarWarsState) : JTitledPanel(StarW
         drawSilhouettesCheckBox.isSelected = starWarsState.drawSilhouettes
         changeAfterPassCheckBox.isSelected = starWarsState.changeAfterPass
         numberOfPassesUntilChangeSpinner.value = starWarsState.numberOfPassesUntilChange
-        selectorComboBox.item = starWarsState.selector
+        determinateSelectorComboBox.item = starWarsState.determinateOrderSelector
+        indeterminateOrderSelectorComboBox.item = starWarsState.indeterminateOrderSelector
         determinateEntitySelectorComboBox.item = starWarsState.determinateEntitySelector
         indeterminateEntitySelectorComboBox.item = starWarsState.indeterminateEntitySelector
 

@@ -38,7 +38,8 @@ internal class StarWarsProgressConfigurable : SearchableConfigurable {
                     starWarsState.enableNew != comp.starWarsState.enableNew ||
                     starWarsState.solidProgressBarColor != comp.starWarsState.solidProgressBarColor ||
                     starWarsState.drawSilhouettes != comp.starWarsState.drawSilhouettes ||
-                    starWarsState.selector != comp.starWarsState.selector ||
+                    starWarsState.determinateOrderSelector != comp.starWarsState.determinateOrderSelector ||
+                    starWarsState.indeterminateOrderSelector != comp.starWarsState.indeterminateOrderSelector ||
                     starWarsState.language != comp.starWarsState.language ||
                     starWarsState.determinateEntitySelector != comp.starWarsState.determinateEntitySelector ||
                     starWarsState.indeterminateEntitySelector != comp.starWarsState.indeterminateEntitySelector ||
@@ -72,7 +73,8 @@ internal class StarWarsProgressConfigurable : SearchableConfigurable {
             starWarsState.solidProgressBarColor = component.starWarsState.solidProgressBarColor
             starWarsState.drawSilhouettes = component.starWarsState.drawSilhouettes
             starWarsState.changeAfterPass = component.starWarsState.changeAfterPass
-            starWarsState.selector = component.starWarsState.selector
+            starWarsState.determinateOrderSelector = component.starWarsState.determinateOrderSelector
+            starWarsState.indeterminateOrderSelector = component.starWarsState.indeterminateOrderSelector
             starWarsState.language = component.starWarsState.language
             starWarsState.determinateEntitySelector = component.starWarsState.determinateEntitySelector
             starWarsState.indeterminateEntitySelector = component.starWarsState.indeterminateEntitySelector

@@ -28,6 +28,10 @@ internal class StarWarsPersistentStateComponent : PersistentStateComponent<StarW
             this.state.enableNew = this.state.enableNewVehicles
             this.state.changeAfterPass = this.state.changeVehicleAfterPass
             this.state.numberOfPassesUntilChange = this.state.numberOfPassesUntilVehicleChange
+            // legacy single selector -> map legacy vehicleSelectorOrdinal into new determinate/indeterminate selectors
+            this.state.determinateOrderSelectorOrdinal = this.state.vehicleSelectorOrdinal
+            this.state.indeterminateOrderSelectorOrdinal = this.state.vehicleSelectorOrdinal
+            // keep selectorOrdinal compatible as well
             this.state.selectorOrdinal = this.state.vehicleSelectorOrdinal
         }
     }

@@ -1,10 +1,27 @@
 package com.christopherosthues.starwarsprogressbar.selectors
 
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENTITY_SELECTOR
 import com.christopherosthues.starwarsprogressbar.models.StarWarsEntity
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 
 internal object StarWarsSelector {
+    // backward-compatible overload matching previous 4-arg signature used in tests/consumers
+    fun selectEntity(
+        enabledVehicles: Map<String, Boolean>?,
+        enabledLightsabers: Map<String, Boolean>?,
+        defaultEnabled: Boolean,
+        selectionType: SelectionType,
+    ): StarWarsEntity = selectEntity(
+        enabledVehicles,
+        enabledLightsabers,
+        defaultEnabled,
+        selectionType,
+        false,
+        DEFAULT_ENTITY_SELECTOR,
+        DEFAULT_ENTITY_SELECTOR,
+    )
+
     fun selectEntity(
         enabledVehicles: Map<String, Boolean>?,
         enabledLightsabers: Map<String, Boolean>?,
@@ -48,7 +65,7 @@ internal object StarWarsSelector {
             }
         }
 
-        // TODO: have to split the selectors for determinate and indeterminate
+        // select the proper selector implementation based on the provided selectionType
         val selector = when (selectionType) {
             SelectionType.INORDER_FACTION -> InorderFactionSelector
             SelectionType.INORDER_NAME -> InorderNameSelector

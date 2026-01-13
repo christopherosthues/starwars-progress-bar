@@ -59,14 +59,28 @@ internal class StarWarsState {
 
     var numberOfPassesUntilChange: Int = DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE
 
+    @Deprecated("Use determinateOrderSelectorOrdinal/indeterminateOrderSelectorOrdinal instead")
     var selectorOrdinal: Int = DEFAULT_SELECTOR.ordinal
 
-    internal var selector: SelectionType?
-        get() = selectorOrdinal.let {
+    // new: separate selectors for determinate and indeterminate progress bars
+    var determinateOrderSelectorOrdinal: Int = DEFAULT_SELECTOR.ordinal
+
+    internal var determinateOrderSelector: SelectionType?
+        get() = determinateOrderSelectorOrdinal.let {
             SelectionType.entries.getOrNull(it) ?: DEFAULT_SELECTOR
         }
         set(value) {
-            selectorOrdinal = value?.ordinal ?: DEFAULT_SELECTOR.ordinal
+            determinateOrderSelectorOrdinal = value?.ordinal ?: DEFAULT_SELECTOR.ordinal
+        }
+
+    var indeterminateOrderSelectorOrdinal: Int = DEFAULT_SELECTOR.ordinal
+
+    internal var indeterminateOrderSelector: SelectionType?
+        get() = indeterminateOrderSelectorOrdinal.let {
+            SelectionType.entries.getOrNull(it) ?: DEFAULT_SELECTOR
+        }
+        set(value) {
+            indeterminateOrderSelectorOrdinal = value?.ordinal ?: DEFAULT_SELECTOR.ordinal
         }
 
     var determinateEntitySelectorOrdinal: Int = DEFAULT_ENTITY_SELECTOR.ordinal
@@ -109,7 +123,7 @@ internal class StarWarsState {
     @Deprecated("Use numberOfPassesUntilChange instead")
     var numberOfPassesUntilVehicleChange: Int = DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE
 
-    @Deprecated("Use selectorOrdinal instead")
+    @Deprecated("Use determinateOrderSelectorOrdinal/indeterminateOrderSelectorOrdinal instead")
     var vehicleSelectorOrdinal: Int = DEFAULT_SELECTOR.ordinal
 
     fun copy(starWarsState: StarWarsState) {
@@ -128,7 +142,8 @@ internal class StarWarsState {
         drawSilhouettes = starWarsState.drawSilhouettes
         changeAfterPass = starWarsState.changeAfterPass
         numberOfPassesUntilChange = starWarsState.numberOfPassesUntilChange
-        selector = starWarsState.selector
+        determinateOrderSelector = starWarsState.determinateOrderSelector
+        indeterminateOrderSelector = starWarsState.indeterminateOrderSelector
         determinateEntitySelector = starWarsState.determinateEntitySelector
         indeterminateEntitySelector = starWarsState.indeterminateEntitySelector
         version = starWarsState.version

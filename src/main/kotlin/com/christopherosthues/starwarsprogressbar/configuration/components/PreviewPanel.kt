@@ -112,7 +112,7 @@ internal class PreviewPanel(
             enabledVehicles,
             enabledLightsabers,
             starWarsState.enableNew,
-            starWarsState.selector!!,
+            if (isIndeterminate) starWarsState.indeterminateOrderSelector!! else  starWarsState.determinateOrderSelector!!,
             isIndeterminate,
             starWarsState.determinateEntitySelector!!,
             starWarsState.indeterminateEntitySelector!!,
