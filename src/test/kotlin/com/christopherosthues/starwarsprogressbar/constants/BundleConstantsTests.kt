@@ -63,7 +63,7 @@ class BundleConstantsTests {
             Arguments.of("configuration.selectAll", BundleConstants.SELECT_ALL),
             Arguments.of("configuration.deselectAll", BundleConstants.DESELECT_ALL),
             Arguments.of("configuration.selected", BundleConstants.SELECTED),
-            Arguments.of("configuration.selector", BundleConstants.SELECTOR),
+            Arguments.of("configuration.selector", BundleConstants.ORDER_SELECTOR),
             Arguments.of("vehicles.faction.", BundleConstants.VEHICLES_FACTION),
             Arguments.of("vehicles.", BundleConstants.VEHICLES),
             Arguments.of("lightsabers.faction.", BundleConstants.LIGHTSABERS_FACTION),

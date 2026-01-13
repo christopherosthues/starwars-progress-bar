@@ -83,13 +83,13 @@ internal class UiOptionsPanel(starWarsState: StarWarsState) : JTitledPanel(StarW
     private val numberOfPassesUntilChangeSpinner =
         JBIntSpinner(DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE, MINIMUM_NUMBER_OF_PASSES, MAXIMUM_NUMBER_OF_PASSES)
 
-    private val selectionLabel = JLabel(StarWarsBundle.message(BundleConstants.SELECTOR))
+    private val selectionLabel = JLabel(StarWarsBundle.message(BundleConstants.ORDER_SELECTOR))
     private val selectorComboBox = ComboBox(SelectionType.entries.toTypedArray())
     private val languageLabel = JLabel(StarWarsBundle.message(BundleConstants.LANGUAGE))
     private val languageComboBox = ComboBox(arrayOf(Language.ENGLISH, Language.GERMAN, Language.SPANISH))
-    private val determinateEntitySelectorLabel = JLabel("Determinate Entity Selector") // TODO ggf. übersetzen
+    private val determinateEntitySelectorLabel = JLabel(StarWarsBundle.message(BundleConstants.ENTITY_SELECTOR))
     private val determinateEntitySelectorComboBox = ComboBox(EntitySelectionType.entries.toTypedArray())
-    private val indeterminateEntitySelectorLabel = JLabel("Indeterminate Entity Selector") // TODO ggf. übersetzen
+    private val indeterminateEntitySelectorLabel = JLabel(StarWarsBundle.message(BundleConstants.ENTITY_SELECTOR))
     private val indeterminateEntitySelectorComboBox = ComboBox(EntitySelectionType.entries.toTypedArray())
 
     private var oldLanguage: Language? = null
@@ -284,10 +284,10 @@ internal class UiOptionsPanel(starWarsState: StarWarsState) : JTitledPanel(StarW
                 showIconCheckBox.text = StarWarsBundle.message(BundleConstants.SHOW_ICON)
                 drawSilhouettesCheckBox.text = StarWarsBundle.message(BundleConstants.DRAW_SILHOUETTES)
                 changeAfterPassCheckBox.text = StarWarsBundle.message(BundleConstants.CHANGE_AFTER_PASS)
-                selectionLabel.text = StarWarsBundle.message(BundleConstants.SELECTOR)
+                selectionLabel.text = StarWarsBundle.message(BundleConstants.ORDER_SELECTOR)
                 languageLabel.text = StarWarsBundle.message(BundleConstants.LANGUAGE)
-                determinateEntitySelectorLabel.text = "Determinate Entity Selector" // TODO ggf. übersetzen
-                indeterminateEntitySelectorLabel.text = "Indeterminate Entity Selector" // TODO ggf. übersetzen
+                determinateEntitySelectorLabel.text = StarWarsBundle.message(BundleConstants.ENTITY_SELECTOR)
+                indeterminateEntitySelectorLabel.text = StarWarsBundle.message(BundleConstants.ENTITY_SELECTOR)
             }
         }
     }
