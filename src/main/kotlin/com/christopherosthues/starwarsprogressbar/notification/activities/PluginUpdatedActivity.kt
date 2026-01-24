@@ -22,7 +22,7 @@ import com.intellij.util.text.SemVer
 class PluginUpdatedActivity : ProjectActivity {
     override suspend fun execute(project: Project) {
         val pluginDescriptor = PluginManagerCore.getPlugin(PluginId.getId(PluginConstants.PLUGIN_ID))
-        val starWarsState = StarWarsPersistentStateComponent.instance?.state
+        val starWarsState = StarWarsPersistentStateComponent.instance.state
         if (pluginDescriptor != null && starWarsState != null) {
             val installedVersion = pluginDescriptor.version
             val installedSemanticVersion = SemVer.parseFromText(installedVersion)

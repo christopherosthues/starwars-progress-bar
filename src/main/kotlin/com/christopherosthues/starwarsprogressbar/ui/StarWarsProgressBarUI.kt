@@ -60,23 +60,28 @@ internal class StarWarsProgressBarUI(
     private var numberOfPasses = 0
 
     constructor() : this(
-        { StarWarsPersistentStateComponent.instance?.state },
+        { StarWarsPersistentStateComponent.instance.state },
         selectEntity(
-            StarWarsPersistentStateComponent.instance?.state?.vehiclesEnabled,
-            StarWarsPersistentStateComponent.instance?.state?.lightsabersEnabled,
-            StarWarsPersistentStateComponent.instance?.state?.enableNew ?: DEFAULT_ENABLE_NEW,
+            StarWarsPersistentStateComponent.instance.state?.vehiclesEnabled,
+            StarWarsPersistentStateComponent.instance.state?.lightsabersEnabled,
+            StarWarsPersistentStateComponent.instance.state?.enableNew ?: DEFAULT_ENABLE_NEW,
             // use determinate selector by default for initial construction (not indeterminate)
-            StarWarsPersistentStateComponent.instance?.state?.determinateOrderSelector // TODO: determinate and indeterminate?
+            StarWarsPersistentStateComponent.instance.state?.determinateOrderSelector // TODO: determinate and indeterminate?
                 ?: DEFAULT_SELECTOR,
             false,
-            StarWarsPersistentStateComponent.instance?.state?.determinateEntitySelector ?: DEFAULT_ENTITY_SELECTOR,
-            StarWarsPersistentStateComponent.instance?.state?.indeterminateEntitySelector ?: DEFAULT_ENTITY_SELECTOR,
+            StarWarsPersistentStateComponent.instance.state?.determinateEntitySelector ?: DEFAULT_ENTITY_SELECTOR,
+            StarWarsPersistentStateComponent.instance.state?.indeterminateEntitySelector ?: DEFAULT_ENTITY_SELECTOR,
         ),
     )
 
     init {
         velocity = getVelocity()
         updateDecorator()
+    }
+
+    override fun installUI(c: JComponent?) {
+        super.installUI(c)
+        update()
     }
 
     private fun getVelocity(): Float =

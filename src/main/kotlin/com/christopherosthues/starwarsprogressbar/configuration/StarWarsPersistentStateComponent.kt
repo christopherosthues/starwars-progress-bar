@@ -21,23 +21,24 @@ internal class StarWarsPersistentStateComponent : PersistentStateComponent<StarW
     override fun loadState(state: StarWarsState) {
         XmlSerializerUtil.copyBean(state, this.state)
         val version = SemVer.parseFromText(this.state.version)
-        if (version != null && version < SemVer("2.0.0", 2, 0, 0)) {
-            this.state.showIcon = this.state.showVehicle
-            this.state.showNames = this.state.showVehicleNames
-            this.state.sameVelocity = this.state.sameVehicleVelocity
-            this.state.enableNew = this.state.enableNewVehicles
-            this.state.changeAfterPass = this.state.changeVehicleAfterPass
-            this.state.numberOfPassesUntilChange = this.state.numberOfPassesUntilVehicleChange
-            // legacy single selector -> map legacy vehicleSelectorOrdinal into new determinate/indeterminate selectors
-            this.state.determinateOrderSelectorOrdinal = this.state.vehicleSelectorOrdinal
-            this.state.indeterminateOrderSelectorOrdinal = this.state.vehicleSelectorOrdinal
-            // keep selectorOrdinal compatible as well
-            this.state.selectorOrdinal = this.state.vehicleSelectorOrdinal
+        if (version != null) {
+            if (version < SemVer("2.0.0", 2, 0, 0)) {
+                this.state.showIcon = this.state.showVehicle
+                this.state.showNames = this.state.showVehicleNames
+                this.state.sameVelocity = this.state.sameVehicleVelocity
+                this.state.enableNew = this.state.enableNewVehicles
+                this.state.changeAfterPass = this.state.changeVehicleAfterPass
+                this.state.numberOfPassesUntilChange = this.state.numberOfPassesUntilVehicleChange
+            } else if (version < SemVer("3.0.0", 3, 0, 0)) {
+                this.state.determinateOrderSelectorOrdinal = this.state.vehicleSelectorOrdinal
+                this.state.indeterminateOrderSelectorOrdinal = this.state.vehicleSelectorOrdinal
+                this.state.selectorOrdinal = this.state.vehicleSelectorOrdinal
+            }
         }
     }
 
     companion object {
-        val instance: StarWarsPersistentStateComponent?
+        val instance: StarWarsPersistentStateComponent
             get() = service<StarWarsPersistentStateComponent>()
     }
 }

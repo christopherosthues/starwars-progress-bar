@@ -35,14 +35,14 @@ internal object StarWarsSelector {
         var currentEnabledLightsabers = enabledLightsabers
         if (currentEnabledVehicles == null) {
             val persistentStateComponent = StarWarsPersistentStateComponent.instance
-            val starWarsState = persistentStateComponent?.state ?: return StarWarsFactionHolder.missingVehicle
+            val starWarsState = persistentStateComponent.state ?: return StarWarsFactionHolder.missingVehicle
 
             currentEnabledVehicles = starWarsState.vehiclesEnabled
         }
 
         if (currentEnabledLightsabers == null) {
             val persistentStateComponent = StarWarsPersistentStateComponent.instance
-            val starWarsState = persistentStateComponent?.state ?: return StarWarsFactionHolder.missingVehicle
+            val starWarsState = persistentStateComponent.state ?: return StarWarsFactionHolder.missingVehicle
 
             currentEnabledLightsabers = starWarsState.lightsabersEnabled
         }

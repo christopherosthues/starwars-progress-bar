@@ -29,6 +29,7 @@ internal object BundleConstants {
     const val SELECTED = CONFIGURATION + "selected"
     const val ORDER_SELECTOR = CONFIGURATION + "order.selector"
     const val ENTITY_SELECTOR = CONFIGURATION + "entity.selector"
+    const val SELECTION_OPTIONS = CONFIGURATION + "selectionOptions"
     const val LANGUAGE = CONFIGURATION + "language"
 
     const val VEHICLES = "vehicles."

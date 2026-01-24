@@ -99,6 +99,6 @@ internal class StarWarsProgressConfigurable : SearchableConfigurable {
 
     private fun getStarWarsState(): StarWarsState? {
         val stateComponent = StarWarsPersistentStateComponent.instance
-        return stateComponent?.state
+        return stateComponent.state
     }
 }

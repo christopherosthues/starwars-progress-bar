@@ -3,6 +3,7 @@ package com.christopherosthues.starwarsprogressbar.configuration
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.components.LightsaberPanel
 import com.christopherosthues.starwarsprogressbar.configuration.components.PreviewPanel
+import com.christopherosthues.starwarsprogressbar.configuration.components.SelectionOptionsPanel
 import com.christopherosthues.starwarsprogressbar.configuration.components.UiOptionsPanel
 import com.christopherosthues.starwarsprogressbar.configuration.components.VehiclesPanel
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
@@ -21,6 +22,7 @@ internal class StarWarsProgressConfigurationComponent {
     val starWarsState: StarWarsState = StarWarsState()
 
     private val uiOptionsPanel = UiOptionsPanel(starWarsState)
+    private val selectionOptionsPanel = SelectionOptionsPanel(starWarsState)
 
     private val vehiclesPanel = VehiclesPanel(starWarsState)
 
@@ -39,6 +41,7 @@ internal class StarWarsProgressConfigurationComponent {
         if (starWarsState != null) {
             this.starWarsState.copy(starWarsState)
             uiOptionsPanel.updateUI(starWarsState)
+            selectionOptionsPanel.updateUI(starWarsState)
 
             vehiclesPanel.updateUI(starWarsState)
             lightsabersPanel.updateUI(starWarsState)
@@ -66,6 +69,7 @@ internal class StarWarsProgressConfigurationComponent {
         previewPanel.addPropertyChangeListener(uiOptionsPanel)
         vehiclesPanel.addPropertyChangeListener(uiOptionsPanel)
         lightsabersPanel.addPropertyChangeListener(uiOptionsPanel)
+        selectionOptionsPanel.addPropertyChangeListener(uiOptionsPanel)
     }
 
     private fun createPreviewSection(formBuilder: FormBuilder) {
@@ -83,7 +87,20 @@ internal class StarWarsProgressConfigurationComponent {
                 isVehicleChangeEvent(it.propertyName) ||
                 it.propertyName == DETERMINATE_ENTITY_SELECTOR_EVENT ||
                 it.propertyName == INDETERMINATE_ENTITY_SELECTOR_EVENT ||
-                it.propertyName == VEHICLE_SELECTOR_EVENT
+                it.propertyName == DETERMINATE_ORDER_SELECTOR_EVENT ||
+                it.propertyName == INDETERMINATE_ORDER_SELECTOR_EVENT
+            ) {
+                repaintProgressBar()
+            }
+        }
+        selectionOptionsPanel.addPropertyChangeListener {
+            if (isProgressBarTextEvent(it.propertyName) ||
+                isProgressBarDrawEvent(it.propertyName) ||
+                isVehicleChangeEvent(it.propertyName) ||
+                it.propertyName == DETERMINATE_ENTITY_SELECTOR_EVENT ||
+                it.propertyName == INDETERMINATE_ENTITY_SELECTOR_EVENT ||
+                it.propertyName == DETERMINATE_ORDER_SELECTOR_EVENT ||
+                it.propertyName == INDETERMINATE_ORDER_SELECTOR_EVENT
             ) {
                 repaintProgressBar()
             }
@@ -94,6 +111,7 @@ internal class StarWarsProgressConfigurationComponent {
         }
 
         formBuilder.addComponent(uiOptionsPanel)
+        formBuilder.addComponent(selectionOptionsPanel)
     }
 
     private fun isProgressBarTextEvent(propertyName: String): Boolean =
