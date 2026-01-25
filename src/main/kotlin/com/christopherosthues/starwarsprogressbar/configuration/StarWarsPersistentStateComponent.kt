@@ -32,7 +32,8 @@ internal class StarWarsPersistentStateComponent : PersistentStateComponent<StarW
                 this.state.enableNew = this.state.enableNewVehicles
                 this.state.changeAfterPass = this.state.changeVehicleAfterPass
                 this.state.numberOfPassesUntilChange = this.state.numberOfPassesUntilVehicleChange
-            } else if (version < SemVer("3.0.0", 3, 0, 0)) {
+            }
+            if (version < SemVer("3.0.0", 3, 0, 0)) {
                 log.warn("Migrating StarWarsState from version ${this.state.version}")
                 this.state.determinateOrderSelectorOrdinal = this.state.vehicleSelectorOrdinal
                 this.state.indeterminateOrderSelectorOrdinal = this.state.vehicleSelectorOrdinal

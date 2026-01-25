@@ -8,6 +8,7 @@ import com.intellij.openapi.options.SearchableConfigurable
 import javax.swing.JComponent
 
 internal class StarWarsProgressConfigurable : SearchableConfigurable {
+    private val log = com.intellij.openapi.diagnostic.Logger.getInstance(StarWarsProgressConfigurable::class.java)
     private var component: StarWarsProgressConfigurationComponent? = null
 
     override fun createComponent(): JComponent {
@@ -57,9 +58,11 @@ internal class StarWarsProgressConfigurable : SearchableConfigurable {
             )
 
     override fun apply() {
+        log.warn("Apply new Star Wars Progress Bar configuration settings")
         val starWarsState = getStarWarsState()
         val component = this.component
         if (starWarsState == null) {
+            log.error("StarWarsState is null! Cannot apply configuration settings.")
             throw ConfigurationException("The configuration state cannot be null!")
         } else if (component != null) {
             starWarsState.vehiclesEnabled = component.starWarsState.vehiclesEnabled.toMutableMap()
@@ -89,11 +92,13 @@ internal class StarWarsProgressConfigurable : SearchableConfigurable {
     override fun getId(): String = PluginConstants.PLUGIN_SEARCH_ID
 
     override fun reset() {
+        log.warn("Resetting Star Wars Progress Bar configuration settings")
         val starWarsState = getStarWarsState()
         component?.updateUI(starWarsState)
     }
 
     override fun disposeUIResources() {
+        log.warn("Disposing Star Wars Progress Bar configuration settings")
         component = null
     }
 

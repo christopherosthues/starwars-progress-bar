@@ -24,6 +24,7 @@ private const val HORIZONTAL_GAP = 10
 internal class PreviewPanel(
     private val starWarsState: StarWarsState,
 ) : JTitledPanel(StarWarsBundle.message(BundleConstants.PREVIEW_TITLE)) {
+    private val log = com.intellij.openapi.diagnostic.Logger.getInstance(PreviewPanel::class.java)
 
     private var determinateProgressBarContainer: LabeledComponent<JComponent>
     private var determinateProgressBar: JProgressBar
@@ -36,6 +37,7 @@ internal class PreviewPanel(
 
         val previewButton = JButton(AllIcons.Actions.Refresh)
         previewButton.addActionListener {
+            log.warn("Refresh preview button clicked")
             setProgressBarUI(starWarsState.vehiclesEnabled, starWarsState.lightsabersEnabled)
         }
         var gridBagConstraints = GridBagConstraints()
@@ -50,6 +52,7 @@ internal class PreviewPanel(
         indeterminateProgressBar = JProgressBar()
         indeterminateProgressBar.isIndeterminate = true
 
+        log.warn("Initializing preview panel with default progress bar UIs")
         setProgressBarUI(null, null)
 
         determinateProgressBarContainer = LabeledComponent.create(
@@ -88,6 +91,7 @@ internal class PreviewPanel(
     }
 
     private fun setProgressBarUI(determinateEntity: StarWarsEntity, indeterminateEntity: StarWarsEntity) {
+        log.warn("Setting preview progress bars to determinate entity: $determinateEntity and indeterminate entity: $indeterminateEntity")
         determinateProgressBar.setUI(
             StarWarsProgressBarUI(
                 { starWarsState },
@@ -112,7 +116,8 @@ internal class PreviewPanel(
             enabledVehicles,
             enabledLightsabers,
             starWarsState.enableNew,
-            if (isIndeterminate) starWarsState.indeterminateOrderSelector!! else  starWarsState.determinateOrderSelector!!,
+            starWarsState.determinateOrderSelector!!,
+            starWarsState.indeterminateOrderSelector!!,
             isIndeterminate,
             starWarsState.determinateEntitySelector!!,
             starWarsState.indeterminateEntitySelector!!,
@@ -132,5 +137,12 @@ internal class PreviewPanel(
             determinateProgressBarContainer.text = StarWarsBundle.message(BundleConstants.DETERMINATE)
             indeterminateProgressBarContainer.text = StarWarsBundle.message(BundleConstants.INDETERMINATE)
         }
+    }
+
+    fun updateUI(starWarsState: StarWarsState) {
+        setProgressBarUI(
+            starWarsState.vehiclesEnabled,
+            starWarsState.lightsabersEnabled,
+        )
     }
 }

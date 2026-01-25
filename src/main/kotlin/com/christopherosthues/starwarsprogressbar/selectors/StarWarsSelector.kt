@@ -19,6 +19,7 @@ internal object StarWarsSelector {
         enabledLightsabers,
         defaultEnabled,
         selectionType,
+        selectionType,
         false,
         DEFAULT_ENTITY_SELECTOR,
         DEFAULT_ENTITY_SELECTOR,
@@ -28,7 +29,8 @@ internal object StarWarsSelector {
         enabledVehicles: Map<String, Boolean>?,
         enabledLightsabers: Map<String, Boolean>?,
         defaultEnabled: Boolean,
-        selectionType: SelectionType,
+        determinateSelectionType: SelectionType,
+        indeterminateSelectionType: SelectionType,
         isIndeterminate: Boolean,
         determinateEntitySelectionType: EntitySelectionType,
         indeterminateEntitySelectionType: EntitySelectionType,
@@ -38,7 +40,11 @@ internal object StarWarsSelector {
         if (currentEnabledVehicles == null) {
             logger.warn("No vehicles provided. Loading enabled vehicles from persistent state")
             val persistentStateComponent = StarWarsPersistentStateComponent.instance
-            val starWarsState = persistentStateComponent.state ?: return StarWarsFactionHolder.missingVehicle
+            val starWarsState = persistentStateComponent.state
+            if (starWarsState == null) {
+                logger.warn("Could not load persistent state. Returning missing vehicle.")
+                return StarWarsFactionHolder.missingVehicle
+            }
 
             currentEnabledVehicles = starWarsState.vehiclesEnabled
         }
@@ -46,7 +52,11 @@ internal object StarWarsSelector {
         if (currentEnabledLightsabers == null) {
             logger.warn("No lightsabers provided. Loading enabled lightsabers from persistent state")
             val persistentStateComponent = StarWarsPersistentStateComponent.instance
-            val starWarsState = persistentStateComponent.state ?: return StarWarsFactionHolder.missingVehicle
+            val starWarsState = persistentStateComponent.state
+            if (starWarsState == null) {
+                logger.warn("Could not load persistent state. Returning missing vehicle.")
+                return StarWarsFactionHolder.missingVehicle
+            }
 
             currentEnabledLightsabers = starWarsState.lightsabersEnabled
         }
@@ -57,7 +67,7 @@ internal object StarWarsSelector {
                 currentEnabledVehicles,
                 currentEnabledLightsabers,
                 defaultEnabled,
-                selectionType,
+                indeterminateSelectionType,
                 indeterminateEntitySelectionType
             )
         } else {
@@ -66,7 +76,7 @@ internal object StarWarsSelector {
                 currentEnabledVehicles,
                 currentEnabledLightsabers,
                 defaultEnabled,
-                selectionType,
+                determinateSelectionType,
                 determinateEntitySelectionType
             )
         }

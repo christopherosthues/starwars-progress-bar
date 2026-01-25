@@ -66,7 +66,9 @@ internal class StarWarsProgressBarUI(
             StarWarsPersistentStateComponent.instance.state?.lightsabersEnabled,
             StarWarsPersistentStateComponent.instance.state?.enableNew ?: DEFAULT_ENABLE_NEW,
             // use determinate selector by default for initial construction (not indeterminate)
-            StarWarsPersistentStateComponent.instance.state?.determinateOrderSelector // TODO: determinate and indeterminate?
+            StarWarsPersistentStateComponent.instance.state?.determinateOrderSelector
+                ?: DEFAULT_SELECTOR,
+            StarWarsPersistentStateComponent.instance.state?.indeterminateOrderSelector
                 ?: DEFAULT_SELECTOR,
             false,
             StarWarsPersistentStateComponent.instance.state?.determinateEntitySelector ?: DEFAULT_ENTITY_SELECTOR,
@@ -89,16 +91,13 @@ internal class StarWarsProgressBarUI(
 
     private fun update() {
         val isIndeterminate = progressBar?.isIndeterminate ?: false
-        val selector = if (isIndeterminate)
-            starWarsState()?.indeterminateOrderSelector ?: DEFAULT_SELECTOR
-        else
-            starWarsState()?.determinateOrderSelector ?: DEFAULT_SELECTOR
 
         starWarsEntity = selectEntity(
             starWarsState()?.vehiclesEnabled,
             starWarsState()?.lightsabersEnabled,
             starWarsState()?.enableNew ?: DEFAULT_ENABLE_NEW,
-            selector,
+            starWarsState()?.determinateOrderSelector ?: DEFAULT_SELECTOR,
+            starWarsState()?.indeterminateOrderSelector ?: DEFAULT_SELECTOR,
             isIndeterminate,
             starWarsState()?.determinateEntitySelector ?: DEFAULT_ENTITY_SELECTOR,
             starWarsState()?.indeterminateEntitySelector ?: DEFAULT_ENTITY_SELECTOR,

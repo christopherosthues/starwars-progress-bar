@@ -43,6 +43,8 @@ private const val MAXIMUM_NUMBER_OF_PASSES = 20
 private const val HORIZONTAL_GAP = 8
 
 internal class UiOptionsPanel(starWarsState: StarWarsState) : JTitledPanel(StarWarsBundle.message(BundleConstants.UI_OPTIONS)) {
+    private val log = com.intellij.openapi.diagnostic.Logger.getInstance(UiOptionsPanel::class.java)
+
     private val showNameCheckBox =
         JBCheckBox(StarWarsBundle.message(BundleConstants.SHOW_NAME), DEFAULT_SHOW_NAMES)
     private val showToolTipsCheckBox =
@@ -91,6 +93,7 @@ internal class UiOptionsPanel(starWarsState: StarWarsState) : JTitledPanel(StarW
                 val newLanguage = it.item as Language? ?: DEFAULT_LANGUAGE
                 starWarsState.language = newLanguage
                 StarWarsBundle.setLocale(newLanguage.toLocale())
+                log.warn("User changed language to $newLanguage")
                 firePropertyChange(
                     LANGUAGE_EVENT,
                     oldLanguage,
@@ -103,6 +106,7 @@ internal class UiOptionsPanel(starWarsState: StarWarsState) : JTitledPanel(StarW
         showIconCheckBox.addItemListener {
             val oldValue = starWarsState.showIcon
             val newValue = showIconCheckBox.isSelected
+            log.warn("User changed show icon from $oldValue to $newValue")
             firePropertyChange(
                 SHOW_VEHICLE_EVENT,
                 oldValue,
@@ -113,6 +117,7 @@ internal class UiOptionsPanel(starWarsState: StarWarsState) : JTitledPanel(StarW
         showNameCheckBox.addItemListener {
             val oldValue = starWarsState.showNames
             val newValue = showNameCheckBox.isSelected
+            log.warn("User changed show name from $oldValue to $newValue")
             firePropertyChange(
                 SHOW_VEHICLE_NAMES_EVENT,
                 oldValue,
@@ -123,6 +128,7 @@ internal class UiOptionsPanel(starWarsState: StarWarsState) : JTitledPanel(StarW
         showToolTipsCheckBox.addItemListener {
             val oldValue = starWarsState.showToolTips
             val newValue = showToolTipsCheckBox.isSelected
+            log.warn("User changed show toolTips from $oldValue to $newValue")
             firePropertyChange(
                 SHOW_TOOL_TIPS_EVENT,
                 oldValue,
@@ -133,6 +139,7 @@ internal class UiOptionsPanel(starWarsState: StarWarsState) : JTitledPanel(StarW
         showFactionCrestsCheckBox.addItemListener {
             val oldValue = starWarsState.showNames
             val newValue = showFactionCrestsCheckBox.isSelected
+            log.warn("User changed show faction crest from $oldValue to $newValue")
             firePropertyChange(
                 SHOW_FACTION_CRESTS_EVENT,
                 oldValue,
@@ -143,6 +150,7 @@ internal class UiOptionsPanel(starWarsState: StarWarsState) : JTitledPanel(StarW
         sameVelocityCheckBox.addItemListener {
             val oldValue = starWarsState.showNames
             val newValue = sameVelocityCheckBox.isSelected
+            log.warn("User changed same velocity from $oldValue to $newValue")
             firePropertyChange(
                 SAME_VELOCITY_EVENT,
                 oldValue,
@@ -153,6 +161,7 @@ internal class UiOptionsPanel(starWarsState: StarWarsState) : JTitledPanel(StarW
         enableNewCheckBox.addItemListener {
             val oldValue = starWarsState.enableNew
             val newValue = enableNewCheckBox.isSelected
+            log.warn("User changed enable new check from $oldValue to $newValue")
             firePropertyChange(
                 ENABLE_NEW_VEHICLES_EVENT,
                 oldValue,
@@ -163,6 +172,7 @@ internal class UiOptionsPanel(starWarsState: StarWarsState) : JTitledPanel(StarW
         solidProgressBarColorCheckBox.addItemListener {
             val oldValue = starWarsState.solidProgressBarColor
             val newValue = solidProgressBarColorCheckBox.isSelected
+            log.warn("User changed solidProgressBarColor from $oldValue to $newValue")
             firePropertyChange(
                 SOLID_PROGRESS_BAR_COLOR_EVENT,
                 oldValue,
@@ -173,6 +183,7 @@ internal class UiOptionsPanel(starWarsState: StarWarsState) : JTitledPanel(StarW
         drawSilhouettesCheckBox.addItemListener {
             val oldValue = starWarsState.drawSilhouettes
             val newValue = drawSilhouettesCheckBox.isSelected
+            log.warn("User changed draw silhouettes from $oldValue to $newValue")
             firePropertyChange(
                 DRAW_SILHOUETTES_EVENT,
                 oldValue,
@@ -184,6 +195,7 @@ internal class UiOptionsPanel(starWarsState: StarWarsState) : JTitledPanel(StarW
             val oldValue = starWarsState.changeAfterPass
             val newValue = changeAfterPassCheckBox.isSelected
             numberOfPassesUntilChangeSpinner.isEnabled = newValue
+            log.warn("User changed change after passes from $oldValue to $newValue")
             firePropertyChange(
                 CHANGE_VEHICLE_AFTER_PASS_EVENT,
                 oldValue,
@@ -194,6 +206,7 @@ internal class UiOptionsPanel(starWarsState: StarWarsState) : JTitledPanel(StarW
         numberOfPassesUntilChangeSpinner.addChangeListener {
             val oldValue = starWarsState.numberOfPassesUntilChange
             val newValue = numberOfPassesUntilChangeSpinner.number
+            log.warn("User changed number of passes from $oldValue to $newValue")
             firePropertyChange(
                 NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE_EVENT,
                 oldValue,
