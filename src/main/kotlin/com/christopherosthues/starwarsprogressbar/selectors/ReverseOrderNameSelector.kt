@@ -5,7 +5,7 @@ import com.christopherosthues.starwarsprogressbar.models.StarWarsEntity
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 import java.util.concurrent.atomic.AtomicInteger
 
-internal object ReverseOrderNameSelector : IStarWarsSelector {
+internal class ReverseOrderNameSelector : IStarWarsSelector {
     private val index = AtomicInteger()
 
     override fun selectEntity(

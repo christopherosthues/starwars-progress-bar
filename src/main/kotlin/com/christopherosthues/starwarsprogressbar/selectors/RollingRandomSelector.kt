@@ -4,7 +4,7 @@ import com.christopherosthues.starwarsprogressbar.models.StarWarsEntity
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 import com.christopherosthues.starwarsprogressbar.util.randomInt
 
-internal object RollingRandomSelector : IStarWarsSelector {
+internal class RollingRandomSelector : IStarWarsSelector {
     private val displayedEntities = mutableSetOf<String>()
     private val lock = Any()
 

@@ -6,6 +6,8 @@ import com.christopherosthues.starwarsprogressbar.models.StarWarsEntity
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 
 internal object StarWarsSelector {
+    private val logger = com.intellij.openapi.diagnostic.Logger.getInstance(StarWarsSelector::class.java)
+
     // backward-compatible overload matching previous 4-arg signature used in tests/consumers
     fun selectEntity(
         enabledVehicles: Map<String, Boolean>?,
@@ -34,6 +36,7 @@ internal object StarWarsSelector {
         var currentEnabledVehicles = enabledVehicles
         var currentEnabledLightsabers = enabledLightsabers
         if (currentEnabledVehicles == null) {
+            logger.warn("No vehicles provided. Loading enabled vehicles from persistent state")
             val persistentStateComponent = StarWarsPersistentStateComponent.instance
             val starWarsState = persistentStateComponent.state ?: return StarWarsFactionHolder.missingVehicle
 
@@ -41,6 +44,7 @@ internal object StarWarsSelector {
         }
 
         if (currentEnabledLightsabers == null) {
+            logger.warn("No lightsabers provided. Loading enabled lightsabers from persistent state")
             val persistentStateComponent = StarWarsPersistentStateComponent.instance
             val starWarsState = persistentStateComponent.state ?: return StarWarsFactionHolder.missingVehicle
 
@@ -48,33 +52,23 @@ internal object StarWarsSelector {
         }
 
         if (isIndeterminate) {
-            when (indeterminateEntitySelectionType) {
-                EntitySelectionType.VEHICLES -> currentEnabledLightsabers = currentEnabledLightsabers.keys.associateWith { false }
-                EntitySelectionType.LIGHTSABERS -> currentEnabledVehicles = currentEnabledVehicles.keys.associateWith { false }
-                EntitySelectionType.ALL -> {
-                    // do nothing, both are enabled
-                }
-            }
+            logger.warn("Selecting entities for indeterminate progress bar")
+            return IndeterminateSelector.selectEntity(
+                currentEnabledVehicles,
+                currentEnabledLightsabers,
+                defaultEnabled,
+                selectionType,
+                indeterminateEntitySelectionType
+            )
         } else {
-            when (determinateEntitySelectionType) {
-                EntitySelectionType.VEHICLES -> currentEnabledLightsabers = currentEnabledLightsabers.keys.associateWith { false }
-                EntitySelectionType.LIGHTSABERS -> currentEnabledVehicles = currentEnabledVehicles.keys.associateWith { false }
-                EntitySelectionType.ALL -> {
-                    // do nothing, both are enabled
-                }
-            }
+            logger.warn("Selecting entities for determinate progress bar")
+            return DeterminateSelector.selectEntity(
+                currentEnabledVehicles,
+                currentEnabledLightsabers,
+                defaultEnabled,
+                selectionType,
+                determinateEntitySelectionType
+            )
         }
-
-        // select the proper selector implementation based on the provided selectionType
-        val selector = when (selectionType) {
-            SelectionType.INORDER_FACTION -> InorderFactionSelector
-            SelectionType.INORDER_NAME -> InorderNameSelector
-            SelectionType.RANDOM_ALL -> RandomSelector
-            SelectionType.RANDOM_NOT_DISPLAYED -> RollingRandomSelector
-            SelectionType.REVERSE_ORDER_FACTION -> ReverseOrderFactionSelector
-            SelectionType.REVERSE_ORDER_NAME -> ReverseOrderNameSelector
-        }
-
-        return selector.selectEntity(currentEnabledVehicles, currentEnabledLightsabers, defaultEnabled)
     }
 }

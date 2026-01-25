@@ -4,7 +4,7 @@ import com.christopherosthues.starwarsprogressbar.models.StarWarsEntity
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 import com.christopherosthues.starwarsprogressbar.util.randomInt
 
-internal object RandomSelector : IStarWarsSelector {
+internal class RandomSelector : IStarWarsSelector {
     override fun selectEntity(
         enabledVehicles: Map<String, Boolean>,
         enabledLightsabers: Map<String, Boolean>,
