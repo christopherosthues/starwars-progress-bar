@@ -51,8 +51,8 @@ import javax.swing.plaf.basic.BasicProgressBarUI
 
 internal class StarWarsProgressBarUI(
     private val starWarsState: () -> StarWarsState?,
-    private var starWarsEntity: StarWarsEntity,
 ) : BasicProgressBarUI() {
+    private lateinit var starWarsEntity: StarWarsEntity
     private val vehicleProgressBarDecorator = VehicleProgressBarDecorator(starWarsState)
     private val lightsaberProgressBarDecorator = LightsaberProgressBarDecorator(starWarsState)
     private var velocity = 1f
@@ -61,29 +61,17 @@ internal class StarWarsProgressBarUI(
 
     constructor() : this(
         { StarWarsPersistentStateComponent.instance.state },
-        selectEntity(
-            StarWarsPersistentStateComponent.instance.state?.vehiclesEnabled,
-            StarWarsPersistentStateComponent.instance.state?.lightsabersEnabled,
-            StarWarsPersistentStateComponent.instance.state?.enableNew ?: DEFAULT_ENABLE_NEW,
-            // use determinate selector by default for initial construction (not indeterminate)
-            StarWarsPersistentStateComponent.instance.state?.determinateOrderSelector
-                ?: DEFAULT_SELECTOR,
-            StarWarsPersistentStateComponent.instance.state?.indeterminateOrderSelector
-                ?: DEFAULT_SELECTOR,
-            false,
-            StarWarsPersistentStateComponent.instance.state?.determinateEntitySelector ?: DEFAULT_ENTITY_SELECTOR,
-            StarWarsPersistentStateComponent.instance.state?.indeterminateEntitySelector ?: DEFAULT_ENTITY_SELECTOR,
-        ),
     )
-
-    init {
-        velocity = getVelocity()
-        updateDecorator()
-    }
 
     override fun installUI(c: JComponent?) {
         super.installUI(c)
         update()
+    }
+
+    internal fun setEntity(starWarsEntity: StarWarsEntity) {
+        this.starWarsEntity = starWarsEntity
+        updateDecorator()
+        progressBar.repaint()
     }
 
     private fun getVelocity(): Float =
@@ -102,6 +90,7 @@ internal class StarWarsProgressBarUI(
             starWarsState()?.determinateEntitySelector ?: DEFAULT_ENTITY_SELECTOR,
             starWarsState()?.indeterminateEntitySelector ?: DEFAULT_ENTITY_SELECTOR,
         )
+        velocity = getVelocity()
         updateDecorator()
     }
 

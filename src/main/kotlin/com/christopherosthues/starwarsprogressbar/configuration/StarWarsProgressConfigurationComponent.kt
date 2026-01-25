@@ -109,6 +109,7 @@ internal class StarWarsProgressConfigurationComponent {
                 it.propertyName == INDETERMINATE_ORDER_SELECTOR_EVENT
             ) {
                 log.warn("Repainting progress bar due to property change of selection panel: ${it.propertyName}")
+                // TODO: select new entity based on changed selection options (DETERMINATE_ENTITY_SELECTOR_EVENT, INDETERMINATE_ENTITY_SELECTOR_EVENT)
                 repaintProgressBar()
             }
         }

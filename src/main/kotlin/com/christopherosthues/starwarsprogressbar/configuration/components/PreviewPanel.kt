@@ -28,8 +28,10 @@ internal class PreviewPanel(
 
     private var determinateProgressBarContainer: LabeledComponent<JComponent>
     private var determinateProgressBar: JProgressBar
+    private val determinateProgressBarUI: StarWarsProgressBarUI = StarWarsProgressBarUI { starWarsState }
     private var indeterminateProgressBarContainer: LabeledComponent<JComponent>
     private var indeterminateProgressBar: JProgressBar
+    private val indeterminateProgressBarUI: StarWarsProgressBarUI = StarWarsProgressBarUI { starWarsState }
 
     init {
         val progressBarPanel = JPanel(GridLayout(2, 2, HORIZONTAL_GAP, 0))
@@ -48,9 +50,11 @@ internal class PreviewPanel(
         determinateProgressBar = JProgressBar(0, 100)
         determinateProgressBar.isIndeterminate = false
         determinateProgressBar.value = 50
+        determinateProgressBar.ui = determinateProgressBarUI
 
         indeterminateProgressBar = JProgressBar()
         indeterminateProgressBar.isIndeterminate = true
+        indeterminateProgressBar.ui = indeterminateProgressBarUI
 
         log.warn("Initializing preview panel with default progress bar UIs")
         setProgressBarUI(null, null)
@@ -92,19 +96,8 @@ internal class PreviewPanel(
 
     private fun setProgressBarUI(determinateEntity: StarWarsEntity, indeterminateEntity: StarWarsEntity) {
         log.warn("Setting preview progress bars to determinate entity: $determinateEntity and indeterminate entity: $indeterminateEntity")
-        determinateProgressBar.setUI(
-            StarWarsProgressBarUI(
-                { starWarsState },
-                determinateEntity,
-            ),
-        )
-
-        indeterminateProgressBar.setUI(
-            StarWarsProgressBarUI(
-                { starWarsState },
-                indeterminateEntity,
-            ),
-        )
+        determinateProgressBarUI.setEntity(determinateEntity)
+        indeterminateProgressBarUI.setEntity(indeterminateEntity)
     }
 
     private fun selectEntity(
