@@ -1,10 +1,13 @@
 package com.christopherosthues.starwarsprogressbar.configuration
 
+import com.christopherosthues.starwarsprogressbar.constants.PluginConstants
+import com.intellij.ide.plugins.PluginManagerCore
 import com.intellij.openapi.components.PersistentStateComponent
 import com.intellij.openapi.components.Service
 import com.intellij.openapi.components.State
 import com.intellij.openapi.components.Storage
 import com.intellij.openapi.components.service
+import com.intellij.openapi.extensions.PluginId
 import com.intellij.util.text.SemVer
 import com.intellij.util.xmlb.XmlSerializerUtil
 
@@ -20,12 +23,14 @@ internal class StarWarsPersistentStateComponent : PersistentStateComponent<StarW
     override fun getState(): StarWarsState? = state
 
     override fun loadState(state: StarWarsState) {
-        log.warn("Loading StarWarsState")
+        log.debug("Loading StarWarsState")
         XmlSerializerUtil.copyBean(state, this.state)
         val version = SemVer.parseFromText(this.state.version)
+        val pluginDescriptor = PluginManagerCore.getPlugin(PluginId.getId(PluginConstants.PLUGIN_ID))
+        val installedVersion = pluginDescriptor?.version
         if (version != null) {
             if (version < SemVer("2.0.0", 2, 0, 0)) {
-                log.warn("Migrating StarWarsState from version ${this.state.version}")
+                log.info("Migrating StarWarsState from version ${this.state.version} to ${installedVersion ?: "unknown version"}")
                 this.state.showIcon = this.state.showVehicle
                 this.state.showNames = this.state.showVehicleNames
                 this.state.sameVelocity = this.state.sameVehicleVelocity
@@ -34,13 +39,13 @@ internal class StarWarsPersistentStateComponent : PersistentStateComponent<StarW
                 this.state.numberOfPassesUntilChange = this.state.numberOfPassesUntilVehicleChange
             }
             if (version < SemVer("3.0.0", 3, 0, 0)) {
-                log.warn("Migrating StarWarsState from version ${this.state.version}")
+                log.info("Migrating StarWarsState from version ${this.state.version} to ${installedVersion ?: "unknown version"}")
                 this.state.determinateOrderSelectorOrdinal = this.state.vehicleSelectorOrdinal
                 this.state.indeterminateOrderSelectorOrdinal = this.state.vehicleSelectorOrdinal
                 this.state.selectorOrdinal = this.state.vehicleSelectorOrdinal
             }
         }
-        log.warn("StarWarsState loaded: $this.state")
+        this.state.version = installedVersion ?: this.state.version
     }
 
     companion object {

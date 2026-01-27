@@ -39,7 +39,6 @@ internal class PreviewPanel(
 
         val previewButton = JButton(AllIcons.Actions.Refresh)
         previewButton.addActionListener {
-            log.warn("Refresh preview button clicked")
             setProgressBarUI(starWarsState.vehiclesEnabled, starWarsState.lightsabersEnabled)
         }
         var gridBagConstraints = GridBagConstraints()
@@ -56,7 +55,6 @@ internal class PreviewPanel(
         indeterminateProgressBar.isIndeterminate = true
         indeterminateProgressBar.ui = indeterminateProgressBarUI
 
-        log.warn("Initializing preview panel with default progress bar UIs")
         setProgressBarUI(null, null)
 
         determinateProgressBarContainer = LabeledComponent.create(
@@ -95,7 +93,7 @@ internal class PreviewPanel(
     }
 
     private fun setProgressBarUI(determinateEntity: StarWarsEntity, indeterminateEntity: StarWarsEntity) {
-        log.warn("Setting preview progress bars to determinate entity: $determinateEntity and indeterminate entity: $indeterminateEntity")
+        log.debug("Setting preview progress bars to determinate entity: $determinateEntity and indeterminate entity: $indeterminateEntity")
         determinateProgressBarUI.setEntity(determinateEntity)
         indeterminateProgressBarUI.setEntity(indeterminateEntity)
     }

@@ -6,7 +6,7 @@ import com.christopherosthues.starwarsprogressbar.models.StarWarsEntity
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 
 internal object StarWarsSelector {
-    private val logger = com.intellij.openapi.diagnostic.Logger.getInstance(StarWarsSelector::class.java)
+    private val log = com.intellij.openapi.diagnostic.Logger.getInstance(StarWarsSelector::class.java)
 
     // backward-compatible overload matching previous 4-arg signature used in tests/consumers
     fun selectEntity(
@@ -38,11 +38,11 @@ internal object StarWarsSelector {
         var currentEnabledVehicles = enabledVehicles
         var currentEnabledLightsabers = enabledLightsabers
         if (currentEnabledVehicles == null) {
-            logger.warn("No vehicles provided. Loading enabled vehicles from persistent state")
+            log.debug("No vehicles provided. Loading enabled vehicles from persistent state")
             val persistentStateComponent = StarWarsPersistentStateComponent.instance
             val starWarsState = persistentStateComponent.state
             if (starWarsState == null) {
-                logger.warn("Could not load persistent state. Returning missing vehicle.")
+                log.warn("Could not load persistent state. Returning missing vehicle.")
                 return StarWarsFactionHolder.missingVehicle
             }
 
@@ -50,11 +50,11 @@ internal object StarWarsSelector {
         }
 
         if (currentEnabledLightsabers == null) {
-            logger.warn("No lightsabers provided. Loading enabled lightsabers from persistent state")
+            log.debug("No lightsabers provided. Loading enabled lightsabers from persistent state")
             val persistentStateComponent = StarWarsPersistentStateComponent.instance
             val starWarsState = persistentStateComponent.state
             if (starWarsState == null) {
-                logger.warn("Could not load persistent state. Returning missing vehicle.")
+                log.warn("Could not load persistent state. Returning missing vehicle.")
                 return StarWarsFactionHolder.missingVehicle
             }
 
@@ -62,7 +62,7 @@ internal object StarWarsSelector {
         }
 
         if (isIndeterminate) {
-            logger.warn("Selecting entities for indeterminate progress bar")
+            log.debug("Selecting entities for indeterminate progress bar")
             return IndeterminateSelector.selectEntity(
                 currentEnabledVehicles,
                 currentEnabledLightsabers,
@@ -71,7 +71,7 @@ internal object StarWarsSelector {
                 indeterminateEntitySelectionType
             )
         } else {
-            logger.warn("Selecting entities for determinate progress bar")
+            log.debug("Selecting entities for determinate progress bar")
             return DeterminateSelector.selectEntity(
                 currentEnabledVehicles,
                 currentEnabledLightsabers,
