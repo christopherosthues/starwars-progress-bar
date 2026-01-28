@@ -8,6 +8,8 @@ import com.christopherosthues.starwarsprogressbar.configuration.components.UiOpt
 import com.christopherosthues.starwarsprogressbar.configuration.components.VehiclesPanel
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
 import com.christopherosthues.starwarsprogressbar.models.StarWarsEntity
+import com.christopherosthues.starwarsprogressbar.selectors.EntitySelectionType
+import com.christopherosthues.starwarsprogressbar.selectors.StarWarsSelector
 import com.christopherosthues.starwarsprogressbar.ui.events.StarWarsEntityClickListener
 import com.intellij.ui.components.JBTabbedPane
 import com.intellij.util.ui.FormBuilder
@@ -109,7 +111,44 @@ internal class StarWarsProgressConfigurationComponent {
                 it.propertyName == INDETERMINATE_ORDER_SELECTOR_EVENT
             ) {
                 log.debug("Repainting progress bar due to property change of selection panel: ${it.propertyName}")
-                // TODO: select new entity based on changed selection options (DETERMINATE_ENTITY_SELECTOR_EVENT, INDETERMINATE_ENTITY_SELECTOR_EVENT)
+                when (it.propertyName) {
+                    DETERMINATE_ENTITY_SELECTOR_EVENT -> {
+                        val oldSelector = it.oldValue as? EntitySelectionType
+                        val newSelector = it.newValue as? EntitySelectionType
+                        if (shouldUpdateEntityOnSelectorChange(oldSelector, newSelector)) {
+                            val determinateEntity = StarWarsSelector.selectEntity(
+                                starWarsState.vehiclesEnabled,
+                                starWarsState.lightsabersEnabled,
+                                starWarsState.enableNew,
+                                starWarsState.determinateOrderSelector!!,
+                                starWarsState.indeterminateOrderSelector!!,
+                                false,
+                                newSelector ?: starWarsState.determinateEntitySelector!!,
+                                starWarsState.indeterminateEntitySelector!!,
+                            )
+                            previewPanel.setDeterminateEntity(determinateEntity)
+                        }
+                    }
+                    INDETERMINATE_ENTITY_SELECTOR_EVENT -> {
+                        val oldSelector = it.oldValue as? EntitySelectionType
+                        val newSelector = it.newValue as? EntitySelectionType
+                        if (shouldUpdateEntityOnSelectorChange(oldSelector, newSelector)) {
+                            val indeterminateEntity = StarWarsSelector.selectEntity(
+                                starWarsState.vehiclesEnabled,
+                                starWarsState.lightsabersEnabled,
+                                starWarsState.enableNew,
+                                starWarsState.determinateOrderSelector!!,
+                                starWarsState.indeterminateOrderSelector!!,
+                                true,
+                                starWarsState.determinateEntitySelector!!,
+                                newSelector ?: starWarsState.indeterminateEntitySelector!!,
+                            )
+                            previewPanel.setIndeterminateEntity(indeterminateEntity)
+                        }
+                    }
+                    else -> {}
+                }
+
                 repaintProgressBar()
             }
         }
@@ -157,5 +196,15 @@ internal class StarWarsProgressConfigurationComponent {
                 previewPanel.selectEntity(starWarsEntity)
             }
         })
+    }
+
+    private fun shouldUpdateEntityOnSelectorChange(oldSel: EntitySelectionType?, newSel: EntitySelectionType?): Boolean {
+        // Only update preview entity when the new selector is specific (VEHICLES or LIGHTSABERS)
+        // and the selection actually changed to a different specific kind. Changes that set selector to ALL
+        // should NOT trigger a new entity selection.
+        if (newSel == null) return false
+        if (newSel == EntitySelectionType.ALL) return false
+        if (oldSel == newSel) return false
+        return true
     }
 }

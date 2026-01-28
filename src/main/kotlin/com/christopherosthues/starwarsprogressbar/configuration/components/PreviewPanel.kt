@@ -136,4 +136,15 @@ internal class PreviewPanel(
             starWarsState.lightsabersEnabled,
         )
     }
+
+    // New API: set determinate/indeterminate preview entity individually
+    fun setDeterminateEntity(starWarsEntity: StarWarsEntity) {
+        determinateProgressBarUI.setEntity(starWarsEntity)
+        determinateProgressBar.repaint()
+    }
+
+    fun setIndeterminateEntity(starWarsEntity: StarWarsEntity) {
+        indeterminateProgressBarUI.setEntity(starWarsEntity)
+        indeterminateProgressBar.repaint()
+    }
 }
