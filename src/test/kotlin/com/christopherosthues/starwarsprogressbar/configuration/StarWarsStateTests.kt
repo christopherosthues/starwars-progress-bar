@@ -3,6 +3,7 @@ package com.christopherosthues.starwarsprogressbar.configuration
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_CHANGE_AFTER_PASS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_DRAW_SILHOUETTES
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENABLE_NEW
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENTITY_SELECTOR
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SAME_VELOCITY
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SELECTOR
@@ -13,6 +14,7 @@ import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_TOOLTIP
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRESS_BAR_COLOR
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.selectors.EntitySelectionType
 import com.christopherosthues.starwarsprogressbar.selectors.SelectionType
 import com.intellij.idea.TestFor
 import io.mockk.every
@@ -83,7 +85,10 @@ class StarWarsStateTests {
         val drawSilhouettes = true
         val changeVehicleAfterPass = true
         val numberOfPassesUntilVehicleChange = 1
-        val vehicleSelector = SelectionType.RANDOM_NOT_DISPLAYED
+        val determinateOrderSelector = SelectionType.RANDOM_NOT_DISPLAYED
+        val indeterminateOrderSelector = SelectionType.RANDOM_NOT_DISPLAYED
+        val determinateEntitySelector = EntitySelectionType.VEHICLES
+        val indeterminateEntitySelector = EntitySelectionType.VEHICLES
         val version = "1.0.0"
 
         assertDefaultValues(sut)
@@ -100,7 +105,10 @@ class StarWarsStateTests {
         sut.drawSilhouettes = drawSilhouettes
         sut.changeAfterPass = changeVehicleAfterPass
         sut.numberOfPassesUntilChange = numberOfPassesUntilVehicleChange
-        sut.selector = vehicleSelector
+        sut.determinateOrderSelector = determinateOrderSelector
+        sut.indeterminateOrderSelector = indeterminateOrderSelector
+        sut.determinateEntitySelector = determinateEntitySelector
+        sut.indeterminateEntitySelector = indeterminateEntitySelector
         sut.version = version
 
         // Assert
@@ -115,7 +123,10 @@ class StarWarsStateTests {
             { assertEquals(drawSilhouettes, sut.drawSilhouettes) },
             { assertEquals(changeVehicleAfterPass, sut.changeAfterPass) },
             { assertEquals(numberOfPassesUntilVehicleChange, sut.numberOfPassesUntilChange) },
-            { assertEquals(vehicleSelector, sut.selector) },
+            { assertEquals(determinateOrderSelector, sut.determinateOrderSelector) },
+            { assertEquals(indeterminateOrderSelector, sut.indeterminateOrderSelector) },
+            { assertEquals(determinateEntitySelector, sut.determinateEntitySelector) },
+            { assertEquals(indeterminateEntitySelector, sut.indeterminateEntitySelector) },
             { assertEquals(version, sut.version) },
             { assertTrue(sut.vehiclesEnabled.isNotEmpty()) },
             { assertEquals(2, sut.vehiclesEnabled.size) },
@@ -160,7 +171,10 @@ class StarWarsStateTests {
             { assertEquals(DEFAULT_DRAW_SILHOUETTES, sut.drawSilhouettes) },
             { assertEquals(DEFAULT_CHANGE_AFTER_PASS, sut.changeAfterPass) },
             { assertEquals(DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE, sut.numberOfPassesUntilChange) },
-            { assertEquals(DEFAULT_SELECTOR, sut.selector) },
+            { assertEquals(DEFAULT_SELECTOR, sut.determinateOrderSelector) },
+            { assertEquals(DEFAULT_SELECTOR, sut.indeterminateOrderSelector) },
+            { assertEquals(DEFAULT_ENTITY_SELECTOR, sut.determinateEntitySelector) },
+            { assertEquals(DEFAULT_ENTITY_SELECTOR, sut.indeterminateEntitySelector) },
             { assertEquals("", sut.version) },
             { assertTrue(sut.vehiclesEnabled.isEmpty()) },
         )

@@ -1,5 +1,6 @@
 package com.christopherosthues.starwarsprogressbar.configuration
 
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENTITY_SELECTOR
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SELECTOR
 import com.christopherosthues.starwarsprogressbar.models.Blade
@@ -7,6 +8,7 @@ import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.selectors.EntitySelectionType
 import com.christopherosthues.starwarsprogressbar.selectors.SelectionType
 import com.intellij.idea.TestFor
 import com.intellij.openapi.application.Application
@@ -148,7 +150,10 @@ class StarWarsPersistentStateComponentTests {
             { assertFalse(result!!.solidProgressBarColor) },
             { assertFalse(result!!.drawSilhouettes) },
             { assertFalse(result!!.changeAfterPass) },
-            { assertEquals(DEFAULT_SELECTOR, result!!.selector) },
+            { assertEquals(DEFAULT_SELECTOR, result!!.determinateOrderSelector) },
+            { assertEquals(DEFAULT_SELECTOR, result!!.indeterminateOrderSelector) },
+            { assertEquals(DEFAULT_ENTITY_SELECTOR, result!!.determinateEntitySelector) },
+            { assertEquals(DEFAULT_ENTITY_SELECTOR, result!!.indeterminateEntitySelector) },
             { assertEquals(DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE, result!!.numberOfPassesUntilChange) },
             { assertEquals("", result!!.version) },
         )
@@ -176,7 +181,10 @@ class StarWarsPersistentStateComponentTests {
             changeAfterPass = true
             numberOfPassesUntilChange = 3
             version = expectedVersion
-            selector = SelectionType.INORDER_FACTION
+            determinateOrderSelector = SelectionType.INORDER_FACTION
+            indeterminateOrderSelector = SelectionType.INORDER_FACTION
+            determinateEntitySelector = EntitySelectionType.LIGHTSABERS
+            indeterminateEntitySelector = EntitySelectionType.LIGHTSABERS
         }
 
         mockkStatic(XmlSerializerUtil::class)
@@ -207,7 +215,10 @@ class StarWarsPersistentStateComponentTests {
             { assertEquals(starWarsState.changeAfterPass, result!!.changeAfterPass) },
             { assertEquals(starWarsState.numberOfPassesUntilChange, result!!.numberOfPassesUntilChange) },
             { assertEquals(starWarsState.version, result!!.version) },
-            { assertEquals(starWarsState.selector, result!!.selector) },
+            { assertEquals(starWarsState.determinateOrderSelector, result!!.determinateOrderSelector) },
+            { assertEquals(starWarsState.indeterminateOrderSelector, result!!.indeterminateOrderSelector) },
+            { assertEquals(starWarsState.determinateEntitySelector, result!!.determinateEntitySelector) },
+            { assertEquals(starWarsState.indeterminateEntitySelector, result!!.indeterminateEntitySelector) },
 
             { assertEquals(expectedVehiclesEnabled, result!!.vehiclesEnabled) },
             { assertEquals(expectedLightsabersEnabled, result!!.lightsabersEnabled) },
@@ -220,7 +231,10 @@ class StarWarsPersistentStateComponentTests {
             { assertTrue(result!!.solidProgressBarColor) },
             { assertTrue(result!!.drawSilhouettes) },
             { assertTrue(result!!.changeAfterPass) },
-            { assertEquals(SelectionType.INORDER_FACTION, result!!.selector) },
+            { assertEquals(SelectionType.INORDER_FACTION, result!!.determinateOrderSelector) },
+            { assertEquals(SelectionType.INORDER_FACTION, result!!.indeterminateOrderSelector) },
+            { assertEquals(EntitySelectionType.LIGHTSABERS, result!!.determinateEntitySelector) },
+            { assertEquals(EntitySelectionType.LIGHTSABERS, result!!.indeterminateEntitySelector) },
             { assertEquals(3, result!!.numberOfPassesUntilChange) },
             { assertEquals(expectedVersion, result!!.version) },
         )
@@ -292,7 +306,10 @@ class StarWarsPersistentStateComponentTests {
             { assertFalse(starWarsState!!.solidProgressBarColor) },
             { assertFalse(starWarsState!!.drawSilhouettes) },
             { assertFalse(starWarsState!!.changeAfterPass) },
-            { assertEquals(DEFAULT_SELECTOR, starWarsState!!.selector) },
+            { assertEquals(DEFAULT_SELECTOR, starWarsState!!.determinateOrderSelector) },
+            { assertEquals(DEFAULT_SELECTOR, starWarsState!!.indeterminateOrderSelector) },
+            { assertEquals(DEFAULT_ENTITY_SELECTOR, starWarsState!!.determinateEntitySelector) },
+            { assertEquals(DEFAULT_ENTITY_SELECTOR, starWarsState!!.indeterminateEntitySelector) },
             { assertEquals(DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE, starWarsState!!.numberOfPassesUntilChange) },
             { assertEquals("", starWarsState!!.version) },
         )

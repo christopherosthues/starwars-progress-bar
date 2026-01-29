@@ -115,6 +115,16 @@ internal class StarWarsProgressBarUI(
         return Dimension(super.getPreferredSize(c).width, height)
     }
 
+    override fun getMinimumSize(c: JComponent?): Dimension {
+        var height = super.getMinimumSize(c).height
+        if (starWarsEntity is StarWarsVehicle) {
+            height = vehicleProgressBarDecorator.getHeight()
+        } else if (starWarsEntity is Lightsabers) {
+            height = lightsaberProgressBarDecorator.getHeight()
+        }
+        return Dimension(super.getMinimumSize(c).width, height)
+    }
+
     override fun paintIndeterminate(g: Graphics?, c: JComponent?) {
         paintProgressBar(g, c, false)
         updatePositionAndVelocity(progressBar)

@@ -18,7 +18,7 @@ internal abstract class AbstractEntitySelector {
         selectionType: SelectionType,
         entitySelectionType: EntitySelectionType
     ): StarWarsEntity {
-        logger.warn("Selecting entity with defaultEnabled=$defaultEnabled and selectionType=$selectionType and entitySelectionType=$entitySelectionType")
+        logger.debug("Selecting entity with defaultEnabled=$defaultEnabled and selectionType=$selectionType and entitySelectionType=$entitySelectionType")
         var currentEnabledVehicles = enabledVehicles
         var currentEnabledLightsabers = enabledLightsabers
 

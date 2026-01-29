@@ -4,6 +4,7 @@ import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
 import com.christopherosthues.starwarsprogressbar.constants.PluginConstants
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
+import com.christopherosthues.starwarsprogressbar.selectors.EntitySelectionType
 import com.christopherosthues.starwarsprogressbar.selectors.SelectionType
 import com.intellij.idea.TestFor
 import com.intellij.openapi.options.ConfigurationException
@@ -132,7 +133,10 @@ class StarWarsProgressConfigurableTests {
         drawSilhouettes: Boolean,
         changeVehicleAfterPass: Boolean = false,
         numberOfPassesUntilVehicleChange: Int = 2,
-        vehicleSelector: SelectionType = SelectionType.RANDOM_ALL,
+        determinateOrderSelector: SelectionType = SelectionType.RANDOM_ALL,
+        indeterminateOrderSelector: SelectionType = SelectionType.RANDOM_ALL,
+        determinateEntitySelector: EntitySelectionType = EntitySelectionType.ALL,
+        indeterminateEntitySelector: EntitySelectionType = EntitySelectionType.ALL,
     ) {
         // Arrange
         setupStarWarsState(
@@ -148,7 +152,10 @@ class StarWarsProgressConfigurableTests {
             drawSilhouettes,
             changeVehicleAfterPass,
             numberOfPassesUntilVehicleChange,
-            vehicleSelector,
+            determinateOrderSelector,
+            indeterminateOrderSelector,
+            determinateEntitySelector,
+            indeterminateEntitySelector,
         )
         setupComponentState(
             enabledVehicles,
@@ -163,7 +170,10 @@ class StarWarsProgressConfigurableTests {
             drawSilhouettes,
             changeVehicleAfterPass,
             numberOfPassesUntilVehicleChange,
-            vehicleSelector,
+            determinateOrderSelector,
+            indeterminateOrderSelector,
+            determinateEntitySelector,
+            indeterminateEntitySelector,
         )
         val sut = StarWarsProgressConfigurable()
         sut.createComponent()
@@ -213,7 +223,10 @@ class StarWarsProgressConfigurableTests {
             starWarsStateData.drawSilhouettes,
             starWarsStateData.changeVehicleAfterPass,
             starWarsStateData.numberOfPassesUntilVehicleChange,
-            starWarsStateData.vehicleSelector,
+            starWarsStateData.determinateOrderSelector,
+            starWarsStateData.indeterminateOrderSelector,
+            starWarsStateData.determinateEntitySelector,
+            starWarsStateData.indeterminateEntitySelector,
             starWarsStateData.language,
         )
         setupComponentState(
@@ -229,7 +242,10 @@ class StarWarsProgressConfigurableTests {
             componentStateData.drawSilhouettes,
             componentStateData.changeVehicleAfterPass,
             componentStateData.numberOfPassesUntilVehicleChange,
-            componentStateData.vehicleSelector,
+            componentStateData.determinateOrderSelector,
+            componentStateData.indeterminateOrderSelector,
+            componentStateData.determinateEntitySelector,
+            componentStateData.indeterminateEntitySelector,
             componentStateData.language,
         )
         val sut = StarWarsProgressConfigurable()
@@ -284,7 +300,10 @@ class StarWarsProgressConfigurableTests {
         verify(exactly = 0) { starWarsStateMock.drawSilhouettes }
         verify(exactly = 0) { starWarsStateMock.changeAfterPass }
         verify(exactly = 0) { starWarsStateMock.numberOfPassesUntilChange }
-        verify(exactly = 0) { starWarsStateMock.selector }
+        verify(exactly = 0) { starWarsStateMock.determinateEntitySelector }
+        verify(exactly = 0) { starWarsStateMock.indeterminateEntitySelector }
+        verify(exactly = 0) { starWarsStateMock.determinateOrderSelector }
+        verify(exactly = 0) { starWarsStateMock.indeterminateOrderSelector }
         verify(exactly = 0) { starWarsStateMock.language }
     }
 
@@ -303,7 +322,10 @@ class StarWarsProgressConfigurableTests {
         drawSilhouettes: Boolean = false,
         changeVehicleAfterPass: Boolean = false,
         numberOfPassesUntilVehicleChange: Int = 2,
-        vehicleSelector: SelectionType = SelectionType.RANDOM_ALL,
+        determinateOrderSelector: SelectionType = SelectionType.RANDOM_ALL,
+        indeterminateOrderSelector: SelectionType = SelectionType.RANDOM_ALL,
+        determinateEntitySelector: EntitySelectionType = EntitySelectionType.ALL,
+        indeterminateEntitySelector: EntitySelectionType = EntitySelectionType.ALL,
         language: Language = Language.ENGLISH,
     ) {
         // Arrange
@@ -321,7 +343,10 @@ class StarWarsProgressConfigurableTests {
             drawSilhouettes,
             changeVehicleAfterPass,
             numberOfPassesUntilVehicleChange,
-            vehicleSelector,
+            determinateOrderSelector,
+            indeterminateOrderSelector,
+            determinateEntitySelector,
+            indeterminateEntitySelector,
             language,
         )
         val sut = StarWarsProgressConfigurable()
@@ -341,7 +366,10 @@ class StarWarsProgressConfigurableTests {
         verify(exactly = 1) { starWarsStateMock.solidProgressBarColor = solidProgressBarColor }
         verify(exactly = 1) { starWarsStateMock.drawSilhouettes = drawSilhouettes }
         verify(exactly = 1) { starWarsStateMock.changeAfterPass = changeVehicleAfterPass }
-        verify(exactly = 1) { starWarsStateMock.selector = vehicleSelector }
+        verify(exactly = 1) { starWarsStateMock.determinateEntitySelector }
+        verify(exactly = 1) { starWarsStateMock.indeterminateEntitySelector }
+        verify(exactly = 1) { starWarsStateMock.determinateOrderSelector }
+        verify(exactly = 1) { starWarsStateMock.indeterminateOrderSelector }
         verify(exactly = 1) { starWarsStateMock.language = language }
         verify(exactly = numberOfPassesSet) { starWarsStateMock.numberOfPassesUntilChange = numberOfPassesUntilVehicleChange }
         assertEquals(enabledVehicles, starWarsStateMock.vehiclesEnabled, StarWarsState::vehiclesEnabled.name)
@@ -498,7 +526,10 @@ class StarWarsProgressConfigurableTests {
         drawSilhouettes: Boolean = false,
         changeVehicleAfterPass: Boolean = false,
         numberOfPassesUntilVehicleChange: Int = 2,
-        vehicleSelector: SelectionType = SelectionType.RANDOM_ALL,
+        determinateOrderSelector: SelectionType = SelectionType.RANDOM_ALL,
+        indeterminateOrderSelector: SelectionType = SelectionType.RANDOM_ALL,
+        determinateEntitySelector: EntitySelectionType = EntitySelectionType.ALL,
+        indeterminateEntitySelector: EntitySelectionType = EntitySelectionType.ALL,
         language: Language = Language.ENGLISH,
     ): StarWarsState {
         val starWarsStateMock = mockk<StarWarsState>()
@@ -514,7 +545,10 @@ class StarWarsProgressConfigurableTests {
         every { starWarsStateMock.drawSilhouettes } returns drawSilhouettes
         every { starWarsStateMock.changeAfterPass } returns changeVehicleAfterPass
         every { starWarsStateMock.numberOfPassesUntilChange } returns numberOfPassesUntilVehicleChange
-        every { starWarsStateMock.selector } returns vehicleSelector
+        every { starWarsStateMock.determinateOrderSelector } returns determinateOrderSelector
+        every { starWarsStateMock.indeterminateOrderSelector } returns indeterminateOrderSelector
+        every { starWarsStateMock.determinateEntitySelector } returns determinateEntitySelector
+        every { starWarsStateMock.indeterminateEntitySelector } returns indeterminateEntitySelector
         every { starWarsStateMock.version } returns ""
         every { starWarsStateMock.language } returns language
         val starWarsPersistentStateComponentMock = mockk<StarWarsPersistentStateComponent>(relaxed = true)
@@ -537,7 +571,10 @@ class StarWarsProgressConfigurableTests {
         drawSilhouettes: Boolean = false,
         changeVehicleAfterPass: Boolean = false,
         numberOfPassesUntilVehicleChange: Int = 2,
-        vehicleSelector: SelectionType = SelectionType.RANDOM_ALL,
+        determinateOrderSelector: SelectionType = SelectionType.RANDOM_ALL,
+        indeterminateOrderSelector: SelectionType = SelectionType.RANDOM_ALL,
+        determinateEntitySelector: EntitySelectionType = EntitySelectionType.ALL,
+        indeterminateEntitySelector: EntitySelectionType = EntitySelectionType.ALL,
         language: Language = Language.ENGLISH,
     ) {
         val starWarsState = StarWarsState()
@@ -553,7 +590,10 @@ class StarWarsProgressConfigurableTests {
         starWarsState.drawSilhouettes = drawSilhouettes
         starWarsState.changeAfterPass = changeVehicleAfterPass
         starWarsState.numberOfPassesUntilChange = numberOfPassesUntilVehicleChange
-        starWarsState.selector = vehicleSelector
+        starWarsState.determinateOrderSelector = determinateOrderSelector
+        starWarsState.indeterminateOrderSelector = indeterminateOrderSelector
+        starWarsState.determinateEntitySelector = determinateEntitySelector
+        starWarsState.indeterminateEntitySelector = indeterminateEntitySelector
         starWarsState.language = language
         every { starWarsProgressConfigurationComponentMock.starWarsState } returns starWarsState
     }
@@ -575,14 +615,35 @@ class StarWarsProgressConfigurableTests {
         val drawSilhouettes: Boolean = false,
         val changeVehicleAfterPass: Boolean = false,
         val numberOfPassesUntilVehicleChange: Int = 2,
-        val vehicleSelector: SelectionType = SelectionType.RANDOM_ALL,
+        val determinateOrderSelector: SelectionType = SelectionType.RANDOM_ALL,
+        val indeterminateOrderSelector: SelectionType = SelectionType.RANDOM_ALL,
+        val determinateEntitySelector: EntitySelectionType = EntitySelectionType.ALL,
+        val indeterminateEntitySelector: EntitySelectionType = EntitySelectionType.ALL,
         val language: Language = Language.ENGLISH,
     )
 
     companion object {
         @JvmStatic
         fun isNotModifiedValues(): Stream<Arguments> = Stream.of(
-            Arguments.of(mapOf<String, Boolean>(), mapOf<String, Boolean>(), true, false, true, false, true, false, true, false, false, 2, SelectionType.RANDOM_ALL, Language.ENGLISH),
+            Arguments.of(
+                mapOf<String, Boolean>(),
+                mapOf<String, Boolean>(),
+                true,
+                false,
+                true,
+                false,
+                true,
+                false,
+                true,
+                false,
+                false,
+                2,
+                SelectionType.RANDOM_ALL,
+                SelectionType.RANDOM_ALL,
+                EntitySelectionType.ALL,
+                EntitySelectionType.ALL,
+                Language.ENGLISH
+            ),
             Arguments.of(
                 mapOf("1" to true, "2" to false),
                 mapOf("1" to true, "2" to false),
@@ -597,6 +658,9 @@ class StarWarsProgressConfigurableTests {
                 true,
                 2,
                 SelectionType.RANDOM_ALL,
+                SelectionType.RANDOM_ALL,
+                EntitySelectionType.ALL,
+                EntitySelectionType.ALL,
                 Language.ENGLISH,
             ),
             Arguments.of(
@@ -613,6 +677,9 @@ class StarWarsProgressConfigurableTests {
                 true,
                 4,
                 SelectionType.RANDOM_NOT_DISPLAYED,
+                SelectionType.RANDOM_NOT_DISPLAYED,
+                EntitySelectionType.LIGHTSABERS,
+                EntitySelectionType.LIGHTSABERS,
                 Language.GERMAN,
             ),
             Arguments.of(
@@ -629,6 +696,9 @@ class StarWarsProgressConfigurableTests {
                 false,
                 4,
                 SelectionType.RANDOM_NOT_DISPLAYED,
+                SelectionType.RANDOM_NOT_DISPLAYED,
+                EntitySelectionType.LIGHTSABERS,
+                EntitySelectionType.LIGHTSABERS,
                 Language.GERMAN,
             ),
         )
@@ -655,8 +725,14 @@ class StarWarsProgressConfigurableTests {
             Arguments.of(IsModifiedData(solidProgressBarColor = true), IsModifiedData()),
             Arguments.of(IsModifiedData(), IsModifiedData(mutableMapOf(), drawSilhouettes = true)),
             Arguments.of(IsModifiedData(drawSilhouettes = true), IsModifiedData()),
-            Arguments.of(IsModifiedData(), IsModifiedData(mutableMapOf(), vehicleSelector = SelectionType.INORDER_NAME)),
-            Arguments.of(IsModifiedData(vehicleSelector = SelectionType.INORDER_NAME), IsModifiedData()),
+            Arguments.of(IsModifiedData(), IsModifiedData(mutableMapOf(), determinateOrderSelector = SelectionType.INORDER_NAME)),
+            Arguments.of(IsModifiedData(determinateOrderSelector = SelectionType.INORDER_NAME), IsModifiedData()),
+            Arguments.of(IsModifiedData(), IsModifiedData(mutableMapOf(), indeterminateOrderSelector = SelectionType.INORDER_NAME)),
+            Arguments.of(IsModifiedData(indeterminateOrderSelector = SelectionType.INORDER_NAME), IsModifiedData()),
+            Arguments.of(IsModifiedData(), IsModifiedData(mutableMapOf(), determinateEntitySelector = EntitySelectionType.VEHICLES)),
+            Arguments.of(IsModifiedData(determinateEntitySelector = EntitySelectionType.VEHICLES), IsModifiedData()),
+            Arguments.of(IsModifiedData(), IsModifiedData(mutableMapOf(), indeterminateEntitySelector = EntitySelectionType.VEHICLES)),
+            Arguments.of(IsModifiedData(indeterminateEntitySelector = EntitySelectionType.VEHICLES), IsModifiedData()),
             Arguments.of(IsModifiedData(changeVehicleAfterPass = true), IsModifiedData()),
             Arguments.of(IsModifiedData(), IsModifiedData(changeVehicleAfterPass = true)),
             Arguments.of(IsModifiedData(changeVehicleAfterPass = true, numberOfPassesUntilVehicleChange = 4), IsModifiedData()),
