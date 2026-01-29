@@ -28,6 +28,8 @@ import java.util.stream.Stream
 class InorderNameSelectorTests {
     //region Test lifecycle
 
+    private var sut = InorderFactionSelector()
+
     @BeforeEach
     fun setup() {
         mockkStatic(StarWarsBundle::message)
@@ -35,12 +37,12 @@ class InorderNameSelectorTests {
         mockkObject(StarWarsPersistentStateComponent)
 
         every { StarWarsFactionHolder.missingVehicle } returns missingVehicle
+        sut = InorderFactionSelector()
     }
 
     @AfterEach
     fun tearDown() {
         unmockkAll()
-        InorderNameSelector.reset()
     }
 
     //endregion
@@ -57,7 +59,7 @@ class InorderNameSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         // Act
-        val result = InorderNameSelector.selectEntity(mapOf(), mapOf(), defaultEnabled)
+        val result = sut.selectEntity(mapOf(), mapOf(), defaultEnabled)
 
         // Assert
         assertEquals(missingVehicle, result)
@@ -73,7 +75,7 @@ class InorderNameSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         // Act
-        val result = InorderNameSelector.selectEntity(
+        val result = sut.selectEntity(
             mapOf("1.1" to true, "1.2" to false, "1.3" to true),
             mapOf(),
             defaultEnabled,
@@ -93,7 +95,7 @@ class InorderNameSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         // Act
-        val result = InorderNameSelector.selectEntity(
+        val result = sut.selectEntity(
             mapOf(),
             mapOf("3.1" to true, "3.2" to false, "3.3" to true),
             defaultEnabled,
@@ -113,7 +115,7 @@ class InorderNameSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         // Act
-        val result = InorderNameSelector.selectEntity(
+        val result = sut.selectEntity(
             mapOf("1.1" to true, "1.2" to false, "1.3" to true),
             mapOf("3.1" to true, "3.2" to false, "3.3" to true),
             defaultEnabled,
@@ -134,7 +136,7 @@ class InorderNameSelectorTests {
 
         // Act
         val result =
-            InorderNameSelector.selectEntity(mapOf("1.1" to enabled, "1.2" to enabled, "1.3" to enabled), mapOf(), true)
+            sut.selectEntity(mapOf("1.1" to enabled, "1.2" to enabled, "1.3" to enabled), mapOf(), true)
 
         // Assert
         assertEquals(missingVehicle, result)
@@ -151,7 +153,7 @@ class InorderNameSelectorTests {
 
         // Act
         val result =
-            InorderNameSelector.selectEntity(mapOf(), mapOf("3.1" to enabled, "3.2" to enabled, "3.3" to enabled), true)
+            sut.selectEntity(mapOf(), mapOf("3.1" to enabled, "3.2" to enabled, "3.3" to enabled), true)
 
         // Assert
         assertEquals(missingVehicle, result)
@@ -168,7 +170,7 @@ class InorderNameSelectorTests {
 
         // Act
         val result =
-            InorderNameSelector.selectEntity(
+            sut.selectEntity(
                 mapOf("1.1" to enabled, "1.2" to enabled, "1.3" to enabled),
                 mapOf("3.1" to enabled, "3.2" to enabled, "3.3" to enabled),
                 true,
@@ -185,7 +187,7 @@ class InorderNameSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         // Act
-        val result = InorderNameSelector.selectEntity(mapOf(), mapOf(), false)
+        val result = sut.selectEntity(mapOf(), mapOf(), false)
 
         // Assert
         assertEquals(missingVehicle, result)
@@ -198,7 +200,7 @@ class InorderNameSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns createLightsabers()
 
         // Act
-        val result = InorderNameSelector.selectEntity(mapOf(), mapOf(), false)
+        val result = sut.selectEntity(mapOf(), mapOf(), false)
 
         // Assert
         assertEquals(missingVehicle, result)
@@ -211,7 +213,7 @@ class InorderNameSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns createLightsabers()
 
         // Act
-        val result = InorderNameSelector.selectEntity(mapOf(), mapOf(), false)
+        val result = sut.selectEntity(mapOf(), mapOf(), false)
 
         // Assert
         assertEquals(missingVehicle, result)
@@ -228,7 +230,7 @@ class InorderNameSelectorTests {
 
         // Act
         val result =
-            InorderNameSelector.selectEntity(
+            sut.selectEntity(
                 mapOf("1.1" to false, "1.2" to false, "1.3" to false),
                 mapOf(),
                 defaultEnabled,
@@ -249,7 +251,7 @@ class InorderNameSelectorTests {
 
         // Act
         val result =
-            InorderNameSelector.selectEntity(
+            sut.selectEntity(
                 mapOf(),
                 mapOf("3.1" to false, "3.2" to false, "3.3" to false),
                 defaultEnabled,
@@ -270,7 +272,7 @@ class InorderNameSelectorTests {
 
         // Act
         val result =
-            InorderNameSelector.selectEntity(
+            sut.selectEntity(
                 mapOf("1.1" to false, "1.2" to false, "1.3" to false),
                 mapOf("3.1" to false, "3.2" to false, "3.3" to false),
                 defaultEnabled,
@@ -291,7 +293,7 @@ class InorderNameSelectorTests {
         var result = mutableListOf<StarWarsEntity>()
         repeat(vehicles.indices.count()) {
             result.add(
-                InorderNameSelector.selectEntity(
+                sut.selectEntity(
                     mapOf("1.1" to true, "1.2" to true, "1.3" to true),
                     mapOf(),
                     true,
@@ -318,7 +320,7 @@ class InorderNameSelectorTests {
         result = mutableListOf()
         repeat(vehicles.indices.count()) {
             result.add(
-                InorderNameSelector.selectEntity(
+                sut.selectEntity(
                     mapOf("1.1" to true, "1.2" to true, "1.3" to true),
                     mapOf(),
                     true,
@@ -338,7 +340,7 @@ class InorderNameSelectorTests {
         result = mutableListOf()
         repeat(vehicles.indices.count()) {
             result.add(
-                InorderNameSelector.selectEntity(
+                sut.selectEntity(
                     mapOf("1.1" to true, "1.2" to false, "1.3" to true),
                     mapOf(),
                     true,
@@ -358,7 +360,7 @@ class InorderNameSelectorTests {
         result = mutableListOf()
         repeat(vehicles.indices.count()) {
             result.add(
-                InorderNameSelector.selectEntity(
+                sut.selectEntity(
                     mapOf("1.1" to true, "1.2" to false),
                     mapOf(),
                     true,
@@ -378,7 +380,7 @@ class InorderNameSelectorTests {
         result = mutableListOf()
         repeat(vehicles.indices.count()) {
             result.add(
-                InorderNameSelector.selectEntity(
+                sut.selectEntity(
                     mapOf("1.1" to true, "1.2" to false),
                     mapOf(),
                     false,
@@ -406,7 +408,7 @@ class InorderNameSelectorTests {
         var result = mutableListOf<StarWarsEntity>()
         repeat(lightsabers.indices.count()) {
             result.add(
-                InorderNameSelector.selectEntity(
+                sut.selectEntity(
                     mapOf(),
                     mapOf("3.1" to true, "3.2" to true, "3.3" to true),
                     true,
@@ -433,7 +435,7 @@ class InorderNameSelectorTests {
         result = mutableListOf()
         repeat(lightsabers.indices.count()) {
             result.add(
-                InorderNameSelector.selectEntity(
+                sut.selectEntity(
                     mapOf(),
                     mapOf("3.1" to true, "3.2" to true, "3.3" to true),
                     true,
@@ -453,7 +455,7 @@ class InorderNameSelectorTests {
         result = mutableListOf()
         repeat(lightsabers.indices.count()) {
             result.add(
-                InorderNameSelector.selectEntity(
+                sut.selectEntity(
                     mapOf(),
                     mapOf("3.1" to true, "3.2" to false, "3.3" to true),
                     true,
@@ -473,7 +475,7 @@ class InorderNameSelectorTests {
         result = mutableListOf()
         repeat(lightsabers.indices.count()) {
             result.add(
-                InorderNameSelector.selectEntity(
+                sut.selectEntity(
                     mapOf(),
                     mapOf("3.1" to true, "3.2" to false),
                     true,
@@ -493,7 +495,7 @@ class InorderNameSelectorTests {
         result = mutableListOf()
         repeat(lightsabers.indices.count()) {
             result.add(
-                InorderNameSelector.selectEntity(
+                sut.selectEntity(
                     mapOf(),
                     mapOf("3.1" to true, "3.2" to false),
                     false,
@@ -523,7 +525,7 @@ class InorderNameSelectorTests {
         var result = mutableListOf<StarWarsEntity>()
         repeat(entities.indices.count()) {
             result.add(
-                InorderNameSelector.selectEntity(
+                sut.selectEntity(
                     mapOf("1.1" to true, "1.2" to true, "1.3" to true),
                     mapOf("3.1" to true, "3.2" to true, "3.3" to true),
                     true,
@@ -558,7 +560,7 @@ class InorderNameSelectorTests {
         result = mutableListOf()
         repeat(entities.indices.count()) {
             result.add(
-                InorderNameSelector.selectEntity(
+                sut.selectEntity(
                     mapOf("1.1" to true, "1.2" to true, "1.3" to true),
                     mapOf("3.1" to true, "3.2" to true, "3.3" to true),
                     true,
@@ -581,7 +583,7 @@ class InorderNameSelectorTests {
         result = mutableListOf()
         repeat(entities.indices.count()) {
             result.add(
-                InorderNameSelector.selectEntity(
+                sut.selectEntity(
                     mapOf("1.1" to true, "1.2" to false, "1.3" to true),
                     mapOf("3.1" to true, "3.2" to false, "3.3" to true),
                     true,
@@ -604,7 +606,7 @@ class InorderNameSelectorTests {
         result = mutableListOf()
         repeat(entities.indices.count()) {
             result.add(
-                InorderNameSelector.selectEntity(
+                sut.selectEntity(
                     mapOf("1.1" to true, "1.2" to false),
                     mapOf("3.1" to true, "3.2" to false),
                     true,
@@ -627,7 +629,7 @@ class InorderNameSelectorTests {
         result = mutableListOf()
         repeat(entities.indices.count()) {
             result.add(
-                InorderNameSelector.selectEntity(
+                sut.selectEntity(
                     mapOf("1.1" to true, "1.2" to false),
                     mapOf("3.1" to true, "3.2" to false),
                     false,

@@ -27,6 +27,8 @@ import java.util.stream.Stream
 class ReverseOrderFactionSelectorTests {
     //region Test lifecycle
 
+    private var sut = ReverseOrderFactionSelector()
+
     @BeforeEach
     fun setup() {
         mockkStatic(StarWarsBundle::message)
@@ -34,12 +36,12 @@ class ReverseOrderFactionSelectorTests {
         mockkObject(StarWarsPersistentStateComponent)
 
         every { StarWarsFactionHolder.missingVehicle } returns missingVehicle
+        sut = ReverseOrderFactionSelector()
     }
 
     @AfterEach
     fun tearDown() {
         unmockkAll()
-        ReverseOrderFactionSelector.reset()
     }
 
     //endregion
@@ -56,7 +58,7 @@ class ReverseOrderFactionSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         // Act
-        val result = ReverseOrderFactionSelector.selectEntity(mapOf(), mapOf(), defaultEnabled)
+        val result = sut.selectEntity(mapOf(), mapOf(), defaultEnabled)
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -72,7 +74,7 @@ class ReverseOrderFactionSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         // Act
-        val result = ReverseOrderFactionSelector.selectEntity(
+        val result = sut.selectEntity(
             mapOf("2.1" to true, "1.2" to false, "1.3" to true),
             mapOf(),
             defaultEnabled,
@@ -92,7 +94,7 @@ class ReverseOrderFactionSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         // Act
-        val result = ReverseOrderFactionSelector.selectEntity(
+        val result = sut.selectEntity(
             mapOf(),
             mapOf("4.1" to true, "3.2" to false, "3.3" to true),
             defaultEnabled,
@@ -112,7 +114,7 @@ class ReverseOrderFactionSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         // Act
-        val result = ReverseOrderFactionSelector.selectEntity(
+        val result = sut.selectEntity(
             mapOf("2.1" to true, "1.2" to false, "1.3" to true),
             mapOf("4.1" to true, "3.2" to false, "3.3" to true),
             defaultEnabled,
@@ -133,7 +135,7 @@ class ReverseOrderFactionSelectorTests {
 
         // Act
         val result =
-            ReverseOrderFactionSelector.selectEntity(
+            sut.selectEntity(
                 mapOf(
                     "2.1" to enabled,
                     "1.2" to enabled,
@@ -158,7 +160,7 @@ class ReverseOrderFactionSelectorTests {
 
         // Act
         val result =
-            ReverseOrderFactionSelector.selectEntity(
+            sut.selectEntity(
                 mapOf(),
                 mapOf(
                     "4.1" to enabled,
@@ -183,7 +185,7 @@ class ReverseOrderFactionSelectorTests {
 
         // Act
         val result =
-            ReverseOrderFactionSelector.selectEntity(
+            sut.selectEntity(
                 mapOf(
                     "2.1" to enabled,
                     "1.2" to enabled,
@@ -208,7 +210,7 @@ class ReverseOrderFactionSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         // Act
-        val result = ReverseOrderFactionSelector.selectEntity(mapOf(), mapOf(), false)
+        val result = sut.selectEntity(mapOf(), mapOf(), false)
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -221,7 +223,7 @@ class ReverseOrderFactionSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns createLightsabers()
 
         // Act
-        val result = ReverseOrderFactionSelector.selectEntity(mapOf(), mapOf(), false)
+        val result = sut.selectEntity(mapOf(), mapOf(), false)
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -234,7 +236,7 @@ class ReverseOrderFactionSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns createLightsabers()
 
         // Act
-        val result = ReverseOrderFactionSelector.selectEntity(mapOf(), mapOf(), false)
+        val result = sut.selectEntity(mapOf(), mapOf(), false)
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -251,7 +253,7 @@ class ReverseOrderFactionSelectorTests {
 
         // Act
         val result =
-            ReverseOrderFactionSelector.selectEntity(
+            sut.selectEntity(
                 mapOf("2.1" to false, "1.2" to false, "1.3" to false),
                 mapOf(),
                 defaultEnabled,
@@ -272,7 +274,7 @@ class ReverseOrderFactionSelectorTests {
 
         // Act
         val result =
-            ReverseOrderFactionSelector.selectEntity(
+            sut.selectEntity(
                 mapOf(),
                 mapOf("4.1" to false, "3.2" to false, "3.3" to false),
                 defaultEnabled,
@@ -293,7 +295,7 @@ class ReverseOrderFactionSelectorTests {
 
         // Act
         val result =
-            ReverseOrderFactionSelector.selectEntity(
+            sut.selectEntity(
                 mapOf("2.1" to false, "1.2" to false, "1.3" to false),
                 mapOf("4.1" to false, "3.2" to false, "3.3" to false),
                 defaultEnabled,
@@ -381,12 +383,12 @@ class ReverseOrderFactionSelectorTests {
             }
         }
         entities[0].factionId = "1"
-        ReverseOrderFactionSelector.selectEntity(
+        sut.selectEntity(
             mapOf("1.1" to true, "1.2" to true, "1.3" to true),
             mapOf(),
             true,
         )
-        ReverseOrderFactionSelector.selectEntity(
+        sut.selectEntity(
             mapOf("1.1" to true, "1.2" to true, "1.3" to true),
             mapOf(),
             true,
@@ -533,12 +535,12 @@ class ReverseOrderFactionSelectorTests {
             }
         }
         entities[0].factionId = "3"
-        ReverseOrderFactionSelector.selectEntity(
+        sut.selectEntity(
             mapOf(),
             mapOf("3.1" to true, "3.2" to true, "3.3" to true),
             true,
         )
-        ReverseOrderFactionSelector.selectEntity(
+        sut.selectEntity(
             mapOf(),
             mapOf("3.1" to true, "3.2" to true, "3.3" to true),
             true,
@@ -737,12 +739,12 @@ class ReverseOrderFactionSelectorTests {
         }
         entities[0].factionId = "3"
         entities[3].factionId = "1"
-        ReverseOrderFactionSelector.selectEntity(
+        sut.selectEntity(
             mapOf("1.1" to true, "1.2" to true, "1.3" to true),
             mapOf("3.1" to true, "3.2" to true, "3.3" to true),
             true,
         )
-        ReverseOrderFactionSelector.selectEntity(
+        sut.selectEntity(
             mapOf("1.1" to true, "1.2" to true, "1.3" to true),
             mapOf("3.1" to true, "3.2" to true, "3.3" to true),
             true,
@@ -934,7 +936,7 @@ class ReverseOrderFactionSelectorTests {
         val result = mutableListOf<StarWarsEntity>()
         repeat(vehicles.indices.count()) {
             result.add(
-                ReverseOrderFactionSelector.selectEntity(
+                sut.selectEntity(
                     enabledVehicles,
                     enabledLightsabers,
                     defaultEnabled,

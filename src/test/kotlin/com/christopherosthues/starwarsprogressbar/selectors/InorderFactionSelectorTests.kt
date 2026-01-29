@@ -27,6 +27,8 @@ import java.util.stream.Stream
 class InorderFactionSelectorTests {
     //region Test lifecycle
 
+    private var sut = InorderFactionSelector()
+
     @BeforeEach
     fun setup() {
         mockkStatic(StarWarsBundle::message)
@@ -34,12 +36,12 @@ class InorderFactionSelectorTests {
         mockkObject(StarWarsPersistentStateComponent)
 
         every { StarWarsFactionHolder.missingVehicle } returns missingVehicle
+        sut = InorderFactionSelector()
     }
 
     @AfterEach
     fun tearDown() {
         unmockkAll()
-        InorderFactionSelector.reset()
     }
 
     //endregion
@@ -56,7 +58,7 @@ class InorderFactionSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         // Act
-        val result = InorderFactionSelector.selectEntity(mapOf(), mapOf(), defaultEnabled)
+        val result = sut.selectEntity(mapOf(), mapOf(), defaultEnabled)
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -72,7 +74,7 @@ class InorderFactionSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         // Act
-        val result = InorderFactionSelector.selectEntity(
+        val result = sut.selectEntity(
             mapOf("2.1" to true, "1.2" to false, "1.3" to true),
             mapOf(),
             defaultEnabled,
@@ -92,7 +94,7 @@ class InorderFactionSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         // Act
-        val result = InorderFactionSelector.selectEntity(
+        val result = sut.selectEntity(
             mapOf(),
             mapOf("4.1" to true, "3.2" to false, "3.3" to true),
             defaultEnabled,
@@ -112,7 +114,7 @@ class InorderFactionSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         // Act
-        val result = InorderFactionSelector.selectEntity(
+        val result = sut.selectEntity(
             mapOf("2.1" to true, "1.2" to false, "1.3" to true),
             mapOf("4.1" to true, "3.2" to false, "3.3" to true),
             defaultEnabled,
@@ -133,7 +135,7 @@ class InorderFactionSelectorTests {
 
         // Act
         val result =
-            InorderFactionSelector.selectEntity(
+            sut.selectEntity(
                 mapOf("2.1" to enabled, "1.2" to enabled, "1.3" to enabled),
                 mapOf(),
                 true,
@@ -154,7 +156,7 @@ class InorderFactionSelectorTests {
 
         // Act
         val result =
-            InorderFactionSelector.selectEntity(
+            sut.selectEntity(
                 mapOf(),
                 mapOf("4.1" to enabled, "3.2" to enabled, "3.3" to enabled),
                 true,
@@ -175,7 +177,7 @@ class InorderFactionSelectorTests {
 
         // Act
         val result =
-            InorderFactionSelector.selectEntity(
+            sut.selectEntity(
                 mapOf("2.1" to enabled, "1.2" to enabled, "1.3" to enabled),
                 mapOf("4.1" to enabled, "3.2" to enabled, "3.3" to enabled),
                 true,
@@ -192,7 +194,7 @@ class InorderFactionSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         // Act
-        val result = InorderFactionSelector.selectEntity(mapOf(), mapOf(), false)
+        val result = sut.selectEntity(mapOf(), mapOf(), false)
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -205,7 +207,7 @@ class InorderFactionSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns createLightsabers()
 
         // Act
-        val result = InorderFactionSelector.selectEntity(mapOf(), mapOf(), false)
+        val result = sut.selectEntity(mapOf(), mapOf(), false)
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -218,7 +220,7 @@ class InorderFactionSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns createLightsabers()
 
         // Act
-        val result = InorderFactionSelector.selectEntity(mapOf(), mapOf(), false)
+        val result = sut.selectEntity(mapOf(), mapOf(), false)
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -235,7 +237,7 @@ class InorderFactionSelectorTests {
 
         // Act
         val result =
-            InorderFactionSelector.selectEntity(
+            sut.selectEntity(
                 mapOf("2.1" to false, "1.2" to false, "1.3" to false),
                 mapOf(),
                 defaultEnabled,
@@ -256,7 +258,7 @@ class InorderFactionSelectorTests {
 
         // Act
         val result =
-            InorderFactionSelector.selectEntity(
+            sut.selectEntity(
                 mapOf(),
                 mapOf("4.1" to false, "3.2" to false, "3.3" to false),
                 defaultEnabled,
@@ -277,7 +279,7 @@ class InorderFactionSelectorTests {
 
         // Act
         val result =
-            InorderFactionSelector.selectEntity(
+            sut.selectEntity(
                 mapOf("2.1" to false, "1.2" to false, "1.3" to false),
                 mapOf("4.1" to false, "3.2" to false, "3.3" to false),
                 defaultEnabled,
@@ -366,12 +368,12 @@ class InorderFactionSelectorTests {
             }
         }
         entities[0].factionId = "1"
-        InorderFactionSelector.selectEntity(
+        sut.selectEntity(
             mapOf("1.1" to true, "1.2" to true, "1.3" to true),
             mapOf(),
             true,
         )
-        InorderFactionSelector.selectEntity(
+        sut.selectEntity(
             mapOf("1.1" to true, "1.2" to true, "1.3" to true),
             mapOf(),
             true,
@@ -519,12 +521,12 @@ class InorderFactionSelectorTests {
             }
         }
         entities[0].factionId = "3"
-        InorderFactionSelector.selectEntity(
+        sut.selectEntity(
             mapOf(),
             mapOf("3.1" to true, "3.2" to true, "3.3" to true),
             true,
         )
-        InorderFactionSelector.selectEntity(
+        sut.selectEntity(
             mapOf(),
             mapOf("3.1" to true, "3.2" to true, "3.3" to true),
             true,
@@ -726,12 +728,12 @@ class InorderFactionSelectorTests {
 
         entities[0].factionId = "3"
         entities[3].factionId = "1"
-        InorderFactionSelector.selectEntity(
+        sut.selectEntity(
             mapOf("1.1" to true, "1.2" to true, "1.3" to true),
             mapOf("3.1" to true, "3.2" to true, "3.3" to true),
             true,
         )
-        InorderFactionSelector.selectEntity(
+        sut.selectEntity(
             mapOf("1.1" to true, "1.2" to true, "1.3" to true),
             mapOf("3.1" to true, "3.2" to true, "3.3" to true),
             true,
@@ -923,7 +925,7 @@ class InorderFactionSelectorTests {
         val result = mutableListOf<StarWarsEntity>()
         repeat(entities.indices.count()) {
             result.add(
-                InorderFactionSelector.selectEntity(
+                sut.selectEntity(
                     enabledVehicles,
                     enabledLightsabers,
                     defaultEnabled,

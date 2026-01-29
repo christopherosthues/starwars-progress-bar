@@ -27,6 +27,8 @@ import java.util.stream.Stream
 class ReverseOrderNameSelectorTests {
     //region Test lifecycle
 
+    private var sut = ReverseOrderNameSelector()
+
     @BeforeEach
     fun setup() {
         mockkStatic(StarWarsBundle::message)
@@ -34,12 +36,13 @@ class ReverseOrderNameSelectorTests {
         mockkObject(StarWarsPersistentStateComponent)
 
         every { StarWarsFactionHolder.missingVehicle } returns missingVehicle
+        sut = ReverseOrderNameSelector()
+
     }
 
     @AfterEach
     fun tearDown() {
         unmockkAll()
-        ReverseOrderNameSelector.reset()
     }
 
     //endregion
@@ -56,7 +59,7 @@ class ReverseOrderNameSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         // Act
-        val result = ReverseOrderNameSelector.selectEntity(mapOf(), mapOf(), defaultEnabled)
+        val result = sut.selectEntity(mapOf(), mapOf(), defaultEnabled)
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -72,7 +75,7 @@ class ReverseOrderNameSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         // Act
-        val result = ReverseOrderNameSelector.selectEntity(
+        val result = sut.selectEntity(
             mapOf("1.1" to true, "1.2" to false, "1.3" to true),
             mapOf(),
             defaultEnabled,
@@ -92,7 +95,7 @@ class ReverseOrderNameSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         // Act
-        val result = ReverseOrderNameSelector.selectEntity(
+        val result = sut.selectEntity(
             mapOf(),
             mapOf("3.1" to true, "3.2" to false, "3.3" to true),
             defaultEnabled,
@@ -112,7 +115,7 @@ class ReverseOrderNameSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         // Act
-        val result = ReverseOrderNameSelector.selectEntity(
+        val result = sut.selectEntity(
             mapOf("1.1" to true, "1.2" to false, "1.3" to true),
             mapOf("3.1" to true, "3.2" to false, "3.3" to true),
             defaultEnabled,
@@ -133,7 +136,7 @@ class ReverseOrderNameSelectorTests {
 
         // Act
         val result =
-            ReverseOrderNameSelector.selectEntity(
+            sut.selectEntity(
                 mapOf("1.1" to enabled, "1.2" to enabled, "1.3" to enabled),
                 mapOf(),
                 true,
@@ -154,7 +157,7 @@ class ReverseOrderNameSelectorTests {
 
         // Act
         val result =
-            ReverseOrderNameSelector.selectEntity(
+            sut.selectEntity(
                 mapOf(),
                 mapOf("3.1" to enabled, "3.2" to enabled, "3.3" to enabled),
                 true,
@@ -175,7 +178,7 @@ class ReverseOrderNameSelectorTests {
 
         // Act
         val result =
-            ReverseOrderNameSelector.selectEntity(
+            sut.selectEntity(
                 mapOf("1.1" to enabled, "1.2" to enabled, "1.3" to enabled),
                 mapOf("3.1" to enabled, "3.2" to enabled, "3.3" to enabled),
                 true,
@@ -192,7 +195,7 @@ class ReverseOrderNameSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         // Act
-        val result = ReverseOrderNameSelector.selectEntity(mapOf(), mapOf(), false)
+        val result = sut.selectEntity(mapOf(), mapOf(), false)
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -205,7 +208,7 @@ class ReverseOrderNameSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns createLightsabers()
 
         // Act
-        val result = ReverseOrderNameSelector.selectEntity(mapOf(), mapOf(), false)
+        val result = sut.selectEntity(mapOf(), mapOf(), false)
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -218,7 +221,7 @@ class ReverseOrderNameSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns createLightsabers()
 
         // Act
-        val result = ReverseOrderNameSelector.selectEntity(mapOf(), mapOf(), false)
+        val result = sut.selectEntity(mapOf(), mapOf(), false)
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -235,7 +238,7 @@ class ReverseOrderNameSelectorTests {
 
         // Act
         val result =
-            ReverseOrderNameSelector.selectEntity(
+            sut.selectEntity(
                 mapOf("1.1" to false, "1.2" to false, "1.3" to false),
                 mapOf(),
                 defaultEnabled,
@@ -256,7 +259,7 @@ class ReverseOrderNameSelectorTests {
 
         // Act
         val result =
-            ReverseOrderNameSelector.selectEntity(
+            sut.selectEntity(
                 mapOf(),
                 mapOf("3.1" to false, "3.2" to false, "3.3" to false),
                 defaultEnabled,
@@ -277,7 +280,7 @@ class ReverseOrderNameSelectorTests {
 
         // Act
         val result =
-            ReverseOrderNameSelector.selectEntity(
+            sut.selectEntity(
                 mapOf("1.1" to false, "1.2" to false, "1.3" to false),
                 mapOf("3.1" to false, "3.2" to false, "3.3" to false),
                 defaultEnabled,
@@ -298,7 +301,7 @@ class ReverseOrderNameSelectorTests {
         var result = mutableListOf<StarWarsEntity>()
         repeat(vehicles.indices.count()) {
             result.add(
-                ReverseOrderNameSelector.selectEntity(
+                sut.selectEntity(
                     mapOf("1.1" to true, "1.2" to true, "1.3" to true),
                     mapOf(),
                     true,
@@ -325,7 +328,7 @@ class ReverseOrderNameSelectorTests {
         result = mutableListOf()
         repeat(vehicles.indices.count()) {
             result.add(
-                ReverseOrderNameSelector.selectEntity(
+                sut.selectEntity(
                     mapOf("1.1" to true, "1.2" to true, "1.3" to true),
                     mapOf(),
                     true,
@@ -345,7 +348,7 @@ class ReverseOrderNameSelectorTests {
         result = mutableListOf()
         repeat(vehicles.indices.count()) {
             result.add(
-                ReverseOrderNameSelector.selectEntity(
+                sut.selectEntity(
                     mapOf("1.1" to true, "1.2" to false, "1.3" to true),
                     mapOf(),
                     true,
@@ -365,7 +368,7 @@ class ReverseOrderNameSelectorTests {
         result = mutableListOf()
         repeat(vehicles.indices.count()) {
             result.add(
-                ReverseOrderNameSelector.selectEntity(
+                sut.selectEntity(
                     mapOf("1.1" to true, "1.2" to false),
                     mapOf(),
                     true,
@@ -385,7 +388,7 @@ class ReverseOrderNameSelectorTests {
         result = mutableListOf()
         repeat(vehicles.indices.count()) {
             result.add(
-                ReverseOrderNameSelector.selectEntity(
+                sut.selectEntity(
                     mapOf("1.1" to true, "1.2" to false),
                     mapOf(),
                     false,
@@ -413,7 +416,7 @@ class ReverseOrderNameSelectorTests {
         var result = mutableListOf<StarWarsEntity>()
         repeat(lightsabers.indices.count()) {
             result.add(
-                ReverseOrderNameSelector.selectEntity(
+                sut.selectEntity(
                     mapOf(),
                     mapOf("3.1" to true, "3.2" to true, "3.3" to true),
                     true,
@@ -440,7 +443,7 @@ class ReverseOrderNameSelectorTests {
         result = mutableListOf()
         repeat(lightsabers.indices.count()) {
             result.add(
-                ReverseOrderNameSelector.selectEntity(
+                sut.selectEntity(
                     mapOf(),
                     mapOf("3.1" to true, "3.2" to true, "3.3" to true),
                     true,
@@ -460,7 +463,7 @@ class ReverseOrderNameSelectorTests {
         result = mutableListOf()
         repeat(lightsabers.indices.count()) {
             result.add(
-                ReverseOrderNameSelector.selectEntity(
+                sut.selectEntity(
                     mapOf(),
                     mapOf("3.1" to true, "3.2" to false, "3.3" to true),
                     true,
@@ -480,7 +483,7 @@ class ReverseOrderNameSelectorTests {
         result = mutableListOf()
         repeat(lightsabers.indices.count()) {
             result.add(
-                ReverseOrderNameSelector.selectEntity(
+                sut.selectEntity(
                     mapOf(),
                     mapOf("3.1" to true, "3.2" to false),
                     true,
@@ -500,7 +503,7 @@ class ReverseOrderNameSelectorTests {
         result = mutableListOf()
         repeat(lightsabers.indices.count()) {
             result.add(
-                ReverseOrderNameSelector.selectEntity(
+                sut.selectEntity(
                     mapOf(),
                     mapOf("3.1" to true, "3.2" to false),
                     false,
@@ -530,7 +533,7 @@ class ReverseOrderNameSelectorTests {
         var result = mutableListOf<StarWarsEntity>()
         repeat(entities.indices.count()) {
             result.add(
-                ReverseOrderNameSelector.selectEntity(
+                sut.selectEntity(
                     mapOf("1.1" to true, "1.2" to true, "1.3" to true),
                     mapOf("3.1" to true, "3.2" to true, "3.3" to true),
                     true,
@@ -565,7 +568,7 @@ class ReverseOrderNameSelectorTests {
         result = mutableListOf()
         repeat(entities.indices.count()) {
             result.add(
-                ReverseOrderNameSelector.selectEntity(
+                sut.selectEntity(
                     mapOf("1.1" to true, "1.2" to true, "1.3" to true),
                     mapOf("3.1" to true, "3.2" to true, "3.3" to true),
                     true,
@@ -588,7 +591,7 @@ class ReverseOrderNameSelectorTests {
         result = mutableListOf()
         repeat(entities.indices.count()) {
             result.add(
-                ReverseOrderNameSelector.selectEntity(
+                sut.selectEntity(
                     mapOf("1.1" to true, "1.2" to false, "1.3" to true),
                     mapOf("3.1" to true, "3.2" to false, "3.3" to true),
                     true,
@@ -611,7 +614,7 @@ class ReverseOrderNameSelectorTests {
         result = mutableListOf()
         repeat(entities.indices.count()) {
             result.add(
-                ReverseOrderNameSelector.selectEntity(
+                sut.selectEntity(
                     mapOf("1.1" to true, "1.2" to false),
                     mapOf("3.1" to true, "3.2" to false),
                     true,
@@ -634,7 +637,7 @@ class ReverseOrderNameSelectorTests {
         result = mutableListOf()
         repeat(entities.indices.count()) {
             result.add(
-                ReverseOrderNameSelector.selectEntity(
+                sut.selectEntity(
                     mapOf("1.1" to true, "1.2" to false),
                     mapOf("3.1" to true, "3.2" to false),
                     false,

@@ -28,6 +28,8 @@ import java.util.stream.Stream
 class RandomSelectorTests {
     //region Test lifecycle
 
+    private var sut = RandomSelector()
+
     @BeforeEach
     fun setup() {
         mockkStatic(StarWarsBundle::message)
@@ -35,6 +37,7 @@ class RandomSelectorTests {
         mockkObject(StarWarsPersistentStateComponent)
 
         every { StarWarsFactionHolder.missingVehicle } returns missingVehicle
+        sut = RandomSelector()
     }
 
     @AfterEach
@@ -56,7 +59,7 @@ class RandomSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         // Act
-        val result = RandomSelector.selectEntity(mapOf(), mapOf(), defaultEnabled)
+        val result = sut.selectEntity(mapOf(), mapOf(), defaultEnabled)
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -72,7 +75,7 @@ class RandomSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         // Act
-        val result = RandomSelector.selectEntity(
+        val result = sut.selectEntity(
             mapOf("2.1" to true, "1.2" to false, "1.3" to true),
             mapOf(),
             defaultEnabled,
@@ -92,7 +95,7 @@ class RandomSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         // Act
-        val result = RandomSelector.selectEntity(
+        val result = sut.selectEntity(
             mapOf(),
             mapOf("4.1" to true, "3.2" to false, "3.3" to true),
             defaultEnabled,
@@ -112,7 +115,7 @@ class RandomSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         // Act
-        val result = RandomSelector.selectEntity(
+        val result = sut.selectEntity(
             mapOf("2.1" to true, "1.2" to false, "1.3" to true),
             mapOf("4.1" to true, "3.2" to false, "3.3" to true),
             defaultEnabled,
@@ -133,7 +136,7 @@ class RandomSelectorTests {
 
         // Act
         val result =
-            RandomSelector.selectEntity(mapOf("2.1" to enabled, "1.2" to enabled, "1.3" to enabled), mapOf(), true)
+            sut.selectEntity(mapOf("2.1" to enabled, "1.2" to enabled, "1.3" to enabled), mapOf(), true)
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -150,7 +153,7 @@ class RandomSelectorTests {
 
         // Act
         val result =
-            RandomSelector.selectEntity(mapOf(), mapOf("4.1" to enabled, "3.2" to enabled, "3.3" to enabled), true)
+            sut.selectEntity(mapOf(), mapOf("4.1" to enabled, "3.2" to enabled, "3.3" to enabled), true)
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -167,7 +170,7 @@ class RandomSelectorTests {
 
         // Act
         val result =
-            RandomSelector.selectEntity(
+            sut.selectEntity(
                 mapOf("2.1" to enabled, "1.2" to enabled, "1.3" to enabled),
                 mapOf("4.1" to enabled, "3.2" to enabled, "3.3" to enabled),
                 true,
@@ -184,7 +187,7 @@ class RandomSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         // Act
-        val result = RandomSelector.selectEntity(mapOf(), mapOf(), false)
+        val result = sut.selectEntity(mapOf(), mapOf(), false)
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -197,7 +200,7 @@ class RandomSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns createLightsabers()
 
         // Act
-        val result = RandomSelector.selectEntity(mapOf(), mapOf(), false)
+        val result = sut.selectEntity(mapOf(), mapOf(), false)
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -210,7 +213,7 @@ class RandomSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns createLightsabers()
 
         // Act
-        val result = RandomSelector.selectEntity(mapOf(), mapOf(), false)
+        val result = sut.selectEntity(mapOf(), mapOf(), false)
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -227,7 +230,7 @@ class RandomSelectorTests {
 
         // Act
         val result =
-            RandomSelector.selectEntity(
+            sut.selectEntity(
                 mapOf("2.1" to false, "1.2" to false, "1.3" to false),
                 mapOf(),
                 defaultEnabled,
@@ -248,7 +251,7 @@ class RandomSelectorTests {
 
         // Act
         val result =
-            RandomSelector.selectEntity(
+            sut.selectEntity(
                 mapOf(),
                 mapOf("4.1" to false, "3.2" to false, "3.3" to false),
                 defaultEnabled,
@@ -269,7 +272,7 @@ class RandomSelectorTests {
 
         // Act
         val result =
-            RandomSelector.selectEntity(
+            sut.selectEntity(
                 mapOf("2.1" to false, "1.2" to false, "1.3" to false),
                 mapOf("4.1" to false, "3.2" to false, "3.3" to false),
                 defaultEnabled,
@@ -292,7 +295,7 @@ class RandomSelectorTests {
         every { randomInt(any()) } returns index
 
         // Act
-        val result = RandomSelector.selectEntity(mapOf(), mapOf(), true)
+        val result = sut.selectEntity(mapOf(), mapOf(), true)
 
         // Assert
         Assertions.assertAll(
@@ -315,7 +318,7 @@ class RandomSelectorTests {
         every { randomInt(any()) } returns index
 
         // Act
-        val result = RandomSelector.selectEntity(mapOf(), mapOf(), true)
+        val result = sut.selectEntity(mapOf(), mapOf(), true)
 
         // Assert
         Assertions.assertAll(
@@ -340,7 +343,7 @@ class RandomSelectorTests {
         val entities = vehicles + lightsabers
 
         // Act
-        val result = RandomSelector.selectEntity(mapOf(), mapOf(), true)
+        val result = sut.selectEntity(mapOf(), mapOf(), true)
 
         // Assert
         Assertions.assertAll(
@@ -365,7 +368,7 @@ class RandomSelectorTests {
 
         // Act
         val result =
-            RandomSelector.selectEntity(mapOf("2.1" to true, "1.2" to true, "1.3" to true), mapOf(), defaultEnabled)
+            sut.selectEntity(mapOf("2.1" to true, "1.2" to true, "1.3" to true), mapOf(), defaultEnabled)
 
         // Assert
         Assertions.assertAll(
@@ -390,7 +393,7 @@ class RandomSelectorTests {
 
         // Act
         val result =
-            RandomSelector.selectEntity(mapOf(), mapOf("4.1" to true, "3.2" to true, "3.3" to true), defaultEnabled)
+            sut.selectEntity(mapOf(), mapOf("4.1" to true, "3.2" to true, "3.3" to true), defaultEnabled)
 
         // Assert
         Assertions.assertAll(
@@ -416,7 +419,7 @@ class RandomSelectorTests {
         val entities = vehicles + lightsabers
 
         // Act
-        val result = RandomSelector.selectEntity(
+        val result = sut.selectEntity(
             mapOf("2.1" to true, "1.2" to true, "1.3" to true),
             mapOf("4.1" to true, "3.2" to true, "3.3" to true),
             defaultEnabled,
@@ -442,7 +445,7 @@ class RandomSelectorTests {
         every { randomInt(any()) } returns index
 
         // Act
-        val result = RandomSelector.selectEntity(mapOf("1.2" to true, "1.3" to true), mapOf(), false)
+        val result = sut.selectEntity(mapOf("1.2" to true, "1.3" to true), mapOf(), false)
 
         // Assert
         Assertions.assertAll(
@@ -465,7 +468,7 @@ class RandomSelectorTests {
         every { randomInt(any()) } returns index
 
         // Act
-        val result = RandomSelector.selectEntity(mapOf(), mapOf("3.2" to true, "3.3" to true), false)
+        val result = sut.selectEntity(mapOf(), mapOf("3.2" to true, "3.3" to true), false)
 
         // Assert
         Assertions.assertAll(
@@ -492,7 +495,7 @@ class RandomSelectorTests {
 
         // Act
         val result =
-            RandomSelector.selectEntity(mapOf("1.2" to true, "1.3" to true), mapOf("3.2" to true, "3.3" to true), false)
+            sut.selectEntity(mapOf("1.2" to true, "1.3" to true), mapOf("3.2" to true, "3.3" to true), false)
 
         // Assert
         Assertions.assertAll(
@@ -515,7 +518,7 @@ class RandomSelectorTests {
         every { randomInt(any()) } returns index
 
         // Act
-        val result = RandomSelector.selectEntity(mapOf("1.2" to true, "1.3" to true), mapOf(), true)
+        val result = sut.selectEntity(mapOf("1.2" to true, "1.3" to true), mapOf(), true)
 
         // Assert
         Assertions.assertAll(
@@ -538,7 +541,7 @@ class RandomSelectorTests {
         every { randomInt(any()) } returns index
 
         // Act
-        val result = RandomSelector.selectEntity(mapOf(), mapOf("3.2" to true, "3.3" to true), true)
+        val result = sut.selectEntity(mapOf(), mapOf("3.2" to true, "3.3" to true), true)
 
         // Assert
         Assertions.assertAll(
@@ -564,7 +567,7 @@ class RandomSelectorTests {
 
         // Act
         val result =
-            RandomSelector.selectEntity(mapOf("1.2" to true, "1.3" to true), mapOf("3.2" to true, "3.3" to true), true)
+            sut.selectEntity(mapOf("1.2" to true, "1.3" to true), mapOf("3.2" to true, "3.3" to true), true)
 
         // Assert
         Assertions.assertAll(
@@ -587,7 +590,7 @@ class RandomSelectorTests {
         every { randomInt(any()) } returns index
 
         // Act
-        val result = RandomSelector.selectEntity(mapOf("1.2" to true, "1.3" to true, "1.4" to true), mapOf(), true)
+        val result = sut.selectEntity(mapOf("1.2" to true, "1.3" to true, "1.4" to true), mapOf(), true)
 
         // Assert
         Assertions.assertAll(
@@ -610,7 +613,7 @@ class RandomSelectorTests {
         every { randomInt(any()) } returns index
 
         // Act
-        val result = RandomSelector.selectEntity(mapOf(), mapOf("3.2" to true, "3.3" to true, "3.4" to true), true)
+        val result = sut.selectEntity(mapOf(), mapOf("3.2" to true, "3.3" to true, "3.4" to true), true)
 
         // Assert
         Assertions.assertAll(
@@ -635,7 +638,7 @@ class RandomSelectorTests {
         val entities = vehicles + lightsabers
 
         // Act
-        val result = RandomSelector.selectEntity(
+        val result = sut.selectEntity(
             mapOf("1.2" to true, "1.3" to true, "1.4" to true),
             mapOf("3.2" to true, "3.3" to true, "3.4" to true),
             true,
@@ -659,7 +662,7 @@ class RandomSelectorTests {
         every { randomInt(any()) } returns 0
 
         // Act
-        val result = RandomSelector.selectEntity(mapOf("2.1" to false, "1.2" to true, "1.3" to false), mapOf(), true)
+        val result = sut.selectEntity(mapOf("2.1" to false, "1.2" to true, "1.3" to false), mapOf(), true)
 
         // Assert
         Assertions.assertAll(
@@ -679,7 +682,7 @@ class RandomSelectorTests {
         every { randomInt(any()) } returns 0
 
         // Act
-        val result = RandomSelector.selectEntity(mapOf(), mapOf("4.1" to false, "3.2" to true, "3.3" to false), true)
+        val result = sut.selectEntity(mapOf(), mapOf("4.1" to false, "3.2" to true, "3.3" to false), true)
 
         // Assert
         Assertions.assertAll(
@@ -705,7 +708,7 @@ class RandomSelectorTests {
         val entities = vehicles + lightsabers
 
         // Act
-        val result = RandomSelector.selectEntity(
+        val result = sut.selectEntity(
             mapOf("2.1" to false, "1.2" to true, "1.3" to false),
             mapOf("4.1" to false, "3.2" to true, "3.3" to false),
             true,

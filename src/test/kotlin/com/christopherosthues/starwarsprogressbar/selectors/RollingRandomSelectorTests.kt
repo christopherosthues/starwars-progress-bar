@@ -28,6 +28,8 @@ import java.util.stream.Stream
 class RollingRandomSelectorTests {
     //region Test lifecycle
 
+    private var sut = RollingRandomSelector()
+
     @BeforeEach
     fun setup() {
         mockkStatic(StarWarsBundle::message)
@@ -36,12 +38,12 @@ class RollingRandomSelectorTests {
         mockkObject(StarWarsPersistentStateComponent)
 
         every { StarWarsFactionHolder.missingVehicle } returns missingVehicle
+        sut = RollingRandomSelector()
     }
 
     @AfterEach
     fun tearDown() {
         unmockkAll()
-        RollingRandomSelector.reset()
     }
 
     //endregion
@@ -58,7 +60,7 @@ class RollingRandomSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         // Act
-        val result = RollingRandomSelector.selectEntity(mapOf(), mapOf(), defaultEnabled)
+        val result = sut.selectEntity(mapOf(), mapOf(), defaultEnabled)
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -74,7 +76,7 @@ class RollingRandomSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         // Act
-        val result = RollingRandomSelector.selectEntity(
+        val result = sut.selectEntity(
             mapOf("2.1" to true, "1.2" to false, "1.3" to true),
             mapOf(),
             defaultEnabled,
@@ -94,7 +96,7 @@ class RollingRandomSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         // Act
-        val result = RollingRandomSelector.selectEntity(
+        val result = sut.selectEntity(
             mapOf(),
             mapOf("4.1" to true, "3.2" to false, "3.3" to true),
             defaultEnabled,
@@ -114,7 +116,7 @@ class RollingRandomSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         // Act
-        val result = RollingRandomSelector.selectEntity(
+        val result = sut.selectEntity(
             mapOf("2.1" to true, "1.2" to false, "1.3" to true),
             mapOf("4.1" to true, "3.2" to false, "3.3" to true),
             defaultEnabled,
@@ -135,7 +137,7 @@ class RollingRandomSelectorTests {
 
         // Act
         val result =
-            RollingRandomSelector.selectEntity(
+            sut.selectEntity(
                 mapOf("2.1" to enabled, "1.2" to enabled, "1.3" to enabled),
                 mapOf(),
                 true,
@@ -156,7 +158,7 @@ class RollingRandomSelectorTests {
 
         // Act
         val result =
-            RollingRandomSelector.selectEntity(
+            sut.selectEntity(
                 mapOf(),
                 mapOf("4.1" to enabled, "3.2" to enabled, "3.3" to enabled),
                 true,
@@ -177,7 +179,7 @@ class RollingRandomSelectorTests {
 
         // Act
         val result =
-            RollingRandomSelector.selectEntity(
+            sut.selectEntity(
                 mapOf("2.1" to enabled, "1.2" to enabled, "1.3" to enabled),
                 mapOf("4.1" to enabled, "3.2" to enabled, "3.3" to enabled),
                 true,
@@ -194,7 +196,7 @@ class RollingRandomSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         // Act
-        val result = RollingRandomSelector.selectEntity(mapOf(), mapOf(), false)
+        val result = sut.selectEntity(mapOf(), mapOf(), false)
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -207,7 +209,7 @@ class RollingRandomSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns createLightsabers()
 
         // Act
-        val result = RollingRandomSelector.selectEntity(mapOf(), mapOf(), false)
+        val result = sut.selectEntity(mapOf(), mapOf(), false)
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -220,7 +222,7 @@ class RollingRandomSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns createLightsabers()
 
         // Act
-        val result = RollingRandomSelector.selectEntity(mapOf(), mapOf(), false)
+        val result = sut.selectEntity(mapOf(), mapOf(), false)
 
         // Assert
         Assertions.assertEquals(missingVehicle, result)
@@ -237,7 +239,7 @@ class RollingRandomSelectorTests {
 
         // Act
         val result =
-            RollingRandomSelector.selectEntity(
+            sut.selectEntity(
                 mapOf("2.1" to false, "1.2" to false, "1.3" to false),
                 mapOf(),
                 defaultEnabled,
@@ -258,7 +260,7 @@ class RollingRandomSelectorTests {
 
         // Act
         val result =
-            RollingRandomSelector.selectEntity(
+            sut.selectEntity(
                 mapOf(),
                 mapOf("4.1" to false, "3.2" to false, "3.3" to false),
                 defaultEnabled,
@@ -279,7 +281,7 @@ class RollingRandomSelectorTests {
 
         // Act
         val result =
-            RollingRandomSelector.selectEntity(
+            sut.selectEntity(
                 mapOf("2.1" to false, "1.2" to false, "1.3" to false),
                 mapOf("4.1" to false, "3.2" to false, "3.3" to false),
                 defaultEnabled,
@@ -301,7 +303,7 @@ class RollingRandomSelectorTests {
         var result = mutableListOf<StarWarsEntity>()
         repeat((0 until (2 * vehicles.size)).count()) {
             result.add(
-                RollingRandomSelector.selectEntity(
+                sut.selectEntity(
                     mapOf("2.1" to true, "1.2" to true, "1.3" to true),
                     mapOf(),
                     true,
@@ -329,7 +331,7 @@ class RollingRandomSelectorTests {
         result = mutableListOf()
         repeat((0 until (2 * vehicles.size)).count()) {
             result.add(
-                RollingRandomSelector.selectEntity(
+                sut.selectEntity(
                     mapOf("2.1" to true, "1.2" to true, "1.3" to true),
                     mapOf(),
                     true,
@@ -352,7 +354,7 @@ class RollingRandomSelectorTests {
         result = mutableListOf()
         repeat((0 until (2 * vehicles.size)).count()) {
             result.add(
-                RollingRandomSelector.selectEntity(
+                sut.selectEntity(
                     mapOf("2.1" to true, "1.2" to false, "1.3" to true),
                     mapOf(),
                     true,
@@ -384,7 +386,7 @@ class RollingRandomSelectorTests {
         var result = mutableListOf<StarWarsEntity>()
         repeat((0 until (2 * lightsabers.size)).count()) {
             result.add(
-                RollingRandomSelector.selectEntity(
+                sut.selectEntity(
                     mapOf(),
                     mapOf("4.1" to true, "3.2" to true, "3.3" to true),
                     true,
@@ -412,7 +414,7 @@ class RollingRandomSelectorTests {
         result = mutableListOf()
         repeat((0 until (2 * lightsabers.size)).count()) {
             result.add(
-                RollingRandomSelector.selectEntity(
+                sut.selectEntity(
                     mapOf(),
                     mapOf("4.1" to true, "3.2" to true, "3.3" to true),
                     true,
@@ -435,7 +437,7 @@ class RollingRandomSelectorTests {
         result = mutableListOf()
         repeat((0 until (2 * lightsabers.size)).count()) {
             result.add(
-                RollingRandomSelector.selectEntity(
+                sut.selectEntity(
                     mapOf(),
                     mapOf("4.1" to true, "3.2" to false, "3.3" to true),
                     true,
@@ -469,7 +471,7 @@ class RollingRandomSelectorTests {
         var result = mutableListOf<StarWarsEntity>()
         repeat((0 until (2 * entities.size)).count()) {
             result.add(
-                RollingRandomSelector.selectEntity(
+                sut.selectEntity(
                     mapOf("2.1" to true, "1.2" to true, "1.3" to true),
                     mapOf("4.1" to true, "3.2" to true, "3.3" to true),
                     true,
@@ -506,7 +508,7 @@ class RollingRandomSelectorTests {
         result = mutableListOf()
         repeat((0 until (2 * entities.size)).count()) {
             result.add(
-                RollingRandomSelector.selectEntity(
+                sut.selectEntity(
                     mapOf("2.1" to true, "1.2" to true, "1.3" to true),
                     mapOf("4.1" to true, "3.2" to true, "3.3" to true),
                     true,
@@ -535,7 +537,7 @@ class RollingRandomSelectorTests {
         result = mutableListOf()
         repeat((0 until (2 * entities.size)).count()) {
             result.add(
-                RollingRandomSelector.selectEntity(
+                sut.selectEntity(
                     mapOf("2.1" to true, "1.2" to false, "1.3" to true),
                     mapOf("4.1" to true, "3.2" to false, "3.3" to true),
                     true,
