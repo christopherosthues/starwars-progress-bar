@@ -74,8 +74,9 @@ internal class StarWarsProgressBarUI(
         progressBar.repaint()
     }
 
-    private fun getVelocity(): Float =
-        if (starWarsState()?.sameVelocity ?: DEFAULT_SAME_VELOCITY) 1f else starWarsEntity.velocity
+    private fun getVelocity(): Float {
+        return if (starWarsState()?.sameVelocity ?: DEFAULT_SAME_VELOCITY) 1f else starWarsEntity.velocity
+    }
 
     private fun update() {
         val isIndeterminate = progressBar?.isIndeterminate ?: false
@@ -245,8 +246,9 @@ internal class StarWarsProgressBarUI(
         }
     }
 
-    private fun getAmountFull(barRectWidth: Int, barRectHeight: Int, border: Insets): Int =
-        getAmountFull(border, barRectWidth, barRectHeight)
+    private fun getAmountFull(barRectWidth: Int, barRectHeight: Int, border: Insets): Int {
+        return getAmountFull(border, barRectWidth, barRectHeight)
+    }
 
     private fun setProgressBarText() {
         progressBar.isStringPainted = starWarsState()?.showNames ?: DEFAULT_SHOW_NAMES

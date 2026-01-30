@@ -50,8 +50,9 @@ internal fun parseFactionsFromJson(json: String): StarWarsFactions {
 
 internal fun createScaledEmptyImageIcon(size: Int): ImageIcon = ImageIcon(createEmptyBufferedImage(size, size))
 
-internal fun createEmptyImageIconFromBufferedImage(size: Int): ImageIcon =
-    ImageIcon(BufferedImage(size, size, BufferedImage.TRANSLUCENT))
+internal fun createEmptyImageIconFromBufferedImage(size: Int): ImageIcon {
+    return ImageIcon(BufferedImage(size, size, BufferedImage.TRANSLUCENT))
+}
 
 internal fun createImageIconFromImage(image: Image): ImageIcon = ImageIcon(image)
 
@@ -59,8 +60,9 @@ internal fun createImageIconFromURL(url: URL): ImageIcon = ImageIcon(url)
 
 internal fun createEmptyImageIcon(): ImageIcon = ImageIcon()
 
-internal fun createEmptyTranslucentBufferedImage(width: Int, height: Int): BufferedImage =
-    UIUtil.createImage(null, width, height, BufferedImage.TRANSLUCENT)
+internal fun createEmptyTranslucentBufferedImage(width: Int, height: Int): BufferedImage {
+    return UIUtil.createImage(null, width, height, BufferedImage.TRANSLUCENT)
+}
 
 internal fun createEmptyBufferedImage(width: Int, height: Int): BufferedImage {
     var imageWidth = width

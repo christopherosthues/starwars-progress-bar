@@ -28,8 +28,7 @@ class PluginUpdatedActivity : ProjectActivity {
             val installedSemanticVersion = SemVer.parseFromText(installedVersion)
             val storedSemanticVersion = SemVer.parseFromText(starWarsState.version)
             if (storedSemanticVersion == null ||
-                installedSemanticVersion != null &&
-                installedSemanticVersion > storedSemanticVersion
+                (installedSemanticVersion != null && installedSemanticVersion > storedSemanticVersion)
             ) {
                 starWarsState.version = installedVersion
 

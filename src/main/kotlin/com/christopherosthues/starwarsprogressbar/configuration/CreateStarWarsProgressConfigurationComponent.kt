@@ -1,4 +1,5 @@
 package com.christopherosthues.starwarsprogressbar.configuration
 
-internal fun createStarWarsProgressConfigurationComponent(): StarWarsProgressConfigurationComponent =
-    StarWarsProgressConfigurationComponent()
+internal fun createStarWarsProgressConfigurationComponent(): StarWarsProgressConfigurationComponent {
+    return StarWarsProgressConfigurationComponent()
+}

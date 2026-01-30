@@ -50,7 +50,7 @@ internal object StarWarsSelector {
                 currentEnabledLightsabers,
                 defaultEnabled,
                 indeterminateSelectionType,
-                indeterminateEntitySelectionType
+                indeterminateEntitySelectionType,
             )
         } else {
             log.debug("Selecting entities for determinate progress bar")
@@ -59,7 +59,7 @@ internal object StarWarsSelector {
                 currentEnabledLightsabers,
                 defaultEnabled,
                 determinateSelectionType,
-                determinateEntitySelectionType
+                determinateEntitySelectionType,
             )
         }
     }

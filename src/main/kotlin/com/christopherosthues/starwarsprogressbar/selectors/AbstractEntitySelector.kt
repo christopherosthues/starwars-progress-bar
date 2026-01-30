@@ -16,18 +16,18 @@ internal abstract class AbstractEntitySelector {
         enabledLightsabers: Map<String, Boolean>,
         defaultEnabled: Boolean,
         selectionType: SelectionType,
-        entitySelectionType: EntitySelectionType
+        entitySelectionType: EntitySelectionType,
     ): StarWarsEntity {
         logger.debug("Selecting entity with defaultEnabled=$defaultEnabled and selectionType=$selectionType and entitySelectionType=$entitySelectionType")
         var currentEnabledVehicles = enabledVehicles
         var currentEnabledLightsabers = enabledLightsabers
 
         when (entitySelectionType) {
-            EntitySelectionType.VEHICLES -> currentEnabledLightsabers =
-                currentEnabledLightsabers.keys.associateWith { false }
+            EntitySelectionType.VEHICLES ->
+                currentEnabledLightsabers = currentEnabledLightsabers.keys.associateWith { false }
 
-            EntitySelectionType.LIGHTSABERS -> currentEnabledVehicles =
-                currentEnabledVehicles.keys.associateWith { false }
+            EntitySelectionType.LIGHTSABERS ->
+                currentEnabledVehicles = currentEnabledVehicles.keys.associateWith { false }
 
             EntitySelectionType.ALL -> {
                 // do nothing, both are enabled

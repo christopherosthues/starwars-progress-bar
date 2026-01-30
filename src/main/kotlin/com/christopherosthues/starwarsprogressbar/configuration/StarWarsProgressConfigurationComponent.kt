@@ -129,6 +129,7 @@ internal class StarWarsProgressConfigurationComponent {
                             previewPanel.setDeterminateEntity(determinateEntity)
                         }
                     }
+
                     INDETERMINATE_ENTITY_SELECTOR_EVENT -> {
                         val oldSelector = it.oldValue as? EntitySelectionType
                         val newSelector = it.newValue as? EntitySelectionType
@@ -146,6 +147,7 @@ internal class StarWarsProgressConfigurationComponent {
                             previewPanel.setIndeterminateEntity(indeterminateEntity)
                         }
                     }
+
                     else -> {}
                 }
 
@@ -161,20 +163,22 @@ internal class StarWarsProgressConfigurationComponent {
         formBuilder.addComponent(selectionOptionsPanel)
     }
 
-    private fun isProgressBarTextEvent(propertyName: String): Boolean =
-        propertyName == SHOW_VEHICLE_NAMES_EVENT ||
-            propertyName == SHOW_TOOL_TIPS_EVENT
+    private fun isProgressBarTextEvent(propertyName: String): Boolean {
+        return propertyName == SHOW_VEHICLE_NAMES_EVENT || propertyName == SHOW_TOOL_TIPS_EVENT
+    }
 
-    private fun isProgressBarDrawEvent(propertyName: String): Boolean =
-        propertyName == SHOW_FACTION_CRESTS_EVENT ||
+    private fun isProgressBarDrawEvent(propertyName: String): Boolean {
+        return propertyName == SHOW_FACTION_CRESTS_EVENT ||
             propertyName == SAME_VELOCITY_EVENT ||
             propertyName == SOLID_PROGRESS_BAR_COLOR_EVENT ||
             propertyName == SHOW_VEHICLE_EVENT ||
             propertyName == DRAW_SILHOUETTES_EVENT
+    }
 
-    private fun isVehicleChangeEvent(propertyName: String): Boolean =
-        propertyName == CHANGE_VEHICLE_AFTER_PASS_EVENT ||
+    private fun isVehicleChangeEvent(propertyName: String): Boolean {
+        return propertyName == CHANGE_VEHICLE_AFTER_PASS_EVENT ||
             propertyName == NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE_EVENT
+    }
 
     private fun repaintProgressBar() {
         previewPanel.repaintProgressBar()
