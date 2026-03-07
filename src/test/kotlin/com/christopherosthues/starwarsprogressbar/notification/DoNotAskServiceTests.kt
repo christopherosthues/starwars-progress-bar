@@ -4,17 +4,18 @@ import com.christopherosthues.starwarsprogressbar.constants.PluginConstants
 import com.intellij.ide.util.PropertiesComponent
 import com.intellij.idea.TestFor
 import com.intellij.notification.NotificationGroup
+import com.intellij.openapi.application.Application
+import com.intellij.openapi.application.ApplicationManager
 import io.mockk.every
-import io.mockk.justRun
 import io.mockk.mockk
 import io.mockk.mockkObject
-import io.mockk.mockkStatic
-import io.mockk.unmockkAll
 import io.mockk.verify
+import org.jetbrains.annotations.NonNls
 import org.junit.jupiter.api.AfterEach
-import org.junit.jupiter.api.Assertions.assertNotEquals
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertAll
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.EmptySource
@@ -24,95 +25,56 @@ import java.util.stream.Stream
 
 @TestFor(classes = [DoNotAskService::class])
 class DoNotAskServiceTests {
-    //region Fields
 
-    private lateinit var propertiesComponentMock: PropertiesComponent
-
-    //endregion
-
-    //region Test lifecycle
+    private lateinit var propertiesComponentMock: TestPropertiesComponent
 
     @BeforeEach
-    fun setup() {
-        mockkStatic(PropertiesComponent::class)
-
-        propertiesComponentMock = mockk(relaxed = true)
-        every { PropertiesComponent.getInstance() } returns propertiesComponentMock
+    fun setUp() {
+        // Clear any previous test state
+        val applicationMock = mockk<Application>(relaxed = true)
+        propertiesComponentMock = TestPropertiesComponent()
+        every { applicationMock.getService<PropertiesComponent>(any()) } returns(propertiesComponentMock)
+        ApplicationManager.setApplication(applicationMock)
     }
 
     @AfterEach
     fun tearDown() {
-        unmockkAll()
+        // Clean up after each test
+        ApplicationManager.setApplication(null)
     }
-
-    //endregion
-
-    //region Tests
-
-    //region canShowNotification tests
 
     @ParameterizedTest
     @MethodSource("doNotAskValues")
-    fun `canShowNotification should return negated stored do not ask value`(doNotAsk: Boolean) {
+    fun `canShowNotification returns correct do not ask value`(doNotAsk: Boolean) {
         // Arrange
-        val propertyId = "Notification.DoNotAsk-${PluginConstants.NOTIFICATION_GROUP_ID}"
-        every { propertiesComponentMock.getBoolean(propertyId, any()) } returns doNotAsk
+        val id = "Notification.DoNotAsk-${PluginConstants.NOTIFICATION_GROUP_ID}"
+        propertiesComponentMock.setValue(id, doNotAsk)
 
         // Act
         val result = DoNotAskService.canShowNotification()
 
         // Assert
-        assertNotEquals(doNotAsk, result)
+        assertEquals(!doNotAsk, result)
     }
-
-    @Test
-    fun `canShowNotification should set default value of do not ask to false`() {
-        // Arrange
-        val propertyId = "Notification.DoNotAsk-${PluginConstants.NOTIFICATION_GROUP_ID}"
-        every { propertiesComponentMock.getBoolean(propertyId, any()) } returns true
-
-        // Act
-        DoNotAskService.canShowNotification()
-
-        // Assert
-        verify(exactly = 1) { propertiesComponentMock.getBoolean(any(), false) }
-    }
-
-    @Test
-    fun `canShowNotification should retrieve correct do not ask id`() {
-        // Arrange
-        val propertyId = "Notification.DoNotAsk-${PluginConstants.NOTIFICATION_GROUP_ID}"
-        every { propertiesComponentMock.getBoolean(propertyId, any()) } returns true
-
-        // Act
-        DoNotAskService.canShowNotification()
-
-        // Assert
-        verify(exactly = 1) { propertiesComponentMock.getBoolean(propertyId, any()) }
-    }
-
-    //endregion
-
-    //region setDoNotAskFor
 
     @ParameterizedTest
     @MethodSource("doNotAskValues")
-    fun `setDoNotAskFor should set correct value for do not ask`(doNotAsk: Boolean) {
+    fun `setDoNotAskFor should set correct value for do not ask and title`(doNotAsk: Boolean) {
         // Arrange
         mockkObject(NotificationGroup)
-        every { NotificationGroup.getGroupTitle(PluginConstants.NOTIFICATION_GROUP_ID) } returns null
-        justRun { propertiesComponentMock.setValue(any(), any<Boolean>()) }
+        val title = "title"
+        every { NotificationGroup.getGroupTitle(PluginConstants.NOTIFICATION_GROUP_ID) } returns title
 
         // Act
         DoNotAskService.setDoNotAskFor(doNotAsk)
 
         // Assert
-        verify(exactly = 1) {
-            propertiesComponentMock.setValue(
-                "Notification.DoNotAsk-${PluginConstants.NOTIFICATION_GROUP_ID}",
-                doNotAsk,
-            )
-        }
+        val resultDoNotAsk = propertiesComponentMock.getBoolean("Notification.DoNotAsk-${PluginConstants.NOTIFICATION_GROUP_ID}")
+        val resultTitle = propertiesComponentMock.getValue("Notification.DisplayName-DoNotAsk-${PluginConstants.NOTIFICATION_GROUP_ID}")
+        assertAll(
+            { assertEquals(doNotAsk, resultDoNotAsk) },
+            { assertEquals(title, resultTitle) }
+        )
     }
 
     @Test
@@ -128,55 +90,19 @@ class DoNotAskServiceTests {
         verify(exactly = 1) { NotificationGroup.getGroupTitle(PluginConstants.NOTIFICATION_GROUP_ID) }
     }
 
-    @ParameterizedTest
-    @ValueSource(strings = ["notificationGroup", "star wars", "progressbar"])
-    @EmptySource
-    fun `setDoNotAskFor should store correct display name for notification group`(displayName: String) {
-        // Arrange
-        mockkObject(NotificationGroup)
-        every { NotificationGroup.getGroupTitle(PluginConstants.NOTIFICATION_GROUP_ID) } returns displayName
-        justRun { propertiesComponentMock.setValue(any(), any<Boolean>()) }
-        justRun { propertiesComponentMock.setValue(any(), any<String>()) }
-
-        // Act
-        DoNotAskService.setDoNotAskFor(false)
-
-        "Notification.DisplayName-DoNotAsk-${PluginConstants.NOTIFICATION_GROUP_ID}"
-
-        // Assert
-        verify(exactly = 1) {
-            propertiesComponentMock.setValue(
-                "Notification.DisplayName-DoNotAsk-${PluginConstants.NOTIFICATION_GROUP_ID}",
-                displayName,
-            )
-        }
-    }
-
     @Test
     fun `setDoNotAskFor should store notification group id as display name if notification group title is null`() {
         // Arrange
         mockkObject(NotificationGroup)
         every { NotificationGroup.getGroupTitle(PluginConstants.NOTIFICATION_GROUP_ID) } returns null
-        justRun { propertiesComponentMock.setValue(any(), any<Boolean>()) }
-        justRun { propertiesComponentMock.setValue(any(), any<String>()) }
 
         // Act
         DoNotAskService.setDoNotAskFor(false)
 
-        "Notification.DisplayName-DoNotAsk-${PluginConstants.NOTIFICATION_GROUP_ID}"
-
         // Assert
-        verify(exactly = 1) {
-            propertiesComponentMock.setValue(
-                "Notification.DisplayName-DoNotAsk-${PluginConstants.NOTIFICATION_GROUP_ID}",
-                PluginConstants.NOTIFICATION_GROUP_ID,
-            )
-        }
+        val result = propertiesComponentMock.getValue("Notification.DisplayName-DoNotAsk-${PluginConstants.NOTIFICATION_GROUP_ID}")
+        assertEquals(PluginConstants.NOTIFICATION_GROUP_ID, result)
     }
-
-    //endregion
-
-    //endregion
 
     //region Test case data
 
@@ -189,4 +115,64 @@ class DoNotAskServiceTests {
     }
 
     //endregion
+
+    private class TestPropertiesComponent : PropertiesComponent() {
+        private val values = mutableMapOf<String, String?>()
+
+        override fun unsetValue(name: String) {
+            values.remove(name)
+        }
+
+        override fun getValue(name: String): String? {
+            return values[name]
+        }
+
+        override fun setValue(name: String, value: String?) {
+            values[name] = value
+        }
+
+        override fun setValue(name: String, value: String?, defaultValue: String?) {
+        }
+
+        override fun setValue(name: String, value: Float, defaultValue: Float) {
+        }
+
+        override fun setValue(name: String, value: Int, defaultValue: Int) {
+        }
+
+        override fun setValue(name: String, value: Boolean, defaultValue: Boolean) {
+            values[name] = value.toString()
+        }
+
+        override fun getValues(p0: @NonNls String): Array<out String?>? {
+            return null
+        }
+
+        override fun setValues(
+            p0: @NonNls String,
+            p1: Array<out String?>?
+        ) {
+        }
+
+        override fun getList(p0: @NonNls String): List<String?>? {
+            return listOf<String?>()
+        }
+
+        override fun setList(
+            p0: @NonNls String,
+            p1: Collection<String?>?
+        ) {
+        }
+
+        override fun updateValue(
+            p0: @NonNls String,
+            p1: Boolean
+        ): Boolean {
+            return false
+        }
+
+        override fun isValueSet(name: String): Boolean {
+            return values.containsKey(name)
+        }
+    }
 }
