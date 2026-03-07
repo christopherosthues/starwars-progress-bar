@@ -37,7 +37,6 @@ class ReverseOrderNameSelectorTests {
 
         every { StarWarsFactionHolder.missingVehicle } returns missingVehicle
         sut = ReverseOrderNameSelector()
-
     }
 
     @AfterEach
