@@ -30,7 +30,7 @@ class BundleConstantsTests {
             BundleConstants::class.memberProperties.filter { it.visibility != KVisibility.PRIVATE }
 
         // Act and Assert
-        assertEquals(bundleConstantMembers.size, bundleConstants().count().toInt())
+        assertEquals(bundleConstants().count().toInt(), bundleConstantMembers.size)
     }
 
     //endregion
@@ -60,10 +60,12 @@ class BundleConstantsTests {
             Arguments.of("configuration.changeAfterPass", BundleConstants.CHANGE_AFTER_PASS),
             Arguments.of("configuration.vehicles", BundleConstants.VEHICLES_TITLE),
             Arguments.of("configuration.lightsabers", BundleConstants.LIGHTSABERS_TITLE),
+            Arguments.of("configuration.selectionOptions", BundleConstants.SELECTION_OPTIONS),
             Arguments.of("configuration.selectAll", BundleConstants.SELECT_ALL),
             Arguments.of("configuration.deselectAll", BundleConstants.DESELECT_ALL),
             Arguments.of("configuration.selected", BundleConstants.SELECTED),
-            Arguments.of("configuration.selector", BundleConstants.ORDER_SELECTOR),
+            Arguments.of("configuration.order.selector", BundleConstants.ORDER_SELECTOR),
+            Arguments.of("configuration.entity.selector", BundleConstants.ENTITY_SELECTOR),
             Arguments.of("vehicles.faction.", BundleConstants.VEHICLES_FACTION),
             Arguments.of("vehicles.", BundleConstants.VEHICLES),
             Arguments.of("lightsabers.faction.", BundleConstants.LIGHTSABERS_FACTION),
