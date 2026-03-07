@@ -17,10 +17,12 @@ import io.mockk.mockkStatic
 import io.mockk.unmockkAll
 import io.mockk.verify
 import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import javax.swing.JComponent
+import javax.swing.border.Border
 
 @TestFor(classes = [StarWarsProgressBarFactory::class])
 class StarWarsProgressBarFactoryTests {
@@ -39,9 +41,8 @@ class StarWarsProgressBarFactoryTests {
         mockkStatic(ApplicationManager::class)
         val starWarsPersistentStateComponent = mockk<StarWarsPersistentStateComponent>()
 
-        componentMock = mockk()
+        componentMock = JComponentMock()
 
-        justRun { componentMock.border = any() }
         every { StarWarsSelector.selectEntity(any(), any(), any(), any(), any(), any(), any(), any()) } returns mockk(relaxed = true)
         every {
             ApplicationManager.getApplication().getService(StarWarsPersistentStateComponent::class.java)
@@ -68,7 +69,8 @@ class StarWarsProgressBarFactoryTests {
         StarWarsProgressBarFactory.createUI(componentMock)
 
         // Assert
-        verify(exactly = 1) { componentMock.border = borderUIMock }
+        assertTrue((componentMock as JComponentMock).borderSet)
+        assertEquals(borderUIMock, componentMock.border)
         verify(exactly = 1) { JBUI.Borders.empty() }
         verify(exactly = 1) { borderMock.asUIResource() }
     }
@@ -82,6 +84,19 @@ class StarWarsProgressBarFactoryTests {
 
         // Assert
         assertTrue(result is StarWarsProgressBarUI)
-        verify(exactly = 1) { StarWarsSelector.selectEntity(any(), any(), false, SelectionType.RANDOM_ALL, SelectionType.RANDOM_ALL, false, EntitySelectionType.ALL, EntitySelectionType.ALL) }
+        verify(exactly = 0) { StarWarsSelector.selectEntity(any(), any(), any(), any(), any(), any(), any(), any()) }
+    }
+
+    private class JComponentMock : JComponent() {
+        var borderSet = false
+
+        override fun getBorder(): Border? {
+            return super.getBorder()
+        }
+
+        override fun setBorder(border: Border?) {
+            borderSet = true
+            super.setBorder(border)
+        }
     }
 }
