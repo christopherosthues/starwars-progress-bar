@@ -97,7 +97,7 @@ class InorderNameSelectorTests {
         // Act
         val result = sut.selectEntity(
             mapOf(),
-            mapOf("3.1" to true, "3.2" to false, "3.3" to true),
+            mapOf("3.4" to true, "3.5" to false, "3.6" to true),
             defaultEnabled,
         )
 
@@ -117,7 +117,7 @@ class InorderNameSelectorTests {
         // Act
         val result = sut.selectEntity(
             mapOf("1.1" to true, "1.2" to false, "1.3" to true),
-            mapOf("3.1" to true, "3.2" to false, "3.3" to true),
+            mapOf("3.4" to true, "3.5" to false, "3.6" to true),
             defaultEnabled,
         )
 
@@ -153,7 +153,7 @@ class InorderNameSelectorTests {
 
         // Act
         val result =
-            sut.selectEntity(mapOf(), mapOf("3.1" to enabled, "3.2" to enabled, "3.3" to enabled), true)
+            sut.selectEntity(mapOf(), mapOf("3.4" to enabled, "3.5" to enabled, "3.6" to enabled), true)
 
         // Assert
         assertEquals(missingVehicle, result)
@@ -172,7 +172,7 @@ class InorderNameSelectorTests {
         val result =
             sut.selectEntity(
                 mapOf("1.1" to enabled, "1.2" to enabled, "1.3" to enabled),
-                mapOf("3.1" to enabled, "3.2" to enabled, "3.3" to enabled),
+                mapOf("3.4" to enabled, "3.5" to enabled, "3.6" to enabled),
                 true,
             )
 
@@ -253,7 +253,7 @@ class InorderNameSelectorTests {
         val result =
             sut.selectEntity(
                 mapOf(),
-                mapOf("3.1" to false, "3.2" to false, "3.3" to false),
+                mapOf("3.4" to false, "3.5" to false, "3.6" to false),
                 defaultEnabled,
             )
 
@@ -274,7 +274,7 @@ class InorderNameSelectorTests {
         val result =
             sut.selectEntity(
                 mapOf("1.1" to false, "1.2" to false, "1.3" to false),
-                mapOf("3.1" to false, "3.2" to false, "3.3" to false),
+                mapOf("3.4" to false, "3.5" to false, "3.6" to false),
                 defaultEnabled,
             )
 
@@ -410,7 +410,7 @@ class InorderNameSelectorTests {
             result.add(
                 sut.selectEntity(
                     mapOf(),
-                    mapOf("3.1" to true, "3.2" to true, "3.3" to true),
+                    mapOf("3.4" to true, "3.5" to true, "3.6" to true),
                     true,
                 ),
             )
@@ -437,7 +437,7 @@ class InorderNameSelectorTests {
             result.add(
                 sut.selectEntity(
                     mapOf(),
-                    mapOf("3.1" to true, "3.2" to true, "3.3" to true),
+                    mapOf("3.4" to true, "3.5" to true, "3.6" to true),
                     true,
                 ),
             )
@@ -457,7 +457,7 @@ class InorderNameSelectorTests {
             result.add(
                 sut.selectEntity(
                     mapOf(),
-                    mapOf("3.1" to true, "3.2" to false, "3.3" to true),
+                    mapOf("3.4" to true, "3.5" to false, "3.6" to true),
                     true,
                 ),
             )
@@ -477,7 +477,7 @@ class InorderNameSelectorTests {
             result.add(
                 sut.selectEntity(
                     mapOf(),
-                    mapOf("3.1" to true, "3.2" to false),
+                    mapOf("3.4" to true, "3.5" to false),
                     true,
                 ),
             )
@@ -497,7 +497,7 @@ class InorderNameSelectorTests {
             result.add(
                 sut.selectEntity(
                     mapOf(),
-                    mapOf("3.1" to true, "3.2" to false),
+                    mapOf("3.4" to true, "3.5" to false),
                     false,
                 ),
             )
@@ -527,7 +527,7 @@ class InorderNameSelectorTests {
             result.add(
                 sut.selectEntity(
                     mapOf("1.1" to true, "1.2" to true, "1.3" to true),
-                    mapOf("3.1" to true, "3.2" to true, "3.3" to true),
+                    mapOf("3.4" to true, "3.5" to true, "3.6" to true),
                     true,
                 ),
             )
@@ -537,10 +537,10 @@ class InorderNameSelectorTests {
         assertAll(
             { assertEquals(6, result.size) },
             { assertEquals(entities[3], result[0]) },
-            { assertEquals(entities[0], result[1]) },
-            { assertEquals(entities[4], result[2]) },
-            { assertEquals(entities[1], result[3]) },
-            { assertEquals(entities[5], result[4]) },
+            { assertEquals(entities[4], result[1]) },
+            { assertEquals(entities[5], result[2]) },
+            { assertEquals(entities[0], result[3]) },
+            { assertEquals(entities[1], result[4]) },
             { assertEquals(entities[2], result[5]) },
         )
 
@@ -562,7 +562,7 @@ class InorderNameSelectorTests {
             result.add(
                 sut.selectEntity(
                     mapOf("1.1" to true, "1.2" to true, "1.3" to true),
-                    mapOf("3.1" to true, "3.2" to true, "3.3" to true),
+                    mapOf("3.4" to true, "3.5" to true, "3.6" to true),
                     true,
                 ),
             )
@@ -572,10 +572,10 @@ class InorderNameSelectorTests {
         assertAll(
             { assertEquals(6, result.size) },
             { assertEquals(entities[5], result[0]) },
-            { assertEquals(entities[2], result[1]) },
-            { assertEquals(entities[3], result[2]) },
-            { assertEquals(entities[0], result[3]) },
-            { assertEquals(entities[4], result[4]) },
+            { assertEquals(entities[3], result[1]) },
+            { assertEquals(entities[4], result[2]) },
+            { assertEquals(entities[2], result[3]) },
+            { assertEquals(entities[0], result[4]) },
             { assertEquals(entities[1], result[5]) },
         )
 
@@ -585,7 +585,7 @@ class InorderNameSelectorTests {
             result.add(
                 sut.selectEntity(
                     mapOf("1.1" to true, "1.2" to false, "1.3" to true),
-                    mapOf("3.1" to true, "3.2" to false, "3.3" to true),
+                    mapOf("3.4" to true, "3.5" to false, "3.6" to true),
                     true,
                 ),
             )
@@ -595,11 +595,11 @@ class InorderNameSelectorTests {
         assertAll(
             { assertEquals(6, result.size) },
             { assertEquals(entities[5], result[0]) },
-            { assertEquals(entities[2], result[1]) },
-            { assertEquals(entities[4], result[2]) },
+            { assertEquals(entities[4], result[1]) },
+            { assertEquals(entities[2], result[2]) },
             { assertEquals(entities[1], result[3]) },
             { assertEquals(entities[5], result[4]) },
-            { assertEquals(entities[2], result[5]) },
+            { assertEquals(entities[4], result[5]) },
         )
 
         // Act
@@ -608,7 +608,7 @@ class InorderNameSelectorTests {
             result.add(
                 sut.selectEntity(
                     mapOf("1.1" to true, "1.2" to false),
-                    mapOf("3.1" to true, "3.2" to false),
+                    mapOf("3.4" to true, "3.5" to false),
                     true,
                 ),
             )
@@ -617,11 +617,11 @@ class InorderNameSelectorTests {
         // Assert
         assertAll(
             { assertEquals(6, result.size) },
-            { assertEquals(entities[4], result[0]) },
+            { assertEquals(entities[2], result[0]) },
             { assertEquals(entities[1], result[1]) },
             { assertEquals(entities[5], result[2]) },
-            { assertEquals(entities[2], result[3]) },
-            { assertEquals(entities[4], result[4]) },
+            { assertEquals(entities[4], result[3]) },
+            { assertEquals(entities[2], result[4]) },
             { assertEquals(entities[1], result[5]) },
         )
 
@@ -631,7 +631,7 @@ class InorderNameSelectorTests {
             result.add(
                 sut.selectEntity(
                     mapOf("1.1" to true, "1.2" to false),
-                    mapOf("3.1" to true, "3.2" to false),
+                    mapOf("3.4" to true, "3.5" to false),
                     false,
                 ),
             )
@@ -662,6 +662,7 @@ class InorderNameSelectorTests {
         for (vehicle in vehicles) {
             every { StarWarsBundle.message(vehicle.localizationKey) } returns vehicle.id
         }
+        every { StarWarsBundle.message("vehicles.faction.1") } returns "1"
 
         return vehicles
     }
@@ -669,7 +670,7 @@ class InorderNameSelectorTests {
     private fun createLightsabers(): List<Lightsabers> {
         val lightsabers = listOf(
             Lightsabers(
-                "1",
+                "4",
                 4f,
                 isJarKai = false,
                 listOf(
@@ -682,7 +683,7 @@ class InorderNameSelectorTests {
                 ),
             ).apply { factionId = "3" },
             Lightsabers(
-                "2",
+                "5",
                 5f,
                 isJarKai = false,
                 listOf(
@@ -695,7 +696,7 @@ class InorderNameSelectorTests {
                 ),
             ).apply { factionId = "3" },
             Lightsabers(
-                "3",
+                "6",
                 6f,
                 isJarKai = false,
                 listOf(
@@ -714,6 +715,7 @@ class InorderNameSelectorTests {
         for (lightsaber in lightsabers) {
             every { StarWarsBundle.message(lightsaber.localizationKey) } returns lightsaber.id
         }
+        every { StarWarsBundle.message("lightsabers.faction.3") } returns "3"
 
         return lightsabers
     }
