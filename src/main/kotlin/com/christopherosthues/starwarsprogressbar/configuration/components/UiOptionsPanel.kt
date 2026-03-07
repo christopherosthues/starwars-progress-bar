@@ -43,8 +43,6 @@ private const val MAXIMUM_NUMBER_OF_PASSES = 20
 private const val HORIZONTAL_GAP = 8
 
 internal class UiOptionsPanel(starWarsState: StarWarsState) : JTitledPanel(StarWarsBundle.message(BundleConstants.UI_OPTIONS)) {
-    private val log = com.intellij.openapi.diagnostic.Logger.getInstance(UiOptionsPanel::class.java)
-
     private val showNameCheckBox =
         JBCheckBox(StarWarsBundle.message(BundleConstants.SHOW_NAME), DEFAULT_SHOW_NAMES)
     private val showToolTipsCheckBox =

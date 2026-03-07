@@ -17,8 +17,6 @@ import java.awt.BorderLayout
 import javax.swing.JPanel
 
 internal class StarWarsProgressConfigurationComponent {
-    private val log = com.intellij.openapi.diagnostic.Logger.getInstance(StarWarsProgressConfigurationComponent::class.java)
-
     private lateinit var mainPanel: JPanel
 
     private lateinit var previewPanel: PreviewPanel
@@ -42,7 +40,6 @@ internal class StarWarsProgressConfigurationComponent {
     }
 
     fun updateUI(starWarsState: StarWarsState?) {
-        log.debug("Updating configuration UI with new StarWarsState: $starWarsState")
         if (starWarsState != null) {
             this.starWarsState.copy(starWarsState)
             uiOptionsPanel.updateUI(starWarsState)
@@ -97,7 +94,6 @@ internal class StarWarsProgressConfigurationComponent {
                 it.propertyName == DETERMINATE_ORDER_SELECTOR_EVENT ||
                 it.propertyName == INDETERMINATE_ORDER_SELECTOR_EVENT
             ) {
-                log.debug("Repainting progress bar due to property change of UI panel: ${it.propertyName}")
                 repaintProgressBar()
             }
         }
@@ -110,7 +106,6 @@ internal class StarWarsProgressConfigurationComponent {
                 it.propertyName == DETERMINATE_ORDER_SELECTOR_EVENT ||
                 it.propertyName == INDETERMINATE_ORDER_SELECTOR_EVENT
             ) {
-                log.debug("Repainting progress bar due to property change of selection panel: ${it.propertyName}")
                 when (it.propertyName) {
                     DETERMINATE_ENTITY_SELECTOR_EVENT -> {
                         val oldSelector = it.oldValue as? EntitySelectionType
@@ -187,7 +182,6 @@ internal class StarWarsProgressConfigurationComponent {
     private fun createVehicleSection() {
         vehiclesPanel.addStarWarsEntityListener(object : StarWarsEntityClickListener {
             override fun starWarsEntityClicked(starWarsEntity: StarWarsEntity) {
-                log.debug("Star Wars vehicle clicked by user: $starWarsEntity")
                 previewPanel.selectEntity(starWarsEntity)
             }
         })
@@ -196,7 +190,6 @@ internal class StarWarsProgressConfigurationComponent {
     private fun createLightsaberSection() {
         lightsabersPanel.addStarWarsEntityListener(object : StarWarsEntityClickListener {
             override fun starWarsEntityClicked(starWarsEntity: StarWarsEntity) {
-                log.debug("Star Wars lightsaber clicked by user: $starWarsEntity")
                 previewPanel.selectEntity(starWarsEntity)
             }
         })

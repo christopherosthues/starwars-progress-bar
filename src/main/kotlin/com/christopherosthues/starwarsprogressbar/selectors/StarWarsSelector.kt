@@ -5,8 +5,6 @@ import com.christopherosthues.starwarsprogressbar.models.StarWarsEntity
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 
 internal object StarWarsSelector {
-    private val log = com.intellij.openapi.diagnostic.Logger.getInstance(StarWarsSelector::class.java)
-
     fun selectEntity(
         enabledVehicles: Map<String, Boolean>?,
         enabledLightsabers: Map<String, Boolean>?,
@@ -20,11 +18,9 @@ internal object StarWarsSelector {
         var currentEnabledVehicles = enabledVehicles
         var currentEnabledLightsabers = enabledLightsabers
         if (currentEnabledVehicles == null) {
-            log.debug("No vehicles provided. Loading enabled vehicles from persistent state")
             val persistentStateComponent = StarWarsPersistentStateComponent.instance
             val starWarsState = persistentStateComponent.state
             if (starWarsState == null) {
-                log.warn("Could not load persistent state. Returning missing vehicle.")
                 return StarWarsFactionHolder.missingVehicle
             }
 
@@ -32,11 +28,9 @@ internal object StarWarsSelector {
         }
 
         if (currentEnabledLightsabers == null) {
-            log.debug("No lightsabers provided. Loading enabled lightsabers from persistent state")
             val persistentStateComponent = StarWarsPersistentStateComponent.instance
             val starWarsState = persistentStateComponent.state
             if (starWarsState == null) {
-                log.warn("Could not load persistent state. Returning missing vehicle.")
                 return StarWarsFactionHolder.missingVehicle
             }
 
@@ -44,7 +38,6 @@ internal object StarWarsSelector {
         }
 
         if (isIndeterminate) {
-            log.debug("Selecting entities for indeterminate progress bar")
             return IndeterminateSelector.selectEntity(
                 currentEnabledVehicles,
                 currentEnabledLightsabers,
@@ -53,7 +46,6 @@ internal object StarWarsSelector {
                 indeterminateEntitySelectionType,
             )
         } else {
-            log.debug("Selecting entities for determinate progress bar")
             return DeterminateSelector.selectEntity(
                 currentEnabledVehicles,
                 currentEnabledLightsabers,

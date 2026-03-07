@@ -24,8 +24,6 @@ private const val HORIZONTAL_GAP = 10
 internal class PreviewPanel(
     private val starWarsState: StarWarsState,
 ) : JTitledPanel(StarWarsBundle.message(BundleConstants.PREVIEW_TITLE)) {
-    private val log = com.intellij.openapi.diagnostic.Logger.getInstance(PreviewPanel::class.java)
-
     private var determinateProgressBarContainer: LabeledComponent<JComponent>
     private var determinateProgressBar: JProgressBar
     private val determinateProgressBarUI: StarWarsProgressBarUI = StarWarsProgressBarUI { starWarsState }
@@ -93,7 +91,6 @@ internal class PreviewPanel(
     }
 
     private fun setProgressBarUI(determinateEntity: StarWarsEntity, indeterminateEntity: StarWarsEntity) {
-        log.debug("Setting preview progress bars to determinate entity: $determinateEntity and indeterminate entity: $indeterminateEntity")
         determinateProgressBarUI.setEntity(determinateEntity)
         indeterminateProgressBarUI.setEntity(indeterminateEntity)
     }

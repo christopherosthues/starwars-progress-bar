@@ -9,7 +9,6 @@ internal abstract class AbstractEntitySelector {
     protected val rollingRandomSelector = RollingRandomSelector()
     protected val reverseOrderFactionSelector = ReverseOrderFactionSelector()
     protected val reverseOrderNameSelector = ReverseOrderNameSelector()
-    private val logger = com.intellij.openapi.diagnostic.Logger.getInstance(this::class.java)
 
     fun selectEntity(
         enabledVehicles: Map<String, Boolean>,
@@ -18,7 +17,6 @@ internal abstract class AbstractEntitySelector {
         selectionType: SelectionType,
         entitySelectionType: EntitySelectionType,
     ): StarWarsEntity {
-        logger.debug("Selecting entity with defaultEnabled=$defaultEnabled and selectionType=$selectionType and entitySelectionType=$entitySelectionType")
         var currentEnabledVehicles = enabledVehicles
         var currentEnabledLightsabers = enabledLightsabers
 

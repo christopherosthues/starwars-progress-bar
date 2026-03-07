@@ -17,20 +17,17 @@ import com.intellij.util.xmlb.XmlSerializerUtil
     storages = [Storage("StarWarsProgress.xml")],
 )
 internal class StarWarsPersistentStateComponent : PersistentStateComponent<StarWarsState> {
-    private val log = com.intellij.openapi.diagnostic.Logger.getInstance(StarWarsPersistentStateComponent::class.java)
     private val state = StarWarsState()
 
     override fun getState(): StarWarsState? = state
 
     override fun loadState(state: StarWarsState) {
-        log.debug("Loading StarWarsState")
         XmlSerializerUtil.copyBean(state, this.state)
         val version = SemVer.parseFromText(this.state.version)
         val pluginDescriptor = PluginManagerCore.getPlugin(PluginId.getId(PluginConstants.PLUGIN_ID))
         val installedVersion = pluginDescriptor?.version
         if (version != null) {
             if (version < SemVer("2.0.0", 2, 0, 0)) {
-                log.info("Migrating StarWarsState from version ${this.state.version} to ${installedVersion ?: "unknown version"}")
                 this.state.showIcon = this.state.showVehicle
                 this.state.showNames = this.state.showVehicleNames
                 this.state.sameVelocity = this.state.sameVehicleVelocity
@@ -39,7 +36,6 @@ internal class StarWarsPersistentStateComponent : PersistentStateComponent<StarW
                 this.state.numberOfPassesUntilChange = this.state.numberOfPassesUntilVehicleChange
             }
             if (version < SemVer("3.0.0", 3, 0, 0)) {
-                log.info("Migrating StarWarsState from version ${this.state.version} to ${installedVersion ?: "unknown version"}")
                 this.state.determinateOrderSelectorOrdinal = this.state.vehicleSelectorOrdinal
                 this.state.indeterminateOrderSelectorOrdinal = this.state.vehicleSelectorOrdinal
                 this.state.selectorOrdinal = this.state.vehicleSelectorOrdinal
