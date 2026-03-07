@@ -8,7 +8,6 @@ import com.christopherosthues.starwarsprogressbar.models.Lightsabers
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.intellij.idea.TestFor
-import io.mockk.*
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.mockkObject
@@ -24,8 +23,17 @@ import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import java.util.stream.Stream
 
-@TestFor(classes = [DeterminateSelector::class])
-class DeterminateSelectorTests {
+@TestFor(classes = [DeterminateSelector::class, IndeterminateSelector::class])
+class AbstractEntitySelectorTests {
+    private lateinit var sut: AbstractEntitySelector
+
+    private lateinit var inorderFactionSelectorMock: InorderFactionSelector
+    private lateinit var inorderNameSelectorMock: InorderNameSelector
+    private lateinit var randomSelectorMock: RandomSelector
+    private lateinit var rollingRandomSelectorMock: RollingRandomSelector
+    private lateinit var reverseOrderFactionSelectorMock: ReverseOrderFactionSelector
+    private lateinit var reverseOrderNameSelectorMock: ReverseOrderNameSelector
+
     //region Test lifecycle
 
     @BeforeEach
@@ -33,12 +41,21 @@ class DeterminateSelectorTests {
         mockkObject(StarWarsFactionHolder)
         mockkObject(StarWarsPersistentStateComponent)
         // mock constructors for selector implementations so we can stub instance methods
-        mockkConstructor(InorderFactionSelector::class)
-        mockkConstructor(InorderNameSelector::class)
-        mockkConstructor(RandomSelector::class)
-        mockkConstructor(ReverseOrderFactionSelector::class)
-        mockkConstructor(ReverseOrderNameSelector::class)
-        mockkConstructor(RollingRandomSelector::class)
+        inorderFactionSelectorMock = mockk(relaxed = true)
+        inorderNameSelectorMock = mockk(relaxed = true)
+        randomSelectorMock = mockk(relaxed = true)
+        rollingRandomSelectorMock = mockk(relaxed = true)
+        reverseOrderFactionSelectorMock = mockk(relaxed = true)
+        reverseOrderNameSelectorMock = mockk(relaxed = true)
+
+        sut = TestEntitySelector(
+            inorderFactionSelectorMock,
+            inorderNameSelectorMock,
+            randomSelectorMock,
+            rollingRandomSelectorMock,
+            reverseOrderFactionSelectorMock,
+            reverseOrderNameSelectorMock,
+        )
 
         setupStarWarsState(null)
         every { StarWarsFactionHolder.missingVehicle } returns missingVehicle
@@ -77,15 +94,15 @@ class DeterminateSelectorTests {
             enableNew = true
         }
         setupStarWarsState(starWarsState)
-        every { anyConstructed<InorderFactionSelector>().selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
-        every { anyConstructed<InorderNameSelector>().selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
-        every { anyConstructed<RandomSelector>().selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
-        every { anyConstructed<ReverseOrderFactionSelector>().selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
-        every { anyConstructed<ReverseOrderNameSelector>().selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
-        every { anyConstructed<RollingRandomSelector>().selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
+        every { inorderFactionSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
+        every { inorderNameSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
+        every { randomSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
+        every { reverseOrderFactionSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
+        every { reverseOrderNameSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
+        every { rollingRandomSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
 
         // Act
-        val result = DeterminateSelector.selectEntity(
+        val result = sut.selectEntity(
             emptyMap(),
             emptyMap(),
             defaultEnabled,
@@ -100,42 +117,42 @@ class DeterminateSelectorTests {
         )
 
         verify(exactly = factionSelector) {
-            anyConstructed<InorderFactionSelector>().selectEntity(
+            inorderFactionSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = vehicleSelector) {
-            anyConstructed<InorderNameSelector>().selectEntity(
+            inorderNameSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = randomSelector) {
-            anyConstructed<RandomSelector>().selectEntity(
+            randomSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = reverseFactionSelector) {
-            anyConstructed<ReverseOrderFactionSelector>().selectEntity(
+            reverseOrderFactionSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = reverseVehicleSelector) {
-            anyConstructed<ReverseOrderNameSelector>().selectEntity(
+            reverseOrderNameSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = rollingRandomSelector) {
-            anyConstructed<RollingRandomSelector>().selectEntity(
+            rollingRandomSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
@@ -167,15 +184,15 @@ class DeterminateSelectorTests {
             enableNew = true
         }
         setupStarWarsState(starWarsState)
-        every { anyConstructed<InorderFactionSelector>().selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
-        every { anyConstructed<InorderNameSelector>().selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
-        every { anyConstructed<RandomSelector>().selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
-        every { anyConstructed<ReverseOrderFactionSelector>().selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
-        every { anyConstructed<ReverseOrderNameSelector>().selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
-        every { anyConstructed<RollingRandomSelector>().selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
+        every { inorderFactionSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
+        every { inorderNameSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
+        every { randomSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
+        every { reverseOrderFactionSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
+        every { reverseOrderNameSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
+        every { rollingRandomSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
 
         // Act
-        val result = DeterminateSelector.selectEntity(
+        val result = sut.selectEntity(
             emptyMap(),
             emptyMap(),
             defaultEnabled,
@@ -190,42 +207,42 @@ class DeterminateSelectorTests {
         )
 
         verify(exactly = factionSelector) {
-            anyConstructed<InorderFactionSelector>().selectEntity(
+            inorderFactionSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = vehicleSelector) {
-            anyConstructed<InorderNameSelector>().selectEntity(
+            inorderNameSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = randomSelector) {
-            anyConstructed<RandomSelector>().selectEntity(
+            randomSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = reverseFactionSelector) {
-            anyConstructed<ReverseOrderFactionSelector>().selectEntity(
+            reverseOrderFactionSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = reverseVehicleSelector) {
-            anyConstructed<ReverseOrderNameSelector>().selectEntity(
+            reverseOrderNameSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = rollingRandomSelector) {
-            anyConstructed<RollingRandomSelector>().selectEntity(
+            rollingRandomSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
@@ -258,15 +275,15 @@ class DeterminateSelectorTests {
             enableNew = true
         }
         setupStarWarsState(starWarsState)
-        every { anyConstructed<InorderFactionSelector>().selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
-        every { anyConstructed<InorderNameSelector>().selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
-        every { anyConstructed<RandomSelector>().selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
-        every { anyConstructed<ReverseOrderFactionSelector>().selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
-        every { anyConstructed<ReverseOrderNameSelector>().selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
-        every { anyConstructed<RollingRandomSelector>().selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
+        every { inorderFactionSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
+        every { inorderNameSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
+        every { randomSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
+        every { reverseOrderFactionSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
+        every { reverseOrderNameSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
+        every { rollingRandomSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
 
         // Act
-        val result = DeterminateSelector.selectEntity(
+        val result = sut.selectEntity(
             emptyMap(),
             emptyMap(),
             defaultEnabled,
@@ -281,42 +298,42 @@ class DeterminateSelectorTests {
         )
 
         verify(exactly = factionSelector) {
-            anyConstructed<InorderFactionSelector>().selectEntity(
+            inorderFactionSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = vehicleSelector) {
-            anyConstructed<InorderNameSelector>().selectEntity(
+            inorderNameSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = randomSelector) {
-            anyConstructed<RandomSelector>().selectEntity(
+            randomSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = reverseFactionSelector) {
-            anyConstructed<ReverseOrderFactionSelector>().selectEntity(
+            reverseOrderFactionSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = reverseVehicleSelector) {
-            anyConstructed<ReverseOrderNameSelector>().selectEntity(
+            reverseOrderNameSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = rollingRandomSelector) {
-            anyConstructed<RollingRandomSelector>().selectEntity(
+            rollingRandomSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
@@ -349,15 +366,15 @@ class DeterminateSelectorTests {
             enableNew = true
         }
         setupStarWarsState(starWarsState)
-        every { anyConstructed<InorderFactionSelector>().selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
-        every { anyConstructed<InorderNameSelector>().selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
-        every { anyConstructed<RandomSelector>().selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
-        every { anyConstructed<ReverseOrderFactionSelector>().selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
-        every { anyConstructed<ReverseOrderNameSelector>().selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
-        every { anyConstructed<RollingRandomSelector>().selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
+        every { inorderFactionSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
+        every { inorderNameSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
+        every { randomSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
+        every { reverseOrderFactionSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
+        every { reverseOrderNameSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
+        every { rollingRandomSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
 
         // Act
-        val result = DeterminateSelector.selectEntity(
+        val result = sut.selectEntity(
             emptyMap(),
             emptyMap(),
             defaultEnabled,
@@ -372,42 +389,42 @@ class DeterminateSelectorTests {
         )
 
         verify(exactly = factionSelector) {
-            anyConstructed<InorderFactionSelector>().selectEntity(
+            inorderFactionSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = vehicleSelector) {
-            anyConstructed<InorderNameSelector>().selectEntity(
+            inorderNameSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = randomSelector) {
-            anyConstructed<RandomSelector>().selectEntity(
+            randomSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = reverseFactionSelector) {
-            anyConstructed<ReverseOrderFactionSelector>().selectEntity(
+            reverseOrderFactionSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = reverseVehicleSelector) {
-            anyConstructed<ReverseOrderNameSelector>().selectEntity(
+            reverseOrderNameSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = rollingRandomSelector) {
-            anyConstructed<RollingRandomSelector>().selectEntity(
+            rollingRandomSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
@@ -442,36 +459,36 @@ class DeterminateSelectorTests {
         }
         setupStarWarsState(starWarsState)
         every {
-            anyConstructed<InorderFactionSelector>().selectEntity(
+            inorderFactionSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         } returns vehicles[1]
         every {
-            anyConstructed<InorderNameSelector>().selectEntity(
+            inorderNameSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         } returns vehicles[1]
-        every { anyConstructed<RandomSelector>().selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) } returns vehicles[1]
+        every { randomSelectorMock.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) } returns vehicles[1]
         every {
-            anyConstructed<ReverseOrderFactionSelector>().selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        } returns vehicles[1]
-        every {
-            anyConstructed<ReverseOrderNameSelector>().selectEntity(
+            reverseOrderFactionSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         } returns vehicles[1]
         every {
-            anyConstructed<RollingRandomSelector>().selectEntity(
+            reverseOrderNameSelectorMock.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        } returns vehicles[1]
+        every {
+            rollingRandomSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
@@ -479,7 +496,7 @@ class DeterminateSelectorTests {
         } returns vehicles[1]
 
         // Act
-        val result = DeterminateSelector.selectEntity(
+        val result = sut.selectEntity(
             emptyMap(),
             emptyMap(),
             defaultEnabled,
@@ -494,42 +511,42 @@ class DeterminateSelectorTests {
         )
 
         verify(exactly = factionSelector) {
-            anyConstructed<InorderFactionSelector>().selectEntity(
+            inorderFactionSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = vehicleSelector) {
-            anyConstructed<InorderNameSelector>().selectEntity(
+            inorderNameSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = randomSelector) {
-            anyConstructed<RandomSelector>().selectEntity(
+            randomSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = reverseFactionSelector) {
-            anyConstructed<ReverseOrderFactionSelector>().selectEntity(
+            reverseOrderFactionSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = reverseVehicleSelector) {
-            anyConstructed<ReverseOrderNameSelector>().selectEntity(
+            reverseOrderNameSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = rollingRandomSelector) {
-            anyConstructed<RollingRandomSelector>().selectEntity(
+            rollingRandomSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
@@ -564,42 +581,42 @@ class DeterminateSelectorTests {
         }
         setupStarWarsState(starWarsState)
         every {
-            anyConstructed<InorderFactionSelector>().selectEntity(
+            inorderFactionSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         } returns lightsabers[1]
         every {
-            anyConstructed<InorderNameSelector>().selectEntity(
+            inorderNameSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         } returns lightsabers[1]
         every {
-            anyConstructed<RandomSelector>().selectEntity(
+            randomSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         } returns lightsabers[1]
         every {
-            anyConstructed<ReverseOrderFactionSelector>().selectEntity(
+            reverseOrderFactionSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         } returns lightsabers[1]
         every {
-            anyConstructed<ReverseOrderNameSelector>().selectEntity(
+            reverseOrderNameSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         } returns lightsabers[1]
         every {
-            anyConstructed<RollingRandomSelector>().selectEntity(
+            rollingRandomSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
@@ -607,7 +624,7 @@ class DeterminateSelectorTests {
         } returns lightsabers[1]
 
         // Act
-        val result = DeterminateSelector.selectEntity(
+        val result = sut.selectEntity(
             emptyMap(),
             emptyMap(),
             defaultEnabled,
@@ -622,42 +639,42 @@ class DeterminateSelectorTests {
         )
 
         verify(exactly = factionSelector) {
-            anyConstructed<InorderFactionSelector>().selectEntity(
+            inorderFactionSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = vehicleSelector) {
-            anyConstructed<InorderNameSelector>().selectEntity(
+            inorderNameSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = randomSelector) {
-            anyConstructed<RandomSelector>().selectEntity(
+            randomSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = reverseFactionSelector) {
-            anyConstructed<ReverseOrderFactionSelector>().selectEntity(
+            reverseOrderFactionSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = reverseVehicleSelector) {
-            anyConstructed<ReverseOrderNameSelector>().selectEntity(
+            reverseOrderNameSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = rollingRandomSelector) {
-            anyConstructed<RollingRandomSelector>().selectEntity(
+            rollingRandomSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
@@ -693,36 +710,36 @@ class DeterminateSelectorTests {
         }
         setupStarWarsState(starWarsState)
         every {
-            anyConstructed<InorderFactionSelector>().selectEntity(
+            inorderFactionSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         } returns vehicles[1]
         every {
-            anyConstructed<InorderNameSelector>().selectEntity(
+            inorderNameSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         } returns vehicles[1]
-        every { anyConstructed<RandomSelector>().selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) } returns vehicles[1]
+        every { randomSelectorMock.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) } returns vehicles[1]
         every {
-            anyConstructed<ReverseOrderFactionSelector>().selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        } returns vehicles[1]
-        every {
-            anyConstructed<ReverseOrderNameSelector>().selectEntity(
+            reverseOrderFactionSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         } returns vehicles[1]
         every {
-            anyConstructed<RollingRandomSelector>().selectEntity(
+            reverseOrderNameSelectorMock.selectEntity(
+                enabledVehicles,
+                enabledLightsabers,
+                defaultEnabled,
+            )
+        } returns vehicles[1]
+        every {
+            rollingRandomSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
@@ -730,7 +747,7 @@ class DeterminateSelectorTests {
         } returns vehicles[1]
 
         // Act
-        val result = DeterminateSelector.selectEntity(
+        val result = sut.selectEntity(
             emptyMap(),
             emptyMap(),
             defaultEnabled,
@@ -745,42 +762,42 @@ class DeterminateSelectorTests {
         )
 
         verify(exactly = factionSelector) {
-            anyConstructed<InorderFactionSelector>().selectEntity(
+            inorderFactionSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = vehicleSelector) {
-            anyConstructed<InorderNameSelector>().selectEntity(
+            inorderNameSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = randomSelector) {
-            anyConstructed<RandomSelector>().selectEntity(
+            randomSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = reverseFactionSelector) {
-            anyConstructed<ReverseOrderFactionSelector>().selectEntity(
+            reverseOrderFactionSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = reverseVehicleSelector) {
-            anyConstructed<ReverseOrderNameSelector>().selectEntity(
+            reverseOrderNameSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = rollingRandomSelector) {
-            anyConstructed<RollingRandomSelector>().selectEntity(
+            rollingRandomSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
@@ -814,16 +831,17 @@ class DeterminateSelectorTests {
             lightsabersEnabled = lightsabersEnabledState
             enableNew = true
         }
+
         setupStarWarsState(starWarsState)
-        every { anyConstructed<InorderFactionSelector>().selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
-        every { anyConstructed<InorderNameSelector>().selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
-        every { anyConstructed<RandomSelector>().selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
-        every { anyConstructed<ReverseOrderFactionSelector>().selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
-        every { anyConstructed<ReverseOrderNameSelector>().selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
-        every { anyConstructed<RollingRandomSelector>().selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
+        every { inorderFactionSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
+        every { inorderNameSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
+        every { randomSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
+        every { reverseOrderFactionSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
+        every { reverseOrderNameSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
+        every { rollingRandomSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
 
         // Act
-        val result = DeterminateSelector.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled, selectionType, EntitySelectionType.ALL)
+        val result = sut.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled, selectionType, EntitySelectionType.ALL)
 
         // Assert
         assertAll(
@@ -832,42 +850,42 @@ class DeterminateSelectorTests {
         )
 
         verify(exactly = factionSelector) {
-            anyConstructed<InorderFactionSelector>().selectEntity(
+            inorderFactionSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = vehicleSelector) {
-            anyConstructed<InorderNameSelector>().selectEntity(
+            inorderNameSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = randomSelector) {
-            anyConstructed<RandomSelector>().selectEntity(
+            randomSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = reverseFactionSelector) {
-            anyConstructed<ReverseOrderFactionSelector>().selectEntity(
+            reverseOrderFactionSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = reverseVehicleSelector) {
-            anyConstructed<ReverseOrderNameSelector>().selectEntity(
+            reverseOrderNameSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
             )
         }
         verify(exactly = rollingRandomSelector) {
-            anyConstructed<RollingRandomSelector>().selectEntity(
+            rollingRandomSelectorMock.selectEntity(
                 enabledVehicles,
                 enabledLightsabers,
                 defaultEnabled,
@@ -980,4 +998,20 @@ class DeterminateSelectorTests {
     }
 
     //endregion
+
+    private class TestEntitySelector(
+        inorderFactionSelector: InorderFactionSelector,
+        inorderNameSelector: InorderNameSelector,
+        randomSelector: RandomSelector,
+        rollingRandomSelector: RollingRandomSelector,
+        reverseOrderFactionSelector: ReverseOrderFactionSelector,
+        reverseOrderNameSelector: ReverseOrderNameSelector,
+    ) : AbstractEntitySelector(
+        inorderFactionSelector,
+        inorderNameSelector,
+        randomSelector,
+        rollingRandomSelector,
+        reverseOrderFactionSelector,
+        reverseOrderNameSelector,
+    )
 }

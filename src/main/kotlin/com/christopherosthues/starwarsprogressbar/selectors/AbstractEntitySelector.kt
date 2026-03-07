@@ -2,13 +2,15 @@ package com.christopherosthues.starwarsprogressbar.selectors
 
 import com.christopherosthues.starwarsprogressbar.models.StarWarsEntity
 
-internal abstract class AbstractEntitySelector {
-    protected val inorderFactionSelector = InorderFactionSelector()
-    protected val inorderNameSelector = InorderNameSelector()
-    protected val randomSelector = RandomSelector()
-    protected val rollingRandomSelector = RollingRandomSelector()
-    protected val reverseOrderFactionSelector = ReverseOrderFactionSelector()
-    protected val reverseOrderNameSelector = ReverseOrderNameSelector()
+internal abstract class AbstractEntitySelector(
+    private val inorderFactionSelector: InorderFactionSelector = InorderFactionSelector(),
+    private val inorderNameSelector: InorderNameSelector = InorderNameSelector(),
+    private val randomSelector: RandomSelector = RandomSelector(),
+    private val rollingRandomSelector: RollingRandomSelector = RollingRandomSelector(),
+    private val reverseOrderFactionSelector: ReverseOrderFactionSelector = ReverseOrderFactionSelector(),
+    private val reverseOrderNameSelector: ReverseOrderNameSelector = ReverseOrderNameSelector(),
+) {
+
 
     fun selectEntity(
         enabledVehicles: Map<String, Boolean>,
