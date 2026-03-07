@@ -25,6 +25,8 @@ plugins {
     alias(libs.plugins.kover)
     // ktlint Plugin
     alias(libs.plugins.ktlint)
+    // Serialization plugin
+    alias(libs.plugins.serialization)
 }
 
 group = providers.gradleProperty("pluginGroup").get()
