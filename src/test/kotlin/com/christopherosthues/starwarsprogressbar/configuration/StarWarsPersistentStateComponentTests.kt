@@ -1,8 +1,13 @@
 package com.christopherosthues.starwarsprogressbar.configuration
 
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_CHANGE_AFTER_PASS
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENABLE_NEW
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENTITY_SELECTOR
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SAME_VELOCITY
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SELECTOR
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_ICON
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_NAMES
 import com.christopherosthues.starwarsprogressbar.models.Blade
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
@@ -15,13 +20,10 @@ import com.intellij.openapi.application.Application
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.Service
 import com.intellij.openapi.components.State
-import com.intellij.util.xmlb.XmlSerializerUtil
 import io.mockk.every
-import io.mockk.just
 import io.mockk.mockk
 import io.mockk.mockkObject
 import io.mockk.mockkStatic
-import io.mockk.runs
 import io.mockk.unmockkAll
 import io.mockk.verify
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -42,7 +44,7 @@ class StarWarsPersistentStateComponentTests {
     fun setup() {
         mockkObject(StarWarsFactionHolder)
 
-        every { StarWarsFactionHolder.updateFactions(any()) } just runs
+//        every { StarWarsFactionHolder.updateFactions(any()) } just runs
         every { StarWarsFactionHolder.vehicleFactions } returns mockk(relaxed = true)
         every { StarWarsFactionHolder.lightsabersFactions } returns mockk(relaxed = true)
         every { StarWarsFactionHolder.missingVehicle } returns mockk(relaxed = true)
@@ -160,7 +162,84 @@ class StarWarsPersistentStateComponentTests {
     }
 
     @Test
-    fun `loadState should return copy state`() {
+    fun `loadState should return copy state for version 1 0 0`() {
+        // Arrange
+        val sut = StarWarsPersistentStateComponent()
+        val expectedVersion = "1.0.0"
+        val expectedVehiclesEnabled = mutableMapOf("1" to false, "2" to true, "3" to false, "4" to false, "5" to true)
+        val expectedLightsabersEnabled =
+            mutableMapOf("6" to false, "7" to true, "8" to false, "9" to false, "10" to true)
+        val starWarsState = StarWarsState().apply {
+            vehiclesEnabled = expectedVehiclesEnabled
+            lightsabersEnabled = expectedLightsabersEnabled
+            showIcon = false
+            showNames = true
+            showToolTips = false
+            showFactionCrests = true
+            sameVelocity = true
+            enableNew = false
+            solidProgressBarColor = true
+            drawSilhouettes = true
+            changeAfterPass = true
+            numberOfPassesUntilChange = 3
+            version = expectedVersion
+            determinateOrderSelector = SelectionType.INORDER_FACTION
+            indeterminateOrderSelector = SelectionType.INORDER_FACTION
+            determinateEntitySelector = EntitySelectionType.LIGHTSABERS
+            indeterminateEntitySelector = EntitySelectionType.LIGHTSABERS
+        }
+
+        val initialState = sut.state
+        assertInitialState(initialState)
+
+        // Act
+        sut.loadState(starWarsState)
+
+        // Assert
+        val result = sut.state
+        assertAll(
+            { assertNotNull(result) },
+            { assertNotSame(starWarsState, result) },
+            { assertEquals(starWarsState.vehiclesEnabled, result!!.vehiclesEnabled) },
+            { assertEquals(starWarsState.lightsabersEnabled, result!!.lightsabersEnabled) },
+            { assertEquals(DEFAULT_SHOW_ICON, result!!.showIcon) },
+            { assertEquals(DEFAULT_SHOW_NAMES, result!!.showNames) },
+            { assertEquals(starWarsState.showToolTips, result!!.showToolTips) },
+            { assertEquals(starWarsState.showFactionCrests, result!!.showFactionCrests) },
+            { assertEquals(DEFAULT_SAME_VELOCITY, result!!.sameVelocity) },
+            { assertEquals(DEFAULT_ENABLE_NEW, result!!.enableNew) },
+            { assertEquals(starWarsState.solidProgressBarColor, result!!.solidProgressBarColor) },
+            { assertEquals(starWarsState.drawSilhouettes, result!!.drawSilhouettes) },
+            { assertEquals(DEFAULT_CHANGE_AFTER_PASS, result!!.changeAfterPass) },
+            { assertEquals(DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE, result!!.numberOfPassesUntilChange) },
+            { assertEquals(starWarsState.version, result!!.version) },
+            { assertEquals(DEFAULT_SELECTOR, result!!.determinateOrderSelector) },
+            { assertEquals(DEFAULT_SELECTOR, result!!.indeterminateOrderSelector) },
+            { assertEquals(starWarsState.determinateEntitySelector, result!!.determinateEntitySelector) },
+            { assertEquals(starWarsState.indeterminateEntitySelector, result!!.indeterminateEntitySelector) },
+
+            { assertEquals(expectedVehiclesEnabled, result!!.vehiclesEnabled) },
+            { assertEquals(expectedLightsabersEnabled, result!!.lightsabersEnabled) },
+            { assertTrue(result!!.showIcon) },
+            { assertFalse(result!!.showNames) },
+            { assertFalse(result!!.showToolTips) },
+            { assertTrue(result!!.showFactionCrests) },
+            { assertFalse(result!!.sameVelocity) },
+            { assertTrue(result!!.enableNew) },
+            { assertTrue(result!!.solidProgressBarColor) },
+            { assertTrue(result!!.drawSilhouettes) },
+            { assertFalse(result!!.changeAfterPass) },
+            { assertEquals(SelectionType.RANDOM_ALL, result!!.determinateOrderSelector) },
+            { assertEquals(SelectionType.RANDOM_ALL, result!!.indeterminateOrderSelector) },
+            { assertEquals(EntitySelectionType.LIGHTSABERS, result!!.determinateEntitySelector) },
+            { assertEquals(EntitySelectionType.LIGHTSABERS, result!!.indeterminateEntitySelector) },
+            { assertEquals(2, result!!.numberOfPassesUntilChange) },
+            { assertEquals(expectedVersion, result!!.version) },
+        )
+    }
+
+    @Test
+    fun `loadState should return copy state for version 2 0 0`() {
         // Arrange
         val sut = StarWarsPersistentStateComponent()
         val expectedVersion = "2.0.0"
@@ -187,9 +266,82 @@ class StarWarsPersistentStateComponentTests {
             indeterminateEntitySelector = EntitySelectionType.LIGHTSABERS
         }
 
-        mockkStatic(XmlSerializerUtil::class)
+        val initialState = sut.state
+        assertInitialState(initialState)
 
-        every { XmlSerializerUtil.copyBean(any<StarWarsState>(), any()) } answers { callOriginal() }
+        // Act
+        sut.loadState(starWarsState)
+
+        // Assert
+        val result = sut.state
+        assertAll(
+            { assertNotNull(result) },
+            { assertNotSame(starWarsState, result) },
+            { assertEquals(starWarsState.vehiclesEnabled, result!!.vehiclesEnabled) },
+            { assertEquals(starWarsState.lightsabersEnabled, result!!.lightsabersEnabled) },
+            { assertEquals(starWarsState.showIcon, result!!.showIcon) },
+            { assertEquals(starWarsState.showNames, result!!.showNames) },
+            { assertEquals(starWarsState.showToolTips, result!!.showToolTips) },
+            { assertEquals(starWarsState.showFactionCrests, result!!.showFactionCrests) },
+            { assertEquals(starWarsState.sameVelocity, result!!.sameVelocity) },
+            { assertEquals(starWarsState.enableNew, result!!.enableNew) },
+            { assertEquals(starWarsState.solidProgressBarColor, result!!.solidProgressBarColor) },
+            { assertEquals(starWarsState.drawSilhouettes, result!!.drawSilhouettes) },
+            { assertEquals(starWarsState.changeAfterPass, result!!.changeAfterPass) },
+            { assertEquals(starWarsState.numberOfPassesUntilChange, result!!.numberOfPassesUntilChange) },
+            { assertEquals(starWarsState.version, result!!.version) },
+            { assertEquals(DEFAULT_SELECTOR, result!!.determinateOrderSelector) },
+            { assertEquals(DEFAULT_SELECTOR, result!!.indeterminateOrderSelector) },
+            { assertEquals(starWarsState.determinateEntitySelector, result!!.determinateEntitySelector) },
+            { assertEquals(starWarsState.indeterminateEntitySelector, result!!.indeterminateEntitySelector) },
+
+            { assertEquals(expectedVehiclesEnabled, result!!.vehiclesEnabled) },
+            { assertEquals(expectedLightsabersEnabled, result!!.lightsabersEnabled) },
+            { assertFalse(result!!.showIcon) },
+            { assertTrue(result!!.showNames) },
+            { assertFalse(result!!.showToolTips) },
+            { assertTrue(result!!.showFactionCrests) },
+            { assertTrue(result!!.sameVelocity) },
+            { assertFalse(result!!.enableNew) },
+            { assertTrue(result!!.solidProgressBarColor) },
+            { assertTrue(result!!.drawSilhouettes) },
+            { assertTrue(result!!.changeAfterPass) },
+            { assertEquals(SelectionType.RANDOM_ALL, result!!.determinateOrderSelector) },
+            { assertEquals(SelectionType.RANDOM_ALL, result!!.indeterminateOrderSelector) },
+            { assertEquals(EntitySelectionType.LIGHTSABERS, result!!.determinateEntitySelector) },
+            { assertEquals(EntitySelectionType.LIGHTSABERS, result!!.indeterminateEntitySelector) },
+            { assertEquals(3, result!!.numberOfPassesUntilChange) },
+            { assertEquals(expectedVersion, result!!.version) },
+        )
+    }
+
+    @Test
+    fun `loadState should return copy state for version 3 0 0`() {
+        // Arrange
+        val sut = StarWarsPersistentStateComponent()
+        val expectedVersion = "3.0.0"
+        val expectedVehiclesEnabled = mutableMapOf("1" to false, "2" to true, "3" to false, "4" to false, "5" to true)
+        val expectedLightsabersEnabled =
+            mutableMapOf("6" to false, "7" to true, "8" to false, "9" to false, "10" to true)
+        val starWarsState = StarWarsState().apply {
+            vehiclesEnabled = expectedVehiclesEnabled
+            lightsabersEnabled = expectedLightsabersEnabled
+            showIcon = false
+            showNames = true
+            showToolTips = false
+            showFactionCrests = true
+            sameVelocity = true
+            enableNew = false
+            solidProgressBarColor = true
+            drawSilhouettes = true
+            changeAfterPass = true
+            numberOfPassesUntilChange = 3
+            version = expectedVersion
+            determinateOrderSelector = SelectionType.INORDER_FACTION
+            indeterminateOrderSelector = SelectionType.INORDER_FACTION
+            determinateEntitySelector = EntitySelectionType.LIGHTSABERS
+            indeterminateEntitySelector = EntitySelectionType.LIGHTSABERS
+        }
 
         val initialState = sut.state
         assertInitialState(initialState)
@@ -238,8 +390,6 @@ class StarWarsPersistentStateComponentTests {
             { assertEquals(3, result!!.numberOfPassesUntilChange) },
             { assertEquals(expectedVersion, result!!.version) },
         )
-
-        verify(exactly = 1) { XmlSerializerUtil.copyBean(starWarsState, initialState!!) }
     }
 
     @Test
