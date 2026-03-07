@@ -53,7 +53,6 @@ class PluginUpdatedActivityTests {
     //region Fields
 
     private lateinit var starWarsPersistentStateComponent: StarWarsPersistentStateComponent
-    private lateinit var propertiesComponentMock: TestPropertiesComponent
     private lateinit var applicationMock: Application
 
     //endregion
