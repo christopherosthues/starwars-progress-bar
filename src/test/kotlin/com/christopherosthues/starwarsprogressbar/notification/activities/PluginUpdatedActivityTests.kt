@@ -386,7 +386,6 @@ class PluginUpdatedActivityTests {
                 NotificationType.INFORMATION,
             )
         } returns notificationMock
-//        every { notificationMock.addAction(any()) } returns notificationMock
 
         return Triple(notificationManagerMock, notificationGroupMock, notificationMock)
     }
