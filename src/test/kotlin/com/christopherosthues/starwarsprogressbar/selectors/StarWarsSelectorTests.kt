@@ -1,5 +1,6 @@
 package com.christopherosthues.starwarsprogressbar.selectors
 
+import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
 import com.christopherosthues.starwarsprogressbar.models.Blade
@@ -9,7 +10,12 @@ import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.intellij.idea.TestFor
-import io.mockk.*
+import io.mockk.every
+import io.mockk.mockk
+import io.mockk.mockkObject
+import io.mockk.mockkStatic
+import io.mockk.unmockkAll
+import io.mockk.verify
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertAll
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -27,6 +33,7 @@ class StarWarsSelectorTests {
 
     @BeforeEach
     fun setup() {
+        mockkStatic(StarWarsBundle::message)
         mockkObject(StarWarsFactionHolder)
         mockkObject(StarWarsPersistentStateComponent)
         // Instead of mocking all underlying selectors, mock the Determinate/Indeterminate singletons
@@ -35,6 +42,8 @@ class StarWarsSelectorTests {
 
         setupStarWarsState(null)
         every { StarWarsFactionHolder.missingVehicle } returns missingVehicle
+        every { StarWarsBundle.message("vehicles.faction.1") } returns("1")
+        every { StarWarsBundle.message("lightsabers.faction.2") } returns("2")
     }
 
     @AfterEach
@@ -65,7 +74,6 @@ class StarWarsSelectorTests {
         )
 
         // Assert
-        verify(exactly = 0) { StarWarsFactionHolder.updateFactions(any()) }
         verify(exactly = 0) { DeterminateSelector.selectEntity(any(), any(), any(), any(), any()) }
         verify(exactly = 0) { IndeterminateSelector.selectEntity(any(), any(), any(), any(), any()) }
     }
@@ -91,7 +99,6 @@ class StarWarsSelectorTests {
 
         // Assert
         assertEquals(missingVehicle, result)
-        verify(exactly = 0) { StarWarsFactionHolder.updateFactions(any()) }
         verify(exactly = 0) { DeterminateSelector.selectEntity(any(), any(), any(), any(), any()) }
         verify(exactly = 0) { IndeterminateSelector.selectEntity(any(), any(), any(), any(), any()) }
     }
@@ -117,7 +124,6 @@ class StarWarsSelectorTests {
 
         // Assert
         assertEquals(missingVehicle, result)
-        verify(exactly = 0) { StarWarsFactionHolder.updateFactions(any()) }
         verify(exactly = 0) { DeterminateSelector.selectEntity(any(), any(), any(), any(), any()) }
         verify(exactly = 0) { IndeterminateSelector.selectEntity(any(), any(), any(), any(), any()) }
     }
@@ -135,7 +141,7 @@ class StarWarsSelectorTests {
         val vehicles = createStarWarsVehicles()
         every { StarWarsFactionHolder.defaultVehicles } returns vehicles
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
-        val enabledVehicles = mutableMapOf("1" to false, "2" to true, "3" to false)
+        val enabledVehicles = mutableMapOf("1.1" to false, "1.2" to true, "1.3" to false)
         val enabledLightsabers = mutableMapOf<String, Boolean>()
         val defaultEnabled = false
         val starWarsState = StarWarsState().apply {
@@ -182,7 +188,7 @@ class StarWarsSelectorTests {
         every { StarWarsFactionHolder.defaultVehicles } returns listOf()
         every { StarWarsFactionHolder.defaultLightsabers } returns lightsabers
         val enabledVehicles = mutableMapOf<String, Boolean>()
-        val enabledLightsabers = mutableMapOf("4" to false, "5" to true, "6" to false)
+        val enabledLightsabers = mutableMapOf("2.4" to false, "2.5" to true, "2.6" to false)
         val defaultEnabled = false
         val starWarsState = StarWarsState().apply {
             vehiclesEnabled = enabledVehicles
@@ -228,8 +234,8 @@ class StarWarsSelectorTests {
         val vehicles = createStarWarsVehicles()
         every { StarWarsFactionHolder.defaultVehicles } returns vehicles
         every { StarWarsFactionHolder.defaultLightsabers } returns lightsabers
-        val enabledVehicles = mutableMapOf("1" to false, "2" to true, "3" to false)
-        val enabledLightsabers = mutableMapOf("4" to false, "5" to true, "6" to false)
+        val enabledVehicles = mutableMapOf("1.1" to false, "1.2" to true, "1.3" to false)
+        val enabledLightsabers = mutableMapOf("2.4" to false, "2.5" to true, "2.6" to false)
         val defaultEnabled = false
         val starWarsState = StarWarsState().apply {
             vehiclesEnabled = enabledVehicles
@@ -238,6 +244,7 @@ class StarWarsSelectorTests {
         }
         setupStarWarsState(starWarsState)
         every { DeterminateSelector.selectEntity(any(), any(), defaultEnabled, any(), any()) } returns vehicles[1]
+        every { IndeterminateSelector.selectEntity(any(), any(), defaultEnabled, any(), any()) } returns vehicles[1]
 
         // Act
         val result = StarWarsSelector.selectEntity(
@@ -275,10 +282,10 @@ class StarWarsSelectorTests {
         val vehicles = createStarWarsVehicles()
         every { StarWarsFactionHolder.defaultVehicles } returns vehicles
         every { StarWarsFactionHolder.defaultLightsabers } returns lightsabers
-        val enabledVehicles = mapOf("1" to false, "2" to true, "3" to false)
-        val vehiclesEnabledState = mutableMapOf("1" to true, "2" to true, "3" to false)
-        val enabledLightsabers = mapOf("4" to false, "5" to true, "6" to false)
-        val lightsabersEnabledState = mutableMapOf("4" to true, "5" to true, "6" to false)
+        val enabledVehicles = mapOf("1.1" to false, "1.2" to true, "1.3" to false)
+        val vehiclesEnabledState = mutableMapOf("1.1" to true, "1.2" to true, "1.3" to false)
+        val enabledLightsabers = mapOf("2.4" to false, "2.5" to true, "2.6" to false)
+        val lightsabersEnabledState = mutableMapOf("2.4" to true, "2.5" to true, "2.6" to false)
         val defaultEnabled = true
         val starWarsState = StarWarsState().apply {
             vehiclesEnabled = vehiclesEnabledState
@@ -287,6 +294,7 @@ class StarWarsSelectorTests {
         }
         setupStarWarsState(starWarsState)
         every { DeterminateSelector.selectEntity(any(), any(), defaultEnabled, any(), any()) } returns lightsabers[1]
+        every { IndeterminateSelector.selectEntity(any(), any(), defaultEnabled, any(), any()) } returns lightsabers[1]
 
         // Act
         val result = StarWarsSelector.selectEntity(
@@ -320,77 +328,89 @@ class StarWarsSelectorTests {
         every { starWarsPersistentStateComponentMock.state } returns starWarsState
     }
 
-    private fun createStarWarsVehicles() = listOf(
-        StarWarsVehicle("1", "a", 1, 1, 1f),
-        StarWarsVehicle("2", "b", 2, 2, 2f),
-        StarWarsVehicle("3", "c", 3, 3, 3f),
-    )
+    private fun createStarWarsVehicles(): List<StarWarsVehicle> {
+        val vehicles = listOf(
+            StarWarsVehicle("1", "a", 1, 1, 1f).apply { factionId = "1" },
+            StarWarsVehicle("2", "b", 2, 2, 2f).apply { factionId = "1" },
+            StarWarsVehicle("3", "c", 3, 3, 3f).apply { factionId = "1" },
+        )
+        for (vehicle in vehicles) {
+            every { StarWarsBundle.message(vehicle.localizationKey) } returns vehicle.id
+        }
+        return vehicles
+    }
 
-    private fun createLightsabers() = listOf(
-        Lightsabers(
-            "4",
-            1f,
-            isJarKai = false,
-            listOf(
-                Lightsaber(
-                    1,
-                    isDoubleBladed = false,
-                    yShift = 1,
-                    listOf(
-                        Blade(
-                            "a",
-                            isShoto = false,
-                            bladeSize = 8,
-                            xBlade = 0,
-                            yBlade = 0,
+    private fun createLightsabers(): List<Lightsabers> {
+        val lightsabers = listOf(
+            Lightsabers(
+                "4",
+                1f,
+                isJarKai = false,
+                listOf(
+                    Lightsaber(
+                        1,
+                        isDoubleBladed = false,
+                        yShift = 1,
+                        listOf(
+                            Blade(
+                                "a",
+                                isShoto = false,
+                                bladeSize = 8,
+                                xBlade = 0,
+                                yBlade = 0,
+                            ),
                         ),
                     ),
                 ),
-            ),
-        ),
-        Lightsabers(
-            "5",
-            2f,
-            isJarKai = false,
-            listOf(
-                Lightsaber(
-                    1,
-                    isDoubleBladed = false,
-                    yShift = 2,
-                    listOf(
-                        Blade(
-                            "b",
-                            isShoto = true,
-                            bladeSize = 8,
-                            xBlade = 0,
-                            yBlade = 0,
+            ).apply { factionId = "2" },
+            Lightsabers(
+                "5",
+                2f,
+                isJarKai = false,
+                listOf(
+                    Lightsaber(
+                        1,
+                        isDoubleBladed = false,
+                        yShift = 2,
+                        listOf(
+                            Blade(
+                                "b",
+                                isShoto = true,
+                                bladeSize = 8,
+                                xBlade = 0,
+                                yBlade = 0,
+                            ),
                         ),
                     ),
                 ),
-            ),
-        ),
-        Lightsabers(
-            "6",
-            3f,
-            isJarKai = false,
-            listOf(
-                Lightsaber(
-                    1,
-                    isDoubleBladed = true,
-                    yShift = 3,
-                    listOf(
-                        Blade(
-                            "c",
-                            isShoto = false,
-                            bladeSize = 8,
-                            xBlade = 0,
-                            yBlade = 0,
+            ).apply { factionId = "2" },
+            Lightsabers(
+                "6",
+                3f,
+                isJarKai = false,
+                listOf(
+                    Lightsaber(
+                        1,
+                        isDoubleBladed = true,
+                        yShift = 3,
+                        listOf(
+                            Blade(
+                                "c",
+                                isShoto = false,
+                                bladeSize = 8,
+                                xBlade = 0,
+                                yBlade = 0,
+                            ),
                         ),
                     ),
                 ),
-            ),
-        ),
-    )
+            ).apply { factionId = "2" },
+        )
+        for (lightsaber in lightsabers) {
+            every { StarWarsBundle.message(lightsaber.localizationKey) } returns lightsaber.id
+        }
+        return lightsabers
+    }
 
     //endregion
 
