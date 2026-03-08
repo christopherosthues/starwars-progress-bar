@@ -107,23 +107,23 @@ internal class StarWarsProgressBarUI(
     override fun getBoxLength(availableLength: Int, otherDimension: Int): Int = availableLength
 
     override fun getPreferredSize(c: JComponent?): Dimension {
-        var height = super.getPreferredSize(c).height
+        val dimension = super.getPreferredSize(c)
+        return getProgressBarDimension(dimension)
+    }
+
+    private fun getProgressBarDimension(dimension: Dimension): Dimension {
+        var height = dimension.height
         if (starWarsEntity is StarWarsVehicle) {
             height = vehicleProgressBarDecorator.getHeight()
         } else if (starWarsEntity is Lightsabers) {
             height = lightsaberProgressBarDecorator.getHeight()
         }
-        return Dimension(super.getPreferredSize(c).width, height)
+        return Dimension(dimension.width, height)
     }
 
     override fun getMinimumSize(c: JComponent?): Dimension {
-        var height = super.getMinimumSize(c).height
-        if (starWarsEntity is StarWarsVehicle) {
-            height = vehicleProgressBarDecorator.getHeight()
-        } else if (starWarsEntity is Lightsabers) {
-            height = lightsaberProgressBarDecorator.getHeight()
-        }
-        return Dimension(super.getMinimumSize(c).width, height)
+        val dimension = super.getMinimumSize(c)
+        return getProgressBarDimension(dimension)
     }
 
     override fun paintIndeterminate(g: Graphics?, c: JComponent?) {
