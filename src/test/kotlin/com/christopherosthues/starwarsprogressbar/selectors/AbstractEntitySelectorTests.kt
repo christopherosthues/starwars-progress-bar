@@ -1,22 +1,14 @@
 package com.christopherosthues.starwarsprogressbar.selectors
 
-import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
-import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
-import com.christopherosthues.starwarsprogressbar.models.Blade
-import com.christopherosthues.starwarsprogressbar.models.Lightsaber
-import com.christopherosthues.starwarsprogressbar.models.Lightsabers
-import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
-import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.models.StarWarsEntity
 import com.intellij.idea.TestFor
 import io.mockk.every
 import io.mockk.mockk
-import io.mockk.mockkObject
 import io.mockk.unmockkAll
 import io.mockk.verify
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertAll
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertNotEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
@@ -38,9 +30,6 @@ class AbstractEntitySelectorTests {
 
     @BeforeEach
     fun setup() {
-        mockkObject(StarWarsFactionHolder)
-        mockkObject(StarWarsPersistentStateComponent)
-        // mock constructors for selector implementations so we can stub instance methods
         inorderFactionSelectorMock = mockk(relaxed = true)
         inorderNameSelectorMock = mockk(relaxed = true)
         randomSelectorMock = mockk(relaxed = true)
@@ -48,7 +37,7 @@ class AbstractEntitySelectorTests {
         reverseOrderFactionSelectorMock = mockk(relaxed = true)
         reverseOrderNameSelectorMock = mockk(relaxed = true)
 
-        sut = TestEntitySelector(
+        sut = TestAbstractEntitySelector(
             inorderFactionSelectorMock,
             inorderNameSelectorMock,
             randomSelectorMock,
@@ -56,9 +45,6 @@ class AbstractEntitySelectorTests {
             reverseOrderFactionSelectorMock,
             reverseOrderNameSelectorMock,
         )
-
-        setupStarWarsState(null)
-        every { StarWarsFactionHolder.missingVehicle } returns missingVehicle
     }
 
     @AfterEach
@@ -72,433 +58,32 @@ class AbstractEntitySelectorTests {
 
     @ParameterizedTest
     @MethodSource("selectorValues")
-    fun `selectEntity should return correct vehicle if default vehicles are not all enabled and provided enabled vehicles are null`(
+    fun `selectEntity should route to correct sub-selector based on SelectionType`(
         selectionType: SelectionType,
         factionSelector: Int,
-        vehicleSelector: Int,
+        nameSelector: Int,
         randomSelector: Int,
         rollingRandomSelector: Int,
         reverseFactionSelector: Int,
-        reverseVehicleSelector: Int,
+        reverseNameSelector: Int,
     ) {
         // Arrange
-        val vehicles = createStarWarsVehicles()
-        every { StarWarsFactionHolder.defaultVehicles } returns vehicles
-        every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
-        val enabledVehicles = mutableMapOf("1" to false, "2" to true, "3" to false)
-        val enabledLightsabers = mutableMapOf<String, Boolean>()
-        val defaultEnabled = false
-        val starWarsState = StarWarsState().apply {
-            vehiclesEnabled = enabledVehicles
-            lightsabersEnabled = enabledLightsabers
-            enableNew = true
-        }
-        setupStarWarsState(starWarsState)
-        every { inorderFactionSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
-        every { inorderNameSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
-        every { randomSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
-        every { reverseOrderFactionSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
-        every { reverseOrderNameSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
-        every { rollingRandomSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
-
-        // Act
-        val result = sut.selectEntity(
-            emptyMap(),
-            emptyMap(),
-            defaultEnabled,
-            selectionType,
-            EntitySelectionType.ALL,
-        )
-
-        // Assert
-        assertAll(
-            { assertEquals(vehicles[1], result) },
-            { assertNotEquals(missingVehicle, result) },
-        )
-
-        verify(exactly = factionSelector) {
-            inorderFactionSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = vehicleSelector) {
-            inorderNameSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = randomSelector) {
-            randomSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = reverseFactionSelector) {
-            reverseOrderFactionSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = reverseVehicleSelector) {
-            reverseOrderNameSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = rollingRandomSelector) {
-            rollingRandomSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-    }
-
-    @ParameterizedTest
-    @MethodSource("selectorValues")
-    fun `selectEntity should return correct lightsaber if default lightsabers are not all enabled and provided enabled lightsabers are null`(
-        selectionType: SelectionType,
-        factionSelector: Int,
-        vehicleSelector: Int,
-        randomSelector: Int,
-        rollingRandomSelector: Int,
-        reverseFactionSelector: Int,
-        reverseVehicleSelector: Int,
-    ) {
-        // Arrange
-        val lightsabers = createLightsabers()
-        every { StarWarsFactionHolder.defaultVehicles } returns listOf()
-        every { StarWarsFactionHolder.defaultLightsabers } returns lightsabers
-        val enabledVehicles = mutableMapOf<String, Boolean>()
-        val enabledLightsabers = mutableMapOf("4" to false, "5" to true, "6" to false)
-        val defaultEnabled = false
-        val starWarsState = StarWarsState().apply {
-            vehiclesEnabled = enabledVehicles
-            lightsabersEnabled = enabledLightsabers
-            enableNew = true
-        }
-        setupStarWarsState(starWarsState)
-        every { inorderFactionSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
-        every { inorderNameSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
-        every { randomSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
-        every { reverseOrderFactionSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
-        every { reverseOrderNameSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
-        every { rollingRandomSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
-
-        // Act
-        val result = sut.selectEntity(
-            emptyMap(),
-            emptyMap(),
-            defaultEnabled,
-            selectionType,
-            EntitySelectionType.ALL,
-        )
-
-        // Assert
-        assertAll(
-            { assertEquals(lightsabers[1], result) },
-            { assertNotEquals(missingVehicle, result) },
-        )
-
-        verify(exactly = factionSelector) {
-            inorderFactionSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = vehicleSelector) {
-            inorderNameSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = randomSelector) {
-            randomSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = reverseFactionSelector) {
-            reverseOrderFactionSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = reverseVehicleSelector) {
-            reverseOrderNameSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = rollingRandomSelector) {
-            rollingRandomSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-    }
-
-    @ParameterizedTest
-    @MethodSource("selectorValues")
-    fun `selectEntity should return correct vehicle if default vehicles and lightsabers are not all enabled and provided enabled vehicles and lightsabers are null`(
-        selectionType: SelectionType,
-        factionSelector: Int,
-        vehicleSelector: Int,
-        randomSelector: Int,
-        rollingRandomSelector: Int,
-        reverseFactionSelector: Int,
-        reverseVehicleSelector: Int,
-    ) {
-        // Arrange
-        val lightsabers = createLightsabers()
-        val vehicles = createStarWarsVehicles()
-        every { StarWarsFactionHolder.defaultVehicles } returns vehicles
-        every { StarWarsFactionHolder.defaultLightsabers } returns lightsabers
-        val enabledVehicles = mutableMapOf("1" to false, "2" to true, "3" to false)
-        val enabledLightsabers = mutableMapOf("4" to false, "5" to true, "6" to false)
-        val defaultEnabled = false
-        val starWarsState = StarWarsState().apply {
-            vehiclesEnabled = enabledVehicles
-            lightsabersEnabled = enabledLightsabers
-            enableNew = true
-        }
-        setupStarWarsState(starWarsState)
-        every { inorderFactionSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
-        every { inorderNameSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
-        every { randomSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
-        every { reverseOrderFactionSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
-        every { reverseOrderNameSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
-        every { rollingRandomSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns vehicles[1]
-
-        // Act
-        val result = sut.selectEntity(
-            emptyMap(),
-            emptyMap(),
-            defaultEnabled,
-            selectionType,
-            EntitySelectionType.ALL,
-        )
-
-        // Assert
-        assertAll(
-            { assertEquals(vehicles[1], result) },
-            { assertNotEquals(missingVehicle, result) },
-        )
-
-        verify(exactly = factionSelector) {
-            inorderFactionSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = vehicleSelector) {
-            inorderNameSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = randomSelector) {
-            randomSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = reverseFactionSelector) {
-            reverseOrderFactionSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = reverseVehicleSelector) {
-            reverseOrderNameSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = rollingRandomSelector) {
-            rollingRandomSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-    }
-
-    @ParameterizedTest
-    @MethodSource("selectorValues")
-    fun `selectEntity should return correct lightsaber if default vehicles and lightsabers are not all enabled and provided enabled vehicles and lightsabers are null`(
-        selectionType: SelectionType,
-        factionSelector: Int,
-        vehicleSelector: Int,
-        randomSelector: Int,
-        rollingRandomSelector: Int,
-        reverseFactionSelector: Int,
-        reverseVehicleSelector: Int,
-    ) {
-        // Arrange
-        val lightsabers = createLightsabers()
-        val vehicles = createStarWarsVehicles()
-        every { StarWarsFactionHolder.defaultVehicles } returns vehicles
-        every { StarWarsFactionHolder.defaultLightsabers } returns lightsabers
-        val enabledVehicles = mutableMapOf("1" to false, "2" to true, "3" to false)
-        val enabledLightsabers = mutableMapOf("4" to false, "5" to true, "6" to false)
-        val defaultEnabled = false
-        val starWarsState = StarWarsState().apply {
-            vehiclesEnabled = enabledVehicles
-            lightsabersEnabled = enabledLightsabers
-            enableNew = true
-        }
-        setupStarWarsState(starWarsState)
-        every { inorderFactionSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
-        every { inorderNameSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
-        every { randomSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
-        every { reverseOrderFactionSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
-        every { reverseOrderNameSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
-        every { rollingRandomSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
-
-        // Act
-        val result = sut.selectEntity(
-            emptyMap(),
-            emptyMap(),
-            defaultEnabled,
-            selectionType,
-            EntitySelectionType.ALL,
-        )
-
-        // Assert
-        assertAll(
-            { assertEquals(lightsabers[1], result) },
-            { assertNotEquals(missingVehicle, result) },
-        )
-
-        verify(exactly = factionSelector) {
-            inorderFactionSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = vehicleSelector) {
-            inorderNameSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = randomSelector) {
-            randomSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = reverseFactionSelector) {
-            reverseOrderFactionSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = reverseVehicleSelector) {
-            reverseOrderNameSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = rollingRandomSelector) {
-            rollingRandomSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-    }
-
-    @ParameterizedTest
-    @MethodSource("selectorValues")
-    fun `selectEntity should return correct vehicle if default vehicles are not all enabled and provided enabled vehicles are not null`(
-        selectionType: SelectionType,
-        factionSelector: Int,
-        vehicleSelector: Int,
-        randomSelector: Int,
-        rollingRandomSelector: Int,
-        reverseFactionSelector: Int,
-        reverseVehicleSelector: Int,
-    ) {
-        // Arrange
-        val vehicles = createStarWarsVehicles()
-        every { StarWarsFactionHolder.defaultVehicles } returns vehicles
-        every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
-        val enabledVehicles = mapOf("1" to false, "2" to true, "3" to false)
-        val vehiclesEnabledState = mutableMapOf("1" to true, "2" to true, "3" to false)
-        val enabledLightsabers = mapOf<String, Boolean>()
-        val lightsabersEnabledState = mutableMapOf<String, Boolean>()
+        val expectedEntity = mockk<StarWarsEntity>()
+        val enabledVehicles = mapOf("v1" to true)
+        val enabledLightsabers = mapOf("l1" to true)
         val defaultEnabled = true
-        val starWarsState = StarWarsState().apply {
-            vehiclesEnabled = vehiclesEnabledState
-            lightsabersEnabled = lightsabersEnabledState
-            enableNew = true
-        }
-        setupStarWarsState(starWarsState)
-        every {
-            inorderFactionSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        } returns vehicles[1]
-        every {
-            inorderNameSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        } returns vehicles[1]
-        every { randomSelectorMock.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) } returns vehicles[1]
-        every {
-            reverseOrderFactionSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        } returns vehicles[1]
-        every {
-            reverseOrderNameSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        } returns vehicles[1]
-        every {
-            rollingRandomSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        } returns vehicles[1]
+
+        every { inorderFactionSelectorMock.selectEntity(any(), any(), any()) } returns expectedEntity
+        every { inorderNameSelectorMock.selectEntity(any(), any(), any()) } returns expectedEntity
+        every { randomSelectorMock.selectEntity(any(), any(), any()) } returns expectedEntity
+        every { rollingRandomSelectorMock.selectEntity(any(), any(), any()) } returns expectedEntity
+        every { reverseOrderFactionSelectorMock.selectEntity(any(), any(), any()) } returns expectedEntity
+        every { reverseOrderNameSelectorMock.selectEntity(any(), any(), any()) } returns expectedEntity
 
         // Act
         val result = sut.selectEntity(
-            emptyMap(),
-            emptyMap(),
+            enabledVehicles,
+            enabledLightsabers,
             defaultEnabled,
             selectionType,
             EntitySelectionType.ALL,
@@ -506,480 +91,66 @@ class AbstractEntitySelectorTests {
 
         // Assert
         assertAll(
-            { assertEquals(vehicles[1], result) },
-            { assertNotEquals(missingVehicle, result) },
+            { assertEquals(expectedEntity, result) },
+            {
+                verify(exactly = factionSelector) {
+                    inorderFactionSelectorMock.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled)
+                }
+            },
+            {
+                verify(exactly = nameSelector) {
+                    inorderNameSelectorMock.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled)
+                }
+            },
+            {
+                verify(exactly = randomSelector) {
+                    randomSelectorMock.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled)
+                }
+            },
+            {
+                verify(exactly = rollingRandomSelector) {
+                    rollingRandomSelectorMock.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled)
+                }
+            },
+            {
+                verify(exactly = reverseFactionSelector) {
+                    reverseOrderFactionSelectorMock.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled)
+                }
+            },
+            {
+                verify(exactly = reverseNameSelector) {
+                    reverseOrderNameSelectorMock.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled)
+                }
+            },
         )
-
-        verify(exactly = factionSelector) {
-            inorderFactionSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = vehicleSelector) {
-            inorderNameSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = randomSelector) {
-            randomSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = reverseFactionSelector) {
-            reverseOrderFactionSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = reverseVehicleSelector) {
-            reverseOrderNameSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = rollingRandomSelector) {
-            rollingRandomSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
     }
 
     @ParameterizedTest
-    @MethodSource("selectorValues")
-    fun `selectEntity should return correct lightsaber if default lightsabers are not all enabled and provided enabled lightsabers are not null`(
-        selectionType: SelectionType,
-        factionSelector: Int,
-        vehicleSelector: Int,
-        randomSelector: Int,
-        rollingRandomSelector: Int,
-        reverseFactionSelector: Int,
-        reverseVehicleSelector: Int,
+    @MethodSource("entitySelectionTypeValues")
+    fun `selectEntity should correctly filter enabled maps based on EntitySelectionType`(
+        entitySelectionType: EntitySelectionType,
+        expectedVehicles: Map<String, Boolean>,
+        expectedLightsabers: Map<String, Boolean>,
     ) {
         // Arrange
-        val lightsabers = createLightsabers()
-        every { StarWarsFactionHolder.defaultVehicles } returns listOf()
-        every { StarWarsFactionHolder.defaultLightsabers } returns lightsabers
-        val enabledVehicles = mapOf<String, Boolean>()
-        val vehiclesEnabledState = mutableMapOf<String, Boolean>()
-        val enabledLightsabers = mapOf("4" to false, "5" to true, "6" to false)
-        val lightsabersEnabledState = mutableMapOf("4" to true, "5" to true, "6" to false)
+        val enabledVehicles = mapOf("v1" to true, "v2" to false)
+        val enabledLightsabers = mapOf("l1" to true, "l2" to false)
         val defaultEnabled = true
-        val starWarsState = StarWarsState().apply {
-            vehiclesEnabled = vehiclesEnabledState
-            lightsabersEnabled = lightsabersEnabledState
-            enableNew = true
-        }
-        setupStarWarsState(starWarsState)
-        every {
-            inorderFactionSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        } returns lightsabers[1]
-        every {
-            inorderNameSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        } returns lightsabers[1]
-        every {
-            randomSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        } returns lightsabers[1]
-        every {
-            reverseOrderFactionSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        } returns lightsabers[1]
-        every {
-            reverseOrderNameSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        } returns lightsabers[1]
-        every {
-            rollingRandomSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        } returns lightsabers[1]
 
         // Act
-        val result = sut.selectEntity(
-            emptyMap(),
-            emptyMap(),
+        sut.selectEntity(
+            enabledVehicles,
+            enabledLightsabers,
             defaultEnabled,
-            selectionType,
-            EntitySelectionType.ALL,
+            SelectionType.RANDOM_ALL,
+            entitySelectionType,
         )
 
         // Assert
-        assertAll(
-            { assertEquals(lightsabers[1], result) },
-            { assertNotEquals(missingVehicle, result) },
-        )
-
-        verify(exactly = factionSelector) {
-            inorderFactionSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = vehicleSelector) {
-            inorderNameSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = randomSelector) {
-            randomSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = reverseFactionSelector) {
-            reverseOrderFactionSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = reverseVehicleSelector) {
-            reverseOrderNameSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = rollingRandomSelector) {
-            rollingRandomSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
+        verify {
+            randomSelectorMock.selectEntity(expectedVehicles, expectedLightsabers, defaultEnabled)
         }
     }
-
-    @ParameterizedTest
-    @MethodSource("selectorValues")
-    fun `selectEntity should return correct vehicle if default vehicles and lightsabers are not all enabled and provided enabled vehicles and lightsabers are not null`(
-        selectionType: SelectionType,
-        factionSelector: Int,
-        vehicleSelector: Int,
-        randomSelector: Int,
-        rollingRandomSelector: Int,
-        reverseFactionSelector: Int,
-        reverseVehicleSelector: Int,
-    ) {
-        // Arrange
-        val vehicles = createStarWarsVehicles()
-        val lightsabers = createLightsabers()
-        every { StarWarsFactionHolder.defaultVehicles } returns vehicles
-        every { StarWarsFactionHolder.defaultLightsabers } returns lightsabers
-        val enabledVehicles = mapOf("1" to false, "2" to true, "3" to false)
-        val vehiclesEnabledState = mutableMapOf("1" to true, "2" to true, "3" to false)
-        val enabledLightsabers = mapOf("4" to false, "5" to true, "6" to false)
-        val lightsabersEnabledState = mutableMapOf("4" to true, "5" to true, "6" to false)
-        val defaultEnabled = true
-        val starWarsState = StarWarsState().apply {
-            vehiclesEnabled = vehiclesEnabledState
-            lightsabersEnabled = lightsabersEnabledState
-            enableNew = true
-        }
-        setupStarWarsState(starWarsState)
-        every {
-            inorderFactionSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        } returns vehicles[1]
-        every {
-            inorderNameSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        } returns vehicles[1]
-        every { randomSelectorMock.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled) } returns vehicles[1]
-        every {
-            reverseOrderFactionSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        } returns vehicles[1]
-        every {
-            reverseOrderNameSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        } returns vehicles[1]
-        every {
-            rollingRandomSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        } returns vehicles[1]
-
-        // Act
-        val result = sut.selectEntity(
-            emptyMap(),
-            emptyMap(),
-            defaultEnabled,
-            selectionType,
-            EntitySelectionType.ALL,
-        )
-
-        // Assert
-        assertAll(
-            { assertEquals(vehicles[1], result) },
-            { assertNotEquals(missingVehicle, result) },
-        )
-
-        verify(exactly = factionSelector) {
-            inorderFactionSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = vehicleSelector) {
-            inorderNameSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = randomSelector) {
-            randomSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = reverseFactionSelector) {
-            reverseOrderFactionSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = reverseVehicleSelector) {
-            reverseOrderNameSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = rollingRandomSelector) {
-            rollingRandomSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-    }
-
-    @ParameterizedTest
-    @MethodSource("selectorValues")
-    fun `selectEntity should return correct lightsaber if default vehicles and lightsabers are not all enabled and provided enabled vehicles and lightsabers are not null`(
-        selectionType: SelectionType,
-        factionSelector: Int,
-        vehicleSelector: Int,
-        randomSelector: Int,
-        rollingRandomSelector: Int,
-        reverseFactionSelector: Int,
-        reverseVehicleSelector: Int,
-    ) {
-        // Arrange
-        val lightsabers = createLightsabers()
-        val vehicles = createStarWarsVehicles()
-        every { StarWarsFactionHolder.defaultVehicles } returns vehicles
-        every { StarWarsFactionHolder.defaultLightsabers } returns lightsabers
-        val enabledVehicles = mapOf("1" to false, "2" to true, "3" to false)
-        val vehiclesEnabledState = mutableMapOf("1" to true, "2" to true, "3" to false)
-        val enabledLightsabers = mapOf("4" to false, "5" to true, "6" to false)
-        val lightsabersEnabledState = mutableMapOf("4" to true, "5" to true, "6" to false)
-        val defaultEnabled = true
-        val starWarsState = StarWarsState().apply {
-            vehiclesEnabled = vehiclesEnabledState
-            lightsabersEnabled = lightsabersEnabledState
-            enableNew = true
-        }
-
-        setupStarWarsState(starWarsState)
-        every { inorderFactionSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
-        every { inorderNameSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
-        every { randomSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
-        every { reverseOrderFactionSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
-        every { reverseOrderNameSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
-        every { rollingRandomSelectorMock.selectEntity(any(), any(), defaultEnabled) } returns lightsabers[1]
-
-        // Act
-        val result = sut.selectEntity(enabledVehicles, enabledLightsabers, defaultEnabled, selectionType, EntitySelectionType.ALL)
-
-        // Assert
-        assertAll(
-            { assertEquals(lightsabers[1], result) },
-            { assertNotEquals(missingVehicle, result) },
-        )
-
-        verify(exactly = factionSelector) {
-            inorderFactionSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = vehicleSelector) {
-            inorderNameSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = randomSelector) {
-            randomSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = reverseFactionSelector) {
-            reverseOrderFactionSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = reverseVehicleSelector) {
-            reverseOrderNameSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-        verify(exactly = rollingRandomSelector) {
-            rollingRandomSelectorMock.selectEntity(
-                enabledVehicles,
-                enabledLightsabers,
-                defaultEnabled,
-            )
-        }
-    }
-
-    //endregion
-
-    //region Helper methods
-
-    private fun setupStarWarsState(starWarsState: StarWarsState?) {
-        val starWarsPersistentStateComponentMock = mockk<StarWarsPersistentStateComponent>(relaxed = true)
-        every { StarWarsPersistentStateComponent.instance } returns starWarsPersistentStateComponentMock
-        every { starWarsPersistentStateComponentMock.state } returns starWarsState
-    }
-
-    private fun createStarWarsVehicles() = listOf(
-        StarWarsVehicle("1", "a", 1, 1, 1f),
-        StarWarsVehicle("2", "b", 2, 2, 2f),
-        StarWarsVehicle("3", "c", 3, 3, 3f),
-    )
-
-    private fun createLightsabers() = listOf(
-        Lightsabers(
-            "4",
-            1f,
-            isJarKai = false,
-            listOf(
-                Lightsaber(
-                    1,
-                    isDoubleBladed = false,
-                    yShift = 1,
-                    listOf(
-                        Blade(
-                            "a",
-                            isShoto = false,
-                            bladeSize = 8,
-                            xBlade = 0,
-                            yBlade = 0,
-                        ),
-                    ),
-                ),
-            ),
-        ),
-        Lightsabers(
-            "5",
-            2f,
-            isJarKai = false,
-            listOf(
-                Lightsaber(
-                    1,
-                    isDoubleBladed = false,
-                    yShift = 2,
-                    listOf(
-                        Blade(
-                            "b",
-                            isShoto = true,
-                            bladeSize = 8,
-                            xBlade = 0,
-                            yBlade = 0,
-                        ),
-                    ),
-                ),
-            ),
-        ),
-        Lightsabers(
-            "6",
-            3f,
-            isJarKai = false,
-            listOf(
-                Lightsaber(
-                    1,
-                    isDoubleBladed = true,
-                    yShift = 3,
-                    listOf(
-                        Blade(
-                            "c",
-                            isShoto = false,
-                            bladeSize = 8,
-                            xBlade = 0,
-                            yBlade = 0,
-                        ),
-                    ),
-                ),
-            ),
-        ),
-    )
-
-    //endregion
-
-    //region Test data
-
-    private val missingVehicle = StarWarsVehicle("missing", "green", 0, 0, 0f)
 
     //endregion
 
@@ -995,11 +166,30 @@ class AbstractEntitySelectorTests {
             Arguments.of(SelectionType.REVERSE_ORDER_FACTION, 0, 0, 0, 0, 1, 0),
             Arguments.of(SelectionType.REVERSE_ORDER_NAME, 0, 0, 0, 0, 0, 1),
         )
+
+        @JvmStatic
+        fun entitySelectionTypeValues(): Stream<Arguments> = Stream.of(
+            Arguments.of(
+                EntitySelectionType.ALL,
+                mapOf("v1" to true, "v2" to false),
+                mapOf("l1" to true, "l2" to false),
+            ),
+            Arguments.of(
+                EntitySelectionType.VEHICLES,
+                mapOf("v1" to true, "v2" to false),
+                mapOf("l1" to false, "l2" to false),
+            ),
+            Arguments.of(
+                EntitySelectionType.LIGHTSABERS,
+                mapOf("v1" to false, "v2" to false),
+                mapOf("l1" to true, "l2" to false),
+            ),
+        )
     }
 
     //endregion
 
-    private class TestEntitySelector(
+    private class TestAbstractEntitySelector(
         inorderFactionSelector: InorderFactionSelector,
         inorderNameSelector: InorderNameSelector,
         randomSelector: RandomSelector,
