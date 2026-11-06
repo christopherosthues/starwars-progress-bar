@@ -8,6 +8,7 @@ import com.intellij.idea.TestFor
 import com.intellij.openapi.extensions.PluginId
 import io.mockk.every
 import io.mockk.mockk
+import io.mockk.mockkObject
 import io.mockk.mockkStatic
 import io.mockk.slot
 import io.mockk.unmockkAll
@@ -42,11 +43,12 @@ class StarWarsProgressListenerTests {
     fun setup() {
         mockkStatic(UIManager::class)
         mockkStatic(PluginId::class)
+        mockkObject(PluginId)
 
         val equalsSlot = slot<Any>()
         pluginIdMock = mockk()
         every { pluginIdMock.idString } returns pluginId
-        every { pluginIdMock.equals(other = capture(equalsSlot)) } answers {
+        every { pluginIdMock == capture(equalsSlot) } answers {
             pluginIdEquals(pluginIdMock, equalsSlot.captured)
         }
 

@@ -48,6 +48,7 @@ import java.util.function.Consumer
 import java.util.function.Predicate
 import javax.swing.Icon
 
+@Suppress("JetBrainsInternalApiUsage")
 @TestFor(classes = [PluginUpdatedActivity::class])
 class PluginUpdatedActivityTests {
     //region Fields
@@ -65,6 +66,7 @@ class PluginUpdatedActivityTests {
         mockkObject(StarWarsResourceLoader)
         mockkObject(DoNotAskService)
         mockkObject(StarWarsBundle)
+        mockkObject(PluginId)
         mockkStatic(StarWarsBundle::message)
         mockkStatic(PluginManagerCore::class)
         mockkStatic(PluginId::class)
@@ -414,6 +416,7 @@ class PluginUpdatedActivityTests {
         ) {
         }
 
+        @Suppress("UNCHECKED_CAST")
         override fun <T : Configurable?> showSettingsDialog(
             p0: Project?,
             p1: Class<T?>
@@ -526,5 +529,14 @@ class PluginUpdatedActivityTests {
             return false
         }
 
+        override fun closeSettings(project: Project, component: Component) {
+        }
+
+        @Suppress("UnstableApiUsage")
+        override suspend fun showSettingsDialog(
+            project: Project,
+            groups: List<ConfigurableGroup>
+        ) {
+        }
     }
 }

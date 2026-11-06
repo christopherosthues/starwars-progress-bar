@@ -31,10 +31,12 @@ internal class TestPropertiesComponent : PropertiesComponent() {
         values[name] = value.toString()
     }
 
+    @Deprecated("See inherited class", replaceWith = ReplaceWith("See inherited class"))
     override fun getValues(p0: @NonNls String): Array<out String?>? {
         return null
     }
 
+    @Deprecated("See inherited class", replaceWith = ReplaceWith("See inherited class"))
     override fun setValues(
         p0: @NonNls String,
         p1: Array<out String?>?
@@ -42,7 +44,7 @@ internal class TestPropertiesComponent : PropertiesComponent() {
     }
 
     override fun getList(p0: @NonNls String): List<String?>? {
-        return listOf<String?>()
+        return listOf()
     }
 
     override fun setList(
