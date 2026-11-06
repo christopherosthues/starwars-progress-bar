@@ -1,41 +1,39 @@
 [versions]
 # libraries
-kotlinxSerializationJson = "1.10.0"
-opentest4j = "1.3.0"
+kotlinxSerializationJson = "1.12.0"
 
 # plugins
 changelog = "2.5.0"
 detekt = "1.23.8"
-intelliJPlatform = "2.11.0"
-junit = "6.0.3"
-junitJupiter = "6.0.3"
-junitPlatform = "6.0.3"
-kotlin = "2.3.10"
-kover = "0.9.7"
+junit = "6.1.3"
+junit4 = "4.13.2"
+junitJupiter = "6.1.3"
+junitPlatform = "6.1.3"
+kotlin = "2.4.21"
+kover = "0.9.11"
 ktlint = "1.8.0"
-ktlintPlugin = "14.1.0"
-mockk = "1.14.9"
-qodana = "2025.3.1"
+ktlintPlugin = "14.2.0"
+mockk = "1.14.11"
 
 [libraries]
+# JUnit 4 is required at test runtime by the IntelliJ Platform test framework (JUnit5TestSessionListener)
+junit4 = { module = "junit:junit", version.ref = "junit4" }
 junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
 junit-jupiter-core = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junitJupiter" }
 junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junitJupiter" }
 junit-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "junitJupiter" }
 junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher", version.ref = "junitPlatform" }
 junit-platform-suite-engine = { module = "org.junit.platform:junit-platform-suite-engine", version.ref = "junitPlatform" }
-opentest4j = { group = "org.opentest4j", name = "opentest4j", version.ref = "opentest4j" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 mocking-mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 
 [plugins]
 changelog = { id = "org.jetbrains.changelog", version.ref = "changelog" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
-intelliJPlatform = { id = "org.jetbrains.intellij.platform", version.ref = "intelliJPlatform" }
+intelliJPlatform = { id = "org.jetbrains.intellij.platform" }
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlintPlugin" }
-qodana = { id = "org.jetbrains.qodana", version.ref = "qodana" }
 serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 
 [bundles]
