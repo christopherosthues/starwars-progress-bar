@@ -89,6 +89,7 @@ ktlint {
         reporter(ReporterType.JSON)
         reporter(ReporterType.HTML)
     }
+    baseline = file("config/ktlint/baseline.xml")
 }
 
 detekt {

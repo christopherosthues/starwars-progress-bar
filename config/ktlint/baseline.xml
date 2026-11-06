@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<baseline version="1.0">
+    <file name="src/test/kotlin/com/christopherosthues/starwarsprogressbar/configuration/StarWarsProgressConfigurableTests.kt">
+        <error line="189" column="121" source="standard:max-line-length" />
+    </file>
+    <file name="src/test/kotlin/com/christopherosthues/starwarsprogressbar/listeners/StarWarsProgressListenerTests.kt">
+        <error line="237" column="121" source="standard:max-line-length" />
+        <error line="254" column="121" source="standard:max-line-length" />
+        <error line="271" column="121" source="standard:max-line-length" />
+        <error line="288" column="121" source="standard:max-line-length" />
+        <error line="305" column="121" source="standard:max-line-length" />
+        <error line="323" column="121" source="standard:max-line-length" />
+        <error line="342" column="121" source="standard:max-line-length" />
+        <error line="367" column="121" source="standard:max-line-length" />
+        <error line="410" column="121" source="standard:max-line-length" />
+        <error line="443" column="121" source="standard:max-line-length" />
+    </file>
+    <file name="src/test/kotlin/com/christopherosthues/starwarsprogressbar/models/FactionCreationHelper.kt">
+        <error line="56" column="121" source="standard:max-line-length" />
+        <error line="89" column="121" source="standard:max-line-length" />
+        <error line="364" column="121" source="standard:max-line-length" />
+        <error line="502" column="121" source="standard:max-line-length" />
+    </file>
+    <file name="src/test/kotlin/com/christopherosthues/starwarsprogressbar/models/StarWarsFactionHolderTests.kt">
+        <error line="139" column="121" source="standard:max-line-length" />
+        <error line="155" column="121" source="standard:max-line-length" />
+        <error line="171" column="121" source="standard:max-line-length" />
+        <error line="187" column="121" source="standard:max-line-length" />
+        <error line="227" column="121" source="standard:max-line-length" />
+        <error line="352" column="121" source="standard:max-line-length" />
+        <error line="389" column="121" source="standard:max-line-length" />
+        <error line="405" column="121" source="standard:max-line-length" />
+        <error line="421" column="121" source="standard:max-line-length" />
+        <error line="437" column="121" source="standard:max-line-length" />
+        <error line="453" column="121" source="standard:max-line-length" />
+        <error line="475" column="121" source="standard:max-line-length" />
+        <error line="499" column="121" source="standard:max-line-length" />
+        <error line="507" column="121" source="standard:max-line-length" />
+        <error line="531" column="121" source="standard:max-line-length" />
+    </file>
+    <file name="src/test/kotlin/com/christopherosthues/starwarsprogressbar/selectors/InorderFactionSelectorTests.kt">
+        <error line="69" column="121" source="standard:max-line-length" />
+        <error line="89" column="121" source="standard:max-line-length" />
+        <error line="109" column="121" source="standard:max-line-length" />
+        <error line="129" column="121" source="standard:max-line-length" />
+        <error line="150" column="121" source="standard:max-line-length" />
+        <error line="171" column="121" source="standard:max-line-length" />
+        <error line="191" column="121" source="standard:max-line-length" />
+        <error line="204" column="121" source="standard:max-line-length" />
+        <error line="217" column="121" source="standard:max-line-length" />
+        <error line="231" column="121" source="standard:max-line-length" />
+        <error line="252" column="121" source="standard:max-line-length" />
+        <error line="273" column="121" source="standard:max-line-length" />
+    </file>
+    <file name="src/test/kotlin/com/christopherosthues/starwarsprogressbar/selectors/InorderNameSelectorTests.kt">
+        <error line="54" column="121" source="standard:max-line-length" />
+        <error line="70" column="121" source="standard:max-line-length" />
+        <error line="90" column="121" source="standard:max-line-length" />
+        <error line="110" column="121" source="standard:max-line-length" />
+        <error line="130" column="121" source="standard:max-line-length" />
+        <error line="147" column="121" source="standard:max-line-length" />
+        <error line="164" column="121" source="standard:max-line-length" />
+        <error line="184" column="121" source="standard:max-line-length" />
+        <error line="197" column="121" source="standard:max-line-length" />
+        <error line="210" column="121" source="standard:max-line-length" />
+        <error line="224" column="121" source="standard:max-line-length" />
+        <error line="245" column="121" source="standard:max-line-length" />
+        <error line="266" column="121" source="standard:max-line-length" />
+    </file>
+    <file name="src/test/kotlin/com/christopherosthues/starwarsprogressbar/selectors/RandomSelectorTests.kt">
+        <error line="54" column="121" source="standard:max-line-length" />
+        <error line="70" column="121" source="standard:max-line-length" />
+        <error line="90" column="121" source="standard:max-line-length" />
+        <error line="110" column="121" source="standard:max-line-length" />
+        <error line="130" column="121" source="standard:max-line-length" />
+        <error line="147" column="121" source="standard:max-line-length" />
+        <error line="164" column="121" source="standard:max-line-length" />
+        <error line="184" column="121" source="standard:max-line-length" />
+        <error line="197" column="121" source="standard:max-line-length" />
+        <error line="210" column="121" source="standard:max-line-length" />
+        <error line="224" column="121" source="standard:max-line-length" />
+        <error line="245" column="121" source="standard:max-line-length" />
+        <error line="266" column="121" source="standard:max-line-length" />
+        <error line="287" column="121" source="standard:max-line-length" />
+        <error line="310" column="121" source="standard:max-line-length" />
+        <error line="333" column="121" source="standard:max-line-length" />
+        <error line="358" column="121" source="standard:max-line-length" />
+        <error line="383" column="121" source="standard:max-line-length" />
+        <error line="408" column="121" source="standard:max-line-length" />
+        <error line="438" column="121" source="standard:max-line-length" />
+        <error line="460" column="121" source="standard:max-line-length" />
+        <error line="483" column="121" source="standard:max-line-length" />
+        <error line="510" column="121" source="standard:max-line-length" />
+        <error line="533" column="121" source="standard:max-line-length" />
+        <error line="556" column="121" source="standard:max-line-length" />
+        <error line="582" column="121" source="standard:max-line-length" />
+        <error line="605" column="121" source="standard:max-line-length" />
+        <error line="628" column="121" source="standard:max-line-length" />
+        <error line="697" column="121" source="standard:max-line-length" />
+    </file>
+    <file name="src/test/kotlin/com/christopherosthues/starwarsprogressbar/selectors/ReverseOrderFactionSelectorTests.kt">
+        <error line="53" column="121" source="standard:max-line-length" />
+        <error line="69" column="121" source="standard:max-line-length" />
+        <error line="89" column="121" source="standard:max-line-length" />
+        <error line="109" column="121" source="standard:max-line-length" />
+        <error line="129" column="121" source="standard:max-line-length" />
+        <error line="154" column="121" source="standard:max-line-length" />
+        <error line="179" column="121" source="standard:max-line-length" />
+        <error line="207" column="121" source="standard:max-line-length" />
+        <error line="220" column="121" source="standard:max-line-length" />
+        <error line="233" column="121" source="standard:max-line-length" />
+        <error line="247" column="121" source="standard:max-line-length" />
+        <error line="268" column="121" source="standard:max-line-length" />
+        <error line="289" column="121" source="standard:max-line-length" />
+    </file>
+    <file name="src/test/kotlin/com/christopherosthues/starwarsprogressbar/selectors/ReverseOrderNameSelectorTests.kt">
+        <error line="53" column="121" source="standard:max-line-length" />
+        <error line="69" column="121" source="standard:max-line-length" />
+        <error line="89" column="121" source="standard:max-line-length" />
+        <error line="109" column="121" source="standard:max-line-length" />
+        <error line="129" column="121" source="standard:max-line-length" />
+        <error line="150" column="121" source="standard:max-line-length" />
+        <error line="171" column="121" source="standard:max-line-length" />
+        <error line="191" column="121" source="standard:max-line-length" />
+        <error line="204" column="121" source="standard:max-line-length" />
+        <error line="217" column="121" source="standard:max-line-length" />
+        <error line="231" column="121" source="standard:max-line-length" />
+        <error line="252" column="121" source="standard:max-line-length" />
+        <error line="273" column="121" source="standard:max-line-length" />
+    </file>
+    <file name="src/test/kotlin/com/christopherosthues/starwarsprogressbar/selectors/RollingRandomSelectorTests.kt">
+        <error line="55" column="121" source="standard:max-line-length" />
+        <error line="71" column="121" source="standard:max-line-length" />
+        <error line="91" column="121" source="standard:max-line-length" />
+        <error line="111" column="121" source="standard:max-line-length" />
+        <error line="131" column="121" source="standard:max-line-length" />
+        <error line="152" column="121" source="standard:max-line-length" />
+        <error line="173" column="121" source="standard:max-line-length" />
+        <error line="193" column="121" source="standard:max-line-length" />
+        <error line="206" column="121" source="standard:max-line-length" />
+        <error line="219" column="121" source="standard:max-line-length" />
+        <error line="233" column="121" source="standard:max-line-length" />
+        <error line="254" column="121" source="standard:max-line-length" />
+        <error line="275" column="121" source="standard:max-line-length" />
+    </file>
+    <file name="src/test/kotlin/com/christopherosthues/starwarsprogressbar/selectors/StarWarsSelectorTests.kt">
+        <error line="133" column="121" source="standard:max-line-length" />
+        <error line="183" column="121" source="standard:max-line-length" />
+        <error line="233" column="121" source="standard:max-line-length" />
+        <error line="285" column="121" source="standard:max-line-length" />
+    </file>
+    <file name="src/test/kotlin/com/christopherosthues/starwarsprogressbar/ui/shapes/BorderShapeTests.kt">
+        <error line="103" column="121" source="standard:max-line-length" />
+    </file>
+    <file name="src/test/kotlin/messages/StarWarsResourceBundleTests.kt">
+        <error line="59" column="121" source="standard:max-line-length" />
+        <error line="83" column="121" source="standard:max-line-length" />
+    </file>
+</baseline>
