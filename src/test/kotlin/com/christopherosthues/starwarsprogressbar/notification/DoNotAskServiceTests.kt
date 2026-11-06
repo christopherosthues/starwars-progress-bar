@@ -24,6 +24,7 @@ import org.junit.jupiter.params.provider.MethodSource
 import org.junit.jupiter.params.provider.ValueSource
 import java.util.stream.Stream
 
+@Suppress("JetBrainsInternalApiUsage")
 @TestFor(classes = [DoNotAskService::class])
 class DoNotAskServiceTests {
 
@@ -34,7 +35,7 @@ class DoNotAskServiceTests {
         // Clear any previous test state
         val applicationMock = mockk<Application>(relaxed = true)
         propertiesComponentMock = TestPropertiesComponent()
-        every { applicationMock.getService<PropertiesComponent>(any()) } returns(propertiesComponentMock)
+        every { applicationMock.getService<PropertiesComponent>(any()) } returns (propertiesComponentMock)
         ApplicationManager.setApplication(applicationMock)
     }
 
@@ -74,7 +75,7 @@ class DoNotAskServiceTests {
         val resultTitle = propertiesComponentMock.getValue("Notification.DisplayName-DoNotAsk-${PluginConstants.NOTIFICATION_GROUP_ID}")
         assertAll(
             { assertEquals(doNotAsk, resultDoNotAsk) },
-            { assertEquals(title, resultTitle) }
+            { assertEquals(title, resultTitle) },
         )
     }
 

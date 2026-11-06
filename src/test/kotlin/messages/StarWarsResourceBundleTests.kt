@@ -218,13 +218,12 @@ class StarWarsResourceBundleTests {
 
     //region Helper methods
 
-    private fun getFallbackBundleFile(): File {
-        return File(".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources${File.separatorChar}messages${File.separatorChar}").list { _, name ->
-            name != null && name.equals(BUNDLE_IDENTIFIER + BUNDLE_EXTENSION)
-        }
+    private fun getFallbackBundleFile(): File =
+        File(".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources${File.separatorChar}messages${File.separatorChar}").list { _, name ->
+            name != null && name == BUNDLE_IDENTIFIER + BUNDLE_EXTENSION
+        }!!
             .map { fileName -> File(".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources${File.separatorChar}messages${File.separatorChar}$fileName") }
             .first()
-    }
 
     //endregion
 
@@ -240,25 +239,23 @@ class StarWarsResourceBundleTests {
 
     companion object {
         @JvmStatic
-        fun bundleFileValues(): List<File> {
-            return File(".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources${File.separatorChar}messages${File.separatorChar}").list { _, name ->
+        fun bundleFileValues(): List<File> =
+            File(".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources${File.separatorChar}messages${File.separatorChar}").list { _, name ->
                 name != null && name.startsWith(BUNDLE_IDENTIFIER) && name.endsWith(BUNDLE_EXTENSION)
-            }
+            }!!
                 .map { fileName -> File(".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources${File.separatorChar}messages${File.separatorChar}$fileName") }
-        }
 
         @JvmStatic
-        fun languageSpecificBundleFileValues(): List<File> {
-            return File(".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources${File.separatorChar}messages${File.separatorChar}").list { _, name ->
+        fun languageSpecificBundleFileValues(): List<File> =
+            File(".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources${File.separatorChar}messages${File.separatorChar}").list { _, name ->
                 name != null &&
                     name.startsWith(BUNDLE_IDENTIFIER) &&
                     name.endsWith(BUNDLE_EXTENSION) &&
                     !name.equals(
                         BUNDLE_IDENTIFIER + BUNDLE_EXTENSION,
                     )
-            }
+            }!!
                 .map { fileName -> File(".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources${File.separatorChar}messages${File.separatorChar}$fileName") }
-        }
     }
 
     //endregion

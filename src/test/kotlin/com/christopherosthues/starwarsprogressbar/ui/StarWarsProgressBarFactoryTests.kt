@@ -90,9 +90,7 @@ class StarWarsProgressBarFactoryTests {
     private class JComponentMock : JComponent() {
         var borderSet = false
 
-        override fun getBorder(): Border? {
-            return super.getBorder()
-        }
+        override fun getBorder(): Border? = super.getBorder()
 
         override fun setBorder(border: Border?) {
             borderSet = true

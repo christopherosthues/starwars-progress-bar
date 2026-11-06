@@ -3,9 +3,8 @@ package com.christopherosthues.starwarsprogressbar.models
 internal object FactionCreationHelper {
     // TODO: lightsabers
     @JvmStatic
-    fun createStarWarsFactionsWithEmptyIdAndNoVehicles(): List<StarWarsFaction<StarWarsVehicle>> {
-        return listOf(StarWarsFaction("", listOf()))
-    }
+    fun createStarWarsFactionsWithEmptyIdAndNoVehicles(): List<StarWarsFaction<StarWarsVehicle>> =
+        listOf(StarWarsFaction("", listOf()))
 
     @JvmStatic
     fun createStarWarsFactionsWithEmptyIdsAndNoVehicles(): List<StarWarsFaction<StarWarsVehicle>> = listOf(
@@ -54,8 +53,8 @@ internal object FactionCreationHelper {
     )
 
     @JvmStatic
-    fun createStarWarsFactionsWithMultipleFactionsWithEmptyIdAndContainingVehicles(): List<StarWarsFaction<StarWarsVehicle>> {
-        return listOf(
+    fun createStarWarsFactionsWithMultipleFactionsWithEmptyIdAndContainingVehicles(): List<StarWarsFaction<StarWarsVehicle>> =
+        listOf(
             StarWarsFaction(
                 "",
                 listOf(
@@ -85,11 +84,10 @@ internal object FactionCreationHelper {
                 ),
             ),
         )
-    }
 
     @JvmStatic
-    fun createStarWarsFactionsWithMultipleFactionsWithEmptyIdAndOneFactionContainNoVehicles(): List<StarWarsFaction<StarWarsVehicle>> {
-        return listOf(
+    fun createStarWarsFactionsWithMultipleFactionsWithEmptyIdAndOneFactionContainNoVehicles(): List<StarWarsFaction<StarWarsVehicle>> =
+        listOf(
             StarWarsFaction(
                 "",
                 listOf(
@@ -120,7 +118,6 @@ internal object FactionCreationHelper {
             ),
             StarWarsFaction("5", listOf()),
         )
-    }
 
     @JvmStatic
     fun createStarWarsFactionsVehicles(): List<StarWarsFaction<StarWarsVehicle>> = listOf(
@@ -148,9 +145,8 @@ internal object FactionCreationHelper {
     )
 
     @JvmStatic
-    fun createStarWarsFactionsWithEmptyIdAndNoLightsabers(): List<StarWarsFaction<Lightsabers>> {
-        return listOf(StarWarsFaction("", listOf()))
-    }
+    fun createStarWarsFactionsWithEmptyIdAndNoLightsabers(): List<StarWarsFaction<Lightsabers>> =
+        listOf(StarWarsFaction("", listOf()))
 
     @JvmStatic
     fun createStarWarsFactionsWithEmptyIdsAndNoLightsabers(): List<StarWarsFaction<Lightsabers>> = listOf(
@@ -365,8 +361,8 @@ internal object FactionCreationHelper {
     )
 
     @JvmStatic
-    fun createStarWarsFactionsWithMultipleFactionsWithEmptyIdAndContainingLightsabers(): List<StarWarsFaction<Lightsabers>> {
-        return listOf(
+    fun createStarWarsFactionsWithMultipleFactionsWithEmptyIdAndContainingLightsabers(): List<StarWarsFaction<Lightsabers>> =
+        listOf(
             StarWarsFaction(
                 "",
                 listOf(
@@ -501,11 +497,10 @@ internal object FactionCreationHelper {
                 ),
             ),
         )
-    }
 
     @JvmStatic
-    fun createStarWarsFactionsWithMultipleFactionsWithEmptyIdAndOneFactionContainNoLightsabers(): List<StarWarsFaction<Lightsabers>> {
-        return listOf(
+    fun createStarWarsFactionsWithMultipleFactionsWithEmptyIdAndOneFactionContainNoLightsabers(): List<StarWarsFaction<Lightsabers>> =
+        listOf(
             StarWarsFaction(
                 "",
                 listOf(
@@ -641,7 +636,6 @@ internal object FactionCreationHelper {
             ),
             StarWarsFaction("5", listOf()),
         )
-    }
 
     @JvmStatic
     fun createStarWarsFactionsLightsabers(): List<StarWarsFaction<Lightsabers>> = listOf(

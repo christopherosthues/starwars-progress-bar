@@ -11,7 +11,6 @@ internal abstract class AbstractEntitySelector(
     private val reverseOrderNameSelector: ReverseOrderNameSelector = ReverseOrderNameSelector(),
 ) {
 
-
     fun selectEntity(
         enabledVehicles: Map<String, Boolean>,
         enabledLightsabers: Map<String, Boolean>,

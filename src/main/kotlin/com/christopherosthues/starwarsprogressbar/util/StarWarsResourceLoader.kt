@@ -1,3 +1,19 @@
+package com.christopherosthues.starwarsprogressbar.util
+
+import com.christopherosthues.starwarsprogressbar.models.Lightsabers
+import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
+import com.christopherosthues.starwarsprogressbar.models.StarWarsFactions
+import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
+import com.google.common.cache.Cache
+import com.google.common.cache.CacheBuilder
+import com.intellij.openapi.util.IconLoader
+import java.awt.Image
+import java.awt.image.BufferedImage
+import java.util.Optional
+import java.util.concurrent.ExecutionException
+import javax.swing.Icon
+import javax.swing.ImageIcon
+
 /**
  * MIT License
  *
@@ -18,22 +34,6 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.christopherosthues.starwarsprogressbar.util
-
-import com.christopherosthues.starwarsprogressbar.models.Lightsabers
-import com.christopherosthues.starwarsprogressbar.models.StarWarsFaction
-import com.christopherosthues.starwarsprogressbar.models.StarWarsFactions
-import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
-import com.google.common.cache.Cache
-import com.google.common.cache.CacheBuilder
-import com.intellij.openapi.util.IconLoader
-import java.awt.Image
-import java.awt.image.BufferedImage
-import java.util.Optional
-import java.util.concurrent.ExecutionException
-import javax.swing.Icon
-import javax.swing.ImageIcon
-
 internal object StarWarsResourceLoader {
     private const val ICON_RESOURCE_PATH = "icons/"
     private const val MAXIMUM_CACHE_SIZE = 100L

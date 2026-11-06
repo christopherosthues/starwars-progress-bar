@@ -10,9 +10,7 @@ internal class TestPropertiesComponent : PropertiesComponent() {
         values.remove(name)
     }
 
-    override fun getValue(name: String): String? {
-        return values[name]
-    }
+    override fun getValue(name: String): String? = values[name]
 
     override fun setValue(name: String, value: String?) {
         values[name] = value
@@ -32,35 +30,27 @@ internal class TestPropertiesComponent : PropertiesComponent() {
     }
 
     @Deprecated("See inherited class", replaceWith = ReplaceWith("See inherited class"))
-    override fun getValues(p0: @NonNls String): Array<out String?>? {
-        return null
-    }
+    override fun getValues(p0: @NonNls String): Array<out String?>? = null
 
     @Deprecated("See inherited class", replaceWith = ReplaceWith("See inherited class"))
     override fun setValues(
         p0: @NonNls String,
-        p1: Array<out String?>?
+        p1: Array<out String?>?,
     ) {
     }
 
-    override fun getList(p0: @NonNls String): List<String?>? {
-        return listOf()
-    }
+    override fun getList(p0: @NonNls String): List<String?>? = listOf()
 
     override fun setList(
         p0: @NonNls String,
-        p1: Collection<String?>?
+        p1: Collection<String?>?,
     ) {
     }
 
     override fun updateValue(
         p0: @NonNls String,
-        p1: Boolean
-    ): Boolean {
-        return false
-    }
+        p1: Boolean,
+    ): Boolean = false
 
-    override fun isValueSet(name: String): Boolean {
-        return values.containsKey(name)
-    }
+    override fun isValueSet(name: String): Boolean = values.containsKey(name)
 }

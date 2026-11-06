@@ -1,23 +1,3 @@
-/**
- * MIT License
- *
- * Copyright 2020-2021 Karl Goffin
- * Copyright 2022 Christopher Osthues
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
- * documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
- * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
- * permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the
- * Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
- * THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
- * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- */
 package com.christopherosthues.starwarsprogressbar.ui
 
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
@@ -49,6 +29,26 @@ import javax.swing.JProgressBar
 import javax.swing.SwingConstants
 import javax.swing.plaf.basic.BasicProgressBarUI
 
+/**
+ * MIT License
+ *
+ * Copyright 2020-2021 Karl Goffin
+ * Copyright 2022 Christopher Osthues
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+ * documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the
+ * Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+ * THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 internal class StarWarsProgressBarUI(
     private val starWarsState: () -> StarWarsState?,
 ) : BasicProgressBarUI() {
@@ -74,9 +74,7 @@ internal class StarWarsProgressBarUI(
         progressBar.repaint()
     }
 
-    private fun getVelocity(): Float {
-        return if (starWarsState()?.sameVelocity ?: DEFAULT_SAME_VELOCITY) 1f else starWarsEntity.velocity
-    }
+    private fun getVelocity(): Float = if (starWarsState()?.sameVelocity ?: DEFAULT_SAME_VELOCITY) 1f else starWarsEntity.velocity
 
     private fun update() {
         val isIndeterminate = progressBar?.isIndeterminate ?: false
@@ -246,9 +244,7 @@ internal class StarWarsProgressBarUI(
         }
     }
 
-    private fun getAmountFull(barRectWidth: Int, barRectHeight: Int, border: Insets): Int {
-        return getAmountFull(border, barRectWidth, barRectHeight)
-    }
+    private fun getAmountFull(barRectWidth: Int, barRectHeight: Int, border: Insets): Int = getAmountFull(border, barRectWidth, barRectHeight)
 
     private fun setProgressBarText() {
         progressBar.isStringPainted = starWarsState()?.showNames ?: DEFAULT_SHOW_NAMES

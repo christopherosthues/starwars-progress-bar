@@ -42,8 +42,8 @@ class StarWarsSelectorTests {
 
         setupStarWarsState(null)
         every { StarWarsFactionHolder.missingVehicle } returns missingVehicle
-        every { StarWarsBundle.message("vehicles.faction.1") } returns("1")
-        every { StarWarsBundle.message("lightsabers.faction.2") } returns("2")
+        every { StarWarsBundle.message("vehicles.faction.1") } returns ("1")
+        every { StarWarsBundle.message("lightsabers.faction.2") } returns ("2")
     }
 
     @AfterEach
