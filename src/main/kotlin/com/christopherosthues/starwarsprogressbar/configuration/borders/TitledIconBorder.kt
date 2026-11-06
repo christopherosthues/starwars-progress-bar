@@ -51,7 +51,8 @@ internal class TitledIconBorder(title: String, iconName: String, type: String) :
         return if (insets.top < BASE_MARGIN) baseline else baseline + insets.top
     }
 
-    override fun getBaselineResizeBehavior(c: Component): Component.BaselineResizeBehavior = Component.BaselineResizeBehavior.CONSTANT_ASCENT
+    override fun getBaselineResizeBehavior(c: Component): Component.BaselineResizeBehavior =
+        Component.BaselineResizeBehavior.CONSTANT_ASCENT
 
     override fun paintBorder(c: Component, g: Graphics, x: Int, y: Int, width: Int, height: Int) {
         updateLabel(c)
@@ -79,11 +80,7 @@ internal class TitledIconBorder(title: String, iconName: String, type: String) :
         icon.foreground = c.foreground
     }
 
-    private fun drawBorder(
-        c: Component,
-        g: Graphics,
-        borderShape: BorderShape,
-    ) {
+    private fun drawBorder(c: Component, g: Graphics, borderShape: BorderShape) {
         val graphics2d = g.create()
         val borderWidth = borderShape.width
         val borderHeight = borderShape.height
@@ -106,12 +103,7 @@ internal class TitledIconBorder(title: String, iconName: String, type: String) :
         graphics2d.dispose()
     }
 
-    private fun drawIconAndTitle(
-        c: Component,
-        g: Graphics,
-        iconShape: IconShape,
-        labelShape: LabelShape,
-    ) {
+    private fun drawIconAndTitle(c: Component, g: Graphics, iconShape: IconShape, labelShape: LabelShape) {
         // Draw background for icon and title
         val graphicsColor = g.color
         g.color = c.background

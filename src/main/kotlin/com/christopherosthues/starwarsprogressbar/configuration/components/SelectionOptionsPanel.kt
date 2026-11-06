@@ -22,7 +22,8 @@ private const val GAP = 5
 private const val NUMBER_OF_ROWS = 2
 private const val HORIZONTAL_GAP = 8
 
-internal class SelectionOptionsPanel(starWarsState: StarWarsState) : JTitledPanel(StarWarsBundle.message(BundleConstants.SELECTION_OPTIONS)) {
+internal class SelectionOptionsPanel(starWarsState: StarWarsState) :
+    JTitledPanel(StarWarsBundle.message(BundleConstants.SELECTION_OPTIONS)) {
     private val determinateSelectorLabel = JLabel(StarWarsBundle.message(BundleConstants.ORDER_SELECTOR))
     private val determinateSelectorComboBox = ComboBox(SelectionType.entries.toTypedArray())
     private val indeterminateSelectorLabel = JLabel(StarWarsBundle.message(BundleConstants.ORDER_SELECTOR))
@@ -58,13 +59,15 @@ internal class SelectionOptionsPanel(starWarsState: StarWarsState) : JTitledPane
         }
         determinateEntitySelectorComboBox.addItemListener {
             val oldValue = starWarsState.determinateEntitySelector
-            val newValue = determinateEntitySelectorComboBox.selectedItem as EntitySelectionType? ?: DEFAULT_ENTITY_SELECTOR
+            val newValue =
+                determinateEntitySelectorComboBox.selectedItem as EntitySelectionType? ?: DEFAULT_ENTITY_SELECTOR
             firePropertyChange(DETERMINATE_ENTITY_SELECTOR_EVENT, oldValue, newValue)
             starWarsState.determinateEntitySelector = newValue
         }
         indeterminateEntitySelectorComboBox.addItemListener {
             val oldValue = starWarsState.indeterminateEntitySelector
-            val newValue = indeterminateEntitySelectorComboBox.selectedItem as EntitySelectionType? ?: DEFAULT_ENTITY_SELECTOR
+            val newValue =
+                indeterminateEntitySelectorComboBox.selectedItem as EntitySelectionType? ?: DEFAULT_ENTITY_SELECTOR
             firePropertyChange(INDETERMINATE_ENTITY_SELECTOR_EVENT, oldValue, newValue)
             starWarsState.indeterminateEntitySelector = newValue
         }

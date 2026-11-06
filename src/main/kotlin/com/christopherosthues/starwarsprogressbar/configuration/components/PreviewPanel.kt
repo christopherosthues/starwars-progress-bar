@@ -21,9 +21,8 @@ import javax.swing.JProgressBar
 
 private const val HORIZONTAL_GAP = 10
 
-internal class PreviewPanel(
-    private val starWarsState: StarWarsState,
-) : JTitledPanel(StarWarsBundle.message(BundleConstants.PREVIEW_TITLE)) {
+internal class PreviewPanel(private val starWarsState: StarWarsState) :
+    JTitledPanel(StarWarsBundle.message(BundleConstants.PREVIEW_TITLE)) {
     private var determinateProgressBarContainer: LabeledComponent<JComponent>
     private var determinateProgressBar: JProgressBar
     private val determinateProgressBarUI: StarWarsProgressBarUI = StarWarsProgressBarUI { starWarsState }

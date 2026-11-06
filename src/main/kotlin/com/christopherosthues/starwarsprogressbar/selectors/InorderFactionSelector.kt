@@ -26,7 +26,10 @@ internal class InorderFactionSelector : IStarWarsSelector {
                 compareBy(
                     {
                         when (it) {
-                            is StarWarsVehicle -> StarWarsBundle.message("${BundleConstants.VEHICLES_FACTION}${it.factionId}")
+                            is StarWarsVehicle -> StarWarsBundle.message(
+                                "${BundleConstants.VEHICLES_FACTION}${it.factionId}",
+                            )
+
                             else -> StarWarsBundle.message("${BundleConstants.LIGHTSABERS_FACTION}${it.factionId}")
                         }
                     },

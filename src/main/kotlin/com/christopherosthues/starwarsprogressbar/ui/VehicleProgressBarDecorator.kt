@@ -25,9 +25,7 @@ private const val VEHICLE_PROGRESSBAR_HEIGHT = 20
 private const val PROGRESSBAR_CORNER_SIZE = 9f
 private const val FACTION_CREST_X_POSITION = 4.0
 
-internal class VehicleProgressBarDecorator(
-    private val starWarsState: () -> StarWarsState?,
-) {
+internal class VehicleProgressBarDecorator(private val starWarsState: () -> StarWarsState?) {
     private lateinit var forwardIcon: ColoredImageComponent
     private lateinit var backwardIcon: ColoredImageComponent
     private lateinit var factionCrestIcon: ColoredImageComponent

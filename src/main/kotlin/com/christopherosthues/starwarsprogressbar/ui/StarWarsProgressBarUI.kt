@@ -49,9 +49,7 @@ import javax.swing.plaf.basic.BasicProgressBarUI
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-internal class StarWarsProgressBarUI(
-    private val starWarsState: () -> StarWarsState?,
-) : BasicProgressBarUI() {
+internal class StarWarsProgressBarUI(private val starWarsState: () -> StarWarsState?) : BasicProgressBarUI() {
     private lateinit var starWarsEntity: StarWarsEntity
     private val vehicleProgressBarDecorator = VehicleProgressBarDecorator(starWarsState)
     private val lightsaberProgressBarDecorator = LightsaberProgressBarDecorator(starWarsState)
@@ -74,7 +72,13 @@ internal class StarWarsProgressBarUI(
         progressBar.repaint()
     }
 
-    private fun getVelocity(): Float = if (starWarsState()?.sameVelocity ?: DEFAULT_SAME_VELOCITY) 1f else starWarsEntity.velocity
+    private fun getVelocity(): Float = if (starWarsState()?.sameVelocity
+        ?: DEFAULT_SAME_VELOCITY
+    ) {
+        1f
+    } else {
+        starWarsEntity.velocity
+    }
 
     private fun update() {
         val isIndeterminate = progressBar?.isIndeterminate ?: false
@@ -244,7 +248,8 @@ internal class StarWarsProgressBarUI(
         }
     }
 
-    private fun getAmountFull(barRectWidth: Int, barRectHeight: Int, border: Insets): Int = getAmountFull(border, barRectWidth, barRectHeight)
+    private fun getAmountFull(barRectWidth: Int, barRectHeight: Int, border: Insets): Int =
+        getAmountFull(border, barRectWidth, barRectHeight)
 
     private fun setProgressBarText() {
         progressBar.isStringPainted = starWarsState()?.showNames ?: DEFAULT_SHOW_NAMES

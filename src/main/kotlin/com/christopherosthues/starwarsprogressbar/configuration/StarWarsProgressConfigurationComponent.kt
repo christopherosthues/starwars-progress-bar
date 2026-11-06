@@ -158,7 +158,8 @@ internal class StarWarsProgressConfigurationComponent {
         formBuilder.addComponent(selectionOptionsPanel)
     }
 
-    private fun isProgressBarTextEvent(propertyName: String): Boolean = propertyName == SHOW_VEHICLE_NAMES_EVENT || propertyName == SHOW_TOOL_TIPS_EVENT
+    private fun isProgressBarTextEvent(propertyName: String): Boolean =
+        propertyName == SHOW_VEHICLE_NAMES_EVENT || propertyName == SHOW_TOOL_TIPS_EVENT
 
     private fun isProgressBarDrawEvent(propertyName: String): Boolean = propertyName == SHOW_FACTION_CRESTS_EVENT ||
         propertyName == SAME_VELOCITY_EVENT ||
@@ -189,7 +190,10 @@ internal class StarWarsProgressConfigurationComponent {
         })
     }
 
-    private fun shouldUpdateEntityOnSelectorChange(oldSel: EntitySelectionType?, newSel: EntitySelectionType?): Boolean {
+    private fun shouldUpdateEntityOnSelectorChange(
+        oldSel: EntitySelectionType?,
+        newSel: EntitySelectionType?,
+    ): Boolean {
         // Only update preview entity when the new selector is specific (VEHICLES or LIGHTSABERS)
         // and the selection actually changed to a different specific kind. Changes that set selector to ALL
         // should NOT trigger a new entity selection.
