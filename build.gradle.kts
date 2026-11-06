@@ -23,16 +23,16 @@ plugins {
     alias(libs.plugins.serialization)
 }
 
-//// Set the JVM language level used to compile sources and generate files - Java 21 is required since 2024.2
-//kotlin {
-//    jvmToolchain(21)
-//}
+// // Set the JVM language level used to compile sources and generate files - Java 21 is required since 2024.2
+// kotlin {
+//     jvmToolchain(21)
+// }
 //
-//java {
-//    toolchain {
-//        languageVersion = JavaLanguageVersion.of(21)
-//    }
-//}
+// java {
+//     toolchain {
+//         languageVersion = JavaLanguageVersion.of(21)
+//     }
+// }
 
 // Dependencies are managed with Gradle version catalog - read more: https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog
 dependencies {
@@ -95,6 +95,7 @@ detekt {
     toolVersion = libs.versions.detekt.get()
     config.from("config/detekt/detekt.yml")
     buildUponDefaultConfig = true
+    allRules = false
 }
 
 // Configure IntelliJ Platform Gradle Plugin - read more: https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin-extension.html
@@ -144,7 +145,10 @@ intellijPlatform {
         // The pluginVersion is based on the SemVer (https://semver.org) and supports pre-release labels, like 2.1.7-alpha.3
         // Specify pre-release label to publish the plugin in a custom Release Channel automatically. Read more:
         // https://plugins.jetbrains.com/docs/intellij/publishing-plugin.html#specifying-a-release-channel
-        channels = providers.gradleProperty("pluginVersion").map { listOf(it.substringAfter('-', "").substringBefore('.').ifEmpty { "default" }) }
+        channels =
+            providers.gradleProperty("pluginVersion").map {
+                listOf(it.substringAfter('-', "").substringBefore('.').ifEmpty { "default" })
+            }
     }
 
 //    pluginVerification {
@@ -155,10 +159,10 @@ intellijPlatform {
 }
 
 // Configure Gradle Changelog Plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
-//changelog {
-//    groups = listOf("Added", "Changed", "Removed", "Fixed")
-//    repositoryUrl = providers.gradleProperty("pluginRepositoryUrl")
-//}
+// changelog {
+//     groups = listOf("Added", "Changed", "Removed", "Fixed")
+//     repositoryUrl = providers.gradleProperty("pluginRepositoryUrl")
+// }
 
 // Configure Gradle Kover Plugin - read more: https://kotlin.github.io/kotlinx-kover/gradle-plugin/#configuration-details
 kover {
@@ -171,28 +175,23 @@ kover {
     }
 }
 
-//tasks {
-//    publishPlugin {
-//        dependsOn(patchChangelog)
-//    }
-//}
+// tasks {
+//     publishPlugin {
+//         dependsOn(patchChangelog)
+//     }
+// }
 
 // Kotlin DSL
-tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
+tasks.withType<dev.detekt.gradle.Detekt>().configureEach {
     reports {
         html.required = true
         html.outputLocation = file("build/reports/mydetekt.html")
-        md.required = false
+        markdown.required = false
         sarif.required = false
-        txt.required = false
-        xml.required = false
     }
+    jvmTarget.set("21")
 }
 
-// Kotlin DSL
-tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
-    this.jvmTarget = "21"
-}
-tasks.withType<io.gitlab.arturbosch.detekt.DetektCreateBaselineTask>().configureEach {
-    this.jvmTarget = "21"
+tasks.withType<dev.detekt.gradle.DetektCreateBaselineTask>().configureEach {
+    jvmTarget.set("21")
 }
