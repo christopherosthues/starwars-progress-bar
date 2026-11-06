@@ -18,6 +18,9 @@ internal object StarWarsBundle : AbstractBundle(BUNDLE) {
         ResourceBundle.clearCache()
     }
 
+    operator fun get(@PropertyKey(resourceBundle = BUNDLE) key: String, vararg params: Any) =
+        getMessage(key, *params)
+
     @JvmStatic
     fun message(@PropertyKey(resourceBundle = BUNDLE) key: String, vararg params: Any): String {
         val pattern = ResourceBundle.getBundle(BUNDLE, currentLocale).getString(key)
