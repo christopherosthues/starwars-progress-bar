@@ -33,24 +33,15 @@ internal class TestPropertiesComponent : PropertiesComponent() {
     override fun getValues(p0: @NonNls String): Array<out String?>? = null
 
     @Deprecated("See inherited class", replaceWith = ReplaceWith("See inherited class"))
-    override fun setValues(
-        p0: @NonNls String,
-        p1: Array<out String?>?,
-    ) {
+    override fun setValues(p0: @NonNls String, p1: Array<out String?>?) {
     }
 
     override fun getList(p0: @NonNls String): List<String?>? = listOf()
 
-    override fun setList(
-        p0: @NonNls String,
-        p1: Collection<String?>?,
-    ) {
+    override fun setList(p0: @NonNls String, p1: Collection<String?>?) {
     }
 
-    override fun updateValue(
-        p0: @NonNls String,
-        p1: Boolean,
-    ): Boolean = false
+    override fun updateValue(p0: @NonNls String, p1: Boolean): Boolean = false
 
     override fun isValueSet(name: String): Boolean = values.containsKey(name)
 }

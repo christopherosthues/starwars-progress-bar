@@ -371,7 +371,10 @@ class StarWarsProgressConfigurableTests {
         verify(exactly = 1) { starWarsStateMock.determinateOrderSelector = determinateOrderSelector }
         verify(exactly = 1) { starWarsStateMock.indeterminateOrderSelector = indeterminateOrderSelector }
         verify(exactly = 1) { starWarsStateMock.language = language }
-        verify(exactly = numberOfPassesSet) { starWarsStateMock.numberOfPassesUntilChange = numberOfPassesUntilVehicleChange }
+        verify(exactly = numberOfPassesSet) {
+            starWarsStateMock.numberOfPassesUntilChange =
+                numberOfPassesUntilVehicleChange
+        }
         assertEquals(enabledVehicles, starWarsStateMock.vehiclesEnabled, StarWarsState::vehiclesEnabled.name)
         assertEquals(enabledLightsabers, starWarsStateMock.lightsabersEnabled, StarWarsState::lightsabersEnabled.name)
     }
@@ -708,8 +711,14 @@ class StarWarsProgressConfigurableTests {
         fun isModifiedValues(): Stream<Arguments> = Stream.of(
             Arguments.of(IsModifiedData(), IsModifiedData(mutableMapOf("1" to true, "2" to false))),
             Arguments.of(IsModifiedData(mutableMapOf("1" to true, "2" to false)), IsModifiedData()),
-            Arguments.of(IsModifiedData(), IsModifiedData(enabledLightsabers = mutableMapOf("1" to true, "2" to false))),
-            Arguments.of(IsModifiedData(enabledLightsabers = mutableMapOf("1" to true, "2" to false)), IsModifiedData()),
+            Arguments.of(
+                IsModifiedData(),
+                IsModifiedData(enabledLightsabers = mutableMapOf("1" to true, "2" to false)),
+            ),
+            Arguments.of(
+                IsModifiedData(enabledLightsabers = mutableMapOf("1" to true, "2" to false)),
+                IsModifiedData(),
+            ),
             Arguments.of(IsModifiedData(), IsModifiedData(showVehicle = true)),
             Arguments.of(IsModifiedData(showVehicle = true), IsModifiedData()),
             Arguments.of(IsModifiedData(), IsModifiedData(mutableMapOf(), showVehicle = true)),
@@ -726,20 +735,44 @@ class StarWarsProgressConfigurableTests {
             Arguments.of(IsModifiedData(solidProgressBarColor = true), IsModifiedData()),
             Arguments.of(IsModifiedData(), IsModifiedData(mutableMapOf(), drawSilhouettes = true)),
             Arguments.of(IsModifiedData(drawSilhouettes = true), IsModifiedData()),
-            Arguments.of(IsModifiedData(), IsModifiedData(mutableMapOf(), determinateOrderSelector = SelectionType.INORDER_NAME)),
+            Arguments.of(
+                IsModifiedData(),
+                IsModifiedData(mutableMapOf(), determinateOrderSelector = SelectionType.INORDER_NAME),
+            ),
             Arguments.of(IsModifiedData(determinateOrderSelector = SelectionType.INORDER_NAME), IsModifiedData()),
-            Arguments.of(IsModifiedData(), IsModifiedData(mutableMapOf(), indeterminateOrderSelector = SelectionType.INORDER_NAME)),
+            Arguments.of(
+                IsModifiedData(),
+                IsModifiedData(mutableMapOf(), indeterminateOrderSelector = SelectionType.INORDER_NAME),
+            ),
             Arguments.of(IsModifiedData(indeterminateOrderSelector = SelectionType.INORDER_NAME), IsModifiedData()),
-            Arguments.of(IsModifiedData(), IsModifiedData(mutableMapOf(), determinateEntitySelector = EntitySelectionType.VEHICLES)),
+            Arguments.of(
+                IsModifiedData(),
+                IsModifiedData(mutableMapOf(), determinateEntitySelector = EntitySelectionType.VEHICLES),
+            ),
             Arguments.of(IsModifiedData(determinateEntitySelector = EntitySelectionType.VEHICLES), IsModifiedData()),
-            Arguments.of(IsModifiedData(), IsModifiedData(mutableMapOf(), indeterminateEntitySelector = EntitySelectionType.VEHICLES)),
+            Arguments.of(
+                IsModifiedData(),
+                IsModifiedData(mutableMapOf(), indeterminateEntitySelector = EntitySelectionType.VEHICLES),
+            ),
             Arguments.of(IsModifiedData(indeterminateEntitySelector = EntitySelectionType.VEHICLES), IsModifiedData()),
             Arguments.of(IsModifiedData(changeVehicleAfterPass = true), IsModifiedData()),
             Arguments.of(IsModifiedData(), IsModifiedData(changeVehicleAfterPass = true)),
-            Arguments.of(IsModifiedData(changeVehicleAfterPass = true, numberOfPassesUntilVehicleChange = 4), IsModifiedData()),
-            Arguments.of(IsModifiedData(), IsModifiedData(changeVehicleAfterPass = true, numberOfPassesUntilVehicleChange = 4)),
-            Arguments.of(IsModifiedData(changeVehicleAfterPass = true), IsModifiedData(numberOfPassesUntilVehicleChange = 4)),
-            Arguments.of(IsModifiedData(numberOfPassesUntilVehicleChange = 4), IsModifiedData(changeVehicleAfterPass = true)),
+            Arguments.of(
+                IsModifiedData(changeVehicleAfterPass = true, numberOfPassesUntilVehicleChange = 4),
+                IsModifiedData(),
+            ),
+            Arguments.of(
+                IsModifiedData(),
+                IsModifiedData(changeVehicleAfterPass = true, numberOfPassesUntilVehicleChange = 4),
+            ),
+            Arguments.of(
+                IsModifiedData(changeVehicleAfterPass = true),
+                IsModifiedData(numberOfPassesUntilVehicleChange = 4),
+            ),
+            Arguments.of(
+                IsModifiedData(numberOfPassesUntilVehicleChange = 4),
+                IsModifiedData(changeVehicleAfterPass = true),
+            ),
             Arguments.of(IsModifiedData(), IsModifiedData(language = Language.GERMAN)),
             Arguments.of(IsModifiedData(language = Language.GERMAN), IsModifiedData()),
         )

@@ -170,8 +170,12 @@ class StarWarsSelectorTests {
             { assertNotEquals(missingVehicle, result) },
         )
 
-        verify(exactly = determinateExpectedCalls) { DeterminateSelector.selectEntity(any(), any(), any(), any(), any()) }
-        verify(exactly = indeterminateExpectedCalls) { IndeterminateSelector.selectEntity(any(), any(), any(), any(), any()) }
+        verify(exactly = determinateExpectedCalls) {
+            DeterminateSelector.selectEntity(any(), any(), any(), any(), any())
+        }
+        verify(exactly = indeterminateExpectedCalls) {
+            IndeterminateSelector.selectEntity(any(), any(), any(), any(), any())
+        }
     }
 
     @ParameterizedTest
@@ -216,8 +220,12 @@ class StarWarsSelectorTests {
             { assertNotEquals(missingVehicle, result) },
         )
 
-        verify(exactly = determinateExpectedCalls) { DeterminateSelector.selectEntity(any(), any(), any(), any(), any()) }
-        verify(exactly = indeterminateExpectedCalls) { IndeterminateSelector.selectEntity(any(), any(), any(), any(), any()) }
+        verify(exactly = determinateExpectedCalls) {
+            DeterminateSelector.selectEntity(any(), any(), any(), any(), any())
+        }
+        verify(exactly = indeterminateExpectedCalls) {
+            IndeterminateSelector.selectEntity(any(), any(), any(), any(), any())
+        }
     }
 
     @ParameterizedTest
@@ -264,8 +272,12 @@ class StarWarsSelectorTests {
             { assertNotEquals(missingVehicle, result) },
         )
 
-        verify(exactly = determinateExpectedCalls) { DeterminateSelector.selectEntity(any(), any(), any(), any(), any()) }
-        verify(exactly = indeterminateExpectedCalls) { IndeterminateSelector.selectEntity(any(), any(), any(), any(), any()) }
+        verify(exactly = determinateExpectedCalls) {
+            DeterminateSelector.selectEntity(any(), any(), any(), any(), any())
+        }
+        verify(exactly = indeterminateExpectedCalls) {
+            IndeterminateSelector.selectEntity(any(), any(), any(), any(), any())
+        }
     }
 
     @ParameterizedTest
@@ -314,8 +326,12 @@ class StarWarsSelectorTests {
             { assertNotEquals(missingVehicle, result) },
         )
 
-        verify(exactly = determinateExpectedCalls) { DeterminateSelector.selectEntity(any(), any(), any(), any(), any()) }
-        verify(exactly = indeterminateExpectedCalls) { IndeterminateSelector.selectEntity(any(), any(), any(), any(), any()) }
+        verify(exactly = determinateExpectedCalls) {
+            DeterminateSelector.selectEntity(any(), any(), any(), any(), any())
+        }
+        verify(exactly = indeterminateExpectedCalls) {
+            IndeterminateSelector.selectEntity(any(), any(), any(), any(), any())
+        }
     }
 
     //endregion

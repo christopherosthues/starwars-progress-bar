@@ -719,10 +719,7 @@ internal class StarWarsResourceLoaderTests {
         return url
     }
 
-    private fun verifyBufferedImagePainted(
-        bufferedImageMock: BufferedImage,
-        result: BufferedImage,
-    ) {
+    private fun verifyBufferedImagePainted(bufferedImageMock: BufferedImage, result: BufferedImage) {
         assertAll(
             { assertEquals(bufferedImageMock, result) },
             { assertSame(bufferedImageMock, result) },

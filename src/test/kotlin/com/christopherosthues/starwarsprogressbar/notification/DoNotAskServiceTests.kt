@@ -71,8 +71,12 @@ class DoNotAskServiceTests {
         DoNotAskService.setDoNotAskFor(doNotAsk)
 
         // Assert
-        val resultDoNotAsk = propertiesComponentMock.getBoolean("Notification.DoNotAsk-${PluginConstants.NOTIFICATION_GROUP_ID}")
-        val resultTitle = propertiesComponentMock.getValue("Notification.DisplayName-DoNotAsk-${PluginConstants.NOTIFICATION_GROUP_ID}")
+        val resultDoNotAsk = propertiesComponentMock.getBoolean(
+            "Notification.DoNotAsk-${PluginConstants.NOTIFICATION_GROUP_ID}",
+        )
+        val resultTitle = propertiesComponentMock.getValue(
+            "Notification.DisplayName-DoNotAsk-${PluginConstants.NOTIFICATION_GROUP_ID}",
+        )
         assertAll(
             { assertEquals(doNotAsk, resultDoNotAsk) },
             { assertEquals(title, resultTitle) },
@@ -102,7 +106,9 @@ class DoNotAskServiceTests {
         DoNotAskService.setDoNotAskFor(false)
 
         // Assert
-        val result = propertiesComponentMock.getValue("Notification.DisplayName-DoNotAsk-${PluginConstants.NOTIFICATION_GROUP_ID}")
+        val result = propertiesComponentMock.getValue(
+            "Notification.DisplayName-DoNotAsk-${PluginConstants.NOTIFICATION_GROUP_ID}",
+        )
         assertEquals(PluginConstants.NOTIFICATION_GROUP_ID, result)
     }
 

@@ -390,7 +390,9 @@ class StarWarsProgressListenerTests {
 
     @ParameterizedTest
     @MethodSource("previousProgressBarKeyValues")
-    fun `beforePluginUnload should reset progress bar ui key to previous key if is plugin update`(previousProgressBarKey: String) {
+    fun `beforePluginUnload should reset progress bar ui key to previous key if is plugin update`(
+        previousProgressBarKey: String,
+    ) {
         // Arrange
         val ideaPluginDescriptorMock = createAndSetupPluginDescriptorMock(pluginId)
         every { UIManager.get(PROGRESS_BAR_UI_KEY) } returns previousProgressBarKey
@@ -508,7 +510,8 @@ class StarWarsProgressListenerTests {
 
     companion object {
         @JvmStatic
-        private fun otherPluginValues(): Stream<String> = Stream.of("progressbar", "aSFAf", "starwarsprogressba", "starwarsprogressbarr", "tarwarsprogressbar")
+        private fun otherPluginValues(): Stream<String> =
+            Stream.of("progressbar", "aSFAf", "starwarsprogressba", "starwarsprogressbarr", "tarwarsprogressbar")
 
         @JvmStatic
         private fun previousProgressBarKeyValues(): Stream<String> = Stream.of(

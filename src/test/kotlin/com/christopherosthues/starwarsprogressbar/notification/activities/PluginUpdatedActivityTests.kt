@@ -348,7 +348,9 @@ class PluginUpdatedActivityTests {
         notificationMock.actions[1].actionPerformed(actionEventMock)
 
         // Assert
-        val doNotAsk = propertiesComponentMock.getBoolean("Notification.DoNotAsk-${PluginConstants.NOTIFICATION_GROUP_ID}")
+        val doNotAsk = propertiesComponentMock.getBoolean(
+            "Notification.DoNotAsk-${PluginConstants.NOTIFICATION_GROUP_ID}",
+        )
         assertTrue(doNotAsk)
         assertNull(notificationMock.balloon)
     }
@@ -410,73 +412,37 @@ class PluginUpdatedActivityTests {
         var projectList = mutableListOf<Project?>()
         var classList = mutableListOf<Class<Configurable?>>()
 
-        override fun showSettingsDialog(
-            p0: Project,
-            vararg p1: ConfigurableGroup?,
-        ) {
+        override fun showSettingsDialog(p0: Project, vararg p1: ConfigurableGroup?) {
         }
 
         @Suppress("UNCHECKED_CAST")
-        override fun <T : Configurable?> showSettingsDialog(
-            p0: Project?,
-            p1: Class<T?>,
-        ) {
+        override fun <T : Configurable?> showSettingsDialog(p0: Project?, p1: Class<T?>) {
             projectList.add(p0)
             classList.add(p1 as Class<Configurable?>)
         }
 
-        override fun showSettingsDialog(
-            p0: Project?,
-            p1: @NlsContexts.ConfigurableName String,
-        ) {
+        override fun showSettingsDialog(p0: Project?, p1: @NlsContexts.ConfigurableName String) {
         }
 
-        override fun showSettingsDialog(
-            p0: Project,
-            p1: Configurable?,
-        ) {
+        override fun showSettingsDialog(p0: Project, p1: Configurable?) {
         }
 
-        override fun <T : Configurable?> showSettingsDialog(
-            p0: Project?,
-            p1: Class<T?>,
-            p2: Consumer<in T>?,
-        ) {
+        override fun <T : Configurable?> showSettingsDialog(p0: Project?, p1: Class<T?>, p2: Consumer<in T>?) {
         }
 
-        override fun showSettingsDialog(
-            p0: Project?,
-            p1: Predicate<in Configurable>,
-            p2: Consumer<in Configurable>?,
-        ) {
+        override fun showSettingsDialog(p0: Project?, p1: Predicate<in Configurable>, p2: Consumer<in Configurable>?) {
         }
 
-        override fun editConfigurable(
-            p0: Project?,
-            p1: Configurable,
-        ): Boolean = false
+        override fun editConfigurable(p0: Project?, p1: Configurable): Boolean = false
 
-        override fun editConfigurable(
-            p0: Project?,
-            p1: Configurable,
-            p2: Runnable?,
-        ): Boolean = false
+        override fun editConfigurable(p0: Project?, p1: Configurable, p2: Runnable?): Boolean = false
 
-        override fun <T : Configurable?> editConfigurable(
-            p0: Project?,
-            p1: T & Any,
-            p2: Consumer<in T>,
-        ): Boolean = false
+        override fun <T : Configurable?> editConfigurable(p0: Project?, p1: T & Any, p2: Consumer<in T>): Boolean =
+            false
 
-        override fun editConfigurable(
-            p0: Component?,
-            p1: Configurable,
-        ): Boolean = false
+        override fun editConfigurable(p0: Component?, p1: Configurable): Boolean = false
 
-        override fun editConfigurable(
-            p0: Component?,
-            p1: @NlsContexts.ConfigurableName String,
-        ): Boolean = false
+        override fun editConfigurable(p0: Component?, p1: @NlsContexts.ConfigurableName String): Boolean = false
 
         override fun editConfigurable(
             p0: Component?,
@@ -484,39 +450,19 @@ class PluginUpdatedActivityTests {
             p2: Runnable?,
         ): Boolean = false
 
-        override fun editConfigurable(
-            p0: Component?,
-            p1: Configurable,
-            p2: Runnable?,
-        ): Boolean = false
+        override fun editConfigurable(p0: Component?, p1: Configurable, p2: Runnable?): Boolean = false
 
-        override fun editConfigurable(
-            p0: Project?,
-            p1: @NonNls String,
-            p2: Configurable,
-        ): Boolean = false
+        override fun editConfigurable(p0: Project?, p1: @NonNls String, p2: Configurable): Boolean = false
 
-        override fun editConfigurable(
-            p0: Project?,
-            p1: @NonNls String,
-            p2: Configurable,
-            p3: Boolean,
-        ): Boolean = false
+        override fun editConfigurable(p0: Project?, p1: @NonNls String, p2: Configurable, p3: Boolean): Boolean = false
 
-        override fun editConfigurable(
-            p0: Component?,
-            p1: @NonNls String,
-            p2: Configurable,
-        ): Boolean = false
+        override fun editConfigurable(p0: Component?, p1: @NonNls String, p2: Configurable): Boolean = false
 
         override fun closeSettings(project: Project, component: Component) {
         }
 
         @Suppress("UnstableApiUsage")
-        override suspend fun showSettingsDialog(
-            project: Project,
-            groups: List<ConfigurableGroup>,
-        ) {
+        override suspend fun showSettingsDialog(project: Project, groups: List<ConfigurableGroup>) {
         }
     }
 }
