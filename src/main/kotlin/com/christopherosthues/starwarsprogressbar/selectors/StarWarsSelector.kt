@@ -31,7 +31,7 @@ internal object StarWarsSelector {
             indeterminateSelectionType,
             indeterminateEntitySelectionType,
             determinateSelectionType,
-            determinateEntitySelectionType
+            determinateEntitySelectionType,
         )
     }
 
@@ -43,7 +43,7 @@ internal object StarWarsSelector {
         indeterminateSelectionType: SelectionType,
         indeterminateEntitySelectionType: EntitySelectionType,
         determinateSelectionType: SelectionType,
-        determinateEntitySelectionType: EntitySelectionType
+        determinateEntitySelectionType: EntitySelectionType,
     ): StarWarsEntity {
         var currentEnabledLightsabers = enabledLightsabers
         if (currentEnabledLightsabers == null) {

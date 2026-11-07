@@ -140,7 +140,7 @@ internal class VehicleProgressBarDecorator(private val starWarsState: () -> Star
         progress: Int,
         backgroundColor: Color,
         transparent: JBColor,
-        width: Int
+        width: Int,
     ): Paint {
         if (movingRight) {
             return if (progress > 0) {

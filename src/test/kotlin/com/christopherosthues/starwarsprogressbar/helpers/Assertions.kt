@@ -8,7 +8,7 @@ internal fun assertEntityOrder3Items(
     index1: Int,
     index2: Int,
     entities: List<StarWarsEntity>,
-    result: List<StarWarsEntity>
+    result: List<StarWarsEntity>,
 ) {
     Assertions.assertAll(
         { Assertions.assertEquals(3, result.size) },
@@ -26,7 +26,7 @@ internal fun assertEntityOrder6Items(
     index4: Int,
     index5: Int,
     entities: List<StarWarsEntity>,
-    result: List<StarWarsEntity>
+    result: List<StarWarsEntity>,
 ) {
     Assertions.assertAll(
         { Assertions.assertEquals(6, result.size) },
@@ -53,7 +53,7 @@ internal fun assertEntityOrder12Items(
     index10: Int,
     index11: Int,
     entities: List<StarWarsEntity>,
-    result: List<StarWarsEntity>
+    result: List<StarWarsEntity>,
 ) {
     Assertions.assertAll(
         { Assertions.assertEquals(12, result.size) },

@@ -2,17 +2,17 @@ package com.christopherosthues.starwarsprogressbar.selectors
 
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
+import com.christopherosthues.starwarsprogressbar.helpers.assertEntityOrder3Items
+import com.christopherosthues.starwarsprogressbar.helpers.assertEntityOrder6Items
+import com.christopherosthues.starwarsprogressbar.helpers.rotateByOne
+import com.christopherosthues.starwarsprogressbar.helpers.rotateByTwo
+import com.christopherosthues.starwarsprogressbar.helpers.selectMultipleEntities
 import com.christopherosthues.starwarsprogressbar.models.Blade
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
 import com.christopherosthues.starwarsprogressbar.models.StarWarsEntity
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
-import com.christopherosthues.starwarsprogressbar.helpers.assertEntityOrder3Items
-import com.christopherosthues.starwarsprogressbar.helpers.assertEntityOrder6Items
-import com.christopherosthues.starwarsprogressbar.helpers.rotateByOne
-import com.christopherosthues.starwarsprogressbar.helpers.rotateByTwo
-import com.christopherosthues.starwarsprogressbar.helpers.selectMultipleEntities
 import com.intellij.idea.TestFor
 import io.mockk.every
 import io.mockk.mockkObject
@@ -407,7 +407,8 @@ class InorderFactionSelectorTests {
         rotateByOne(lightsabers)
 
         // Act
-        result = sut.selectMultipleEntities(lightsabers, mapOf(), mapOf("4.1" to true, "3.2" to true, "3.3" to true), true)
+        result =
+            sut.selectMultipleEntities(lightsabers, mapOf(), mapOf("4.1" to true, "3.2" to true, "3.3" to true), true)
 
         // Assert
         assertEntityOrder3Items(0, 1, 2, lightsabers, result)
@@ -446,7 +447,8 @@ class InorderFactionSelectorTests {
         )
 
         // Act
-        result = sut.selectMultipleEntities(lightsabers, mapOf(), mapOf("3.1" to true, "3.2" to true, "3.3" to true), true)
+        result =
+            sut.selectMultipleEntities(lightsabers, mapOf(), mapOf("3.1" to true, "3.2" to true, "3.3" to true), true)
 
         // Assert
         assertEntityOrder3Items(0, 1, 2, lightsabers, result)
@@ -455,7 +457,8 @@ class InorderFactionSelectorTests {
         rotateByOne(lightsabers)
 
         // Act
-        result = sut.selectMultipleEntities(lightsabers, mapOf(), mapOf("3.1" to true, "3.2" to true, "3.3" to true), true)
+        result =
+            sut.selectMultipleEntities(lightsabers, mapOf(), mapOf("3.1" to true, "3.2" to true, "3.3" to true), true)
 
         // Assert
         assertEntityOrder3Items(2, 0, 1, lightsabers, result)

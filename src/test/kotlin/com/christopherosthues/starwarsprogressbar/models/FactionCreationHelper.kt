@@ -211,13 +211,15 @@ internal object FactionCreationHelper {
             "1",
             listOf(
                 Lightsabers("1", 3f, isJarKai = false, listOf(blueBlade)),
-                Lightsabers("2", 6f, isJarKai = false, listOf(brownBlade)))
+                Lightsabers("2", 6f, isJarKai = false, listOf(brownBlade)),
+            ),
         ),
         StarWarsFaction(
             "",
             listOf(
                 Lightsabers("3", 9f, isJarKai = false, listOf(greenDoubleBlade)),
-                Lightsabers("4", 12f, isJarKai = false, listOf(yellowBlade)))
+                Lightsabers("4", 12f, isJarKai = false, listOf(yellowBlade)),
+            ),
         ),
         StarWarsFaction(
             "3",

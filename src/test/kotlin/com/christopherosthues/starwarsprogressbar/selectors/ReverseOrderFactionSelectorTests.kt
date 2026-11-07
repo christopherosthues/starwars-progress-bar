@@ -421,7 +421,8 @@ class ReverseOrderFactionSelectorTests {
         rotateByOne(lightsabers)
 
         // Act
-        result = sut.selectMultipleEntities(lightsabers, mapOf(), mapOf("4.1" to true, "3.2" to true, "3.3" to true), true)
+        result =
+            sut.selectMultipleEntities(lightsabers, mapOf(), mapOf("4.1" to true, "3.2" to true, "3.3" to true), true)
 
         // Assert
         assertEntityOrder3Items(2, 1, 0, lightsabers, result)
@@ -460,7 +461,8 @@ class ReverseOrderFactionSelectorTests {
         )
 
         // Act
-        result = sut.selectMultipleEntities(lightsabers, mapOf(), mapOf("3.1" to true, "3.2" to true, "3.3" to true), true)
+        result =
+            sut.selectMultipleEntities(lightsabers, mapOf(), mapOf("3.1" to true, "3.2" to true, "3.3" to true), true)
 
         // Assert
         assertEntityOrder3Items(2, 1, 0, lightsabers, result)
@@ -469,7 +471,8 @@ class ReverseOrderFactionSelectorTests {
         rotateByOne(lightsabers)
 
         // Act
-        result = sut.selectMultipleEntities(lightsabers, mapOf(), mapOf("3.1" to true, "3.2" to true, "3.3" to true), true)
+        result =
+            sut.selectMultipleEntities(lightsabers, mapOf(), mapOf("3.1" to true, "3.2" to true, "3.3" to true), true)
 
         // Assert
         assertEntityOrder3Items(1, 0, 2, lightsabers, result)
