@@ -471,25 +471,25 @@ class StarWarsProgressConfigurableTests {
         indeterminateEntitySelector: EntitySelectionType = EntitySelectionType.ALL,
         language: Language = Language.ENGLISH,
     ): StarWarsState {
-        val starWarsStateMock = mockk<StarWarsState>()
+        val starWarsStateMock = StarWarsState()
         starWarsStateMock.vehiclesEnabled = enabledVehicles
         starWarsStateMock.lightsabersEnabled = enabledLightsabers
-        every { starWarsStateMock.showIcon } returns showVehicle
-        every { starWarsStateMock.showNames } returns showVehicleNames
-        every { starWarsStateMock.showToolTips } returns showToolTips
-        every { starWarsStateMock.showFactionCrests } returns showFactionCrests
-        every { starWarsStateMock.sameVelocity } returns sameVehicleVelocity
-        every { starWarsStateMock.enableNew } returns enableNewVehicles
-        every { starWarsStateMock.solidProgressBarColor } returns solidProgressBarColor
-        every { starWarsStateMock.drawSilhouettes } returns drawSilhouettes
-        every { starWarsStateMock.changeAfterPass } returns changeVehicleAfterPass
-        every { starWarsStateMock.numberOfPassesUntilChange } returns numberOfPassesUntilVehicleChange
-        every { starWarsStateMock.determinateOrderSelector } returns determinateOrderSelector
-        every { starWarsStateMock.indeterminateOrderSelector } returns indeterminateOrderSelector
-        every { starWarsStateMock.determinateEntitySelector } returns determinateEntitySelector
-        every { starWarsStateMock.indeterminateEntitySelector } returns indeterminateEntitySelector
-        every { starWarsStateMock.version } returns ""
-        every { starWarsStateMock.language } returns language
+        starWarsStateMock.showIcon = showVehicle
+        starWarsStateMock.showNames = showVehicleNames
+        starWarsStateMock.showToolTips = showToolTips
+        starWarsStateMock.showFactionCrests = showFactionCrests
+        starWarsStateMock.sameVelocity = sameVehicleVelocity
+        starWarsStateMock.enableNew = enableNewVehicles
+        starWarsStateMock.solidProgressBarColor = solidProgressBarColor
+        starWarsStateMock.drawSilhouettes = drawSilhouettes
+        starWarsStateMock.changeAfterPass = changeVehicleAfterPass
+        starWarsStateMock.numberOfPassesUntilChange = numberOfPassesUntilVehicleChange
+        starWarsStateMock.determinateOrderSelector = determinateOrderSelector
+        starWarsStateMock.indeterminateOrderSelector = indeterminateOrderSelector
+        starWarsStateMock.determinateEntitySelector = determinateEntitySelector
+        starWarsStateMock.indeterminateEntitySelector = indeterminateEntitySelector
+        starWarsStateMock.version = ""
+        starWarsStateMock.language = language
         val starWarsPersistentStateComponentMock = mockk<StarWarsPersistentStateComponent>(relaxed = true)
         every { StarWarsPersistentStateComponent.instance } returns starWarsPersistentStateComponentMock
         every { starWarsPersistentStateComponentMock.state } returns starWarsStateMock
