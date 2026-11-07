@@ -342,6 +342,7 @@ class IconResourceTests {
         "vehicles${File.separatorChar}scoundrels${File.separatorChar}outrider@2x.png",
         "vehicles${File.separatorChar}scoundrels${File.separatorChar}outrider_r@2x.png",
         "vehicles${File.separatorChar}bounty_hunters${File.separatorChar}shadow_caster@2x.png",
+        "vehicles${File.separatorChar}bounty_hunters${File.separatorChar}shadow_caster_r@2x.png",
         "vehicles${File.separatorChar}bounty_hunters${File.separatorChar}hounds_tooth_r@2x.png",
         "vehicles${File.separatorChar}mandalorians${File.separatorChar}fang_class_starfighter_r@2x.png",
         "vehicles${File.separatorChar}sith_empire${File.separatorChar}harrower_class_dreadnought_r_raw@2x.png",
