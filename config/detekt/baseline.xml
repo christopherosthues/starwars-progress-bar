@@ -2,6 +2,21 @@
 <SmellBaseline>
   <ManuallySuppressedIssues/>
   <CurrentIssues>
+    <ID>ForbiddenComment:FactionCreationHelper.kt:FactionCreationHelper$// TODO: lightsabers</ID>
+    <ID>ForbiddenComment:ResourceFactory.kt:// TODO: test me</ID>
+    <ID>ForbiddenComment:StarWarsFactionHolderTests.kt:StarWarsFactionHolderTests$// TODO: Add tests for lightsabers</ID>
+    <ID>ForbiddenComment:StarWarsProgressBarUI.kt:StarWarsProgressBarUI$// TODO: investigate why progressbar text is not painted after changing theme/look and feel</ID>
+    <ID>ForbiddenComment:StarWarsProgressConfigurable.kt:StarWarsProgressConfigurable$// TODO: add test for lightsabers</ID>
+    <ID>ForbiddenComment:StarWarsResourceLoaderTests.kt:StarWarsResourceLoaderTests.Companion$// TODO: setup lightsabers</ID>
+    <ID>LargeClass:StarWarsResourceLoaderTests.kt:StarWarsResourceLoaderTests</ID>
+    <ID>LongMethod:InorderFactionSelectorTests.kt:InorderFactionSelectorTests$@Test fun `selectEntity should return vehicles and lightsabers in sorted order`</ID>
+    <ID>LongMethod:ResourceFactoryTests.kt:ResourceFactoryTests$@Test fun `parseFactionsFromJson should return correct factions`</ID>
+    <ID>LongMethod:ReverseOrderFactionSelectorTests.kt:ReverseOrderFactionSelectorTests$@Test fun `selectEntity should return vehicles and lightsabers in sorted order`</ID>
+    <ID>LongMethod:StarWarsPersistentStateComponentTests.kt:StarWarsPersistentStateComponentTests$@Test fun `loadState should return copy state for version 1 0 0`</ID>
+    <ID>LongMethod:StarWarsPersistentStateComponentTests.kt:StarWarsPersistentStateComponentTests$@Test fun `loadState should return copy state for version 2 0 0`</ID>
+    <ID>LongMethod:StarWarsPersistentStateComponentTests.kt:StarWarsPersistentStateComponentTests$@Test fun `loadState should return copy state for version 3 0 0`</ID>
+    <ID>LongMethod:StarWarsProgressConfigurableTests.kt:StarWarsProgressConfigurableTests.Companion$@JvmStatic fun isModifiedValues: Stream&lt;Arguments></ID>
+    <ID>LongMethod:StarWarsProgressConfigurableTests.kt:StarWarsProgressConfigurableTests.Companion$@JvmStatic fun isNotModifiedValues: Stream&lt;Arguments></ID>
     <ID>MagicNumber:StarWarsPersistentStateComponent.kt:StarWarsPersistentStateComponent$3</ID>
     <ID>MaxLineLength:BorderShapeTests.kt:BorderShapeTests$fun</ID>
     <ID>MaxLineLength:FactionCreationHelper.kt:FactionCreationHelper$fun</ID>
