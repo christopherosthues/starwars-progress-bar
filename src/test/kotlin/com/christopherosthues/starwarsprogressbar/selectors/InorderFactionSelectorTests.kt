@@ -12,6 +12,7 @@ import com.christopherosthues.starwarsprogressbar.helpers.assertEntityOrder3Item
 import com.christopherosthues.starwarsprogressbar.helpers.assertEntityOrder6Items
 import com.christopherosthues.starwarsprogressbar.helpers.rotateByOne
 import com.christopherosthues.starwarsprogressbar.helpers.rotateByTwo
+import com.christopherosthues.starwarsprogressbar.helpers.selectMultipleEntities
 import com.intellij.idea.TestFor
 import io.mockk.every
 import io.mockk.mockkObject
@@ -304,7 +305,8 @@ class InorderFactionSelectorTests {
         every { StarWarsBundle.message(any()) } returnsArgument 0
 
         // Act
-        var result = selectMultipleEntities(entities, mapOf("2.1" to true, "1.2" to true, "1.3" to true), mapOf(), true)
+        var result =
+            sut.selectMultipleEntities(entities, mapOf("2.1" to true, "1.2" to true, "1.3" to true), mapOf(), true)
 
         // Assert
         assertEntityOrder3Items(1, 2, 0, entities, result)
@@ -313,25 +315,26 @@ class InorderFactionSelectorTests {
         rotateByOne(entities)
 
         // Act
-        result = selectMultipleEntities(entities, mapOf("2.1" to true, "1.2" to true, "1.3" to true), mapOf(), true)
+        result = sut.selectMultipleEntities(entities, mapOf("2.1" to true, "1.2" to true, "1.3" to true), mapOf(), true)
 
         // Assert
         assertEntityOrder3Items(0, 1, 2, entities, result)
 
         // Act
-        result = selectMultipleEntities(entities, mapOf("2.1" to true, "1.2" to false, "1.3" to true), mapOf(), true)
+        result =
+            sut.selectMultipleEntities(entities, mapOf("2.1" to true, "1.2" to false, "1.3" to true), mapOf(), true)
 
         // Assert
         assertEntityOrder3Items(1, 2, 1, entities, result)
 
         // Act
-        result = selectMultipleEntities(entities, mapOf("2.1" to true, "1.2" to false), mapOf(), true)
+        result = sut.selectMultipleEntities(entities, mapOf("2.1" to true, "1.2" to false), mapOf(), true)
 
         // Assert
         assertEntityOrder3Items(2, 1, 2, entities, result)
 
         // Act
-        result = selectMultipleEntities(entities, mapOf("2.1" to true, "1.2" to false), mapOf(), false)
+        result = sut.selectMultipleEntities(entities, mapOf("2.1" to true, "1.2" to false), mapOf(), false)
 
         // Assert
         assertEntityOrder3Items(2, 2, 2, entities, result)
@@ -351,7 +354,7 @@ class InorderFactionSelectorTests {
         )
 
         // Act
-        result = selectMultipleEntities(entities, mapOf("1.1" to true, "1.2" to true, "1.3" to true), mapOf(), true)
+        result = sut.selectMultipleEntities(entities, mapOf("1.1" to true, "1.2" to true, "1.3" to true), mapOf(), true)
 
         // Assert
         assertEntityOrder3Items(0, 1, 2, entities, result)
@@ -360,25 +363,26 @@ class InorderFactionSelectorTests {
         rotateByOne(entities)
 
         // Act
-        result = selectMultipleEntities(entities, mapOf("1.1" to true, "1.2" to true, "1.3" to true), mapOf(), true)
+        result = sut.selectMultipleEntities(entities, mapOf("1.1" to true, "1.2" to true, "1.3" to true), mapOf(), true)
 
         // Assert
         assertEntityOrder3Items(2, 0, 1, entities, result)
 
         // Act
-        result = selectMultipleEntities(entities, mapOf("1.1" to true, "1.2" to false, "1.3" to true), mapOf(), true)
+        result =
+            sut.selectMultipleEntities(entities, mapOf("1.1" to true, "1.2" to false, "1.3" to true), mapOf(), true)
 
         // Assert
         assertEntityOrder3Items(2, 1, 2, entities, result)
 
         // Act
-        result = selectMultipleEntities(entities, mapOf("1.1" to true, "1.2" to false), mapOf(), true)
+        result = sut.selectMultipleEntities(entities, mapOf("1.1" to true, "1.2" to false), mapOf(), true)
 
         // Assert
         assertEntityOrder3Items(1, 2, 1, entities, result)
 
         // Act
-        result = selectMultipleEntities(entities, mapOf("1.1" to true, "1.2" to false), mapOf(), false)
+        result = sut.selectMultipleEntities(entities, mapOf("1.1" to true, "1.2" to false), mapOf(), false)
 
         // Assert
         assertEntityOrder3Items(2, 2, 2, entities, result)
@@ -395,7 +399,8 @@ class InorderFactionSelectorTests {
         every { StarWarsBundle.message(any()) } returnsArgument 0
 
         // Act
-        var result = selectMultipleEntities(entities, mapOf(), mapOf("4.1" to true, "3.2" to true, "3.3" to true), true)
+        var result =
+            sut.selectMultipleEntities(entities, mapOf(), mapOf("4.1" to true, "3.2" to true, "3.3" to true), true)
 
         // Assert
         assertEntityOrder3Items(1, 2, 0, entities, result)
@@ -404,25 +409,26 @@ class InorderFactionSelectorTests {
         rotateByOne(entities)
 
         // Act
-        result = selectMultipleEntities(entities, mapOf(), mapOf("4.1" to true, "3.2" to true, "3.3" to true), true)
+        result = sut.selectMultipleEntities(entities, mapOf(), mapOf("4.1" to true, "3.2" to true, "3.3" to true), true)
 
         // Assert
         assertEntityOrder3Items(0, 1, 2, entities, result)
 
         // Act
-        result = selectMultipleEntities(entities, mapOf(), mapOf("4.1" to true, "3.2" to false, "3.3" to true), true)
+        result =
+            sut.selectMultipleEntities(entities, mapOf(), mapOf("4.1" to true, "3.2" to false, "3.3" to true), true)
 
         // Assert
         assertEntityOrder3Items(1, 2, 1, entities, result)
 
         // Act
-        result = selectMultipleEntities(entities, mapOf(), mapOf("4.1" to true, "3.2" to false), true)
+        result = sut.selectMultipleEntities(entities, mapOf(), mapOf("4.1" to true, "3.2" to false), true)
 
         // Assert
         assertEntityOrder3Items(2, 1, 2, entities, result)
 
         // Act
-        result = selectMultipleEntities(entities, mapOf(), mapOf("4.1" to true, "3.2" to false), false)
+        result = sut.selectMultipleEntities(entities, mapOf(), mapOf("4.1" to true, "3.2" to false), false)
 
         // Assert
         assertEntityOrder3Items(2, 2, 2, entities, result)
@@ -442,7 +448,7 @@ class InorderFactionSelectorTests {
         )
 
         // Act
-        result = selectMultipleEntities(entities, mapOf(), mapOf("3.1" to true, "3.2" to true, "3.3" to true), true)
+        result = sut.selectMultipleEntities(entities, mapOf(), mapOf("3.1" to true, "3.2" to true, "3.3" to true), true)
 
         // Assert
         assertEntityOrder3Items(0, 1, 2, entities, result)
@@ -451,25 +457,26 @@ class InorderFactionSelectorTests {
         rotateByOne(entities)
 
         // Act
-        result = selectMultipleEntities(entities, mapOf(), mapOf("3.1" to true, "3.2" to true, "3.3" to true), true)
+        result = sut.selectMultipleEntities(entities, mapOf(), mapOf("3.1" to true, "3.2" to true, "3.3" to true), true)
 
         // Assert
         assertEntityOrder3Items(2, 0, 1, entities, result)
 
         // Act
-        result = selectMultipleEntities(entities, mapOf(), mapOf("3.1" to true, "3.2" to false, "3.3" to true), true)
+        result =
+            sut.selectMultipleEntities(entities, mapOf(), mapOf("3.1" to true, "3.2" to false, "3.3" to true), true)
 
         // Assert
         assertEntityOrder3Items(2, 1, 2, entities, result)
 
         // Act
-        result = selectMultipleEntities(entities, mapOf(), mapOf("3.1" to true, "3.2" to false), true)
+        result = sut.selectMultipleEntities(entities, mapOf(), mapOf("3.1" to true, "3.2" to false), true)
 
         // Assert
         assertEntityOrder3Items(1, 2, 1, entities, result)
 
         // Act
-        result = selectMultipleEntities(entities, mapOf(), mapOf("3.1" to true, "3.2" to false), false)
+        result = sut.selectMultipleEntities(entities, mapOf(), mapOf("3.1" to true, "3.2" to false), false)
 
         // Assert
         assertEntityOrder3Items(2, 2, 2, entities, result)
@@ -488,7 +495,7 @@ class InorderFactionSelectorTests {
         every { StarWarsBundle.message(any()) } returnsArgument 0
 
         // Act
-        var result = selectMultipleEntities(
+        var result = sut.selectMultipleEntities(
             entities,
             mapOf("2.1" to true, "1.2" to true, "1.3" to true),
             mapOf("4.1" to true, "3.2" to true, "3.3" to true),
@@ -503,7 +510,7 @@ class InorderFactionSelectorTests {
         rotateByOne(entities, 3)
 
         // Act
-        result = selectMultipleEntities(
+        result = sut.selectMultipleEntities(
             entities,
             mapOf("2.1" to true, "1.2" to true, "1.3" to true),
             mapOf("4.1" to true, "3.2" to true, "3.3" to true),
@@ -514,7 +521,7 @@ class InorderFactionSelectorTests {
         assertEntityOrder6Items(0, 1, 2, 3, 4, 5, entities, result)
 
         // Act
-        result = selectMultipleEntities(
+        result = sut.selectMultipleEntities(
             entities,
             mapOf("2.1" to true, "1.2" to false, "1.3" to true),
             mapOf("4.1" to true, "3.2" to false, "3.3" to true),
@@ -525,7 +532,7 @@ class InorderFactionSelectorTests {
         assertEntityOrder6Items(1, 2, 4, 5, 1, 2, entities, result)
 
         // Act
-        result = selectMultipleEntities(
+        result = sut.selectMultipleEntities(
             entities,
             mapOf("2.1" to true, "1.2" to false),
             mapOf("4.1" to true, "3.2" to false),
@@ -536,7 +543,7 @@ class InorderFactionSelectorTests {
         assertEntityOrder6Items(4, 5, 1, 2, 4, 5, entities, result)
 
         // Act
-        result = selectMultipleEntities(
+        result = sut.selectMultipleEntities(
             entities,
             mapOf("2.1" to true, "1.2" to false),
             mapOf("4.1" to true, "3.2" to false),
@@ -564,7 +571,7 @@ class InorderFactionSelectorTests {
         )
 
         // Act
-        result = selectMultipleEntities(
+        result = sut.selectMultipleEntities(
             entities,
             mapOf("1.1" to true, "1.2" to true, "1.3" to true),
             mapOf("3.1" to true, "3.2" to true, "3.3" to true),
@@ -579,7 +586,7 @@ class InorderFactionSelectorTests {
         rotateByOne(entities, 3)
 
         // Act
-        result = selectMultipleEntities(
+        result = sut.selectMultipleEntities(
             entities,
             mapOf("1.1" to true, "1.2" to true, "1.3" to true),
             mapOf("3.1" to true, "3.2" to true, "3.3" to true),
@@ -590,7 +597,7 @@ class InorderFactionSelectorTests {
         assertEntityOrder6Items(3, 4, 2, 0, 1, 5, entities, result)
 
         // Act
-        result = selectMultipleEntities(
+        result = sut.selectMultipleEntities(
             entities,
             mapOf("1.1" to true, "1.2" to false, "1.3" to true),
             mapOf("3.1" to true, "3.2" to false, "3.3" to true),
@@ -601,7 +608,7 @@ class InorderFactionSelectorTests {
         assertEntityOrder6Items(2, 1, 5, 4, 2, 1, entities, result)
 
         // Act
-        result = selectMultipleEntities(
+        result = sut.selectMultipleEntities(
             entities,
             mapOf("1.1" to true, "1.2" to false),
             mapOf("3.1" to true, "3.2" to false),
@@ -612,7 +619,7 @@ class InorderFactionSelectorTests {
         assertEntityOrder6Items(5, 4, 2, 1, 5, 4, entities, result)
 
         // Act
-        result = selectMultipleEntities(
+        result = sut.selectMultipleEntities(
             entities,
             mapOf("1.1" to true, "1.2" to false),
             mapOf("3.1" to true, "3.2" to false),
@@ -690,26 +697,6 @@ class InorderFactionSelectorTests {
         }
 
         return lightsabers
-    }
-
-    private fun selectMultipleEntities(
-        entities: MutableList<StarWarsEntity>,
-        enabledVehicles: Map<String, Boolean>,
-        enabledLightsabers: Map<String, Boolean>,
-        defaultEnabled: Boolean,
-    ): List<StarWarsEntity> {
-        val result = mutableListOf<StarWarsEntity>()
-        repeat(entities.indices.count()) {
-            result.add(
-                sut.selectEntity(
-                    enabledVehicles,
-                    enabledLightsabers,
-                    defaultEnabled,
-                ),
-            )
-        }
-
-        return result
     }
 
     //endregion

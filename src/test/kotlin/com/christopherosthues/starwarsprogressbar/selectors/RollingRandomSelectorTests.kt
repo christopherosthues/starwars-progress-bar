@@ -4,6 +4,7 @@ import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
 import com.christopherosthues.starwarsprogressbar.helpers.assertEntityOrder12Items
 import com.christopherosthues.starwarsprogressbar.helpers.assertEntityOrder6Items
+import com.christopherosthues.starwarsprogressbar.helpers.selectMultipleEntitiesTwice
 import com.christopherosthues.starwarsprogressbar.models.Blade
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
@@ -303,16 +304,12 @@ class RollingRandomSelectorTests {
         every { randomInt(any()) } returns 0
 
         // Act
-        var result = mutableListOf<StarWarsEntity>()
-        repeat((0 until (2 * entities.size)).count()) {
-            result.add(
-                sut.selectEntity(
-                    mapOf("2.1" to true, "1.2" to true, "1.3" to true),
-                    mapOf(),
-                    true,
-                ),
-            )
-        }
+        var result = sut.selectMultipleEntitiesTwice(
+            entities,
+            mapOf("2.1" to true, "1.2" to true, "1.3" to true),
+            mapOf(),
+            true,
+        )
 
         // Assert
         assertEntityOrder6Items(0, 1, 2, 0, 1, 2, entities, result)
@@ -323,31 +320,23 @@ class RollingRandomSelectorTests {
         }
 
         // Act
-        result = mutableListOf()
-        repeat((0 until (2 * entities.size)).count()) {
-            result.add(
-                sut.selectEntity(
-                    mapOf("2.1" to true, "1.2" to true, "1.3" to true),
-                    mapOf(),
-                    true,
-                ),
-            )
-        }
+        result = sut.selectMultipleEntitiesTwice(
+            entities,
+            mapOf("2.1" to true, "1.2" to true, "1.3" to true),
+            mapOf(),
+            true,
+        )
 
         // Assert
         assertEntityOrder6Items(0, 1, 2, 0, 1, 2, entities, result)
 
         // Act
-        result = mutableListOf()
-        repeat((0 until (2 * entities.size)).count()) {
-            result.add(
-                sut.selectEntity(
-                    mapOf("2.1" to true, "1.2" to false, "1.3" to true),
-                    mapOf(),
-                    true,
-                ),
-            )
-        }
+        result = sut.selectMultipleEntitiesTwice(
+            entities,
+            mapOf("2.1" to true, "1.2" to false, "1.3" to true),
+            mapOf(),
+            true,
+        )
 
         // Assert
         assertEntityOrder6Items(0, 2, 0, 2, 0, 2, entities, result)
@@ -363,16 +352,12 @@ class RollingRandomSelectorTests {
         every { randomInt(any()) } returns 0
 
         // Act
-        var result = mutableListOf<StarWarsEntity>()
-        repeat((0 until (2 * entities.size)).count()) {
-            result.add(
-                sut.selectEntity(
-                    mapOf(),
-                    mapOf("4.1" to true, "3.2" to true, "3.3" to true),
-                    true,
-                ),
-            )
-        }
+        var result = sut.selectMultipleEntitiesTwice(
+            entities,
+            mapOf(),
+            mapOf("4.1" to true, "3.2" to true, "3.3" to true),
+            true,
+        )
 
         // Assert
         assertEntityOrder6Items(0, 1, 2, 0, 1, 2, entities, result)
@@ -383,31 +368,23 @@ class RollingRandomSelectorTests {
         }
 
         // Act
-        result = mutableListOf()
-        repeat((0 until (2 * entities.size)).count()) {
-            result.add(
-                sut.selectEntity(
-                    mapOf(),
-                    mapOf("4.1" to true, "3.2" to true, "3.3" to true),
-                    true,
-                ),
-            )
-        }
+        result = sut.selectMultipleEntitiesTwice(
+            entities,
+            mapOf(),
+            mapOf("4.1" to true, "3.2" to true, "3.3" to true),
+            true,
+        )
 
         // Assert
         assertEntityOrder6Items(0, 1, 2, 0, 1, 2, entities, result)
 
         // Act
-        result = mutableListOf()
-        repeat((0 until (2 * entities.size)).count()) {
-            result.add(
-                sut.selectEntity(
-                    mapOf(),
-                    mapOf("4.1" to true, "3.2" to false, "3.3" to true),
-                    true,
-                ),
-            )
-        }
+        result = sut.selectMultipleEntitiesTwice(
+            entities,
+            mapOf(),
+            mapOf("4.1" to true, "3.2" to false, "3.3" to true),
+            true,
+        )
 
         // Assert
         assertEntityOrder6Items(0, 2, 0, 2, 0, 2, entities, result)
@@ -424,16 +401,12 @@ class RollingRandomSelectorTests {
         val entities = (lightsabers + vehicles).toMutableList()
 
         // Act
-        var result = mutableListOf<StarWarsEntity>()
-        repeat((0 until (2 * entities.size)).count()) {
-            result.add(
-                sut.selectEntity(
-                    mapOf("2.1" to true, "1.2" to true, "1.3" to true),
-                    mapOf("4.1" to true, "3.2" to true, "3.3" to true),
-                    true,
-                ),
-            )
-        }
+        var result = sut.selectMultipleEntitiesTwice(
+            entities,
+            mapOf("2.1" to true, "1.2" to true, "1.3" to true),
+            mapOf("4.1" to true, "3.2" to true, "3.3" to true),
+            true,
+        )
 
         // Assert
         assertEntityOrder12Items(3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, entities, result)
@@ -447,31 +420,23 @@ class RollingRandomSelectorTests {
         }
 
         // Act
-        result = mutableListOf()
-        repeat((0 until (2 * entities.size)).count()) {
-            result.add(
-                sut.selectEntity(
-                    mapOf("2.1" to true, "1.2" to true, "1.3" to true),
-                    mapOf("4.1" to true, "3.2" to true, "3.3" to true),
-                    true,
-                ),
-            )
-        }
+        result = sut.selectMultipleEntitiesTwice(
+            entities,
+            mapOf("2.1" to true, "1.2" to true, "1.3" to true),
+            mapOf("4.1" to true, "3.2" to true, "3.3" to true),
+            true,
+        )
 
         // Assert
         assertEntityOrder12Items(5, 4, 3, 2, 1, 0, 5, 4, 3, 2, 1, 0, entities, result)
 
         // Act
-        result = mutableListOf()
-        repeat((0 until (2 * entities.size)).count()) {
-            result.add(
-                sut.selectEntity(
-                    mapOf("2.1" to true, "1.2" to false, "1.3" to true),
-                    mapOf("4.1" to true, "3.2" to false, "3.3" to true),
-                    true,
-                ),
-            )
-        }
+        result = sut.selectMultipleEntitiesTwice(
+            entities,
+            mapOf("2.1" to true, "1.2" to false, "1.3" to true),
+            mapOf("4.1" to true, "3.2" to false, "3.3" to true),
+            true,
+        )
 
         // Assert
         assertEntityOrder12Items(5, 3, 2, 0, 5, 3, 2, 0, 5, 3, 2, 0, entities, result)

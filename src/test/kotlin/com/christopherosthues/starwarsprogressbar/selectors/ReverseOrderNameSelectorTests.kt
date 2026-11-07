@@ -5,6 +5,7 @@ import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersiste
 import com.christopherosthues.starwarsprogressbar.helpers.assertEntityOrder3Items
 import com.christopherosthues.starwarsprogressbar.helpers.assertEntityOrder6Items
 import com.christopherosthues.starwarsprogressbar.helpers.rotateByOne
+import com.christopherosthues.starwarsprogressbar.helpers.selectMultipleEntities
 import com.christopherosthues.starwarsprogressbar.models.Blade
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
@@ -301,16 +302,12 @@ class ReverseOrderNameSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         // Act
-        var result = mutableListOf<StarWarsEntity>()
-        repeat(entities.indices.count()) {
-            result.add(
-                sut.selectEntity(
-                    mapOf("1.1" to true, "1.2" to true, "1.3" to true),
-                    mapOf(),
-                    true,
-                ),
-            )
-        }
+        var result = sut.selectMultipleEntities(
+            entities,
+            mapOf("1.1" to true, "1.2" to true, "1.3" to true),
+            mapOf(),
+            true,
+        )
 
         // Assert
         assertEntityOrder3Items(2, 1, 0, entities, result)
@@ -319,61 +316,45 @@ class ReverseOrderNameSelectorTests {
         rotateByOne(entities)
 
         // Act
-        result = mutableListOf()
-        repeat(entities.indices.count()) {
-            result.add(
-                sut.selectEntity(
-                    mapOf("1.1" to true, "1.2" to true, "1.3" to true),
-                    mapOf(),
-                    true,
-                ),
-            )
-        }
+        result = sut.selectMultipleEntities(
+            entities,
+            mapOf("1.1" to true, "1.2" to true, "1.3" to true),
+            mapOf(),
+            true,
+        )
 
         // Assert
         assertEntityOrder3Items(1, 0, 2, entities, result)
 
         // Act
-        result = mutableListOf()
-        repeat(entities.indices.count()) {
-            result.add(
-                sut.selectEntity(
-                    mapOf("1.1" to true, "1.2" to false, "1.3" to true),
-                    mapOf(),
-                    true,
-                ),
-            )
-        }
+        result = sut.selectMultipleEntities(
+            entities,
+            mapOf("1.1" to true, "1.2" to false, "1.3" to true),
+            mapOf(),
+            true,
+        )
 
         // Assert
         assertEntityOrder3Items(1, 2, 1, entities, result)
 
         // Act
-        result = mutableListOf()
-        repeat(entities.indices.count()) {
-            result.add(
-                sut.selectEntity(
-                    mapOf("1.1" to true, "1.2" to false),
-                    mapOf(),
-                    true,
-                ),
-            )
-        }
+        result = sut.selectMultipleEntities(
+            entities,
+            mapOf("1.1" to true, "1.2" to false),
+            mapOf(),
+            true,
+        )
 
         // Assert
         assertEntityOrder3Items(2, 1, 2, entities, result)
 
         // Act
-        result = mutableListOf()
-        repeat(entities.indices.count()) {
-            result.add(
-                sut.selectEntity(
-                    mapOf("1.1" to true, "1.2" to false),
-                    mapOf(),
-                    false,
-                ),
-            )
-        }
+        result = sut.selectMultipleEntities(
+            entities,
+            mapOf("1.1" to true, "1.2" to false),
+            mapOf(),
+            false,
+        )
 
         // Assert
         assertEntityOrder3Items(2, 2, 2, entities, result)
@@ -388,16 +369,12 @@ class ReverseOrderNameSelectorTests {
         every { StarWarsFactionHolder.defaultLightsabers } returns lightsabers
 
         // Act
-        var result = mutableListOf<StarWarsEntity>()
-        repeat(entities.indices.count()) {
-            result.add(
-                sut.selectEntity(
-                    mapOf(),
-                    mapOf("3.1" to true, "3.2" to true, "3.3" to true),
-                    true,
-                ),
-            )
-        }
+        var result = sut.selectMultipleEntities(
+            entities,
+            mapOf(),
+            mapOf("3.1" to true, "3.2" to true, "3.3" to true),
+            true,
+        )
 
         // Assert
         assertEntityOrder3Items(2, 1, 0, entities, result)
@@ -406,61 +383,45 @@ class ReverseOrderNameSelectorTests {
         rotateByOne(entities)
 
         // Act
-        result = mutableListOf()
-        repeat(entities.indices.count()) {
-            result.add(
-                sut.selectEntity(
-                    mapOf(),
-                    mapOf("3.1" to true, "3.2" to true, "3.3" to true),
-                    true,
-                ),
-            )
-        }
+        result = sut.selectMultipleEntities(
+            entities,
+            mapOf(),
+            mapOf("3.1" to true, "3.2" to true, "3.3" to true),
+            true,
+        )
 
         // Assert
         assertEntityOrder3Items(1, 0, 2, entities, result)
 
         // Act
-        result = mutableListOf()
-        repeat(entities.indices.count()) {
-            result.add(
-                sut.selectEntity(
-                    mapOf(),
-                    mapOf("3.1" to true, "3.2" to false, "3.3" to true),
-                    true,
-                ),
-            )
-        }
+        result = sut.selectMultipleEntities(
+            entities,
+            mapOf(),
+            mapOf("3.1" to true, "3.2" to false, "3.3" to true),
+            true,
+        )
 
         // Assert
         assertEntityOrder3Items(1, 2, 1, entities, result)
 
         // Act
-        result = mutableListOf()
-        repeat(entities.indices.count()) {
-            result.add(
-                sut.selectEntity(
-                    mapOf(),
-                    mapOf("3.1" to true, "3.2" to false),
-                    true,
-                ),
-            )
-        }
+        result = sut.selectMultipleEntities(
+            entities,
+            mapOf(),
+            mapOf("3.1" to true, "3.2" to false),
+            true,
+        )
 
         // Assert
         assertEntityOrder3Items(2, 1, 2, entities, result)
 
         // Act
-        result = mutableListOf()
-        repeat(entities.indices.count()) {
-            result.add(
-                sut.selectEntity(
-                    mapOf(),
-                    mapOf("3.1" to true, "3.2" to false),
-                    false,
-                ),
-            )
-        }
+        result = sut.selectMultipleEntities(
+            entities,
+            mapOf(),
+            mapOf("3.1" to true, "3.2" to false),
+            false,
+        )
 
         // Assert
         assertEntityOrder3Items(2, 2, 2, entities, result)
@@ -476,16 +437,12 @@ class ReverseOrderNameSelectorTests {
         val entities = (lightsabers + vehicles).toMutableList()
 
         // Act
-        var result = mutableListOf<StarWarsEntity>()
-        repeat(entities.indices.count()) {
-            result.add(
-                sut.selectEntity(
-                    mapOf("1.1" to true, "1.2" to true, "1.3" to true),
-                    mapOf("3.1" to true, "3.2" to true, "3.3" to true),
-                    true,
-                ),
-            )
-        }
+        var result = sut.selectMultipleEntities(
+            entities,
+            mapOf("1.1" to true, "1.2" to true, "1.3" to true),
+            mapOf("3.1" to true, "3.2" to true, "3.3" to true),
+            true,
+        )
 
         // Assert
         assertEntityOrder6Items(5, 2, 4, 1, 3, 0, entities, result)
@@ -495,61 +452,45 @@ class ReverseOrderNameSelectorTests {
         rotateByOne(entities, 3)
 
         // Act
-        result = mutableListOf()
-        repeat(entities.indices.count()) {
-            result.add(
-                sut.selectEntity(
-                    mapOf("1.1" to true, "1.2" to true, "1.3" to true),
-                    mapOf("3.1" to true, "3.2" to true, "3.3" to true),
-                    true,
-                ),
-            )
-        }
+        result = sut.selectMultipleEntities(
+            entities,
+            mapOf("1.1" to true, "1.2" to true, "1.3" to true),
+            mapOf("3.1" to true, "3.2" to true, "3.3" to true),
+            true,
+        )
 
         // Assert
         assertEntityOrder6Items(4, 1, 3, 0, 5, 2, entities, result)
 
         // Act
-        result = mutableListOf()
-        repeat(entities.indices.count()) {
-            result.add(
-                sut.selectEntity(
-                    mapOf("1.1" to true, "1.2" to false, "1.3" to true),
-                    mapOf("3.1" to true, "3.2" to false, "3.3" to true),
-                    true,
-                ),
-            )
-        }
+        result = sut.selectMultipleEntities(
+            entities,
+            mapOf("1.1" to true, "1.2" to false, "1.3" to true),
+            mapOf("3.1" to true, "3.2" to false, "3.3" to true),
+            true,
+        )
 
         // Assert
         assertEntityOrder6Items(4, 1, 5, 2, 4, 1, entities, result)
 
         // Act
-        result = mutableListOf()
-        repeat(entities.indices.count()) {
-            result.add(
-                sut.selectEntity(
-                    mapOf("1.1" to true, "1.2" to false),
-                    mapOf("3.1" to true, "3.2" to false),
-                    true,
-                ),
-            )
-        }
+        result = sut.selectMultipleEntities(
+            entities,
+            mapOf("1.1" to true, "1.2" to false),
+            mapOf("3.1" to true, "3.2" to false),
+            true,
+        )
 
         // Assert
         assertEntityOrder6Items(5, 2, 4, 1, 5, 2, entities, result)
 
         // Act
-        result = mutableListOf()
-        repeat(entities.indices.count()) {
-            result.add(
-                sut.selectEntity(
-                    mapOf("1.1" to true, "1.2" to false),
-                    mapOf("3.1" to true, "3.2" to false),
-                    false,
-                ),
-            )
-        }
+        result = sut.selectMultipleEntities(
+            entities,
+            mapOf("1.1" to true, "1.2" to false),
+            mapOf("3.1" to true, "3.2" to false),
+            false,
+        )
 
         // Assert
         assertEntityOrder6Items(5, 2, 5, 2, 5, 2, entities, result)
