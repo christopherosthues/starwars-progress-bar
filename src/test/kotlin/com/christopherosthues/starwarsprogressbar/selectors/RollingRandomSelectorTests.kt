@@ -2,6 +2,8 @@ package com.christopherosthues.starwarsprogressbar.selectors
 
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
+import com.christopherosthues.starwarsprogressbar.helpers.assertEntityOrder12Items
+import com.christopherosthues.starwarsprogressbar.helpers.assertEntityOrder6Items
 import com.christopherosthues.starwarsprogressbar.models.Blade
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
@@ -295,13 +297,14 @@ class RollingRandomSelectorTests {
     fun `selectEntity should return random vehicles`() {
         // Arrange
         val vehicles = createStarWarsVehicles().toMutableList()
+        val entities: MutableList<StarWarsEntity> = vehicles.toMutableList()
         every { StarWarsFactionHolder.defaultVehicles } returns vehicles
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
         every { randomInt(any()) } returns 0
 
         // Act
         var result = mutableListOf<StarWarsEntity>()
-        repeat((0 until (2 * vehicles.size)).count()) {
+        repeat((0 until (2 * entities.size)).count()) {
             result.add(
                 sut.selectEntity(
                     mapOf("2.1" to true, "1.2" to true, "1.3" to true),
@@ -312,24 +315,16 @@ class RollingRandomSelectorTests {
         }
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(6, result.size) },
-            { Assertions.assertEquals(vehicles[0], result[0]) },
-            { Assertions.assertEquals(vehicles[1], result[1]) },
-            { Assertions.assertEquals(vehicles[2], result[2]) },
-            { Assertions.assertEquals(vehicles[0], result[3]) },
-            { Assertions.assertEquals(vehicles[1], result[4]) },
-            { Assertions.assertEquals(vehicles[2], result[5]) },
-        )
+        assertEntityOrder6Items(0, 1, 2, 0, 1, 2, entities, result)
 
         // Arrange
-        vehicles[0] = vehicles[2].also {
-            vehicles[2] = vehicles[0]
+        entities[0] = entities[2].also {
+            entities[2] = entities[0]
         }
 
         // Act
         result = mutableListOf()
-        repeat((0 until (2 * vehicles.size)).count()) {
+        repeat((0 until (2 * entities.size)).count()) {
             result.add(
                 sut.selectEntity(
                     mapOf("2.1" to true, "1.2" to true, "1.3" to true),
@@ -340,19 +335,11 @@ class RollingRandomSelectorTests {
         }
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(6, result.size) },
-            { Assertions.assertEquals(vehicles[0], result[0]) },
-            { Assertions.assertEquals(vehicles[1], result[1]) },
-            { Assertions.assertEquals(vehicles[2], result[2]) },
-            { Assertions.assertEquals(vehicles[0], result[3]) },
-            { Assertions.assertEquals(vehicles[1], result[4]) },
-            { Assertions.assertEquals(vehicles[2], result[5]) },
-        )
+        assertEntityOrder6Items(0, 1, 2, 0, 1, 2, entities, result)
 
         // Act
         result = mutableListOf()
-        repeat((0 until (2 * vehicles.size)).count()) {
+        repeat((0 until (2 * entities.size)).count()) {
             result.add(
                 sut.selectEntity(
                     mapOf("2.1" to true, "1.2" to false, "1.3" to true),
@@ -363,28 +350,21 @@ class RollingRandomSelectorTests {
         }
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(6, result.size) },
-            { Assertions.assertEquals(vehicles[0], result[0]) },
-            { Assertions.assertEquals(vehicles[2], result[1]) },
-            { Assertions.assertEquals(vehicles[0], result[2]) },
-            { Assertions.assertEquals(vehicles[2], result[3]) },
-            { Assertions.assertEquals(vehicles[0], result[4]) },
-            { Assertions.assertEquals(vehicles[2], result[5]) },
-        )
+        assertEntityOrder6Items(0, 2, 0, 2, 0, 2, entities, result)
     }
 
     @Test
     fun `selectEntity should return random lightsabers`() {
         // Arrange
         val lightsabers = createLightsabers().toMutableList()
+        val entities: MutableList<StarWarsEntity> = lightsabers.toMutableList()
         every { StarWarsFactionHolder.defaultVehicles } returns listOf()
         every { StarWarsFactionHolder.defaultLightsabers } returns lightsabers
         every { randomInt(any()) } returns 0
 
         // Act
         var result = mutableListOf<StarWarsEntity>()
-        repeat((0 until (2 * lightsabers.size)).count()) {
+        repeat((0 until (2 * entities.size)).count()) {
             result.add(
                 sut.selectEntity(
                     mapOf(),
@@ -395,24 +375,16 @@ class RollingRandomSelectorTests {
         }
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(6, result.size) },
-            { Assertions.assertEquals(lightsabers[0], result[0]) },
-            { Assertions.assertEquals(lightsabers[1], result[1]) },
-            { Assertions.assertEquals(lightsabers[2], result[2]) },
-            { Assertions.assertEquals(lightsabers[0], result[3]) },
-            { Assertions.assertEquals(lightsabers[1], result[4]) },
-            { Assertions.assertEquals(lightsabers[2], result[5]) },
-        )
+        assertEntityOrder6Items(0, 1, 2, 0, 1, 2, entities, result)
 
         // Arrange
-        lightsabers[0] = lightsabers[2].also {
-            lightsabers[2] = lightsabers[0]
+        entities[0] = entities[2].also {
+            entities[2] = entities[0]
         }
 
         // Act
         result = mutableListOf()
-        repeat((0 until (2 * lightsabers.size)).count()) {
+        repeat((0 until (2 * entities.size)).count()) {
             result.add(
                 sut.selectEntity(
                     mapOf(),
@@ -423,19 +395,11 @@ class RollingRandomSelectorTests {
         }
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(6, result.size) },
-            { Assertions.assertEquals(lightsabers[0], result[0]) },
-            { Assertions.assertEquals(lightsabers[1], result[1]) },
-            { Assertions.assertEquals(lightsabers[2], result[2]) },
-            { Assertions.assertEquals(lightsabers[0], result[3]) },
-            { Assertions.assertEquals(lightsabers[1], result[4]) },
-            { Assertions.assertEquals(lightsabers[2], result[5]) },
-        )
+        assertEntityOrder6Items(0, 1, 2, 0, 1, 2, entities, result)
 
         // Act
         result = mutableListOf()
-        repeat((0 until (2 * lightsabers.size)).count()) {
+        repeat((0 until (2 * entities.size)).count()) {
             result.add(
                 sut.selectEntity(
                     mapOf(),
@@ -446,15 +410,7 @@ class RollingRandomSelectorTests {
         }
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(6, result.size) },
-            { Assertions.assertEquals(lightsabers[0], result[0]) },
-            { Assertions.assertEquals(lightsabers[2], result[1]) },
-            { Assertions.assertEquals(lightsabers[0], result[2]) },
-            { Assertions.assertEquals(lightsabers[2], result[3]) },
-            { Assertions.assertEquals(lightsabers[0], result[4]) },
-            { Assertions.assertEquals(lightsabers[2], result[5]) },
-        )
+        assertEntityOrder6Items(0, 2, 0, 2, 0, 2, entities, result)
     }
 
     @Test
@@ -480,21 +436,7 @@ class RollingRandomSelectorTests {
         }
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(12, result.size) },
-            { Assertions.assertEquals(entities[3], result[0]) },
-            { Assertions.assertEquals(entities[4], result[1]) },
-            { Assertions.assertEquals(entities[5], result[2]) },
-            { Assertions.assertEquals(entities[0], result[3]) },
-            { Assertions.assertEquals(entities[1], result[4]) },
-            { Assertions.assertEquals(entities[2], result[5]) },
-            { Assertions.assertEquals(entities[3], result[6]) },
-            { Assertions.assertEquals(entities[4], result[7]) },
-            { Assertions.assertEquals(entities[5], result[8]) },
-            { Assertions.assertEquals(entities[0], result[9]) },
-            { Assertions.assertEquals(entities[1], result[10]) },
-            { Assertions.assertEquals(entities[2], result[11]) },
-        )
+        assertEntityOrder12Items(3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, entities, result)
 
         // Arrange
         entities[0] = entities[2].also {
@@ -517,21 +459,7 @@ class RollingRandomSelectorTests {
         }
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(12, result.size) },
-            { Assertions.assertEquals(entities[5], result[0]) },
-            { Assertions.assertEquals(entities[4], result[1]) },
-            { Assertions.assertEquals(entities[3], result[2]) },
-            { Assertions.assertEquals(entities[2], result[3]) },
-            { Assertions.assertEquals(entities[1], result[4]) },
-            { Assertions.assertEquals(entities[0], result[5]) },
-            { Assertions.assertEquals(entities[5], result[6]) },
-            { Assertions.assertEquals(entities[4], result[7]) },
-            { Assertions.assertEquals(entities[3], result[8]) },
-            { Assertions.assertEquals(entities[2], result[9]) },
-            { Assertions.assertEquals(entities[1], result[10]) },
-            { Assertions.assertEquals(entities[0], result[11]) },
-        )
+        assertEntityOrder12Items(5, 4, 3, 2, 1, 0, 5, 4, 3, 2, 1, 0, entities, result)
 
         // Act
         result = mutableListOf()
@@ -546,21 +474,7 @@ class RollingRandomSelectorTests {
         }
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(12, result.size) },
-            { Assertions.assertEquals(entities[5], result[0]) },
-            { Assertions.assertEquals(entities[3], result[1]) },
-            { Assertions.assertEquals(entities[2], result[2]) },
-            { Assertions.assertEquals(entities[0], result[3]) },
-            { Assertions.assertEquals(entities[5], result[4]) },
-            { Assertions.assertEquals(entities[3], result[5]) },
-            { Assertions.assertEquals(entities[2], result[6]) },
-            { Assertions.assertEquals(entities[0], result[7]) },
-            { Assertions.assertEquals(entities[5], result[8]) },
-            { Assertions.assertEquals(entities[3], result[9]) },
-            { Assertions.assertEquals(entities[2], result[10]) },
-            { Assertions.assertEquals(entities[0], result[11]) },
-        )
+        assertEntityOrder12Items(5, 3, 2, 0, 5, 3, 2, 0, 5, 3, 2, 0, entities, result)
     }
 
     //endregion

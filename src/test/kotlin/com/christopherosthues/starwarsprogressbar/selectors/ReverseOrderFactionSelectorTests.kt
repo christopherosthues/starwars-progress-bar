@@ -2,6 +2,8 @@ package com.christopherosthues.starwarsprogressbar.selectors
 
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
+import com.christopherosthues.starwarsprogressbar.helpers.assertEntityOrder3Items
+import com.christopherosthues.starwarsprogressbar.helpers.assertEntityOrder6Items
 import com.christopherosthues.starwarsprogressbar.models.Blade
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
@@ -318,12 +320,7 @@ class ReverseOrderFactionSelectorTests {
         var result = selectMultipleEntities(entities, mapOf("2.1" to true, "1.2" to true, "1.3" to true), mapOf(), true)
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
-            { Assertions.assertEquals(entities[0], result[0]) },
-            { Assertions.assertEquals(entities[2], result[1]) },
-            { Assertions.assertEquals(entities[1], result[2]) },
-        )
+        assertEntityOrder3Items(0, 2, 1, entities, result)
 
         // Arrange
         entities[0] = entities[1].also {
@@ -336,45 +333,25 @@ class ReverseOrderFactionSelectorTests {
         result = selectMultipleEntities(entities, mapOf("2.1" to true, "1.2" to true, "1.3" to true), mapOf(), true)
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
-            { Assertions.assertEquals(entities[2], result[0]) },
-            { Assertions.assertEquals(entities[1], result[1]) },
-            { Assertions.assertEquals(entities[0], result[2]) },
-        )
+        assertEntityOrder3Items(2, 1, 0, entities, result)
 
         // Act
         result = selectMultipleEntities(entities, mapOf("2.1" to true, "1.2" to false, "1.3" to true), mapOf(), true)
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
-            { Assertions.assertEquals(entities[2], result[0]) },
-            { Assertions.assertEquals(entities[1], result[1]) },
-            { Assertions.assertEquals(entities[2], result[2]) },
-        )
+        assertEntityOrder3Items(2, 1, 2, entities, result)
 
         // Act
         result = selectMultipleEntities(entities, mapOf("2.1" to true, "1.2" to false), mapOf(), true)
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
-            { Assertions.assertEquals(entities[1], result[0]) },
-            { Assertions.assertEquals(entities[2], result[1]) },
-            { Assertions.assertEquals(entities[1], result[2]) },
-        )
+        assertEntityOrder3Items(1, 2, 1, entities, result)
 
         // Act
         result = selectMultipleEntities(entities, mapOf("2.1" to true, "1.2" to false), mapOf(), false)
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
-            { Assertions.assertEquals(entities[2], result[0]) },
-            { Assertions.assertEquals(entities[2], result[1]) },
-            { Assertions.assertEquals(entities[2], result[2]) },
-        )
+        assertEntityOrder3Items(2, 2, 2, entities, result)
 
         // Arrange
         entities[0] = entities[2].also {
@@ -398,12 +375,7 @@ class ReverseOrderFactionSelectorTests {
         result = selectMultipleEntities(entities, mapOf("1.1" to true, "1.2" to true, "1.3" to true), mapOf(), true)
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
-            { Assertions.assertEquals(entities[2], result[0]) },
-            { Assertions.assertEquals(entities[1], result[1]) },
-            { Assertions.assertEquals(entities[0], result[2]) },
-        )
+        assertEntityOrder3Items(2, 1, 0, entities, result)
 
         // Arrange
         entities[0] = entities[1].also {
@@ -416,45 +388,25 @@ class ReverseOrderFactionSelectorTests {
         result = selectMultipleEntities(entities, mapOf("1.1" to true, "1.2" to true, "1.3" to true), mapOf(), true)
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
-            { Assertions.assertEquals(entities[1], result[0]) },
-            { Assertions.assertEquals(entities[0], result[1]) },
-            { Assertions.assertEquals(entities[2], result[2]) },
-        )
+        assertEntityOrder3Items(1, 0, 2, entities, result)
 
         // Act
         result = selectMultipleEntities(entities, mapOf("1.1" to true, "1.2" to false, "1.3" to true), mapOf(), true)
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
-            { Assertions.assertEquals(entities[1], result[0]) },
-            { Assertions.assertEquals(entities[2], result[1]) },
-            { Assertions.assertEquals(entities[1], result[2]) },
-        )
+        assertEntityOrder3Items(1, 2, 1, entities, result)
 
         // Act
         result = selectMultipleEntities(entities, mapOf("1.1" to true, "1.2" to false), mapOf(), true)
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
-            { Assertions.assertEquals(entities[2], result[0]) },
-            { Assertions.assertEquals(entities[1], result[1]) },
-            { Assertions.assertEquals(entities[2], result[2]) },
-        )
+        assertEntityOrder3Items(2, 1, 2, entities, result)
 
         // Act
         result = selectMultipleEntities(entities, mapOf("1.1" to true, "1.2" to false), mapOf(), false)
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
-            { Assertions.assertEquals(entities[2], result[0]) },
-            { Assertions.assertEquals(entities[2], result[1]) },
-            { Assertions.assertEquals(entities[2], result[2]) },
-        )
+        assertEntityOrder3Items(2, 2, 2, entities, result)
     }
 
     @Test
@@ -470,12 +422,7 @@ class ReverseOrderFactionSelectorTests {
         var result = selectMultipleEntities(entities, mapOf(), mapOf("4.1" to true, "3.2" to true, "3.3" to true), true)
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
-            { Assertions.assertEquals(entities[0], result[0]) },
-            { Assertions.assertEquals(entities[2], result[1]) },
-            { Assertions.assertEquals(entities[1], result[2]) },
-        )
+        assertEntityOrder3Items(0, 2, 1, entities, result)
 
         // Arrange
         entities[0] = entities[1].also {
@@ -488,45 +435,25 @@ class ReverseOrderFactionSelectorTests {
         result = selectMultipleEntities(entities, mapOf(), mapOf("4.1" to true, "3.2" to true, "3.3" to true), true)
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
-            { Assertions.assertEquals(entities[2], result[0]) },
-            { Assertions.assertEquals(entities[1], result[1]) },
-            { Assertions.assertEquals(entities[0], result[2]) },
-        )
+        assertEntityOrder3Items(2, 1, 0, entities, result)
 
         // Act
         result = selectMultipleEntities(entities, mapOf(), mapOf("4.1" to true, "3.2" to false, "3.3" to true), true)
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
-            { Assertions.assertEquals(entities[2], result[0]) },
-            { Assertions.assertEquals(entities[1], result[1]) },
-            { Assertions.assertEquals(entities[2], result[2]) },
-        )
+        assertEntityOrder3Items(2, 1, 2, entities, result)
 
         // Act
         result = selectMultipleEntities(entities, mapOf(), mapOf("4.1" to true, "3.2" to false), true)
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
-            { Assertions.assertEquals(entities[1], result[0]) },
-            { Assertions.assertEquals(entities[2], result[1]) },
-            { Assertions.assertEquals(entities[1], result[2]) },
-        )
+        assertEntityOrder3Items(1, 2, 1, entities, result)
 
         // Act
         result = selectMultipleEntities(entities, mapOf(), mapOf("4.1" to true, "3.2" to false), false)
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
-            { Assertions.assertEquals(entities[2], result[0]) },
-            { Assertions.assertEquals(entities[2], result[1]) },
-            { Assertions.assertEquals(entities[2], result[2]) },
-        )
+        assertEntityOrder3Items(2, 2, 2, entities, result)
 
         // Arrange
         entities[0] = entities[2].also {
@@ -550,12 +477,7 @@ class ReverseOrderFactionSelectorTests {
         result = selectMultipleEntities(entities, mapOf(), mapOf("3.1" to true, "3.2" to true, "3.3" to true), true)
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
-            { Assertions.assertEquals(entities[2], result[0]) },
-            { Assertions.assertEquals(entities[1], result[1]) },
-            { Assertions.assertEquals(entities[0], result[2]) },
-        )
+        assertEntityOrder3Items(2, 1, 0, entities, result)
 
         // Arrange
         entities[0] = entities[1].also {
@@ -568,45 +490,25 @@ class ReverseOrderFactionSelectorTests {
         result = selectMultipleEntities(entities, mapOf(), mapOf("3.1" to true, "3.2" to true, "3.3" to true), true)
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
-            { Assertions.assertEquals(entities[1], result[0]) },
-            { Assertions.assertEquals(entities[0], result[1]) },
-            { Assertions.assertEquals(entities[2], result[2]) },
-        )
+        assertEntityOrder3Items(1, 0, 2, entities, result)
 
         // Act
         result = selectMultipleEntities(entities, mapOf(), mapOf("3.1" to true, "3.2" to false, "3.3" to true), true)
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
-            { Assertions.assertEquals(entities[1], result[0]) },
-            { Assertions.assertEquals(entities[2], result[1]) },
-            { Assertions.assertEquals(entities[1], result[2]) },
-        )
+        assertEntityOrder3Items(1, 2, 1, entities, result)
 
         // Act
         result = selectMultipleEntities(entities, mapOf(), mapOf("3.1" to true, "3.2" to false), true)
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
-            { Assertions.assertEquals(entities[2], result[0]) },
-            { Assertions.assertEquals(entities[1], result[1]) },
-            { Assertions.assertEquals(entities[2], result[2]) },
-        )
+        assertEntityOrder3Items(2, 1, 2, entities, result)
 
         // Act
         result = selectMultipleEntities(entities, mapOf(), mapOf("3.1" to true, "3.2" to false), false)
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
-            { Assertions.assertEquals(entities[2], result[0]) },
-            { Assertions.assertEquals(entities[2], result[1]) },
-            { Assertions.assertEquals(entities[2], result[2]) },
-        )
+        assertEntityOrder3Items(2, 2, 2, entities, result)
     }
 
     @Test
@@ -628,15 +530,7 @@ class ReverseOrderFactionSelectorTests {
         )
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(6, result.size) },
-            { Assertions.assertEquals(entities[3], result[0]) },
-            { Assertions.assertEquals(entities[5], result[1]) },
-            { Assertions.assertEquals(entities[4], result[2]) },
-            { Assertions.assertEquals(entities[0], result[3]) },
-            { Assertions.assertEquals(entities[2], result[4]) },
-            { Assertions.assertEquals(entities[1], result[5]) },
-        )
+        assertEntityOrder6Items(3, 5, 4, 0, 2, 1, entities, result)
 
         // Arrange
         entities[0] = entities[1].also {
@@ -659,15 +553,7 @@ class ReverseOrderFactionSelectorTests {
         )
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(6, result.size) },
-            { Assertions.assertEquals(entities[5], result[0]) },
-            { Assertions.assertEquals(entities[4], result[1]) },
-            { Assertions.assertEquals(entities[3], result[2]) },
-            { Assertions.assertEquals(entities[2], result[3]) },
-            { Assertions.assertEquals(entities[1], result[4]) },
-            { Assertions.assertEquals(entities[0], result[5]) },
-        )
+        assertEntityOrder6Items(5, 4, 3, 2, 1, 0, entities, result)
 
         // Act
         result = selectMultipleEntities(
@@ -678,15 +564,7 @@ class ReverseOrderFactionSelectorTests {
         )
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(6, result.size) },
-            { Assertions.assertEquals(entities[5], result[0]) },
-            { Assertions.assertEquals(entities[4], result[1]) },
-            { Assertions.assertEquals(entities[2], result[2]) },
-            { Assertions.assertEquals(entities[1], result[3]) },
-            { Assertions.assertEquals(entities[5], result[4]) },
-            { Assertions.assertEquals(entities[4], result[5]) },
-        )
+        assertEntityOrder6Items(5, 4, 2, 1, 5, 4, entities, result)
 
         // Act
         result = selectMultipleEntities(
@@ -697,15 +575,7 @@ class ReverseOrderFactionSelectorTests {
         )
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(6, result.size) },
-            { Assertions.assertEquals(entities[2], result[0]) },
-            { Assertions.assertEquals(entities[1], result[1]) },
-            { Assertions.assertEquals(entities[5], result[2]) },
-            { Assertions.assertEquals(entities[4], result[3]) },
-            { Assertions.assertEquals(entities[2], result[4]) },
-            { Assertions.assertEquals(entities[1], result[5]) },
-        )
+        assertEntityOrder6Items(2, 1, 5, 4, 2, 1, entities, result)
 
         // Act
         result = selectMultipleEntities(
@@ -716,15 +586,7 @@ class ReverseOrderFactionSelectorTests {
         )
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(6, result.size) },
-            { Assertions.assertEquals(entities[5], result[0]) },
-            { Assertions.assertEquals(entities[2], result[1]) },
-            { Assertions.assertEquals(entities[5], result[2]) },
-            { Assertions.assertEquals(entities[2], result[3]) },
-            { Assertions.assertEquals(entities[5], result[4]) },
-            { Assertions.assertEquals(entities[2], result[5]) },
-        )
+        assertEntityOrder6Items(5, 2, 5, 2, 5, 2, entities, result)
 
         // Arrange
         entities[0] = entities[2].also {
@@ -759,15 +621,7 @@ class ReverseOrderFactionSelectorTests {
         )
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(6, result.size) },
-            { Assertions.assertEquals(entities[1], result[0]) },
-            { Assertions.assertEquals(entities[0], result[1]) },
-            { Assertions.assertEquals(entities[5], result[2]) },
-            { Assertions.assertEquals(entities[4], result[3]) },
-            { Assertions.assertEquals(entities[3], result[4]) },
-            { Assertions.assertEquals(entities[2], result[5]) },
-        )
+        assertEntityOrder6Items(1, 0, 5, 4, 3, 2, entities, result)
 
         // Arrange
         entities[0] = entities[1].also {
@@ -790,15 +644,7 @@ class ReverseOrderFactionSelectorTests {
         )
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(6, result.size) },
-            { Assertions.assertEquals(entities[0], result[0]) },
-            { Assertions.assertEquals(entities[2], result[1]) },
-            { Assertions.assertEquals(entities[4], result[2]) },
-            { Assertions.assertEquals(entities[3], result[3]) },
-            { Assertions.assertEquals(entities[5], result[4]) },
-            { Assertions.assertEquals(entities[1], result[5]) },
-        )
+        assertEntityOrder6Items(0, 2, 4, 3, 5, 1, entities, result)
 
         // Act
         result = selectMultipleEntities(
@@ -809,15 +655,7 @@ class ReverseOrderFactionSelectorTests {
         )
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(6, result.size) },
-            { Assertions.assertEquals(entities[4], result[0]) },
-            { Assertions.assertEquals(entities[5], result[1]) },
-            { Assertions.assertEquals(entities[1], result[2]) },
-            { Assertions.assertEquals(entities[2], result[3]) },
-            { Assertions.assertEquals(entities[4], result[4]) },
-            { Assertions.assertEquals(entities[5], result[5]) },
-        )
+        assertEntityOrder6Items(4, 5, 1, 2, 4, 5, entities, result)
 
         // Act
         result = selectMultipleEntities(
@@ -828,15 +666,7 @@ class ReverseOrderFactionSelectorTests {
         )
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(6, result.size) },
-            { Assertions.assertEquals(entities[1], result[0]) },
-            { Assertions.assertEquals(entities[2], result[1]) },
-            { Assertions.assertEquals(entities[4], result[2]) },
-            { Assertions.assertEquals(entities[5], result[3]) },
-            { Assertions.assertEquals(entities[1], result[4]) },
-            { Assertions.assertEquals(entities[2], result[5]) },
-        )
+        assertEntityOrder6Items(1, 2, 4, 5, 1, 2, entities, result)
 
         // Act
         result = selectMultipleEntities(
@@ -847,15 +677,7 @@ class ReverseOrderFactionSelectorTests {
         )
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(6, result.size) },
-            { Assertions.assertEquals(entities[5], result[0]) },
-            { Assertions.assertEquals(entities[2], result[1]) },
-            { Assertions.assertEquals(entities[5], result[2]) },
-            { Assertions.assertEquals(entities[2], result[3]) },
-            { Assertions.assertEquals(entities[5], result[4]) },
-            { Assertions.assertEquals(entities[2], result[5]) },
-        )
+        assertEntityOrder6Items(5, 2, 5, 2, 5, 2, entities, result)
     }
 
     //endregion

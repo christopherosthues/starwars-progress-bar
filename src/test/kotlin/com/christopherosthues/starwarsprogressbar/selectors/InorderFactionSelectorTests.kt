@@ -8,6 +8,8 @@ import com.christopherosthues.starwarsprogressbar.models.Lightsabers
 import com.christopherosthues.starwarsprogressbar.models.StarWarsEntity
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
+import com.christopherosthues.starwarsprogressbar.helpers.assertEntityOrder3Items
+import com.christopherosthues.starwarsprogressbar.helpers.assertEntityOrder6Items
 import com.intellij.idea.TestFor
 import io.mockk.every
 import io.mockk.mockkObject
@@ -303,7 +305,7 @@ class InorderFactionSelectorTests {
         var result = selectMultipleEntities(entities, mapOf("2.1" to true, "1.2" to true, "1.3" to true), mapOf(), true)
 
         // Assert
-        assertEntityOrder(1, 2, 0, entities, result)
+        assertEntityOrder3Items(1, 2, 0, entities, result)
 
         // Arrange
         entities[0] = entities[1].also {
@@ -316,25 +318,25 @@ class InorderFactionSelectorTests {
         result = selectMultipleEntities(entities, mapOf("2.1" to true, "1.2" to true, "1.3" to true), mapOf(), true)
 
         // Assert
-        assertEntityOrder(0, 1, 2, entities, result)
+        assertEntityOrder3Items(0, 1, 2, entities, result)
 
         // Act
         result = selectMultipleEntities(entities, mapOf("2.1" to true, "1.2" to false, "1.3" to true), mapOf(), true)
 
         // Assert
-        assertEntityOrder(1, 2, 1, entities, result)
+        assertEntityOrder3Items(1, 2, 1, entities, result)
 
         // Act
         result = selectMultipleEntities(entities, mapOf("2.1" to true, "1.2" to false), mapOf(), true)
 
         // Assert
-        assertEntityOrder(2, 1, 2, entities, result)
+        assertEntityOrder3Items(2, 1, 2, entities, result)
 
         // Act
         result = selectMultipleEntities(entities, mapOf("2.1" to true, "1.2" to false), mapOf(), false)
 
         // Assert
-        assertEntityOrder(2, 2, 2, entities, result)
+        assertEntityOrder3Items(2, 2, 2, entities, result)
 
         // Arrange
         entities[0] = entities[2].also {
@@ -358,7 +360,7 @@ class InorderFactionSelectorTests {
         result = selectMultipleEntities(entities, mapOf("1.1" to true, "1.2" to true, "1.3" to true), mapOf(), true)
 
         // Assert
-        assertEntityOrder(0, 1, 2, entities, result)
+        assertEntityOrder3Items(0, 1, 2, entities, result)
 
         // Arrange
         entities[0] = entities[1].also {
@@ -371,25 +373,25 @@ class InorderFactionSelectorTests {
         result = selectMultipleEntities(entities, mapOf("1.1" to true, "1.2" to true, "1.3" to true), mapOf(), true)
 
         // Assert
-        assertEntityOrder(2, 0, 1, entities, result)
+        assertEntityOrder3Items(2, 0, 1, entities, result)
 
         // Act
         result = selectMultipleEntities(entities, mapOf("1.1" to true, "1.2" to false, "1.3" to true), mapOf(), true)
 
         // Assert
-        assertEntityOrder(2, 1, 2, entities, result)
+        assertEntityOrder3Items(2, 1, 2, entities, result)
 
         // Act
         result = selectMultipleEntities(entities, mapOf("1.1" to true, "1.2" to false), mapOf(), true)
 
         // Assert
-        assertEntityOrder(1, 2, 1, entities, result)
+        assertEntityOrder3Items(1, 2, 1, entities, result)
 
         // Act
         result = selectMultipleEntities(entities, mapOf("1.1" to true, "1.2" to false), mapOf(), false)
 
         // Assert
-        assertEntityOrder(2, 2, 2, entities, result)
+        assertEntityOrder3Items(2, 2, 2, entities, result)
     }
 
     @Test
@@ -406,7 +408,7 @@ class InorderFactionSelectorTests {
         var result = selectMultipleEntities(entities, mapOf(), mapOf("4.1" to true, "3.2" to true, "3.3" to true), true)
 
         // Assert
-        assertEntityOrder(1, 2, 0, entities, result)
+        assertEntityOrder3Items(1, 2, 0, entities, result)
 
         // Arrange
         entities[0] = entities[1].also {
@@ -419,25 +421,25 @@ class InorderFactionSelectorTests {
         result = selectMultipleEntities(entities, mapOf(), mapOf("4.1" to true, "3.2" to true, "3.3" to true), true)
 
         // Assert
-        assertEntityOrder(0, 1, 2, entities, result)
+        assertEntityOrder3Items(0, 1, 2, entities, result)
 
         // Act
         result = selectMultipleEntities(entities, mapOf(), mapOf("4.1" to true, "3.2" to false, "3.3" to true), true)
 
         // Assert
-        assertEntityOrder(1, 2, 1, entities, result)
+        assertEntityOrder3Items(1, 2, 1, entities, result)
 
         // Act
         result = selectMultipleEntities(entities, mapOf(), mapOf("4.1" to true, "3.2" to false), true)
 
         // Assert
-        assertEntityOrder(2, 1, 2, entities, result)
+        assertEntityOrder3Items(2, 1, 2, entities, result)
 
         // Act
         result = selectMultipleEntities(entities, mapOf(), mapOf("4.1" to true, "3.2" to false), false)
 
         // Assert
-        assertEntityOrder(2, 2, 2, entities, result)
+        assertEntityOrder3Items(2, 2, 2, entities, result)
 
         // Arrange
         entities[0] = entities[2].also {
@@ -461,7 +463,7 @@ class InorderFactionSelectorTests {
         result = selectMultipleEntities(entities, mapOf(), mapOf("3.1" to true, "3.2" to true, "3.3" to true), true)
 
         // Assert
-        assertEntityOrder(0, 1, 2, entities, result)
+        assertEntityOrder3Items(0, 1, 2, entities, result)
 
         // Arrange
         entities[0] = entities[1].also {
@@ -474,25 +476,25 @@ class InorderFactionSelectorTests {
         result = selectMultipleEntities(entities, mapOf(), mapOf("3.1" to true, "3.2" to true, "3.3" to true), true)
 
         // Assert
-        assertEntityOrder(2, 0, 1, entities, result)
+        assertEntityOrder3Items(2, 0, 1, entities, result)
 
         // Act
         result = selectMultipleEntities(entities, mapOf(), mapOf("3.1" to true, "3.2" to false, "3.3" to true), true)
 
         // Assert
-        assertEntityOrder(2, 1, 2, entities, result)
+        assertEntityOrder3Items(2, 1, 2, entities, result)
 
         // Act
         result = selectMultipleEntities(entities, mapOf(), mapOf("3.1" to true, "3.2" to false), true)
 
         // Assert
-        assertEntityOrder(1, 2, 1, entities, result)
+        assertEntityOrder3Items(1, 2, 1, entities, result)
 
         // Act
         result = selectMultipleEntities(entities, mapOf(), mapOf("3.1" to true, "3.2" to false), false)
 
         // Assert
-        assertEntityOrder(2, 2, 2, entities, result)
+        assertEntityOrder3Items(2, 2, 2, entities, result)
     }
 
     @Test
@@ -516,7 +518,7 @@ class InorderFactionSelectorTests {
         )
 
         // Assert
-        assertMixedEntityOrder(1, 2, 0, 4, 5, 3, entities, result)
+        assertEntityOrder6Items(1, 2, 0, 4, 5, 3, entities, result)
 
         // Arrange
         entities[0] = entities[1].also {
@@ -539,7 +541,7 @@ class InorderFactionSelectorTests {
         )
 
         // Assert
-        assertMixedEntityOrder(0, 1, 2, 3, 4, 5, entities, result)
+        assertEntityOrder6Items(0, 1, 2, 3, 4, 5, entities, result)
 
         // Act
         result = selectMultipleEntities(
@@ -550,7 +552,7 @@ class InorderFactionSelectorTests {
         )
 
         // Assert
-        assertMixedEntityOrder(1, 2, 4, 5, 1, 2, entities, result)
+        assertEntityOrder6Items(1, 2, 4, 5, 1, 2, entities, result)
 
         // Act
         result = selectMultipleEntities(
@@ -561,7 +563,7 @@ class InorderFactionSelectorTests {
         )
 
         // Assert
-        assertMixedEntityOrder(4, 5, 1, 2, 4, 5, entities, result)
+        assertEntityOrder6Items(4, 5, 1, 2, 4, 5, entities, result)
 
         // Act
         result = selectMultipleEntities(
@@ -572,7 +574,7 @@ class InorderFactionSelectorTests {
         )
 
         // Assert
-        assertMixedEntityOrder(2, 5, 2, 5, 2, 5, entities, result)
+        assertEntityOrder6Items(2, 5, 2, 5, 2, 5, entities, result)
 
         // Arrange
         entities[0] = entities[2].also {
@@ -608,7 +610,7 @@ class InorderFactionSelectorTests {
         )
 
         // Assert
-        assertMixedEntityOrder(4, 5, 0, 1, 2, 3, entities, result)
+        assertEntityOrder6Items(4, 5, 0, 1, 2, 3, entities, result)
 
         // Arrange
         entities[0] = entities[1].also {
@@ -631,7 +633,7 @@ class InorderFactionSelectorTests {
         )
 
         // Assert
-        assertMixedEntityOrder(3, 4, 2, 0, 1, 5, entities, result)
+        assertEntityOrder6Items(3, 4, 2, 0, 1, 5, entities, result)
 
         // Act
         result = selectMultipleEntities(
@@ -642,7 +644,7 @@ class InorderFactionSelectorTests {
         )
 
         // Assert
-        assertMixedEntityOrder(2, 1, 5, 4, 2, 1, entities, result)
+        assertEntityOrder6Items(2, 1, 5, 4, 2, 1, entities, result)
 
         // Act
         result = selectMultipleEntities(
@@ -653,7 +655,7 @@ class InorderFactionSelectorTests {
         )
 
         // Assert
-        assertMixedEntityOrder(5, 4, 2, 1, 5, 4, entities, result)
+        assertEntityOrder6Items(5, 4, 2, 1, 5, 4, entities, result)
 
         // Act
         result = selectMultipleEntities(
@@ -664,7 +666,7 @@ class InorderFactionSelectorTests {
         )
 
         // Assert
-        assertMixedEntityOrder(2, 5, 2, 5, 2, 5, entities, result)
+        assertEntityOrder6Items(2, 5, 2, 5, 2, 5, entities, result)
     }
 
     //endregion
@@ -754,42 +756,6 @@ class InorderFactionSelectorTests {
         }
 
         return result
-    }
-
-    private fun assertEntityOrder(
-        index0: Int,
-        index1: Int,
-        index2: Int,
-        entities: MutableList<StarWarsEntity>,
-        result: List<StarWarsEntity>
-    ) {
-        Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
-            { Assertions.assertEquals(entities[index0], result[0]) },
-            { Assertions.assertEquals(entities[index1], result[1]) },
-            { Assertions.assertEquals(entities[index2], result[2]) },
-        )
-    }
-
-    private fun assertMixedEntityOrder(
-        index0: Int,
-        index1: Int,
-        index2: Int,
-        index3: Int,
-        index4: Int,
-        index5: Int,
-        entities: MutableList<StarWarsEntity>,
-        result: List<StarWarsEntity>
-    ) {
-        Assertions.assertAll(
-            { Assertions.assertEquals(6, result.size) },
-            { Assertions.assertEquals(entities[index0], result[0]) },
-            { Assertions.assertEquals(entities[index1], result[1]) },
-            { Assertions.assertEquals(entities[index2], result[2]) },
-            { Assertions.assertEquals(entities[index3], result[3]) },
-            { Assertions.assertEquals(entities[index4], result[4]) },
-            { Assertions.assertEquals(entities[index5], result[5]) },
-        )
     }
 
     //endregion

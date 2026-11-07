@@ -2,6 +2,8 @@ package com.christopherosthues.starwarsprogressbar.selectors
 
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
+import com.christopherosthues.starwarsprogressbar.helpers.assertEntityOrder3Items
+import com.christopherosthues.starwarsprogressbar.helpers.assertEntityOrder6Items
 import com.christopherosthues.starwarsprogressbar.models.Blade
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
@@ -14,7 +16,6 @@ import io.mockk.mockkObject
 import io.mockk.mockkStatic
 import io.mockk.unmockkAll
 import org.junit.jupiter.api.AfterEach
-import org.junit.jupiter.api.Assertions.assertAll
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -285,8 +286,9 @@ class InorderNameSelectorTests {
     @Test
     fun `selectEntity should return vehicles in sorted order`() {
         // Arrange
-        val entities = createStarWarsVehicles().toMutableList()
-        every { StarWarsFactionHolder.defaultVehicles } returns entities
+        val vehicles = createStarWarsVehicles().toMutableList()
+        val entities: MutableList<StarWarsEntity> = vehicles.toMutableList()
+        every { StarWarsFactionHolder.defaultVehicles } returns vehicles
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         // Act
@@ -302,12 +304,7 @@ class InorderNameSelectorTests {
         }
 
         // Assert
-        assertAll(
-            { assertEquals(3, result.size) },
-            { assertEquals(entities[0], result[0]) },
-            { assertEquals(entities[1], result[1]) },
-            { assertEquals(entities[2], result[2]) },
-        )
+        assertEntityOrder3Items(0, 1, 2, entities, result)
 
         // Arrange
         entities[0] = entities[1].also {
@@ -329,12 +326,7 @@ class InorderNameSelectorTests {
         }
 
         // Assert
-        assertAll(
-            { assertEquals(3, result.size) },
-            { assertEquals(entities[2], result[0]) },
-            { assertEquals(entities[0], result[1]) },
-            { assertEquals(entities[1], result[2]) },
-        )
+        assertEntityOrder3Items(2, 0, 1, entities, result)
 
         // Act
         result = mutableListOf()
@@ -349,12 +341,7 @@ class InorderNameSelectorTests {
         }
 
         // Assert
-        assertAll(
-            { assertEquals(3, result.size) },
-            { assertEquals(entities[2], result[0]) },
-            { assertEquals(entities[1], result[1]) },
-            { assertEquals(entities[2], result[2]) },
-        )
+        assertEntityOrder3Items(2, 1, 2, entities, result)
 
         // Act
         result = mutableListOf()
@@ -369,12 +356,7 @@ class InorderNameSelectorTests {
         }
 
         // Assert
-        assertAll(
-            { assertEquals(3, result.size) },
-            { assertEquals(entities[1], result[0]) },
-            { assertEquals(entities[2], result[1]) },
-            { assertEquals(entities[1], result[2]) },
-        )
+        assertEntityOrder3Items(1, 2, 1, entities, result)
 
         // Act
         result = mutableListOf()
@@ -389,20 +371,16 @@ class InorderNameSelectorTests {
         }
 
         // Assert
-        assertAll(
-            { assertEquals(3, result.size) },
-            { assertEquals(entities[2], result[0]) },
-            { assertEquals(entities[2], result[1]) },
-            { assertEquals(entities[2], result[2]) },
-        )
+        assertEntityOrder3Items(2, 2, 2, entities, result)
     }
 
     @Test
     fun `selectEntity should return lightsabers in sorted order`() {
         // Arrange
-        val entities = createLightsabers().toMutableList()
+        val lightsabers = createLightsabers().toMutableList()
+        val entities: MutableList<StarWarsEntity> = lightsabers.toMutableList()
         every { StarWarsFactionHolder.defaultVehicles } returns listOf()
-        every { StarWarsFactionHolder.defaultLightsabers } returns entities
+        every { StarWarsFactionHolder.defaultLightsabers } returns lightsabers
 
         // Act
         var result = mutableListOf<StarWarsEntity>()
@@ -417,12 +395,7 @@ class InorderNameSelectorTests {
         }
 
         // Assert
-        assertAll(
-            { assertEquals(3, result.size) },
-            { assertEquals(entities[0], result[0]) },
-            { assertEquals(entities[1], result[1]) },
-            { assertEquals(entities[2], result[2]) },
-        )
+        assertEntityOrder3Items(0, 1, 2, entities, result)
 
         // Arrange
         entities[0] = entities[1].also {
@@ -444,12 +417,7 @@ class InorderNameSelectorTests {
         }
 
         // Assert
-        assertAll(
-            { assertEquals(3, result.size) },
-            { assertEquals(entities[2], result[0]) },
-            { assertEquals(entities[0], result[1]) },
-            { assertEquals(entities[1], result[2]) },
-        )
+        assertEntityOrder3Items(2, 0, 1, entities, result)
 
         // Act
         result = mutableListOf()
@@ -464,12 +432,7 @@ class InorderNameSelectorTests {
         }
 
         // Assert
-        assertAll(
-            { assertEquals(3, result.size) },
-            { assertEquals(entities[2], result[0]) },
-            { assertEquals(entities[1], result[1]) },
-            { assertEquals(entities[2], result[2]) },
-        )
+        assertEntityOrder3Items(2, 1, 2, entities, result)
 
         // Act
         result = mutableListOf()
@@ -484,12 +447,7 @@ class InorderNameSelectorTests {
         }
 
         // Assert
-        assertAll(
-            { assertEquals(3, result.size) },
-            { assertEquals(entities[1], result[0]) },
-            { assertEquals(entities[2], result[1]) },
-            { assertEquals(entities[1], result[2]) },
-        )
+        assertEntityOrder3Items(1, 2, 1, entities, result)
 
         // Act
         result = mutableListOf()
@@ -504,12 +462,7 @@ class InorderNameSelectorTests {
         }
 
         // Assert
-        assertAll(
-            { assertEquals(3, result.size) },
-            { assertEquals(entities[2], result[0]) },
-            { assertEquals(entities[2], result[1]) },
-            { assertEquals(entities[2], result[2]) },
-        )
+        assertEntityOrder3Items(2, 2, 2, entities, result)
     }
 
     @Test
@@ -534,15 +487,7 @@ class InorderNameSelectorTests {
         }
 
         // Assert
-        assertAll(
-            { assertEquals(6, result.size) },
-            { assertEquals(entities[3], result[0]) },
-            { assertEquals(entities[4], result[1]) },
-            { assertEquals(entities[5], result[2]) },
-            { assertEquals(entities[0], result[3]) },
-            { assertEquals(entities[1], result[4]) },
-            { assertEquals(entities[2], result[5]) },
-        )
+        assertEntityOrder6Items(3, 4, 5, 0, 1, 2, entities, result)
 
         // Arrange
         entities[0] = entities[1].also {
@@ -569,15 +514,7 @@ class InorderNameSelectorTests {
         }
 
         // Assert
-        assertAll(
-            { assertEquals(6, result.size) },
-            { assertEquals(entities[5], result[0]) },
-            { assertEquals(entities[3], result[1]) },
-            { assertEquals(entities[4], result[2]) },
-            { assertEquals(entities[2], result[3]) },
-            { assertEquals(entities[0], result[4]) },
-            { assertEquals(entities[1], result[5]) },
-        )
+        assertEntityOrder6Items(5, 3, 4, 2, 0, 1, entities, result)
 
         // Act
         result = mutableListOf()
@@ -592,15 +529,7 @@ class InorderNameSelectorTests {
         }
 
         // Assert
-        assertAll(
-            { assertEquals(6, result.size) },
-            { assertEquals(entities[5], result[0]) },
-            { assertEquals(entities[4], result[1]) },
-            { assertEquals(entities[2], result[2]) },
-            { assertEquals(entities[1], result[3]) },
-            { assertEquals(entities[5], result[4]) },
-            { assertEquals(entities[4], result[5]) },
-        )
+        assertEntityOrder6Items(5, 4, 2, 1, 5, 4, entities, result)
 
         // Act
         result = mutableListOf()
@@ -615,15 +544,7 @@ class InorderNameSelectorTests {
         }
 
         // Assert
-        assertAll(
-            { assertEquals(6, result.size) },
-            { assertEquals(entities[2], result[0]) },
-            { assertEquals(entities[1], result[1]) },
-            { assertEquals(entities[5], result[2]) },
-            { assertEquals(entities[4], result[3]) },
-            { assertEquals(entities[2], result[4]) },
-            { assertEquals(entities[1], result[5]) },
-        )
+        assertEntityOrder6Items(2, 1, 5, 4, 2, 1, entities, result)
 
         // Act
         result = mutableListOf()
@@ -638,15 +559,7 @@ class InorderNameSelectorTests {
         }
 
         // Assert
-        assertAll(
-            { assertEquals(6, result.size) },
-            { assertEquals(entities[5], result[0]) },
-            { assertEquals(entities[2], result[1]) },
-            { assertEquals(entities[5], result[2]) },
-            { assertEquals(entities[2], result[3]) },
-            { assertEquals(entities[5], result[4]) },
-            { assertEquals(entities[2], result[5]) },
-        )
+        assertEntityOrder6Items(5, 2, 5, 2, 5, 2, entities, result)
     }
 
     //endregion

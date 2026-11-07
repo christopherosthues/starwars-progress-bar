@@ -2,6 +2,8 @@ package com.christopherosthues.starwarsprogressbar.selectors
 
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
+import com.christopherosthues.starwarsprogressbar.helpers.assertEntityOrder3Items
+import com.christopherosthues.starwarsprogressbar.helpers.assertEntityOrder6Items
 import com.christopherosthues.starwarsprogressbar.models.Blade
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
@@ -293,12 +295,13 @@ class ReverseOrderNameSelectorTests {
     fun `selectEntity should return vehicles in sorted order`() {
         // Arrange
         val vehicles = createStarWarsVehicles().toMutableList()
+        val entities: MutableList<StarWarsEntity> = vehicles.toMutableList()
         every { StarWarsFactionHolder.defaultVehicles } returns vehicles
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         // Act
         var result = mutableListOf<StarWarsEntity>()
-        repeat(vehicles.indices.count()) {
+        repeat(entities.indices.count()) {
             result.add(
                 sut.selectEntity(
                     mapOf("1.1" to true, "1.2" to true, "1.3" to true),
@@ -309,23 +312,18 @@ class ReverseOrderNameSelectorTests {
         }
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
-            { Assertions.assertEquals(vehicles[2], result[0]) },
-            { Assertions.assertEquals(vehicles[1], result[1]) },
-            { Assertions.assertEquals(vehicles[0], result[2]) },
-        )
+        assertEntityOrder3Items(2, 1, 0, entities, result)
 
         // Arrange
-        vehicles[0] = vehicles[1].also {
-            vehicles[1] = vehicles[2].also {
-                vehicles[2] = vehicles[0]
+        entities[0] = entities[1].also {
+            entities[1] = entities[2].also {
+                entities[2] = entities[0]
             }
         }
 
         // Act
         result = mutableListOf()
-        repeat(vehicles.indices.count()) {
+        repeat(entities.indices.count()) {
             result.add(
                 sut.selectEntity(
                     mapOf("1.1" to true, "1.2" to true, "1.3" to true),
@@ -336,16 +334,11 @@ class ReverseOrderNameSelectorTests {
         }
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
-            { Assertions.assertEquals(vehicles[1], result[0]) },
-            { Assertions.assertEquals(vehicles[0], result[1]) },
-            { Assertions.assertEquals(vehicles[2], result[2]) },
-        )
+        assertEntityOrder3Items(1, 0, 2, entities, result)
 
         // Act
         result = mutableListOf()
-        repeat(vehicles.indices.count()) {
+        repeat(entities.indices.count()) {
             result.add(
                 sut.selectEntity(
                     mapOf("1.1" to true, "1.2" to false, "1.3" to true),
@@ -356,16 +349,11 @@ class ReverseOrderNameSelectorTests {
         }
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
-            { Assertions.assertEquals(vehicles[1], result[0]) },
-            { Assertions.assertEquals(vehicles[2], result[1]) },
-            { Assertions.assertEquals(vehicles[1], result[2]) },
-        )
+        assertEntityOrder3Items(1, 2, 1, entities, result)
 
         // Act
         result = mutableListOf()
-        repeat(vehicles.indices.count()) {
+        repeat(entities.indices.count()) {
             result.add(
                 sut.selectEntity(
                     mapOf("1.1" to true, "1.2" to false),
@@ -376,16 +364,11 @@ class ReverseOrderNameSelectorTests {
         }
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
-            { Assertions.assertEquals(vehicles[2], result[0]) },
-            { Assertions.assertEquals(vehicles[1], result[1]) },
-            { Assertions.assertEquals(vehicles[2], result[2]) },
-        )
+        assertEntityOrder3Items(2, 1, 2, entities, result)
 
         // Act
         result = mutableListOf()
-        repeat(vehicles.indices.count()) {
+        repeat(entities.indices.count()) {
             result.add(
                 sut.selectEntity(
                     mapOf("1.1" to true, "1.2" to false),
@@ -396,24 +379,20 @@ class ReverseOrderNameSelectorTests {
         }
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
-            { Assertions.assertEquals(vehicles[2], result[0]) },
-            { Assertions.assertEquals(vehicles[2], result[1]) },
-            { Assertions.assertEquals(vehicles[2], result[2]) },
-        )
+        assertEntityOrder3Items(2, 2, 2, entities, result)
     }
 
     @Test
     fun `selectEntity should return lightsabers in sorted order`() {
         // Arrange
         val lightsabers = createLightsabers().toMutableList()
+        val entities: MutableList<StarWarsEntity> = lightsabers.toMutableList()
         every { StarWarsFactionHolder.defaultVehicles } returns listOf()
         every { StarWarsFactionHolder.defaultLightsabers } returns lightsabers
 
         // Act
         var result = mutableListOf<StarWarsEntity>()
-        repeat(lightsabers.indices.count()) {
+        repeat(entities.indices.count()) {
             result.add(
                 sut.selectEntity(
                     mapOf(),
@@ -424,23 +403,18 @@ class ReverseOrderNameSelectorTests {
         }
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
-            { Assertions.assertEquals(lightsabers[2], result[0]) },
-            { Assertions.assertEquals(lightsabers[1], result[1]) },
-            { Assertions.assertEquals(lightsabers[0], result[2]) },
-        )
+        assertEntityOrder3Items(2, 1, 0, entities, result)
 
         // Arrange
-        lightsabers[0] = lightsabers[1].also {
-            lightsabers[1] = lightsabers[2].also {
-                lightsabers[2] = lightsabers[0]
+        entities[0] = entities[1].also {
+            entities[1] = entities[2].also {
+                entities[2] = entities[0]
             }
         }
 
         // Act
         result = mutableListOf()
-        repeat(lightsabers.indices.count()) {
+        repeat(entities.indices.count()) {
             result.add(
                 sut.selectEntity(
                     mapOf(),
@@ -451,16 +425,11 @@ class ReverseOrderNameSelectorTests {
         }
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
-            { Assertions.assertEquals(lightsabers[1], result[0]) },
-            { Assertions.assertEquals(lightsabers[0], result[1]) },
-            { Assertions.assertEquals(lightsabers[2], result[2]) },
-        )
+        assertEntityOrder3Items(1, 0, 2, entities, result)
 
         // Act
         result = mutableListOf()
-        repeat(lightsabers.indices.count()) {
+        repeat(entities.indices.count()) {
             result.add(
                 sut.selectEntity(
                     mapOf(),
@@ -471,16 +440,11 @@ class ReverseOrderNameSelectorTests {
         }
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
-            { Assertions.assertEquals(lightsabers[1], result[0]) },
-            { Assertions.assertEquals(lightsabers[2], result[1]) },
-            { Assertions.assertEquals(lightsabers[1], result[2]) },
-        )
+        assertEntityOrder3Items(1, 2, 1, entities, result)
 
         // Act
         result = mutableListOf()
-        repeat(lightsabers.indices.count()) {
+        repeat(entities.indices.count()) {
             result.add(
                 sut.selectEntity(
                     mapOf(),
@@ -491,16 +455,11 @@ class ReverseOrderNameSelectorTests {
         }
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
-            { Assertions.assertEquals(lightsabers[2], result[0]) },
-            { Assertions.assertEquals(lightsabers[1], result[1]) },
-            { Assertions.assertEquals(lightsabers[2], result[2]) },
-        )
+        assertEntityOrder3Items(2, 1, 2, entities, result)
 
         // Act
         result = mutableListOf()
-        repeat(lightsabers.indices.count()) {
+        repeat(entities.indices.count()) {
             result.add(
                 sut.selectEntity(
                     mapOf(),
@@ -511,12 +470,7 @@ class ReverseOrderNameSelectorTests {
         }
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(3, result.size) },
-            { Assertions.assertEquals(lightsabers[2], result[0]) },
-            { Assertions.assertEquals(lightsabers[2], result[1]) },
-            { Assertions.assertEquals(lightsabers[2], result[2]) },
-        )
+        assertEntityOrder3Items(2, 2, 2, entities, result)
     }
 
     @Test
@@ -541,15 +495,7 @@ class ReverseOrderNameSelectorTests {
         }
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(6, result.size) },
-            { Assertions.assertEquals(entities[5], result[0]) },
-            { Assertions.assertEquals(entities[2], result[1]) },
-            { Assertions.assertEquals(entities[4], result[2]) },
-            { Assertions.assertEquals(entities[1], result[3]) },
-            { Assertions.assertEquals(entities[3], result[4]) },
-            { Assertions.assertEquals(entities[0], result[5]) },
-        )
+        assertEntityOrder6Items(5, 2, 4, 1, 3, 0, entities, result)
 
         // Arrange
         entities[0] = entities[1].also {
@@ -576,15 +522,7 @@ class ReverseOrderNameSelectorTests {
         }
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(6, result.size) },
-            { Assertions.assertEquals(entities[4], result[0]) },
-            { Assertions.assertEquals(entities[1], result[1]) },
-            { Assertions.assertEquals(entities[3], result[2]) },
-            { Assertions.assertEquals(entities[0], result[3]) },
-            { Assertions.assertEquals(entities[5], result[4]) },
-            { Assertions.assertEquals(entities[2], result[5]) },
-        )
+        assertEntityOrder6Items(4, 1, 3, 0, 5, 2, entities, result)
 
         // Act
         result = mutableListOf()
@@ -599,15 +537,7 @@ class ReverseOrderNameSelectorTests {
         }
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(6, result.size) },
-            { Assertions.assertEquals(entities[4], result[0]) },
-            { Assertions.assertEquals(entities[1], result[1]) },
-            { Assertions.assertEquals(entities[5], result[2]) },
-            { Assertions.assertEquals(entities[2], result[3]) },
-            { Assertions.assertEquals(entities[4], result[4]) },
-            { Assertions.assertEquals(entities[1], result[5]) },
-        )
+        assertEntityOrder6Items(4, 1, 5, 2, 4, 1, entities, result)
 
         // Act
         result = mutableListOf()
@@ -622,15 +552,7 @@ class ReverseOrderNameSelectorTests {
         }
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(6, result.size) },
-            { Assertions.assertEquals(entities[5], result[0]) },
-            { Assertions.assertEquals(entities[2], result[1]) },
-            { Assertions.assertEquals(entities[4], result[2]) },
-            { Assertions.assertEquals(entities[1], result[3]) },
-            { Assertions.assertEquals(entities[5], result[4]) },
-            { Assertions.assertEquals(entities[2], result[5]) },
-        )
+        assertEntityOrder6Items(5, 2, 4, 1, 5, 2, entities, result)
 
         // Act
         result = mutableListOf()
@@ -645,15 +567,7 @@ class ReverseOrderNameSelectorTests {
         }
 
         // Assert
-        Assertions.assertAll(
-            { Assertions.assertEquals(6, result.size) },
-            { Assertions.assertEquals(entities[5], result[0]) },
-            { Assertions.assertEquals(entities[2], result[1]) },
-            { Assertions.assertEquals(entities[5], result[2]) },
-            { Assertions.assertEquals(entities[2], result[3]) },
-            { Assertions.assertEquals(entities[5], result[4]) },
-            { Assertions.assertEquals(entities[2], result[5]) },
-        )
+        assertEntityOrder6Items(5, 2, 5, 2, 5, 2, entities, result)
     }
 
     //endregion
