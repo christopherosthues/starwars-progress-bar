@@ -132,6 +132,16 @@ internal class VehicleProgressBarDecorator(private val starWarsState: () -> Star
             return transparent
         }
 
+        return getMovingTransparencyPaint(movingRight, progress, backgroundColor, transparent, width)
+    }
+
+    private fun getMovingTransparencyPaint(
+        movingRight: Boolean,
+        progress: Int,
+        backgroundColor: Color,
+        transparent: JBColor,
+        width: Int
+    ): Paint {
         if (movingRight) {
             return if (progress > 0) {
                 LinearGradientPaint(

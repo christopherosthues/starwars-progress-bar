@@ -407,9 +407,10 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         var bladeY = JBUIScale.scale(lightsaber.yShift + leftBlade.yBlade)
         val leftBladeHeight = JBUIScale.scale(leftBlade.bladeSize)
 
+        val shotoLengthFactor = 4
         var maxLeftBladeWidth =
             lightsaberDrawing.maxBladeWidth.toFloat() + abs(JBUIScale.scale(leftBlade.xBlade)).toFloat()
-        maxLeftBladeWidth = if (leftBlade.isShoto) maxLeftBladeWidth / 4 else maxLeftBladeWidth / 2
+        maxLeftBladeWidth = if (leftBlade.isShoto) maxLeftBladeWidth / shotoLengthFactor else maxLeftBladeWidth / 2
         var borderX = JBUIScale.scale(leftBlade.xBlade) + lightsaberDrawing.bladeX - maxLeftBladeWidth.roundToInt()
         drawBorder(graphics2D, maxLeftBladeWidth.roundToInt(), borderX, bladeY, leftBladeHeight)
         drawBlade(graphics2D, leftBlade, bladeX, bladeY, leftBladeWidth.roundToInt(), leftBladeHeight)
@@ -425,7 +426,7 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         val rightBladeHeight = JBUIScale.scale(rightBlade.bladeSize)
         var maxRightBladeWidth =
             lightsaberDrawing.maxBladeWidth.toFloat() + abs(JBUIScale.scale(rightBlade.xBlade)).toFloat()
-        maxRightBladeWidth = if (rightBlade.isShoto) maxRightBladeWidth / 4 else maxRightBladeWidth / 2
+        maxRightBladeWidth = if (rightBlade.isShoto) maxRightBladeWidth / shotoLengthFactor else maxRightBladeWidth / 2
         drawBorder(graphics2D, maxRightBladeWidth.roundToInt(), borderX, bladeY, rightBladeHeight)
         drawBlade(graphics2D, rightBlade, bladeX, bladeY, rightBladeWidth.roundToInt(), rightBladeHeight)
 

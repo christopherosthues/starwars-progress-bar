@@ -86,26 +86,12 @@ internal class StarWarsProgressConfigurationComponent {
 
     private fun createUiOptionsSection(formBuilder: FormBuilder) {
         uiOptionsPanel.addPropertyChangeListener {
-            if (isProgressBarTextEvent(it.propertyName) ||
-                isProgressBarDrawEvent(it.propertyName) ||
-                isVehicleChangeEvent(it.propertyName) ||
-                it.propertyName == DETERMINATE_ENTITY_SELECTOR_EVENT ||
-                it.propertyName == INDETERMINATE_ENTITY_SELECTOR_EVENT ||
-                it.propertyName == DETERMINATE_ORDER_SELECTOR_EVENT ||
-                it.propertyName == INDETERMINATE_ORDER_SELECTOR_EVENT
-            ) {
+            if (isRepaintEvent(it.propertyName)) {
                 repaintProgressBar()
             }
         }
         selectionOptionsPanel.addPropertyChangeListener {
-            if (isProgressBarTextEvent(it.propertyName) ||
-                isProgressBarDrawEvent(it.propertyName) ||
-                isVehicleChangeEvent(it.propertyName) ||
-                it.propertyName == DETERMINATE_ENTITY_SELECTOR_EVENT ||
-                it.propertyName == INDETERMINATE_ENTITY_SELECTOR_EVENT ||
-                it.propertyName == DETERMINATE_ORDER_SELECTOR_EVENT ||
-                it.propertyName == INDETERMINATE_ORDER_SELECTOR_EVENT
-            ) {
+            if (isRepaintEvent(it.propertyName)) {
                 when (it.propertyName) {
                     DETERMINATE_ENTITY_SELECTOR_EVENT -> {
                         val oldSelector = it.oldValue as? EntitySelectionType
@@ -158,6 +144,11 @@ internal class StarWarsProgressConfigurationComponent {
         formBuilder.addComponent(selectionOptionsPanel)
     }
 
+    private fun isRepaintEvent(propertyName: String): Boolean = isProgressBarTextEvent(propertyName) ||
+        isProgressBarDrawEvent(propertyName) ||
+        isVehicleChangeEvent(propertyName) ||
+        isSelectorChangeEvent(propertyName)
+
     private fun isProgressBarTextEvent(propertyName: String): Boolean =
         propertyName == SHOW_VEHICLE_NAMES_EVENT || propertyName == SHOW_TOOL_TIPS_EVENT
 
@@ -169,6 +160,12 @@ internal class StarWarsProgressConfigurationComponent {
 
     private fun isVehicleChangeEvent(propertyName: String): Boolean = propertyName == CHANGE_VEHICLE_AFTER_PASS_EVENT ||
         propertyName == NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE_EVENT
+
+    private fun isSelectorChangeEvent(propertyName: String): Boolean =
+        propertyName == DETERMINATE_ENTITY_SELECTOR_EVENT ||
+            propertyName == INDETERMINATE_ENTITY_SELECTOR_EVENT ||
+            propertyName == DETERMINATE_ORDER_SELECTOR_EVENT ||
+            propertyName == INDETERMINATE_ORDER_SELECTOR_EVENT
 
     private fun repaintProgressBar() {
         previewPanel.repaintProgressBar()
@@ -197,9 +194,6 @@ internal class StarWarsProgressConfigurationComponent {
         // Only update preview entity when the new selector is specific (VEHICLES or LIGHTSABERS)
         // and the selection actually changed to a different specific kind. Changes that set selector to ALL
         // should NOT trigger a new entity selection.
-        if (newSel == null) return false
-        if (newSel == EntitySelectionType.ALL) return false
-        if (oldSel == newSel) return false
-        return true
+        return newSel != null && newSel != EntitySelectionType.ALL && oldSel != newSel
     }
 }

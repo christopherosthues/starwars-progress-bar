@@ -16,29 +16,45 @@ internal object StarWarsSelector {
         indeterminateEntitySelectionType: EntitySelectionType,
     ): StarWarsEntity {
         var currentEnabledVehicles = enabledVehicles
-        var currentEnabledLightsabers = enabledLightsabers
         if (currentEnabledVehicles == null) {
             val persistentStateComponent = StarWarsPersistentStateComponent.instance
-            val starWarsState = persistentStateComponent.state
-            if (starWarsState == null) {
-                return StarWarsFactionHolder.missingVehicle
-            }
+            val starWarsState = persistentStateComponent.state ?: return StarWarsFactionHolder.missingVehicle
 
             currentEnabledVehicles = starWarsState.vehiclesEnabled
         }
 
+        return selectEntity(
+            enabledLightsabers,
+            isIndeterminate,
+            currentEnabledVehicles,
+            defaultEnabled,
+            indeterminateSelectionType,
+            indeterminateEntitySelectionType,
+            determinateSelectionType,
+            determinateEntitySelectionType
+        )
+    }
+
+    private fun selectEntity(
+        enabledLightsabers: Map<String, Boolean>?,
+        isIndeterminate: Boolean,
+        currentEnabledVehicles: Map<String, Boolean>,
+        defaultEnabled: Boolean,
+        indeterminateSelectionType: SelectionType,
+        indeterminateEntitySelectionType: EntitySelectionType,
+        determinateSelectionType: SelectionType,
+        determinateEntitySelectionType: EntitySelectionType
+    ): StarWarsEntity {
+        var currentEnabledLightsabers = enabledLightsabers
         if (currentEnabledLightsabers == null) {
             val persistentStateComponent = StarWarsPersistentStateComponent.instance
-            val starWarsState = persistentStateComponent.state
-            if (starWarsState == null) {
-                return StarWarsFactionHolder.missingVehicle
-            }
+            val starWarsState = persistentStateComponent.state ?: return StarWarsFactionHolder.missingVehicle
 
             currentEnabledLightsabers = starWarsState.lightsabersEnabled
         }
 
-        if (isIndeterminate) {
-            return IndeterminateSelector.selectEntity(
+        return if (isIndeterminate) {
+            IndeterminateSelector.selectEntity(
                 currentEnabledVehicles,
                 currentEnabledLightsabers,
                 defaultEnabled,
@@ -46,7 +62,7 @@ internal object StarWarsSelector {
                 indeterminateEntitySelectionType,
             )
         } else {
-            return DeterminateSelector.selectEntity(
+            DeterminateSelector.selectEntity(
                 currentEnabledVehicles,
                 currentEnabledLightsabers,
                 defaultEnabled,
