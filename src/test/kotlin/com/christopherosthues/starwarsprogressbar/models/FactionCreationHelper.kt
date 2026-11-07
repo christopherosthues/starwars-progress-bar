@@ -27,121 +27,54 @@ internal object FactionCreationHelper {
         StarWarsFaction("", listOf(StarWarsVehicle("3", "red", 7, 8, 9f))),
     )
 
+    private val blueVehicle
+        get() = StarWarsVehicle("1", "blue", 1, 2, 3f)
+    private val brownVehicle
+        get() = StarWarsVehicle("2", "brown", 4, 5, 6f)
+    private val greenVehicle
+        get() = StarWarsVehicle("3", "green", 7, 8, 9f)
+    private val yellowVehicle
+        get() = StarWarsVehicle("4", "yellow", 10, 11, 12f)
+    private val redVehicle
+        get() = StarWarsVehicle("5", "red", 13, 14, 15f)
+    private val purpleVehicle
+        get() = StarWarsVehicle("6", "purple", 16, 17, 18f)
+    private val greenVehicle2
+        get() = StarWarsVehicle("7", "green", 7, 8, 9f)
+    private val yellowVehicle2
+        get() = StarWarsVehicle("8", "yellow", 10, 11, 12f)
+
     @JvmStatic
     fun createStarWarsFactionsWithEmptyIdContainingVehicles(): List<StarWarsFaction<StarWarsVehicle>> = listOf(
-        StarWarsFaction(
-            "1",
-            listOf(
-                StarWarsVehicle("1", "blue", 1, 2, 3f),
-                StarWarsVehicle("2", "brown", 4, 5, 6f),
-            ),
-        ),
-        StarWarsFaction(
-            "",
-            listOf(
-                StarWarsVehicle("3", "green", 7, 8, 9f),
-                StarWarsVehicle("4", "yellow", 10, 11, 12f),
-            ),
-        ),
-        StarWarsFaction(
-            "3",
-            listOf(
-                StarWarsVehicle("5", "red", 13, 14, 15f),
-                StarWarsVehicle("6", "purple", 16, 17, 18f),
-            ),
-        ),
+        StarWarsFaction("1", listOf(blueVehicle, brownVehicle)),
+        StarWarsFaction("", listOf(greenVehicle, yellowVehicle)),
+        StarWarsFaction("3", listOf(redVehicle, purpleVehicle)),
     )
 
     @JvmStatic
     fun createStarWarsFactionsWithMultipleFactionsWithEmptyIdAndContainingVehicles(): List<StarWarsFaction<StarWarsVehicle>> =
         listOf(
-            StarWarsFaction(
-                "",
-                listOf(
-                    StarWarsVehicle("3", "green", 7, 8, 9f),
-                    StarWarsVehicle("4", "yellow", 10, 11, 12f),
-                ),
-            ),
-            StarWarsFaction(
-                "2",
-                listOf(
-                    StarWarsVehicle("1", "blue", 1, 2, 3f),
-                    StarWarsVehicle("2", "brown", 4, 5, 6f),
-                ),
-            ),
-            StarWarsFaction(
-                "3",
-                listOf(
-                    StarWarsVehicle("5", "red", 13, 14, 15f),
-                    StarWarsVehicle("6", "purple", 16, 17, 18f),
-                ),
-            ),
-            StarWarsFaction(
-                "",
-                listOf(
-                    StarWarsVehicle("7", "green", 7, 8, 9f),
-                    StarWarsVehicle("8", "yellow", 10, 11, 12f),
-                ),
-            ),
+            StarWarsFaction("", listOf(greenVehicle, yellowVehicle)),
+            StarWarsFaction("2", listOf(blueVehicle, brownVehicle)),
+            StarWarsFaction("3", listOf(redVehicle, purpleVehicle)),
+            StarWarsFaction("", listOf(greenVehicle2, yellowVehicle2)),
         )
 
     @JvmStatic
     fun createStarWarsFactionsWithMultipleFactionsWithEmptyIdAndOneFactionContainNoVehicles(): List<StarWarsFaction<StarWarsVehicle>> =
         listOf(
-            StarWarsFaction(
-                "",
-                listOf(
-                    StarWarsVehicle("3", "green", 7, 8, 9f),
-                    StarWarsVehicle("4", "yellow", 10, 11, 12f),
-                ),
-            ),
-            StarWarsFaction(
-                "2",
-                listOf(
-                    StarWarsVehicle("1", "blue", 1, 2, 3f),
-                    StarWarsVehicle("2", "brown", 4, 5, 6f),
-                ),
-            ),
-            StarWarsFaction(
-                "3",
-                listOf(
-                    StarWarsVehicle("5", "red", 13, 14, 15f),
-                    StarWarsVehicle("6", "purple", 16, 17, 18f),
-                ),
-            ),
-            StarWarsFaction(
-                "",
-                listOf(
-                    StarWarsVehicle("7", "green", 7, 8, 9f),
-                    StarWarsVehicle("8", "yellow", 10, 11, 12f),
-                ),
-            ),
+            StarWarsFaction("", listOf(greenVehicle, yellowVehicle)),
+            StarWarsFaction("2", listOf(blueVehicle, brownVehicle)),
+            StarWarsFaction("3", listOf(redVehicle, purpleVehicle)),
+            StarWarsFaction("", listOf(greenVehicle2, yellowVehicle2)),
             StarWarsFaction("5", listOf()),
         )
 
     @JvmStatic
     fun createStarWarsFactionsVehicles(): List<StarWarsFaction<StarWarsVehicle>> = listOf(
-        StarWarsFaction(
-            "1",
-            listOf(
-                StarWarsVehicle("1", "blue", 1, 2, 3f),
-                StarWarsVehicle("2", "brown", 4, 5, 6f),
-            ),
-        ),
-        StarWarsFaction(
-            "2",
-            listOf(
-                StarWarsVehicle("3", "green", 7, 8, 9f),
-                StarWarsVehicle("4", "yellow", 10, 11, 12f),
-            ),
-        ),
-        StarWarsFaction(
-            "3",
-            listOf(
-                StarWarsVehicle("5", "red", 13, 14, 15f),
-                StarWarsVehicle("6", "purple", 16, 17, 18f),
-            ),
-        ),
+        StarWarsFaction("1", listOf(blueVehicle, brownVehicle)),
+        StarWarsFaction("2", listOf(greenVehicle, yellowVehicle)),
+        StarWarsFaction("3", listOf(redVehicle, purpleVehicle)),
     )
 
     @JvmStatic
