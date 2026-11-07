@@ -1,24 +1,24 @@
 package com.christopherosthues.starwarsprogressbar.models
 
 internal object FactionCreationHelper {
-    private val blueVehicle
+    internal val blueVehicle
         get() = StarWarsVehicle("1", "blue", 1, 2, 3f)
-    private val brownVehicle
+    internal val brownVehicle
         get() = StarWarsVehicle("2", "brown", 4, 5, 6f)
-    private val greenVehicle
+    internal val greenVehicle
         get() = StarWarsVehicle("3", "green", 7, 8, 9f)
-    private val yellowVehicle
+    internal val yellowVehicle
         get() = StarWarsVehicle("4", "yellow", 10, 11, 12f)
-    private val redVehicle
+    internal val redVehicle
         get() = StarWarsVehicle("5", "red", 13, 14, 15f)
-    private val purpleVehicle
+    internal val purpleVehicle
         get() = StarWarsVehicle("6", "purple", 16, 17, 18f)
-    private val greenVehicle2
+    internal val greenVehicle2
         get() = StarWarsVehicle("7", "green", 7, 8, 9f)
-    private val yellowVehicle2
+    internal val yellowVehicle2
         get() = StarWarsVehicle("8", "yellow", 10, 11, 12f)
 
-    private val blueBlade
+    internal val blueBlade
         get() = Lightsaber(
             1,
             isDoubleBladed = false,
@@ -26,7 +26,7 @@ internal object FactionCreationHelper {
             listOf(Blade("blue", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)),
         )
 
-    private val greenBlade
+    internal val greenBlade
         get() = Lightsaber(
             1,
             isDoubleBladed = false,
@@ -34,7 +34,7 @@ internal object FactionCreationHelper {
             listOf(Blade("green", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0)),
         )
 
-    private val brownBlade
+    internal val brownBlade
         get() = Lightsaber(
             1,
             isDoubleBladed = false,
@@ -42,7 +42,7 @@ internal object FactionCreationHelper {
             listOf(Blade("brown", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0)),
         )
 
-    private val yellowBlade
+    internal val yellowBlade
         get() = Lightsaber(
             1,
             isDoubleBladed = false,
@@ -50,7 +50,7 @@ internal object FactionCreationHelper {
             listOf(Blade("yellow", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)),
         )
 
-    private val yellowBlade2
+    internal val yellowBlade2
         get() = Lightsaber(
             1,
             isDoubleBladed = false,
@@ -58,7 +58,7 @@ internal object FactionCreationHelper {
             listOf(Blade("yellow", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)),
         )
 
-    private val redBlade
+    internal val redBlade
         get() = Lightsaber(
             1,
             isDoubleBladed = false,
@@ -66,7 +66,7 @@ internal object FactionCreationHelper {
             listOf(Blade("red", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0)),
         )
 
-    private val redDoubleBlade
+    internal val redDoubleBlade
         get() = Lightsaber(
             1,
             isDoubleBladed = true,
@@ -77,7 +77,7 @@ internal object FactionCreationHelper {
             ),
         )
 
-    private val greenDoubleBlade
+    internal val greenDoubleBlade
         get() = Lightsaber(
             1,
             isDoubleBladed = true,
@@ -88,7 +88,7 @@ internal object FactionCreationHelper {
             ),
         )
 
-    private val greenDoubleBlade2
+    internal val greenDoubleBlade2
         get() = Lightsaber(
             1,
             isDoubleBladed = true,
@@ -99,7 +99,7 @@ internal object FactionCreationHelper {
             ),
         )
 
-    private val greenDoubleBlade3
+    internal val greenDoubleBlade3
         get() = Lightsaber(
             1,
             isDoubleBladed = true,
@@ -110,7 +110,7 @@ internal object FactionCreationHelper {
             ),
         )
 
-    private val purpleDoubleBlade
+    internal val purpleDoubleBlade
         get() = Lightsaber(
             1,
             isDoubleBladed = true,

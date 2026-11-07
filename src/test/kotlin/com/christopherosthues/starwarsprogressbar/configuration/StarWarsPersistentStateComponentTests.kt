@@ -9,6 +9,7 @@ import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SELECTOR
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_ICON
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_NAMES
 import com.christopherosthues.starwarsprogressbar.models.Blade
+import com.christopherosthues.starwarsprogressbar.models.FactionCreationHelper
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
 import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
@@ -72,48 +73,9 @@ class StarWarsPersistentStateComponentTests {
         )
         every { StarWarsFactionHolder.defaultVehicles } returns vehicles
         val lightsabers = listOf(
-            Lightsabers(
-                "4",
-                0f,
-                isJarKai = false,
-                listOf(
-                    Lightsaber(
-                        1,
-                        isDoubleBladed = false,
-                        yShift = 0,
-                        listOf(Blade("blue", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)),
-                    ),
-                ),
-            ),
-            Lightsabers(
-                "5",
-                0f,
-                isJarKai = false,
-                listOf(
-                    Lightsaber(
-                        1,
-                        isDoubleBladed = false,
-                        yShift = 1,
-                        listOf(Blade("green", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0)),
-                    ),
-                ),
-            ),
-            Lightsabers(
-                "6",
-                0f,
-                isJarKai = false,
-                listOf(
-                    Lightsaber(
-                        1,
-                        isDoubleBladed = true,
-                        yShift = 2,
-                        listOf(
-                            Blade("red", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
-                            Blade("red", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
-                        ),
-                    ),
-                ),
-            ),
+            Lightsabers("4", 0f, isJarKai = false, listOf(FactionCreationHelper.blueBlade)),
+            Lightsabers("5", 0f, isJarKai = false, listOf(FactionCreationHelper.greenBlade)),
+            Lightsabers("6", 0f, isJarKai = false, listOf(FactionCreationHelper.redDoubleBlade)),
         )
         every { StarWarsFactionHolder.defaultVehicles } returns vehicles
         every { StarWarsFactionHolder.defaultLightsabers } returns lightsabers
