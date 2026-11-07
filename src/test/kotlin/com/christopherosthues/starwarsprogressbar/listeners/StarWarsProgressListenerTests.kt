@@ -461,15 +461,11 @@ class StarWarsProgressListenerTests {
     //region Helper methods
 
     private fun pluginIdEquals(pluginIdMock: PluginId, o: Any): Boolean {
-        if (o == pluginIdMock) {
-            return true
-        }
-
         if (o !is PluginId) {
             return false
         }
 
-        return pluginIdMock.idString == o.idString
+        return o == pluginIdMock || pluginIdMock.idString == o.idString
     }
 
     private fun createAndSetupUIDefaultsMock(): UIDefaults {

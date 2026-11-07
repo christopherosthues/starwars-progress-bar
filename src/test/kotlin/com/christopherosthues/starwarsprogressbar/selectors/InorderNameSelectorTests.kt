@@ -285,13 +285,13 @@ class InorderNameSelectorTests {
     @Test
     fun `selectEntity should return vehicles in sorted order`() {
         // Arrange
-        val vehicles = createStarWarsVehicles().toMutableList()
-        every { StarWarsFactionHolder.defaultVehicles } returns vehicles
+        val entities = createStarWarsVehicles().toMutableList()
+        every { StarWarsFactionHolder.defaultVehicles } returns entities
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         // Act
         var result = mutableListOf<StarWarsEntity>()
-        repeat(vehicles.indices.count()) {
+        repeat(entities.indices.count()) {
             result.add(
                 sut.selectEntity(
                     mapOf("1.1" to true, "1.2" to true, "1.3" to true),
@@ -304,21 +304,21 @@ class InorderNameSelectorTests {
         // Assert
         assertAll(
             { assertEquals(3, result.size) },
-            { assertEquals(vehicles[0], result[0]) },
-            { assertEquals(vehicles[1], result[1]) },
-            { assertEquals(vehicles[2], result[2]) },
+            { assertEquals(entities[0], result[0]) },
+            { assertEquals(entities[1], result[1]) },
+            { assertEquals(entities[2], result[2]) },
         )
 
         // Arrange
-        vehicles[0] = vehicles[1].also {
-            vehicles[1] = vehicles[2].also {
-                vehicles[2] = vehicles[0]
+        entities[0] = entities[1].also {
+            entities[1] = entities[2].also {
+                entities[2] = entities[0]
             }
         }
 
         // Act
         result = mutableListOf()
-        repeat(vehicles.indices.count()) {
+        repeat(entities.indices.count()) {
             result.add(
                 sut.selectEntity(
                     mapOf("1.1" to true, "1.2" to true, "1.3" to true),
@@ -331,14 +331,14 @@ class InorderNameSelectorTests {
         // Assert
         assertAll(
             { assertEquals(3, result.size) },
-            { assertEquals(vehicles[2], result[0]) },
-            { assertEquals(vehicles[0], result[1]) },
-            { assertEquals(vehicles[1], result[2]) },
+            { assertEquals(entities[2], result[0]) },
+            { assertEquals(entities[0], result[1]) },
+            { assertEquals(entities[1], result[2]) },
         )
 
         // Act
         result = mutableListOf()
-        repeat(vehicles.indices.count()) {
+        repeat(entities.indices.count()) {
             result.add(
                 sut.selectEntity(
                     mapOf("1.1" to true, "1.2" to false, "1.3" to true),
@@ -351,14 +351,14 @@ class InorderNameSelectorTests {
         // Assert
         assertAll(
             { assertEquals(3, result.size) },
-            { assertEquals(vehicles[2], result[0]) },
-            { assertEquals(vehicles[1], result[1]) },
-            { assertEquals(vehicles[2], result[2]) },
+            { assertEquals(entities[2], result[0]) },
+            { assertEquals(entities[1], result[1]) },
+            { assertEquals(entities[2], result[2]) },
         )
 
         // Act
         result = mutableListOf()
-        repeat(vehicles.indices.count()) {
+        repeat(entities.indices.count()) {
             result.add(
                 sut.selectEntity(
                     mapOf("1.1" to true, "1.2" to false),
@@ -371,14 +371,14 @@ class InorderNameSelectorTests {
         // Assert
         assertAll(
             { assertEquals(3, result.size) },
-            { assertEquals(vehicles[1], result[0]) },
-            { assertEquals(vehicles[2], result[1]) },
-            { assertEquals(vehicles[1], result[2]) },
+            { assertEquals(entities[1], result[0]) },
+            { assertEquals(entities[2], result[1]) },
+            { assertEquals(entities[1], result[2]) },
         )
 
         // Act
         result = mutableListOf()
-        repeat(vehicles.indices.count()) {
+        repeat(entities.indices.count()) {
             result.add(
                 sut.selectEntity(
                     mapOf("1.1" to true, "1.2" to false),
@@ -391,22 +391,22 @@ class InorderNameSelectorTests {
         // Assert
         assertAll(
             { assertEquals(3, result.size) },
-            { assertEquals(vehicles[2], result[0]) },
-            { assertEquals(vehicles[2], result[1]) },
-            { assertEquals(vehicles[2], result[2]) },
+            { assertEquals(entities[2], result[0]) },
+            { assertEquals(entities[2], result[1]) },
+            { assertEquals(entities[2], result[2]) },
         )
     }
 
     @Test
     fun `selectEntity should return lightsabers in sorted order`() {
         // Arrange
-        val lightsabers = createLightsabers().toMutableList()
+        val entities = createLightsabers().toMutableList()
         every { StarWarsFactionHolder.defaultVehicles } returns listOf()
-        every { StarWarsFactionHolder.defaultLightsabers } returns lightsabers
+        every { StarWarsFactionHolder.defaultLightsabers } returns entities
 
         // Act
         var result = mutableListOf<StarWarsEntity>()
-        repeat(lightsabers.indices.count()) {
+        repeat(entities.indices.count()) {
             result.add(
                 sut.selectEntity(
                     mapOf(),
@@ -419,21 +419,21 @@ class InorderNameSelectorTests {
         // Assert
         assertAll(
             { assertEquals(3, result.size) },
-            { assertEquals(lightsabers[0], result[0]) },
-            { assertEquals(lightsabers[1], result[1]) },
-            { assertEquals(lightsabers[2], result[2]) },
+            { assertEquals(entities[0], result[0]) },
+            { assertEquals(entities[1], result[1]) },
+            { assertEquals(entities[2], result[2]) },
         )
 
         // Arrange
-        lightsabers[0] = lightsabers[1].also {
-            lightsabers[1] = lightsabers[2].also {
-                lightsabers[2] = lightsabers[0]
+        entities[0] = entities[1].also {
+            entities[1] = entities[2].also {
+                entities[2] = entities[0]
             }
         }
 
         // Act
         result = mutableListOf()
-        repeat(lightsabers.indices.count()) {
+        repeat(entities.indices.count()) {
             result.add(
                 sut.selectEntity(
                     mapOf(),
@@ -446,14 +446,14 @@ class InorderNameSelectorTests {
         // Assert
         assertAll(
             { assertEquals(3, result.size) },
-            { assertEquals(lightsabers[2], result[0]) },
-            { assertEquals(lightsabers[0], result[1]) },
-            { assertEquals(lightsabers[1], result[2]) },
+            { assertEquals(entities[2], result[0]) },
+            { assertEquals(entities[0], result[1]) },
+            { assertEquals(entities[1], result[2]) },
         )
 
         // Act
         result = mutableListOf()
-        repeat(lightsabers.indices.count()) {
+        repeat(entities.indices.count()) {
             result.add(
                 sut.selectEntity(
                     mapOf(),
@@ -466,14 +466,14 @@ class InorderNameSelectorTests {
         // Assert
         assertAll(
             { assertEquals(3, result.size) },
-            { assertEquals(lightsabers[2], result[0]) },
-            { assertEquals(lightsabers[1], result[1]) },
-            { assertEquals(lightsabers[2], result[2]) },
+            { assertEquals(entities[2], result[0]) },
+            { assertEquals(entities[1], result[1]) },
+            { assertEquals(entities[2], result[2]) },
         )
 
         // Act
         result = mutableListOf()
-        repeat(lightsabers.indices.count()) {
+        repeat(entities.indices.count()) {
             result.add(
                 sut.selectEntity(
                     mapOf(),
@@ -486,14 +486,14 @@ class InorderNameSelectorTests {
         // Assert
         assertAll(
             { assertEquals(3, result.size) },
-            { assertEquals(lightsabers[1], result[0]) },
-            { assertEquals(lightsabers[2], result[1]) },
-            { assertEquals(lightsabers[1], result[2]) },
+            { assertEquals(entities[1], result[0]) },
+            { assertEquals(entities[2], result[1]) },
+            { assertEquals(entities[1], result[2]) },
         )
 
         // Act
         result = mutableListOf()
-        repeat(lightsabers.indices.count()) {
+        repeat(entities.indices.count()) {
             result.add(
                 sut.selectEntity(
                     mapOf(),
@@ -506,9 +506,9 @@ class InorderNameSelectorTests {
         // Assert
         assertAll(
             { assertEquals(3, result.size) },
-            { assertEquals(lightsabers[2], result[0]) },
-            { assertEquals(lightsabers[2], result[1]) },
-            { assertEquals(lightsabers[2], result[2]) },
+            { assertEquals(entities[2], result[0]) },
+            { assertEquals(entities[2], result[1]) },
+            { assertEquals(entities[2], result[2]) },
         )
     }
 
