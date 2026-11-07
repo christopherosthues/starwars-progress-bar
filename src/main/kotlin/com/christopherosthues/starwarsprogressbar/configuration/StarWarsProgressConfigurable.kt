@@ -18,15 +18,11 @@ internal class StarWarsProgressConfigurable : SearchableConfigurable {
 
     override fun isModified(): Boolean {
         val starWarsState = getStarWarsState()
-        return component != null &&
+        val comp = component
+        return comp != null &&
             starWarsState != null &&
-            isStateModified(starWarsState)
-    }
-
-    private fun isStateModified(starWarsState: StarWarsState): Boolean {
-        val comp = component ?: return false
-        // TODO: add test for lightsabers
-        return starWarsState.isModified(comp.starWarsState)
+            // TODO: add test for lightsabers
+            starWarsState.isModified(comp.starWarsState)
     }
 
     override fun apply() {
