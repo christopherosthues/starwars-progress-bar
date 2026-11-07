@@ -148,4 +148,35 @@ internal class StarWarsState {
         indeterminateEntitySelector = starWarsState.indeterminateEntitySelector
         version = starWarsState.version
     }
+
+    fun isModified(other: StarWarsState): Boolean {
+        return isFactionOptionsModified(other) ||
+            isUiOptionsModified(other) ||
+            isSelectionOptionsModified(other) ||
+            isVehiclePassesModified(other)
+    }
+
+    private fun isFactionOptionsModified(other: StarWarsState): Boolean {
+        return vehiclesEnabled != other.vehiclesEnabled || lightsabersEnabled != other.lightsabersEnabled
+    }
+
+    private fun isUiOptionsModified(other: StarWarsState): Boolean = showIcon != other.showIcon ||
+        showNames != other.showNames ||
+        showToolTips != other.showToolTips ||
+        showFactionCrests != other.showFactionCrests ||
+        sameVelocity != other.sameVelocity ||
+        enableNew != other.enableNew ||
+        solidProgressBarColor != other.solidProgressBarColor ||
+        drawSilhouettes != other.drawSilhouettes ||
+        language != other.language
+
+    private fun isSelectionOptionsModified(other: StarWarsState): Boolean {
+        return determinateOrderSelector != other.determinateOrderSelector ||
+            indeterminateOrderSelector != other.indeterminateOrderSelector ||
+            determinateEntitySelector != other.determinateEntitySelector ||
+            indeterminateEntitySelector != other.indeterminateEntitySelector
+    }
+
+    private fun isVehiclePassesModified(other: StarWarsState): Boolean = changeAfterPass != other.changeAfterPass ||
+        (numberOfPassesUntilChange != other.numberOfPassesUntilChange && other.changeAfterPass)
 }

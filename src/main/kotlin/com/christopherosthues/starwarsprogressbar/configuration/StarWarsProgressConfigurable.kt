@@ -26,47 +26,8 @@ internal class StarWarsProgressConfigurable : SearchableConfigurable {
     private fun isStateModified(starWarsState: StarWarsState): Boolean {
         val comp = component ?: return false
         // TODO: add test for lightsabers
-        return isFactionOptionsModified(starWarsState, comp) ||
-            isUiOptionsModified(starWarsState, comp) ||
-            isSelectionOptionsModified(starWarsState, comp) ||
-            isVehiclePassesModified(starWarsState, comp)
+        return starWarsState.isModified(comp.starWarsState)
     }
-
-    private fun isFactionOptionsModified(
-        starWarsState: StarWarsState,
-        component: StarWarsProgressConfigurationComponent,
-    ): Boolean = starWarsState.vehiclesEnabled != component.starWarsState.vehiclesEnabled ||
-        starWarsState.lightsabersEnabled != component.starWarsState.lightsabersEnabled
-
-    private fun isUiOptionsModified(
-        starWarsState: StarWarsState,
-        component: StarWarsProgressConfigurationComponent,
-    ): Boolean = starWarsState.showIcon != component.starWarsState.showIcon ||
-        starWarsState.showNames != component.starWarsState.showNames ||
-        starWarsState.showToolTips != component.starWarsState.showToolTips ||
-        starWarsState.showFactionCrests != component.starWarsState.showFactionCrests ||
-        starWarsState.sameVelocity != component.starWarsState.sameVelocity ||
-        starWarsState.enableNew != component.starWarsState.enableNew ||
-        starWarsState.solidProgressBarColor != component.starWarsState.solidProgressBarColor ||
-        starWarsState.drawSilhouettes != component.starWarsState.drawSilhouettes ||
-        starWarsState.language != component.starWarsState.language
-
-    private fun isSelectionOptionsModified(
-        starWarsState: StarWarsState,
-        component: StarWarsProgressConfigurationComponent,
-    ): Boolean = starWarsState.determinateOrderSelector != component.starWarsState.determinateOrderSelector ||
-        starWarsState.indeterminateOrderSelector != component.starWarsState.indeterminateOrderSelector ||
-        starWarsState.determinateEntitySelector != component.starWarsState.determinateEntitySelector ||
-        starWarsState.indeterminateEntitySelector != component.starWarsState.indeterminateEntitySelector
-
-    private fun isVehiclePassesModified(
-        starWarsState: StarWarsState,
-        component: StarWarsProgressConfigurationComponent,
-    ): Boolean = starWarsState.changeAfterPass != component.starWarsState.changeAfterPass ||
-        (
-            starWarsState.numberOfPassesUntilChange != component.starWarsState.numberOfPassesUntilChange &&
-                component.starWarsState.changeAfterPass
-            )
 
     override fun apply() {
         val starWarsState = getStarWarsState()
