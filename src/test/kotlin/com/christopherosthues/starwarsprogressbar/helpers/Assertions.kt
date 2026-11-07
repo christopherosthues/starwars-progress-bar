@@ -56,7 +56,7 @@ internal fun assertEntityOrder12Items(
     result: List<StarWarsEntity>
 ) {
     Assertions.assertAll(
-        { Assertions.assertEquals(6, result.size) },
+        { Assertions.assertEquals(12, result.size) },
         { Assertions.assertEquals(entities[index0], result[0]) },
         { Assertions.assertEquals(entities[index1], result[1]) },
         { Assertions.assertEquals(entities[index2], result[2]) },

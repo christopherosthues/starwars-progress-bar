@@ -8,7 +8,7 @@ internal fun IStarWarsSelector.selectMultipleEntities(
     enabledVehicles: Map<String, Boolean>,
     enabledLightsabers: Map<String, Boolean>,
     defaultEnabled: Boolean,
-): List<StarWarsEntity> {
+): MutableList<StarWarsEntity> {
     val result = mutableListOf<StarWarsEntity>()
     repeat(entities.indices.count()) {
         result.add(
@@ -28,7 +28,7 @@ internal fun IStarWarsSelector.selectMultipleEntitiesTwice(
     enabledVehicles: Map<String, Boolean>,
     enabledLightsabers: Map<String, Boolean>,
     defaultEnabled: Boolean,
-): List<StarWarsEntity> {
+): MutableList<StarWarsEntity> {
     val result = mutableListOf<StarWarsEntity>()
     repeat((0 until (2 * entities.size)).count()) {
         result.add(
