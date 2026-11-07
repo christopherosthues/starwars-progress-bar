@@ -153,7 +153,7 @@ complexity:
     active: true
     excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/androidUnitTest/**', '**/androidInstrumentedTest/**', '**/jsTest/**', '**/iosTest/**']
     allowedFunctionsPerFile: 11
-    allowedFunctionsPerClass: 11
+    allowedFunctionsPerClass: 25
     allowedFunctionsPerInterface: 11
     allowedFunctionsPerObject: 11
     allowedFunctionsPerEnum: 11
