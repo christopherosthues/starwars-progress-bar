@@ -297,134 +297,132 @@ class ReverseOrderNameSelectorTests {
     fun `selectEntity should return vehicles in sorted order`() {
         // Arrange
         val vehicles = createStarWarsVehicles().toMutableList()
-        val entities: MutableList<StarWarsEntity> = vehicles.toMutableList()
         every { StarWarsFactionHolder.defaultVehicles } returns vehicles
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         // Act
         var result = sut.selectMultipleEntities(
-            entities,
+            vehicles,
             mapOf("1.1" to true, "1.2" to true, "1.3" to true),
             mapOf(),
             true,
         )
 
         // Assert
-        assertEntityOrder3Items(2, 1, 0, entities, result)
+        assertEntityOrder3Items(2, 1, 0, vehicles, result)
 
         // Arrange
-        rotateByOne(entities)
+        rotateByOne(vehicles)
 
         // Act
         result = sut.selectMultipleEntities(
-            entities,
+            vehicles,
             mapOf("1.1" to true, "1.2" to true, "1.3" to true),
             mapOf(),
             true,
         )
 
         // Assert
-        assertEntityOrder3Items(1, 0, 2, entities, result)
+        assertEntityOrder3Items(1, 0, 2, vehicles, result)
 
         // Act
         result = sut.selectMultipleEntities(
-            entities,
+            vehicles,
             mapOf("1.1" to true, "1.2" to false, "1.3" to true),
             mapOf(),
             true,
         )
 
         // Assert
-        assertEntityOrder3Items(1, 2, 1, entities, result)
+        assertEntityOrder3Items(1, 2, 1, vehicles, result)
 
         // Act
         result = sut.selectMultipleEntities(
-            entities,
+            vehicles,
             mapOf("1.1" to true, "1.2" to false),
             mapOf(),
             true,
         )
 
         // Assert
-        assertEntityOrder3Items(2, 1, 2, entities, result)
+        assertEntityOrder3Items(2, 1, 2, vehicles, result)
 
         // Act
         result = sut.selectMultipleEntities(
-            entities,
+            vehicles,
             mapOf("1.1" to true, "1.2" to false),
             mapOf(),
             false,
         )
 
         // Assert
-        assertEntityOrder3Items(2, 2, 2, entities, result)
+        assertEntityOrder3Items(2, 2, 2, vehicles, result)
     }
 
     @Test
     fun `selectEntity should return lightsabers in sorted order`() {
         // Arrange
         val lightsabers = createLightsabers().toMutableList()
-        val entities: MutableList<StarWarsEntity> = lightsabers.toMutableList()
         every { StarWarsFactionHolder.defaultVehicles } returns listOf()
         every { StarWarsFactionHolder.defaultLightsabers } returns lightsabers
 
         // Act
         var result = sut.selectMultipleEntities(
-            entities,
+            lightsabers,
             mapOf(),
             mapOf("3.1" to true, "3.2" to true, "3.3" to true),
             true,
         )
 
         // Assert
-        assertEntityOrder3Items(2, 1, 0, entities, result)
+        assertEntityOrder3Items(2, 1, 0, lightsabers, result)
 
         // Arrange
-        rotateByOne(entities)
+        rotateByOne(lightsabers)
 
         // Act
         result = sut.selectMultipleEntities(
-            entities,
+            lightsabers,
             mapOf(),
             mapOf("3.1" to true, "3.2" to true, "3.3" to true),
             true,
         )
 
         // Assert
-        assertEntityOrder3Items(1, 0, 2, entities, result)
+        assertEntityOrder3Items(1, 0, 2, lightsabers, result)
 
         // Act
         result = sut.selectMultipleEntities(
-            entities,
+            lightsabers,
             mapOf(),
             mapOf("3.1" to true, "3.2" to false, "3.3" to true),
             true,
         )
 
         // Assert
-        assertEntityOrder3Items(1, 2, 1, entities, result)
+        assertEntityOrder3Items(1, 2, 1, lightsabers, result)
 
         // Act
         result = sut.selectMultipleEntities(
-            entities,
+            lightsabers,
             mapOf(),
             mapOf("3.1" to true, "3.2" to false),
             true,
         )
 
         // Assert
-        assertEntityOrder3Items(2, 1, 2, entities, result)
+        assertEntityOrder3Items(2, 1, 2, lightsabers, result)
 
         // Act
         result = sut.selectMultipleEntities(
-            entities,
+            lightsabers,
             mapOf(),
             mapOf("3.1" to true, "3.2" to false),
             false,
         )
 
         // Assert
-        assertEntityOrder3Items(2, 2, 2, entities, result)
+        assertEntityOrder3Items(2, 2, 2, lightsabers, result)
     }
 
     @Test

@@ -298,50 +298,49 @@ class InorderFactionSelectorTests {
     fun `selectEntity should return vehicles in sorted order`() {
         // Arrange
         val vehicles = createStarWarsVehicles().toMutableList()
-        val entities: MutableList<StarWarsEntity> = vehicles.toMutableList()
-        entities[0].factionId = "2"
+        vehicles[0].factionId = "2"
         every { StarWarsFactionHolder.defaultVehicles } returns vehicles
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
         every { StarWarsBundle.message(any()) } returnsArgument 0
 
         // Act
         var result =
-            sut.selectMultipleEntities(entities, mapOf("2.1" to true, "1.2" to true, "1.3" to true), mapOf(), true)
+            sut.selectMultipleEntities(vehicles, mapOf("2.1" to true, "1.2" to true, "1.3" to true), mapOf(), true)
 
         // Assert
-        assertEntityOrder3Items(1, 2, 0, entities, result)
+        assertEntityOrder3Items(1, 2, 0, vehicles, result)
 
         // Arrange
-        rotateByOne(entities)
+        rotateByOne(vehicles)
 
         // Act
-        result = sut.selectMultipleEntities(entities, mapOf("2.1" to true, "1.2" to true, "1.3" to true), mapOf(), true)
+        result = sut.selectMultipleEntities(vehicles, mapOf("2.1" to true, "1.2" to true, "1.3" to true), mapOf(), true)
 
         // Assert
-        assertEntityOrder3Items(0, 1, 2, entities, result)
+        assertEntityOrder3Items(0, 1, 2, vehicles, result)
 
         // Act
         result =
-            sut.selectMultipleEntities(entities, mapOf("2.1" to true, "1.2" to false, "1.3" to true), mapOf(), true)
+            sut.selectMultipleEntities(vehicles, mapOf("2.1" to true, "1.2" to false, "1.3" to true), mapOf(), true)
 
         // Assert
-        assertEntityOrder3Items(1, 2, 1, entities, result)
+        assertEntityOrder3Items(1, 2, 1, vehicles, result)
 
         // Act
-        result = sut.selectMultipleEntities(entities, mapOf("2.1" to true, "1.2" to false), mapOf(), true)
+        result = sut.selectMultipleEntities(vehicles, mapOf("2.1" to true, "1.2" to false), mapOf(), true)
 
         // Assert
-        assertEntityOrder3Items(2, 1, 2, entities, result)
+        assertEntityOrder3Items(2, 1, 2, vehicles, result)
 
         // Act
-        result = sut.selectMultipleEntities(entities, mapOf("2.1" to true, "1.2" to false), mapOf(), false)
+        result = sut.selectMultipleEntities(vehicles, mapOf("2.1" to true, "1.2" to false), mapOf(), false)
 
         // Assert
-        assertEntityOrder3Items(2, 2, 2, entities, result)
+        assertEntityOrder3Items(2, 2, 2, vehicles, result)
 
         // Arrange
-        rotateByTwo(entities)
-        entities[0].factionId = "1"
+        rotateByTwo(vehicles)
+        vehicles[0].factionId = "1"
         sut.selectEntity(
             mapOf("1.1" to true, "1.2" to true, "1.3" to true),
             mapOf(),
@@ -354,88 +353,87 @@ class InorderFactionSelectorTests {
         )
 
         // Act
-        result = sut.selectMultipleEntities(entities, mapOf("1.1" to true, "1.2" to true, "1.3" to true), mapOf(), true)
+        result = sut.selectMultipleEntities(vehicles, mapOf("1.1" to true, "1.2" to true, "1.3" to true), mapOf(), true)
 
         // Assert
-        assertEntityOrder3Items(0, 1, 2, entities, result)
+        assertEntityOrder3Items(0, 1, 2, vehicles, result)
 
         // Arrange
-        rotateByOne(entities)
+        rotateByOne(vehicles)
 
         // Act
-        result = sut.selectMultipleEntities(entities, mapOf("1.1" to true, "1.2" to true, "1.3" to true), mapOf(), true)
+        result = sut.selectMultipleEntities(vehicles, mapOf("1.1" to true, "1.2" to true, "1.3" to true), mapOf(), true)
 
         // Assert
-        assertEntityOrder3Items(2, 0, 1, entities, result)
+        assertEntityOrder3Items(2, 0, 1, vehicles, result)
 
         // Act
         result =
-            sut.selectMultipleEntities(entities, mapOf("1.1" to true, "1.2" to false, "1.3" to true), mapOf(), true)
+            sut.selectMultipleEntities(vehicles, mapOf("1.1" to true, "1.2" to false, "1.3" to true), mapOf(), true)
 
         // Assert
-        assertEntityOrder3Items(2, 1, 2, entities, result)
+        assertEntityOrder3Items(2, 1, 2, vehicles, result)
 
         // Act
-        result = sut.selectMultipleEntities(entities, mapOf("1.1" to true, "1.2" to false), mapOf(), true)
+        result = sut.selectMultipleEntities(vehicles, mapOf("1.1" to true, "1.2" to false), mapOf(), true)
 
         // Assert
-        assertEntityOrder3Items(1, 2, 1, entities, result)
+        assertEntityOrder3Items(1, 2, 1, vehicles, result)
 
         // Act
-        result = sut.selectMultipleEntities(entities, mapOf("1.1" to true, "1.2" to false), mapOf(), false)
+        result = sut.selectMultipleEntities(vehicles, mapOf("1.1" to true, "1.2" to false), mapOf(), false)
 
         // Assert
-        assertEntityOrder3Items(2, 2, 2, entities, result)
+        assertEntityOrder3Items(2, 2, 2, vehicles, result)
     }
 
     @Test
     fun `selectEntity should return lightsabers in sorted order`() {
         // Arrange
         val lightsabers = createLightsabers().toMutableList()
-        val entities: MutableList<StarWarsEntity> = lightsabers.toMutableList()
-        entities[0].factionId = "4"
+        lightsabers[0].factionId = "4"
         every { StarWarsFactionHolder.defaultVehicles } returns listOf()
         every { StarWarsFactionHolder.defaultLightsabers } returns lightsabers
         every { StarWarsBundle.message(any()) } returnsArgument 0
 
         // Act
         var result =
-            sut.selectMultipleEntities(entities, mapOf(), mapOf("4.1" to true, "3.2" to true, "3.3" to true), true)
+            sut.selectMultipleEntities(lightsabers, mapOf(), mapOf("4.1" to true, "3.2" to true, "3.3" to true), true)
 
         // Assert
-        assertEntityOrder3Items(1, 2, 0, entities, result)
+        assertEntityOrder3Items(1, 2, 0, lightsabers, result)
 
         // Arrange
-        rotateByOne(entities)
+        rotateByOne(lightsabers)
 
         // Act
-        result = sut.selectMultipleEntities(entities, mapOf(), mapOf("4.1" to true, "3.2" to true, "3.3" to true), true)
+        result = sut.selectMultipleEntities(lightsabers, mapOf(), mapOf("4.1" to true, "3.2" to true, "3.3" to true), true)
 
         // Assert
-        assertEntityOrder3Items(0, 1, 2, entities, result)
+        assertEntityOrder3Items(0, 1, 2, lightsabers, result)
 
         // Act
         result =
-            sut.selectMultipleEntities(entities, mapOf(), mapOf("4.1" to true, "3.2" to false, "3.3" to true), true)
+            sut.selectMultipleEntities(lightsabers, mapOf(), mapOf("4.1" to true, "3.2" to false, "3.3" to true), true)
 
         // Assert
-        assertEntityOrder3Items(1, 2, 1, entities, result)
+        assertEntityOrder3Items(1, 2, 1, lightsabers, result)
 
         // Act
-        result = sut.selectMultipleEntities(entities, mapOf(), mapOf("4.1" to true, "3.2" to false), true)
+        result = sut.selectMultipleEntities(lightsabers, mapOf(), mapOf("4.1" to true, "3.2" to false), true)
 
         // Assert
-        assertEntityOrder3Items(2, 1, 2, entities, result)
+        assertEntityOrder3Items(2, 1, 2, lightsabers, result)
 
         // Act
-        result = sut.selectMultipleEntities(entities, mapOf(), mapOf("4.1" to true, "3.2" to false), false)
+        result = sut.selectMultipleEntities(lightsabers, mapOf(), mapOf("4.1" to true, "3.2" to false), false)
 
         // Assert
-        assertEntityOrder3Items(2, 2, 2, entities, result)
+        assertEntityOrder3Items(2, 2, 2, lightsabers, result)
 
         // Arrange
-        rotateByTwo(entities)
-        entities[0].factionId = "3"
+        rotateByTwo(lightsabers)
+        lightsabers[0].factionId = "3"
         sut.selectEntity(
             mapOf(),
             mapOf("3.1" to true, "3.2" to true, "3.3" to true),
@@ -448,38 +446,38 @@ class InorderFactionSelectorTests {
         )
 
         // Act
-        result = sut.selectMultipleEntities(entities, mapOf(), mapOf("3.1" to true, "3.2" to true, "3.3" to true), true)
+        result = sut.selectMultipleEntities(lightsabers, mapOf(), mapOf("3.1" to true, "3.2" to true, "3.3" to true), true)
 
         // Assert
-        assertEntityOrder3Items(0, 1, 2, entities, result)
+        assertEntityOrder3Items(0, 1, 2, lightsabers, result)
 
         // Arrange
-        rotateByOne(entities)
+        rotateByOne(lightsabers)
 
         // Act
-        result = sut.selectMultipleEntities(entities, mapOf(), mapOf("3.1" to true, "3.2" to true, "3.3" to true), true)
+        result = sut.selectMultipleEntities(lightsabers, mapOf(), mapOf("3.1" to true, "3.2" to true, "3.3" to true), true)
 
         // Assert
-        assertEntityOrder3Items(2, 0, 1, entities, result)
+        assertEntityOrder3Items(2, 0, 1, lightsabers, result)
 
         // Act
         result =
-            sut.selectMultipleEntities(entities, mapOf(), mapOf("3.1" to true, "3.2" to false, "3.3" to true), true)
+            sut.selectMultipleEntities(lightsabers, mapOf(), mapOf("3.1" to true, "3.2" to false, "3.3" to true), true)
 
         // Assert
-        assertEntityOrder3Items(2, 1, 2, entities, result)
+        assertEntityOrder3Items(2, 1, 2, lightsabers, result)
 
         // Act
-        result = sut.selectMultipleEntities(entities, mapOf(), mapOf("3.1" to true, "3.2" to false), true)
+        result = sut.selectMultipleEntities(lightsabers, mapOf(), mapOf("3.1" to true, "3.2" to false), true)
 
         // Assert
-        assertEntityOrder3Items(1, 2, 1, entities, result)
+        assertEntityOrder3Items(1, 2, 1, lightsabers, result)
 
         // Act
-        result = sut.selectMultipleEntities(entities, mapOf(), mapOf("3.1" to true, "3.2" to false), false)
+        result = sut.selectMultipleEntities(lightsabers, mapOf(), mapOf("3.1" to true, "3.2" to false), false)
 
         // Assert
-        assertEntityOrder3Items(2, 2, 2, entities, result)
+        assertEntityOrder3Items(2, 2, 2, lightsabers, result)
     }
 
     @Test

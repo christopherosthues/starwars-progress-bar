@@ -297,97 +297,95 @@ class RollingRandomSelectorTests {
     @Test
     fun `selectEntity should return random vehicles`() {
         // Arrange
-        val vehicles = createStarWarsVehicles().toMutableList()
-        val entities: MutableList<StarWarsEntity> = vehicles.toMutableList()
+        val vehicles: MutableList<StarWarsVehicle> = createStarWarsVehicles().toMutableList()
         every { StarWarsFactionHolder.defaultVehicles } returns vehicles
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
         every { randomInt(any()) } returns 0
 
         // Act
         var result = sut.selectMultipleEntitiesTwice(
-            entities,
+            vehicles,
             mapOf("2.1" to true, "1.2" to true, "1.3" to true),
             mapOf(),
             true,
         )
 
         // Assert
-        assertEntityOrder6Items(0, 1, 2, 0, 1, 2, entities, result)
+        assertEntityOrder6Items(0, 1, 2, 0, 1, 2, vehicles, result)
 
         // Arrange
-        entities[0] = entities[2].also {
-            entities[2] = entities[0]
+        vehicles[0] = vehicles[2].also {
+            vehicles[2] = vehicles[0]
         }
 
         // Act
         result = sut.selectMultipleEntitiesTwice(
-            entities,
+            vehicles,
             mapOf("2.1" to true, "1.2" to true, "1.3" to true),
             mapOf(),
             true,
         )
 
         // Assert
-        assertEntityOrder6Items(0, 1, 2, 0, 1, 2, entities, result)
+        assertEntityOrder6Items(0, 1, 2, 0, 1, 2, vehicles, result)
 
         // Act
         result = sut.selectMultipleEntitiesTwice(
-            entities,
+            vehicles,
             mapOf("2.1" to true, "1.2" to false, "1.3" to true),
             mapOf(),
             true,
         )
 
         // Assert
-        assertEntityOrder6Items(0, 2, 0, 2, 0, 2, entities, result)
+        assertEntityOrder6Items(0, 2, 0, 2, 0, 2, vehicles, result)
     }
 
     @Test
     fun `selectEntity should return random lightsabers`() {
         // Arrange
         val lightsabers = createLightsabers().toMutableList()
-        val entities: MutableList<StarWarsEntity> = lightsabers.toMutableList()
         every { StarWarsFactionHolder.defaultVehicles } returns listOf()
         every { StarWarsFactionHolder.defaultLightsabers } returns lightsabers
         every { randomInt(any()) } returns 0
 
         // Act
         var result = sut.selectMultipleEntitiesTwice(
-            entities,
+            lightsabers,
             mapOf(),
             mapOf("4.1" to true, "3.2" to true, "3.3" to true),
             true,
         )
 
         // Assert
-        assertEntityOrder6Items(0, 1, 2, 0, 1, 2, entities, result)
+        assertEntityOrder6Items(0, 1, 2, 0, 1, 2, lightsabers, result)
 
         // Arrange
-        entities[0] = entities[2].also {
-            entities[2] = entities[0]
+        lightsabers[0] = lightsabers[2].also {
+            lightsabers[2] = lightsabers[0]
         }
 
         // Act
         result = sut.selectMultipleEntitiesTwice(
-            entities,
+            lightsabers,
             mapOf(),
             mapOf("4.1" to true, "3.2" to true, "3.3" to true),
             true,
         )
 
         // Assert
-        assertEntityOrder6Items(0, 1, 2, 0, 1, 2, entities, result)
+        assertEntityOrder6Items(0, 1, 2, 0, 1, 2, lightsabers, result)
 
         // Act
         result = sut.selectMultipleEntitiesTwice(
-            entities,
+            lightsabers,
             mapOf(),
             mapOf("4.1" to true, "3.2" to false, "3.3" to true),
             true,
         )
 
         // Assert
-        assertEntityOrder6Items(0, 2, 0, 2, 0, 2, entities, result)
+        assertEntityOrder6Items(0, 2, 0, 2, 0, 2, lightsabers, result)
     }
 
     @Test

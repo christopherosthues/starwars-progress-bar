@@ -4,7 +4,7 @@ import com.christopherosthues.starwarsprogressbar.models.StarWarsEntity
 import com.christopherosthues.starwarsprogressbar.selectors.IStarWarsSelector
 
 internal fun IStarWarsSelector.selectMultipleEntities(
-    entities: MutableList<StarWarsEntity>,
+    entities: List<StarWarsEntity>,
     enabledVehicles: Map<String, Boolean>,
     enabledLightsabers: Map<String, Boolean>,
     defaultEnabled: Boolean,
@@ -24,7 +24,7 @@ internal fun IStarWarsSelector.selectMultipleEntities(
 }
 
 internal fun IStarWarsSelector.selectMultipleEntitiesTwice(
-    entities: MutableList<StarWarsEntity>,
+    entities: List<StarWarsEntity>,
     enabledVehicles: Map<String, Boolean>,
     enabledLightsabers: Map<String, Boolean>,
     defaultEnabled: Boolean,

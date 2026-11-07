@@ -7,7 +7,7 @@ internal fun assertEntityOrder3Items(
     index0: Int,
     index1: Int,
     index2: Int,
-    entities: MutableList<StarWarsEntity>,
+    entities: List<StarWarsEntity>,
     result: List<StarWarsEntity>
 ) {
     Assertions.assertAll(
@@ -25,7 +25,7 @@ internal fun assertEntityOrder6Items(
     index3: Int,
     index4: Int,
     index5: Int,
-    entities: MutableList<StarWarsEntity>,
+    entities: List<StarWarsEntity>,
     result: List<StarWarsEntity>
 ) {
     Assertions.assertAll(
@@ -52,7 +52,7 @@ internal fun assertEntityOrder12Items(
     index9: Int,
     index10: Int,
     index11: Int,
-    entities: MutableList<StarWarsEntity>,
+    entities: List<StarWarsEntity>,
     result: List<StarWarsEntity>
 ) {
     Assertions.assertAll(
