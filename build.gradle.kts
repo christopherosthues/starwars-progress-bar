@@ -94,7 +94,8 @@ ktlint {
 
 detekt {
     toolVersion = libs.versions.detekt.get()
-    config.from("config/detekt/detekt.yml")
+    config.setFrom(files("$rootDir/config/detekt/detekt.yml"))
+    baseline.set(file("$rootDir/config/detekt/baseline.xml"))
     buildUponDefaultConfig = true
     allRules = false
 }

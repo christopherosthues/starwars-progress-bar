@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>MagicNumber:StarWarsPersistentStateComponent.kt:StarWarsPersistentStateComponent$3</ID>
+    <ID>MaxLineLength:BorderShapeTests.kt:BorderShapeTests$fun</ID>
+    <ID>MaxLineLength:FactionCreationHelper.kt:FactionCreationHelper$fun</ID>
+    <ID>MaxLineLength:InorderFactionSelectorTests.kt:InorderFactionSelectorTests$fun</ID>
+    <ID>MaxLineLength:InorderNameSelectorTests.kt:InorderNameSelectorTests$fun</ID>
+    <ID>MaxLineLength:RandomSelectorTests.kt:RandomSelectorTests$fun</ID>
+    <ID>MaxLineLength:ReverseOrderFactionSelectorTests.kt:ReverseOrderFactionSelectorTests$fun</ID>
+    <ID>MaxLineLength:ReverseOrderNameSelectorTests.kt:ReverseOrderNameSelectorTests$fun</ID>
+    <ID>MaxLineLength:RollingRandomSelectorTests.kt:RollingRandomSelectorTests$fun</ID>
+    <ID>MaxLineLength:StarWarsFactionHolderTests.kt:StarWarsFactionHolderTests$FactionCreationHelper.createStarWarsFactionsWithMultipleFactionsWithEmptyIdAndOneFactionContainNoLightsabers()</ID>
+    <ID>MaxLineLength:StarWarsFactionHolderTests.kt:StarWarsFactionHolderTests$fun</ID>
+    <ID>MaxLineLength:StarWarsProgressConfigurableTests.kt:StarWarsProgressConfigurableTests$fun</ID>
+    <ID>MaxLineLength:StarWarsProgressListenerTests.kt:StarWarsProgressListenerTests$fun</ID>
+    <ID>MaxLineLength:StarWarsResourceBundleTests.kt:StarWarsResourceBundleTests$".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources${File.separatorChar}messages${File.separatorChar}"</ID>
+    <ID>MaxLineLength:StarWarsResourceBundleTests.kt:StarWarsResourceBundleTests$".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources${File.separatorChar}messages${File.separatorChar}$fileName"</ID>
+    <ID>MaxLineLength:StarWarsResourceBundleTests.kt:StarWarsResourceBundleTests$"Faction ${it.id} with localization key ${BundleConstants.LIGHTSABERS_FACTION}${it.id} has no translation"</ID>
+    <ID>MaxLineLength:StarWarsResourceBundleTests.kt:StarWarsResourceBundleTests$"Faction ${it.id} with localization key ${BundleConstants.VEHICLES_FACTION}${it.id} has no translation"</ID>
+    <ID>MaxLineLength:StarWarsResourceBundleTests.kt:StarWarsResourceBundleTests$"Vehicle ${lightsaber.entityId} with localization key ${lightsaber.localizationKey} has no translation"</ID>
+    <ID>MaxLineLength:StarWarsResourceBundleTests.kt:StarWarsResourceBundleTests$"Vehicle ${vehicle.entityId} with localization key ${vehicle.localizationKey} has no translation"</ID>
+    <ID>MaxLineLength:StarWarsResourceBundleTests.kt:StarWarsResourceBundleTests.Companion$".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources${File.separatorChar}messages${File.separatorChar}"</ID>
+    <ID>MaxLineLength:StarWarsResourceBundleTests.kt:StarWarsResourceBundleTests.Companion$".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources${File.separatorChar}messages${File.separatorChar}$fileName"</ID>
+    <ID>MaxLineLength:StarWarsSelectorTests.kt:StarWarsSelectorTests$fun</ID>
+  </CurrentIssues>
+</SmellBaseline>

@@ -33,7 +33,7 @@ internal fun parseFactionsFromJson(json: String): StarWarsFactions {
     var loadedFactions = StarWarsFactions(listOf(), listOf())
     try {
         loadedFactions = jsonFormat.decodeFromString(StarWarsFactions.serializer(), json)
-    } catch (exception: Exception) {
+    } catch (_: Exception) {
         return loadedFactions
     }
 

@@ -305,11 +305,13 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
 
         graphics2D.paint = bladeGlow(blade)
 
+        val bladeYScale = 3
+        val bladeHeightScale = 6
         graphics2D.fillRoundRect(
             bladeX,
-            bladeY - JBUIScale.scale(3),
+            bladeY - JBUIScale.scale(bladeYScale),
             bladeWidth,
-            bladeHeight + JBUIScale.scale(6),
+            bladeHeight + JBUIScale.scale(bladeHeightScale),
             arc,
             arc,
         )
@@ -376,9 +378,10 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         }
 
         val bladeColor = blade.color
+        val glowAlpha = 50
         return JBColor(
-            Color(bladeColor.red, bladeColor.green, bladeColor.blue, 50),
-            Color(bladeColor.red, bladeColor.green, bladeColor.blue, 50),
+            Color(bladeColor.red, bladeColor.green, bladeColor.blue, glowAlpha),
+            Color(bladeColor.red, bladeColor.green, bladeColor.blue, glowAlpha),
         )
     }
 

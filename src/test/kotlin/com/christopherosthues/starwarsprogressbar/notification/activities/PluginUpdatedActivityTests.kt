@@ -412,8 +412,7 @@ class PluginUpdatedActivityTests {
         var projectList = mutableListOf<Project?>()
         var classList = mutableListOf<Class<Configurable?>>()
 
-        override fun showSettingsDialog(p0: Project, vararg p1: ConfigurableGroup?) {
-        }
+        override fun showSettingsDialog(p0: Project, vararg p1: ConfigurableGroup?) = Unit
 
         @Suppress("UNCHECKED_CAST")
         override fun <T : Configurable?> showSettingsDialog(p0: Project?, p1: Class<T?>) {
@@ -421,17 +420,14 @@ class PluginUpdatedActivityTests {
             classList.add(p1 as Class<Configurable?>)
         }
 
-        override fun showSettingsDialog(p0: Project?, p1: @NlsContexts.ConfigurableName String) {
-        }
+        override fun showSettingsDialog(p0: Project?, p1: @NlsContexts.ConfigurableName String) = Unit
 
-        override fun showSettingsDialog(p0: Project, p1: Configurable?) {
-        }
+        override fun showSettingsDialog(p0: Project, p1: Configurable?) = Unit
 
-        override fun <T : Configurable?> showSettingsDialog(p0: Project?, p1: Class<T?>, p2: Consumer<in T>?) {
-        }
+        override fun <T : Configurable?> showSettingsDialog(p0: Project?, p1: Class<T?>, p2: Consumer<in T>?) = Unit
 
-        override fun showSettingsDialog(p0: Project?, p1: Predicate<in Configurable>, p2: Consumer<in Configurable>?) {
-        }
+        override fun showSettingsDialog(p0: Project?, p1: Predicate<in Configurable>, p2: Consumer<in Configurable>?) =
+            Unit
 
         override fun editConfigurable(p0: Project?, p1: Configurable): Boolean = false
 
@@ -458,11 +454,9 @@ class PluginUpdatedActivityTests {
 
         override fun editConfigurable(p0: Component?, p1: @NonNls String, p2: Configurable): Boolean = false
 
-        override fun closeSettings(project: Project, component: Component) {
-        }
+        override fun closeSettings(project: Project, component: Component) = Unit
 
         @Suppress("UnstableApiUsage")
-        override suspend fun showSettingsDialog(project: Project, groups: List<ConfigurableGroup>) {
-        }
+        override suspend fun showSettingsDialog(project: Project, groups: List<ConfigurableGroup>) = Unit
     }
 }

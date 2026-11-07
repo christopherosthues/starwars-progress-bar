@@ -38,14 +38,16 @@ internal class PreviewPanel(private val starWarsState: StarWarsState) :
         previewButton.addActionListener {
             setProgressBarUI(starWarsState.vehiclesEnabled, starWarsState.lightsabersEnabled)
         }
-        var gridBagConstraints = GridBagConstraints()
+        val gridBagConstraints = GridBagConstraints()
         gridBagConstraints.fill = GridBagConstraints.NONE
         gridBagConstraints.anchor = GridBagConstraints.EAST
         add(previewButton, gridBagConstraints)
 
-        determinateProgressBar = JProgressBar(0, 100)
+        val max = 100
+        val currentValue = 50
+        determinateProgressBar = JProgressBar(0, max)
         determinateProgressBar.isIndeterminate = false
-        determinateProgressBar.value = 50
+        determinateProgressBar.value = currentValue
         determinateProgressBar.ui = determinateProgressBarUI
 
         indeterminateProgressBar = JProgressBar()
@@ -74,12 +76,13 @@ internal class PreviewPanel(private val starWarsState: StarWarsState) :
 
         progressBarPanel.add(determinateSlider)
 
-        gridBagConstraints = GridBagConstraints()
-        gridBagConstraints.gridy = 1
-        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL
-        gridBagConstraints.weightx = 1.0
-        gridBagConstraints.weighty = 1.0
-        add(progressBarPanel, gridBagConstraints)
+        val gridBagConstraints2 = GridBagConstraints()
+        gridBagConstraints2.gridy = 1
+        gridBagConstraints2.fill = GridBagConstraints.HORIZONTAL
+        gridBagConstraints2.weightx = 1.0
+        gridBagConstraints2.weighty = 1.0
+        gridBagConstraints2.anchor = GridBagConstraints.EAST
+        add(progressBarPanel, gridBagConstraints2)
     }
 
     private fun setProgressBarUI(enabledVehicles: Map<String, Boolean>?, enabledLightsabers: Map<String, Boolean>?) {

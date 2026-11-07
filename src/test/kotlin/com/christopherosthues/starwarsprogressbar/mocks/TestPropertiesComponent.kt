@@ -16,14 +16,11 @@ internal class TestPropertiesComponent : PropertiesComponent() {
         values[name] = value
     }
 
-    override fun setValue(name: String, value: String?, defaultValue: String?) {
-    }
+    override fun setValue(name: String, value: String?, defaultValue: String?) = Unit
 
-    override fun setValue(name: String, value: Float, defaultValue: Float) {
-    }
+    override fun setValue(name: String, value: Float, defaultValue: Float) = Unit
 
-    override fun setValue(name: String, value: Int, defaultValue: Int) {
-    }
+    override fun setValue(name: String, value: Int, defaultValue: Int) = Unit
 
     override fun setValue(name: String, value: Boolean, defaultValue: Boolean) {
         values[name] = value.toString()
@@ -33,13 +30,11 @@ internal class TestPropertiesComponent : PropertiesComponent() {
     override fun getValues(p0: @NonNls String): Array<out String?>? = null
 
     @Deprecated("See inherited class", replaceWith = ReplaceWith("See inherited class"))
-    override fun setValues(p0: @NonNls String, p1: Array<out String?>?) {
-    }
+    override fun setValues(p0: @NonNls String, p1: Array<out String?>?) = Unit
 
     override fun getList(p0: @NonNls String): List<String?>? = listOf()
 
-    override fun setList(p0: @NonNls String, p1: Collection<String?>?) {
-    }
+    override fun setList(p0: @NonNls String, p1: Collection<String?>?) = Unit
 
     override fun updateValue(p0: @NonNls String, p1: Boolean): Boolean = false
 

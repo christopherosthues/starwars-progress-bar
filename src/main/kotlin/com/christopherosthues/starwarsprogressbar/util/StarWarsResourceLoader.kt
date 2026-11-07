@@ -105,7 +105,7 @@ internal object StarWarsResourceLoader {
                         .orElseGet { createEmptyImageIconFromBufferedImage(ICON_SIZE) }
                 },
             ]
-        } catch (ex: ExecutionException) {
+        } catch (_: ExecutionException) {
             createEmptyImageIcon()
         }
     }
