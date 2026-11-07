@@ -4,6 +4,8 @@ import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
 import com.christopherosthues.starwarsprogressbar.helpers.assertEntityOrder3Items
 import com.christopherosthues.starwarsprogressbar.helpers.assertEntityOrder6Items
+import com.christopherosthues.starwarsprogressbar.helpers.rotateByOne
+import com.christopherosthues.starwarsprogressbar.helpers.rotateByTwo
 import com.christopherosthues.starwarsprogressbar.models.Blade
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
@@ -323,11 +325,7 @@ class ReverseOrderFactionSelectorTests {
         assertEntityOrder3Items(0, 2, 1, entities, result)
 
         // Arrange
-        entities[0] = entities[1].also {
-            entities[1] = entities[2].also {
-                entities[2] = entities[0]
-            }
-        }
+        rotateByOne(entities)
 
         // Act
         result = selectMultipleEntities(entities, mapOf("2.1" to true, "1.2" to true, "1.3" to true), mapOf(), true)
@@ -354,11 +352,7 @@ class ReverseOrderFactionSelectorTests {
         assertEntityOrder3Items(2, 2, 2, entities, result)
 
         // Arrange
-        entities[0] = entities[2].also {
-            entities[1] = entities[0].also {
-                entities[2] = entities[1]
-            }
-        }
+        rotateByTwo(entities)
         entities[0].factionId = "1"
         sut.selectEntity(
             mapOf("1.1" to true, "1.2" to true, "1.3" to true),
@@ -378,11 +372,7 @@ class ReverseOrderFactionSelectorTests {
         assertEntityOrder3Items(2, 1, 0, entities, result)
 
         // Arrange
-        entities[0] = entities[1].also {
-            entities[1] = entities[2].also {
-                entities[2] = entities[0]
-            }
-        }
+        rotateByOne(entities)
 
         // Act
         result = selectMultipleEntities(entities, mapOf("1.1" to true, "1.2" to true, "1.3" to true), mapOf(), true)
@@ -425,11 +415,7 @@ class ReverseOrderFactionSelectorTests {
         assertEntityOrder3Items(0, 2, 1, entities, result)
 
         // Arrange
-        entities[0] = entities[1].also {
-            entities[1] = entities[2].also {
-                entities[2] = entities[0]
-            }
-        }
+        rotateByOne(entities)
 
         // Act
         result = selectMultipleEntities(entities, mapOf(), mapOf("4.1" to true, "3.2" to true, "3.3" to true), true)
@@ -456,11 +442,7 @@ class ReverseOrderFactionSelectorTests {
         assertEntityOrder3Items(2, 2, 2, entities, result)
 
         // Arrange
-        entities[0] = entities[2].also {
-            entities[1] = entities[0].also {
-                entities[2] = entities[1]
-            }
-        }
+        rotateByTwo(entities)
         entities[0].factionId = "3"
         sut.selectEntity(
             mapOf(),
@@ -480,11 +462,7 @@ class ReverseOrderFactionSelectorTests {
         assertEntityOrder3Items(2, 1, 0, entities, result)
 
         // Arrange
-        entities[0] = entities[1].also {
-            entities[1] = entities[2].also {
-                entities[2] = entities[0]
-            }
-        }
+        rotateByOne(entities)
 
         // Act
         result = selectMultipleEntities(entities, mapOf(), mapOf("3.1" to true, "3.2" to true, "3.3" to true), true)
@@ -533,16 +511,8 @@ class ReverseOrderFactionSelectorTests {
         assertEntityOrder6Items(3, 5, 4, 0, 2, 1, entities, result)
 
         // Arrange
-        entities[0] = entities[1].also {
-            entities[1] = entities[2].also {
-                entities[2] = entities[0]
-            }
-        }
-        entities[3] = entities[4].also {
-            entities[4] = entities[5].also {
-                entities[5] = entities[3]
-            }
-        }
+        rotateByOne(entities)
+        rotateByOne(entities, 3)
 
         // Act
         result = selectMultipleEntities(
@@ -589,16 +559,8 @@ class ReverseOrderFactionSelectorTests {
         assertEntityOrder6Items(5, 2, 5, 2, 5, 2, entities, result)
 
         // Arrange
-        entities[0] = entities[2].also {
-            entities[1] = entities[0].also {
-                entities[2] = entities[1]
-            }
-        }
-        entities[3] = entities[5].also {
-            entities[4] = entities[3].also {
-                entities[5] = entities[4]
-            }
-        }
+        rotateByTwo(entities)
+        rotateByTwo(entities, 3)
         entities[0].factionId = "3"
         entities[3].factionId = "1"
         sut.selectEntity(
@@ -624,16 +586,8 @@ class ReverseOrderFactionSelectorTests {
         assertEntityOrder6Items(1, 0, 5, 4, 3, 2, entities, result)
 
         // Arrange
-        entities[0] = entities[1].also {
-            entities[1] = entities[2].also {
-                entities[2] = entities[0]
-            }
-        }
-        entities[3] = entities[4].also {
-            entities[4] = entities[5].also {
-                entities[5] = entities[3]
-            }
-        }
+        rotateByOne(entities)
+        rotateByOne(entities, 3)
 
         // Act
         result = selectMultipleEntities(

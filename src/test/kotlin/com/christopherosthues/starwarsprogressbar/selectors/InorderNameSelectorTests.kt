@@ -4,6 +4,7 @@ import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsPersistentStateComponent
 import com.christopherosthues.starwarsprogressbar.helpers.assertEntityOrder3Items
 import com.christopherosthues.starwarsprogressbar.helpers.assertEntityOrder6Items
+import com.christopherosthues.starwarsprogressbar.helpers.rotateByOne
 import com.christopherosthues.starwarsprogressbar.models.Blade
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
@@ -307,11 +308,7 @@ class InorderNameSelectorTests {
         assertEntityOrder3Items(0, 1, 2, entities, result)
 
         // Arrange
-        entities[0] = entities[1].also {
-            entities[1] = entities[2].also {
-                entities[2] = entities[0]
-            }
-        }
+        rotateByOne(entities)
 
         // Act
         result = mutableListOf()
@@ -398,11 +395,7 @@ class InorderNameSelectorTests {
         assertEntityOrder3Items(0, 1, 2, entities, result)
 
         // Arrange
-        entities[0] = entities[1].also {
-            entities[1] = entities[2].also {
-                entities[2] = entities[0]
-            }
-        }
+        rotateByOne(entities)
 
         // Act
         result = mutableListOf()
@@ -490,16 +483,8 @@ class InorderNameSelectorTests {
         assertEntityOrder6Items(3, 4, 5, 0, 1, 2, entities, result)
 
         // Arrange
-        entities[0] = entities[1].also {
-            entities[1] = entities[2].also {
-                entities[2] = entities[0]
-            }
-        }
-        entities[3] = entities[4].also {
-            entities[4] = entities[5].also {
-                entities[5] = entities[3]
-            }
-        }
+        rotateByOne(entities)
+        rotateByOne(entities, 3)
 
         // Act
         result = mutableListOf()

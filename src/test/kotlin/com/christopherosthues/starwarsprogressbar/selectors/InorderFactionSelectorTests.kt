@@ -10,6 +10,8 @@ import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.helpers.assertEntityOrder3Items
 import com.christopherosthues.starwarsprogressbar.helpers.assertEntityOrder6Items
+import com.christopherosthues.starwarsprogressbar.helpers.rotateByOne
+import com.christopherosthues.starwarsprogressbar.helpers.rotateByTwo
 import com.intellij.idea.TestFor
 import io.mockk.every
 import io.mockk.mockkObject
@@ -308,11 +310,7 @@ class InorderFactionSelectorTests {
         assertEntityOrder3Items(1, 2, 0, entities, result)
 
         // Arrange
-        entities[0] = entities[1].also {
-            entities[1] = entities[2].also {
-                entities[2] = entities[0]
-            }
-        }
+        rotateByOne(entities)
 
         // Act
         result = selectMultipleEntities(entities, mapOf("2.1" to true, "1.2" to true, "1.3" to true), mapOf(), true)
@@ -339,11 +337,7 @@ class InorderFactionSelectorTests {
         assertEntityOrder3Items(2, 2, 2, entities, result)
 
         // Arrange
-        entities[0] = entities[2].also {
-            entities[1] = entities[0].also {
-                entities[2] = entities[1]
-            }
-        }
+        rotateByTwo(entities)
         entities[0].factionId = "1"
         sut.selectEntity(
             mapOf("1.1" to true, "1.2" to true, "1.3" to true),
@@ -363,11 +357,7 @@ class InorderFactionSelectorTests {
         assertEntityOrder3Items(0, 1, 2, entities, result)
 
         // Arrange
-        entities[0] = entities[1].also {
-            entities[1] = entities[2].also {
-                entities[2] = entities[0]
-            }
-        }
+        rotateByOne(entities)
 
         // Act
         result = selectMultipleEntities(entities, mapOf("1.1" to true, "1.2" to true, "1.3" to true), mapOf(), true)
@@ -411,11 +401,7 @@ class InorderFactionSelectorTests {
         assertEntityOrder3Items(1, 2, 0, entities, result)
 
         // Arrange
-        entities[0] = entities[1].also {
-            entities[1] = entities[2].also {
-                entities[2] = entities[0]
-            }
-        }
+        rotateByOne(entities)
 
         // Act
         result = selectMultipleEntities(entities, mapOf(), mapOf("4.1" to true, "3.2" to true, "3.3" to true), true)
@@ -442,11 +428,7 @@ class InorderFactionSelectorTests {
         assertEntityOrder3Items(2, 2, 2, entities, result)
 
         // Arrange
-        entities[0] = entities[2].also {
-            entities[1] = entities[0].also {
-                entities[2] = entities[1]
-            }
-        }
+        rotateByTwo(entities)
         entities[0].factionId = "3"
         sut.selectEntity(
             mapOf(),
@@ -466,11 +448,7 @@ class InorderFactionSelectorTests {
         assertEntityOrder3Items(0, 1, 2, entities, result)
 
         // Arrange
-        entities[0] = entities[1].also {
-            entities[1] = entities[2].also {
-                entities[2] = entities[0]
-            }
-        }
+        rotateByOne(entities)
 
         // Act
         result = selectMultipleEntities(entities, mapOf(), mapOf("3.1" to true, "3.2" to true, "3.3" to true), true)
@@ -521,16 +499,8 @@ class InorderFactionSelectorTests {
         assertEntityOrder6Items(1, 2, 0, 4, 5, 3, entities, result)
 
         // Arrange
-        entities[0] = entities[1].also {
-            entities[1] = entities[2].also {
-                entities[2] = entities[0]
-            }
-        }
-        entities[3] = entities[4].also {
-            entities[4] = entities[5].also {
-                entities[5] = entities[3]
-            }
-        }
+        rotateByOne(entities)
+        rotateByOne(entities, 3)
 
         // Act
         result = selectMultipleEntities(
@@ -577,16 +547,8 @@ class InorderFactionSelectorTests {
         assertEntityOrder6Items(2, 5, 2, 5, 2, 5, entities, result)
 
         // Arrange
-        entities[0] = entities[2].also {
-            entities[1] = entities[0].also {
-                entities[2] = entities[1]
-            }
-        }
-        entities[3] = entities[5].also {
-            entities[4] = entities[3].also {
-                entities[5] = entities[4]
-            }
-        }
+        rotateByTwo(entities)
+        rotateByTwo(entities, 3)
 
         entities[0].factionId = "3"
         entities[3].factionId = "1"
@@ -613,16 +575,8 @@ class InorderFactionSelectorTests {
         assertEntityOrder6Items(4, 5, 0, 1, 2, 3, entities, result)
 
         // Arrange
-        entities[0] = entities[1].also {
-            entities[1] = entities[2].also {
-                entities[2] = entities[0]
-            }
-        }
-        entities[3] = entities[4].also {
-            entities[4] = entities[5].also {
-                entities[5] = entities[3]
-            }
-        }
+        rotateByOne(entities)
+        rotateByOne(entities, 3)
 
         // Act
         result = selectMultipleEntities(
