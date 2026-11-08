@@ -105,6 +105,10 @@ internal class StarWarsState {
 
     var version: String = ""
 
+    // The plugin version that was active before the most recent update. Set by
+    // StarWarsPersistentStateComponent.loadState and cleared by PluginUpdatedActivity once handled.
+    var previousVersion: String = ""
+
     @Deprecated("Use showIcon instead")
     var showVehicle: Boolean = DEFAULT_SHOW_ICON
 

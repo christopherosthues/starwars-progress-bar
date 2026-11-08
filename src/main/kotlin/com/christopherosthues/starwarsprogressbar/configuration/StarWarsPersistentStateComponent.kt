@@ -2,7 +2,6 @@ package com.christopherosthues.starwarsprogressbar.configuration
 
 import com.christopherosthues.starwarsprogressbar.constants.PluginConstants
 import com.intellij.ide.plugins.PluginDetailsService
-import com.intellij.ide.plugins.PluginManagerCore
 import com.intellij.openapi.components.PersistentStateComponent
 import com.intellij.openapi.components.Service
 import com.intellij.openapi.components.State
@@ -25,8 +24,6 @@ internal class StarWarsPersistentStateComponent : PersistentStateComponent<StarW
     override fun loadState(state: StarWarsState) {
         XmlSerializerUtil.copyBean(state, this.state)
         val version = SemVer.parseFromText(this.state.version)
-        val pluginDescriptor = PluginDetailsService.getInstance().findDetails(PluginId.getId(PluginConstants.PLUGIN_ID))
-        val installedVersion = pluginDescriptor?.version
         if (version != null) {
             if (version < SemVer("2.0.0", 2, 0, 0)) {
                 this.state.showIcon = this.state.showVehicle
@@ -42,8 +39,13 @@ internal class StarWarsPersistentStateComponent : PersistentStateComponent<StarW
                 this.state.selectorOrdinal = this.state.vehicleSelectorOrdinal
             }
         }
-        // TODO: old and new version so the updated activity know when to display the dialog
-        this.state.version = installedVersion ?: this.state.version
+        val pluginDetails = PluginDetailsService.getInstance().findDetails(PluginId.getId(PluginConstants.PLUGIN_ID))
+        val installedVersion = pluginDetails?.version
+        if (installedVersion != null && installedVersion != this.state.version) {
+            // Record the version that was active before this update so PluginUpdatedActivity can detect it.
+            this.state.previousVersion = this.state.version
+            this.state.version = installedVersion
+        }
     }
 
     companion object {

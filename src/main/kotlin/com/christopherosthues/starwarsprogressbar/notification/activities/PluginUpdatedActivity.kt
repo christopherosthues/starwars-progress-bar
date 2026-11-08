@@ -8,32 +8,26 @@ import com.christopherosthues.starwarsprogressbar.constants.PluginConstants
 import com.christopherosthues.starwarsprogressbar.notification.DoNotAskService.canShowNotification
 import com.christopherosthues.starwarsprogressbar.notification.DoNotAskService.setDoNotAskFor
 import com.christopherosthues.starwarsprogressbar.util.StarWarsResourceLoader
-import com.intellij.ide.plugins.PluginDetailsService
 import com.intellij.notification.NotificationGroupManager
 import com.intellij.notification.NotificationType
 import com.intellij.openapi.actionSystem.AnActionEvent
-import com.intellij.openapi.extensions.PluginId
 import com.intellij.openapi.options.ShowSettingsUtil
 import com.intellij.openapi.project.DumbAwareAction
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.startup.ProjectActivity
-import com.intellij.util.text.SemVer
 
 class PluginUpdatedActivity : ProjectActivity {
     override suspend fun execute(project: Project) {
-        val pluginDetails = PluginDetailsService.getInstance().findDetails(PluginId.getId(PluginConstants.PLUGIN_ID))
         val starWarsState = StarWarsPersistentStateComponent.instance.state
-        if (pluginDetails != null && starWarsState != null) {
-            val installedVersion = pluginDetails.version
-            val installedSemanticVersion = SemVer.parseFromText(installedVersion)
-            val storedSemanticVersion = SemVer.parseFromText(starWarsState.version)
-            if (storedSemanticVersion == null ||
-                (installedSemanticVersion != null && installedSemanticVersion > storedSemanticVersion)
-            ) {
-                starWarsState.version = installedVersion ?: ""
+        // previousVersion is set by StarWarsPersistentStateComponent.loadState when a new plugin version is detected.
+        if (starWarsState != null &&
+            starWarsState.previousVersion.isNotEmpty() &&
+            starWarsState.previousVersion != starWarsState.version
+        ) {
+            // Clear the marker so the notification is only shown once per update.
+            starWarsState.previousVersion = ""
 
-                displayUpdateNotification(project, installedVersion ?: "")
-            }
+            displayUpdateNotification(project, starWarsState.version)
         }
     }
 

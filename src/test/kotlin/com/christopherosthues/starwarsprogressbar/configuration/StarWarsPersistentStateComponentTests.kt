@@ -51,7 +51,6 @@ class StarWarsPersistentStateComponentTests {
         mockkObject(PluginId)
         mockkObject(PluginDetailsService)
 
-//        every { StarWarsFactionHolder.updateFactions(any()) } just runs
         every { StarWarsFactionHolder.vehicleFactions } returns mockk(relaxed = true)
         every { StarWarsFactionHolder.lightsabersFactions } returns mockk(relaxed = true)
         every { StarWarsFactionHolder.missingVehicle } returns mockk(relaxed = true)
@@ -132,6 +131,7 @@ class StarWarsPersistentStateComponentTests {
             { assertEquals(DEFAULT_ENTITY_SELECTOR, result!!.indeterminateEntitySelector) },
             { assertEquals(DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE, result!!.numberOfPassesUntilChange) },
             { assertEquals("", result!!.version) },
+            { assertEquals("", result!!.previousVersion) },
         )
     }
 
@@ -363,6 +363,54 @@ class StarWarsPersistentStateComponentTests {
             { assertEquals(EntitySelectionType.LIGHTSABERS, result!!.indeterminateEntitySelector) },
             { assertEquals(3, result!!.numberOfPassesUntilChange) },
             { assertEquals(expectedVersion, result!!.version) },
+        )
+    }
+
+    @Test
+    fun `loadState should store installed version and previous version when they differ`() {
+        // Arrange
+        val sut = StarWarsPersistentStateComponent()
+        val starWarsState = StarWarsState().apply { version = "1.0.0" }
+
+        val pluginIdMock = mockk<PluginId>(relaxed = true)
+        val serviceMock = mockk<PluginDetailsService>()
+        val pluginDetailsMock = mockk<PluginDetailsService.PluginDetails>(relaxed = true)
+        every { PluginId.getId(PluginConstants.PLUGIN_ID) } returns pluginIdMock
+        every { PluginDetailsService.getInstance() } returns serviceMock
+        every { serviceMock.findDetails(pluginIdMock) } returns pluginDetailsMock
+        every { pluginDetailsMock.version } returns "2.0.0"
+
+        // Act
+        sut.loadState(starWarsState)
+
+        // Assert
+        assertAll(
+            { assertEquals("2.0.0", sut.state?.version) },
+            { assertEquals("1.0.0", sut.state?.previousVersion) },
+        )
+    }
+
+    @Test
+    fun `loadState should not change version or previous version when installed version equals stored version`() {
+        // Arrange
+        val sut = StarWarsPersistentStateComponent()
+        val starWarsState = StarWarsState().apply { version = "2.0.0" }
+
+        val pluginIdMock = mockk<PluginId>(relaxed = true)
+        val serviceMock = mockk<PluginDetailsService>()
+        val pluginDetailsMock = mockk<PluginDetailsService.PluginDetails>(relaxed = true)
+        every { PluginId.getId(PluginConstants.PLUGIN_ID) } returns pluginIdMock
+        every { PluginDetailsService.getInstance() } returns serviceMock
+        every { serviceMock.findDetails(pluginIdMock) } returns pluginDetailsMock
+        every { pluginDetailsMock.version } returns "2.0.0"
+
+        // Act
+        sut.loadState(starWarsState)
+
+        // Assert
+        assertAll(
+            { assertEquals("2.0.0", sut.state?.version) },
+            { assertEquals("", sut.state?.previousVersion) },
         )
     }
 
