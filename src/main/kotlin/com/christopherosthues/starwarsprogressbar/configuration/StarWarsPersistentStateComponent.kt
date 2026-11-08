@@ -1,6 +1,7 @@
 package com.christopherosthues.starwarsprogressbar.configuration
 
 import com.christopherosthues.starwarsprogressbar.constants.PluginConstants
+import com.intellij.ide.plugins.PluginDetailsService
 import com.intellij.ide.plugins.PluginManagerCore
 import com.intellij.openapi.components.PersistentStateComponent
 import com.intellij.openapi.components.Service
@@ -24,7 +25,7 @@ internal class StarWarsPersistentStateComponent : PersistentStateComponent<StarW
     override fun loadState(state: StarWarsState) {
         XmlSerializerUtil.copyBean(state, this.state)
         val version = SemVer.parseFromText(this.state.version)
-        val pluginDescriptor = PluginManagerCore.getPlugin(PluginId.getId(PluginConstants.PLUGIN_ID))
+        val pluginDescriptor = PluginDetailsService.getInstance().findDetails(PluginId.getId(PluginConstants.PLUGIN_ID))
         val installedVersion = pluginDescriptor?.version
         if (version != null) {
             if (version < SemVer("2.0.0", 2, 0, 0)) {
@@ -41,6 +42,7 @@ internal class StarWarsPersistentStateComponent : PersistentStateComponent<StarW
                 this.state.selectorOrdinal = this.state.vehicleSelectorOrdinal
             }
         }
+        // TODO: old and new version so the updated activity know when to display the dialog
         this.state.version = installedVersion ?: this.state.version
     }
 

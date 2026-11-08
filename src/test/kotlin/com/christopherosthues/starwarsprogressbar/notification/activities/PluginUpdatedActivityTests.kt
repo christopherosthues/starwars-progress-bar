@@ -9,8 +9,7 @@ import com.christopherosthues.starwarsprogressbar.constants.PluginConstants
 import com.christopherosthues.starwarsprogressbar.mocks.TestPropertiesComponent
 import com.christopherosthues.starwarsprogressbar.notification.DoNotAskService
 import com.christopherosthues.starwarsprogressbar.util.StarWarsResourceLoader
-import com.intellij.ide.plugins.IdeaPluginDescriptor
-import com.intellij.ide.plugins.PluginManagerCore
+import com.intellij.ide.plugins.PluginDetailsService
 import com.intellij.ide.util.PropertiesComponent
 import com.intellij.idea.TestFor
 import com.intellij.notification.Notification
@@ -66,9 +65,9 @@ class PluginUpdatedActivityTests {
         mockkObject(StarWarsResourceLoader)
         mockkObject(DoNotAskService)
         mockkObject(StarWarsBundle)
+        mockkObject(PluginDetailsService)
         mockkObject(PluginId)
         mockkStatic(StarWarsBundle::message)
-        mockkStatic(PluginManagerCore::class)
         mockkStatic(PluginId::class)
         mockkStatic(NotificationGroupManager::class)
         mockkStatic(ShowSettingsUtil::class)
@@ -107,8 +106,10 @@ class PluginUpdatedActivityTests {
     fun `execute should retrieve correct plugin id`() {
         // Arrange
         val pluginIdMock = mockk<PluginId>(relaxed = true)
+        val serviceMock = mockk<PluginDetailsService>()
         every { PluginId.getId(PluginConstants.PLUGIN_ID) } returns pluginIdMock
-        every { PluginManagerCore.getPlugin(pluginIdMock) } returns null
+        every { PluginDetailsService.getInstance() } returns serviceMock
+        every { serviceMock.findDetails(pluginIdMock) } returns null
         val sut = PluginUpdatedActivity()
 
         // Act
@@ -116,16 +117,18 @@ class PluginUpdatedActivityTests {
 
         // Assert
         verify(exactly = 1) { PluginId.getId(PluginConstants.PLUGIN_ID) }
-        verify(exactly = 1) { PluginManagerCore.getPlugin(pluginIdMock) }
+        verify(exactly = 1) { serviceMock.findDetails(pluginIdMock) }
     }
 
     @Test
-    fun `execute should not display notification if plugin descriptor is null`() {
+    fun `execute should not display notification if plugin details are null`() {
         // Arrange
         val pluginIdMock = mockk<PluginId>(relaxed = true)
+        val serviceMock = mockk<PluginDetailsService>()
         val starWarsStateMock = mockk<StarWarsState>(relaxed = true)
         every { PluginId.getId(PluginConstants.PLUGIN_ID) } returns pluginIdMock
-        every { PluginManagerCore.getPlugin(pluginIdMock) } returns null
+        every { PluginDetailsService.getInstance() } returns serviceMock
+        every { serviceMock.findDetails(pluginIdMock) } returns null
         every { starWarsPersistentStateComponent.state } returns starWarsStateMock
         val sut = PluginUpdatedActivity()
 
@@ -142,9 +145,11 @@ class PluginUpdatedActivityTests {
     fun `execute should not display notification if star wars state is null`() {
         // Arrange
         val pluginIdMock = mockk<PluginId>(relaxed = true)
-        val pluginDescriptorMock = mockk<IdeaPluginDescriptor>(relaxed = true)
+        val serviceMock = mockk<PluginDetailsService>()
+        val pluginDetailsMock = mockk<PluginDetailsService.PluginDetails>(relaxed = true)
         every { PluginId.getId(PluginConstants.PLUGIN_ID) } returns pluginIdMock
-        every { PluginManagerCore.getPlugin(pluginIdMock) } returns pluginDescriptorMock
+        every { PluginDetailsService.getInstance() } returns serviceMock
+        every { serviceMock.findDetails(pluginIdMock) } returns pluginDetailsMock
         every { starWarsPersistentStateComponent.state } returns null
         val sut = PluginUpdatedActivity()
 
@@ -152,7 +157,7 @@ class PluginUpdatedActivityTests {
         runBlocking { sut.execute(mockk()) }
 
         // Assert
-        verify(exactly = 0) { pluginDescriptorMock.version }
+        verify(exactly = 0) { pluginDetailsMock.version }
         verify(exactly = 0) { DoNotAskService.canShowNotification() }
         verify(exactly = 0) { NotificationGroupManager.getInstance() }
     }
@@ -160,14 +165,14 @@ class PluginUpdatedActivityTests {
     @Test
     fun `execute should not display notification if stored version and installed version are equal`() {
         // Arrange
-        val (pluginDescriptorMock, starWarsStateMock) = setupPluginDescriptorAndStarWarsState(storedEqualVersion)
+        val (pluginDetailsMock, starWarsStateMock) = setupPluginDetailsAndStarWarsState(storedEqualVersion)
         val sut = PluginUpdatedActivity()
 
         // Act
         runBlocking { sut.execute(mockk()) }
 
         // Assert
-        verify(exactly = 1) { pluginDescriptorMock.version }
+        verify(exactly = 1) { pluginDetailsMock.version }
         verify(exactly = 1) { starWarsStateMock.version }
         verify(exactly = 0) { DoNotAskService.canShowNotification() }
         verify(exactly = 0) { NotificationGroupManager.getInstance() }
@@ -176,7 +181,7 @@ class PluginUpdatedActivityTests {
     @Test
     fun `execute should store installed version if stored version and installed version are different`() {
         // Arrange
-        val (pluginDescriptorMock, starWarsStateMock) = setupPluginDescriptorAndStarWarsState()
+        val (pluginDetailsMock, starWarsStateMock) = setupPluginDetailsAndStarWarsState()
         every { DoNotAskService.canShowNotification() } returns false
         val sut = PluginUpdatedActivity()
 
@@ -184,7 +189,7 @@ class PluginUpdatedActivityTests {
         runBlocking { sut.execute(mockk()) }
 
         // Assert
-        verify(exactly = 1) { pluginDescriptorMock.version }
+        verify(exactly = 1) { pluginDetailsMock.version }
         verify(exactly = 1) { starWarsStateMock.version }
         verify(exactly = 1) { starWarsStateMock.version = installedVersion }
     }
@@ -192,7 +197,7 @@ class PluginUpdatedActivityTests {
     @Test
     fun `execute should not display notification if notification should not be displayed`() {
         // Arrange
-        setupPluginDescriptorAndStarWarsState()
+        setupPluginDetailsAndStarWarsState()
         every { DoNotAskService.canShowNotification() } returns false
         val sut = PluginUpdatedActivity()
 
@@ -207,7 +212,7 @@ class PluginUpdatedActivityTests {
     @Test
     fun `execute should retrieve correct notification group`() {
         // Arrange
-        setupPluginDescriptorAndStarWarsState()
+        setupPluginDetailsAndStarWarsState()
         val (notificationManagerMock, _, _) = setupNotification()
         every { StarWarsResourceLoader.getPluginIcon() } returns mockk(relaxed = true)
         val sut = PluginUpdatedActivity()
@@ -225,7 +230,7 @@ class PluginUpdatedActivityTests {
     @Test
     fun `execute should create correct notification`() {
         // Arrange
-        setupPluginDescriptorAndStarWarsState()
+        setupPluginDetailsAndStarWarsState()
         val (_, notificationGroupMock, _) = setupNotification()
         every { StarWarsResourceLoader.getPluginIcon() } returns mockk(relaxed = true)
         val sut = PluginUpdatedActivity()
@@ -248,7 +253,7 @@ class PluginUpdatedActivityTests {
     @Test
     fun `execute should create correct notification with correct icon`() {
         // Arrange
-        setupPluginDescriptorAndStarWarsState()
+        setupPluginDetailsAndStarWarsState()
         val (_, _, notificationMock) = setupNotification()
         val pluginIconMock = mockk<Icon>(relaxed = true)
         every { StarWarsResourceLoader.getPluginIcon() } returns pluginIconMock
@@ -267,7 +272,7 @@ class PluginUpdatedActivityTests {
     @Test
     fun `execute should create correct notification with two actions`() {
         // Arrange
-        setupPluginDescriptorAndStarWarsState()
+        setupPluginDetailsAndStarWarsState()
         val (_, _, notificationMock) = setupNotification()
         val pluginIconMock = mockk<Icon>(relaxed = true)
         every { StarWarsResourceLoader.getPluginIcon() } returns pluginIconMock
@@ -287,7 +292,7 @@ class PluginUpdatedActivityTests {
     @Test
     fun `execute should create correct notification actions and first action should open settings`() {
         // Arrange
-        setupPluginDescriptorAndStarWarsState()
+        setupPluginDetailsAndStarWarsState()
         val (_, _, notificationMock) = setupNotification()
         val pluginIconMock = mockk<Icon>(relaxed = true)
         every { StarWarsResourceLoader.getPluginIcon() } returns pluginIconMock
@@ -324,7 +329,7 @@ class PluginUpdatedActivityTests {
         // Arrange
         mockkObject(NotificationGroup)
         every { NotificationGroup.getGroupTitle(PluginConstants.NOTIFICATION_GROUP_ID) } returns null
-        setupPluginDescriptorAndStarWarsState()
+        setupPluginDetailsAndStarWarsState()
         val (_, _, notificationMock) = setupNotification()
         val pluginIconMock = mockk<Icon>(relaxed = true)
         every { StarWarsResourceLoader.getPluginIcon() } returns pluginIconMock
@@ -359,19 +364,21 @@ class PluginUpdatedActivityTests {
 
     //region Helper methods
 
-    private fun setupPluginDescriptorAndStarWarsState(
+    private fun setupPluginDetailsAndStarWarsState(
         storedVersion: String = storedDifferentVersion,
-    ): Pair<IdeaPluginDescriptor, StarWarsState> {
+    ): Pair<PluginDetailsService.PluginDetails, StarWarsState> {
         val pluginIdMock = mockk<PluginId>(relaxed = true)
-        val pluginDescriptorMock = mockk<IdeaPluginDescriptor>(relaxed = true)
+        val serviceMock = mockk<PluginDetailsService>()
+        val pluginDetailsMock = mockk<PluginDetailsService.PluginDetails>(relaxed = true)
         val starWarsStateMock = mockk<StarWarsState>(relaxed = true)
         every { PluginId.getId(PluginConstants.PLUGIN_ID) } returns pluginIdMock
-        every { PluginManagerCore.getPlugin(pluginIdMock) } returns pluginDescriptorMock
+        every { PluginDetailsService.getInstance() } returns serviceMock
+        every { serviceMock.findDetails(pluginIdMock) } returns pluginDetailsMock
         every { starWarsPersistentStateComponent.state } returns starWarsStateMock
         every { starWarsStateMock.version } returns storedVersion
-        every { pluginDescriptorMock.version } returns installedVersion
+        every { pluginDetailsMock.version } returns installedVersion
 
-        return Pair(pluginDescriptorMock, starWarsStateMock)
+        return Pair(pluginDetailsMock, starWarsStateMock)
     }
 
     private fun setupNotification(): Triple<NotificationGroupManager, NotificationGroup, Notification> {

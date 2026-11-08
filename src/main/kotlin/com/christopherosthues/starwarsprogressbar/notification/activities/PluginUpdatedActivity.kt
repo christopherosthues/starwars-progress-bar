@@ -8,7 +8,7 @@ import com.christopherosthues.starwarsprogressbar.constants.PluginConstants
 import com.christopherosthues.starwarsprogressbar.notification.DoNotAskService.canShowNotification
 import com.christopherosthues.starwarsprogressbar.notification.DoNotAskService.setDoNotAskFor
 import com.christopherosthues.starwarsprogressbar.util.StarWarsResourceLoader
-import com.intellij.ide.plugins.PluginManagerCore
+import com.intellij.ide.plugins.PluginDetailsService
 import com.intellij.notification.NotificationGroupManager
 import com.intellij.notification.NotificationType
 import com.intellij.openapi.actionSystem.AnActionEvent
@@ -21,18 +21,18 @@ import com.intellij.util.text.SemVer
 
 class PluginUpdatedActivity : ProjectActivity {
     override suspend fun execute(project: Project) {
-        val pluginDescriptor = PluginManagerCore.getPlugin(PluginId.getId(PluginConstants.PLUGIN_ID))
+        val pluginDetails = PluginDetailsService.getInstance().findDetails(PluginId.getId(PluginConstants.PLUGIN_ID))
         val starWarsState = StarWarsPersistentStateComponent.instance.state
-        if (pluginDescriptor != null && starWarsState != null) {
-            val installedVersion = pluginDescriptor.version
+        if (pluginDetails != null && starWarsState != null) {
+            val installedVersion = pluginDetails.version
             val installedSemanticVersion = SemVer.parseFromText(installedVersion)
             val storedSemanticVersion = SemVer.parseFromText(starWarsState.version)
             if (storedSemanticVersion == null ||
                 (installedSemanticVersion != null && installedSemanticVersion > storedSemanticVersion)
             ) {
-                starWarsState.version = installedVersion
+                starWarsState.version = installedVersion ?: ""
 
-                displayUpdateNotification(project, installedVersion)
+                displayUpdateNotification(project, installedVersion ?: "")
             }
         }
     }

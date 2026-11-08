@@ -8,6 +8,7 @@ import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SAME_VELOCIT
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SELECTOR
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_ICON
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_NAMES
+import com.christopherosthues.starwarsprogressbar.constants.PluginConstants
 import com.christopherosthues.starwarsprogressbar.models.Blade
 import com.christopherosthues.starwarsprogressbar.models.FactionCreationHelper
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
@@ -16,11 +17,13 @@ import com.christopherosthues.starwarsprogressbar.models.StarWarsFactionHolder
 import com.christopherosthues.starwarsprogressbar.models.StarWarsVehicle
 import com.christopherosthues.starwarsprogressbar.selectors.EntitySelectionType
 import com.christopherosthues.starwarsprogressbar.selectors.SelectionType
+import com.intellij.ide.plugins.PluginDetailsService
 import com.intellij.idea.TestFor
 import com.intellij.openapi.application.Application
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.Service
 import com.intellij.openapi.components.State
+import com.intellij.openapi.extensions.PluginId
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.mockkObject
@@ -44,6 +47,9 @@ class StarWarsPersistentStateComponentTests {
     @BeforeEach
     fun setup() {
         mockkObject(StarWarsFactionHolder)
+        mockkStatic(PluginId::class)
+        mockkObject(PluginId)
+        mockkObject(PluginDetailsService)
 
 //        every { StarWarsFactionHolder.updateFactions(any()) } just runs
         every { StarWarsFactionHolder.vehicleFactions } returns mockk(relaxed = true)
@@ -53,6 +59,12 @@ class StarWarsPersistentStateComponentTests {
         every { StarWarsFactionHolder.defaultVehicles } returns listOf()
         every { StarWarsFactionHolder.defaultLightsabersFactions } returns mockk(relaxed = true)
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
+
+        val pluginIdMock = mockk<PluginId>(relaxed = true)
+        val serviceMock = mockk<PluginDetailsService>()
+        every { PluginId.getId(PluginConstants.PLUGIN_ID) } returns pluginIdMock
+        every { PluginDetailsService.getInstance() } returns serviceMock
+        every { serviceMock.findDetails(pluginIdMock) } returns null
     }
 
     fun tearDown() {
