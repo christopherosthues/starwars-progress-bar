@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+## [3.0.0] - 2026-11-08
+
 ### Added
 
 - Gauntlet starfighter to mandalorians
@@ -13,8 +15,6 @@
 ### Changed
 
 - BREAKING: Updated supported IDEA versions to 2026.2+ (pluginSinceBuild raised from 242 → 262, platform version now 2026.2)
-
-### Removed
 
 ### Fixed
 
@@ -267,7 +267,8 @@
 - Initial release
 - Progress bar with vehicles from Star Wars
 
-[Unreleased]: https://github.com/christopherosthues/starwars-progress-bar/compare/v2.1.0...HEAD
+[Unreleased]: https://github.com/christopherosthues/starwars-progress-bar/compare/v3.0.0...HEAD
+[3.0.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v2.1.0...v3.0.0
 [2.1.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.12.0...v2.0.0
 [1.12.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.11.2...v1.12.0
