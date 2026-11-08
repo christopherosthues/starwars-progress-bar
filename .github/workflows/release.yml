@@ -79,7 +79,7 @@ jobs:
                     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                 run: |
                     VERSION="${{ github.event.release.tag_name }}"
-                    BRANCH="changelog-readme-update-$VERSION"
+                    BRANCH="feature/changelog-readme-update-$VERSION"
                     LABEL="release changelog"
 
                     git config user.email "action@github.com"
