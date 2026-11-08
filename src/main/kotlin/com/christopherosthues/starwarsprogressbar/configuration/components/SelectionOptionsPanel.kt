@@ -19,11 +19,14 @@ import javax.swing.JLabel
 import javax.swing.JPanel
 
 private const val GAP = 5
-private const val NUMBER_OF_ROWS = 2
+private const val NUMBER_OF_ROWS = 3
 private const val HORIZONTAL_GAP = 8
 
 internal class SelectionOptionsPanel(starWarsState: StarWarsState) :
     JTitledPanel(StarWarsBundle.message(BundleConstants.SELECTION_OPTIONS)) {
+    private val determinateHeaderLabel = JLabel(StarWarsBundle.message(BundleConstants.DETERMINATE))
+    private val indeterminateHeaderLabel = JLabel(StarWarsBundle.message(BundleConstants.INDETERMINATE))
+
     private val determinateSelectorLabel = JLabel(StarWarsBundle.message(BundleConstants.ORDER_SELECTOR))
     private val determinateSelectorComboBox = ComboBox(SelectionType.entries.toTypedArray())
     private val indeterminateSelectorLabel = JLabel(StarWarsBundle.message(BundleConstants.ORDER_SELECTOR))
@@ -72,6 +75,11 @@ internal class SelectionOptionsPanel(starWarsState: StarWarsState) :
             starWarsState.indeterminateEntitySelector = newValue
         }
 
+        val determinateHeaderPanel = JPanel(FlowLayout(FlowLayout.LEFT, HORIZONTAL_GAP, 0))
+        determinateHeaderPanel.add(determinateHeaderLabel)
+        val indeterminateHeaderPanel = JPanel(FlowLayout(FlowLayout.LEFT, HORIZONTAL_GAP, 0))
+        indeterminateHeaderPanel.add(indeterminateHeaderLabel)
+
         val determinatePanelForSelection = JPanel(FlowLayout(FlowLayout.LEFT, HORIZONTAL_GAP, 0))
         determinatePanelForSelection.add(determinateSelectorLabel)
         determinatePanelForSelection.add(determinateSelectorComboBox)
@@ -86,6 +94,8 @@ internal class SelectionOptionsPanel(starWarsState: StarWarsState) :
         indeterminatePanel.add(indeterminateEntitySelectorLabel)
         indeterminatePanel.add(indeterminateEntitySelectorComboBox)
 
+        add(determinateHeaderPanel)
+        add(indeterminateHeaderPanel)
         add(determinatePanelForSelection)
         add(indeterminatePanelForSelection)
         add(determinatePanel)
@@ -94,6 +104,8 @@ internal class SelectionOptionsPanel(starWarsState: StarWarsState) :
 
     fun addPropertyChangeListener(uiOptionsPanel: UiOptionsPanel) {
         uiOptionsPanel.addPropertyChangeListener(LANGUAGE_EVENT) {
+            determinateHeaderLabel.text = StarWarsBundle.message(BundleConstants.DETERMINATE)
+            indeterminateHeaderLabel.text = StarWarsBundle.message(BundleConstants.INDETERMINATE)
             determinateSelectorLabel.text = StarWarsBundle.message(BundleConstants.ORDER_SELECTOR)
             indeterminateSelectorLabel.text = StarWarsBundle.message(BundleConstants.ORDER_SELECTOR)
             determinateEntitySelectorLabel.text = StarWarsBundle.message(BundleConstants.ENTITY_SELECTOR)
