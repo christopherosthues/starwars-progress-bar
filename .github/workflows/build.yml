@@ -64,7 +64,7 @@ jobs:
             -   name: Setup Gradle
                 uses: gradle/actions/setup-gradle@v6
                 with:
-                    cache-cleanup: true
+                    cache-cleanup: always
 
             # Build plugin
             -   name: Build plugin
@@ -111,7 +111,7 @@ jobs:
             -   name: Setup Gradle
                 uses: gradle/actions/setup-gradle@v6
                 with:
-                    cache-cleanup: true
+                    cache-cleanup: always
                     cache-read-only: true
 
             # Run tests
@@ -159,7 +159,7 @@ jobs:
             -   name: Setup Gradle
                 uses: gradle/actions/setup-gradle@v6
                 with:
-                    cache-cleanup: true
+                    cache-cleanup: always
                     cache-read-only: true
 
             # Run Verify Plugin task and IntelliJ Plugin Verifier tool
@@ -203,7 +203,7 @@ jobs:
             -   name: Setup Gradle
                 uses: gradle/actions/setup-gradle@v6
                 with:
-                    cache-cleanup: true
+                    cache-cleanup: always
                     cache-read-only: true
 
             # Remove old release drafts by using the curl request for the available releases with a draft flag
