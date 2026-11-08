@@ -8,13 +8,17 @@
 
 - Gauntlet starfighter to mandalorians
 - Darth Maul's Nightbrother to scoundrels
-- Shadow Caster to Bounty Hunters
+- Option to configure different entity types (only vehicles / only lightsabers / all) for determinate and indeterminate progress bars
 
 ### Changed
+
+- BREAKING: Updated supported IDEA versions to 2026.2+ (pluginSinceBuild raised from 242 → 262, platform version now 2026.2)
 
 ### Removed
 
 ### Fixed
+
+- Plugin update notification is only shown when the plugin has actually been updated (previously it also appeared on fresh installs, because the stored version was never tracked)
 
 ## [2.1.0] - 2025-05-14
 
