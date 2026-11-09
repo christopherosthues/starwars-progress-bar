@@ -25,19 +25,8 @@ internal class StarWarsPersistentStateComponent : PersistentStateComponent<StarW
         XmlSerializerUtil.copyBean(state, this.state)
         val version = SemVer.parseFromText(this.state.version)
         if (version != null) {
-            if (version < SemVer("2.0.0", 2, 0, 0)) {
-                this.state.showIcon = this.state.showVehicle
-                this.state.showNames = this.state.showVehicleNames
-                this.state.sameVelocity = this.state.sameVehicleVelocity
-                this.state.enableNew = this.state.enableNewVehicles
-                this.state.changeAfterPass = this.state.changeVehicleAfterPass
-                this.state.numberOfPassesUntilChange = this.state.numberOfPassesUntilVehicleChange
-                this.state.selectorOrdinal = this.state.vehicleSelectorOrdinal
-            }
-            if (version < SemVer("3.0.0", 3, 0, 0)) {
-                this.state.determinateOrderSelectorOrdinal = this.state.selectorOrdinal
-                this.state.indeterminateOrderSelectorOrdinal = this.state.selectorOrdinal
-            }
+            migrationToVersion2(version)
+            migrationToVersion3(version)
         }
         val pluginDetails = PluginDetailsService.getInstance().findDetails(PluginId.getId(PluginConstants.PLUGIN_ID))
         val installedVersion = pluginDetails?.version
@@ -45,6 +34,25 @@ internal class StarWarsPersistentStateComponent : PersistentStateComponent<StarW
             // Record the version that was active before this update so PluginUpdatedActivity can detect it.
             this.state.previousVersion = this.state.version
             this.state.version = installedVersion
+        }
+    }
+
+    private fun migrationToVersion2(version: SemVer) {
+        if (version < SemVer("2.0.0", 2, 0, 0)) {
+            this.state.showIcon = this.state.showVehicle
+            this.state.showNames = this.state.showVehicleNames
+            this.state.sameVelocity = this.state.sameVehicleVelocity
+            this.state.enableNew = this.state.enableNewVehicles
+            this.state.changeAfterPass = this.state.changeVehicleAfterPass
+            this.state.numberOfPassesUntilChange = this.state.numberOfPassesUntilVehicleChange
+            this.state.selectorOrdinal = this.state.vehicleSelectorOrdinal
+        }
+    }
+
+    private fun migrationToVersion3(version: SemVer) {
+        if (version < SemVer("3.0.0", 3, 0, 0)) {
+            this.state.determinateOrderSelectorOrdinal = this.state.selectorOrdinal
+            this.state.indeterminateOrderSelectorOrdinal = this.state.selectorOrdinal
         }
     }
 
