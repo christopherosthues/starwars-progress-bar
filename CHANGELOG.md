@@ -4,15 +4,11 @@
 
 ## [Unreleased]
 
-### Added
-
-### Changed
+## [3.0.1] - 2026-11-09
 
 ### Fixed
 
 - Migration of selected selector
-
-### Removed
 
 ## [3.0.0] - 2026-11-08
 
@@ -277,7 +273,8 @@
 - Initial release
 - Progress bar with vehicles from Star Wars
 
-[Unreleased]: https://github.com/christopherosthues/starwars-progress-bar/compare/v3.0.0...HEAD
+[Unreleased]: https://github.com/christopherosthues/starwars-progress-bar/compare/v3.0.1...HEAD
+[3.0.1]: https://github.com/christopherosthues/starwars-progress-bar/compare/v3.0.0...v3.0.1
 [3.0.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v2.1.0...v3.0.0
 [2.1.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/christopherosthues/starwars-progress-bar/compare/v1.12.0...v2.0.0
