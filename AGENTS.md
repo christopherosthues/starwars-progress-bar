@@ -84,10 +84,7 @@ Notes:
 
 ### Adding new settings
 
-1. Add default value constant in `constants/ConfigurationConstants.kt`.
-2. Add field + getter/setter to `configuration/StarWarsState.kt`; include it in `copy()` and the relevant `isModified(...)` check.
-3. Persist via `StarWarsPersistentStateComponent` (state serialization is automatic for serializable fields).
-4. Wire UI into the appropriate panel under `configuration/components/`.
+Use the **`add-setting`** skill (`.agents/skills/add-setting/SKILL.md`) — it covers every piece that must be added together: the default constant, the label bundle key (+ every bundle file), the `StarWarsState` field including `copy()` and `isModified(...)`, the explicit copy in `apply()`, and the UI panel wiring.
 
 ### Entity selection
 
