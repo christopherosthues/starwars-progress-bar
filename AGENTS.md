@@ -94,9 +94,15 @@ Notes:
 - `selectors/` contains strategies implementing `IStarWarsSelector`: random, rolling-random, in-order/reverse per faction or name, for determinate and indeterminate progress bars separately (`SelectionType`, `EntitySelectionType`).
 - `factions.json` is parsed with kotlinx.serialization into `StarWarsFactions` by `util/StarWarsResourceLoader.kt`.
 
-### Adding a vehicle (or lightsaber)
+### Adding content (vehicles, lightsabers, factions)
 
-This is the primary content workflow. Use the **`add-vehicle`** skill (`.agents/skills/add-vehicle/SKILL.md`) — it covers everything that must be added together: the `factions.json` entry, the icon set in both locations, translations in every bundle file, and the `LIST_OF_VEHICLES.md` update, including naming rules and the test gates that enforce them.
+The primary content workflow is split into skills under `.agents/skills/`:
+
+- **`add-vehicle`** — add/rename/remove a vehicle: `factions.json` entry, icon set in both locations, translations in every bundle file, and the `LIST_OF_VEHICLES.md` update.
+- **`add-lightsaber`** — same for lightsabers (including jar-kai blade definitions); no `LIST_OF_VEHICLES.md` entry.
+- **`add-faction`** — new faction: `factions.json` entry, LFS-tracked logos (`logo.png`/`logo@2x.png`), and faction translation keys in every bundle file.
+
+Each skill covers the naming rules and the test gates (`IconResourceTests`, `StarWarsResourceBundleTests`) that enforce them.
 
 ### Localization
 
