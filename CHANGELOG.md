@@ -4,6 +4,16 @@
 
 ## [Unreleased]
 
+### Added
+
+### Changed
+
+### Fixed
+
+- Migration of selected selector
+
+### Removed
+
 ## [3.0.0] - 2026-11-08
 
 ### Added

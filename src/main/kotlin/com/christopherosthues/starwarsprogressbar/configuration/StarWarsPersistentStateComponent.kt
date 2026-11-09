@@ -32,11 +32,11 @@ internal class StarWarsPersistentStateComponent : PersistentStateComponent<StarW
                 this.state.enableNew = this.state.enableNewVehicles
                 this.state.changeAfterPass = this.state.changeVehicleAfterPass
                 this.state.numberOfPassesUntilChange = this.state.numberOfPassesUntilVehicleChange
+                this.state.selectorOrdinal = this.state.vehicleSelectorOrdinal
             }
             if (version < SemVer("3.0.0", 3, 0, 0)) {
-                this.state.determinateOrderSelectorOrdinal = this.state.vehicleSelectorOrdinal
-                this.state.indeterminateOrderSelectorOrdinal = this.state.vehicleSelectorOrdinal
-                this.state.selectorOrdinal = this.state.vehicleSelectorOrdinal
+                this.state.determinateOrderSelectorOrdinal = this.state.selectorOrdinal
+                this.state.indeterminateOrderSelectorOrdinal = this.state.selectorOrdinal
             }
         }
         val pluginDetails = PluginDetailsService.getInstance().findDetails(PluginId.getId(PluginConstants.PLUGIN_ID))
