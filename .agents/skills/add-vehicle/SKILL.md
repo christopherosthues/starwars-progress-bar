@@ -1,6 +1,6 @@
 ---
 name: Add Vehicle
-description: Adds a new vehicle to the Star Wars Progress Bar plugin. Use when adding, renaming, or removing a vehicle entity — requires updating factions.json, the LFS icon set in two locations, all four translation bundles, and LIST_OF_VEHICLES.md together, enforced by IconResourceTests and StarWarsResourceBundleTests.
+description: Adds a new vehicle to the Star Wars Progress Bar plugin. Use when adding, renaming, or removing a vehicle entity — requires updating factions.json, the LFS icon set in two locations, all translation bundles, and LIST_OF_VEHICLES.md together, enforced by IconResourceTests and StarWarsResourceBundleTests.
 ---
 
 # Add a vehicle
@@ -39,7 +39,7 @@ Add to the appropriate faction's `data` array under `"vehicles"`:
 ```
 
 - `ionEngine` must match one of the keys in the `colors` map defined by `IonEngineColor` (`src/main/kotlin/com/christopherosthues/starwarsprogressbar/ui/IonEngineColor.kt`) — unknown values silently fall back to blue.
-- Typical values: vehicles use `velocity: 2.5`; vehicle `yShift` is usually `-6`.
+- Typical values: vehicles use `velocity` between 0.5 and 5 inclusive; vehicle `yShift` is usually `-6`.
 
 ## 3. Icons (Git LFS PNGs)
 
@@ -48,9 +48,9 @@ All PNGs are Git LFS-tracked (`*.png filter=lfs`). Never commit them as regular 
 | File | Size | Notes |
 |---|---|---|
 | `src/main/resources/icons/vehicles/<faction>/<id>.png` | 32x32 | Forward-facing; loaded at runtime |
-| `src/main/resources/icons/vehicles/<faction>/<id>_r.png` | 32x32 | Backward (mirrored) variant |
+| `src/main/resources/icons/vehicles/<faction>/<id>_r.png` | 32x32 | Backward variant — the vehicle **rotated 180°**, not mirrored |
 | `icons/vehicles/<faction>/<id>@2x.png` | 64x64 | Repo root — used in LIST_OF_VEHICLES.md |
-| `icons/vehicles/<faction>/<id>_r@2x.png` | 64x64 | Repo root, mirrored variant |
+| `icons/vehicles/<faction>/<id>_r@2x.png` | 64x64 | Repo root, rotated variant at double size |
 
 - Only the middle vertical **16 px** of a 32x32 icon (middle 32 px of 64x64) is visible — the progress bar clips everything beyond that.
 - `IconResourceTests` enforces exactly these paths in both locations.
@@ -90,4 +90,4 @@ Relevant gates: `IconResourceTests` (icon existence **and** no orphan PNGs — a
 ## Renaming / removing an entity
 
 - Rename: update the id everywhere above **and** rename all icon files; orphaned PNGs fail `IconResourceTests` unless added to its `iconWhitelist`.
-- Remove: delete the factions.json entry, both icon pairs, and the bundle keys from all four files (plus the LIST_OF_VEHICLES.md line).
+- Remove: delete the factions.json entry, both icon pairs, and the bundle keys from all files (plus the LIST_OF_VEHICLES.md line).

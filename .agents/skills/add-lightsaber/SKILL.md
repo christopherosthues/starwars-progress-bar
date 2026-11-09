@@ -58,7 +58,7 @@ Add to the appropriate faction's `data` array under `"lightsabers"`:
 
 All PNGs are Git LFS-tracked (`*.png filter=lfs`). Never commit them as regular binaries; verify with `git lfs ls-files` before pushing.
 
-Unlike vehicles, lightsabers have **no `_r` variant**, and icon canvas sizes vary per icon (e.g. `yoda.png` is 35x10) — keep base icons around 32 px tall and make the @2x version double size.
+Unlike vehicles, lightsabers have **no `_r` variant**. Most lightsaber icons are **10 px** tall (some go up to **20 px**); the width is variable and depends on the hilt itself. Make the @2x version exactly double size.
 
 Non-jar-kai (`isJarKai: false`) — two files:
 
@@ -101,4 +101,4 @@ Relevant gates: `IconResourceTests` (icon existence **and** no orphan PNGs — a
 ## Renaming / removing an entity
 
 - Rename: update the id everywhere above **and** rename all icon files (including per-blade icons); orphaned PNGs fail `IconResourceTests` unless added to its `iconWhitelist`.
-- Remove: delete the factions.json entry, all icon pairs, and the bundle keys from all four files.
+- Remove: delete the factions.json entry, all icon pairs, and the bundle keys from all files.
