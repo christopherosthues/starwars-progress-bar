@@ -43,7 +43,7 @@ Rationale: The gates are the only thing standing between contributors and a brok
 
 ### IV. Localization Completeness
 
-- Every user-facing string MUST have a bundle key defined in `messages/StarWarsBundle.properties` (default) and in every locale file (`_en`, `_de`, `_es`).
+- Every user-facing string MUST have a bundle key defined in `messages/StarWarsBundle.properties` (default) and in every locale file (`_en`, `_de`, `_es`, ...).
 - The set of supported languages is defined by `configuration/Language.kt` and MUST match the locale bundle files; adding a language requires both.
 - Entity names use prefixed keys (e.g., `vehicles.<name>`) that end with the icon file name, per the established convention.
 
