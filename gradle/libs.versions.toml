@@ -13,7 +13,7 @@ kotlin = "2.4.21"
 kover = "0.9.11"
 ktlint = "1.8.0"
 ktlintPlugin = "14.2.0"
-mockk = "1.14.11"
+mockk = "1.14.12"
 
 [libraries]
 # JUnit 4 is required at test runtime by the IntelliJ Platform test framework (JUnit5TestSessionListener)
