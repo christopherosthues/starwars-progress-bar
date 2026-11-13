@@ -1,6 +1,5 @@
 package com.christopherosthues.starwarsprogressbar.ui
 
-import com.christopherosthues.starwarsprogressbar.models.Blade
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
 import com.intellij.ui.scale.JBUIScale
