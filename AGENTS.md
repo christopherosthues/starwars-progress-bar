@@ -106,6 +106,10 @@ Each skill covers the naming rules and the test gates (`IconResourceTests`, `Sta
 - Bundle: `messages.StarWarsBundle` (`AbstractBundle` wrapper in `StarWarsBundle.kt`).
 - Supported languages are defined by `configuration/Language.kt` (English, German, Spanish) and must match the `_en`, `_de`, `_es` bundle files. Adding a language requires both.
 
+## Commit Messages
+
+Use the **`semantic-commits`** skill (`.agents/skills/semantic-commits/SKILL.md`) for all hand-written commits and PR titles: `<type>: <subject>` with `feat`, `fix`, `docs`, `refactor`, `test`, `chore`, `ci`, or `build`; breaking changes get a `!` marker plus a leading-`BREAKING:` entry under `[Unreleased]` in CHANGELOG.md.
+
 ## README & Changelog Conventions
 
 - **The plugin description is extracted from `README.md`.** The build fails if the markers are missing or malformed. Keep the section between `<!-- Plugin description -->` and `<!-- Plugin description end -->` valid; it becomes the marketplace listing (converted to HTML).
