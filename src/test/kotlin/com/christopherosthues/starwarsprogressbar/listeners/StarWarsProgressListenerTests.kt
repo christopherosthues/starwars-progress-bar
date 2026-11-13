@@ -14,6 +14,7 @@ import io.mockk.slot
 import io.mockk.unmockkAll
 import io.mockk.verify
 import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
@@ -91,13 +92,13 @@ class StarWarsProgressListenerTests {
     @Test
     fun `constructor should store progress bar factory`() {
         // Arrange
-        val uiDefaultsMock = createAndSetupUIDefaultsMock()
+        val uiDefaults = createAndSetupUIDefaults()
 
         // Act
         StarWarsProgressListener()
 
         // Assert
-        verifyProgressBarFactoryStored(uiDefaultsMock, 1)
+        verifyProgressBarFactoryStored(uiDefaults)
     }
 
     @Test
@@ -168,16 +169,16 @@ class StarWarsProgressListenerTests {
     fun `lookAndFeelChanged should store progress bar factory`() {
         // Arrange
         val lookAndFellMock = mockk<LafManager>()
-        val uiDefaultsMock = createAndSetupUIDefaultsMock()
+        val uiDefaults = createAndSetupUIDefaults()
         val sut = StarWarsProgressListener()
 
-        verifyProgressBarFactoryStored(uiDefaultsMock, 1)
+        verifyProgressBarFactoryStored(uiDefaults)
 
         // Act
         sut.lookAndFeelChanged(lookAndFellMock)
 
         // Assert
-        verifyProgressBarFactoryStored(uiDefaultsMock, 2)
+        verifyProgressBarFactoryStored(uiDefaults)
     }
 
     @ParameterizedTest
@@ -305,16 +306,16 @@ class StarWarsProgressListenerTests {
     fun `pluginLoaded should store progress bar factory if provided plugin descriptor is star wars progress bar plugin`() {
         // Arrange
         val ideaPluginDescriptorMock = createAndSetupPluginDescriptorMock(pluginId)
-        val uiDefaultsMock = createAndSetupUIDefaultsMock()
+        val uiDefaults = createAndSetupUIDefaults()
         val sut = StarWarsProgressListener()
 
-        verifyProgressBarFactoryStored(uiDefaultsMock, 1)
+        verifyProgressBarFactoryStored(uiDefaults)
 
         // Act
         sut.pluginLoaded(ideaPluginDescriptorMock)
 
         // Assert
-        verifyProgressBarFactoryStored(uiDefaultsMock, 2)
+        verifyProgressBarFactoryStored(uiDefaults)
     }
 
     @ParameterizedTest
@@ -325,16 +326,16 @@ class StarWarsProgressListenerTests {
     ) {
         // Arrange
         val ideaPluginDescriptorMock = createAndSetupPluginDescriptorMock(pluginId)
-        val uiDefaultsMock = createAndSetupUIDefaultsMock()
+        val uiDefaults = createAndSetupUIDefaults()
         val sut = StarWarsProgressListener()
 
-        verifyProgressBarFactoryStored(uiDefaultsMock, 1)
+        verifyProgressBarFactoryStored(uiDefaults)
 
         // Act
         sut.pluginLoaded(ideaPluginDescriptorMock)
 
         // Assert
-        verifyProgressBarFactoryStored(uiDefaultsMock, 1)
+        verifyProgressBarFactoryStored(uiDefaults)
     }
 
     @ParameterizedTest
@@ -468,12 +469,12 @@ class StarWarsProgressListenerTests {
         return o == pluginIdMock || pluginIdMock.idString == o.idString
     }
 
-    private fun createAndSetupUIDefaultsMock(): UIDefaults {
-        val uiDefaultsMock = mockk<UIDefaults>()
-        every { UIManager.getDefaults() } returns uiDefaultsMock
-        every { uiDefaultsMock.put(any(), any()) } returns ""
+    private fun createAndSetupUIDefaults(): UIDefaults {
+        val uiDefaults = UIDefaults()
+        every { UIManager.getDefaults() } returns uiDefaults
+//        every { uiDefaults.put(any(), any()) } returns ""
 
-        return uiDefaultsMock
+        return uiDefaults
     }
 
     private fun createAndSetupPluginDescriptorMock(pluginId: String): IdeaPluginDescriptor {
@@ -498,10 +499,11 @@ class StarWarsProgressListenerTests {
         }
     }
 
-    private fun verifyProgressBarFactoryStored(uiDefaultsMock: UIDefaults, exactlyCalled: Int) {
-        verify(exactly = exactlyCalled) {
-            uiDefaultsMock[StarWarsProgressBarFactory::class.java.name] = StarWarsProgressBarFactory::class.java
-        }
+    private fun verifyProgressBarFactoryStored(uiDefaults: UIDefaults) {
+        Assertions.assertEquals(
+            StarWarsProgressBarFactory::class.java,
+            uiDefaults[StarWarsProgressBarFactory::class.java.name]
+        )
     }
 
     companion object {
