@@ -4,15 +4,13 @@ import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
 import com.christopherosthues.starwarsprogressbar.ui.IonEngineColor
 import com.intellij.idea.TestFor
 import com.intellij.ui.JBColor
-import io.mockk.every
-import io.mockk.mockk
-import io.mockk.mockkObject
 import io.mockk.unmockkAll
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertAll
+import java.awt.Color
 
 @TestFor(classes = [StarWarsVehicle::class])
 class StarWarsVehicleTests {
@@ -20,9 +18,9 @@ class StarWarsVehicleTests {
 
     @BeforeEach
     fun setup() {
-        mockkObject(IonEngineColor)
-
-        every { IonEngineColor.colors } returns mockk(relaxed = true)
+//        mockkObject(IonEngineColor)
+//
+//        every { IonEngineColor.colors } returns mockk(relaxed = true)
     }
 
     @AfterEach
@@ -161,9 +159,7 @@ class StarWarsVehicleTests {
     @Test
     fun `color should return correct color if color is defined`() {
         // Arrange
-        val ionEngine = "a"
-        val colorMock = mockk<JBColor>()
-        every { IonEngineColor.colors } returns mapOf(ionEngine to colorMock)
+        val ionEngine = "red"
         val id = "123456789"
         val sut = StarWarsVehicle(id, ionEngine, 1, 2, 3f)
 
@@ -171,15 +167,20 @@ class StarWarsVehicleTests {
         val result = sut.color
 
         // Assert
-        assertEquals(colorMock, result)
+        val maxRgbValue = 255
+        val redGValue = 107
+        val redBValue = 107
+        val expectedColor = JBColor(
+            Color(maxRgbValue, redGValue, redBValue),
+            Color(maxRgbValue, redGValue, redBValue),
+        )
+        assertEquals(expectedColor, result)
     }
 
     @Test
     fun `color should return blue color if color is not defined`() {
         // Arrange
         val ionEngine = "a"
-        val colorMock = mockk<JBColor>()
-        every { IonEngineColor.colors } returns mapOf(ionEngine to colorMock)
         val id = "123456789"
         val sut = StarWarsVehicle(id, "b", 1, 2, 3f)
 

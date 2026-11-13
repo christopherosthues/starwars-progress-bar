@@ -51,12 +51,12 @@ class StarWarsPersistentStateComponentTests {
         mockkObject(PluginId)
         mockkObject(PluginDetailsService)
 
-        every { StarWarsFactionHolder.vehicleFactions } returns mockk(relaxed = true)
-        every { StarWarsFactionHolder.lightsabersFactions } returns mockk(relaxed = true)
+        every { StarWarsFactionHolder.vehicleFactions } returns listOf()
+        every { StarWarsFactionHolder.lightsabersFactions } returns listOf()
         every { StarWarsFactionHolder.missingVehicle } returns mockk(relaxed = true)
-        every { StarWarsFactionHolder.defaultVehicleFactions } returns mockk(relaxed = true)
+        every { StarWarsFactionHolder.defaultVehicleFactions } returns listOf()
         every { StarWarsFactionHolder.defaultVehicles } returns listOf()
-        every { StarWarsFactionHolder.defaultLightsabersFactions } returns mockk(relaxed = true)
+        every { StarWarsFactionHolder.defaultLightsabersFactions } returns listOf()
         every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
 
         val pluginIdMock = mockk<PluginId>(relaxed = true)
