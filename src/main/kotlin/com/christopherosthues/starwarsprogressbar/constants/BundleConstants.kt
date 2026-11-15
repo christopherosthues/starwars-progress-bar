@@ -31,6 +31,7 @@ internal object BundleConstants {
     const val ENTITY_SELECTOR = CONFIGURATION + "entity.selector"
     const val SELECTION_OPTIONS = CONFIGURATION + "selectionOptions"
     const val LANGUAGE = CONFIGURATION + "language"
+    const val ENABLE_LIGHTSABER_VARIANTS = CONFIGURATION + "enableLightsaberVariants"
 
     const val VEHICLES = "vehicles."
     const val VEHICLES_FACTION = VEHICLES + "faction."

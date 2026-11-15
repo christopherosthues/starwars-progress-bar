@@ -14,6 +14,7 @@ internal const val DEFAULT_SOLID_PROGRESS_BAR_COLOR = false
 internal const val DEFAULT_DRAW_SILHOUETTES = false
 internal const val DEFAULT_CHANGE_AFTER_PASS = false
 internal const val DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE = 2
+internal const val DEFAULT_ENABLE_LIGHTSABER_VARIANTS = true
 internal val DEFAULT_SELECTOR = SelectionType.RANDOM_ALL
 internal val DEFAULT_ENTITY_SELECTOR = EntitySelectionType.ALL
 internal val DEFAULT_LANGUAGE = Language.ENGLISH

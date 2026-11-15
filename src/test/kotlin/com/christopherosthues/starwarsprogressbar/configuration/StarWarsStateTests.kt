@@ -2,6 +2,7 @@ package com.christopherosthues.starwarsprogressbar.configuration
 
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_CHANGE_AFTER_PASS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_DRAW_SILHOUETTES
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENABLE_LIGHTSABER_VARIANTS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENABLE_NEW
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENTITY_SELECTOR
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE
@@ -85,6 +86,7 @@ class StarWarsStateTests {
         val drawSilhouettes = true
         val changeVehicleAfterPass = true
         val numberOfPassesUntilVehicleChange = 1
+        val enableLightsaberVariants = false
         val determinateOrderSelector = SelectionType.RANDOM_NOT_DISPLAYED
         val indeterminateOrderSelector = SelectionType.RANDOM_NOT_DISPLAYED
         val determinateEntitySelector = EntitySelectionType.VEHICLES
@@ -105,6 +107,7 @@ class StarWarsStateTests {
         sut.drawSilhouettes = drawSilhouettes
         sut.changeAfterPass = changeVehicleAfterPass
         sut.numberOfPassesUntilChange = numberOfPassesUntilVehicleChange
+        sut.enableLightsaberVariants = enableLightsaberVariants
         sut.determinateOrderSelector = determinateOrderSelector
         sut.indeterminateOrderSelector = indeterminateOrderSelector
         sut.determinateEntitySelector = determinateEntitySelector
@@ -123,6 +126,7 @@ class StarWarsStateTests {
             { assertEquals(drawSilhouettes, sut.drawSilhouettes) },
             { assertEquals(changeVehicleAfterPass, sut.changeAfterPass) },
             { assertEquals(numberOfPassesUntilVehicleChange, sut.numberOfPassesUntilChange) },
+            { assertEquals(enableLightsaberVariants, sut.enableLightsaberVariants) },
             { assertEquals(determinateOrderSelector, sut.determinateOrderSelector) },
             { assertEquals(indeterminateOrderSelector, sut.indeterminateOrderSelector) },
             { assertEquals(determinateEntitySelector, sut.determinateEntitySelector) },
@@ -171,6 +175,7 @@ class StarWarsStateTests {
             { assertEquals(DEFAULT_DRAW_SILHOUETTES, sut.drawSilhouettes) },
             { assertEquals(DEFAULT_CHANGE_AFTER_PASS, sut.changeAfterPass) },
             { assertEquals(DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE, sut.numberOfPassesUntilChange) },
+            { assertEquals(DEFAULT_ENABLE_LIGHTSABER_VARIANTS, sut.enableLightsaberVariants) },
             { assertEquals(DEFAULT_SELECTOR, sut.determinateOrderSelector) },
             { assertEquals(DEFAULT_SELECTOR, sut.indeterminateOrderSelector) },
             { assertEquals(DEFAULT_ENTITY_SELECTOR, sut.determinateEntitySelector) },

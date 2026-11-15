@@ -2,11 +2,13 @@ package com.christopherosthues.starwarsprogressbar.ui
 
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_DRAW_SILHOUETTES
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENABLE_LIGHTSABER_VARIANTS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_FACTION_CRESTS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SHOW_ICON
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_SOLID_PROGRESS_BAR_COLOR
 import com.christopherosthues.starwarsprogressbar.models.Blade
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
+import com.christopherosthues.starwarsprogressbar.selectors.LightsaberVariantSelector
 import com.christopherosthues.starwarsprogressbar.ui.components.ColoredImageComponent
 import com.christopherosthues.starwarsprogressbar.util.StarWarsResourceLoader
 import com.intellij.ui.JBColor
@@ -24,6 +26,7 @@ private const val FACTION_CREST_X_POSITION = 4.0
 internal class LightsaberProgressBarDecorator(private val starWarsState: () -> StarWarsState?) {
     private var lightsaberIcons: MutableList<ColoredImageComponent> = mutableListOf()
     private lateinit var factionCrestIcon: ColoredImageComponent
+    private var selectedVariantIndex: Int = 0
 
     internal fun update(lightsabers: Lightsabers) {
         lightsaberIcons.clear()
@@ -39,6 +42,10 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
 
         factionCrestIcon =
             ColoredImageComponent(StarWarsResourceLoader.getFactionLogo("lightsabers", lightsabers.factionId, false))
+
+        // Select variant index once during update; persists until next entity selection per spec
+        val enableVariants = starWarsState()?.enableLightsaberVariants ?: DEFAULT_ENABLE_LIGHTSABER_VARIANTS
+        selectedVariantIndex = LightsaberVariantSelector.selectVariantIndex(lightsabers, enableVariants)
     }
 
     internal fun getHeight(): Int = JBUIScale.scale(LIGHTSABER_PROGRESSBAR_HEIGHT)
@@ -52,16 +59,47 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
         amountFull: Int,
     ) {
         val showIcon = starWarsState()?.showIcon ?: DEFAULT_SHOW_ICON
-        val layouts = LightsaberLayoutCalculator.compute(
-            lightsabers,
-            lightsaberIcons.map { it.width },
-            width,
-            amountFull,
-            showIcon,
-        )
+        val enableVariants = starWarsState()?.enableLightsaberVariants ?: DEFAULT_ENABLE_LIGHTSABER_VARIANTS
 
-        layouts.zip(lightsaberIcons).forEach { (layout, icon) ->
-            drawLightsaber(graphics2D, component, icon, layout)
+        // Use variant-aware layout computation when variants are enabled with multiple options
+        val layouts = if (enableVariants && lightsabers.variants.size > 1) {
+            LightsaberLayoutCalculator.computeVariantLayout(
+                lightsabers,
+                selectedVariantIndex,
+                lightsaberIcons.map { it.width },
+                width,
+                amountFull,
+                showIcon,
+            )
+        } else {
+            LightsaberLayoutCalculator.compute(
+                lightsabers,
+                lightsaberIcons.map { it.width },
+                width,
+                amountFull,
+                showIcon,
+            )
+        }
+
+        // For variant rendering, resolve the correct icon for each layout based on CombinedId.lightsaberId
+        val variant = if (enableVariants && lightsabers.variants.size > 1) {
+            lightsabers.variants.getOrNull(selectedVariantIndex) ?: lightsabers.variants.first()
+        } else {
+            null // Use default rendering path
+        }
+
+        if (variant != null) {
+            variant.forEachIndexed { index, combinedId ->
+                val layout = layouts.getOrNull(index) ?: return@forEachIndexed
+                // Select icon based on CombinedId.lightsaberId (1-based to 0-based index)
+                val iconIndex = combinedId.lightsaberId - 1
+                val icon = lightsaberIcons.getOrNull(iconIndex) ?: lightsaberIcons.first()
+                drawLightsaber(graphics2D, component, icon, layout)
+            }
+        } else {
+            layouts.zip(lightsaberIcons).forEach { (layout, icon) ->
+                drawLightsaber(graphics2D, component, icon, layout)
+            }
         }
 
         drawFactionCrest(width, height, graphics2D, component)

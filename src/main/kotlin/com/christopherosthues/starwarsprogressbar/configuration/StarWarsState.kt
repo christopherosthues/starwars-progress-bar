@@ -2,6 +2,7 @@ package com.christopherosthues.starwarsprogressbar.configuration
 
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_CHANGE_AFTER_PASS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_DRAW_SILHOUETTES
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENABLE_LIGHTSABER_VARIANTS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENABLE_NEW
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENTITY_SELECTOR
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_LANGUAGE
@@ -54,6 +55,8 @@ internal class StarWarsState {
     var solidProgressBarColor: Boolean = DEFAULT_SOLID_PROGRESS_BAR_COLOR
 
     var drawSilhouettes: Boolean = DEFAULT_DRAW_SILHOUETTES
+
+    var enableLightsaberVariants: Boolean = DEFAULT_ENABLE_LIGHTSABER_VARIANTS
 
     var changeAfterPass: Boolean = DEFAULT_CHANGE_AFTER_PASS
 
@@ -144,6 +147,7 @@ internal class StarWarsState {
         enableNew = starWarsState.enableNew
         solidProgressBarColor = starWarsState.solidProgressBarColor
         drawSilhouettes = starWarsState.drawSilhouettes
+        enableLightsaberVariants = starWarsState.enableLightsaberVariants
         changeAfterPass = starWarsState.changeAfterPass
         numberOfPassesUntilChange = starWarsState.numberOfPassesUntilChange
         determinateOrderSelector = starWarsState.determinateOrderSelector
@@ -169,6 +173,7 @@ internal class StarWarsState {
         enableNew != other.enableNew ||
         solidProgressBarColor != other.solidProgressBarColor ||
         drawSilhouettes != other.drawSilhouettes ||
+        enableLightsaberVariants != other.enableLightsaberVariants ||
         language != other.language
 
     private fun isSelectionOptionsModified(other: StarWarsState): Boolean =

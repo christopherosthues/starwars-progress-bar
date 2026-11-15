@@ -1,6 +1,7 @@
 package com.christopherosthues.starwarsprogressbar.ui
 
 import com.christopherosthues.starwarsprogressbar.models.Blade
+import com.christopherosthues.starwarsprogressbar.models.CombinedId
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -14,6 +15,26 @@ internal class LightsaberLayoutCalculatorTests {
         Lightsaber(id, isDoubleBladed, yShift, blades.toList())
 
     private fun lightsabers(vararg sabers: Lightsaber) = Lightsabers("1", 1f, false, sabers.toList())
+
+    private fun doubleBladedVariantEntity() = Lightsabers(
+        "1",
+        1f,
+        false,
+        listOf(
+            lightsaber(
+                1,
+                isDoubleBladed = true,
+                yShift = 3,
+                blade(xBlade = 1, yBlade = 2, bladeSize = 8),
+                blade(xBlade = -1, yBlade = 2, bladeSize = 8),
+            ),
+        ),
+        variants = listOf(
+            listOf(CombinedId(1, 0), CombinedId(1, 1)),
+            listOf(CombinedId(1, 0)),
+            listOf(CombinedId(1, 1)),
+        ),
+    )
 
     //region Tests
 
@@ -299,6 +320,78 @@ internal class LightsaberLayoutCalculatorTests {
         )
 
         assertEquals(expectedLayouts, result)
+    }
+
+    @Test
+    fun `computeVariantLayout should render left blade variant backward with hilt at right edge`() {
+        val result = LightsaberLayoutCalculator.computeVariantLayout(
+            doubleBladedVariantEntity(),
+            selectedVariantIndex = 1,
+            iconWidths = listOf(100),
+            width = 400,
+            amountFull = 80,
+            showIcon = true,
+        )
+
+        val expectedBlade = BladeGeometry(
+            blade(1, 2, 8, false),
+            x = 241,
+            y = 5,
+            width = 60,
+            height = 8,
+            borderX = 0,
+            borderWidth = 301,
+        )
+
+        assertEquals(LightsaberLayout(listOf(expectedBlade), HiltGeometry(x = 300, y = 3)), result.single())
+    }
+
+    @Test
+    fun `computeVariantLayout should render right blade variant forward with hilt at left edge`() {
+        val result = LightsaberLayoutCalculator.computeVariantLayout(
+            doubleBladedVariantEntity(),
+            selectedVariantIndex = 2,
+            iconWidths = listOf(100),
+            width = 400,
+            amountFull = 80,
+            showIcon = true,
+        )
+
+        val expectedBlade = BladeGeometry(
+            blade(-1, 2, 8, false),
+            x = 99,
+            y = 5,
+            width = 60,
+            height = 8,
+            borderX = 99,
+            borderWidth = 301,
+        )
+
+        assertEquals(LightsaberLayout(listOf(expectedBlade), HiltGeometry(x = 0, y = 3)), result.single())
+    }
+
+    @Test
+    fun `computeVariantLayout should render left blade variant backward without hilt when icon is not shown`() {
+        val result = LightsaberLayoutCalculator.computeVariantLayout(
+            doubleBladedVariantEntity(),
+            selectedVariantIndex = 1,
+            iconWidths = listOf(100),
+            width = 400,
+            amountFull = 80,
+            showIcon = false,
+        )
+
+        val expectedBlade = BladeGeometry(
+            blade(1, 2, 8, false),
+            x = 320,
+            y = 5,
+            width = 80,
+            height = 8,
+            borderX = 0,
+            borderWidth = 400,
+        )
+
+        assertEquals(LightsaberLayout(listOf(expectedBlade), null), result.single())
     }
 
     //endregion

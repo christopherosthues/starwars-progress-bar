@@ -1,6 +1,7 @@
 package com.christopherosthues.starwarsprogressbar.configuration.components
 
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
+import com.christopherosthues.starwarsprogressbar.configuration.ENABLE_LIGHTSABER_VARIANTS_EVENT
 import com.christopherosthues.starwarsprogressbar.configuration.LANGUAGE_EVENT
 import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
@@ -118,6 +119,7 @@ internal class PreviewPanel(private val starWarsState: StarWarsState) :
 
     fun repaintProgressBar() {
         determinateProgressBar.repaint()
+        indeterminateProgressBar.repaint()
     }
 
     fun addPropertyChangeListener(uiOptionsPanel: UiOptionsPanel) {
@@ -125,6 +127,10 @@ internal class PreviewPanel(private val starWarsState: StarWarsState) :
             title = StarWarsBundle.message(BundleConstants.PREVIEW_TITLE)
             determinateProgressBarContainer.text = StarWarsBundle.message(BundleConstants.DETERMINATE)
             indeterminateProgressBarContainer.text = StarWarsBundle.message(BundleConstants.INDETERMINATE)
+        }
+        uiOptionsPanel.addPropertyChangeListener(ENABLE_LIGHTSABER_VARIANTS_EVENT) {
+            // Re-select entities to pick new variant when toggle changes
+            setProgressBarUI(starWarsState.vehiclesEnabled, starWarsState.lightsabersEnabled)
         }
     }
 

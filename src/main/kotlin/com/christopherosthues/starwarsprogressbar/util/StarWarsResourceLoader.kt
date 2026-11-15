@@ -34,6 +34,7 @@ import javax.swing.ImageIcon
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+@Suppress("detekt:TooManyFunctions")
 internal object StarWarsResourceLoader {
     private const val ICON_RESOURCE_PATH = "icons/"
     private const val MAXIMUM_CACHE_SIZE = 100L
@@ -140,5 +141,47 @@ internal object StarWarsResourceLoader {
                 it.factionId = faction.id
             }
         }
+    }
+
+    /**
+     * Resolves the icon file path for a lightsaber entity, supporting multiple icon variations.
+     * For V1, returns the primary icon path; V2 will add user-facing variation selection.
+     *
+     * @param lightsabers The lightsaber entity with optional iconVariations list
+     * @param variationIndex Index into iconVariations list (0 = primary/default)
+     * @return The resolved file path for loading the icon
+     */
+    fun resolveLightsaberIconPath(lightsabers: Lightsabers, variationIndex: Int): String {
+        val variations = lightsabers.iconVariations
+        return if (variationIndex in variations.indices) {
+            // Use explicit variation name from entity declaration
+            "lightsabers/" + if (lightsabers.factionId.isEmpty()) {
+                variations[variationIndex]
+            } else {
+                "${lightsabers.factionId}/${variations[variationIndex]}"
+            }
+        } else {
+            // Fallback to primary icon path using entity's fileName property
+            lightsabers.fileName
+        }
+    }
+
+    /**
+     * Gets a lightsaber hilt image, supporting jar-kai individual blade icons and icon variations.
+     *
+     * @param lightsabers The lightsaber entity
+     * @param lightsaberId 1-based index of the specific lightsaber within the entity's list
+     * @param variationIndex Index into iconVariations (0 = primary/default)
+     * @return BufferedImage for the hilt icon
+     */
+    fun getLightsaberHiltIcon(lightsabers: Lightsabers, lightsaberId: Int, variationIndex: Int = 0): BufferedImage {
+        val baseName = resolveLightsaberIconPath(lightsabers, variationIndex)
+        // For jar-kai entities, append the individual hilt ID for separate icon files
+        val specificName = if (lightsabers.isJarKai && lightsaberId > 0) {
+            "$baseName" + "_" + lightsabers.lightsabers.getOrNull(lightsaberId - 1)?.id
+        } else {
+            baseName
+        }
+        return getImage(specificName)
     }
 }

@@ -3,6 +3,7 @@ package com.christopherosthues.starwarsprogressbar.configuration.components
 import com.christopherosthues.starwarsprogressbar.StarWarsBundle
 import com.christopherosthues.starwarsprogressbar.configuration.CHANGE_VEHICLE_AFTER_PASS_EVENT
 import com.christopherosthues.starwarsprogressbar.configuration.DRAW_SILHOUETTES_EVENT
+import com.christopherosthues.starwarsprogressbar.configuration.ENABLE_LIGHTSABER_VARIANTS_EVENT
 import com.christopherosthues.starwarsprogressbar.configuration.ENABLE_NEW_VEHICLES_EVENT
 import com.christopherosthues.starwarsprogressbar.configuration.LANGUAGE_EVENT
 import com.christopherosthues.starwarsprogressbar.configuration.Language
@@ -17,6 +18,7 @@ import com.christopherosthues.starwarsprogressbar.configuration.StarWarsState
 import com.christopherosthues.starwarsprogressbar.constants.BundleConstants
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_CHANGE_AFTER_PASS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_DRAW_SILHOUETTES
+import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENABLE_LIGHTSABER_VARIANTS
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_ENABLE_NEW
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_LANGUAGE
 import com.christopherosthues.starwarsprogressbar.constants.DEFAULT_NUMBER_OF_PASSES_UNTIL_CHANGE
@@ -70,6 +72,11 @@ internal class UiOptionsPanel(starWarsState: StarWarsState) :
         StarWarsBundle.message(BundleConstants.DRAW_SILHOUETTES),
         DEFAULT_DRAW_SILHOUETTES,
     )
+    private val enableLightsaberVariantsCheckBox = JBCheckBox(
+        StarWarsBundle.message(BundleConstants.ENABLE_LIGHTSABER_VARIANTS),
+        DEFAULT_ENABLE_LIGHTSABER_VARIANTS,
+    )
+
     private val changeAfterPassCheckBox = JBCheckBox(
         StarWarsBundle.message(BundleConstants.CHANGE_AFTER_PASS),
         DEFAULT_CHANGE_AFTER_PASS,
@@ -181,6 +188,17 @@ internal class UiOptionsPanel(starWarsState: StarWarsState) :
             )
             starWarsState.drawSilhouettes = newValue
         }
+        enableLightsaberVariantsCheckBox.addItemListener {
+            val oldValue = starWarsState.enableLightsaberVariants
+            val newValue = enableLightsaberVariantsCheckBox.isSelected
+            firePropertyChange(
+                ENABLE_LIGHTSABER_VARIANTS_EVENT,
+                oldValue,
+                newValue,
+            )
+            starWarsState.enableLightsaberVariants = newValue
+        }
+
         changeAfterPassCheckBox.addItemListener {
             val oldValue = starWarsState.changeAfterPass
             val newValue = changeAfterPassCheckBox.isSelected
@@ -222,6 +240,7 @@ internal class UiOptionsPanel(starWarsState: StarWarsState) :
         add(solidProgressBarColorCheckBox)
         add(showFactionCrestsCheckBox)
         add(drawSilhouettesCheckBox)
+        add(enableLightsaberVariantsCheckBox)
         add(passesPanel)
 
         addPropertyChangeListener {
@@ -235,6 +254,8 @@ internal class UiOptionsPanel(starWarsState: StarWarsState) :
                 solidProgressBarColorCheckBox.text = StarWarsBundle.message(BundleConstants.SOLID_PROGRESS_BAR_COLOR)
                 showIconCheckBox.text = StarWarsBundle.message(BundleConstants.SHOW_ICON)
                 drawSilhouettesCheckBox.text = StarWarsBundle.message(BundleConstants.DRAW_SILHOUETTES)
+                enableLightsaberVariantsCheckBox.text =
+                    StarWarsBundle.message(BundleConstants.ENABLE_LIGHTSABER_VARIANTS)
                 changeAfterPassCheckBox.text = StarWarsBundle.message(BundleConstants.CHANGE_AFTER_PASS)
                 languageLabel.text = StarWarsBundle.message(BundleConstants.LANGUAGE)
             }
@@ -251,6 +272,7 @@ internal class UiOptionsPanel(starWarsState: StarWarsState) :
         enableNewCheckBox.isSelected = starWarsState.enableNew
         solidProgressBarColorCheckBox.isSelected = starWarsState.solidProgressBarColor
         drawSilhouettesCheckBox.isSelected = starWarsState.drawSilhouettes
+        enableLightsaberVariantsCheckBox.isSelected = starWarsState.enableLightsaberVariants
         changeAfterPassCheckBox.isSelected = starWarsState.changeAfterPass
         numberOfPassesUntilChangeSpinner.value = starWarsState.numberOfPassesUntilChange
 

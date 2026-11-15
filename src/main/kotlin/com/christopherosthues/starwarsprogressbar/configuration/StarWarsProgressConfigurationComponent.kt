@@ -156,7 +156,8 @@ internal class StarWarsProgressConfigurationComponent {
         propertyName == SAME_VELOCITY_EVENT ||
         propertyName == SOLID_PROGRESS_BAR_COLOR_EVENT ||
         propertyName == SHOW_VEHICLE_EVENT ||
-        propertyName == DRAW_SILHOUETTES_EVENT
+        propertyName == DRAW_SILHOUETTES_EVENT ||
+        propertyName == ENABLE_LIGHTSABER_VARIANTS_EVENT
 
     private fun isVehicleChangeEvent(propertyName: String): Boolean = propertyName == CHANGE_VEHICLE_AFTER_PASS_EVENT ||
         propertyName == NUMBER_OF_PASSES_UNTIL_VEHICLE_CHANGE_EVENT

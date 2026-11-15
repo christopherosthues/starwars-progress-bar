@@ -502,7 +502,7 @@ class StarWarsProgressListenerTests {
     private fun verifyProgressBarFactoryStored(uiDefaults: UIDefaults) {
         Assertions.assertEquals(
             StarWarsProgressBarFactory::class.java,
-            uiDefaults[StarWarsProgressBarFactory::class.java.name]
+            uiDefaults[StarWarsProgressBarFactory::class.java.name],
         )
     }
 

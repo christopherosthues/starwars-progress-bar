@@ -11,6 +11,18 @@ internal data class Lightsabers(
     override val velocity: Float,
     val isJarKai: Boolean,
     val lightsabers: List<Lightsaber>,
+    /**
+     * Declares allowed display modes as explicit CombinedId references.
+     * Default preserves existing single-blade behavior.
+     */
+    @Suppress("ktlint")
+    val variants: List<List<CombinedId>> = listOf(listOf(CombinedId(1, 0))),
+    /**
+     * Alternative icon file names for the same lightsaber entity.
+     * Different characters/contexts; V2 feature foundation.
+     */
+    @Suppress("ktlint")
+    val iconVariations: List<String> = emptyList(),
 ) : StarWarsEntity {
 
     override var factionId: String = ""

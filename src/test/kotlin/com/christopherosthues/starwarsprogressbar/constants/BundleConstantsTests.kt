@@ -58,6 +58,7 @@ class BundleConstantsTests {
             Arguments.of("configuration.solidProgressBarColor", BundleConstants.SOLID_PROGRESS_BAR_COLOR),
             Arguments.of("configuration.drawSilhouettes", BundleConstants.DRAW_SILHOUETTES),
             Arguments.of("configuration.changeAfterPass", BundleConstants.CHANGE_AFTER_PASS),
+            Arguments.of("configuration.enableLightsaberVariants", BundleConstants.ENABLE_LIGHTSABER_VARIANTS),
             Arguments.of("configuration.vehicles", BundleConstants.VEHICLES_TITLE),
             Arguments.of("configuration.lightsabers", BundleConstants.LIGHTSABERS_TITLE),
             Arguments.of("configuration.selectionOptions", BundleConstants.SELECTION_OPTIONS),
