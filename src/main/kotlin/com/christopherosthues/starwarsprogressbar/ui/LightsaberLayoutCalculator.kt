@@ -176,15 +176,16 @@ internal object LightsaberLayoutCalculator {
         amountFull: Int,
     ): LightsaberLayout {
         // Full width minus only this hilt's length per FR-005
-        val availableLength = width - iconWidth
-        val ratio = availableLength.toFloat() / width
+        val maxBladeLength = width - iconWidth
+        val length = maxBladeLength + abs(JBUIScale.scale(blade.xBlade))
+        val ratio = length.toFloat() / width
         var bladeWidth = (amountFull * ratio).roundToInt()
 
         if (blade.isShoto) {
             bladeWidth /= 2
         }
 
-        val maxBladeWidth = availableLength.toFloat() + abs(JBUIScale.scale(blade.xBlade)).toFloat()
+        val maxBladeWidth = maxBladeLength.toFloat() + abs(JBUIScale.scale(blade.xBlade)).toFloat()
         val borderWidth = if (blade.isShoto) maxBladeWidth / 2 else maxBladeWidth
 
         // Blade starts at hilt emitter, not at hilt start
@@ -256,7 +257,8 @@ internal object LightsaberLayoutCalculator {
         amountFull: Int,
         isForward: Boolean,
     ): LightsaberLayout {
-        val length = width - iconWidth
+        val maxBladeLength = width - iconWidth
+        val length = maxBladeLength + abs(JBUIScale.scale(blade.xBlade))
         val ratio = length.toFloat() / width
         var bladeWidth = (amountFull * ratio).roundToInt()
 
@@ -264,7 +266,7 @@ internal object LightsaberLayoutCalculator {
             bladeWidth /= 2
         }
 
-        val maxBladeWidth = length.toFloat() + abs(JBUIScale.scale(blade.xBlade)).toFloat()
+        val maxBladeWidth = maxBladeLength.toFloat() + abs(JBUIScale.scale(blade.xBlade)).toFloat()
         val borderWidth = if (blade.isShoto) maxBladeWidth / 2 else maxBladeWidth
 
         // Blade starts at the hilt emitter: right edge for forward blades, left edge for backward blades
