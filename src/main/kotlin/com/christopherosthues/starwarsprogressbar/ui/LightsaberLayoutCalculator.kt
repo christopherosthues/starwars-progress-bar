@@ -268,9 +268,9 @@ internal object LightsaberLayoutCalculator {
 
     /**
      * Computes layout for a single blade variant from a CombinedId.
-     * The left blade (bladeId=0) goes backward like an even-numbered jar-kai blade: hilt at the right edge,
-     * blade extending leftward. The right blade (bladeId=1) goes forward like an odd-numbered jar-kai or
-     * single-bladed saber: hilt at the left edge, blade extending rightward.
+     * Direction is taken from [Blade.isForward] (related to lightsaber ID parity: odd IDs are forward, even
+     * IDs backward): forward blades get the hilt at the left edge with the blade extending rightward;
+     * backward blades get the hilt at the right edge with the blade extending leftward.
      */
     private fun computeVariantBladeLayout(
         lightsaber: Lightsaber,
@@ -282,8 +282,8 @@ internal object LightsaberLayoutCalculator {
     ): LightsaberLayout {
         val blade = lightsaber.blades.getOrNull(bladeId) ?: lightsaber.blades.first()
 
-        // Right blade (bladeId=1) goes forward like odd-numbered jar-kai blades; left blade goes backward
-        val isForward = bladeId != 0
+        // Direction from the blade itself (odd lightsaber IDs are forward, even IDs backward)
+        val isForward = blade.isForward
 
         // Hilt positioning per FR-003/FR-004: forward blades at the left edge, backward blades at the right edge
         val hiltX = if (isForward) {

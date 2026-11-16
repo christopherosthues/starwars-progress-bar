@@ -434,5 +434,135 @@ internal class LightsaberLayoutCalculatorTests {
         assertEquals(LightsaberLayout(listOf(expectedBlade), null), result.single())
     }
 
+    @Test
+    fun `computeVariantLayout should use blade isForward for direction instead of blade index`() {
+        val entity = Lightsabers(
+            "1",
+            1f,
+            false,
+            listOf(
+                lightsaber(
+                    1,
+                    isDoubleBladed = true,
+                    yShift = 3,
+                    blade(xBlade = 1, yBlade = 2, bladeSize = 8, isForward = true),
+                    blade(xBlade = -1, yBlade = 2, bladeSize = 8, isForward = false),
+                ),
+            ),
+            variants = listOf(
+                listOf(CombinedId(1, 0), CombinedId(1, 1)),
+                listOf(CombinedId(1, 0)),
+                listOf(CombinedId(1, 1)),
+            ),
+        )
+
+        val forwardResult = LightsaberLayoutCalculator.computeVariantLayout(
+            entity,
+            selectedVariantIndex = 1,
+            iconWidths = listOf(100),
+            width = 400,
+            amountFull = 80,
+            showIcon = true,
+        )
+
+        val forwardBlade = BladeGeometry(
+            blade(xBlade = 1, yBlade = 2, bladeSize = 8, isForward = true),
+            x = 101,
+            y = 5,
+            width = 60,
+            height = 8,
+            borderX = 101,
+            borderWidth = 301,
+        )
+
+        assertEquals(LightsaberLayout(listOf(forwardBlade), HiltGeometry(x = 0, y = 3)), forwardResult.single())
+
+        val backwardResult = LightsaberLayoutCalculator.computeVariantLayout(
+            entity,
+            selectedVariantIndex = 2,
+            iconWidths = listOf(100),
+            width = 400,
+            amountFull = 80,
+            showIcon = true,
+        )
+
+        val backwardBlade = BladeGeometry(
+            blade(xBlade = -1, yBlade = 2, bladeSize = 8, isForward = false),
+            x = 239,
+            y = 5,
+            width = 60,
+            height = 8,
+            borderX = -2,
+            borderWidth = 301,
+        )
+
+        assertEquals(LightsaberLayout(listOf(backwardBlade), HiltGeometry(x = 300, y = 3)), backwardResult.single())
+    }
+
+    @Test
+    fun `computeVariantLayout should render jar kai single blade variant like standard single bladed`() {
+        val entity = Lightsabers(
+            "1",
+            1f,
+            true,
+            listOf(
+                lightsaber(1, isDoubleBladed = false, yShift = 3, blade(xBlade = 50, yBlade = 2, bladeSize = 8)),
+                lightsaber(
+                    2,
+                    isDoubleBladed = false,
+                    yShift = 1,
+                    blade(xBlade = 50, yBlade = 2, bladeSize = 8, isForward = false),
+                ),
+            ),
+            variants = listOf(
+                listOf(CombinedId(1, 0), CombinedId(2, 0)),
+                listOf(CombinedId(1, 0)),
+                listOf(CombinedId(2, 0)),
+            ),
+        )
+
+        val forwardResult = LightsaberLayoutCalculator.computeVariantLayout(
+            entity,
+            selectedVariantIndex = 1,
+            iconWidths = listOf(100, 50),
+            width = 400,
+            amountFull = 80,
+            showIcon = true,
+        )
+
+        val forwardBlade = BladeGeometry(
+            blade(xBlade = 50, yBlade = 2, bladeSize = 8),
+            x = 150,
+            y = 5,
+            width = 70,
+            height = 8,
+            borderX = 150,
+            borderWidth = 350,
+        )
+
+        assertEquals(LightsaberLayout(listOf(forwardBlade), HiltGeometry(x = 0, y = 3)), forwardResult.single())
+
+        val backwardResult = LightsaberLayoutCalculator.computeVariantLayout(
+            entity,
+            selectedVariantIndex = 2,
+            iconWidths = listOf(100, 50),
+            width = 400,
+            amountFull = 80,
+            showIcon = true,
+        )
+
+        val backwardBlade = BladeGeometry(
+            blade(xBlade = 50, yBlade = 2, bladeSize = 8, isForward = false),
+            x = 320,
+            y = 3,
+            width = 80,
+            height = 8,
+            borderX = 0,
+            borderWidth = 400,
+        )
+
+        assertEquals(LightsaberLayout(listOf(backwardBlade), HiltGeometry(x = 350, y = 1)), backwardResult.single())
+    }
+
     //endregion
 }
