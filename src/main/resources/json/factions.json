@@ -22,6 +22,7 @@
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": 0,
                                     "yBlade": 1
@@ -36,6 +37,7 @@
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
+                                    "isForward": false,
                                     "bladeSize": 8,
                                     "xBlade": 0,
                                     "yBlade": 12
@@ -63,6 +65,7 @@
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
+                                    "isForward": false,
                                     "bladeSize": 8,
                                     "xBlade": 0,
                                     "yBlade": 1
@@ -70,6 +73,7 @@
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": 0,
                                     "yBlade": 1
@@ -92,6 +96,7 @@
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": 0,
                                     "yBlade": 1
@@ -119,6 +124,7 @@
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
+                                    "isForward": false,
                                     "bladeSize": 8,
                                     "xBlade": 0,
                                     "yBlade": 1
@@ -126,6 +132,7 @@
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": 0,
                                     "yBlade": 1
@@ -153,6 +160,7 @@
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
+                                    "isForward": false,
                                     "bladeSize": 5,
                                     "xBlade": 0,
                                     "yBlade": 12
@@ -160,6 +168,7 @@
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 5,
                                     "xBlade": -6,
                                     "yBlade": 12
@@ -187,6 +196,7 @@
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
+                                    "isForward": false,
                                     "bladeSize": 4,
                                     "xBlade": 1,
                                     "yBlade": 8
@@ -194,6 +204,7 @@
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 4,
                                     "xBlade": -1,
                                     "yBlade": 8
@@ -221,6 +232,7 @@
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
+                                    "isForward": false,
                                     "bladeSize": 4,
                                     "xBlade": 4,
                                     "yBlade": 8
@@ -228,6 +240,7 @@
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 4,
                                     "xBlade": -4,
                                     "yBlade": 8
@@ -255,6 +268,7 @@
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
+                                    "isForward": false,
                                     "bladeSize": 4,
                                     "xBlade": 1,
                                     "yBlade": 8
@@ -262,6 +276,7 @@
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 4,
                                     "xBlade": -1,
                                     "yBlade": 8
@@ -289,6 +304,7 @@
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
+                                    "isForward": false,
                                     "bladeSize": 4,
                                     "xBlade": 1,
                                     "yBlade": 8
@@ -296,6 +312,7 @@
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 4,
                                     "xBlade": -1,
                                     "yBlade": 8
@@ -323,6 +340,7 @@
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
+                                    "isForward": false,
                                     "bladeSize": 4,
                                     "xBlade": 1,
                                     "yBlade": 8
@@ -330,6 +348,7 @@
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 4,
                                     "xBlade": -1,
                                     "yBlade": 8
@@ -357,6 +376,7 @@
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
+                                    "isForward": false,
                                     "bladeSize": 4,
                                     "xBlade": 1,
                                     "yBlade": 8
@@ -364,6 +384,7 @@
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 4,
                                     "xBlade": -1,
                                     "yBlade": 8
@@ -391,6 +412,7 @@
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
+                                    "isForward": false,
                                     "bladeSize": 6,
                                     "xBlade": 9,
                                     "yBlade": 1
@@ -398,6 +420,7 @@
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 6,
                                     "xBlade": -9,
                                     "yBlade": 1
@@ -425,6 +448,7 @@
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 7,
                                     "xBlade": 0,
                                     "yBlade": 1
@@ -439,6 +463,7 @@
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
+                                    "isForward": false,
                                     "bladeSize": 7,
                                     "xBlade": 0,
                                     "yBlade": 2
@@ -461,6 +486,7 @@
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": -3,
                                     "yBlade": 1
@@ -483,6 +509,7 @@
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 6,
                                     "xBlade": -10,
                                     "yBlade": 0
@@ -515,6 +542,7 @@
                                 {
                                     "bladeColor": "green",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": -3,
                                     "yBlade": 1
@@ -529,6 +557,7 @@
                                 {
                                     "bladeColor": "lightGreen",
                                     "isShoto": true,
+                                    "isForward": false,
                                     "bladeSize": 7,
                                     "xBlade": 3,
                                     "yBlade": 0
@@ -556,6 +585,7 @@
                                 {
                                     "bladeColor": "blue",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": -3,
                                     "yBlade": 1
@@ -570,6 +600,7 @@
                                 {
                                     "bladeColor": "blue",
                                     "isShoto": true,
+                                    "isForward": false,
                                     "bladeSize": 7,
                                     "xBlade": 3,
                                     "yBlade": 0
@@ -592,6 +623,7 @@
                                 {
                                     "bladeColor": "blue",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": -3,
                                     "yBlade": 1
@@ -614,6 +646,7 @@
                                 {
                                     "bladeColor": "blue",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": -1,
                                     "yBlade": 2
@@ -636,6 +669,7 @@
                                 {
                                     "bladeColor": "green",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": 0,
                                     "yBlade": 1
@@ -658,6 +692,7 @@
                                 {
                                     "bladeColor": "green",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": 0,
                                     "yBlade": 1
@@ -680,6 +715,7 @@
                                 {
                                     "bladeColor": "blue",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": 0,
                                     "yBlade": 1
@@ -702,6 +738,7 @@
                                 {
                                     "bladeColor": "blue",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": 0,
                                     "yBlade": 1
@@ -724,6 +761,7 @@
                                 {
                                     "bladeColor": "blue",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 6,
                                     "xBlade": -2,
                                     "yBlade": 2
@@ -746,6 +784,7 @@
                                 {
                                     "bladeColor": "green",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 6,
                                     "xBlade": -2,
                                     "yBlade": 3
@@ -768,6 +807,7 @@
                                 {
                                     "bladeColor": "blue",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": -3,
                                     "yBlade": 1
@@ -790,6 +830,7 @@
                                 {
                                     "bladeColor": "blue",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 6,
                                     "xBlade": -10,
                                     "yBlade": 0
@@ -806,7 +847,11 @@
                     "variants": [
                         [{"lightsaberId": 1, "bladeId": 0}, {"lightsaberId": 1, "bladeId": 1}, {"lightsaberId": 2, "bladeId": 0}, {"lightsaberId": 2, "bladeId": 1}],
                         [{"lightsaberId": 1, "bladeId": 0}, {"lightsaberId": 2, "bladeId": 0}],
-                        [{"lightsaberId": 1, "bladeId": 1}, {"lightsaberId": 2, "bladeId": 1}]
+                        [{"lightsaberId": 1, "bladeId": 1}, {"lightsaberId": 2, "bladeId": 1}],
+                        [{"lightsaberId": 1, "bladeId": 0}],
+                        [{"lightsaberId": 1, "bladeId": 1}],
+                        [{"lightsaberId": 2, "bladeId": 0}],
+                        [{"lightsaberId": 2, "bladeId": 1}]
                     ],
                     "lightsabers": [
                         {
@@ -817,6 +862,7 @@
                                 {
                                     "bladeColor": "green",
                                     "isShoto": false,
+                                    "isForward": false,
                                     "bladeSize": 8,
                                     "xBlade": 1,
                                     "yBlade": 1
@@ -824,6 +870,7 @@
                                 {
                                     "bladeColor": "green",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": -1,
                                     "yBlade": 1
@@ -838,6 +885,7 @@
                                 {
                                     "bladeColor": "blue",
                                     "isShoto": false,
+                                    "isForward": false,
                                     "bladeSize": 8,
                                     "xBlade": 1,
                                     "yBlade": 1
@@ -845,6 +893,7 @@
                                 {
                                     "bladeColor": "blue",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": -1,
                                     "yBlade": 1
@@ -867,6 +916,7 @@
                                 {
                                     "bladeColor": "green",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": 0,
                                     "yBlade": 2
@@ -889,6 +939,7 @@
                                 {
                                     "bladeColor": "lightBlue",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 6,
                                     "xBlade": 0,
                                     "yBlade": 6
@@ -911,6 +962,7 @@
                                 {
                                     "bladeColor": "green",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": 0,
                                     "yBlade": 1
@@ -933,6 +985,7 @@
                                 {
                                     "bladeColor": "blue",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": 0,
                                     "yBlade": 1
@@ -955,6 +1008,7 @@
                                 {
                                     "bladeColor": "blue",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": -3,
                                     "yBlade": 1
@@ -977,6 +1031,7 @@
                                 {
                                     "bladeColor": "purple",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": 0,
                                     "yBlade": 1
@@ -999,6 +1054,7 @@
                                 {
                                     "bladeColor": "blue",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": 0,
                                     "yBlade": 1
@@ -1021,6 +1077,7 @@
                                 {
                                     "bladeColor": "blue",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": 0,
                                     "yBlade": 1
@@ -1043,6 +1100,7 @@
                                 {
                                     "bladeColor": "blue",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": 0,
                                     "yBlade": 1
@@ -1065,6 +1123,7 @@
                                 {
                                     "bladeColor": "green",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": 0,
                                     "yBlade": 1
@@ -1087,6 +1146,7 @@
                                 {
                                     "bladeColor": "blue",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": 0,
                                     "yBlade": 6
@@ -1109,6 +1169,7 @@
                                 {
                                     "bladeColor": "green",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 6,
                                     "xBlade": -1,
                                     "yBlade": 7
@@ -1131,6 +1192,7 @@
                                 {
                                     "bladeColor": "blue",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": 0,
                                     "yBlade": 1
@@ -1153,6 +1215,7 @@
                                 {
                                     "bladeColor": "blue",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": 0,
                                     "yBlade": 1
@@ -1175,6 +1238,7 @@
                                 {
                                     "bladeColor": "blue",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": 0,
                                     "yBlade": 1
@@ -1197,6 +1261,7 @@
                                 {
                                     "bladeColor": "blue",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": 0,
                                     "yBlade": 1
@@ -1219,6 +1284,7 @@
                                 {
                                     "bladeColor": "green",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": 0,
                                     "yBlade": 1
@@ -1241,6 +1307,7 @@
                                 {
                                     "bladeColor": "green",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": 0,
                                     "yBlade": 1
@@ -1263,6 +1330,7 @@
                                 {
                                     "bladeColor": "blue",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": 0,
                                     "yBlade": 1
@@ -1285,6 +1353,7 @@
                                 {
                                     "bladeColor": "yellow",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 7,
                                     "xBlade": -2,
                                     "yBlade": 2
@@ -1307,6 +1376,7 @@
                                 {
                                     "bladeColor": "green",
                                     "isShoto": true,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": -4,
                                     "yBlade": 0
@@ -1339,6 +1409,7 @@
                                 {
                                     "bladeColor": "white",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 6,
                                     "xBlade": 0,
                                     "yBlade": 0
@@ -1353,6 +1424,7 @@
                                 {
                                     "bladeColor": "white",
                                     "isShoto": true,
+                                    "isForward": false,
                                     "bladeSize": 6,
                                     "xBlade": 0,
                                     "yBlade": 2
@@ -1375,6 +1447,7 @@
                                 {
                                     "bladeColor": "green",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": -7,
                                     "yBlade": 1
@@ -1397,6 +1470,7 @@
                                 {
                                     "bladeColor": "redOrange",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": -2,
                                     "yBlade": 1
@@ -1419,6 +1493,7 @@
                                 {
                                     "bladeColor": "redOrange",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": -2,
                                     "yBlade": 1
@@ -1446,6 +1521,7 @@
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": -2,
                                     "yBlade": 1
@@ -1460,6 +1536,7 @@
                                 {
                                     "bladeColor": "red",
                                     "isShoto": false,
+                                    "isForward": false,
                                     "bladeSize": 8,
                                     "xBlade": 2,
                                     "yBlade": 1

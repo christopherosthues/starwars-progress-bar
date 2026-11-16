@@ -8,8 +8,15 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 internal class LightsaberLayoutCalculatorTests {
-    private fun blade(xBlade: Int, yBlade: Int, bladeSize: Int, isShoto: Boolean = false) =
-        Blade(bladeColor = "blue", isShoto = isShoto, bladeSize = bladeSize, xBlade = xBlade, yBlade = yBlade)
+    private fun blade(xBlade: Int, yBlade: Int, bladeSize: Int, isShoto: Boolean = false, isForward: Boolean = true) =
+        Blade(
+            bladeColor = "blue",
+            isShoto = isShoto,
+            isForward = isForward,
+            bladeSize = bladeSize,
+            xBlade = xBlade,
+            yBlade = yBlade,
+        )
 
     private fun lightsaber(id: Int, isDoubleBladed: Boolean, yShift: Int, vararg blades: Blade) =
         Lightsaber(id, isDoubleBladed, yShift, blades.toList())
@@ -25,7 +32,7 @@ internal class LightsaberLayoutCalculatorTests {
                 1,
                 isDoubleBladed = true,
                 yShift = 3,
-                blade(xBlade = 1, yBlade = 2, bladeSize = 8),
+                blade(xBlade = 1, yBlade = 2, bladeSize = 8, isForward = false),
                 blade(xBlade = -1, yBlade = 2, bladeSize = 8),
             ),
         ),
@@ -65,7 +72,12 @@ internal class LightsaberLayoutCalculatorTests {
 
     @Test
     fun `compute should return right blade geometry for single bladed even id lightsaber`() {
-        val saber = lightsaber(2, isDoubleBladed = false, yShift = 1, blade(xBlade = -200, yBlade = 2, bladeSize = 8))
+        val saber = lightsaber(
+            2,
+            isDoubleBladed = false,
+            yShift = 1,
+            blade(xBlade = -200, yBlade = 2, bladeSize = 8, isForward = false),
+        )
 
         val result = LightsaberLayoutCalculator.compute(
             lightsabers(saber),
@@ -76,7 +88,7 @@ internal class LightsaberLayoutCalculatorTests {
         )
 
         val expectedBlade = BladeGeometry(
-            blade(-200, 2, 8, false),
+            blade(xBlade = -200, yBlade = 2, bladeSize = 8, isForward = false),
             x = 0,
             y = 3,
             width = 100,
@@ -116,7 +128,13 @@ internal class LightsaberLayoutCalculatorTests {
 
     @Test
     fun `compute should return left and right blade geometry for double bladed lightsaber`() {
-        val saber = lightsaber(1, isDoubleBladed = true, yShift = 3, blade(-100, 2, 8, false), blade(100, 4, 6, false))
+        val saber = lightsaber(
+            1,
+            isDoubleBladed = true,
+            yShift = 3,
+            blade(xBlade = -100, yBlade = 2, bladeSize = 8, isForward = false),
+            blade(100, 4, 6, false),
+        )
 
         val result = LightsaberLayoutCalculator.compute(
             lightsabers(saber),
@@ -127,7 +145,7 @@ internal class LightsaberLayoutCalculatorTests {
         )
 
         val leftBlade = BladeGeometry(
-            blade(-100, 2, 8, false),
+            blade(xBlade = -100, yBlade = 2, bladeSize = 8, isForward = false),
             x = 10,
             y = 5,
             width = 40,
@@ -150,7 +168,13 @@ internal class LightsaberLayoutCalculatorTests {
 
     @Test
     fun `compute should quarter shoto blade border width for double bladed lightsaber`() {
-        val saber = lightsaber(1, isDoubleBladed = true, yShift = 3, blade(-100, 2, 8, true), blade(100, 4, 6, false))
+        val saber = lightsaber(
+            1,
+            isDoubleBladed = true,
+            yShift = 3,
+            blade(xBlade = -100, yBlade = 2, bladeSize = 8, isShoto = true, isForward = false),
+            blade(100, 4, 6, false),
+        )
 
         val result = LightsaberLayoutCalculator.compute(
             lightsabers(saber),
@@ -161,7 +185,7 @@ internal class LightsaberLayoutCalculatorTests {
         )
 
         val leftBlade = BladeGeometry(
-            blade(-100, 2, 8, true),
+            blade(xBlade = -100, yBlade = 2, bladeSize = 8, isShoto = true, isForward = false),
             x = 30,
             y = 5,
             width = 20,
@@ -209,7 +233,13 @@ internal class LightsaberLayoutCalculatorTests {
 
     @Test
     fun `compute should use first blade only for double bladed lightsaber without hilt`() {
-        val saber = lightsaber(2, isDoubleBladed = true, yShift = 3, blade(-100, 2, 8, false), blade(100, 4, 6, false))
+        val saber = lightsaber(
+            2,
+            isDoubleBladed = true,
+            yShift = 3,
+            blade(xBlade = -100, yBlade = 2, bladeSize = 8, isForward = false),
+            blade(100, 4, 6, false),
+        )
 
         val result = LightsaberLayoutCalculator.compute(
             lightsabers(saber),
@@ -220,7 +250,7 @@ internal class LightsaberLayoutCalculatorTests {
         )
 
         val expectedBlade = BladeGeometry(
-            blade(-100, 2, 8, false),
+            blade(xBlade = -100, yBlade = 2, bladeSize = 8, isForward = false),
             x = 320,
             y = 5,
             width = 80,
@@ -259,7 +289,12 @@ internal class LightsaberLayoutCalculatorTests {
 
     @Test
     fun `compute should return no hilt geometry for double bladed lightsaber when icon does not fit`() {
-        val saber = lightsaber(1, isDoubleBladed = true, yShift = 3, blade(-100, 2, 8, false))
+        val saber = lightsaber(
+            1,
+            isDoubleBladed = true,
+            yShift = 3,
+            blade(xBlade = -100, yBlade = 2, bladeSize = 8, isForward = false),
+        )
 
         val result = LightsaberLayoutCalculator.compute(
             lightsabers(saber),
@@ -270,7 +305,7 @@ internal class LightsaberLayoutCalculatorTests {
         )
 
         val expectedBlade = BladeGeometry(
-            blade(-100, 2, 8, false),
+            blade(xBlade = -100, yBlade = 2, bladeSize = 8, isForward = false),
             x = 0,
             y = 5,
             width = 80,
@@ -285,7 +320,12 @@ internal class LightsaberLayoutCalculatorTests {
     @Test
     fun `compute should use max icon widths of single bladed lightsabers for all layouts`() {
         val leftSaber = lightsaber(1, isDoubleBladed = false, yShift = 3, blade(-40, 2, 8, false))
-        val rightSaber = lightsaber(2, isDoubleBladed = false, yShift = 1, blade(-40, 2, 8, false))
+        val rightSaber = lightsaber(
+            2,
+            isDoubleBladed = false,
+            yShift = 1,
+            blade(xBlade = -40, yBlade = 2, bladeSize = 8, isForward = false),
+        )
 
         val result = LightsaberLayoutCalculator.compute(
             lightsabers(leftSaber, rightSaber),
@@ -305,7 +345,7 @@ internal class LightsaberLayoutCalculatorTests {
             borderWidth = 300,
         )
         val rightBlade = BladeGeometry(
-            blade(-40, 2, 8, false),
+            blade(xBlade = -40, yBlade = 2, bladeSize = 8, isForward = false),
             x = 205,
             y = 3,
             width = 75,
@@ -334,7 +374,7 @@ internal class LightsaberLayoutCalculatorTests {
         )
 
         val expectedBlade = BladeGeometry(
-            blade(1, 2, 8, false),
+            blade(xBlade = 1, yBlade = 2, bladeSize = 8, isForward = false),
             x = 241,
             y = 5,
             width = 60,
@@ -382,7 +422,7 @@ internal class LightsaberLayoutCalculatorTests {
         )
 
         val expectedBlade = BladeGeometry(
-            blade(1, 2, 8, false),
+            blade(xBlade = 1, yBlade = 2, bladeSize = 8, isForward = false),
             x = 320,
             y = 5,
             width = 80,

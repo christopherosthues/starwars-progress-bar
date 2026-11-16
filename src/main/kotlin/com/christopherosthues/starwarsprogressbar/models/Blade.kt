@@ -8,6 +8,7 @@ import kotlinx.serialization.Serializable
 internal data class Blade(
     val bladeColor: String,
     val isShoto: Boolean,
+    val isForward: Boolean,
     val bladeSize: Int,
     val xBlade: Int,
     val yBlade: Int,

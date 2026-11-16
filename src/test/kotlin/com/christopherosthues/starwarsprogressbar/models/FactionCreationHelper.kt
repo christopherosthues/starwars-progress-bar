@@ -23,7 +23,7 @@ internal object FactionCreationHelper {
             1,
             isDoubleBladed = false,
             yShift = 1,
-            listOf(Blade("blue", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)),
+            listOf(Blade("blue", isShoto = false, isForward = true, bladeSize = 8, xBlade = 0, yBlade = 0)),
         )
 
     internal val greenBlade
@@ -31,7 +31,7 @@ internal object FactionCreationHelper {
             1,
             isDoubleBladed = false,
             yShift = 2,
-            listOf(Blade("green", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0)),
+            listOf(Blade("green", isShoto = true, isForward = true, bladeSize = 8, xBlade = 0, yBlade = 0)),
         )
 
     internal val brownBlade
@@ -39,7 +39,7 @@ internal object FactionCreationHelper {
             1,
             isDoubleBladed = false,
             yShift = 2,
-            listOf(Blade("brown", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0)),
+            listOf(Blade("brown", isShoto = true, isForward = true, bladeSize = 8, xBlade = 0, yBlade = 0)),
         )
 
     internal val yellowBlade
@@ -47,7 +47,7 @@ internal object FactionCreationHelper {
             1,
             isDoubleBladed = false,
             yShift = 4,
-            listOf(Blade("yellow", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)),
+            listOf(Blade("yellow", isShoto = false, isForward = true, bladeSize = 8, xBlade = 0, yBlade = 0)),
         )
 
     internal val yellowBlade2
@@ -55,7 +55,7 @@ internal object FactionCreationHelper {
             1,
             isDoubleBladed = false,
             yShift = 8,
-            listOf(Blade("yellow", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)),
+            listOf(Blade("yellow", isShoto = false, isForward = true, bladeSize = 8, xBlade = 0, yBlade = 0)),
         )
 
     internal val redBlade
@@ -63,7 +63,7 @@ internal object FactionCreationHelper {
             1,
             isDoubleBladed = false,
             yShift = 5,
-            listOf(Blade("red", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0)),
+            listOf(Blade("red", isShoto = true, isForward = true, bladeSize = 8, xBlade = 0, yBlade = 0)),
         )
 
     internal val redDoubleBlade
@@ -72,8 +72,8 @@ internal object FactionCreationHelper {
             isDoubleBladed = true,
             yShift = 3,
             listOf(
-                Blade("red", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
-                Blade("red", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
+                Blade("red", isShoto = false, isForward = false, bladeSize = 8, xBlade = 0, yBlade = 0),
+                Blade("red", isShoto = false, isForward = true, bladeSize = 8, xBlade = 0, yBlade = 0),
             ),
         )
 
@@ -83,8 +83,8 @@ internal object FactionCreationHelper {
             isDoubleBladed = true,
             yShift = 3,
             listOf(
-                Blade("green", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
-                Blade("green", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
+                Blade("green", isShoto = false, isForward = false, bladeSize = 8, xBlade = 0, yBlade = 0),
+                Blade("green", isShoto = false, isForward = true, bladeSize = 8, xBlade = 0, yBlade = 0),
             ),
         )
 
@@ -94,8 +94,8 @@ internal object FactionCreationHelper {
             isDoubleBladed = true,
             yShift = 7,
             listOf(
-                Blade("green", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
-                Blade("green", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
+                Blade("green", isShoto = false, isForward = false, bladeSize = 8, xBlade = 0, yBlade = 0),
+                Blade("green", isShoto = false, isForward = true, bladeSize = 8, xBlade = 0, yBlade = 0),
             ),
         )
 
@@ -105,8 +105,8 @@ internal object FactionCreationHelper {
             isDoubleBladed = true,
             yShift = 2,
             listOf(
-                Blade("green", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
-                Blade("green", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
+                Blade("green", isShoto = false, isForward = false, bladeSize = 8, xBlade = 0, yBlade = 0),
+                Blade("green", isShoto = false, isForward = true, bladeSize = 8, xBlade = 0, yBlade = 0),
             ),
         )
 
@@ -116,8 +116,8 @@ internal object FactionCreationHelper {
             isDoubleBladed = true,
             yShift = 6,
             listOf(
-                Blade("purple", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
-                Blade("purple", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
+                Blade("purple", isShoto = false, isForward = false, bladeSize = 8, xBlade = 0, yBlade = 0),
+                Blade("purple", isShoto = false, isForward = true, bladeSize = 8, xBlade = 0, yBlade = 0),
             ),
         )
 

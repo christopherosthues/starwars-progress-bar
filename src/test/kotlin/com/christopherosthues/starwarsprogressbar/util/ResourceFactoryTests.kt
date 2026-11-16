@@ -116,7 +116,7 @@ class ResourceFactoryTests {
                                 1,
                                 isDoubleBladed = false,
                                 yShift = 1,
-                                listOf(Blade("brown", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                                listOf(Blade("brown", isShoto = false, isForward = true, bladeSize = 8, xBlade = 0, yBlade = 0)),
                             ),
                         ),
                     ),
@@ -135,8 +135,8 @@ class ResourceFactoryTests {
                                 isDoubleBladed = true,
                                 yShift = 2,
                                 listOf(
-                                    Blade("blue", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
-                                    Blade("blue", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0),
+                                    Blade("blue", isShoto = false, isForward = false, bladeSize = 8, xBlade = 0, yBlade = 0),
+                                    Blade("blue", isShoto = false, isForward = true, bladeSize = 8, xBlade = 0, yBlade = 0),
                                 ),
                             ),
                         ),
@@ -150,13 +150,13 @@ class ResourceFactoryTests {
                                 1,
                                 isDoubleBladed = false,
                                 yShift = 3,
-                                listOf(Blade("blue", isShoto = false, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                                listOf(Blade("blue", isShoto = false, isForward = true, bladeSize = 8, xBlade = 0, yBlade = 0)),
                             ),
                             Lightsaber(
                                 2,
                                 isDoubleBladed = false,
                                 yShift = 4,
-                                listOf(Blade("green", isShoto = true, bladeSize = 8, xBlade = 0, yBlade = 0)),
+                                listOf(Blade("green", isShoto = true, isForward = false, bladeSize = 8, xBlade = 0, yBlade = 0)),
                             ),
                         ),
                     ),
@@ -184,6 +184,7 @@ class ResourceFactoryTests {
                                 {
                                     "bladeColor": "brown",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": 0,
                                     "yBlade": 0
@@ -211,6 +212,7 @@ class ResourceFactoryTests {
                                 {
                                     "bladeColor": "blue",
                                     "isShoto": false,
+                                    "isForward": false,
                                     "bladeSize": 8,
                                     "xBlade": 0,
                                     "yBlade": 0
@@ -218,6 +220,7 @@ class ResourceFactoryTests {
                                 {
                                     "bladeColor": "blue",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": 0,
                                     "yBlade": 0
@@ -240,6 +243,7 @@ class ResourceFactoryTests {
                                 {
                                     "bladeColor": "blue",
                                     "isShoto": false,
+                                    "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": 0,
                                     "yBlade": 0
@@ -254,6 +258,7 @@ class ResourceFactoryTests {
                                 {
                                     "bladeColor": "green",
                                     "isShoto": true,
+                                    "isForward": false,
                                     "bladeSize": 8,
                                     "xBlade": 0,
                                     "yBlade": 0
