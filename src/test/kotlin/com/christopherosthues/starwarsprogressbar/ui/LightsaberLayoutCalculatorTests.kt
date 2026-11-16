@@ -306,7 +306,7 @@ internal class LightsaberLayoutCalculatorTests {
 
         val expectedBlade = BladeGeometry(
             blade(xBlade = -100, yBlade = 2, bladeSize = 8, isForward = false),
-            x = 0,
+            x = 70,
             y = 5,
             width = 80,
             height = 8,
