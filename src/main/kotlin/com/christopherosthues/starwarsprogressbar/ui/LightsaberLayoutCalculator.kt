@@ -112,27 +112,14 @@ internal object LightsaberLayoutCalculator {
                     ?: lightsabers.lightsabers.first()
                 val iconWidth = iconWidths.getOrNull(combinedId.lightsaberId - 1) ?: iconWidths.first()
 
-                if (lightsabers.isJarKai) {
-                    // Jar-kai: position hilt based on the blade's direction (forward=left, backward=right)
-                    computeJarKaiVariantLayout(
-                        lightsaber,
-                        combinedId.bladeId,
-                        iconWidth,
-                        width,
-                        amountFull,
-                        showIcon,
-                    )
-                } else {
-                    // Double-bladed single blade: position based on blade index
-                    computeVariantBladeLayout(
-                        lightsaber,
-                        combinedId.bladeId,
-                        iconWidth,
-                        width,
-                        amountFull,
-                        showIcon,
-                    )
-                }
+                computeVariantBladeLayout(
+                    lightsaber,
+                    combinedId.bladeId,
+                    iconWidth,
+                    width,
+                    amountFull,
+                    showIcon,
+                )
             }
         }
     }
@@ -227,16 +214,9 @@ internal object LightsaberLayoutCalculator {
             val leftIconWidth = max(maxLeftIconWidthSingle, if (isLeftSide) iconWidth else 0)
             val rightIconWidth = max(maxRightIconWidthSingle, if (!isLeftSide) iconWidth else 0)
             val singleBladeLength = width - leftIconWidth - rightIconWidth
-            val length = singleBladeLength + abs(JBUIScale.scale(blade.xBlade))
-            val ratio = length.toFloat() / width
-            var bladeWidth = (amountFull * ratio).roundToInt()
-
-            if (blade.isShoto) {
-                bladeWidth /= 2
-            }
-
-            val maxBladeWidth = singleBladeLength.toFloat() + abs(JBUIScale.scale(blade.xBlade)).toFloat()
-            val borderWidth = if (blade.isShoto) maxBladeWidth / 2 else maxBladeWidth
+            val maxBladeWidth = singleBladeLength + abs(JBUIScale.scale(blade.xBlade))
+            val bladeWidth = computeBladeWidth(amountFull, maxBladeWidth, width, blade.isShoto)
+            val borderWidth = computeBorderWidth(maxBladeWidth, blade.isShoto)
 
             // Blade starts at hilt emitter, not at hilt start
             val anchorX = if (isLeftSide) {
@@ -246,17 +226,7 @@ internal object LightsaberLayoutCalculator {
             }
 
             LightsaberLayout(
-                listOf(
-                    BladeGeometry(
-                        blade,
-                        x = if (isLeftSide) anchorX else anchorX - bladeWidth,
-                        y = JBUIScale.scale(lightsaber.yShift + blade.yBlade),
-                        width = bladeWidth,
-                        height = JBUIScale.scale(blade.bladeSize),
-                        borderX = if (isLeftSide) anchorX else anchorX - borderWidth.roundToInt(),
-                        borderWidth = borderWidth.roundToInt(),
-                    ),
-                ),
+                listOf(computeBladeGeometry(lightsaber, blade, anchorX, bladeWidth, borderWidth, isLeftSide)),
                 HiltGeometry(hiltX, JBUIScale.scale(lightsaber.yShift)),
             )
         } else {
@@ -294,18 +264,10 @@ internal object LightsaberLayoutCalculator {
         }
 
         return if (showIcon && width >= iconWidth) {
-            // Blade geometry computation
             val maxBladeLength = width - iconWidth
-            val length = maxBladeLength + abs(JBUIScale.scale(blade.xBlade))
-            val ratio = length.toFloat() / width
-            var bladeWidth = (amountFull * ratio).roundToInt()
-
-            if (blade.isShoto) {
-                bladeWidth /= 2
-            }
-
-            val maxBladeWidth = maxBladeLength.toFloat() + abs(JBUIScale.scale(blade.xBlade)).toFloat()
-            val borderWidth = if (blade.isShoto) maxBladeWidth / 2 else maxBladeWidth
+            val maxBladeWidth = maxBladeLength + abs(JBUIScale.scale(blade.xBlade))
+            val bladeWidth = computeBladeWidth(amountFull, maxBladeWidth, width, blade.isShoto)
+            val borderWidth = computeBorderWidth(maxBladeWidth, blade.isShoto)
 
             // Blade starts at the hilt emitter: right edge for forward blades, left edge for backward blades
             val anchorX = if (isForward) {
@@ -315,17 +277,7 @@ internal object LightsaberLayoutCalculator {
             }
 
             LightsaberLayout(
-                listOf(
-                    BladeGeometry(
-                        blade,
-                        x = if (isForward) anchorX else anchorX - bladeWidth,
-                        y = JBUIScale.scale(lightsaber.yShift + blade.yBlade),
-                        width = bladeWidth,
-                        height = JBUIScale.scale(blade.bladeSize),
-                        borderX = if (isForward) anchorX else anchorX - borderWidth.roundToInt(),
-                        borderWidth = borderWidth.roundToInt(),
-                    ),
-                ),
+                listOf(computeBladeGeometry(lightsaber, blade, anchorX, bladeWidth, borderWidth, isForward)),
                 HiltGeometry(hiltX, JBUIScale.scale(lightsaber.yShift)),
             )
         } else {
@@ -468,30 +420,41 @@ internal object LightsaberLayoutCalculator {
     ): LightsaberLayout {
         val blade = lightsaber.blades[0]
         val isLeftSide = blade.isForward
-        val length = slot.maxBladeWidth + abs(JBUIScale.scale(blade.xBlade))
-        val ratio = length.toFloat() / width
-        val full = amountFull * ratio
-        val scaledAmountFull = if (blade.isShoto) full / 2 else full
+        val maxBladeWidth = slot.maxBladeWidth + abs(JBUIScale.scale(blade.xBlade))
+        val bladeWidth = computeBladeWidth(amountFull, maxBladeWidth, width, blade.isShoto)
         val anchorX = JBUIScale.scale(blade.xBlade) + slot.bladeX
-        val bladeWidth = scaledAmountFull.roundToInt()
-        val maxBladeWidth = slot.maxBladeWidth.toFloat() + abs(JBUIScale.scale(blade.xBlade)).toFloat()
-        val borderWidth = if (blade.isShoto) maxBladeWidth / 2 else maxBladeWidth
+        val borderWidth = computeBorderWidth(maxBladeWidth, blade.isShoto)
 
         return LightsaberLayout(
-            listOf(
-                BladeGeometry(
-                    blade,
-                    x = if (isLeftSide) anchorX else anchorX - bladeWidth,
-                    y = JBUIScale.scale(lightsaber.yShift + blade.yBlade),
-                    width = bladeWidth,
-                    height = JBUIScale.scale(blade.bladeSize),
-                    borderX = if (isLeftSide) anchorX else anchorX - borderWidth.roundToInt(),
-                    borderWidth = borderWidth.roundToInt(),
-                ),
-            ),
+            listOf(computeBladeGeometry(lightsaber, blade, anchorX, bladeWidth, borderWidth, isLeftSide)),
             HiltGeometry(if (isLeftSide) 0 else slot.bladeX, JBUIScale.scale(lightsaber.yShift)),
         )
     }
+
+    private fun computeBladeWidth(amountFull: Int, maxBladeWidth: Int, width: Int, isShoto: Boolean): Int {
+        val bladeWidth = (amountFull * maxBladeWidth.toFloat() / width).roundToInt()
+        return if (isShoto) bladeWidth / 2 else bladeWidth
+    }
+
+    private fun computeBorderWidth(maxBladeWidth: Int, isShoto: Boolean): Float =
+        if (isShoto) maxBladeWidth / 2f else maxBladeWidth.toFloat()
+
+    private fun computeBladeGeometry(
+        lightsaber: Lightsaber,
+        blade: Blade,
+        anchorX: Int,
+        bladeWidth: Int,
+        borderWidth: Float,
+        extendsRight: Boolean,
+    ): BladeGeometry = BladeGeometry(
+        blade,
+        x = if (extendsRight) anchorX else anchorX - bladeWidth,
+        y = JBUIScale.scale(lightsaber.yShift + blade.yBlade),
+        width = bladeWidth,
+        height = JBUIScale.scale(blade.bladeSize),
+        borderX = if (extendsRight) anchorX else anchorX - borderWidth.roundToInt(),
+        borderWidth = borderWidth.roundToInt(),
+    )
 
     private fun computeDoubleBladedLayout(
         lightsaber: Lightsaber,
