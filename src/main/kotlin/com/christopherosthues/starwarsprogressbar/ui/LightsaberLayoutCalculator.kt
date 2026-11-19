@@ -12,6 +12,25 @@ import kotlin.math.roundToInt
 internal object LightsaberLayoutCalculator {
     private data class BladeSlot(val bladeX: Int, val secondBladeX: Int, val maxBladeWidth: Int)
 
+    /**
+     * Computes the maximum icon widths for left and right sides from a collection of sabers.
+     * Forward blades contribute to the left side; backward blades contribute to the right side.
+     */
+    private fun computeMaxIconWidths(
+        entries: Sequence<Pair<Boolean, Int>>,
+    ): Pair<Int, Int> {
+        var maxLeft = 0
+        var maxRight = 0
+        entries.forEach { (isForward, iconWidth) ->
+            if (isForward) {
+                maxLeft = max(maxLeft, iconWidth)
+            } else {
+                maxRight = max(maxRight, iconWidth)
+            }
+        }
+        return Pair(maxLeft, maxRight)
+    }
+
     fun compute(
         lightsabers: Lightsabers,
         iconWidths: List<Int>,
@@ -19,17 +38,11 @@ internal object LightsaberLayoutCalculator {
         amountFull: Int,
         showIcon: Boolean,
     ): List<LightsaberLayout> {
-        var maxLeftIconWidthSingle = 0
-        var maxRightIconWidthSingle = 0
-        lightsabers.lightsabers.forEachIndexed { index, lightsaber ->
-            if (lightsaber.isDoubleBladed) return@forEachIndexed
-            val iconWidth = iconWidths[index]
-            if (lightsaber.blades[0].isForward) {
-                maxLeftIconWidthSingle = max(maxLeftIconWidthSingle, iconWidth)
-            } else {
-                maxRightIconWidthSingle = max(maxRightIconWidthSingle, iconWidth)
+        val (maxLeftIconWidthSingle, maxRightIconWidthSingle) = computeMaxIconWidths(
+            lightsabers.lightsabers.withIndex().asSequence().mapNotNull { (index, lightsaber) ->
+                if (!lightsaber.isDoubleBladed) lightsaber.blades[0].isForward to iconWidths[index] else null
             }
-        }
+        )
 
         val singleBladeLength = width - maxLeftIconWidthSingle - maxRightIconWidthSingle
         val singleRightBladeX = width - maxRightIconWidthSingle
@@ -50,7 +63,7 @@ internal object LightsaberLayoutCalculator {
 
                 lightsaber.isDoubleBladed -> computeDoubleBladedLayout(lightsaber, slot, width, amountFull)
 
-                else -> computeSingleBladedLayout(lightsaber, slot, width, amountFull)
+                else -> computeSingleBladedLayout(lightsaber, iconWidths[index], slot, width, amountFull)
             }
         }
     }
@@ -155,19 +168,15 @@ internal object LightsaberLayoutCalculator {
         }
 
         // Multiple jar-kai sabers: account for all hilts so blades stop at the other hilt's emitter
-        var maxLeftIconWidthSingle = 0
-        var maxRightIconWidthSingle = 0
-        variant.forEach { combinedId ->
-            val saber = lightsabers.lightsabers.getOrNull(combinedId.lightsaberId - 1)
-                ?: lightsabers.lightsabers.first()
-            val iconW = iconWidths.getOrNull(combinedId.lightsaberId - 1) ?: iconWidths.first()
-            val blade = saber.blades.getOrNull(combinedId.bladeId) ?: saber.blades.first()
-            if (blade.isForward) {
-                maxLeftIconWidthSingle = max(maxLeftIconWidthSingle, iconW)
-            } else {
-                maxRightIconWidthSingle = max(maxRightIconWidthSingle, iconW)
+        val (maxLeftIconWidthSingle, maxRightIconWidthSingle) = computeMaxIconWidths(
+            variant.asSequence().map { combinedId ->
+                val saber = lightsabers.lightsabers.getOrNull(combinedId.lightsaberId - 1)
+                    ?: lightsabers.lightsabers.first()
+                val iconW = iconWidths.getOrNull(combinedId.lightsaberId - 1) ?: iconWidths.first()
+                val blade = saber.blades.getOrNull(combinedId.bladeId) ?: saber.blades.first()
+                blade.isForward to iconW
             }
-        }
+        )
 
         return variant.map { combinedId ->
             val lightsaber = lightsabers.lightsabers.getOrNull(combinedId.lightsaberId - 1)
@@ -188,33 +197,34 @@ internal object LightsaberLayoutCalculator {
     }
 
     /**
-     * Computes layout for a jar-kai individual blade variant.
-     * When maxLeftIconWidthSingle and maxRightIconWidthSingle are provided (multi-saber case),
-     * the blade length accounts for all hilts so blades stop at the other hilt's emitter.
+     * Unified helper for computing a single-blade layout with hilt icon.
+     * All single-blade cases (standard, variant, jar-kai) reduce to this computation once
+     * the available blade length and hilt position are determined.
+     *
+     * @param lightsaber The lightsaber entity
+     * @param blade The specific blade to render
+     * @param iconWidth Width of the hilt icon
+     * @param width Total available width for rendering
+     * @param amountFull Progress bar fill amount
+     * @param showIcon Whether to show hilt icons
+     * @param maxBladeLength Available length for the blade (after accounting for all hilts)
+     * @param hiltX X position of the hilt icon
+     * @return LightsaberLayout with blade geometry and hilt geometry
      */
-    private fun computeJarKaiVariantLayout(
+    private fun computeSingleBladeLayout(
         lightsaber: Lightsaber,
-        bladeId: Int,
+        blade: Blade,
         iconWidth: Int,
         width: Int,
         amountFull: Int,
         showIcon: Boolean,
-        maxLeftIconWidthSingle: Int = 0,
-        maxRightIconWidthSingle: Int = 0,
+        maxBladeLength: Int,
+        hiltX: Int,
     ): LightsaberLayout {
-        val blade = lightsaber.blades.getOrNull(bladeId) ?: lightsaber.blades.first()
         val isLeftSide = blade.isForward
 
-        // Hilt positioning per rendering-contract.md for jar-kai
-        val hiltX = if (isLeftSide) 0 else width - iconWidth
-
         return if (showIcon && width >= iconWidth) {
-            // When multiple hilts are present, account for all of them so blades stop at the other hilt's emitter;
-            // when only one hilt is rendered, use just that hilt's width
-            val leftIconWidth = max(maxLeftIconWidthSingle, if (isLeftSide) iconWidth else 0)
-            val rightIconWidth = max(maxRightIconWidthSingle, if (!isLeftSide) iconWidth else 0)
-            val singleBladeLength = width - leftIconWidth - rightIconWidth
-            val maxBladeWidth = singleBladeLength + abs(JBUIScale.scale(blade.xBlade))
+            val maxBladeWidth = maxBladeLength + abs(JBUIScale.scale(blade.xBlade))
             val bladeWidth = computeBladeWidth(amountFull, maxBladeWidth, width, blade.isShoto)
             val borderWidth = computeBorderWidth(maxBladeWidth, blade.isShoto)
 
@@ -238,6 +248,44 @@ internal object LightsaberLayoutCalculator {
     }
 
     /**
+     * Computes layout for a jar-kai individual blade variant.
+     * When maxLeftIconWidthSingle and maxRightIconWidthSingle are provided (multi-saber case),
+     * the blade length accounts for all hilts so blades stop at the other hilt's emitter.
+     */
+    private fun computeJarKaiVariantLayout(
+        lightsaber: Lightsaber,
+        bladeId: Int,
+        iconWidth: Int,
+        width: Int,
+        amountFull: Int,
+        showIcon: Boolean,
+        maxLeftIconWidthSingle: Int = 0,
+        maxRightIconWidthSingle: Int = 0,
+    ): LightsaberLayout {
+        val blade = lightsaber.blades.getOrNull(bladeId) ?: lightsaber.blades.first()
+
+        // Hilt positioning per rendering-contract.md for jar-kai
+        val hiltX = if (blade.isForward) 0 else width - iconWidth
+
+        // When multiple hilts are present, account for all of them so blades stop at the other hilt's emitter;
+        // when only one hilt is rendered, use just that hilt's width
+        val leftIconWidth = max(maxLeftIconWidthSingle, if (blade.isForward) iconWidth else 0)
+        val rightIconWidth = max(maxRightIconWidthSingle, if (!blade.isForward) iconWidth else 0)
+        val singleBladeLength = width - leftIconWidth - rightIconWidth
+
+        return computeSingleBladeLayout(
+            lightsaber,
+            blade,
+            iconWidth,
+            width,
+            amountFull,
+            showIcon,
+            singleBladeLength,
+            hiltX,
+        )
+    }
+
+    /**
      * Computes layout for a single blade variant from a CombinedId.
      * Direction is taken from [Blade.isForward] (related to lightsaber ID parity: odd IDs are forward, even
      * IDs backward): forward blades get the hilt at the left edge with the blade extending rightward;
@@ -253,39 +301,19 @@ internal object LightsaberLayoutCalculator {
     ): LightsaberLayout {
         val blade = lightsaber.blades.getOrNull(bladeId) ?: lightsaber.blades.first()
 
-        // Direction from the blade itself (odd lightsaber IDs are forward, even IDs backward)
-        val isForward = blade.isForward
-
         // Hilt positioning per FR-003/FR-004: forward blades at the left edge, backward blades at the right edge
-        val hiltX = if (isForward) {
-            0
-        } else {
-            width - iconWidth
-        }
+        val hiltX = if (blade.isForward) 0 else width - iconWidth
 
-        return if (showIcon && width >= iconWidth) {
-            val maxBladeLength = width - iconWidth
-            val maxBladeWidth = maxBladeLength + abs(JBUIScale.scale(blade.xBlade))
-            val bladeWidth = computeBladeWidth(amountFull, maxBladeWidth, width, blade.isShoto)
-            val borderWidth = computeBorderWidth(maxBladeWidth, blade.isShoto)
-
-            // Blade starts at the hilt emitter: right edge for forward blades, left edge for backward blades
-            val anchorX = if (isForward) {
-                hiltX + iconWidth + JBUIScale.scale(blade.xBlade)
-            } else {
-                hiltX + JBUIScale.scale(blade.xBlade)
-            }
-
-            LightsaberLayout(
-                listOf(computeBladeGeometry(lightsaber, blade, anchorX, bladeWidth, borderWidth, isForward)),
-                HiltGeometry(hiltX, JBUIScale.scale(lightsaber.yShift)),
-            )
-        } else {
-            LightsaberLayout(
-                listOf(computeNoHiltBlade(lightsaber, width, amountFull, isForward)),
-                if (showIcon) HiltGeometry(hiltX, JBUIScale.scale(lightsaber.yShift)) else null,
-            )
-        }
+        return computeSingleBladeLayout(
+            lightsaber,
+            blade,
+            iconWidth,
+            width,
+            amountFull,
+            showIcon,
+            width - iconWidth, // Available length is full width minus this saber's hilt only
+            hiltX,
+        )
     }
 
     /**
@@ -303,35 +331,16 @@ internal object LightsaberLayoutCalculator {
         val rightBlade = lightsaber.blades[1]
         val centerHiltX = (width - iconWidth) / 2
 
-        // Match original computeDoubleBladedLayout: use full available length minus hilt
+        // Use full available length minus hilt
         val maxBladeWidth = width - iconWidth
-        val shotoLengthFactor = 4
 
         // Left blade: extends LEFT from hilt
-        val leftLength = maxBladeWidth + abs(JBUIScale.scale(leftBlade.xBlade))
-        val leftRatio = leftLength.toFloat() / width
-        var leftBladeWidth = amountFull * leftRatio / 2
-        if (leftBlade.isShoto) leftBladeWidth /= 2
-
-        val maxLeftBladeWidth = maxBladeWidth.toFloat() + abs(JBUIScale.scale(leftBlade.xBlade)).toFloat()
-        val leftBorderWidth = if (leftBlade.isShoto) {
-            maxLeftBladeWidth / shotoLengthFactor
-        } else {
-            maxLeftBladeWidth / 2
-        }
+        val leftBladeWidth = computeDoubleBladedSideWidth(leftBlade, maxBladeWidth, width, amountFull)
+        val leftBorderWidth = computeDoubleBladedSideBorder(leftBlade, maxBladeWidth)
 
         // Right blade: extends RIGHT from hilt
-        val rightLength = maxBladeWidth + abs(JBUIScale.scale(rightBlade.xBlade))
-        val rightRatio = rightLength.toFloat() / width
-        var rightBladeWidth = amountFull * rightRatio / 2
-        if (rightBlade.isShoto) rightBladeWidth /= 2
-
-        val maxRightBladeWidth = maxBladeWidth.toFloat() + abs(JBUIScale.scale(rightBlade.xBlade)).toFloat()
-        val rightBorderWidth = if (rightBlade.isShoto) {
-            maxRightBladeWidth / shotoLengthFactor
-        } else {
-            maxRightBladeWidth / 2
-        }
+        val rightBladeWidth = computeDoubleBladedSideWidth(rightBlade, maxBladeWidth, width, amountFull)
+        val rightBorderWidth = computeDoubleBladedSideBorder(rightBlade, maxBladeWidth)
 
         val leftBladeAnchor = centerHiltX + JBUIScale.scale(leftBlade.xBlade)
         val rightBladeAnchor = centerHiltX + iconWidth + JBUIScale.scale(rightBlade.xBlade)
@@ -365,6 +374,40 @@ internal object LightsaberLayoutCalculator {
                 },
             ),
         )
+    }
+
+    /**
+     * Computes blade width for one side of a double-bladed saber.
+     * The progress amount is split between two blades (divided by 2), and shoto blades are halved again.
+     */
+    private fun computeDoubleBladedSideWidth(
+        blade: Blade,
+        maxBladeWidth: Int,
+        width: Int,
+        amountFull: Int,
+    ): Float {
+        val length = maxBladeWidth + abs(JBUIScale.scale(blade.xBlade))
+        val ratio = length.toFloat() / width
+        var bladeWidth = amountFull * ratio / 2
+        if (blade.isShoto) bladeWidth /= 2
+        return bladeWidth.toFloat()
+    }
+
+    /**
+     * Computes border width for one side of a double-bladed saber.
+     * Shoto blades use a quarter-width border; normal blades use half-width.
+     */
+    private fun computeDoubleBladedSideBorder(
+        blade: Blade,
+        maxBladeWidth: Int,
+    ): Float {
+        val shotoLengthFactor = 4
+        val maxBladeWidthWithOffset = maxBladeWidth.toFloat() + abs(JBUIScale.scale(blade.xBlade)).toFloat()
+        return if (blade.isShoto) {
+            maxBladeWidthWithOffset / shotoLengthFactor
+        } else {
+            maxBladeWidthWithOffset / 2
+        }
     }
 
     private fun computeSlot(
@@ -414,20 +457,23 @@ internal object LightsaberLayoutCalculator {
 
     private fun computeSingleBladedLayout(
         lightsaber: Lightsaber,
+        iconWidth: Int,
         slot: BladeSlot,
         width: Int,
         amountFull: Int,
     ): LightsaberLayout {
         val blade = lightsaber.blades[0]
         val isLeftSide = blade.isForward
-        val maxBladeWidth = slot.maxBladeWidth + abs(JBUIScale.scale(blade.xBlade))
-        val bladeWidth = computeBladeWidth(amountFull, maxBladeWidth, width, blade.isShoto)
-        val anchorX = JBUIScale.scale(blade.xBlade) + slot.bladeX
-        val borderWidth = computeBorderWidth(maxBladeWidth, blade.isShoto)
 
-        return LightsaberLayout(
-            listOf(computeBladeGeometry(lightsaber, blade, anchorX, bladeWidth, borderWidth, isLeftSide)),
-            HiltGeometry(if (isLeftSide) 0 else slot.bladeX, JBUIScale.scale(lightsaber.yShift)),
+        return computeSingleBladeLayout(
+            lightsaber,
+            blade,
+            iconWidth,
+            width,
+            amountFull,
+            true, // showIcon is always true when slot != null
+            slot.maxBladeWidth,
+            if (isLeftSide) 0 else slot.bladeX,
         )
     }
 
@@ -465,34 +511,12 @@ internal object LightsaberLayoutCalculator {
         val leftBlade = lightsaber.blades[0]
         val rightBlade = lightsaber.blades[1]
 
-        val shotoLengthFactor = 4
-        val leftLength = slot.maxBladeWidth + abs(JBUIScale.scale(leftBlade.xBlade))
-        val leftRatio = leftLength.toFloat() / width
-        var leftBladeWidth = amountFull * leftRatio / 2
-        if (leftBlade.isShoto) {
-            leftBladeWidth /= 2
-        }
+        // Use the unified helpers for blade width and border calculations
+        val leftBladeWidth = computeDoubleBladedSideWidth(leftBlade, slot.maxBladeWidth, width, amountFull)
+        val leftBorderWidth = computeDoubleBladedSideBorder(leftBlade, slot.maxBladeWidth)
 
-        val maxLeftBladeWidth = slot.maxBladeWidth.toFloat() + abs(JBUIScale.scale(leftBlade.xBlade)).toFloat()
-        val leftBorderWidth = if (leftBlade.isShoto) {
-            maxLeftBladeWidth / shotoLengthFactor
-        } else {
-            maxLeftBladeWidth / 2
-        }
-
-        val rightLength = slot.maxBladeWidth + abs(JBUIScale.scale(rightBlade.xBlade))
-        val rightRatio = rightLength.toFloat() / width
-        var rightBladeWidth = amountFull * rightRatio / 2
-        if (rightBlade.isShoto) {
-            rightBladeWidth /= 2
-        }
-
-        val maxRightBladeWidth = slot.maxBladeWidth.toFloat() + abs(JBUIScale.scale(rightBlade.xBlade)).toFloat()
-        val rightBorderWidth = if (rightBlade.isShoto) {
-            maxRightBladeWidth / shotoLengthFactor
-        } else {
-            maxRightBladeWidth / 2
-        }
+        val rightBladeWidth = computeDoubleBladedSideWidth(rightBlade, slot.maxBladeWidth, width, amountFull)
+        val rightBorderWidth = computeDoubleBladedSideBorder(rightBlade, slot.maxBladeWidth)
 
         return LightsaberLayout(
             listOf(
