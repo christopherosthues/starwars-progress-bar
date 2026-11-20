@@ -4,6 +4,11 @@
 
 ## [Unreleased]
 
+### Added
+
+- Variants for Jar'Kai and Double-bladed lightsabers
+- Lightsaber hilt variants for Asajj Ventress and Inquisitors
+
 ## [3.0.1] - 2026-11-09
 
 ### Fixed
