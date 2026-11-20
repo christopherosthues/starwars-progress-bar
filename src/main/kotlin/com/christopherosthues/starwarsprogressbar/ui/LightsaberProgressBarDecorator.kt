@@ -31,13 +31,9 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
     internal fun update(lightsabers: Lightsabers) {
         lightsaberIcons.clear()
         lightsabers.lightsabers.forEach {
-            if (lightsabers.isJarKai) {
-                lightsaberIcons.add(
-                    ColoredImageComponent(StarWarsResourceLoader.getImage(lightsabers.fileName + "_${it.id}")),
-                )
-            } else {
-                lightsaberIcons.add(ColoredImageComponent(StarWarsResourceLoader.getImage(lightsabers.fileName)))
-            }
+            lightsaberIcons.add(
+                ColoredImageComponent(StarWarsResourceLoader.getImage("${lightsabers.fileName}_${it.id}")),
+            )
         }
 
         factionCrestIcon =

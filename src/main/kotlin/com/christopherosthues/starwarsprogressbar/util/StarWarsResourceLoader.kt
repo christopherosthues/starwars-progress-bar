@@ -167,7 +167,7 @@ internal object StarWarsResourceLoader {
     }
 
     /**
-     * Gets a lightsaber hilt image, supporting jar-kai individual blade icons and icon variations.
+     * Gets a lightsaber hilt image, supporting individual blade icons and icon variations.
      *
      * @param lightsabers The lightsaber entity
      * @param lightsaberId 1-based index of the specific lightsaber within the entity's list
@@ -176,12 +176,9 @@ internal object StarWarsResourceLoader {
      */
     fun getLightsaberHiltIcon(lightsabers: Lightsabers, lightsaberId: Int, variationIndex: Int = 0): BufferedImage {
         val baseName = resolveLightsaberIconPath(lightsabers, variationIndex)
-        // For jar-kai entities, append the individual hilt ID for separate icon files
-        val specificName = if (lightsabers.isJarKai && lightsaberId > 0) {
-            "$baseName" + "_" + lightsabers.lightsabers.getOrNull(lightsaberId - 1)?.id
-        } else {
-            baseName
-        }
+        // Append the individual hilt ID so every entity resolves to its own icon file
+        val hiltId = lightsabers.lightsabers.getOrNull(lightsaberId - 1)?.id
+        val specificName = if (hiltId != null) "${baseName}_$hiltId" else baseName
         return getImage(specificName)
     }
 }

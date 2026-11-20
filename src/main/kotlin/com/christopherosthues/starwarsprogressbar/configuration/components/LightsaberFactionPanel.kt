@@ -131,7 +131,8 @@ internal class LightsaberFactionPanel(
             updateSelectionButtons()
         }
 
-        val fileName = if (lightsabers.isJarKai) lightsabers.fileName + "_1" else lightsabers.fileName
+        // Every entity has per-hilt icons; the panel shows the first hilt's icon.
+        val fileName = "${lightsabers.fileName}_1"
         val iconComponent = ScalableIconComponent(StarWarsResourceLoader.getIcon(fileName))
         iconComponent.addMouseListener(object : MouseAdapter() {
             override fun mousePressed(e: MouseEvent?) {
