@@ -3,6 +3,7 @@ package com.christopherosthues.starwarsprogressbar.ui
 import com.christopherosthues.starwarsprogressbar.models.Blade
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
+import com.christopherosthues.starwarsprogressbar.selectors.LightsaberVariantSelector
 import com.intellij.ui.scale.JBUIScale
 import kotlin.math.abs
 import kotlin.math.max
@@ -19,75 +20,15 @@ internal object LightsaberLayoutCalculator {
 
     fun compute(
         lightsabers: Lightsabers,
-        iconWidths: List<Int>,
-        width: Int,
-        amountFull: Int,
-        showIcon: Boolean,
-    ): List<LightsaberLayout> {
-        val (maxLeftIconWidthSingle, maxRightIconWidthSingle) = computeMaxIconWidths(
-            lightsabers.lightsabers.withIndex().asSequence().mapNotNull { (index, lightsaber) ->
-                if (!lightsaber.isDoubleBladed) lightsaber.blades[0].isForward to iconWidths[index] else null
-            },
-        )
-
-        val singleBladeLength = width - maxLeftIconWidthSingle - maxRightIconWidthSingle
-        val singleRightBladeX = width - maxRightIconWidthSingle
-
-        return lightsabers.lightsabers.mapIndexed { index, lightsaber ->
-            val iconWidth = iconWidths[index]
-            val noHilt = !showIcon || singleBladeLength < iconWidth ||
-                (lightsaber.isDoubleBladed && singleBladeLength < 2 * iconWidth)
-
-            when {
-                noHilt ->
-                    LightsaberLayout(
-                        listOf(computeNoHiltBladeGeometry(lightsaber.blades[0], lightsaber, width, amountFull)),
-                        null,
-                    )
-
-                lightsaber.isDoubleBladed -> {
-                    val center = (maxLeftIconWidthSingle + singleRightBladeX) / 2
-                    computeDoubleBladedLayout(
-                        lightsaber,
-                        center - iconWidth / 2,
-                        center + iconWidth / 2,
-                        singleBladeLength - iconWidth,
-                        width,
-                        amountFull,
-                    )
-                }
-
-                else -> {
-                    val blade = lightsaber.blades[0]
-                    val isLeftSide = blade.isForward
-                    val bladeX = if (isLeftSide) maxLeftIconWidthSingle else singleRightBladeX
-
-                    computeSingleBladeLayout(
-                        lightsaber,
-                        blade,
-                        iconWidth,
-                        width,
-                        amountFull,
-                        true,
-                        singleBladeLength,
-                        if (isLeftSide) 0 else bladeX,
-                    )
-                }
-            }
-        }
-    }
-
-    fun computeVariantLayout(
-        lightsabers: Lightsabers,
         selectedVariantIndex: Int,
         iconWidths: List<Int>,
         width: Int,
         amountFull: Int,
         showIcon: Boolean,
     ): List<LightsaberLayout> {
-        val variant = lightsabers.variants.getOrNull(selectedVariantIndex) ?: lightsabers.variants.first()
-        // For jar-kai with multiple sabers, account for all hilts so blades stop at the other hilt's emitter
-        val (maxLeftIconWidth, maxRightIconWidth) = if (lightsabers.isJarKai && variant.size > 1) {
+        val variant = LightsaberVariantSelector.resolveVariant(lightsabers, selectedVariantIndex)
+        // For multi-saber variants (jar-kai), account for all hilts so blades stop at the other hilt's emitter
+        val (maxLeftIconWidth, maxRightIconWidth) = if (variant.size > 1) {
             computeMaxIconWidths(
                 variant.asSequence().map { combinedId ->
                     val saber = lightsabers.lightsabers.getOrNull(combinedId.lightsaberId - 1)
@@ -107,8 +48,9 @@ internal object LightsaberLayoutCalculator {
 
         return if (isFullDoubleBlade) {
             // Both blades of same double-bladed saber: use centered layout
-            val lightsaber = lightsabers.lightsabers.first()
-            val iconWidth = iconWidths.first()
+            val lightsaberId = variant.first().lightsaberId - 1
+            val lightsaber = lightsabers.lightsabers.getOrNull(lightsaberId) ?: lightsabers.lightsabers.first()
+            val iconWidth = iconWidths.getOrNull(lightsaberId) ?: iconWidths.first()
             val centerHiltX = (width - iconWidth) / 2
 
             listOf(
@@ -175,9 +117,10 @@ internal object LightsaberLayoutCalculator {
                 HiltGeometry(hiltX, JBUIScale.scale(lightsaber.yShift)),
             )
         } else {
+            // No hilt when the icon is hidden or does not fit; blade geometry keeps full bar width
             LightsaberLayout(
                 listOf(computeNoHiltBladeGeometry(blade, lightsaber, width, amountFull)),
-                if (showIcon) HiltGeometry(hiltX, JBUIScale.scale(lightsaber.yShift)) else null,
+                null,
             )
         }
     }

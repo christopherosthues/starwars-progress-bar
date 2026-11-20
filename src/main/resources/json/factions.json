@@ -8,6 +8,7 @@
                     "id": "asajj_ventress_second",
                     "velocity": 3,
                     "isJarKai": true,
+                    "defaultVariant": 0,
                     "variants": [
                         [{"lightsaberId": 1, "bladeId": 0}, {"lightsaberId": 2, "bladeId": 0}],
                         [{"lightsaberId": 1, "bladeId": 0}],
@@ -51,6 +52,7 @@
                     "id": "darth_maul_first",
                     "velocity": 3,
                     "isJarKai": false,
+                    "defaultVariant": 0,
                     "variants": [
                         [{"lightsaberId": 1, "bladeId": 0}, {"lightsaberId": 1, "bladeId": 1}],
                         [{"lightsaberId": 1, "bladeId": 0}],
@@ -87,6 +89,10 @@
                     "id": "darth_maul_second",
                     "velocity": 3,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -110,6 +116,7 @@
                     "id": "darth_maul_third",
                     "velocity": 3,
                     "isJarKai": false,
+                    "defaultVariant": 0,
                     "variants": [
                         [{"lightsaberId": 1, "bladeId": 0}, {"lightsaberId": 1, "bladeId": 1}],
                         [{"lightsaberId": 1, "bladeId": 0}],
@@ -146,6 +153,7 @@
                     "id": "darth_maul_fourth",
                     "velocity": 3,
                     "isJarKai": false,
+                    "defaultVariant": 0,
                     "variants": [
                         [{"lightsaberId": 1, "bladeId": 0}, {"lightsaberId": 1, "bladeId": 1}],
                         [{"lightsaberId": 1, "bladeId": 0}],
@@ -182,6 +190,7 @@
                     "id": "grand_inquisitor",
                     "velocity": 3,
                     "isJarKai": false,
+                    "defaultVariant": 0,
                     "variants": [
                         [{"lightsaberId": 1, "bladeId": 0}, {"lightsaberId": 1, "bladeId": 1}],
                         [{"lightsaberId": 1, "bladeId": 0}],
@@ -218,6 +227,7 @@
                     "id": "first_brother",
                     "velocity": 3,
                     "isJarKai": false,
+                    "defaultVariant": 0,
                     "variants": [
                         [{"lightsaberId": 1, "bladeId": 0}, {"lightsaberId": 1, "bladeId": 1}],
                         [{"lightsaberId": 1, "bladeId": 0}],
@@ -254,6 +264,7 @@
                     "id": "second_sister",
                     "velocity": 3,
                     "isJarKai": false,
+                    "defaultVariant": 0,
                     "variants": [
                         [{"lightsaberId": 1, "bladeId": 0}, {"lightsaberId": 1, "bladeId": 1}],
                         [{"lightsaberId": 1, "bladeId": 0}],
@@ -290,6 +301,7 @@
                     "id": "eighth_brother",
                     "velocity": 3,
                     "isJarKai": false,
+                    "defaultVariant": 0,
                     "variants": [
                         [{"lightsaberId": 1, "bladeId": 0}, {"lightsaberId": 1, "bladeId": 1}],
                         [{"lightsaberId": 1, "bladeId": 0}],
@@ -326,6 +338,7 @@
                     "id": "fifth_brother",
                     "velocity": 3,
                     "isJarKai": false,
+                    "defaultVariant": 0,
                     "variants": [
                         [{"lightsaberId": 1, "bladeId": 0}, {"lightsaberId": 1, "bladeId": 1}],
                         [{"lightsaberId": 1, "bladeId": 0}],
@@ -362,6 +375,7 @@
                     "id": "ninth_sister",
                     "velocity": 3,
                     "isJarKai": false,
+                    "defaultVariant": 0,
                     "variants": [
                         [{"lightsaberId": 1, "bladeId": 0}, {"lightsaberId": 1, "bladeId": 1}],
                         [{"lightsaberId": 1, "bladeId": 0}],
@@ -398,6 +412,7 @@
                     "id": "savage_opress",
                     "velocity": 3,
                     "isJarKai": false,
+                    "defaultVariant": 0,
                     "variants": [
                         [{"lightsaberId": 1, "bladeId": 0}, {"lightsaberId": 1, "bladeId": 1}],
                         [{"lightsaberId": 1, "bladeId": 0}],
@@ -434,6 +449,7 @@
                     "id": "darth_sidious",
                     "velocity": 3,
                     "isJarKai": true,
+                    "defaultVariant": 0,
                     "variants": [
                         [{"lightsaberId": 1, "bladeId": 0}, {"lightsaberId": 2, "bladeId": 0}],
                         [{"lightsaberId": 1, "bladeId": 0}],
@@ -477,6 +493,10 @@
                     "id": "darth_vader_second",
                     "velocity": 3,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -500,6 +520,10 @@
                     "id": "darth_tyranus",
                     "velocity": 3,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -528,6 +552,7 @@
                     "id": "ahsoka_tano_first",
                     "velocity": 4,
                     "isJarKai": true,
+                    "defaultVariant": 0,
                     "variants": [
                         [{"lightsaberId": 1, "bladeId": 0}, {"lightsaberId": 2, "bladeId": 0}],
                         [{"lightsaberId": 1, "bladeId": 0}],
@@ -571,6 +596,7 @@
                     "id": "ahsoka_tano_second",
                     "velocity": 4,
                     "isJarKai": true,
+                    "defaultVariant": 0,
                     "variants": [
                         [{"lightsaberId": 1, "bladeId": 0}, {"lightsaberId": 2, "bladeId": 0}],
                         [{"lightsaberId": 1, "bladeId": 0}],
@@ -614,6 +640,10 @@
                     "id": "anakin_skywalker_first",
                     "velocity": 4,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -637,6 +667,10 @@
                     "id": "anakin_skywalker_second",
                     "velocity": 4,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -660,6 +694,10 @@
                     "id": "asajj_ventress_first",
                     "velocity": 4,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -683,6 +721,10 @@
                     "id": "ky_narec",
                     "velocity": 4,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -706,6 +748,10 @@
                     "id": "barriss_offee",
                     "velocity": 4,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -729,6 +775,10 @@
                     "id": "shaak_ti",
                     "velocity": 4,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -752,6 +802,10 @@
                     "id": "ezra_bridger_first",
                     "velocity": 4,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -775,6 +829,10 @@
                     "id": "ezra_bridger_second",
                     "velocity": 4,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -798,6 +856,10 @@
                     "id": "ezra_bridger_third",
                     "velocity": 4,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -821,6 +883,10 @@
                     "id": "count_dooku",
                     "velocity": 4,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -844,6 +910,7 @@
                     "id": "pong_krell",
                     "velocity": 4,
                     "isJarKai": true,
+                    "defaultVariant": 0,
                     "variants": [
                         [{"lightsaberId": 1, "bladeId": 0}, {"lightsaberId": 1, "bladeId": 1}, {"lightsaberId": 2, "bladeId": 0}, {"lightsaberId": 2, "bladeId": 1}],
                         [{"lightsaberId": 1, "bladeId": 0}, {"lightsaberId": 2, "bladeId": 0}],
@@ -907,6 +974,10 @@
                     "id": "luke_skywalker",
                     "velocity": 4,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -930,6 +1001,10 @@
                     "id": "tera_sinube",
                     "velocity": 4,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -953,6 +1028,10 @@
                     "id": "kit_fisto",
                     "velocity": 4,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -976,6 +1055,10 @@
                     "id": "depa_billaba",
                     "velocity": 4,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -999,6 +1082,10 @@
                     "id": "kanan_jarrus",
                     "velocity": 4,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -1022,6 +1109,10 @@
                     "id": "mace_windu",
                     "velocity": 4,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -1045,6 +1136,10 @@
                     "id": "obi_wan_kenobi_first",
                     "velocity": 4,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -1068,6 +1163,10 @@
                     "id": "obi_wan_kenobi_second",
                     "velocity": 4,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -1091,6 +1190,10 @@
                     "id": "obi_wan_kenobi_third",
                     "velocity": 4,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -1114,6 +1217,10 @@
                     "id": "qui_gon_jinn",
                     "velocity": 4,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -1137,6 +1244,10 @@
                     "id": "stellan_gios",
                     "velocity": 4,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -1160,6 +1271,10 @@
                     "id": "avar_kriss",
                     "velocity": 4,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -1183,6 +1298,10 @@
                     "id": "leia_organa",
                     "velocity": 4,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -1206,6 +1325,10 @@
                     "id": "aayla_secura",
                     "velocity": 4,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -1229,6 +1352,10 @@
                     "id": "ki_adi_mundi",
                     "velocity": 4,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -1252,6 +1379,10 @@
                     "id": "plo_koon",
                     "velocity": 4,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -1275,6 +1406,10 @@
                     "id": "luminara_unduli",
                     "velocity": 4,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -1298,6 +1433,10 @@
                     "id": "quinlan_vos",
                     "velocity": 4,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -1321,6 +1460,10 @@
                     "id": "jocasta_nu",
                     "velocity": 4,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -1344,6 +1487,10 @@
                     "id": "rey",
                     "velocity": 4,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -1367,6 +1514,10 @@
                     "id": "yoda",
                     "velocity": 4,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -1395,6 +1546,7 @@
                     "id": "ahsoka_tano_third",
                     "velocity": 3,
                     "isJarKai": true,
+                    "defaultVariant": 0,
                     "variants": [
                         [{"lightsaberId": 1, "bladeId": 0}, {"lightsaberId": 2, "bladeId": 0}],
                         [{"lightsaberId": 1, "bladeId": 0}],
@@ -1438,6 +1590,10 @@
                     "id": "sabine_wren",
                     "velocity": 4,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -1461,6 +1617,10 @@
                     "id": "baylan_skoll",
                     "velocity": 3,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -1484,6 +1644,10 @@
                     "id": "shin_hati",
                     "velocity": 3,
                     "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
                     "lightsabers": [
                         {
                             "id": 1,
@@ -1507,6 +1671,7 @@
                     "id": "taron_malicos",
                     "velocity": 3,
                     "isJarKai": true,
+                    "defaultVariant": 0,
                     "variants": [
                         [{"lightsaberId": 1, "bladeId": 0}, {"lightsaberId": 2, "bladeId": 0}],
                         [{"lightsaberId": 1, "bladeId": 0}],

@@ -21,8 +21,6 @@ internal class LightsaberLayoutCalculatorTests {
     private fun lightsaber(id: Int, isDoubleBladed: Boolean, yShift: Int, vararg blades: Blade) =
         Lightsaber(id, isDoubleBladed, yShift, blades.toList())
 
-    private fun lightsabers(vararg sabers: Lightsaber) = Lightsabers("1", 1f, false, sabers.toList())
-
     private fun doubleBladedVariantEntity() = Lightsabers(
         "1",
         1f,
@@ -43,101 +41,33 @@ internal class LightsaberLayoutCalculatorTests {
         ),
     )
 
+    private fun jarKaiVariantEntity() = Lightsabers(
+        "1",
+        1f,
+        true,
+        listOf(
+            lightsaber(1, isDoubleBladed = false, yShift = 3, blade(xBlade = 50, yBlade = 2, bladeSize = 8)),
+            lightsaber(
+                2,
+                isDoubleBladed = false,
+                yShift = 1,
+                blade(xBlade = 50, yBlade = 2, bladeSize = 8, isForward = false),
+            ),
+        ),
+        variants = listOf(
+            listOf(CombinedId(1, 0), CombinedId(2, 0)),
+            listOf(CombinedId(1, 0)),
+            listOf(CombinedId(2, 0)),
+        ),
+    )
+
     //region Tests
 
     @Test
-    fun `compute should return left blade geometry for single bladed odd id lightsaber`() {
-        val saber = lightsaber(1, isDoubleBladed = false, yShift = 3, blade(xBlade = 200, yBlade = 2, bladeSize = 8))
-
+    fun `compute should render full double blade variant centered in the progress bar`() {
         val result = LightsaberLayoutCalculator.compute(
-            lightsabers(saber),
-            iconWidths = listOf(100),
-            width = 400,
-            amountFull = 80,
-            showIcon = true,
-        )
-
-        val expectedBlade = BladeGeometry(
-            blade(200, 2, 8, false),
-            x = 300,
-            y = 5,
-            width = 100,
-            height = 8,
-            borderX = 300,
-            borderWidth = 500,
-        )
-
-        assertEquals(LightsaberLayout(listOf(expectedBlade), HiltGeometry(x = 0, y = 3)), result.single())
-    }
-
-    @Test
-    fun `compute should return right blade geometry for single bladed even id lightsaber`() {
-        val saber = lightsaber(
-            2,
-            isDoubleBladed = false,
-            yShift = 1,
-            blade(xBlade = -200, yBlade = 2, bladeSize = 8, isForward = false),
-        )
-
-        val result = LightsaberLayoutCalculator.compute(
-            lightsabers(saber),
-            iconWidths = listOf(100),
-            width = 400,
-            amountFull = 80,
-            showIcon = true,
-        )
-
-        val expectedBlade = BladeGeometry(
-            blade(xBlade = -200, yBlade = 2, bladeSize = 8, isForward = false),
-            x = 0,
-            y = 3,
-            width = 100,
-            height = 8,
-            borderX = -400,
-            borderWidth = 500,
-        )
-
-        assertEquals(LightsaberLayout(listOf(expectedBlade), HiltGeometry(x = 300, y = 1)), result.single())
-    }
-
-    @Test
-    fun `compute should halve blade and border width for shoto lightsaber`() {
-        val shotoBlade = blade(xBlade = 200, yBlade = 2, bladeSize = 8, isShoto = true)
-        val saber = lightsaber(1, isDoubleBladed = false, yShift = 3, shotoBlade)
-
-        val result = LightsaberLayoutCalculator.compute(
-            lightsabers(saber),
-            iconWidths = listOf(100),
-            width = 400,
-            amountFull = 80,
-            showIcon = true,
-        )
-
-        val expectedBlade = BladeGeometry(
-            blade(200, 2, 8, true),
-            x = 300,
-            y = 5,
-            width = 50,
-            height = 8,
-            borderX = 300,
-            borderWidth = 250,
-        )
-
-        assertEquals(LightsaberLayout(listOf(expectedBlade), HiltGeometry(x = 0, y = 3)), result.single())
-    }
-
-    @Test
-    fun `compute should return left and right blade geometry for double bladed lightsaber`() {
-        val saber = lightsaber(
-            1,
-            isDoubleBladed = true,
-            yShift = 3,
-            blade(xBlade = -100, yBlade = 2, bladeSize = 8, isForward = false),
-            blade(100, 4, 6, false),
-        )
-
-        val result = LightsaberLayoutCalculator.compute(
-            lightsabers(saber),
+            doubleBladedVariantEntity(),
+            selectedVariantIndex = 0,
             iconWidths = listOf(100),
             width = 400,
             amountFull = 80,
@@ -145,226 +75,30 @@ internal class LightsaberLayoutCalculatorTests {
         )
 
         val leftBlade = BladeGeometry(
-            blade(xBlade = -100, yBlade = 2, bladeSize = 8, isForward = false),
-            x = 10,
+            blade(xBlade = 1, yBlade = 2, bladeSize = 8, isForward = false),
+            x = 121,
             y = 5,
-            width = 40,
+            width = 30,
             height = 8,
-            borderX = -150,
-            borderWidth = 200,
+            borderX = 0,
+            borderWidth = 151,
         )
         val rightBlade = BladeGeometry(
-            blade(100, 4, 6, false),
-            x = 350,
-            y = 7,
-            width = 40,
-            height = 6,
-            borderX = 350,
-            borderWidth = 200,
+            blade(xBlade = -1, yBlade = 2, bladeSize = 8),
+            x = 249,
+            y = 5,
+            width = 30,
+            height = 8,
+            borderX = 249,
+            borderWidth = 151,
         )
 
         assertEquals(LightsaberLayout(listOf(leftBlade, rightBlade), HiltGeometry(x = 150, y = 3)), result.single())
     }
 
     @Test
-    fun `compute should quarter shoto blade border width for double bladed lightsaber`() {
-        val saber = lightsaber(
-            1,
-            isDoubleBladed = true,
-            yShift = 3,
-            blade(xBlade = -100, yBlade = 2, bladeSize = 8, isShoto = true, isForward = false),
-            blade(100, 4, 6, false),
-        )
-
+    fun `compute should render left blade variant backward with hilt at right edge`() {
         val result = LightsaberLayoutCalculator.compute(
-            lightsabers(saber),
-            iconWidths = listOf(100),
-            width = 400,
-            amountFull = 80,
-            showIcon = true,
-        )
-
-        val leftBlade = BladeGeometry(
-            blade(xBlade = -100, yBlade = 2, bladeSize = 8, isShoto = true, isForward = false),
-            x = 30,
-            y = 5,
-            width = 20,
-            height = 8,
-            borderX = -50,
-            borderWidth = 100,
-        )
-        val rightBlade = BladeGeometry(
-            blade(100, 4, 6, false),
-            x = 350,
-            y = 7,
-            width = 40,
-            height = 6,
-            borderX = 350,
-            borderWidth = 200,
-        )
-
-        assertEquals(LightsaberLayout(listOf(leftBlade, rightBlade), HiltGeometry(x = 150, y = 3)), result.single())
-    }
-
-    @Test
-    fun `compute should return no hilt geometry when icon is not shown`() {
-        val saber = lightsaber(1, isDoubleBladed = false, yShift = 3, blade(xBlade = 200, yBlade = 2, bladeSize = 8))
-
-        val result = LightsaberLayoutCalculator.compute(
-            lightsabers(saber),
-            iconWidths = listOf(100),
-            width = 400,
-            amountFull = 80,
-            showIcon = false,
-        )
-
-        val expectedBlade = BladeGeometry(
-            blade(200, 2, 8, false),
-            x = 0,
-            y = 5,
-            width = 80,
-            height = 8,
-            borderX = 0,
-            borderWidth = 400,
-        )
-
-        assertEquals(LightsaberLayout(listOf(expectedBlade), null), result.single())
-    }
-
-    @Test
-    fun `compute should use first blade only for double bladed lightsaber without hilt`() {
-        val saber = lightsaber(
-            2,
-            isDoubleBladed = true,
-            yShift = 3,
-            blade(xBlade = -100, yBlade = 2, bladeSize = 8, isForward = false),
-            blade(100, 4, 6, false),
-        )
-
-        val result = LightsaberLayoutCalculator.compute(
-            lightsabers(saber),
-            iconWidths = listOf(100),
-            width = 400,
-            amountFull = 80,
-            showIcon = false,
-        )
-
-        val expectedBlade = BladeGeometry(
-            blade(xBlade = -100, yBlade = 2, bladeSize = 8, isForward = false),
-            x = 320,
-            y = 5,
-            width = 80,
-            height = 8,
-            borderX = 0,
-            borderWidth = 400,
-        )
-
-        assertEquals(LightsaberLayout(listOf(expectedBlade), null), result.single())
-    }
-
-    @Test
-    fun `compute should return no hilt geometry when icon does not fit`() {
-        val saber = lightsaber(1, isDoubleBladed = false, yShift = 3, blade(xBlade = 200, yBlade = 2, bladeSize = 8))
-
-        val result = LightsaberLayoutCalculator.compute(
-            lightsabers(saber),
-            iconWidths = listOf(350),
-            width = 400,
-            amountFull = 80,
-            showIcon = true,
-        )
-
-        val expectedBlade = BladeGeometry(
-            blade(200, 2, 8, false),
-            x = 0,
-            y = 5,
-            width = 80,
-            height = 8,
-            borderX = 0,
-            borderWidth = 400,
-        )
-
-        assertEquals(LightsaberLayout(listOf(expectedBlade), null), result.single())
-    }
-
-    @Test
-    fun `compute should return no hilt geometry for double bladed lightsaber when icon does not fit`() {
-        val saber = lightsaber(
-            1,
-            isDoubleBladed = true,
-            yShift = 3,
-            blade(xBlade = -100, yBlade = 2, bladeSize = 8, isForward = false),
-        )
-
-        val result = LightsaberLayoutCalculator.compute(
-            lightsabers(saber),
-            iconWidths = listOf(100),
-            width = 150,
-            amountFull = 80,
-            showIcon = true,
-        )
-
-        val expectedBlade = BladeGeometry(
-            blade(xBlade = -100, yBlade = 2, bladeSize = 8, isForward = false),
-            x = 70,
-            y = 5,
-            width = 80,
-            height = 8,
-            borderX = 0,
-            borderWidth = 150,
-        )
-
-        assertEquals(LightsaberLayout(listOf(expectedBlade), null), result.single())
-    }
-
-    @Test
-    fun `compute should use max icon widths of single bladed lightsabers for all layouts`() {
-        val leftSaber = lightsaber(1, isDoubleBladed = false, yShift = 3, blade(-40, 2, 8, false))
-        val rightSaber = lightsaber(
-            2,
-            isDoubleBladed = false,
-            yShift = 1,
-            blade(xBlade = -40, yBlade = 2, bladeSize = 8, isForward = false),
-        )
-
-        val result = LightsaberLayoutCalculator.compute(
-            lightsabers(leftSaber, rightSaber),
-            iconWidths = listOf(60, 80),
-            width = 400,
-            amountFull = 100,
-            showIcon = true,
-        )
-
-        val leftBlade = BladeGeometry(
-            blade(-40, 2, 8, false),
-            x = 20,
-            y = 5,
-            width = 75,
-            height = 8,
-            borderX = 20,
-            borderWidth = 300,
-        )
-        val rightBlade = BladeGeometry(
-            blade(xBlade = -40, yBlade = 2, bladeSize = 8, isForward = false),
-            x = 205,
-            y = 3,
-            width = 75,
-            height = 8,
-            borderX = -20,
-            borderWidth = 300,
-        )
-
-        val expectedLayouts = listOf(
-            LightsaberLayout(listOf(leftBlade), HiltGeometry(x = 0, y = 3)),
-            LightsaberLayout(listOf(rightBlade), HiltGeometry(x = 320, y = 1)),
-        )
-
-        assertEquals(expectedLayouts, result)
-    }
-
-    @Test
-    fun `computeVariantLayout should render left blade variant backward with hilt at right edge`() {
-        val result = LightsaberLayoutCalculator.computeVariantLayout(
             doubleBladedVariantEntity(),
             selectedVariantIndex = 1,
             iconWidths = listOf(100),
@@ -387,8 +121,8 @@ internal class LightsaberLayoutCalculatorTests {
     }
 
     @Test
-    fun `computeVariantLayout should render right blade variant forward with hilt at left edge`() {
-        val result = LightsaberLayoutCalculator.computeVariantLayout(
+    fun `compute should render right blade variant forward with hilt at left edge`() {
+        val result = LightsaberLayoutCalculator.compute(
             doubleBladedVariantEntity(),
             selectedVariantIndex = 2,
             iconWidths = listOf(100),
@@ -411,8 +145,65 @@ internal class LightsaberLayoutCalculatorTests {
     }
 
     @Test
-    fun `computeVariantLayout should render left blade variant backward without hilt when icon is not shown`() {
-        val result = LightsaberLayoutCalculator.computeVariantLayout(
+    fun `compute should halve shoto blade and border width for single blade variant`() {
+        val saber = lightsaber(
+            1,
+            isDoubleBladed = false,
+            yShift = 3,
+            blade(xBlade = 200, yBlade = 2, bladeSize = 8, isShoto = true),
+        )
+
+        val result = LightsaberLayoutCalculator.compute(
+            Lightsabers("1", 1f, false, listOf(saber)),
+            selectedVariantIndex = 0,
+            iconWidths = listOf(100),
+            width = 400,
+            amountFull = 80,
+            showIcon = true,
+        )
+
+        val expectedBlade = BladeGeometry(
+            blade(xBlade = 200, yBlade = 2, bladeSize = 8, isShoto = true),
+            x = 300,
+            y = 5,
+            width = 50,
+            height = 8,
+            borderX = 300,
+            borderWidth = 250,
+        )
+
+        assertEquals(LightsaberLayout(listOf(expectedBlade), HiltGeometry(x = 0, y = 3)), result.single())
+    }
+
+    @Test
+    fun `compute should return no hilt geometry when icon does not fit`() {
+        val saber = lightsaber(1, isDoubleBladed = false, yShift = 3, blade(xBlade = 200, yBlade = 2, bladeSize = 8))
+
+        val result = LightsaberLayoutCalculator.compute(
+            Lightsabers("1", 1f, false, listOf(saber)),
+            selectedVariantIndex = 0,
+            iconWidths = listOf(450),
+            width = 400,
+            amountFull = 80,
+            showIcon = true,
+        )
+
+        val expectedBlade = BladeGeometry(
+            blade(xBlade = 200, yBlade = 2, bladeSize = 8),
+            x = 0,
+            y = 5,
+            width = 80,
+            height = 8,
+            borderX = 0,
+            borderWidth = 400,
+        )
+
+        assertEquals(LightsaberLayout(listOf(expectedBlade), null), result.single())
+    }
+
+    @Test
+    fun `compute should render left blade variant backward without hilt when icon is not shown`() {
+        val result = LightsaberLayoutCalculator.compute(
             doubleBladedVariantEntity(),
             selectedVariantIndex = 1,
             iconWidths = listOf(100),
@@ -435,7 +226,7 @@ internal class LightsaberLayoutCalculatorTests {
     }
 
     @Test
-    fun `computeVariantLayout should use blade isForward for direction instead of blade index`() {
+    fun `compute should use blade isForward for direction instead of blade index`() {
         val entity = Lightsabers(
             "1",
             1f,
@@ -456,7 +247,7 @@ internal class LightsaberLayoutCalculatorTests {
             ),
         )
 
-        val forwardResult = LightsaberLayoutCalculator.computeVariantLayout(
+        val forwardResult = LightsaberLayoutCalculator.compute(
             entity,
             selectedVariantIndex = 1,
             iconWidths = listOf(100),
@@ -477,7 +268,7 @@ internal class LightsaberLayoutCalculatorTests {
 
         assertEquals(LightsaberLayout(listOf(forwardBlade), HiltGeometry(x = 0, y = 3)), forwardResult.single())
 
-        val backwardResult = LightsaberLayoutCalculator.computeVariantLayout(
+        val backwardResult = LightsaberLayoutCalculator.compute(
             entity,
             selectedVariantIndex = 2,
             iconWidths = listOf(100),
@@ -500,29 +291,47 @@ internal class LightsaberLayoutCalculatorTests {
     }
 
     @Test
-    fun `computeVariantLayout should render jar kai single blade variant like standard single bladed`() {
-        val entity = Lightsabers(
-            "1",
-            1f,
-            true,
-            listOf(
-                lightsaber(1, isDoubleBladed = false, yShift = 3, blade(xBlade = 50, yBlade = 2, bladeSize = 8)),
-                lightsaber(
-                    2,
-                    isDoubleBladed = false,
-                    yShift = 1,
-                    blade(xBlade = 50, yBlade = 2, bladeSize = 8, isForward = false),
-                ),
-            ),
-            variants = listOf(
-                listOf(CombinedId(1, 0), CombinedId(2, 0)),
-                listOf(CombinedId(1, 0)),
-                listOf(CombinedId(2, 0)),
-            ),
+    fun `compute should render jar kai both sabers with shared space between hilts`() {
+        val result = LightsaberLayoutCalculator.compute(
+            jarKaiVariantEntity(),
+            selectedVariantIndex = 0,
+            iconWidths = listOf(100, 50),
+            width = 400,
+            amountFull = 80,
+            showIcon = true,
         )
 
-        val forwardResult = LightsaberLayoutCalculator.computeVariantLayout(
-            entity,
+        val forwardBlade = BladeGeometry(
+            blade(xBlade = 50, yBlade = 2, bladeSize = 8),
+            x = 150,
+            y = 5,
+            width = 60,
+            height = 8,
+            borderX = 150,
+            borderWidth = 300,
+        )
+        val backwardBlade = BladeGeometry(
+            blade(xBlade = 50, yBlade = 2, bladeSize = 8, isForward = false),
+            x = 340,
+            y = 3,
+            width = 60,
+            height = 8,
+            borderX = 100,
+            borderWidth = 300,
+        )
+
+        val expectedLayouts = listOf(
+            LightsaberLayout(listOf(forwardBlade), HiltGeometry(x = 0, y = 3)),
+            LightsaberLayout(listOf(backwardBlade), HiltGeometry(x = 350, y = 1)),
+        )
+
+        assertEquals(expectedLayouts, result)
+    }
+
+    @Test
+    fun `compute should render jar kai single blade variant like standard single bladed`() {
+        val forwardResult = LightsaberLayoutCalculator.compute(
+            jarKaiVariantEntity(),
             selectedVariantIndex = 1,
             iconWidths = listOf(100, 50),
             width = 400,
@@ -542,8 +351,8 @@ internal class LightsaberLayoutCalculatorTests {
 
         assertEquals(LightsaberLayout(listOf(forwardBlade), HiltGeometry(x = 0, y = 3)), forwardResult.single())
 
-        val backwardResult = LightsaberLayoutCalculator.computeVariantLayout(
-            entity,
+        val backwardResult = LightsaberLayoutCalculator.compute(
+            jarKaiVariantEntity(),
             selectedVariantIndex = 2,
             iconWidths = listOf(100, 50),
             width = 400,

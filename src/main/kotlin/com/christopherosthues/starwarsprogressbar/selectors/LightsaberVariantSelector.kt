@@ -5,30 +5,45 @@ import com.christopherosthues.starwarsprogressbar.models.Lightsabers
 import java.util.concurrent.ThreadLocalRandom
 
 /**
- * Selects a random variant index from an entity's declared variants list.
+ * Selects the variant index for a lightsaber entity.
  *
  * When the global lightsaber variants toggle is enabled, this selector randomly chooses
  * from each entity's declared `variants: List<List<CombinedId>>` list. The selected index
- * persists until the next entity selection. Falls back to first/default variant (index 0)
- * when the toggle is disabled or only a single variant is declared.
+ * persists until the next entity selection. When the toggle is disabled, the entity's
+ * declared default variant ([Lightsabers.defaultVariant]) is used instead.
  */
 internal object LightsaberVariantSelector {
 
     /**
-     * Selects a random variant index from the entity's declared variants list.
+     * Selects the variant index for rendering.
      *
      * @param lightsabers The lightsaber entity with declared variants
      * @param enableVariants Whether the global variant toggle is enabled
-     * @return The selected variant index (0-based), or 0 if disabled/single variant
+     * @return The selected variant index (0-based); the default variant when disabled
      */
     fun selectVariantIndex(lightsabers: Lightsabers, enableVariants: Boolean): Int {
         val variants = lightsabers.variants
-        return when {
-            !enableVariants -> 0
-            variants.size == 1 -> 0
-            else -> ThreadLocalRandom.current().nextInt(variants.size)
+        return if (variants.isEmpty()) {
+            0
+        } else if (enableVariants) {
+            ThreadLocalRandom.current().nextInt(variants.size)
+        } else {
+            resolveDefaultVariantIndex(lightsabers)
         }
     }
+
+    /**
+     * Resolves the entity's declared default variant index.
+     *
+     * @param lightsabers The lightsaber entity with a declared default variant
+     * @return The default variant index, falling back to 0 when the declared value is invalid
+     */
+    fun resolveDefaultVariantIndex(lightsabers: Lightsabers): Int =
+        if (lightsabers.defaultVariant in lightsabers.variants.indices) {
+            lightsabers.defaultVariant
+        } else {
+            0
+        }
 
     /**
      * Resolves the selected variant index to the actual list of CombinedIds for rendering.
