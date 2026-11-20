@@ -31,4 +31,36 @@ internal class FactionsJsonValidationTests {
             }
         }
     }
+
+    @Test
+    fun `every variant references existing sabers and blades`() {
+        val json = javaClass.getResource("/json/factions.json")?.readText()
+            ?: throw AssertionError("Bundled factions.json not found on the test classpath")
+
+        val factions = parseFactionsFromJson(json)
+
+        assertTrue(
+            factions.lightsabers.isNotEmpty(),
+            "factions.json parsed to no lightsaber factions - check for JSON syntax errors",
+        )
+
+        factions.lightsabers.forEach { faction ->
+            faction.data.forEach { entity ->
+                entity.variants.forEach { variant ->
+                    variant.forEach { combinedId ->
+                        val saber = entity.lightsabers.getOrNull(combinedId.lightsaberId - 1)
+                            ?: throw AssertionError(
+                                "${entity.id}: variant references unknown lightsaber " +
+                                    "${combinedId.lightsaberId} (entity has ${entity.lightsabers.size} lightsaber(s))",
+                            )
+                        assertTrue(
+                            combinedId.bladeId in saber.blades.indices,
+                            "${entity.id}: variant references blade ${combinedId.bladeId} of lightsaber " +
+                                "${combinedId.lightsaberId} which has ${saber.blades.size} blade(s)",
+                        )
+                    }
+                }
+            }
+        }
+    }
 }

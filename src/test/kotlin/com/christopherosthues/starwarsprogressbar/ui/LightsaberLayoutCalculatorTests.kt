@@ -61,6 +61,31 @@ internal class LightsaberLayoutCalculatorTests {
         ),
     )
 
+    private fun jarKaiDoubleBladedEntity() = Lightsabers(
+        "1",
+        1f,
+        true,
+        listOf(
+            lightsaber(
+                1,
+                isDoubleBladed = true,
+                yShift = 3,
+                blade(xBlade = 1, yBlade = 2, bladeSize = 8, isForward = false),
+                blade(xBlade = -1, yBlade = 2, bladeSize = 8),
+            ),
+            lightsaber(
+                2,
+                isDoubleBladed = true,
+                yShift = 1,
+                blade(xBlade = 1, yBlade = 2, bladeSize = 8, isForward = false),
+                blade(xBlade = -1, yBlade = 2, bladeSize = 8),
+            ),
+        ),
+        variants = listOf(
+            listOf(CombinedId(1, 0), CombinedId(1, 1), CombinedId(2, 0), CombinedId(2, 1)),
+        ),
+    )
+
     //region Tests
 
     @Test
@@ -371,6 +396,113 @@ internal class LightsaberLayoutCalculatorTests {
         )
 
         assertEquals(LightsaberLayout(listOf(backwardBlade), HiltGeometry(x = 350, y = 1)), backwardResult.single())
+    }
+
+    @Test
+    fun `compute should render single saber jar kai full variant centered like a normal double bladed saber`() {
+        val entity = Lightsabers(
+            "1",
+            1f,
+            true,
+            listOf(
+                lightsaber(
+                    1,
+                    isDoubleBladed = true,
+                    yShift = 3,
+                    blade(xBlade = 1, yBlade = 2, bladeSize = 8, isForward = false),
+                    blade(xBlade = -1, yBlade = 2, bladeSize = 8),
+                ),
+            ),
+            variants = listOf(
+                listOf(CombinedId(1, 0), CombinedId(1, 1)),
+            ),
+        )
+
+        val result = LightsaberLayoutCalculator.compute(
+            entity,
+            selectedVariantIndex = 0,
+            iconWidths = listOf(100),
+            width = 400,
+            amountFull = 80,
+            showIcon = true,
+        )
+
+        val leftBlade = BladeGeometry(
+            blade(xBlade = 1, yBlade = 2, bladeSize = 8, isForward = false),
+            x = 121,
+            y = 5,
+            width = 30,
+            height = 8,
+            borderX = 0,
+            borderWidth = 151,
+        )
+        val rightBlade = BladeGeometry(
+            blade(xBlade = -1, yBlade = 2, bladeSize = 8),
+            x = 249,
+            y = 5,
+            width = 30,
+            height = 8,
+            borderX = 249,
+            borderWidth = 151,
+        )
+
+        assertEquals(LightsaberLayout(listOf(leftBlade, rightBlade), HiltGeometry(x = 150, y = 3)), result.single())
+    }
+
+    @Test
+    fun `compute should render jar kai with all full double bladed sabers centered with all hilts in the middle`() {
+        val result = LightsaberLayoutCalculator.compute(
+            jarKaiDoubleBladedEntity(),
+            selectedVariantIndex = 0,
+            iconWidths = listOf(100, 50),
+            width = 400,
+            amountFull = 80,
+            showIcon = true,
+        )
+
+        val firstLeftBlade = BladeGeometry(
+            blade(xBlade = 1, yBlade = 2, bladeSize = 8, isForward = false),
+            x = 121,
+            y = 5,
+            width = 30,
+            height = 8,
+            borderX = 0,
+            borderWidth = 151,
+        )
+        val firstRightBlade = BladeGeometry(
+            blade(xBlade = -1, yBlade = 2, bladeSize = 8),
+            x = 249,
+            y = 5,
+            width = 30,
+            height = 8,
+            borderX = 249,
+            borderWidth = 151,
+        )
+        val secondLeftBlade = BladeGeometry(
+            blade(xBlade = 1, yBlade = 2, bladeSize = 8, isForward = false),
+            x = 141,
+            y = 3,
+            width = 35,
+            height = 8,
+            borderX = 0,
+            borderWidth = 176,
+        )
+        val secondRightBlade = BladeGeometry(
+            blade(xBlade = -1, yBlade = 2, bladeSize = 8),
+            x = 224,
+            y = 3,
+            width = 35,
+            height = 8,
+            borderX = 224,
+            borderWidth = 176,
+        )
+
+        val expectedLayouts = listOf(
+            LightsaberLayout(listOf(firstLeftBlade, firstRightBlade), HiltGeometry(x = 150, y = 3)),
+            LightsaberLayout(listOf(secondLeftBlade, secondRightBlade), HiltGeometry(x = 175, y = 1)),
+        )
+
+        assertEquals(expectedLayouts, result)
     }
 
     //endregion

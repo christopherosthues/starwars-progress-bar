@@ -71,13 +71,14 @@ internal class LightsaberProgressBarDecorator(private val starWarsState: () -> S
             showIcon,
         )
 
-        // Resolve the selected variant and pick each rendered saber's icon by CombinedId.lightsaberId
+        // One layout per distinct saber of the selected variant; pick each saber's icon by lightsaberId
         LightsaberVariantSelector.resolveVariant(lightsabers, selectedVariantIndex)
-            .forEachIndexed { index, combinedId ->
+            .map { it.lightsaberId }
+            .distinct()
+            .forEachIndexed { index, lightsaberId ->
                 val layout = layouts.getOrNull(index) ?: return@forEachIndexed
-                // Select icon based on CombinedId.lightsaberId (1-based to 0-based index)
-                val iconIndex = combinedId.lightsaberId - 1
-                val icon = lightsaberIcons.getOrNull(iconIndex) ?: lightsaberIcons.first()
+                // Select icon based on the saber's 1-based lightsaberId (0-based icon list index)
+                val icon = lightsaberIcons.getOrNull(lightsaberId - 1) ?: lightsaberIcons.first()
                 drawLightsaber(graphics2D, component, icon, layout)
             }
 

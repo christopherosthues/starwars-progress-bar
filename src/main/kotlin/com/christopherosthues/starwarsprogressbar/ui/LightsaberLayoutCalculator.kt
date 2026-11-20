@@ -1,6 +1,7 @@
 package com.christopherosthues.starwarsprogressbar.ui
 
 import com.christopherosthues.starwarsprogressbar.models.Blade
+import com.christopherosthues.starwarsprogressbar.models.CombinedId
 import com.christopherosthues.starwarsprogressbar.models.Lightsaber
 import com.christopherosthues.starwarsprogressbar.models.Lightsabers
 import com.christopherosthues.starwarsprogressbar.selectors.LightsaberVariantSelector
@@ -18,6 +19,12 @@ internal object LightsaberLayoutCalculator {
         return Pair(forwardMax, backwardMax)
     }
 
+    /**
+     * Computes the layout for the selected variant. Returns one [LightsaberLayout] per distinct
+     * saber referenced by the variant, in first-appearance order. A saber whose variant entries
+     * select both blades is rendered as a normal centered double-bladed lightsaber; all other
+     * sabers are placed at the bar edges by their selected blade's direction.
+     */
     fun compute(
         lightsabers: Lightsabers,
         selectedVariantIndex: Int,
@@ -27,52 +34,41 @@ internal object LightsaberLayoutCalculator {
         showIcon: Boolean,
     ): List<LightsaberLayout> {
         val variant = LightsaberVariantSelector.resolveVariant(lightsabers, selectedVariantIndex)
-        // For multi-saber variants (jar-kai), account for all hilts so blades stop at the other hilt's emitter
-        val (maxLeftIconWidth, maxRightIconWidth) = if (variant.size > 1) {
-            computeMaxIconWidths(
-                variant.asSequence().map { combinedId ->
-                    val saber = lightsabers.lightsabers.getOrNull(combinedId.lightsaberId - 1)
-                        ?: lightsabers.lightsabers.first()
-                    val iconW = iconWidths.getOrNull(combinedId.lightsaberId - 1) ?: iconWidths.first()
-                    val blade = saber.blades.getOrNull(combinedId.bladeId) ?: saber.blades.first()
-                    blade.isForward to iconW
-                },
-            )
-        } else {
-            Pair(0, 0)
-        }
 
-        // Check if this is a full double-blade variant (both blades of same saber)
-        val isFullDoubleBlade = variant.groupBy { it.lightsaberId }.size == 1 &&
-            variant.map { it.bladeId }.toSet() == setOf(0, 1)
+        // Group the variant's CombinedIds per saber; first-appearance order is preserved.
+        val sabersInVariant = variant.groupBy { it.lightsaberId }
 
-        return if (isFullDoubleBlade) {
-            // Both blades of same double-bladed saber: use centered layout
-            val lightsaberId = variant.first().lightsaberId - 1
-            val lightsaber = lightsabers.lightsabers.getOrNull(lightsaberId) ?: lightsabers.lightsabers.first()
-            val iconWidth = iconWidths.getOrNull(lightsaberId) ?: iconWidths.first()
-            val centerHiltX = (width - iconWidth) / 2
+        // Single-blade sabers reserve their edge-hilt space so blades stop at the other hilt's emitter
+        val (maxLeftIconWidth, maxRightIconWidth) = computeMaxIconWidths(
+            sabersInVariant.asSequence().filter { !isFullDoubleBladed(it.value) }.map { (lightsaberId, combinedIds) ->
+                val saber = lightsabers.lightsabers.getOrNull(lightsaberId - 1) ?: lightsabers.lightsabers.first()
+                val iconWidth = iconWidths.getOrNull(lightsaberId - 1) ?: iconWidths.first()
+                val blade = saber.blades.getOrNull(combinedIds.first().bladeId) ?: saber.blades.first()
+                blade.isForward to iconWidth
+            },
+        )
 
-            listOf(
+        return sabersInVariant.map { (lightsaberId, combinedIds) ->
+            val saber = lightsabers.lightsabers.getOrNull(lightsaberId - 1) ?: lightsabers.lightsabers.first()
+            val iconWidth = iconWidths.getOrNull(lightsaberId - 1) ?: iconWidths.first()
+
+            if (isFullDoubleBladed(combinedIds)) {
+                // Both blades of this saber are selected: render as a normal centered double-bladed lightsaber
+                val centerHiltX = (width - iconWidth) / 2
+
                 computeDoubleBladedLayout(
-                    lightsaber,
+                    saber,
                     centerHiltX,
                     centerHiltX + iconWidth,
                     width - iconWidth,
                     width,
                     amountFull,
                     showIcon && width >= iconWidth,
-                ),
-            )
-        } else {
-            variant.map { combinedId ->
-                val lightsaber = lightsabers.lightsabers.getOrNull(combinedId.lightsaberId - 1)
-                    ?: lightsabers.lightsabers.first()
-                val iconWidth = iconWidths.getOrNull(combinedId.lightsaberId - 1) ?: iconWidths.first()
-
+                )
+            } else {
                 computeVariantBladeLayout(
-                    lightsaber,
-                    combinedId.bladeId,
+                    saber,
+                    combinedIds.first().bladeId,
                     iconWidth,
                     width,
                     amountFull,
@@ -83,6 +79,12 @@ internal object LightsaberLayoutCalculator {
             }
         }
     }
+
+    /**
+     * Checks whether the variant entries select both blades of one saber (full double-blade).
+     */
+    private fun isFullDoubleBladed(combinedIds: List<CombinedId>): Boolean =
+        combinedIds.map { it.bladeId }.toSet() == setOf(0, 1)
 
     /**
      * Computes a single-blade layout. All single-blade cases reduce to this once

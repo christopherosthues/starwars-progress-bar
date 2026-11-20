@@ -915,6 +915,8 @@
                         [{"lightsaberId": 1, "bladeId": 0}, {"lightsaberId": 1, "bladeId": 1}, {"lightsaberId": 2, "bladeId": 0}, {"lightsaberId": 2, "bladeId": 1}],
                         [{"lightsaberId": 1, "bladeId": 0}, {"lightsaberId": 2, "bladeId": 0}],
                         [{"lightsaberId": 1, "bladeId": 1}, {"lightsaberId": 2, "bladeId": 1}],
+                        [{"lightsaberId": 1, "bladeId": 0}, {"lightsaberId": 2, "bladeId": 1}],
+                        [{"lightsaberId": 1, "bladeId": 1}, {"lightsaberId": 2, "bladeId": 0}],
                         [{"lightsaberId": 1, "bladeId": 0}],
                         [{"lightsaberId": 1, "bladeId": 1}],
                         [{"lightsaberId": 2, "bladeId": 0}],
