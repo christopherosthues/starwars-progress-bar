@@ -178,3 +178,4 @@ If validation fails:
 - [Implementation Plan](./plan.md) — technical architecture and project structure
 - [Data Model](./data-model.md) — entity definitions and validation rules
 - [Research Notes](./research.md) — technical decisions and rationale
+- [Rendering Cases](./cases.md) — complete reference for all rendering paths, hilt positioning rules, xBlade anchor computation, and edge case behavior

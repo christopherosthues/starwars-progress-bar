@@ -143,3 +143,10 @@ The data model and rendering system are designed to accommodate lightsaber icon 
 - The feature works within the existing `StarWarsState` persistent configuration system; new settings follow the established pattern (default constant, bundle key, state field, UI panel)
 - No upper bound exists for the number of lightsaber entities in factions.json; individual weapon configurations have a maximum of 4 lightsabers per entity (jar-kai), each with a maximum of 2 blades (double-bladed sabers represent the most complex case)
 - **V1 scope limitation**: Only a global toggle checkbox is implemented; per-lightsaber variant multiselect UI is deferred to V2. When enabled, random selection includes both full weapon display AND all individual blade variants in the pool.
+
+## References
+
+- [Data Model](./data-model.md) — entity definitions and CombinedId format
+- [Rendering Contract](./contracts/rendering-contract.md) — interface definition and visual consistency requirements
+- [Settings UI Contract](./contracts/settings-ui-contract.md) — user selection interface behavior
+- [Rendering Cases](./cases.md) — complete reference for all rendering paths, hilt positioning rules, xBlade anchor computation, and edge case behavior

@@ -211,3 +211,9 @@ BladeVariantSelector (V1: new component)
     ├── Computes: random variant INDEX from entity's declared variants when toggle enabled
     └── Returns: selected variant index → rendering code uses CombinedIds directly (no string parsing)
 ```
+
+## References
+
+- [Rendering Contract](./contracts/rendering-contract.md) — interface definition and visual consistency requirements
+- [Settings UI Contract](./contracts/settings-ui-contract.md) — user selection interface behavior
+- [Rendering Cases](./cases.md) — complete reference for all rendering paths, hilt positioning rules, xBlade anchor computation, and edge case behavior
