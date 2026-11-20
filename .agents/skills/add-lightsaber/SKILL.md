@@ -51,7 +51,7 @@ Add to the appropriate faction's `data` array under `"lightsabers"`:
 }
 ```
 
-- `isJarKai: true` means the entity has **one icon per blade** (see below). Copy an existing entry of the same kind as a template.
+- Every hilt in `lightsabers[]` gets its own icon files (see below); `isJarKai: true` marks entities with multiple hilts. Copy an existing entry of the same kind as a template.
 - Each blade's `bladeColor` must match one of the keys in the `colors` map defined by `LightsaberColor` (`src/main/kotlin/com/christopherosthues/starwarsprogressbar/ui/LightsaberColor.kt`) — unknown values silently fall back to cyan.
 
 ## 3. Icons (Git LFS PNGs)
@@ -60,19 +60,14 @@ All PNGs are Git LFS-tracked (`*.png filter=lfs`). Never commit them as regular 
 
 Unlike vehicles, lightsabers have **no `_r` variant**. Most lightsaber icons are **10 px** tall (some go up to **20 px**); the width is variable and depends on the hilt itself. Make the @2x version exactly double size.
 
-Non-jar-kai (`isJarKai: false`) — two files:
+Every hilt has its own icon pair, where `<bladeId>` is each `lightsabers[].id`:
 
 | File | Notes |
 |---|---|
-| `src/main/resources/icons/lightsabers/<faction>/<id>.png` | Base icon; loaded at runtime |
-| `icons/lightsabers/<faction>/<id>@2x.png` | Double-size version, repo root |
-
-Jar-kai (`isJarKai: true`) — one pair per blade entry, where `<bladeId>` is each `lightsabers[].id`:
-
-| File | Notes |
-|---|---|
-| `src/main/resources/icons/lightsabers/<faction>/<id>_<bladeId>.png` | Base icon for that blade |
+| `src/main/resources/icons/lightsabers/<faction>/<id>_<bladeId>.png` | Base icon for that blade; loaded at runtime |
 | `icons/lightsabers/<faction>/<id>_<bladeId>@2x.png` | Double-size version, repo root |
+
+Non-jar-kai entities have a single hilt entry (`<id>_1.png`); jar-kai entities have one pair per hilt.
 
 - `IconResourceTests` enforces exactly these paths in both locations.
 
