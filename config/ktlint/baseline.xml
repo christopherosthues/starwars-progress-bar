@@ -4,16 +4,16 @@
         <error line="189" column="121" source="standard:max-line-length" />
     </file>
     <file name="src/test/kotlin/com/christopherosthues/starwarsprogressbar/listeners/StarWarsProgressListenerTests.kt">
-        <error line="237" column="121" source="standard:max-line-length" />
-        <error line="254" column="121" source="standard:max-line-length" />
-        <error line="271" column="121" source="standard:max-line-length" />
-        <error line="288" column="121" source="standard:max-line-length" />
-        <error line="305" column="121" source="standard:max-line-length" />
-        <error line="323" column="121" source="standard:max-line-length" />
-        <error line="342" column="121" source="standard:max-line-length" />
-        <error line="367" column="121" source="standard:max-line-length" />
-        <error line="410" column="121" source="standard:max-line-length" />
-        <error line="443" column="121" source="standard:max-line-length" />
+        <error line="238" column="121" source="standard:max-line-length" />
+        <error line="255" column="121" source="standard:max-line-length" />
+        <error line="272" column="121" source="standard:max-line-length" />
+        <error line="289" column="121" source="standard:max-line-length" />
+        <error line="306" column="121" source="standard:max-line-length" />
+        <error line="324" column="121" source="standard:max-line-length" />
+        <error line="343" column="121" source="standard:max-line-length" />
+        <error line="368" column="121" source="standard:max-line-length" />
+        <error line="411" column="121" source="standard:max-line-length" />
+        <error line="444" column="121" source="standard:max-line-length" />
     </file>
     <file name="src/test/kotlin/com/christopherosthues/starwarsprogressbar/models/FactionCreationHelper.kt">
         <error line="158" column="121" source="standard:max-line-length" />
