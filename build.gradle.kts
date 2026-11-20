@@ -1,12 +1,9 @@
-import org.jetbrains.changelog.Changelog
 import org.jetbrains.changelog.markdownToHTML
 import org.jetbrains.intellij.platform.gradle.TestFrameworkType
 import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 import kotlin.collections.listOf
 
 plugins {
-    // Java support
-//    id("java")
     // Kotlin support
     alias(libs.plugins.kotlin)
     // Gradle IntelliJ Plugin
@@ -22,17 +19,6 @@ plugins {
     // Serialization plugin
     alias(libs.plugins.serialization)
 }
-
-// // Set the JVM language level used to compile sources and generate files - Java 21 is required since 2024.2
-// kotlin {
-//     jvmToolchain(21)
-// }
-//
-// java {
-//     toolchain {
-//         languageVersion = JavaLanguageVersion.of(21)
-//     }
-// }
 
 // Dependencies are managed with Gradle version catalog - read more: https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog
 dependencies {
@@ -103,8 +89,6 @@ detekt {
 // Configure IntelliJ Platform Gradle Plugin - read more: https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin-extension.html
 intellijPlatform {
     pluginConfiguration {
-//        version = providers.gradleProperty("pluginVersion")
-
         // Extract the <!-- Plugin description --> section from README.md and provide for the plugin's manifest
         description = providers.fileContents(layout.projectDirectory.file("README.md")).asText.map {
             val start = "<!-- Plugin description -->"
@@ -118,32 +102,12 @@ intellijPlatform {
             }
         }
 
-//        val changelog = project.changelog // local variable for configuration cache compatibility
-//        // Get the latest available change notes from the changelog file
-//        changeNotes = version.map { pluginVersion ->
-//            with(changelog) {
-//                renderItem(
-//                    (getOrNull(pluginVersion) ?: getUnreleased())
-//                        .withHeader(false)
-//                        .withEmptySections(false),
-//                    Changelog.OutputType.HTML,
-//                )
-//            }
-//        }
-
         ideaVersion {
             sinceBuild = providers.gradleProperty("pluginSinceBuild")
         }
     }
 
-//    signing {
-//        certificateChain = providers.environmentVariable("CERTIFICATE_CHAIN")
-//        privateKey = providers.environmentVariable("PRIVATE_KEY")
-//        password = providers.environmentVariable("PRIVATE_KEY_PASSWORD")
-//    }
-
     publishing {
-//        token = providers.environmentVariable("PUBLISH_TOKEN")
         // The pluginVersion is based on the SemVer (https://semver.org) and supports pre-release labels, like 2.1.7-alpha.3
         // Specify pre-release label to publish the plugin in a custom Release Channel automatically. Read more:
         // https://plugins.jetbrains.com/docs/intellij/publishing-plugin.html#specifying-a-release-channel
@@ -152,19 +116,7 @@ intellijPlatform {
                 listOf(it.substringAfter('-', "").substringBefore('.').ifEmpty { "default" })
             }
     }
-
-//    pluginVerification {
-//        ides {
-//            recommended()
-//        }
-//    }
 }
-
-// Configure Gradle Changelog Plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
-// changelog {
-//     groups = listOf("Added", "Changed", "Removed", "Fixed")
-//     repositoryUrl = providers.gradleProperty("pluginRepositoryUrl")
-// }
 
 // Configure Gradle Kover Plugin - read more: https://kotlin.github.io/kotlinx-kover/gradle-plugin/#configuration-details
 kover {
@@ -176,12 +128,6 @@ kover {
         }
     }
 }
-
-// tasks {
-//     publishPlugin {
-//         dependsOn(patchChangelog)
-//     }
-// }
 
 // Kotlin DSL
 tasks.withType<dev.detekt.gradle.Detekt>().configureEach {
