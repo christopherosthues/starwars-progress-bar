@@ -12,7 +12,10 @@
                     "variants": [
                         [{"lightsaberId": 1, "bladeId": 0}, {"lightsaberId": 2, "bladeId": 0}],
                         [{"lightsaberId": 1, "bladeId": 0}],
-                        [{"lightsaberId": 2, "bladeId": 0}]
+                        [{"lightsaberId": 2, "bladeId": 0}],
+                        [{"lightsaberId": 3, "bladeId": 0}, {"lightsaberId": 3, "bladeId": 1}],
+                        [{"lightsaberId": 3, "bladeId": 0}],
+                        [{"lightsaberId": 3, "bladeId": 1}]
                     ],
                     "lightsabers": [
                         {
@@ -42,6 +45,29 @@
                                     "bladeSize": 8,
                                     "xBlade": 0,
                                     "yBlade": 12
+                                }
+                            ]
+                        },
+                        {
+                            "id": 3,
+                            "isDoubleBladed": true,
+                            "yShift": 0,
+                            "blades": [
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "isForward": false,
+                                    "bladeSize": 3,
+                                    "xBlade": 0,
+                                    "yBlade": 1
+                                },
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "isForward": true,
+                                    "bladeSize": 3,
+                                    "xBlade": 0,
+                                    "yBlade": 16
                                 }
                             ]
                         }
@@ -194,7 +220,10 @@
                     "variants": [
                         [{"lightsaberId": 1, "bladeId": 0}, {"lightsaberId": 1, "bladeId": 1}],
                         [{"lightsaberId": 1, "bladeId": 0}],
-                        [{"lightsaberId": 1, "bladeId": 1}]
+                        [{"lightsaberId": 1, "bladeId": 1}],
+                        [{"lightsaberId": 2, "bladeId": 0}, {"lightsaberId": 2, "bladeId": 1}],
+                        [{"lightsaberId": 2, "bladeId": 0}],
+                        [{"lightsaberId": 2, "bladeId": 1}]
                     ],
                     "lightsabers": [
                         {
@@ -219,6 +248,29 @@
                                     "yBlade": 8
                                 }
                             ]
+                        },
+                        {
+                            "id": 2,
+                            "isDoubleBladed": true,
+                            "yShift": 3,
+                            "blades": [
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "isForward": false,
+                                    "bladeSize": 3,
+                                    "xBlade": 1,
+                                    "yBlade": 3
+                                },
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "isForward": true,
+                                    "bladeSize": 3,
+                                    "xBlade": -1,
+                                    "yBlade": 3
+                                }
+                            ]
                         }
                     ]
                 },
@@ -231,7 +283,10 @@
                     "variants": [
                         [{"lightsaberId": 1, "bladeId": 0}, {"lightsaberId": 1, "bladeId": 1}],
                         [{"lightsaberId": 1, "bladeId": 0}],
-                        [{"lightsaberId": 1, "bladeId": 1}]
+                        [{"lightsaberId": 1, "bladeId": 1}],
+                        [{"lightsaberId": 2, "bladeId": 0}, {"lightsaberId": 2, "bladeId": 1}],
+                        [{"lightsaberId": 2, "bladeId": 0}],
+                        [{"lightsaberId": 2, "bladeId": 1}]
                     ],
                     "lightsabers": [
                         {
@@ -256,6 +311,29 @@
                                     "yBlade": 8
                                 }
                             ]
+                        },
+                        {
+                            "id": 2,
+                            "isDoubleBladed": true,
+                            "yShift": 3,
+                            "blades": [
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "isForward": false,
+                                    "bladeSize": 4,
+                                    "xBlade": 4,
+                                    "yBlade": 2
+                                },
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "isForward": true,
+                                    "bladeSize": 4,
+                                    "xBlade": -4,
+                                    "yBlade": 2
+                                }
+                            ]
                         }
                     ]
                 },
@@ -268,7 +346,10 @@
                     "variants": [
                         [{"lightsaberId": 1, "bladeId": 0}, {"lightsaberId": 1, "bladeId": 1}],
                         [{"lightsaberId": 1, "bladeId": 0}],
-                        [{"lightsaberId": 1, "bladeId": 1}]
+                        [{"lightsaberId": 1, "bladeId": 1}],
+                        [{"lightsaberId": 2, "bladeId": 0}, {"lightsaberId": 2, "bladeId": 1}],
+                        [{"lightsaberId": 2, "bladeId": 0}],
+                        [{"lightsaberId": 2, "bladeId": 1}]
                     ],
                     "lightsabers": [
                         {
@@ -293,6 +374,29 @@
                                     "yBlade": 8
                                 }
                             ]
+                        },
+                        {
+                            "id": 2,
+                            "isDoubleBladed": true,
+                            "yShift": 5,
+                            "blades": [
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "isForward": false,
+                                    "bladeSize": 4,
+                                    "xBlade": 1,
+                                    "yBlade": -1
+                                },
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "isForward": true,
+                                    "bladeSize": 4,
+                                    "xBlade": -1,
+                                    "yBlade": -1
+                                }
+                            ]
                         }
                     ]
                 },
@@ -305,7 +409,10 @@
                     "variants": [
                         [{"lightsaberId": 1, "bladeId": 0}, {"lightsaberId": 1, "bladeId": 1}],
                         [{"lightsaberId": 1, "bladeId": 0}],
-                        [{"lightsaberId": 1, "bladeId": 1}]
+                        [{"lightsaberId": 1, "bladeId": 1}],
+                        [{"lightsaberId": 2, "bladeId": 0}, {"lightsaberId": 2, "bladeId": 1}],
+                        [{"lightsaberId": 2, "bladeId": 0}],
+                        [{"lightsaberId": 2, "bladeId": 1}]
                     ],
                     "lightsabers": [
                         {
@@ -327,6 +434,29 @@
                                     "isForward": true,
                                     "bladeSize": 4,
                                     "xBlade": -1,
+                                    "yBlade": 8
+                                }
+                            ]
+                        },
+                        {
+                            "id": 2,
+                            "isDoubleBladed": true,
+                            "yShift": 0,
+                            "blades": [
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "isForward": false,
+                                    "bladeSize": 4,
+                                    "xBlade": 3,
+                                    "yBlade": 8
+                                },
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "isForward": true,
+                                    "bladeSize": 4,
+                                    "xBlade": -3,
                                     "yBlade": 8
                                 }
                             ]
@@ -342,7 +472,10 @@
                     "variants": [
                         [{"lightsaberId": 1, "bladeId": 0}, {"lightsaberId": 1, "bladeId": 1}],
                         [{"lightsaberId": 1, "bladeId": 0}],
-                        [{"lightsaberId": 1, "bladeId": 1}]
+                        [{"lightsaberId": 1, "bladeId": 1}],
+                        [{"lightsaberId": 2, "bladeId": 0}, {"lightsaberId": 2, "bladeId": 1}],
+                        [{"lightsaberId": 2, "bladeId": 0}],
+                        [{"lightsaberId": 2, "bladeId": 1}]
                     ],
                     "lightsabers": [
                         {
@@ -367,6 +500,29 @@
                                     "yBlade": 8
                                 }
                             ]
+                        },
+                        {
+                            "id": 2,
+                            "isDoubleBladed": true,
+                            "yShift": 4,
+                            "blades": [
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "isForward": false,
+                                    "bladeSize": 3,
+                                    "xBlade": 1,
+                                    "yBlade": 0
+                                },
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "isForward": true,
+                                    "bladeSize": 3,
+                                    "xBlade": -1,
+                                    "yBlade": 0
+                                }
+                            ]
                         }
                     ]
                 },
@@ -377,9 +533,9 @@
                     "isJarKai": false,
                     "defaultVariant": 0,
                     "variants": [
-                        [{"lightsaberId": 1, "bladeId": 0}, {"lightsaberId": 1, "bladeId": 1}],
-                        [{"lightsaberId": 1, "bladeId": 0}],
-                        [{"lightsaberId": 1, "bladeId": 1}]
+                        [{"lightsaberId": 2, "bladeId": 0}, {"lightsaberId": 2, "bladeId": 1}],
+                        [{"lightsaberId": 2, "bladeId": 0}],
+                        [{"lightsaberId": 2, "bladeId": 1}]
                     ],
                     "lightsabers": [
                         {
@@ -402,6 +558,29 @@
                                     "bladeSize": 4,
                                     "xBlade": -1,
                                     "yBlade": 8
+                                }
+                            ]
+                        },
+                        {
+                            "id": 2,
+                            "isDoubleBladed": true,
+                            "yShift": 4,
+                            "blades": [
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "isForward": false,
+                                    "bladeSize": 3,
+                                    "xBlade": 1,
+                                    "yBlade": 0
+                                },
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "isForward": true,
+                                    "bladeSize": 3,
+                                    "xBlade": -1,
+                                    "yBlade": 0
                                 }
                             ]
                         }
