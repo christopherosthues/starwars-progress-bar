@@ -21,6 +21,8 @@
         <postStartupActivity
                 implementation="com.christopherosthues.starwarsprogressbar.notification.activities.PluginUpdatedActivity"/>
         <notificationGroup displayType="STICKY_BALLOON" id="Star Wars Progress Bar updated"/>
+
+        <errorHandler implementation="com.intellij.diagnostic.JetBrainsMarketplaceErrorReportSubmitter"/>
     </extensions>
 
     <applicationListeners>
