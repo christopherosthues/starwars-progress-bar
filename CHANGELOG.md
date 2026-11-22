@@ -9,6 +9,10 @@
 - Variants for Jar'Kai and Double-bladed lightsabers
 - Lightsaber hilt variants for Asajj Ventress and Inquisitors
 
+### Fixed
+
+- Random, not displayed selection no longer gets stuck on the missing vehicle placeholder after changing which vehicles or lightsabers are enabled in settings
+
 ## [3.0.1] - 2026-11-09
 
 ### Fixed
