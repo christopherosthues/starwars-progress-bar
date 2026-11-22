@@ -6,7 +6,7 @@ Guidance for AI agents (and contributors) working on this repository.
 
 **Star Wars Progress Bar** is an IntelliJ Platform plugin that replaces the IDE's progress bar with Star Wars-themed visuals: 150+ vehicles and 20+ lightsabers from canon and legends, animated as they cross the progress bar during builds, indexing, and other long-running operations.
 
-The plugin targets **all JetBrains IDEs** (IntelliJ IDEA, Android Studio, PyCharm, WebStorm, Rider, CLion, GoLand, RubyMine, RustRover, PhpStorm, Kotlin/Scala plugins, etc.), not just IntelliJ IDEA:
+The plugin targets **all JetBrains IDEs** (IntelliJ IDEA, Android Studio, PyCharm, etc.), not just IntelliJ IDEA:
 
 - It depends only on `com.intellij.modules.platform` (see `src/main/resources/META-INF/plugin.xml`).
 - The Gradle build resolves the platform from `intellijIdea(providers.gradleProperty("platformVersion"))`, but that is merely the artifact used for compilation.
@@ -84,7 +84,7 @@ Notes:
 
 ### Adding new settings
 
-Use the **`add-setting`** skill (`.agents/skills/add-setting/SKILL.md`) — it covers every piece that must be added together: the default constant, the label bundle key (+ every bundle file), the `StarWarsState` field including `copy()` and `isModified(...)`, the explicit copy in `apply()`, and the UI panel wiring.
+Use the **`add-setting`** skill (`.agents/skills/add-setting/SKILL.md`) — it covers every piece that must be added together, along with the test gates that enforce them.
 
 ### Entity selection
 
@@ -93,18 +93,12 @@ Use the **`add-setting`** skill (`.agents/skills/add-setting/SKILL.md`) — it c
 
 ### Adding content (vehicles, lightsabers, factions)
 
-The primary content workflow is split into skills under `.agents/skills/`:
-
-- **`add-vehicle`** — add/rename/remove a vehicle: `factions.json` entry, icon set in both locations, translations in every bundle file, and the `LIST_OF_VEHICLES.md` update.
-- **`add-lightsaber`** — same for lightsabers (including jar-kai blade definitions); no `LIST_OF_VEHICLES.md` entry.
-- **`add-faction`** — new faction: `factions.json` entry, LFS-tracked logos (`logo.png`/`logo@2x.png`), and faction translation keys in every bundle file.
-
-Each skill covers the naming rules and the test gates (`IconResourceTests`, `StarWarsResourceBundleTests`) that enforce them.
+Use the skills under `.agents/skills/`: **`add-vehicle`**, **`add-lightsaber`**, and **`add-faction`** — each covers every piece that must be added together for its entity type, along with the naming rules and test gates (`IconResourceTests`, `StarWarsResourceBundleTests`) that enforce them.
 
 ### Localization
 
 - Bundle: `messages.StarWarsBundle` (`AbstractBundle` wrapper in `StarWarsBundle.kt`).
-- Supported languages are defined by `configuration/Language.kt` (English, German, Spanish) and must match the `_en`, `_de`, `_es` bundle files. Adding a language requires both.
+- Supported languages are defined by `configuration/Language.kt` and follow Java's standard localization convention: a fallback `StarWarsBundle.properties` plus one property file per language, suffixed with the locale code (language/country codes). Adding a language requires both an enum entry and its bundle file.
 
 ## Commit Messages
 
@@ -120,7 +114,7 @@ Use the **`semantic-commits`** skill (`.agents/skills/semantic-commits/SKILL.md`
 
 - **Build workflow** (`build.yml`): runs on every push and via manual dispatch. Creates a draft GitHub release for `main`, `release/*`, and `hotfix/*` branches.
 - **Release workflow** (`release.yml`): triggered when a GitHub release is published (prereleased or released). It patches the changelog from the release notes, runs `publishPlugin`, uploads the ZIP as a release asset, and opens a PR updating `CHANGELOG.md`.
-- Publishing requires these secrets: `PUBLISH_TOKEN`, `CERTIFICATE_CHAIN`, `PRIVATE_KEY`, `PRIVATE_KEY_PASSWORD` (signing config is commented out in `build.gradle.kts`; env vars are read by the plugin's publishing extension).
+- Publishing requires these secrets: `PUBLISH_TOKEN`, `CERTIFICATE_CHAIN`, `PRIVATE_KEY`, `PRIVATE_KEY_PASSWORD` (env vars are read by the plugin's publishing extension).
 
 ## Gotchas
 
