@@ -440,6 +440,73 @@ class RollingRandomSelectorTests {
         assertEntityOrder12Items(5, 3, 2, 0, 5, 3, 2, 0, 5, 3, 2, 0, entities, result)
     }
 
+    @Test
+    fun `selectEntity should not get stuck on missing vehicle when lightsaber settings shrink mid-roll`() {
+        // Arrange
+        val lightsabers = createLightsabers().toMutableList()
+        every { StarWarsFactionHolder.defaultVehicles } returns listOf()
+        every { StarWarsFactionHolder.defaultLightsabers } returns lightsabers
+        every { randomInt(any()) } returns 0
+
+        // Act: display one of the two enabled lightsabers
+        val first = sut.selectEntity(mapOf(), mapOf("4.1" to true, "3.2" to true, "3.3" to false), true)
+
+        // Assert
+        Assertions.assertEquals(lightsabers[0], first)
+
+        // Act: deselect the other lightsaber so only the already displayed one remains enabled
+        val second = sut.selectEntity(mapOf(), mapOf("4.1" to true, "3.2" to false, "3.3" to false), true)
+        val third = sut.selectEntity(mapOf(), mapOf("4.1" to true, "3.2" to false, "3.3" to false), true)
+
+        // Assert: the only enabled entity is displayed instead of missingVehicle
+        Assertions.assertEquals(lightsabers[0], second)
+        Assertions.assertEquals(lightsabers[0], third)
+    }
+
+    @Test
+    fun `selectEntity should not get stuck on missing vehicle when vehicle settings shrink mid-roll`() {
+        // Arrange
+        val vehicles = createStarWarsVehicles().toMutableList()
+        every { StarWarsFactionHolder.defaultVehicles } returns vehicles
+        every { StarWarsFactionHolder.defaultLightsabers } returns listOf()
+        every { randomInt(any()) } returns 0
+
+        // Act: display one of the two enabled vehicles
+        val first = sut.selectEntity(mapOf("2.1" to true, "1.2" to true, "1.3" to false), mapOf(), true)
+
+        // Assert
+        Assertions.assertEquals(vehicles[0], first)
+
+        // Act: deselect the other vehicle so only the already displayed one remains enabled
+        val second = sut.selectEntity(mapOf("2.1" to true, "1.2" to false, "1.3" to false), mapOf(), true)
+        val third = sut.selectEntity(mapOf("2.1" to true, "1.2" to false, "1.3" to false), mapOf(), true)
+
+        // Assert: the only enabled entity is displayed instead of missingVehicle
+        Assertions.assertEquals(vehicles[0], second)
+        Assertions.assertEquals(vehicles[0], third)
+    }
+
+    @Test
+    fun `selectEntity should continue selecting if settings change mid-roll leaving undisplayed entities`() {
+        // Arrange
+        val lightsabers = createLightsabers().toMutableList()
+        every { StarWarsFactionHolder.defaultVehicles } returns listOf()
+        every { StarWarsFactionHolder.defaultLightsabers } returns lightsabers
+        every { randomInt(any()) } returns 0
+
+        // Act: display one of the three enabled lightsabers
+        val first = sut.selectEntity(mapOf(), mapOf("4.1" to true, "3.2" to true, "3.3" to true), true)
+
+        // Assert
+        Assertions.assertEquals(lightsabers[0], first)
+
+        // Act: keep only the not yet displayed lightsaber enabled
+        val second = sut.selectEntity(mapOf(), mapOf("4.1" to false, "3.2" to true, "3.3" to false), true)
+
+        // Assert
+        Assertions.assertEquals(lightsabers[1], second)
+    }
+
     //endregion
 
     //region Helper methods

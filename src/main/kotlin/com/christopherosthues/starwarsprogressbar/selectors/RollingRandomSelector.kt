@@ -6,6 +6,7 @@ import com.christopherosthues.starwarsprogressbar.util.randomInt
 
 internal class RollingRandomSelector : IStarWarsSelector {
     private val displayedEntities = mutableSetOf<String>()
+    private var lastEnabledEntityIds: Set<String>? = null
     private val lock = Any()
 
     override fun selectEntity(
@@ -15,21 +16,23 @@ internal class RollingRandomSelector : IStarWarsSelector {
     ): StarWarsEntity {
         synchronized(lock) {
             val vehicles = StarWarsFactionHolder.defaultVehicles.filter { vehicle ->
-                enabledVehicles.getOrDefault(vehicle.entityId, defaultEnabled) &&
-                    !displayedEntities.contains(vehicle.entityId)
+                enabledVehicles.getOrDefault(vehicle.entityId, defaultEnabled)
             }
             val lightsabers = StarWarsFactionHolder.defaultLightsabers.filter { lightsaber ->
-                enabledLightsabers.getOrDefault(lightsaber.entityId, defaultEnabled) &&
-                    !displayedEntities.contains(lightsaber.entityId)
+                enabledLightsabers.getOrDefault(lightsaber.entityId, defaultEnabled)
             }
-            val entities = vehicles + lightsabers
+            val enabledEntities = vehicles + lightsabers
+
+            resetIfSettingsChanged(enabledEntities)
+
+            val entities = enabledEntities.filterNot { displayedEntities.contains(it.entityId) }
 
             if (entities.isNotEmpty()) {
                 val entity = entities[randomInt(entities.size)]
 
                 displayedEntities.add(entity.entityId)
 
-                if (allEntitiesDisplayed(enabledVehicles, enabledLightsabers, defaultEnabled)) {
+                if (allEntitiesDisplayed(enabledEntities)) {
                     displayedEntities.clear()
                 }
 
@@ -40,30 +43,14 @@ internal class RollingRandomSelector : IStarWarsSelector {
         return StarWarsFactionHolder.missingVehicle
     }
 
-    private fun allEntitiesDisplayed(
-        enabledVehicles: Map<String, Boolean>,
-        enabledLightsabers: Map<String, Boolean>,
-        defaultEnabled: Boolean,
-    ): Boolean = displayedEntities.containsAll(
-        (
-            StarWarsFactionHolder.defaultVehicles.filter { v ->
-                enabledVehicles.getOrDefault(
-                    v.entityId,
-                    defaultEnabled,
-                )
-            } + StarWarsFactionHolder.defaultLightsabers.filter { v ->
-                enabledLightsabers.getOrDefault(
-                    v.entityId,
-                    defaultEnabled,
-                )
-            }
-            ).map { v -> v.entityId },
-    )
-
-    /**
-     * For testing only
-     */
-    internal fun reset() {
-        displayedEntities.clear()
+    private fun resetIfSettingsChanged(enabledEntities: List<StarWarsEntity>) {
+        val enabledEntityIds = enabledEntities.mapTo(mutableSetOf()) { it.entityId }
+        if (lastEnabledEntityIds != enabledEntityIds) {
+            lastEnabledEntityIds = enabledEntityIds
+            displayedEntities.clear()
+        }
     }
+
+    private fun allEntitiesDisplayed(enabledEntities: List<StarWarsEntity>): Boolean =
+        displayedEntities.containsAll(enabledEntities.map { it.entityId })
 }
