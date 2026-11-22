@@ -22,7 +22,7 @@ settings.gradle.kts           # Repositories + plugin settings
 gradle/libs.versions.toml     # Version catalog: all dependency/plugin versions
 gradle.properties             # Plugin version, platform version, since-build
 CHANGELOG.md                  # Keep a Changelog format, managed by gradle-changelog-plugin
-LIST_OF_VEHICLES.md           # Manually maintained list of all vehicles
+LIST_OF_VEHICLES.md           # Generated from factions.json + fallback bundle (see add-vehicle skill)
 src/
   main/java/.../listeners/    # StarWarsProgressListener.java (Java: LaF change, plugin enable/disable, app activation)
   main/java/.../ui/           # StarWarsProgressBarFactory.java (Swing UI factory entry point)
@@ -38,7 +38,7 @@ src/
     META-INF/plugin.xml       # Plugin descriptor: configurable, services, listeners, notification group
     json/factions.json        # SINGLE SOURCE OF TRUTH for all vehicles and lightsabers
     icons/{vehicles,lightsabers}/<faction>/...   # PNG icons (Git LFS)
-    messages/StarWarsBundle*.properties           # Translations: default + _en, _de, _es
+    messages/StarWarsBundle*.properties           # Translations
   test/kotlin/                # JUnit 5 tests mirroring the main package structure
 scripts/pre-commit            # Git hook installed by the `build` task
 .github/workflows/build.yml   # CI: buildPlugin, check, verifyPlugin, release draft

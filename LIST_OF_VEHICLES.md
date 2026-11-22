@@ -1,6 +1,10 @@
 <!-- Included vehicles -->
 ## Included vehicles
 
+### Sith Empire
+
+* ![Harrower-class dreadnought](icons/vehicles/sith_empire/harrower_class_dreadnought@2x.png) Harrower-class dreadnought ![Harrower-class dreadnought](icons/vehicles/sith_empire/harrower_class_dreadnought_r@2x.png)
+
 ### Trade Federation
 
 * ![Armored Assault Tank Mk I](icons/vehicles/trade_federation/armored_assault_tank@2x.png) Armored Assault Tank Mk I ![Armored Assault Tank Mk I](icons/vehicles/trade_federation/armored_assault_tank_r@2x.png)
@@ -157,11 +161,11 @@
 * ![Profundity](icons/vehicles/rebel_alliance/profundity@2x.png) Profundity ![Profundity](icons/vehicles/rebel_alliance/profundity_r@2x.png)
 * ![Prototype B6](icons/vehicles/rebel_alliance/prototype_b6@2x.png) Prototype B6 ![Prototype B6](icons/vehicles/rebel_alliance/prototype_b6_r@2x.png)
 * ![Rogue Shadow](icons/vehicles/rebel_alliance/rogue_shadow@2x.png) Rogue Shadow ![Rogue Shadow](icons/vehicles/rebel_alliance/rogue_shadow_r@2x.png)
-* ![Saw Gerreras LAAT/i](icons/vehicles/rebel_alliance/laat_i@2x.png) Saw Gerreras LAAT/i ![Saw Gerreras LAAT/i](icons/vehicles/rebel_alliance/laat_i_r@2x.png)
+* ![Saw Gerrera's LAAT/i](icons/vehicles/rebel_alliance/laat_i@2x.png) Saw Gerrera's LAAT/i ![Saw Gerrera's LAAT/i](icons/vehicles/rebel_alliance/laat_i_r@2x.png)
 * ![Sphyrna-class Hammerhead corvette](icons/vehicles/rebel_alliance/sphyrna_class_hammerhead_corvette@2x.png) Sphyrna-class Hammerhead corvette ![Sphyrna-class Hammerhead corvette](icons/vehicles/rebel_alliance/sphyrna_class_hammerhead_corvette_r@2x.png)
 * ![T-16 Skyhopper](icons/vehicles/rebel_alliance/t_16_skyhopper@2x.png) T-16 Skyhopper ![T-16 Skyhopper](icons/vehicles/rebel_alliance/t_16_skyhopper_r@2x.png)
 * ![T-47 Snowspeeder](icons/vehicles/rebel_alliance/t_47_snowspeeder@2x.png) T-47 Snowspeeder ![T-47 Snowspeeder](icons/vehicles/rebel_alliance/t_47_snowspeeder_r@2x.png)
-* ![T-65 X-wing starfighter](icons/vehicles/rebel_alliance/t_65_x_wing_starfighter@2x.png) T-65 X-Wing starfighter ![T-65 X-wing starfighter](icons/vehicles/rebel_alliance/t_65_x_wing_starfighter_r@2x.png)
+* ![T-65 X-Wing starfighter](icons/vehicles/rebel_alliance/t_65_x_wing_starfighter@2x.png) T-65 X-Wing starfighter ![T-65 X-Wing starfighter](icons/vehicles/rebel_alliance/t_65_x_wing_starfighter_r@2x.png)
 * ![Tantive IV](icons/vehicles/rebel_alliance/tantive_iv@2x.png) Tantive IV ![Tantive IV](icons/vehicles/rebel_alliance/tantive_iv_r@2x.png)
 * ![Taylander Shuttle](icons/vehicles/rebel_alliance/taylander_shuttle@2x.png) Taylander Shuttle ![Taylander Shuttle](icons/vehicles/rebel_alliance/taylander_shuttle_r@2x.png)
 * ![U-Wing](icons/vehicles/rebel_alliance/u_wing@2x.png) U-Wing ![U-Wing](icons/vehicles/rebel_alliance/u_wing_r@2x.png)
@@ -183,6 +187,7 @@
 ### Mandalorians
 
 * ![Din Djarin's N-1 Starfighter](icons/vehicles/mandalorians/mandos_n_1_starfighter@2x.png) Din Djarin's N-1 Starfighter ![Din Djarin's N-1 Starfighter](icons/vehicles/mandalorians/mandos_n_1_starfighter_r@2x.png)
+* ![Gauntlet starfighter](icons/vehicles/mandalorians/gauntlet@2x.png) Gauntlet starfighter ![Gauntlet starfighter](icons/vehicles/mandalorians/gauntlet_r@2x.png)
 * ![Razor Crest](icons/vehicles/mandalorians/razor_crest@2x.png) Razor Crest ![Razor Crest](icons/vehicles/mandalorians/razor_crest_r@2x.png)
 
 ### Bounty Hunters
@@ -199,6 +204,7 @@
 * ![Errant Venture](icons/vehicles/scoundrels/errant_venture@2x.png) Errant Venture ![Errant Venture](icons/vehicles/scoundrels/errant_venture_r@2x.png)
 * ![Khetanna](icons/vehicles/scoundrels/khetanna@2x.png) Khetanna ![Khetanna](icons/vehicles/scoundrels/khetanna_r@2x.png)
 * ![Last Chance](icons/vehicles/scoundrels/last_chance@2x.png) Last Chance ![Last Chance](icons/vehicles/scoundrels/last_chance_r@2x.png)
+* ![Nightbrother](icons/vehicles/scoundrels/nightbrother@2x.png) Nightbrother ![Nightbrother](icons/vehicles/scoundrels/nightbrother_r@2x.png)
 * ![Sandcrawler](icons/vehicles/scoundrels/sandcrawler@2x.png) Sandcrawler ![Sandcrawler](icons/vehicles/scoundrels/sandcrawler_r@2x.png)
 * ![Storm IV Twin-Pod cloud car](icons/vehicles/scoundrels/storm_iv_twin_pod_cloud_car@2x.png) Storm IV Twin-Pod cloud car ![Storm IV Twin-Pod cloud car](icons/vehicles/scoundrels/storm_iv_twin_pod_cloud_car_r@2x.png)
 * ![Wild Karrde](icons/vehicles/scoundrels/wild_karrde@2x.png) Wild Karrde ![Wild Karrde](icons/vehicles/scoundrels/wild_karrde_r@2x.png)

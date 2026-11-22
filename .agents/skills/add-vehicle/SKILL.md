@@ -13,7 +13,7 @@ All pieces must be added **together** — CI tests fail if any part is missing:
 | 32x32 runtime icons | `src/main/resources/icons/vehicles/<faction>/` | `IconResourceTests` + runtime loader |
 | 64x64 @2x icons | **repo root** `icons/vehicles/<faction>/` (NOT under `src/`) | `IconResourceTests` |
 | Translations | every bundle file (`src/main/resources/messages/StarWarsBundle*.properties`) | `StarWarsResourceBundleTests` |
-| Documentation | `LIST_OF_VEHICLES.md` | manual — keep alphabetical |
+| Documentation | `LIST_OF_VEHICLES.md` (generated) | generated from factions.json + fallback bundle — see section 5 |
 
 If the faction does not exist yet, run the **add-faction** skill first.
 
@@ -67,15 +67,24 @@ vehicles.<factionId>.<id>=Display Name
 - Escape apostrophes as `''` (e.g. `Adi Gallia''s Delta-7b-Aethersprite Starfighter`).
 - Tests enforce: no empty values, fallback contains every key of the language bundles, and each language bundle contains every fallback key except `name`.
 
-## 5. LIST_OF_VEHICLES.md
+## 5. LIST_OF_VEHICLES.md — generate it
 
-Insert into the faction's `### Faction Name` section, keeping **alphabetical order** by display name:
+Run from the repo root:
+
+```powershell
+python .agents/skills/add-vehicle/scripts/generate_vehicle_list.py
+```
+
+The script reads `factions.json` (faction order + vehicle ids) and the fallback bundle (`StarWarsBundle.properties`) for display names, then rewrites the file between the `<!-- Included vehicles -->` / `<!-- Included vehicles end -->` markers. Each entry looks like:
 
 ```markdown
 * ![Display Name](icons/vehicles/<faction>/<id>@2x.png) Display Name ![Display Name](icons/vehicles/<faction>/<id>_r@2x.png)
 ```
 
-Image paths are relative to the repo root (they point at the @2x icons).
+- Sections follow the faction order in `factions.json`; entries are sorted case-insensitively by display name within each section. The empty-id placeholder faction (holding the `missing` fallback vehicle) is skipped.
+- Image paths are relative to the repo root (they point at the @2x icons).
+- Display names match what the runtime shows: apostrophes appear as a single `'` even though they are stored doubled in the bundles.
+- The script fails with a clear error if a vehicle or faction is missing its bundle key — add the translations first (section 4), then re-run.
 
 ## 6. Verify
 
@@ -87,7 +96,10 @@ Run from the repo root:
 
 Relevant gates: `IconResourceTests` (icon existence **and** no orphan PNGs — any PNG on disk that is not referenced by a factions.json entry fails CI unless whitelisted in the test) and `StarWarsResourceBundleTests` (translation parity). Then run `.\gradlew.bat check` for the full CI gate.
 
+Also confirm `git diff LIST_OF_VEHICLES.md` shows only the expected change — the generated file should not drift from what the script produces.
+
 ## Renaming / removing an entity
 
 - Rename: update the id everywhere above **and** rename all icon files; orphaned PNGs fail `IconResourceTests` unless added to its `iconWhitelist`.
-- Remove: delete the factions.json entry, both icon pairs, and the bundle keys from all files (plus the LIST_OF_VEHICLES.md line).
+- Remove: delete the factions.json entry, both icon pairs, and the bundle keys from all files.
+- After renaming or removing, re-run the generator (section 5) so `LIST_OF_VEHICLES.md` stays in sync.
