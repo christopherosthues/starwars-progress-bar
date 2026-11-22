@@ -1099,7 +1099,15 @@
                         [{"lightsaberId": 1, "bladeId": 0}],
                         [{"lightsaberId": 1, "bladeId": 1}],
                         [{"lightsaberId": 2, "bladeId": 0}],
-                        [{"lightsaberId": 2, "bladeId": 1}]
+                        [{"lightsaberId": 2, "bladeId": 1}],
+                        [{"lightsaberId": 3, "bladeId": 0}],
+                        [{"lightsaberId": 3, "bladeId": 1}],
+                        [{"lightsaberId": 3, "bladeId": 0}, {"lightsaberId": 3, "bladeId": 1}],
+                        [{"lightsaberId": 4, "bladeId": 0}],
+                        [{"lightsaberId": 4, "bladeId": 1}],
+                        [{"lightsaberId": 4, "bladeId": 0}, {"lightsaberId": 4, "bladeId": 1}],
+                        [{"lightsaberId": 3, "bladeId": 0}, {"lightsaberId": 4, "bladeId": 1}],
+                        [{"lightsaberId": 3, "bladeId": 1}, {"lightsaberId": 4, "bladeId": 0}]
                     ],
                     "lightsabers": [
                         {
@@ -1145,6 +1153,52 @@
                                     "bladeSize": 8,
                                     "xBlade": -1,
                                     "yBlade": 1
+                                }
+                            ]
+                        },
+                        {
+                            "id": 3,
+                            "isDoubleBladed": true,
+                            "yShift": 0,
+                            "blades": [
+                                {
+                                    "bladeColor": "green",
+                                    "isShoto": false,
+                                    "isForward": true,
+                                    "bladeSize": 8,
+                                    "xBlade": -1,
+                                    "yBlade": 1
+                                },
+                                {
+                                    "bladeColor": "green",
+                                    "isShoto": false,
+                                    "isForward": true,
+                                    "bladeSize": 8,
+                                    "xBlade": -1,
+                                    "yBlade": 11
+                                }
+                            ]
+                        },
+                        {
+                            "id": 4,
+                            "isDoubleBladed": true,
+                            "yShift": 0,
+                            "blades": [
+                                {
+                                    "bladeColor": "blue",
+                                    "isShoto": false,
+                                    "isForward": false,
+                                    "bladeSize": 8,
+                                    "xBlade": 1,
+                                    "yBlade": 1
+                                },
+                                {
+                                    "bladeColor": "blue",
+                                    "isShoto": false,
+                                    "isForward": false,
+                                    "bladeSize": 8,
+                                    "xBlade": 1,
+                                    "yBlade": 11
                                 }
                             ]
                         }

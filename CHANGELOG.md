@@ -7,7 +7,7 @@
 ### Added
 
 - Variants for Jar'Kai and Double-bladed lightsabers
-- Lightsaber hilt variants for Asajj Ventress and Inquisitors
+- Lightsaber hilt variants for Asajj Ventress, Inquisitors and Pong Krell
 
 ### Fixed
 
