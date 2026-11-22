@@ -59,6 +59,10 @@ I do not own the Star Wars trademark nor do I intend any copyright infringement 
 
 A list of all included vehicles can be found [here](LIST_OF_VEHICLES.md).
 
+## Lightsabers
+
+A list of all included lightsabers can be found [here](LIST_OF_LIGHTSABERS.md).
+
 ## Code
 
 ### Build scripts

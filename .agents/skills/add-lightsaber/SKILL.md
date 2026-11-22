@@ -13,8 +13,9 @@ All pieces must be added **together** — CI tests fail if any part is missing:
 | Runtime icons | `src/main/resources/icons/lightsabers/<faction>/` | `IconResourceTests` + runtime loader |
 | @2x icons | **repo root** `icons/lightsabers/<faction>/` (NOT under `src/`) | `IconResourceTests` |
 | Translations | every bundle file (`src/main/resources/messages/StarWarsBundle*.properties`) | `StarWarsResourceBundleTests` |
+| Documentation | `LIST_OF_LIGHTSABERS.md` (generated) | generated from factions.json + fallback bundle — see section 5 |
 
-Lightsabers do not appear in `LIST_OF_VEHICLES.md`. If the faction does not exist yet, run the **add-faction** skill first.
+Lightsabers do not appear in `LIST_OF_VEHICLES.md`; they have their own generated list. If the faction does not exist yet, run the **add-faction** skill first.
 
 ## 1. Naming rules
 
@@ -83,7 +84,27 @@ lightsabers.<factionId>.<id>=Display Name
 - Escape apostrophes as `''` (e.g. `Darth Maul''s first lightsaber`).
 - Tests enforce: no empty values, fallback contains every key of the language bundles, and each language bundle contains every fallback key except `name`.
 
-## 5. Verify
+## 5. LIST_OF_LIGHTSABERS.md — generate it
+
+Run from the repo root:
+
+```powershell
+python .agents/skills/add-lightsaber/scripts/generate_lightsaber_list.py
+```
+
+The script reads `factions.json` (faction order + hilt ids) and the fallback bundle (`StarWarsBundle.properties`) for display names, then rewrites the file between the `<!-- Included lightsabers -->` / `<!-- Included lightsabers end -->` markers. Each entry looks like:
+
+```markdown
+* **Display Name**
+  * ![Display Name](icons/lightsabers/<faction>/<id>_<hiltId>@2x.png)
+```
+
+- Sections follow the faction order in `factions.json`; entities are sorted case-insensitively by display name within each section, and hilts (variants) are listed in hilt id order. Blade details are not included yet.
+- Image paths are relative to the repo root (they point at the @2x icons).
+- Display names match what the runtime shows: apostrophes appear as a single `'` even though they are stored doubled in the bundles.
+- The script fails with a clear error if a lightsaber or faction is missing its bundle key — add the translations first (section 4), then re-run.
+
+## 6. Verify
 
 Run from the repo root:
 
@@ -93,7 +114,10 @@ Run from the repo root:
 
 Relevant gates: `IconResourceTests` (icon existence **and** no orphan PNGs — any PNG on disk that is not referenced by a factions.json entry fails CI unless whitelisted in the test) and `StarWarsResourceBundleTests` (translation parity). Then run `.\gradlew.bat check` for the full CI gate.
 
+Also confirm `git diff LIST_OF_LIGHTSABERS.md` shows only the expected change — the generated file should not drift from what the script produces.
+
 ## Renaming / removing an entity
 
 - Rename: update the id everywhere above **and** rename all icon files (including per-blade icons); orphaned PNGs fail `IconResourceTests` unless added to its `iconWhitelist`.
 - Remove: delete the factions.json entry, all icon pairs, and the bundle keys from all files.
+- After renaming or removing, re-run the generator (section 5) so `LIST_OF_LIGHTSABERS.md` stays in sync.

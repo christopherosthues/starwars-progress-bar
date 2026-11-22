@@ -23,6 +23,7 @@ gradle/libs.versions.toml     # Version catalog: all dependency/plugin versions
 gradle.properties             # Plugin version, platform version, since-build
 CHANGELOG.md                  # Keep a Changelog format, managed by gradle-changelog-plugin
 LIST_OF_VEHICLES.md           # Generated from factions.json + fallback bundle (see add-vehicle skill)
+LIST_OF_LIGHTSABERS.md        # Generated from factions.json + fallback bundle (see add-lightsaber skill)
 src/
   main/java/.../listeners/    # StarWarsProgressListener.java (Java: LaF change, plugin enable/disable, app activation)
   main/java/.../ui/           # StarWarsProgressBarFactory.java (Swing UI factory entry point)
