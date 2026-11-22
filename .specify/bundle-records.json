@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-11-22T00:45:10Z",
+  "bundles": [
+    {
+      "bundle_id": "bugfix",
+      "version": "1.0.3",
+      "installed_at": "2026-11-22T00:44:26Z",
+      "contributed_components": [
+        {
+          "kind": "extensions",
+          "id": "bug",
+          "version": "1.0.2"
+        }
+      ],
+      "required_components": [
+        {
+          "kind": "extensions",
+          "id": "bug",
+          "version": "1.0.2"
+        },
+        {
+          "kind": "workflows",
+          "id": "bugfix",
+          "version": "1.0.1"
+        }
+      ],
+      "installed_versions": {
+        "extensions:bug": "1.0.2",
+        "workflows:bugfix": "1.0.1"
+      }
+    },
+    {
+      "bundle_id": "assess",
+      "version": "1.0.0",
+      "installed_at": "2026-11-22T00:45:10Z",
+      "contributed_components": [
+        {
+          "kind": "extensions",
+          "id": "assess",
+          "version": "1.0.2"
+        },
+        {
+          "kind": "workflows",
+          "id": "assess",
+          "version": "1.0.0"
+        }
+      ],
+      "required_components": [
+        {
+          "kind": "extensions",
+          "id": "assess",
+          "version": "1.0.2"
+        },
+        {
+          "kind": "workflows",
+          "id": "assess",
+          "version": "1.0.0"
+        }
+      ],
+      "installed_versions": {
+        "extensions:assess": "1.0.2",
+        "workflows:assess": "1.0.0"
+      }
+    }
+  ]
+}
