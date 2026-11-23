@@ -505,5 +505,107 @@ internal class LightsaberLayoutCalculatorTests {
         assertEquals(expectedLayouts, result)
     }
 
+    @Test
+    fun `compute should render full double blade variant with both blades forward at left edge`() {
+        val entity = Lightsabers(
+            "1",
+            1f,
+            false,
+            listOf(
+                lightsaber(
+                    1,
+                    isDoubleBladed = true,
+                    yShift = 3,
+                    blade(xBlade = -1, yBlade = 2, bladeSize = 8),
+                    blade(xBlade = -1, yBlade = 4, bladeSize = 8),
+                ),
+            ),
+            variants = listOf(
+                listOf(CombinedId(1, 0), CombinedId(1, 1)),
+            ),
+        )
+
+        val result = LightsaberLayoutCalculator.compute(
+            entity,
+            selectedVariantIndex = 0,
+            iconWidths = listOf(100),
+            width = 400,
+            amountFull = 80,
+            showIcon = true,
+        )
+
+        val firstBlade = BladeGeometry(
+            blade(xBlade = -1, yBlade = 2, bladeSize = 8),
+            x = 99,
+            y = 5,
+            width = 60,
+            height = 8,
+            borderX = 99,
+            borderWidth = 301,
+        )
+        val secondBlade = BladeGeometry(
+            blade(xBlade = -1, yBlade = 4, bladeSize = 8),
+            x = 99,
+            y = 7,
+            width = 60,
+            height = 8,
+            borderX = 99,
+            borderWidth = 301,
+        )
+
+        assertEquals(LightsaberLayout(listOf(firstBlade, secondBlade), HiltGeometry(x = 0, y = 3)), result.single())
+    }
+
+    @Test
+    fun `compute should render full double blade variant with both blades backward at right edge`() {
+        val entity = Lightsabers(
+            "1",
+            1f,
+            false,
+            listOf(
+                lightsaber(
+                    1,
+                    isDoubleBladed = true,
+                    yShift = 3,
+                    blade(xBlade = 1, yBlade = 2, bladeSize = 8, isForward = false),
+                    blade(xBlade = 1, yBlade = 4, bladeSize = 8, isForward = false),
+                ),
+            ),
+            variants = listOf(
+                listOf(CombinedId(1, 0), CombinedId(1, 1)),
+            ),
+        )
+
+        val result = LightsaberLayoutCalculator.compute(
+            entity,
+            selectedVariantIndex = 0,
+            iconWidths = listOf(100),
+            width = 400,
+            amountFull = 80,
+            showIcon = true,
+        )
+
+        val firstBlade = BladeGeometry(
+            blade(xBlade = 1, yBlade = 2, bladeSize = 8, isForward = false),
+            x = 241,
+            y = 5,
+            width = 60,
+            height = 8,
+            borderX = 0,
+            borderWidth = 301,
+        )
+        val secondBlade = BladeGeometry(
+            blade(xBlade = 1, yBlade = 4, bladeSize = 8, isForward = false),
+            x = 241,
+            y = 7,
+            width = 60,
+            height = 8,
+            borderX = 0,
+            borderWidth = 301,
+        )
+
+        assertEquals(LightsaberLayout(listOf(firstBlade, secondBlade), HiltGeometry(x = 300, y = 3)), result.single())
+    }
+
     //endregion
 }
