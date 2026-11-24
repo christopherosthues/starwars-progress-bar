@@ -82,11 +82,37 @@
                     "variants": [
                         [{"lightsaberId": 1, "bladeId": 0}],
                         [{"lightsaberId": 1, "bladeId": 1}],
-                        [{"lightsaberId": 1, "bladeId": 0}, {"lightsaberId": 1, "bladeId": 1}]
+                        [{"lightsaberId": 1, "bladeId": 0}, {"lightsaberId": 1, "bladeId": 1}],
+                        [{"lightsaberId": 2, "bladeId": 0}],
+                        [{"lightsaberId": 2, "bladeId": 1}],
+                        [{"lightsaberId": 2, "bladeId": 0}, {"lightsaberId": 2, "bladeId": 1}]
                     ],
                     "lightsabers": [
                         {
                             "id": 1,
+                            "isDoubleBladed": true,
+                            "yShift": 4,
+                            "blades": [
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "isForward": false,
+                                    "bladeSize": 7,
+                                    "xBlade": 11,
+                                    "yBlade": 2
+                                },
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "isForward": true,
+                                    "bladeSize": 7,
+                                    "xBlade": -11,
+                                    "yBlade": 2
+                                }
+                            ]
+                        },
+                        {
+                            "id": 2,
                             "isDoubleBladed": true,
                             "yShift": 0,
                             "blades": [

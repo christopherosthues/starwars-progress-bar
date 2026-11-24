@@ -7,6 +7,9 @@
   * ![Asajj Ventress's second lightsabers](icons/lightsabers/sith/asajj_ventress_second_1@2x.png)
   * ![Asajj Ventress's second lightsabers](icons/lightsabers/sith/asajj_ventress_second_2@2x.png)
   * ![Asajj Ventress's second lightsabers](icons/lightsabers/sith/asajj_ventress_second_3@2x.png)
+* **Dark Rey's lightsaber**
+  * ![Dark Rey's lightsaber](icons/lightsabers/sith/dark_rey_1@2x.png)
+  * ![Dark Rey's lightsaber](icons/lightsabers/sith/dark_rey_2@2x.png)
 * **Darth Maul's first lightsaber**
   * ![Darth Maul's first lightsaber](icons/lightsabers/sith/darth_maul_first_1@2x.png)
 * **Darth Maul's fourth lightsaber**
@@ -37,8 +40,6 @@
 * **Ninth Sister's (Masana Tide) lightsaber**
   * ![Ninth Sister's (Masana Tide) lightsaber](icons/lightsabers/sith/ninth_sister_1@2x.png)
   * ![Ninth Sister's (Masana Tide) lightsaber](icons/lightsabers/sith/ninth_sister_2@2x.png)
-* **Dark Rey's lightsaber**
-  * ![Rey's Dark Double-Bladed Lightsaber](icons/lightsabers/sith/dark_rey_1@2x.png)
 * **Savage Opress's lightsaber**
   * ![Savage Opress's lightsaber](icons/lightsabers/sith/savage_opress_1@2x.png)
 * **Second Sister's (Trilla Suduri) lightsaber**
