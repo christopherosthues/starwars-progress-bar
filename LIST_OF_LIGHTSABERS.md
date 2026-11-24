@@ -100,6 +100,8 @@
   * ![Obi-Wan Kenobi's second lightsaber](icons/lightsabers/jedi/obi_wan_kenobi_second_1@2x.png)
 * **Obi-Wan Kenobi's third lightsaber**
   * ![Obi-Wan Kenobi's third lightsaber](icons/lightsabers/jedi/obi_wan_kenobi_third_1@2x.png)
+* **Oppo Rancisis's lightsaber**
+  * ![Oppo Rancisis's lightsaber](icons/lightsabers/jedi/oppo_rancisis_1@2x.png)
 * **Plo Koon's lightsaber**
   * ![Plo Koon's lightsaber](icons/lightsabers/jedi/plo_koon_1@2x.png)
 * **Pong Krell's lightsabers**
