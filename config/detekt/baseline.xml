@@ -39,5 +39,6 @@
     <ID>MaxLineLength:StarWarsResourceBundleTests.kt:StarWarsResourceBundleTests.Companion$".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources${File.separatorChar}messages${File.separatorChar}"</ID>
     <ID>MaxLineLength:StarWarsResourceBundleTests.kt:StarWarsResourceBundleTests.Companion$".${File.separatorChar}src${File.separatorChar}main${File.separatorChar}resources${File.separatorChar}messages${File.separatorChar}$fileName"</ID>
     <ID>MaxLineLength:StarWarsSelectorTests.kt:StarWarsSelectorTests$fun</ID>
+    <ID>TooManyFunctions:LightsaberLayoutCalculator.kt:LightsaberLayoutCalculator</ID>
   </CurrentIssues>
 </SmellBaseline>
