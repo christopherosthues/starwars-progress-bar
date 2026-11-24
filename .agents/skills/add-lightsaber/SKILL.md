@@ -1,6 +1,6 @@
 ---
 name: Add Lightsaber
-description: Adds a new lightsaber to the Star Wars Progress Bar plugin. Use when adding, renaming, or removing a lightsaber entity — requires updating factions.json (including jar-kai blade definitions), the LFS icon set in two locations, and all translation bundles together, enforced by IconResourceTests and StarWarsResourceBundleTests.
+description: Adds a new lightsaber to the Star Wars Progress Bar plugin. Use when adding, renaming, or removing a lightsaber entity — requires updating factions.json (including jar-kai blade definitions), the LFS icon set in two locations, all translation bundles, and CHANGELOG.md together, enforced by IconResourceTests and StarWarsResourceBundleTests.
 ---
 
 # Add a lightsaber
@@ -14,6 +14,7 @@ All pieces must be added **together** — CI tests fail if any part is missing:
 | @2x icons | **repo root** `icons/lightsabers/<faction>/` (NOT under `src/`) | `IconResourceTests` |
 | Translations | every bundle file (`src/main/resources/messages/StarWarsBundle*.properties`) | `StarWarsResourceBundleTests` |
 | Documentation | `LIST_OF_LIGHTSABERS.md` (generated) | generated from factions.json + fallback bundle — see section 5 |
+| Changelog entry | `CHANGELOG.md` under `[Unreleased]` → `Added` | release tooling consumes `[Unreleased]` — see section 6 |
 
 Lightsabers do not appear in `LIST_OF_VEHICLES.md`; they have their own generated list. If the faction does not exist yet, run the **add-faction** skill first.
 
@@ -104,7 +105,26 @@ The script reads `factions.json` (faction order + hilt ids) and the fallback bun
 - Display names match what the runtime shows: apostrophes appear as a single `'` even though they are stored doubled in the bundles.
 - The script fails with a clear error if a lightsaber or faction is missing its bundle key — add the translations first (section 4), then re-run.
 
-## 6. Verify
+## 6. Changelog
+
+Add an entry under `### Added` in the `[Unreleased]` section of `CHANGELOG.md`:
+
+```markdown
+- <faction> lightsaber of <owner>
+```
+
+- `<faction>` is the faction name as used in existing entries (e.g. `Jedi`, `Sith`).
+- `<owner>` is the character's name from the display name (e.g. `Dark Rey` for `Dark Rey''s lightsaber`) — drop the hilt ordinal (`first`, `second`, ...) and the `'s lightsaber(s)` suffix.
+- Use plural `lightsabers` only when multiple lightsabers are added to the entry; otherwise keep it singular.
+- If an entry for the same faction already exists under `[Unreleased]` → `Added`, append the owner there instead of adding a new line — keep owners sorted, comma-separated with `and` before the last:
+
+```markdown
+- <faction> lightsabers of <owner 1>, <owner 2> and <owner 3>
+```
+
+- Variants are only mentioned when the base lightsaber already existed in an earlier release and only its variant is new in this one (e.g. `Lightsaber hilt variants for Asajj Ventress, Inquisitors and Pong Krell`). If the lightsaber and its variants are added together in the same release, do not mention the variants — just note that the lightsaber was added.
+
+## 7. Verify
 
 Run from the repo root:
 
@@ -118,6 +138,6 @@ Also confirm `git diff LIST_OF_LIGHTSABERS.md` shows only the expected change �
 
 ## Renaming / removing an entity
 
-- Rename: update the id everywhere above **and** rename all icon files (including per-blade icons); orphaned PNGs fail `IconResourceTests` unless added to its `iconWhitelist`.
-- Remove: delete the factions.json entry, all icon pairs, and the bundle keys from all files.
+- Rename: update the id everywhere above **and** rename all icon files (including per-blade icons); orphaned PNGs fail `IconResourceTests` unless added to its `iconWhitelist`. If the lightsaber is still unreleased, also fix the `[Unreleased]` changelog entry (section 6).
+- Remove: delete the factions.json entry, all icon pairs, and the bundle keys from all files. If the lightsaber is still unreleased, remove it from its `[Unreleased]` changelog entry (section 6); for already-released lightsabers add a `### Removed` entry instead.
 - After renaming or removing, re-run the generator (section 5) so `LIST_OF_LIGHTSABERS.md` stays in sync.

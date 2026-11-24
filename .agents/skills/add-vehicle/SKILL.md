@@ -1,6 +1,6 @@
 ---
 name: Add Vehicle
-description: Adds a new vehicle to the Star Wars Progress Bar plugin. Use when adding, renaming, or removing a vehicle entity — requires updating factions.json, the LFS icon set in two locations, all translation bundles, and LIST_OF_VEHICLES.md together, enforced by IconResourceTests and StarWarsResourceBundleTests.
+description: Adds a new vehicle to the Star Wars Progress Bar plugin. Use when adding, renaming, or removing a vehicle entity — requires updating factions.json, the LFS icon set in two locations, all translation bundles, LIST_OF_VEHICLES.md, and CHANGELOG.md together, enforced by IconResourceTests and StarWarsResourceBundleTests.
 ---
 
 # Add a vehicle
@@ -14,6 +14,7 @@ All pieces must be added **together** — CI tests fail if any part is missing:
 | 64x64 @2x icons | **repo root** `icons/vehicles/<faction>/` (NOT under `src/`) | `IconResourceTests` |
 | Translations | every bundle file (`src/main/resources/messages/StarWarsBundle*.properties`) | `StarWarsResourceBundleTests` |
 | Documentation | `LIST_OF_VEHICLES.md` (generated) | generated from factions.json + fallback bundle — see section 5 |
+| Changelog entry | `CHANGELOG.md` under `[Unreleased]` → `Added` | release tooling consumes `[Unreleased]` — see section 6 |
 
 If the faction does not exist yet, run the **add-faction** skill first.
 
@@ -86,7 +87,26 @@ The script reads `factions.json` (faction order + vehicle ids) and the fallback 
 - Display names match what the runtime shows: apostrophes appear as a single `'` even though they are stored doubled in the bundles.
 - The script fails with a clear error if a vehicle or faction is missing its bundle key — add the translations first (section 4), then re-run.
 
-## 6. Verify
+## 6. Changelog
+
+Add an entry under `### Added` in the `[Unreleased]` section of `CHANGELOG.md`:
+
+```markdown
+- <vehicle name> to <faction name>
+```
+
+- `<vehicle name>` is the vehicle's display name from the **fallback (English) bundle** (`StarWarsBundle.properties`) — apostrophes appear as a single `'`.
+- `<faction name>` is the faction `id` from `factions.json`, exactly as written there (e.g. `mandalorians`).
+- Example: `- Gauntlet starfighter to mandalorians`
+
+If an entry for the same faction already exists under `[Unreleased]` → `Added`, append the vehicle name to that existing line instead of adding a new one — keep the names sorted, comma-separated with `and` before the last:
+
+```markdown
+- <vehicle 1> and <vehicle 2> to <faction name>
+- <vehicle 1>, <vehicle 2> and <vehicle 3> to <faction name>
+```
+
+## 7. Verify
 
 Run from the repo root:
 
@@ -100,6 +120,6 @@ Also confirm `git diff LIST_OF_VEHICLES.md` shows only the expected change — t
 
 ## Renaming / removing an entity
 
-- Rename: update the id everywhere above **and** rename all icon files; orphaned PNGs fail `IconResourceTests` unless added to its `iconWhitelist`.
-- Remove: delete the factions.json entry, both icon pairs, and the bundle keys from all files.
+- Rename: update the id everywhere above **and** rename all icon files; orphaned PNGs fail `IconResourceTests` unless added to its `iconWhitelist`. If the vehicle is still unreleased, also fix the `[Unreleased]` changelog entry (section 6).
+- Remove: delete the factions.json entry, both icon pairs, and the bundle keys from all files. If the vehicle is still unreleased, remove its `[Unreleased]` changelog entry (section 6); for already-released vehicles add a `### Removed` entry instead.
 - After renaming or removing, re-run the generator (section 5) so `LIST_OF_VEHICLES.md` stays in sync.

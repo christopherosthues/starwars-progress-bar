@@ -1,6 +1,6 @@
 ---
 name: Add Faction
-description: Adds a new faction to the Star Wars Progress Bar plugin. Use when introducing a faction not present in factions.json — requires a factions.json entry, LFS-tracked faction logos (logo.png/logo@2x.png), and faction translation keys in every bundle file.
+description: Adds a new faction to the Star Wars Progress Bar plugin. Use when introducing a faction not present in factions.json — requires a factions.json entry, LFS-tracked faction logos (logo.png/logo@2x.png), faction translation keys in every bundle file, and a CHANGELOG.md entry under [Unreleased] → Added.
 ---
 
 # Add a faction
@@ -43,7 +43,16 @@ lightsabers.faction.<factionId>=Display Name
 - Escape apostrophes as `''`.
 - Tests enforce: no empty values, fallback contains every key of the language bundles, and each language bundle contains every fallback key except `name`.
 
-## 4. Verify
+## 4. Changelog
+
+Add an entry under `### Added` in the `[Unreleased]` section of `CHANGELOG.md`, naming the faction's display name from the fallback bundle (e.g. `Jedi Order`) and matching the list it was added to:
+
+- Lightsabers list: `- New lightsaber faction <Faction>`
+- Vehicles list: `- New vehicle faction <Faction>`
+
+If the faction is added to both lists, use a single entry naming both.
+
+## 5. Verify
 
 Run from the repo root:
 
@@ -56,4 +65,4 @@ Relevant gates: `IconResourceTests` (logo existence for every non-empty faction 
 ## Notes
 
 - No `LIST_OF_VEHICLES.md` entry is needed until vehicles are added — when adding the first vehicle, create its `### Display Name` section (see **add-vehicle** skill).
-- Removing a faction: delete the factions.json entry, both logo files, and the faction key from all four bundles; orphaned PNGs fail `IconResourceTests` unless whitelisted.
+- Removing a faction: delete the factions.json entry, both logo files, and the faction key from all four bundles; orphaned PNGs fail `IconResourceTests` unless whitelisted. If the faction is still unreleased, also remove its `[Unreleased]` changelog entry (section 4); for already-released factions add a `### Removed` entry instead.
