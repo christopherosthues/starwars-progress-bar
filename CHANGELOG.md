@@ -8,6 +8,7 @@
 
 - Variants for Jar'Kai and Double-bladed lightsabers
 - Lightsaber hilt variants for Asajj Ventress, Inquisitors and Pong Krell
+- Lightsaber of Dark Rey
 
 ### Fixed
 

@@ -37,6 +37,8 @@
 * **Ninth Sister's (Masana Tide) lightsaber**
   * ![Ninth Sister's (Masana Tide) lightsaber](icons/lightsabers/sith/ninth_sister_1@2x.png)
   * ![Ninth Sister's (Masana Tide) lightsaber](icons/lightsabers/sith/ninth_sister_2@2x.png)
+* **Dark Rey's lightsaber**
+  * ![Rey's Dark Double-Bladed Lightsaber](icons/lightsabers/sith/dark_rey_1@2x.png)
 * **Savage Opress's lightsaber**
   * ![Savage Opress's lightsaber](icons/lightsabers/sith/savage_opress_1@2x.png)
 * **Second Sister's (Trilla Suduri) lightsaber**
@@ -102,6 +104,8 @@
 * **Pong Krell's lightsabers**
   * ![Pong Krell's lightsabers](icons/lightsabers/jedi/pong_krell_1@2x.png)
   * ![Pong Krell's lightsabers](icons/lightsabers/jedi/pong_krell_2@2x.png)
+  * ![Pong Krell's lightsabers](icons/lightsabers/jedi/pong_krell_3@2x.png)
+  * ![Pong Krell's lightsabers](icons/lightsabers/jedi/pong_krell_4@2x.png)
 * **Qui-Gon Jinn's lightsaber**
   * ![Qui-Gon Jinn's lightsaber](icons/lightsabers/jedi/qui_gon_jinn_1@2x.png)
 * **Quinlan Vos' lightsaber**

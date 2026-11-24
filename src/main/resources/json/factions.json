@@ -75,6 +75,43 @@
                 },
                 {
                     "type": "Lightsabers",
+                    "id": "dark_rey",
+                    "velocity": 3,
+                    "isJarKai": false,
+                    "defaultVariant": 2,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}],
+                        [{"lightsaberId": 1, "bladeId": 1}],
+                        [{"lightsaberId": 1, "bladeId": 0}, {"lightsaberId": 1, "bladeId": 1}]
+                    ],
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "isDoubleBladed": true,
+                            "yShift": 0,
+                            "blades": [
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "isForward": true,
+                                    "bladeSize": 7,
+                                    "xBlade": -12,
+                                    "yBlade": 3
+                                },
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "isForward": true,
+                                    "bladeSize": 7,
+                                    "xBlade": -12,
+                                    "yBlade": 11
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Lightsabers",
                     "id": "darth_maul_first",
                     "velocity": 3,
                     "isJarKai": false,
