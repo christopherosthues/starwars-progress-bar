@@ -322,10 +322,6 @@ class IconResourceTests {
         "vehicles${File.separatorChar}galactic_empire${File.separatorChar}at_pt_r@2x.png",
         "vehicles${File.separatorChar}galactic_empire${File.separatorChar}atpt.png",
         "lightsabers${File.separatorChar}jedi${File.separatorChar}pong_krell_01@2x.png",
-        "lightsabers${File.separatorChar}jedi${File.separatorChar}pong_krell_3@2x.png",
-        "lightsabers${File.separatorChar}jedi${File.separatorChar}pong_krell_4@2x.png",
-        "lightsabers${File.separatorChar}jedi${File.separatorChar}pong_krell_3.png",
-        "lightsabers${File.separatorChar}jedi${File.separatorChar}pong_krell_4.png",
         "lightsabers${File.separatorChar}others${File.separatorChar}general_grievous_4.png",
         "lightsabers${File.separatorChar}others${File.separatorChar}general_grievous_4@2x.png",
     )
