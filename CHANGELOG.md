@@ -8,7 +8,8 @@
 
 - Variants for Jar'Kai and Double-bladed lightsabers
 - Lightsaber hilt variants for Asajj Ventress, Inquisitors and Pong Krell
-- Lightsabers of Dark Rey and Oppo Rancisis
+- Sith lightsaber of Dark Rey
+- Jedi lightsaber of Oppo Rancisis
 
 ### Fixed
 
