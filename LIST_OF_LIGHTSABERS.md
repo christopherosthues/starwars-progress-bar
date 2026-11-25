@@ -70,6 +70,8 @@
   * ![Count Dooku's lightsaber](icons/lightsabers/jedi/count_dooku_1@2x.png)
 * **Depa Billaba's lightsaber**
   * ![Depa Billaba's lightsaber](icons/lightsabers/jedi/depa_billaba_1@2x.png)
+* **Even Piell's lightsaber**
+  * ![Even Piell's lightsaber](icons/lightsabers/jedi/even_piell_1@2x.png)
 * **Ezra Bridger's first lightsaber**
   * ![Ezra Bridger's first lightsaber](icons/lightsabers/jedi/ezra_bridger_first_1@2x.png)
 * **Ezra Bridger's second lightsaber**
