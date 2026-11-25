@@ -324,6 +324,9 @@ class IconResourceTests {
         "lightsabers${File.separatorChar}jedi${File.separatorChar}pong_krell_01@2x.png",
         "lightsabers${File.separatorChar}others${File.separatorChar}general_grievous_4.png",
         "lightsabers${File.separatorChar}others${File.separatorChar}general_grievous_4@2x.png",
+        // (Jmmaar upper left (green), )
+        "lightsabers${File.separatorChar}others${File.separatorChar}" +
+            "general_grievous_(eeth koth, shaak ti, Pablo-Jill, Roron Corobb)@2x.png",
     )
 
     private fun getFormattedImagesNotReferencedErrorMessage(imagesNotReferenced: List<String>): String {
