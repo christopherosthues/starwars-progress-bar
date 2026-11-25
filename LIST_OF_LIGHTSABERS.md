@@ -52,6 +52,8 @@
   * ![Aayla Secura's lightsaber](icons/lightsabers/jedi/aayla_secura_1@2x.png)
 * **Adi Gallia's lightsaber**
   * ![Adi Gallia's lightsaber](icons/lightsabers/jedi/adi_gallia_1@2x.png)
+* **Agen Kolar's lightsaber**
+  * ![Agen Kolar's lightsaber](icons/lightsabers/jedi/agen_kolar_1@2x.png)
 * **Ahsoka Tano's first lightsabers**
   * ![Ahsoka Tano's first lightsabers](icons/lightsabers/jedi/ahsoka_tano_first_1@2x.png)
   * ![Ahsoka Tano's first lightsabers](icons/lightsabers/jedi/ahsoka_tano_first_2@2x.png)
