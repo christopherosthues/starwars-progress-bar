@@ -1,6 +1,6 @@
 ---
 name: Add Lightsaber
-description: Adds a new lightsaber to the Star Wars Progress Bar plugin. Use when adding, renaming, or removing a lightsaber entity — requires updating factions.json (including jar-kai blade definitions), the LFS icon set in two locations, all translation bundles, and CHANGELOG.md together, enforced by IconResourceTests and StarWarsResourceBundleTests.
+description: Adds a new lightsaber to the Star Wars Progress Bar plugin. Use when adding, renaming, or removing a lightsaber entity — requires updating factions.json (including jar-kai blade definitions), all translation bundles, and CHANGELOG.md together; icon PNGs are provided separately and must never be created or edited by this skill. Enforced by IconResourceTests and StarWarsResourceBundleTests.
 ---
 
 # Add a lightsaber
@@ -17,6 +17,8 @@ All pieces must be added **together** — CI tests fail if any part is missing:
 | Changelog entry | `CHANGELOG.md` under `[Unreleased]` → `Added` | release tooling consumes `[Unreleased]` — see section 6 |
 
 Lightsabers do not appear in `LIST_OF_VEHICLES.md`; they have their own generated list. If the faction does not exist yet, run the **add-faction** skill first.
+
+Icon files (both locations above) are provided separately — **never create, edit, rename, or delete them**; see section 3.
 
 ## Prompt for missing data
 
@@ -60,22 +62,20 @@ Add to the appropriate faction's `data` array under `"lightsabers"`:
 - Every hilt in `lightsabers[]` gets its own icon files (see below); `isJarKai: true` marks entities with multiple hilts. Copy an existing entry of the same kind as a template.
 - Each blade's `bladeColor` must match one of the keys in the `colors` map defined by `LightsaberColor` (`src/main/kotlin/com/christopherosthues/starwarsprogressbar/ui/LightsaberColor.kt`) — unknown values silently fall back to cyan.
 
-## 3. Icons (Git LFS PNGs)
+## 3. Icons (Git LFS PNGs) — never touch these
 
-All PNGs are Git LFS-tracked (`*.png filter=lfs`). Never commit them as regular binaries; verify with `git lfs ls-files` before pushing.
+**Never create, edit, rename, or delete any icon file.** Icon PNGs are provided separately by the maintainer; this skill covers everything else. Do not generate placeholder icons and do not copy existing icons to new names.
 
-Unlike vehicles, lightsabers have **no `_r` variant**. Most lightsaber icons are **10 px** tall (some go up to **20 px**); the width is variable and depends on the hilt itself. Make the @2x version exactly double size.
-
-Every hilt has its own icon pair, where `<bladeId>` is each `lightsabers[].id`:
+For reference, every hilt has its own icon pair on disk, where `<bladeId>` is each `lightsabers[].id`:
 
 | File | Notes |
 |---|---|
 | `src/main/resources/icons/lightsabers/<faction>/<id>_<bladeId>.png` | Base icon for that blade; loaded at runtime |
 | `icons/lightsabers/<faction>/<id>_<bladeId>@2x.png` | Double-size version, repo root |
 
-Non-jar-kai entities have a single hilt entry (`<id>_1.png`); jar-kai entities have one pair per hilt.
-
-- `IconResourceTests` enforces exactly these paths in both locations.
+- Non-jar-kai entities have a single hilt entry (`<id>_1.png`); jar-kai entities have one pair per hilt. Unlike vehicles, lightsabers have **no `_r` variant**. Most lightsaber icons are **10 px** tall (some go up to **20 px**); the width is variable and depends on the hilt itself, and the @2x version is exactly double size.
+- All PNGs are Git LFS-tracked (`*.png filter=lfs`) — never commit them as regular binaries; verify with `git lfs ls-files` before pushing.
+- `IconResourceTests` enforces exactly these paths in both locations. If the icons for a new entity have not been provided yet, that test will fail until they are — expected, and not something to fix from this skill.
 
 ## 4. Translations — every bundle file
 
@@ -142,6 +142,6 @@ Also confirm `git diff LIST_OF_LIGHTSABERS.md` shows only the expected change �
 
 ## Renaming / removing an entity
 
-- Rename: update the id everywhere above **and** rename all icon files (including per-blade icons); orphaned PNGs fail `IconResourceTests` unless added to its `iconWhitelist`. If the lightsaber is still unreleased, also fix the `[Unreleased]` changelog entry (section 6).
-- Remove: delete the factions.json entry, all icon pairs, and the bundle keys from all files. If the lightsaber is still unreleased, remove it from its `[Unreleased]` changelog entry (section 6); for already-released lightsabers add a `### Removed` entry instead.
+- Rename: update the id everywhere above; icon files are renamed separately — never touch them. Orphaned PNGs fail `IconResourceTests` unless added to its `iconWhitelist`. If the lightsaber is still unreleased, also fix the `[Unreleased]` changelog entry (section 6).
+- Remove: delete the factions.json entry and the bundle keys from all files; icon pairs are deleted separately — never touch them. If the lightsaber is still unreleased, remove it from its `[Unreleased]` changelog entry (section 6); for already-released lightsabers add a `### Removed` entry instead.
 - After renaming or removing, re-run the generator (section 5) so `LIST_OF_LIGHTSABERS.md` stays in sync.

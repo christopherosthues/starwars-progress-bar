@@ -1,6 +1,6 @@
 ---
 name: Add Vehicle
-description: Adds a new vehicle to the Star Wars Progress Bar plugin. Use when adding, renaming, or removing a vehicle entity — requires updating factions.json, the LFS icon set in two locations, all translation bundles, LIST_OF_VEHICLES.md, and CHANGELOG.md together, enforced by IconResourceTests and StarWarsResourceBundleTests.
+description: Adds a new vehicle to the Star Wars Progress Bar plugin. Use when adding, renaming, or removing a vehicle entity — requires updating factions.json, all translation bundles, LIST_OF_VEHICLES.md, and CHANGELOG.md together; icon PNGs are provided separately and must never be created or edited by this skill. Enforced by IconResourceTests and StarWarsResourceBundleTests.
 ---
 
 # Add a vehicle
@@ -17,6 +17,8 @@ All pieces must be added **together** — CI tests fail if any part is missing:
 | Changelog entry | `CHANGELOG.md` under `[Unreleased]` → `Added` | release tooling consumes `[Unreleased]` — see section 6 |
 
 If the faction does not exist yet, run the **add-faction** skill first.
+
+Icon files (both locations above) are provided separately — **never create, edit, rename, or delete them**; see section 3.
 
 ## Prompt for missing data
 
@@ -46,9 +48,11 @@ Add to the appropriate faction's `data` array under `"vehicles"`:
 - `ionEngine` must match one of the keys in the `colors` map defined by `IonEngineColor` (`src/main/kotlin/com/christopherosthues/starwarsprogressbar/ui/IonEngineColor.kt`) — unknown values silently fall back to blue.
 - Typical values: vehicles use `velocity` between 0.5 and 5 inclusive; vehicle `yShift` is usually `-6`.
 
-## 3. Icons (Git LFS PNGs)
+## 3. Icons (Git LFS PNGs) — never touch these
 
-All PNGs are Git LFS-tracked (`*.png filter=lfs`). Never commit them as regular binaries; verify with `git lfs ls-files` before pushing.
+**Never create, edit, rename, or delete any icon file.** Icon PNGs are provided separately by the maintainer; this skill covers everything else. Do not generate placeholder icons and do not copy existing icons to new names.
+
+For reference, each vehicle has an icon set on disk:
 
 | File | Size | Notes |
 |---|---|---|
@@ -58,7 +62,8 @@ All PNGs are Git LFS-tracked (`*.png filter=lfs`). Never commit them as regular 
 | `icons/vehicles/<faction>/<id>_r@2x.png` | 64x64 | Repo root, rotated variant at double size |
 
 - Only the middle vertical **16 px** of a 32x32 icon (middle 32 px of 64x64) is visible — the progress bar clips everything beyond that.
-- `IconResourceTests` enforces exactly these paths in both locations.
+- All PNGs are Git LFS-tracked (`*.png filter=lfs`) — never commit them as regular binaries; verify with `git lfs ls-files` before pushing.
+- `IconResourceTests` enforces exactly these paths in both locations. If the icons for a new entity have not been provided yet, that test will fail until they are — expected, and not something to fix from this skill.
 
 ## 4. Translations — every bundle file
 
@@ -124,6 +129,6 @@ Also confirm `git diff LIST_OF_VEHICLES.md` shows only the expected change — t
 
 ## Renaming / removing an entity
 
-- Rename: update the id everywhere above **and** rename all icon files; orphaned PNGs fail `IconResourceTests` unless added to its `iconWhitelist`. If the vehicle is still unreleased, also fix the `[Unreleased]` changelog entry (section 6).
-- Remove: delete the factions.json entry, both icon pairs, and the bundle keys from all files. If the vehicle is still unreleased, remove its `[Unreleased]` changelog entry (section 6); for already-released vehicles add a `### Removed` entry instead.
+- Rename: update the id everywhere above; icon files are renamed separately — never touch them. Orphaned PNGs fail `IconResourceTests` unless added to its `iconWhitelist`. If the vehicle is still unreleased, also fix the `[Unreleased]` changelog entry (section 6).
+- Remove: delete the factions.json entry and the bundle keys from all files; icon pairs are deleted separately — never touch them. If the vehicle is still unreleased, remove its `[Unreleased]` changelog entry (section 6); for already-released vehicles add a `### Removed` entry instead.
 - After renaming or removing, re-run the generator (section 5) so `LIST_OF_VEHICLES.md` stays in sync.
