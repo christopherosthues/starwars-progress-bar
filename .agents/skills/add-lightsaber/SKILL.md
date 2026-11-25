@@ -18,6 +18,10 @@ All pieces must be added **together** — CI tests fail if any part is missing:
 
 Lightsabers do not appear in `LIST_OF_VEHICLES.md`; they have their own generated list. If the faction does not exist yet, run the **add-faction** skill first.
 
+## Prompt for missing data
+
+Before making any changes, verify that the request specifies everything needed for the entry — in particular each blade's `bladeColor`, `isShoto`, `isForward`, `bladeSize`, `xBlade` and `yBlade`, the hilt's `yShift`, and the display name. If any of these are missing or ambiguous, **ask the user** instead of guessing or silently using template values — unknown blade colors fall back to cyan at runtime without any error, so a wrong assumption ships invisibly. Only derive values that follow established convention (e.g., `velocity` matching similar entries, non-English translations following existing bundle patterns).
+
 ## 1. Naming rules
 
 - Entity `id`: lowercase snake_case, **no spaces or dashes** — underscores only (e.g. `darth_maul_first`, `asajj_ventress_second`).
