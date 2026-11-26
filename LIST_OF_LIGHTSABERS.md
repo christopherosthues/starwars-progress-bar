@@ -72,6 +72,8 @@
   * ![Barriss Offee's lightsaber](icons/lightsabers/jedi/barriss_offee_1@2x.png)
 * **Bultar Swan's lightsaber**
   * ![Bultar Swan's lightsaber](icons/lightsabers/jedi/bultar_swan_1@2x.png)
+* **Burryaga's lightsaber**
+  * ![Burryaga's lightsaber](icons/lightsabers/jedi/burryaga_1@2x.png)
 * **Count Dooku's lightsaber**
   * ![Count Dooku's lightsaber](icons/lightsabers/jedi/count_dooku_1@2x.png)
 * **Depa Billaba's lightsaber**

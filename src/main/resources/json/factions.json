@@ -1674,6 +1674,33 @@
                 },
                 {
                     "type": "Lightsabers",
+                    "id": "burryaga",
+                    "velocity": 4,
+                    "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "isDoubleBladed": false,
+                            "yShift": 0,
+                            "blades": [
+                                {
+                                    "bladeColor": "blue",
+                                    "isShoto": false,
+                                    "isForward": true,
+                                    "bladeSize": 6,
+                                    "xBlade": -1,
+                                    "yBlade": 7
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Lightsabers",
                     "id": "leia_organa",
                     "velocity": 4,
                     "isJarKai": false,
