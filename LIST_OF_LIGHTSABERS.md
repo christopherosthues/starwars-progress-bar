@@ -86,6 +86,8 @@
   * ![Ezra Bridger's second lightsaber](icons/lightsabers/jedi/ezra_bridger_second_1@2x.png)
 * **Ezra Bridger's third lightsaber**
   * ![Ezra Bridger's third lightsaber](icons/lightsabers/jedi/ezra_bridger_third_1@2x.png)
+* **Jaro Tapal's lightsaber**
+  * ![Jaro Tapal's lightsaber](icons/lightsabers/jedi/jaro_tapal_1@2x.png)
 * **Jocasta Nu's lightsaber**
   * ![Jocasta Nu's lightsaber](icons/lightsabers/jedi/jocasta_nu_1@2x.png)
 * **Kanan Jarrus' lightsaber**

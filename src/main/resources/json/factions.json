@@ -2022,6 +2022,43 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "type": "Lightsabers",
+                    "id": "jaro_tapal",
+                    "velocity": 4,
+                    "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}, {"lightsaberId": 1, "bladeId": 1}],
+                        [{"lightsaberId": 1, "bladeId": 0}],
+                        [{"lightsaberId": 1, "bladeId": 1}]
+                    ],
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "isDoubleBladed": true,
+                            "yShift": 5,
+                            "blades": [
+                                {
+                                    "bladeColor": "blue",
+                                    "isShoto": false,
+                                    "isForward": false,
+                                    "bladeSize": 8,
+                                    "xBlade": 14,
+                                    "yBlade": 1
+                                },
+                                {
+                                    "bladeColor": "blue",
+                                    "isShoto": false,
+                                    "isForward": true,
+                                    "bladeSize": 8,
+                                    "xBlade": -14,
+                                    "yBlade": 1
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         },
