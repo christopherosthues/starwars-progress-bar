@@ -5,6 +5,7 @@ import java.awt.Color
 
 internal object LightsaberColor {
     val Cyan: JBColor = JBColor(Color(0, 255, 255), Color(0, 255, 255))
+    val Turquoise: JBColor = JBColor(Color(64, 224, 208), Color(64, 224, 208))
     val LightBlue: JBColor = JBColor(Color(100, 180, 230), Color(100, 180, 230))
     val Blue: JBColor = JBColor(Color(20, 90, 220), Color(20, 90, 220))
     val DarkBlue: JBColor = JBColor(Color(0, 10, 240), Color(0, 10, 240))
@@ -32,5 +33,6 @@ internal object LightsaberColor {
         "yellow" to Yellow,
         "purple" to Purple,
         "white" to White,
+        "turquoise" to Turquoise,
     )
 }

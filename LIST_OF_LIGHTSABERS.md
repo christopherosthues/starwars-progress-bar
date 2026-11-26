@@ -129,6 +129,8 @@
   * ![Shaak Ti's lightsaber](icons/lightsabers/jedi/shaak_ti_1@2x.png)
 * **Stellan Gios' lightsaber**
   * ![Stellan Gios' lightsaber](icons/lightsabers/jedi/stellan_gios_1@2x.png)
+* **Tenel Ka Djo's lightsaber**
+  * ![Tenel Ka Djo's lightsaber](icons/lightsabers/jedi/tenel_ka_djo_1@2x.png)
 * **Tera Sinube's lightsaber**
   * ![Tera Sinube's lightsaber](icons/lightsabers/jedi/tera_sinube_1@2x.png)
 * **Yoda's lightsaber**
