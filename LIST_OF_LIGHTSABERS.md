@@ -28,6 +28,8 @@
 * **Eighth Brother's lightsaber**
   * ![Eighth Brother's lightsaber](icons/lightsabers/sith/eighth_brother_1@2x.png)
   * ![Eighth Brother's lightsaber](icons/lightsabers/sith/eighth_brother_2@2x.png)
+* **Eleventh Brother's lightsaber**
+  * ![Eleventh Brother's lightsaber](icons/lightsabers/sith/eleventh_brother_1@2x.png)
 * **Fifth Brother's lightsaber**
   * ![Fifth Brother's lightsaber](icons/lightsabers/sith/fifth_brother_1@2x.png)
   * ![Fifth Brother's lightsaber](icons/lightsabers/sith/fifth_brother_2@2x.png)

@@ -651,6 +651,43 @@
                 },
                 {
                     "type": "Lightsabers",
+                    "id": "eleventh_brother",
+                    "velocity": 3,
+                    "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}, {"lightsaberId": 1, "bladeId": 1}],
+                        [{"lightsaberId": 1, "bladeId": 0}],
+                        [{"lightsaberId": 1, "bladeId": 1}]
+                    ],
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "isDoubleBladed": true,
+                            "yShift": 0,
+                            "blades": [
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "isForward": false,
+                                    "bladeSize": 4,
+                                    "xBlade": 0,
+                                    "yBlade": 8
+                                },
+                                {
+                                    "bladeColor": "red",
+                                    "isShoto": false,
+                                    "isForward": true,
+                                    "bladeSize": 4,
+                                    "xBlade": 0,
+                                    "yBlade": 8
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Lightsabers",
                     "id": "savage_opress",
                     "velocity": 3,
                     "isJarKai": false,
