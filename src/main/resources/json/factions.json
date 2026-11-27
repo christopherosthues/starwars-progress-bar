@@ -2086,6 +2086,33 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "type": "Lightsabers",
+                    "id": "cere_junda_second",
+                    "velocity": 4,
+                    "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "isDoubleBladed": false,
+                            "yShift": 5,
+                            "blades": [
+                                {
+                                    "bladeColor": "blue",
+                                    "isShoto": false,
+                                    "isForward": true,
+                                    "bladeSize": 6,
+                                    "xBlade": -7,
+                                    "yBlade": 2
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         },

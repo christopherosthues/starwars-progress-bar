@@ -74,8 +74,10 @@
   * ![Bultar Swan's lightsaber](icons/lightsabers/jedi/bultar_swan_1@2x.png)
 * **Burryaga's lightsaber**
   * ![Burryaga's lightsaber](icons/lightsabers/jedi/burryaga_1@2x.png)
-* **Cere Junda's lightsaber**
-  * ![Cere Junda's lightsaber](icons/lightsabers/jedi/cere_junda_first_1@2x.png)
+* **Cere Junda's first lightsaber**
+  * ![Cere Junda's first lightsaber](icons/lightsabers/jedi/cere_junda_first_1@2x.png)
+* **Cere Junda's second lightsaber**
+  * ![Cere Junda's second lightsaber](icons/lightsabers/jedi/cere_junda_second_1@2x.png)
 * **Count Dooku's lightsaber**
   * ![Count Dooku's lightsaber](icons/lightsabers/jedi/count_dooku_1@2x.png)
 * **Depa Billaba's lightsaber**
