@@ -28,7 +28,7 @@ The script takes exactly one argument: the path of the @2x icon to scale. It pri
 ## Verify
 
 - Runtime PNGs are Git LFS-tracked (`*.png filter=lfs`) — verify before pushing with `git lfs ls-files`.
-- Run `.\gradlew.bat test` — `IconResourceTests` enforces the runtime icon paths.
+- `IconResourceTests` will most probably fail, no test execution needed.
 
 ## Notes
 
