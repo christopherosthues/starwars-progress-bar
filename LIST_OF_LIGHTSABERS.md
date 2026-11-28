@@ -144,6 +144,8 @@
   * ![Saesee Tiin's lightsaber](icons/lightsabers/jedi/saesee_tiin_1@2x.png)
 * **Shaak Ti's lightsaber**
   * ![Shaak Ti's lightsaber](icons/lightsabers/jedi/shaak_ti_1@2x.png)
+* **Stass Allie's lightsaber**
+  * ![Stass Allie's lightsaber](icons/lightsabers/jedi/stass_allie_1@2x.png)
 * **Stellan Gios' lightsaber**
   * ![Stellan Gios' lightsaber](icons/lightsabers/jedi/stellan_gios_1@2x.png)
 * **Tenel Ka Djo's lightsaber**
