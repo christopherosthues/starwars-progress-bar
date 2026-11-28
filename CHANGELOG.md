@@ -9,7 +9,7 @@
 - Variants for Jar'Kai and Double-bladed lightsabers
 - Lightsaber hilt variants for Asajj Ventress, Inquisitors and Pong Krell
 - Sith lightsabers of Dark Rey and Eleventh Brother
-- Jedi lightsabers of Adi Gallia, Agen Kolar, Bultar Swan, Burryaga, Cal Kestis, Cere Junda, Even Piell, Jaro Tapal, Oppo Rancisis and Tenel Ka Djo
+- Jedi lightsabers of Adi Gallia, Agen Kolar, Bultar Swan, Burryaga, Cal Kestis, Cere Junda, Eeth Koth, Even Piell, Jaro Tapal, Oppo Rancisis and Tenel Ka Djo
 
 ### Fixed
 

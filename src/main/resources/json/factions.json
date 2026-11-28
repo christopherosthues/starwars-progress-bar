@@ -1497,6 +1497,33 @@
                 },
                 {
                     "type": "Lightsabers",
+                    "id": "eeth_koth",
+                    "velocity": 4,
+                    "isJarKai": false,
+                    "defaultVariant": 0,
+                    "variants": [
+                        [{"lightsaberId": 1, "bladeId": 0}]
+                    ],
+                    "lightsabers": [
+                        {
+                            "id": 1,
+                            "isDoubleBladed": false,
+                            "yShift": 5,
+                            "blades": [
+                                {
+                                    "bladeColor": "green",
+                                    "isShoto": false,
+                                    "isForward": true,
+                                    "bladeSize": 8,
+                                    "xBlade": 0,
+                                    "yBlade": 1
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Lightsabers",
                     "id": "even_piell",
                     "velocity": 4,
                     "isJarKai": false,

@@ -79,6 +79,8 @@
   * ![Burryaga's lightsaber](icons/lightsabers/jedi/burryaga_1@2x.png)
 * **Cal Kestis's second lightsaber**
   * ![Cal Kestis's second lightsaber](icons/lightsabers/jedi/cal_kestis_second_1@2x.png)
+  * ![Cal Kestis's second lightsaber](icons/lightsabers/jedi/cal_kestis_second_2@2x.png)
+  * ![Cal Kestis's second lightsaber](icons/lightsabers/jedi/cal_kestis_second_3@2x.png)
 * **Cere Junda's first lightsaber**
   * ![Cere Junda's first lightsaber](icons/lightsabers/jedi/cere_junda_first_1@2x.png)
 * **Cere Junda's second lightsaber**
@@ -87,6 +89,8 @@
   * ![Count Dooku's lightsaber](icons/lightsabers/jedi/count_dooku_1@2x.png)
 * **Depa Billaba's lightsaber**
   * ![Depa Billaba's lightsaber](icons/lightsabers/jedi/depa_billaba_1@2x.png)
+* **Eeth Koth's lightsaber**
+  * ![Eeth Koth's lightsaber](icons/lightsabers/jedi/eeth_koth_1@2x.png)
 * **Even Piell's lightsaber**
   * ![Even Piell's lightsaber](icons/lightsabers/jedi/even_piell_1@2x.png)
 * **Ezra Bridger's first lightsaber**
