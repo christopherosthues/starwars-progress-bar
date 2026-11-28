@@ -2184,12 +2184,15 @@
                     "type": "Lightsabers",
                     "id": "cal_kestis_second",
                     "velocity": 4,
-                    "isJarKai": false,
+                    "isJarKai": true,
                     "defaultVariant": 0,
                     "variants": [
                         [{"lightsaberId": 1, "bladeId": 0}, {"lightsaberId": 1, "bladeId": 1}],
                         [{"lightsaberId": 1, "bladeId": 0}],
-                        [{"lightsaberId": 1, "bladeId": 1}]
+                        [{"lightsaberId": 1, "bladeId": 1}],
+                        [{"lightsaberId": 2, "bladeId": 0}],
+                        [{"lightsaberId": 3, "bladeId": 0}],
+                        [{"lightsaberId": 2, "bladeId": 0}, {"lightsaberId": 3, "bladeId": 0}]
                     ],
                     "lightsabers": [
                         {
@@ -2211,6 +2214,36 @@
                                     "isForward": true,
                                     "bladeSize": 8,
                                     "xBlade": 0,
+                                    "yBlade": 1
+                                }
+                            ]
+                        },
+                        {
+                            "id": 2,
+                            "isDoubleBladed": false,
+                            "yShift": 0,
+                            "blades": [
+                                {
+                                    "bladeColor": "blue",
+                                    "isShoto": false,
+                                    "isForward": true,
+                                    "bladeSize": 8,
+                                    "xBlade": 0,
+                                    "yBlade": 1
+                                }
+                            ]
+                        },
+                        {
+                            "id": 3,
+                            "isDoubleBladed": false,
+                            "yShift": 11,
+                            "blades": [
+                                {
+                                    "bladeColor": "blue",
+                                    "isShoto": false,
+                                    "isForward": false,
+                                    "bladeSize": 8,
+                                    "xBlade": 14,
                                     "yBlade": 1
                                 }
                             ]
