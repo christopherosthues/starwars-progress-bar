@@ -75,7 +75,7 @@ vehicles.<factionId>.<id>=Display Name
 
 - Key format is `<prefix>.<factionId>.<id>` — the faction id prefix is required (it comes from `entityId`, not just `id`).
 - Escape apostrophes as `''` (e.g. `Adi Gallia''s Delta-7b-Aethersprite Starfighter`).
-- Tests enforce: no empty values, fallback contains every key of the language bundles, and each language bundle contains every fallback key except `name`.
+- Non-ASCII characters must be Unicode-escaped as `\uXXXX` (lowercase hex digits) — e.g. `é` becomes `\u00e9`. Bundle files are pure ASCII; never write raw UTF-8 characters.
 
 ## 5. LIST_OF_VEHICLES.md — generate it
 

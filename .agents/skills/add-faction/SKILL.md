@@ -41,7 +41,7 @@ lightsabers.faction.<factionId>=Display Name
 ```
 
 - Escape apostrophes as `''`.
-- Tests enforce: no empty values, fallback contains every key of the language bundles, and each language bundle contains every fallback key except `name`.
+- Non-ASCII characters must be Unicode-escaped as `\uXXXX` (lowercase hex digits) — e.g. `é` becomes `\u00e9`. Bundle files are pure ASCII; never write raw UTF-8 characters.
 
 ## 4. Changelog
 
