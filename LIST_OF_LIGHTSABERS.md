@@ -140,6 +140,8 @@
   * ![Quinlan Vos' lightsaber](icons/lightsabers/jedi/quinlan_vos_1@2x.png)
 * **Rey's lightsaber**
   * ![Rey's lightsaber](icons/lightsabers/jedi/rey_1@2x.png)
+* **Saesee Tiin's lightsaber**
+  * ![Saesee Tiin's lightsaber](icons/lightsabers/jedi/saesee_tiin_1@2x.png)
 * **Shaak Ti's lightsaber**
   * ![Shaak Ti's lightsaber](icons/lightsabers/jedi/shaak_ti_1@2x.png)
 * **Stellan Gios' lightsaber**
