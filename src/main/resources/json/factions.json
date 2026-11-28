@@ -2219,7 +2219,8 @@
                         [{"lightsaberId": 1, "bladeId": 1}],
                         [{"lightsaberId": 2, "bladeId": 0}],
                         [{"lightsaberId": 3, "bladeId": 0}],
-                        [{"lightsaberId": 2, "bladeId": 0}, {"lightsaberId": 3, "bladeId": 0}]
+                        [{"lightsaberId": 2, "bladeId": 0}, {"lightsaberId": 3, "bladeId": 0}],
+                        [{"lightsaberId": 4, "bladeId": 0}]
                     ],
                     "lightsabers": [
                         {
@@ -2271,6 +2272,21 @@
                                     "isForward": false,
                                     "bladeSize": 8,
                                     "xBlade": 14,
+                                    "yBlade": 1
+                                }
+                            ]
+                        },
+                        {
+                            "id": 4,
+                            "isDoubleBladed": false,
+                            "yShift": 5,
+                            "blades": [
+                                {
+                                    "bladeColor": "blue",
+                                    "isShoto": false,
+                                    "isForward": true,
+                                    "bladeSize": 8,
+                                    "xBlade": -14,
                                     "yBlade": 1
                                 }
                             ]

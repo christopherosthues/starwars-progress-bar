@@ -81,6 +81,7 @@
   * ![Cal Kestis's second lightsaber](icons/lightsabers/jedi/cal_kestis_second_1@2x.png)
   * ![Cal Kestis's second lightsaber](icons/lightsabers/jedi/cal_kestis_second_2@2x.png)
   * ![Cal Kestis's second lightsaber](icons/lightsabers/jedi/cal_kestis_second_3@2x.png)
+  * ![Cal Kestis's second lightsaber](icons/lightsabers/jedi/cal_kestis_second_4@2x.png)
 * **Cere Junda's first lightsaber**
   * ![Cere Junda's first lightsaber](icons/lightsabers/jedi/cere_junda_first_1@2x.png)
 * **Cere Junda's second lightsaber**
