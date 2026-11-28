@@ -30,6 +30,7 @@
   * ![Eighth Brother's lightsaber](icons/lightsabers/sith/eighth_brother_2@2x.png)
 * **Eleventh Brother's lightsaber**
   * ![Eleventh Brother's lightsaber](icons/lightsabers/sith/eleventh_brother_1@2x.png)
+  * ![Eleventh Brother's lightsaber](icons/lightsabers/sith/eleventh_brother_2@2x.png)
 * **Fifth Brother's lightsaber**
   * ![Fifth Brother's lightsaber](icons/lightsabers/sith/fifth_brother_1@2x.png)
   * ![Fifth Brother's lightsaber](icons/lightsabers/sith/fifth_brother_2@2x.png)
@@ -76,6 +77,8 @@
   * ![Bultar Swan's lightsaber](icons/lightsabers/jedi/bultar_swan_1@2x.png)
 * **Burryaga's lightsaber**
   * ![Burryaga's lightsaber](icons/lightsabers/jedi/burryaga_1@2x.png)
+* **Cal Kestis's second lightsaber**
+  * ![Cal Kestis's second lightsaber](icons/lightsabers/jedi/cal_kestis_second_1@2x.png)
 * **Cere Junda's first lightsaber**
   * ![Cere Junda's first lightsaber](icons/lightsabers/jedi/cere_junda_first_1@2x.png)
 * **Cere Junda's second lightsaber**
